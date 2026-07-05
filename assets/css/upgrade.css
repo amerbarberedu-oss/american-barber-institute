@@ -1,0 +1,493 @@
+/* ============================================================================
+   ABI — upgrade.css
+   Premium feature add-on stylesheet. Self-contained, additive only.
+   ----------------------------------------------------------------------------
+   • Tuned to the site's EXISTING royal-blue-on-white palette (landing.css).
+   • Adds ONLY new `abi-`-prefixed classes (+ `[data-reveal]`). Does NOT
+     restyle any existing component.
+   • Mobile-first + fully responsive (breakpoints at ≤560 / ≤768 / ≤1024px).
+   • ALL motion is gated behind @media (prefers-reduced-motion: no-preference)
+     so the default-safe state is static / no animation.
+   • Video markup is added elsewhere — these classes only style the containers
+     so they look great with object-fit:cover <video> elements pulled from the
+     CDN (https://assets-lilac-five.vercel.app/).
+   ----------------------------------------------------------------------------
+   PALETTE (mirrors landing.css :root — kept local so this file is portable):
+     --blue #1b2fd9  --blue-dark #1322a8  --blue-light #eef1ff
+     --ink #10131a   --ink-soft #3c4250   --line #e3e6ee
+     --bg #ffffff    --red #e02b20        --radius 12px   font Poppins
+   NOTE: these fall back to the page's own :root vars when present, so the
+   themed dot-switcher (midnight/classic/emerald/noir) still recolors them.
+   ========================================================================== */
+
+/* Local token mirror — only used if the host page hasn't defined them.
+   Because landing.css :root already sets --blue etc., var(--blue) below
+   resolves to the live (possibly themed) value first. */
+:root{
+  --abi-blue:        var(--blue, #1b2fd9);
+  --abi-blue-dark:   var(--blue-dark, #1322a8);
+  --abi-blue-light:  var(--blue-light, #eef1ff);
+  --abi-ink:         var(--ink, #10131a);
+  --abi-ink-soft:    var(--ink-soft, #3c4250);
+  --abi-line:        var(--line, #e3e6ee);
+  --abi-bg:          var(--bg, #ffffff);
+  --abi-radius:      var(--radius, 12px);
+  --abi-radius-lg:   18px;
+  --abi-font:        var(--font, 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif);
+  /* glow built from the LIVE blue so it tracks the active theme */
+  --abi-glow:        color-mix(in srgb, var(--blue, #1b2fd9) 22%, transparent);
+  --abi-glow-soft:   color-mix(in srgb, var(--blue, #1b2fd9) 12%, transparent);
+}
+
+/* ============================================================================
+   GROUP 1 — .abi-deco  (ambient fixed background layer)
+   ----------------------------------------------------------------------------
+   Light-theme safe: very faint grid + 1–2 soft blue blobs. Sits BEHIND
+   everything (z-index:0, pointer-events:none).
+   ⚠ HOST PAGE GUIDANCE: ensure your real content/sections sit above it with
+     `position:relative; z-index:1;`  (landing.css already gives most sections
+     a stacking context, but add it to any plain wrapper that needs it.)
+   Place ONE `.abi-deco` element as the first child of <body>.
+   ========================================================================== */
+.abi-deco{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  /* faint royal-blue grid — ~46px cells, lines at rgba(27,47,217,.05) */
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(27,47,217,.055) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(90deg,
+      rgba(27,47,217,.045) 0 1px, transparent 1px 46px);
+  background-size:46px 46px, 46px 46px;
+}
+/* soft drifting blue blobs — a separate layer above the grid */
+.abi-deco::before,
+.abi-deco::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  filter:blur(40px);
+}
+.abi-deco::before{
+  width:42vmax; height:42vmax;
+  top:-10vmax; left:-8vmax;
+  background:radial-gradient(circle at 50% 50%,
+    color-mix(in srgb, var(--blue, #1b2fd9) 12%, transparent) 0%,
+    transparent 70%);
+}
+.abi-deco::after{
+  width:36vmax; height:36vmax;
+  bottom:-12vmax; right:-10vmax;
+  background:radial-gradient(circle at 50% 50%,
+    color-mix(in srgb, var(--blue, #1b2fd9) 9%, transparent) 0%,
+    transparent 70%);
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .abi-deco{ animation:abiGridDrift 24s linear infinite; }
+  .abi-deco::before{ animation:abiMeshFloat 26s ease-in-out infinite alternate; }
+  .abi-deco::after { animation:abiMeshFloat 32s ease-in-out infinite alternate-reverse; }
+}
+@keyframes abiGridDrift{
+  from{ background-position:0 0, 0 0; }
+  to  { background-position:46px 46px, 46px 46px; }
+}
+@keyframes abiMeshFloat{
+  0%  { transform:translate3d(0,0,0)        scale(1);    }
+  50% { transform:translate3d(4vw,3vh,0)    scale(1.08); }
+  100%{ transform:translate3d(-3vw,5vh,0)   scale(1.04); }
+}
+
+/* ============================================================================
+   GROUP 8 — .abi-section  (generic section wrapper, matches site rhythm)
+   ----------------------------------------------------------------------------
+   Mirrors landing.css `.sec` (3.6rem 0) + `.container` width. Always sits
+   above .abi-deco. Use `.abi-section--alt` for the tinted variant and
+   `.abi-section--flush` to drop vertical padding.
+   ========================================================================== */
+.abi-section{
+  position:relative;
+  z-index:1;
+  padding:3.6rem 0;
+  font-family:var(--abi-font);
+}
+.abi-section--alt{
+  background:linear-gradient(180deg,
+    #f7f8fc 0%,
+    color-mix(in srgb, var(--blue, #1b2fd9) 4%, #f7f8fc) 100%);
+}
+.abi-section--flush{ padding:2.4rem 0; }
+.abi-section__inner{ width:min(1240px, 92%); margin-inline:auto; }
+.abi-section__head{ max-width:46rem; margin-bottom:1.6rem; }
+.abi-eyebrow{
+  display:inline-block;
+  color:var(--blue, #1b2fd9);
+  font-weight:700; font-size:.8rem;
+  letter-spacing:.22em; text-transform:uppercase;
+  margin-bottom:.4rem;
+}
+.abi-h2{
+  font-size:clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight:800; letter-spacing:-.01em; line-height:1.12;
+  margin:0 0 .6rem; color:var(--abi-ink);
+}
+.abi-lead{ color:var(--abi-ink-soft); max-width:46rem; margin:0; }
+
+/* ============================================================================
+   GROUP 2 — .abi-brandband  (AI-logo video band, deep-blue, premium)
+   ----------------------------------------------------------------------------
+   STRUCTURE (desktop = video left / copy right; mobile = copy stacks under):
+     <section class="abi-brandband">
+       <div class="abi-brandband__frame">
+         <video class="abi-brandband__video" autoplay muted loop playsinline
+                poster="…">
+           <source src="https://assets-lilac-five.vercel.app/videos/<name>.mp4"
+                   type="video/mp4">
+         </video>
+         <div class="abi-brandband__copy">
+           <p  class="abi-brandband__kicker">…</p>
+           <h2 class="abi-brandband__title">…</h2>   (use .abi-gradtext inside if wanted)
+           <p  class="abi-brandband__sub">…</p>
+         </div>
+       </div>
+     </section>
+   ========================================================================== */
+.abi-brandband{
+  position:relative;
+  z-index:1;
+  margin:3.2rem auto;
+  width:min(1240px, 92%);
+  background:linear-gradient(135deg, #1322a8, #1b2fd9 60%, #2742ff);
+  border-radius:var(--abi-radius-lg);
+  box-shadow:
+    0 18px 48px color-mix(in srgb, var(--blue, #1b2fd9) 32%, transparent),
+    0 2px 0 rgba(255,255,255,.08) inset;
+  overflow:hidden;
+}
+/* inner padded frame so the deep-blue shows as a border glow */
+.abi-brandband__frame{
+  display:grid;
+  grid-template-columns:1fr;          /* mobile: single column */
+  gap:1.4rem;
+  padding:1.2rem;
+  align-items:center;
+}
+.abi-brandband__video{
+  width:100%;
+  aspect-ratio:16/7;
+  object-fit:cover;
+  display:block;
+  border-radius:var(--abi-radius);
+  background:#0e1a8c;                  /* fallback while video loads */
+  box-shadow:0 0 0 1px rgba(255,255,255,.18) inset; /* subtle inner ring */
+}
+.abi-brandband__copy{ color:#fff; padding:.4rem .6rem 1rem; }
+.abi-brandband__kicker{
+  margin:0 0 .35rem;
+  font-weight:700; font-size:.78rem;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:color-mix(in srgb, #ffffff 78%, var(--blue, #1b2fd9));
+}
+.abi-brandband__title{
+  margin:0 0 .5rem;
+  font-size:clamp(1.6rem, 3.4vw, 2.6rem);
+  font-weight:800; line-height:1.08; letter-spacing:-.01em;
+  color:#fff;
+}
+.abi-brandband__sub{
+  margin:0; max-width:34rem;
+  color:rgba(255,255,255,.86); font-size:1rem; line-height:1.55;
+}
+/* optional white shimmer headline — only animates if motion allowed */
+.abi-brandband__title--shimmer{
+  background:linear-gradient(95deg,
+    #ffffff, #cdd6ff, #ffffff, #9fb0ff, #ffffff);
+  background-size:280% 100%;
+  -webkit-background-clip:text; background-clip:text;
+  color:transparent;
+}
+@media (prefers-reduced-motion: no-preference){
+  .abi-brandband__title--shimmer{ animation:abiShimmer 7s linear infinite; }
+}
+@keyframes abiShimmer{ to{ background-position:-280% 0; } }
+
+/* ============================================================================
+   GROUP 3 — .abi-showcase / .abi-clip  ("Inside ABI" media gallery)
+   ----------------------------------------------------------------------------
+   STRUCTURE:
+     <section class="abi-showcase">
+       <article class="abi-clip abi-tilt">           (abi-tilt optional)
+         <video class="abi-clip__video" autoplay muted loop playsinline poster="…">
+           <source src="https://assets-lilac-five.vercel.app/showcase/vid/<name>.mp4"
+                   type="video/mp4">
+         </video>
+         <div class="abi-clip__cap">Caption text</div>
+         <span class="abi-tilt__glare" aria-hidden="true"></span>  (only if .abi-tilt)
+       </article>
+       … more .abi-clip …
+     </section>
+   Grid: 1.15-col horizontal scroll-snap on phones → 2 cols ≤768 → 3 cols above.
+   ========================================================================== */
+.abi-showcase{
+  position:relative;
+  z-index:1;
+  width:min(1240px, 92%);
+  margin:1.6rem auto 0;
+  /* mobile-first: horizontal scroll-snap rail */
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:82%;
+  gap:1rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:.6rem;            /* room for momentum scrollbar */
+  scrollbar-width:thin;
+}
+.abi-clip{
+  position:relative;
+  scroll-snap-align:center;
+  border-radius:var(--abi-radius-lg);
+  overflow:hidden;
+  background:var(--abi-bg);
+  border:1px solid var(--abi-line);
+  box-shadow:0 8px 26px rgba(16,19,26,.10);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.abi-clip__video{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  background:#0c1030;              /* fallback poster color */
+  transition:transform .4s ease;
+}
+/* blue-tinted gradient caption bar pinned to bottom */
+.abi-clip__cap{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  padding:1.4rem .9rem .8rem;
+  color:#fff;
+  font-weight:600; font-size:.92rem; line-height:1.3;
+  background:linear-gradient(180deg,
+    transparent 0%,
+    color-mix(in srgb, #1322a8 0%, transparent) 18%,
+    color-mix(in srgb, #1322a8 62%, transparent) 70%,
+    color-mix(in srgb, #1322a8 86%, transparent) 100%);
+  text-shadow:0 1px 8px rgba(0,0,0,.45);
+}
+/* hover: lift + blue ring + slight zoom (pointer devices only) */
+@media (hover:hover){
+  .abi-clip:hover{
+    transform:translateY(-6px);
+    box-shadow:
+      0 18px 40px rgba(16,19,26,.18),
+      0 0 0 2px color-mix(in srgb, var(--blue, #1b2fd9) 55%, transparent),
+      0 0 28px var(--abi-glow);
+  }
+  .abi-clip:hover .abi-clip__video{ transform:scale(1.05); }
+}
+/* respect reduced motion: kill the zoom transition */
+@media (prefers-reduced-motion: reduce){
+  .abi-clip,
+  .abi-clip__video{ transition:none; }
+  .abi-clip:hover .abi-clip__video{ transform:none; }
+}
+
+/* ============================================================================
+   GROUP 4 — .abi-tilt  (3D tilt container, JS-driven)
+   ----------------------------------------------------------------------------
+   JS sets --abi-rx / --abi-ry (e.g. "6deg" / "-4deg") on pointermove, and
+   resets them to 0 on pointerleave. Glare element is optional.
+     <div class="abi-tilt">
+        …content…
+        <span class="abi-tilt__glare" aria-hidden="true"></span>
+     </div>
+   ========================================================================== */
+.abi-tilt{
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:transform .25s ease;
+  transform:perspective(800px)
+            rotateX(var(--abi-rx, 0))
+            rotateY(var(--abi-ry, 0));
+}
+.abi-tilt__glare{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:0;
+  transition:opacity .25s ease;
+  background:radial-gradient(
+    circle at var(--abi-gx, 50%) var(--abi-gy, 0%),
+    rgba(255,255,255,.35) 0%,
+    rgba(255,255,255,0) 55%);
+  mix-blend-mode:screen;
+}
+@media (hover:hover){
+  .abi-tilt:hover .abi-tilt__glare{ opacity:1; }
+}
+/* default-safe: if user prefers reduced motion, ignore JS tilt entirely */
+@media (prefers-reduced-motion: reduce){
+  .abi-tilt{ transform:none; transition:none; }
+}
+
+/* ============================================================================
+   GROUP 5 — .abi-gradtext  (animated royal-blue gradient text)
+   ----------------------------------------------------------------------------
+   Non-animated fallback color is set first so unsupported / reduced-motion
+   browsers still show solid blue text.
+   ========================================================================== */
+.abi-gradtext{
+  color:var(--blue, #1b2fd9);                 /* fallback */
+  background:linear-gradient(95deg,
+    #1b2fd9, #2742ff, #3ad0ff, #1b2fd9);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;        /* needed on WebKit */
+  color:transparent;
+}
+@media (prefers-reduced-motion: no-preference){
+  .abi-gradtext{ animation:abiGradFlow 8s linear infinite; }
+}
+@keyframes abiGradFlow{
+  0%  { background-position:0% 50%; }
+  100%{ background-position:300% 50%; }
+}
+
+/* ============================================================================
+   GROUP 6 — .abi-glass  (frosted card)
+   ----------------------------------------------------------------------------
+   ========================================================================== */
+.abi-glass{
+  position:relative;
+  z-index:1;
+  background:color-mix(in srgb, #ffffff 70%, transparent);
+  -webkit-backdrop-filter:blur(12px) saturate(1.3);
+  backdrop-filter:blur(12px) saturate(1.3);
+  border:1px solid color-mix(in srgb, var(--blue, #1b2fd9) 18%, transparent);
+  border-radius:var(--abi-radius);
+  box-shadow:0 8px 30px rgba(16,19,26,.10);
+  padding:1.6rem;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+@media (hover:hover){
+  .abi-glass:hover{
+    transform:translateY(-4px);
+    box-shadow:
+      0 16px 40px rgba(16,19,26,.14),
+      0 0 26px var(--abi-glow);
+    border-color:color-mix(in srgb, var(--blue, #1b2fd9) 32%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .abi-glass{ transition:none; }
+  .abi-glass:hover{ transform:none; }
+}
+
+/* ============================================================================
+   GROUP 7 — [data-reveal]  (scroll-in reveal, JS toggles .is-in)
+   ----------------------------------------------------------------------------
+   JS: an IntersectionObserver adds class `is-in` when the element enters view.
+   Stagger via data-reveal-d="1|2|3".
+   DEFAULT-SAFE: with reduced-motion, elements are visible immediately (no
+   transition), so content never gets stuck hidden if JS/observer is off.
+   ========================================================================== */
+[data-reveal]{
+  opacity:1;                 /* default-safe: visible unless motion is allowed */
+  transform:none;
+}
+@media (prefers-reduced-motion: no-preference){
+  [data-reveal]{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  [data-reveal].is-in{
+    opacity:1;
+    transform:translateY(0);
+  }
+  [data-reveal][data-reveal-d="1"]{ transition-delay:.10s; }
+  [data-reveal][data-reveal-d="2"]{ transition-delay:.20s; }
+  [data-reveal][data-reveal-d="3"]{ transition-delay:.30s; }
+}
+
+/* ============================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* ≤1024px — tablet: showcase becomes a 2-col static grid (no scroll rail) */
+@media (max-width:1024px){
+  .abi-showcase{
+    grid-auto-flow:row;
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-columns:auto;
+    overflow:visible;
+    scroll-snap-type:none;
+  }
+}
+/* desktop layouts kick in above 1024 via min-width */
+@media (min-width:1025px){
+  .abi-showcase{
+    grid-auto-flow:row;
+    grid-template-columns:repeat(3, 1fr);
+    grid-auto-columns:auto;
+    overflow:visible;
+    scroll-snap-type:none;
+  }
+  /* brandband: video left, copy right */
+  .abi-brandband__frame{
+    grid-template-columns:1.25fr .9fr;
+    gap:1.8rem;
+    padding:1.6rem;
+  }
+  .abi-brandband__copy{ padding:1rem 1.4rem; }
+}
+
+/* ≤768px — phones/tablet portrait */
+@media (max-width:768px){
+  .abi-section{ padding:2.8rem 0; }
+  .abi-brandband{ margin:2.4rem auto; }
+  .abi-brandband__video{ aspect-ratio:16/9; }
+  .abi-clip__video{ aspect-ratio:1/1; }
+}
+
+/* ≤560px — small phones */
+@media (max-width:560px){
+  .abi-section{ padding:2.2rem 0; }
+  .abi-section__inner,
+  .abi-showcase,
+  .abi-brandband{ width:94%; }
+  /* back to a single near-full-width snap rail on the smallest screens */
+  .abi-showcase{
+    grid-auto-flow:column;
+    grid-template-columns:none;
+    grid-auto-columns:86%;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+  }
+  .abi-brandband__frame{ padding:.9rem; }
+  .abi-glass{ padding:1.2rem; }
+  .abi-h2{ font-size:clamp(1.5rem, 6vw, 2rem); }
+}
+
+/* ----------------------------------------------------------------------------
+   SAFE-AREA: keep the last on-page section clear of the sticky bottom CTA
+   (.mbar) which landing.css shows at ≤840px. Add `.abi-clear-mbar` to the
+   final .abi-section before the footer if it would otherwise sit under the bar.
+   ---------------------------------------------------------------------------- */
+@media (max-width:840px){
+  .abi-clear-mbar{ padding-bottom:calc(7.5rem + env(safe-area-inset-bottom, 0)); }
+}
+
+/* ===== v10.1 audit fixes (02-text-bg) ===== */
+/* drop low-contrast cyan stop so gradient text stays legible mid-animation */
+.abi-gradtext{background:linear-gradient(95deg,#1b2fd9,#2742ff,#1b2fd9) !important;
+  -webkit-background-clip:text !important;background-clip:text !important;background-size:200% !important;}
+/* decorative ambient layer must never paint over content */
+.abi-deco{z-index:-1 !important;}

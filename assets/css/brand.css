@@ -1,0 +1,56 @@
+/* ABI Blue brand — unifies interior pages with the landing page design */
+:root, html[data-theme="blue"] {
+  --ink: #10131a;
+  --ink-2: #171c26;
+  --ink-3: #242b3a;
+  --paper: #ffffff;
+  --paper-2: #f7f8fc;
+  --gold: #1b2fd9;            /* brand accent → ABI blue */
+  --gold-bright: #6e80ff;     /* accent on dark surfaces */
+  --gold-soft: #b9c2f5;
+  --red: #e02b20;
+  --blue: #1b2fd9;
+  --text-dark: #10131a;
+  --text-mute: #3c4250;
+  --text-on-dark: #e8eaf2;
+  --text-on-dark-mute: #aab0c0;
+  --on-accent: #ffffff;       /* white text on blue buttons */
+  --card-bg: #fff;
+  --card-border: #e3e6ee;
+  --tag-border: #e3e6ee;
+  --input-border: #d7dbe6;
+  --foot-bg: #0b0d12;
+  --foot-border: #23262e;
+  --font-display: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Poppins", -apple-system, "Segoe UI", sans-serif;
+}
+.t-blue { background: #1b2fd9; }
+.topbar { background: var(--blue); color: #fff; border-bottom: none; }
+.topbar a { color: #fff; }
+.topbar .langs a { color: #cdd4ff; }
+.topbar .langs a[aria-current="true"] { color: #fff; }
+.btn-gold, .btn.btn-gold { border-radius: 10px; }
+
+/* White header on interior pages (match landing pages) */
+.site-head { background: rgba(255,255,255,.82); border-bottom: 1px solid var(--card-border); }
+.brand { color: var(--text-dark); }
+.brand small { color: var(--text-mute); }
+.nav > a, .nav .has-sub > a { color: var(--text-dark); }
+.nav > a:hover, .nav .has-sub:hover > a, .nav a[aria-current] { color: var(--blue); }
+.sub { background: #fff; border-color: var(--card-border); }
+.sub a { color: var(--text-dark); }
+.sub a:hover { background: #eef1ff; color: var(--blue); }
+.menu-btn { color: var(--text-dark); }
+.mobile-nav, .m-nav { background: #fff; }
+
+/* Header must stay solid white at all scroll positions */
+.site-head, .site-head.scrolled, header.site-head { background: rgba(255,255,255,.82) !important; backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
+
+/* Midnight Gold as an explicit theme (original palette) */
+html[data-theme="midnight"] {
+  --gold: #c9a227; --gold-bright: #e3b94e; --gold-soft: #f0d896;
+  --blue: #c9a227; --blue-dark: #a98b1f; --blue-light: #faf3dd;
+  --red: #8e2b2b; --on-accent: #14110a;
+  --paper: #f6f1e7; --paper-2: #efe7d8;
+  --card-border: #e7dfd0; --tag-border: #e3d9c5; --input-border: #d8cfbc;
+}

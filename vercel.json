@@ -1,0 +1,287 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/programs/200-hour-barber-fundamentals",
+      "destination": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/200-hour-barber-fundamentals.html",
+      "destination": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/scalp-micro-pigmentation",
+      "destination": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/scalp-micro-pigmentation.html",
+      "destination": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/license-transfer",
+      "destination": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/license-transfer.html",
+      "destination": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/admissions",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/tuition",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/schedule",
+      "destination": "/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/access-vr",
+      "destination": "/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-and-policy",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/frequently-asked-questions",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/our-instructors",
+      "destination": "/instructors",
+      "permanent": true
+    },
+    {
+      "source": "/courses",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/programs/500-hour-master-barber-program-4-months",
+      "destination": "/programs/500-hour-master-barber",
+      "permanent": true
+    },
+    {
+      "source": "/programs/50-hours-barber-refresher-program",
+      "destination": "/programs/50-hour-barber-refresher",
+      "permanent": true
+    },
+    {
+      "source": "/programs/3-hours-contagious-diseases-program",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/barber-school-instructors-in-nyc",
+      "destination": "/blog/barber-school-instructors-in-nyc",
+      "permanent": true
+    },
+    {
+      "source": "/diverse-haircut-training-at-american-barber-institute",
+      "destination": "/blog/diverse-haircut-training-at-american-barber-inst",
+      "permanent": true
+    },
+    {
+      "source": "/why-should-i-go-to-barber-school",
+      "destination": "/blog/why-should-i-go-to-barber-school",
+      "permanent": true
+    },
+    {
+      "source": "/exploring-the-benefits-of-enrolling-in-the-american-barber-institute-your-path-to-barbering-excellence",
+      "destination": "/blog/exploring-the-benefits-of-enrolling-in-the-ameri",
+      "permanent": true
+    },
+    {
+      "source": "/a-women-barber-the-benefits-of-barber-school",
+      "destination": "/blog/a-women-barber-the-benefits-of-barber-school",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-successfully-market-your-barbershop",
+      "destination": "/blog/how-to-successfully-market-your-barbershop",
+      "permanent": true
+    },
+    {
+      "source": "/modern-day-barbering-problem-overcome-them",
+      "destination": "/blog/modern-day-barbering-problem-overcome-them",
+      "permanent": true
+    },
+    {
+      "source": "/are-barbershops-profitable-everything-you-need-to-know",
+      "destination": "/blog/are-barbershops-profitable-everything-you-need-t",
+      "permanent": true
+    },
+    {
+      "source": "/first-things-first-what-happens-after-barber-school",
+      "destination": "/blog/first-things-first-what-happens-after-barber-sch",
+      "permanent": true
+    },
+    {
+      "source": "/unveiling-affordable-excellence-the-american-barber-institute-in-new-york",
+      "destination": "/blog/affordable-barber-school-nyc",
+      "permanent": true
+    },
+    {
+      "source": "/did-you-know-that-american-barrber-institute-graduates-make-lots-of-money-cutting-hair",
+      "destination": "/blog/how-much-money-do-barbers-make",
+      "permanent": true
+    },
+    {
+      "source": "/adult-career-and-continuing-education-services-vocational-rehabilitation-program-in-nyc",
+      "destination": "/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/barber-school",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/author/admin",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/category-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/author-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/job-opportunities",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/shop-registration",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/splash-page-1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/splash-page-2",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/manhattan",
+      "destination": "/"
+    },
+    {
+      "source": "/home",
+      "destination": "/"
+    },
+    {
+      "source": "/500-hours-master-barber-program-landing-page",
+      "destination": "/landing-funnels/500-hours-master-barber-program-landing-page"
+    },
+    {
+      "source": "/500-hours-master-barber-program-landing-page/spanish",
+      "destination": "/landing-funnels/500-hours-master-barber-program-landing-page/spanish"
+    },
+    {
+      "source": "/master-barber-program-bronx",
+      "destination": "/landing-funnels/master-barber-program-bronx"
+    },
+    {
+      "source": "/master-barber-program-bronx/spanish",
+      "destination": "/landing-funnels/master-barber-program-bronx/spanish"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src 'self' data: blob: https://*.leadconnectorhq.com https://*.msgsndr.com https://i.ytimg.com https://*.ytimg.com https://yblpnhzepaptitujzrwx.supabase.co https://assets-lilac-five.vercel.app https://*.public.blob.vercel-storage.com https://www.googletagmanager.com https://*.google-analytics.com https://*.facebook.com https://*.facebook.net https://www.clarity.ms https://*.bing.com; media-src 'self' blob: https://*.leadconnectorhq.com https://*.msgsndr.com https://yblpnhzepaptitujzrwx.supabase.co https://assets-lilac-five.vercel.app https://*.public.blob.vercel-storage.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.bunny.net https://stcdn.leadconnectorhq.com https://widgets.leadconnectorhq.com; font-src 'self' data: https://fonts.gstatic.com https://fonts.bunny.net; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://widgets.leadconnectorhq.com https://stcdn.leadconnectorhq.com https://services.leadconnectorhq.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://*.facebook.net https://www.clarity.ms https://*.clarity.ms https://www.clickcease.com https://*.clickcease.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://cdn.callrail.com https://*.callrail.com; frame-src https://www.googletagmanager.com https://api.leadconnectorhq.com https://*.leadconnectorhq.com https://*.msgsndr.com https://www.youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com https://td.doubleclick.net https://bid.g.doubleclick.net; connect-src 'self' https://*.leadconnectorhq.com https://*.msgsndr.com wss://*.leadconnectorhq.com wss://*.msgsndr.com https://formspree.io https://text.pollinations.ai https://*.pollinations.ai https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://*.facebook.com https://*.clarity.ms https://*.clickcease.com https://*.callrail.com; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
+        }
+      ]
+    }
+  ]
+}

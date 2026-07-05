@@ -1,0 +1,12 @@
+src
+docs
+.claude
+screenshot
+*.md
+*.pptx
+*.pdf
+.DS_Store
+landing-funnels/src
+**/__pycache__
+.env
+.env.*

@@ -1,0 +1,225 @@
+/* ============================================================
+   ABI — Motion & Effects Layer
+   Pure transform/opacity animations (GPU-friendly).
+   Everything heavy is gated on html.js; all of it is silenced
+   by the global prefers-reduced-motion override in style.css.
+   ============================================================ */
+
+/* ---------- Scroll progress bar ---------- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  z-index: 200; pointer-events: none;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 70%, transparent);
+}
+
+/* ---------- Hero entrance choreography ---------- */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(34px); }
+  to   { opacity: 1; transform: none; }
+}
+html.js .hero-eyebrow { animation: rise-in .7s cubic-bezier(.2,.7,.2,1) .15s both; }
+html.js .hero h1      { animation: rise-in .8s cubic-bezier(.2,.7,.2,1) .3s both; }
+html.js .hero-sub     { animation: rise-in .8s cubic-bezier(.2,.7,.2,1) .45s both; }
+html.js .hero-ctas    { animation: rise-in .8s cubic-bezier(.2,.7,.2,1) .6s both; }
+html.js .hero-note    { animation: rise-in .8s cubic-bezier(.2,.7,.2,1) .75s both; }
+html.js .trust-strip .trust { animation: rise-in .7s cubic-bezier(.2,.7,.2,1) both; }
+html.js .trust-strip .trust:nth-child(1) { animation-delay: .85s; }
+html.js .trust-strip .trust:nth-child(2) { animation-delay: .95s; }
+html.js .trust-strip .trust:nth-child(3) { animation-delay: 1.05s; }
+html.js .trust-strip .trust:nth-child(4) { animation-delay: 1.15s; }
+
+/* ---------- Ken Burns drift on hero photo ---------- */
+@keyframes kenburns {
+  from { transform: scale(1.02) translate(0, 0); }
+  to   { transform: scale(1.12) translate(-1.5%, -2%); }
+}
+.hero-bg { will-change: transform; animation: kenburns 22s ease-in-out infinite alternate; }
+
+/* ---------- Gold shimmer sweep on hero accent ---------- */
+@keyframes shimmer-text {
+  0%, 55% { background-position: 130% 0; }
+  100%    { background-position: -30% 0; }
+}
+.hero h1 em {
+  background: linear-gradient(100deg,
+    var(--gold-bright) 0%, var(--gold-bright) 42%,
+    #fff 50%, var(--gold-bright) 58%, var(--gold-bright) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: var(--gold-bright);
+  animation: shimmer-text 4.5s ease-in-out infinite;
+}
+
+/* ---------- Floating decorative tools ---------- */
+.float-deco {
+  position: absolute; pointer-events: none; color: var(--gold);
+  opacity: .14; z-index: 1;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50%      { transform: translateY(-26px) rotate(7deg); }
+}
+@keyframes bob-alt {
+  0%, 100% { transform: translateY(-14px) rotate(10deg); }
+  50%      { transform: translateY(12px) rotate(-6deg); }
+}
+.float-deco.d1 { top: 16%; right: 6%; animation: bob 9s ease-in-out infinite; }
+.float-deco.d2 { bottom: 28%; right: 22%; animation: bob-alt 12s ease-in-out infinite; }
+.float-deco.d3 { top: 24%; left: 4%; animation: bob 11s ease-in-out infinite; display: none; }
+@media (min-width: 1100px) { .float-deco.d3 { display: block; } }
+
+/* ---------- Hero particle canvas ---------- */
+.hero-particles {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+}
+
+/* ---------- Scroll-down indicator ---------- */
+@keyframes scroll-bob { 0%,100% { transform: translateY(0); opacity:.85; } 50% { transform: translateY(9px); opacity:.4; } }
+.scroll-cue {
+  position: absolute; left: 50%; bottom: 110px; transform: translateX(-50%);
+  z-index: 2; color: var(--gold-soft); display: none;
+}
+.scroll-cue svg { animation: scroll-bob 1.8s ease-in-out infinite; }
+@media (min-width: 900px) { .scroll-cue { display: block; } }
+
+/* ---------- Marquee ticker ---------- */
+.marquee {
+  overflow: hidden; background: var(--ink); color: var(--text-on-dark);
+  border-top: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3);
+  padding: 17px 0; position: relative;
+}
+.marquee-track {
+  display: flex; gap: 0; width: max-content;
+  animation: marquee-scroll 36s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee span {
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: .22em;
+  font-size: .95rem; font-weight: 500; white-space: nowrap; padding: 0 18px;
+  color: var(--text-on-dark-mute);
+}
+.marquee span b { color: var(--gold-bright); font-weight: 600; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- Animated barber pole divider ---------- */
+@keyframes pole-slide { from { background-position: 0 0; } to { background-position: 216px 0; } }
+.divider-pole { animation: pole-slide 6s linear infinite; }
+
+/* ---------- Staggered reveals (delay set by JS via --d) ---------- */
+html.js .reveal { transition-delay: var(--d, 0s); }
+
+/* ---------- Card 3D tilt + glare ---------- */
+@media (pointer: fine) {
+  html.js .card, html.js .tuition { transform-style: preserve-3d; will-change: transform; }
+  html.js .card.tilting { transition: none; box-shadow: 0 30px 60px -20px rgba(8,10,12,.45); }
+  html.js .card .glare {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0; z-index: 3;
+    background: radial-gradient(560px circle at var(--gx, 50%) var(--gy, 50%),
+      rgba(255,255,255,.16), transparent 45%);
+    transition: opacity .25s ease;
+  }
+  html.js .card:hover .glare { opacity: 1; }
+}
+.card { position: relative; }
+
+/* ---------- Button ripple + sheen ---------- */
+.btn { position: relative; overflow: hidden; }
+.btn .ripple {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: color-mix(in srgb, #fff 35%, transparent);
+  transform: scale(0); animation: ripple-out .55s ease-out forwards;
+}
+@keyframes ripple-out { to { transform: scale(2.6); opacity: 0; } }
+
+@keyframes sheen-sweep { 0%, 72% { transform: translateX(-130%) skewX(-18deg); } 100% { transform: translateX(240%) skewX(-18deg); } }
+.btn-gold::after, .head-cta::after, .mobile-cta .apply::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 38%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.34), transparent);
+  animation: sheen-sweep 4.2s ease-in-out infinite; pointer-events: none;
+}
+.mobile-cta .apply { position: relative; overflow: hidden; }
+
+/* ---------- Header morph on scroll ---------- */
+.site-head { transition: box-shadow .3s ease, background .3s ease; }
+.site-head.scrolled {
+  box-shadow: 0 12px 36px -16px rgba(0,0,0,.6);
+  background: color-mix(in srgb, var(--ink) 97%, transparent);
+}
+.site-head .wrap { transition: min-height .3s ease; }
+.site-head.scrolled .wrap { min-height: 62px; }
+
+/* ---------- Brand pole spin on hover ---------- */
+.brand svg { transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+.brand:hover svg { transform: rotate(-8deg) scale(1.08); }
+
+/* ---------- Living countdown ---------- */
+@keyframes tick-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.18); } 100% { transform: scale(1); } }
+.countdown b.tick { animation: tick-pulse .45s ease; display: block; }
+@keyframes banner-glow {
+  0%, 100% { box-shadow: inset 0 0 0 0 transparent; }
+  50% { box-shadow: inset 0 0 60px color-mix(in srgb, #fff 18%, transparent); }
+}
+.start-banner { animation: banner-glow 5s ease-in-out infinite; }
+
+/* ---------- CTA band aurora ---------- */
+@keyframes aurora-pan { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
+.cta-band {
+  background-size: 200% 100% !important;
+  animation: aurora-pan 14s linear infinite alternate;
+}
+
+/* ---------- Kicker line draw ---------- */
+html.js .kicker::before { transform: scaleX(0); transform-origin: 0 50%; transition: transform .8s cubic-bezier(.2,.7,.2,1) .15s; }
+html.js .in-view .kicker::before, html.js .hero .kicker::before, html.js .page-hero .kicker::before { transform: scaleX(1); }
+
+/* ---------- Section heading slide-mask ---------- */
+html.js .section-head h2 { clip-path: inset(0 0 100% 0); transition: clip-path .9s cubic-bezier(.2,.7,.2,1) .1s; }
+html.js .in-view .section-head h2, html.js .section-head.in-view h2 { clip-path: inset(0 0 -8% 0); }
+
+/* ---------- Gallery hover lift ---------- */
+.gallery-grid a { transition: transform .3s ease, box-shadow .3s ease; }
+.gallery-grid a:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 40px -14px rgba(0,0,0,.5); z-index: 2; }
+
+/* ---------- Lightbox entrance ---------- */
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lb-img-in { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.lightbox.open { animation: lb-in .25s ease; }
+.lightbox.open img { animation: lb-img-in .3s cubic-bezier(.2,.7,.2,1); }
+
+/* ---------- Floating chat-style pulse on mobile call bar ---------- */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 55%, transparent); }
+  70% { box-shadow: 0 0 0 14px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+
+/* Smooth theme cross-fade */
+html.theming, html.theming body, html.theming section, html.theming .card,
+html.theming .site-head, html.theming footer.site, html.theming .start-banner {
+  transition: background-color .5s ease, color .5s ease, border-color .5s ease !important;
+}
+
+/* ---------- Split media float ---------- */
+html.js .split-media img { will-change: transform; }
+
+/* ---------- Page hero ambient pulse ---------- */
+@keyframes ambient-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: .8; }
+  50% { transform: translate(-4%, 6%) scale(1.15); opacity: 1; }
+}
+.page-hero::before { animation: ambient-drift 12s ease-in-out infinite; }
+
+/* ---------- Reduced motion: kill the party ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg, .marquee-track, .divider-pole, .start-banner, .cta-band,
+  .btn-gold::after, .head-cta::after, .mobile-cta .apply::after,
+  .scroll-cue svg, .float-deco, .page-hero::before {
+    animation: none !important;
+  }
+  html.js .section-head h2 { clip-path: none; }
+  html.js .kicker::before { transform: none; }
+  .hero-particles { display: none; }
+}
