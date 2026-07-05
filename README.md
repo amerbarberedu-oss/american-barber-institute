@@ -4,7 +4,7 @@ New York's only dedicated barber school (est. 1996). This repository contains th
 complete marketing website: a fast, zero-framework static site generated from Python,
 served on Vercel, in English and Spanish.
 
-- **Canonical domain:** https://www.abi.edu (pending DNS cutover) · **Staging:** https://abi-website-black-lime.vercel.app
+- **Canonical domain:** https://www.americanbarberinstitute.com (pending DNS cutover) · **Staging:** https://abi-website-black-lime.vercel.app
 
 ---
 

@@ -7,7 +7,7 @@ import json, os, re, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'src', 'pages')
-SITE_URL = 'https://www.abi.edu'
+SITE_URL = 'https://www.americanbarberinstitute.com'
 
 # ── Next class date (first Monday of upcoming month), computed at build time ──
 def _next_first_monday():

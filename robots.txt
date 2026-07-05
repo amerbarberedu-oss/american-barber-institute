@@ -55,4 +55,4 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
-Sitemap: https://www.abi.edu/sitemap.xml
+Sitemap: https://www.americanbarberinstitute.com/sitemap.xml

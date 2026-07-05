@@ -2,16 +2,16 @@
 > New York's only dedicated barber school, est. 1996. NYS-licensed (NYSED/BPSS) 500-hour Master Barber program at two campuses: 48 West 39th Street, Manhattan (212-290-2289) and 121 Westchester Square, Bronx (718-676-0640). Tuition from $4,600 with weekly payment plans; ACCES-VR, Post-9/11 GI Bill(R) and VA benefits accepted. New classes start the first Monday of every month. English and Spanish instruction.
 
 ## Programs
-- [500-Hour Master Barber Program (Manhattan)](https://www.abi.edu/programs/500-hour-master-barber): ~4 months full-time, NY State Board Exam prep, job placement
-- [500-Hour Master Barber Program (Bronx)](https://www.abi.edu/programs/500-hour-master-barber-bronx): ~4 months full-time, NY State Board Exam prep, job placement
-- [50-Hour Barber Refresher](https://www.abi.edu/programs/50-hour-barber-refresher) (Manhattan)
-- [3-Hour Contagious Diseases Course](https://www.abi.edu/programs/contagious-diseases) (Manhattan & Bronx)
+- [500-Hour Master Barber Program (Manhattan)](https://www.americanbarberinstitute.com/programs/500-hour-master-barber): ~4 months full-time, NY State Board Exam prep, job placement
+- [500-Hour Master Barber Program (Bronx)](https://www.americanbarberinstitute.com/programs/500-hour-master-barber-bronx): ~4 months full-time, NY State Board Exam prep, job placement
+- [50-Hour Barber Refresher](https://www.americanbarberinstitute.com/programs/50-hour-barber-refresher) (Manhattan)
+- [3-Hour Contagious Diseases Course](https://www.americanbarberinstitute.com/programs/contagious-diseases) (Manhattan & Bronx)
 
 ## Landing pages (enrollment funnels)
-- [500-Hour Master Barber — Manhattan, English](https://www.abi.edu/500-hours-master-barber-program-landing-page)
-- [500-Hour Master Barber — Manhattan, Spanish](https://www.abi.edu/500-hours-master-barber-program-landing-page/spanish)
-- [500-Hour Master Barber — Bronx, English](https://www.abi.edu/master-barber-program-bronx)
-- [500-Hour Master Barber — Bronx, Spanish](https://www.abi.edu/master-barber-program-bronx/spanish)
+- [500-Hour Master Barber — Manhattan, English](https://www.americanbarberinstitute.com/500-hours-master-barber-program-landing-page)
+- [500-Hour Master Barber — Manhattan, Spanish](https://www.americanbarberinstitute.com/500-hours-master-barber-program-landing-page/spanish)
+- [500-Hour Master Barber — Bronx, English](https://www.americanbarberinstitute.com/master-barber-program-bronx)
+- [500-Hour Master Barber — Bronx, Spanish](https://www.americanbarberinstitute.com/master-barber-program-bronx/spanish)
 
 ## Key facts
 - New York requires 500 training hours for the Master Barber license
@@ -33,6 +33,6 @@
 ## Contact
 - General: admission@abi.edu
 - Hours: Mon-Sun 8:00 AM - 8:00 PM
-- FAQs: https://www.abi.edu/faq
-- Schedules: https://www.abi.edu/schedules
-- Contact form: https://www.abi.edu/contact
+- FAQs: https://www.americanbarberinstitute.com/faq
+- Schedules: https://www.americanbarberinstitute.com/schedules
+- Contact form: https://www.americanbarberinstitute.com/contact

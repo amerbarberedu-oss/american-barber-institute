@@ -25,7 +25,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import data as D
 
-SITE = "https://www.abi.edu"
+SITE = "https://www.americanbarberinstitute.com"
 CSS_V = "52"
 JS_V  = "15"
 
@@ -684,7 +684,7 @@ def page_head(p):
         "description": p["desc"],
         "provider": {"@type": "TradeSchool", "@id": canonical + "#org",
                      "name": "American Barber Institute",
-                     "sameAs": "https://www.abi.edu/"},
+                     "sameAs": "https://www.americanbarberinstitute.com/"},
         "educationalCredentialAwarded": "Eligibility for New York State Master Barber license",
         "occupationalCredentialAwarded": "NY State Master Barber license (after passing State Board Exam)",
         "timeRequired": "PT500H",

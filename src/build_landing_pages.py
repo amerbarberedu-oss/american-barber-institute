@@ -6,7 +6,7 @@ Run: python3 build.py   → writes pages next to this script.
 import os, json, datetime, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "https://www.abi.edu"
+SITE = "https://www.americanbarberinstitute.com"
 
 # Rewrite internal links foo.html → /foo so they match canonical clean URLs
 # (Vercel cleanUrls:true otherwise 308-redirects every .html link).
