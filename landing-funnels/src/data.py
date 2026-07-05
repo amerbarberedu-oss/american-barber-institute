@@ -479,7 +479,7 @@ FORM = {
 FOOTER = {
     "en": {
         "h": "American Barber Institute",
-        "sub": "New York's only dedicated barber school — changing lives for over 30 years.",
+        "sub": "New York's career-focused barber school — changing lives for over 30 years.",
         "fine": "© American Barber Institute. Approved by NYSED · Licensed by BPSS · Since 1996. *$150/week refers to the Plan C weekly payment.",
     },
     "es": {

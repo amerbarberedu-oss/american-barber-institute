@@ -4,37 +4,40 @@
    ============================================================ */
 
 :root {
-  /* Palette — Theme 1 "Midnight Gold" (default) */
-  --ink: #101316;          /* near-black charcoal */
-  --ink-2: #181d22;        /* raised dark surface */
-  --ink-3: #232a31;        /* borders on dark */
-  --paper: #f6f1e7;        /* warm off-white */
-  --paper-2: #efe7d8;      /* deeper cream */
-  --gold: #c9a227;         /* brand accent */
-  --gold-bright: #e3b94e;  /* hover / large text on dark */
-  --gold-soft: #f0d896;
-  --red: #8e2b2b;          /* secondary accent (links, highlights) */
-  --blue: #274b69;         /* barber-pole blue, sparing */
-  --text-dark: #1c2025;
-  --text-mute: #5a6068;
-  --text-on-dark: #e8e4da;
-  --text-on-dark-mute: #9aa0a8;
-  --on-accent: #14110a;    /* text on accent-colored surfaces */
+  /* Palette — BARBICIDE-TEAL / LIGHT-EDITORIAL (default).
+     Canonical token values live in brand.css; these mirror them so
+     style.css-only surfaces (loaded before brand.css) are correct too. */
+  --ink: #0E1A1C;          /* near-black editorial ink */
+  --ink-2: #14262A;        /* raised dark surface */
+  --ink-3: #1E353B;        /* borders on dark */
+  --paper: #ffffff;        /* base white */
+  --paper-2: #F2F7F8;      /* deeper cool wash */
+  --gold: #12B3A6;         /* brand accent -> barbicide-teal */
+  --gold-bright: #2FD3C4;  /* hover / large text on dark */
+  --gold-soft: #B8ECE7;
+  --red: #E4572E;          /* secondary/warm accent (coral), sparing */
+  --blue: #12B3A6;         /* -> teal (kept for legacy selectors) */
+  --text-dark: #0E1A1C;
+  --text-mute: #47585E;
+  --text-on-dark: #EAF4F3;
+  --text-on-dark-mute: #9FC0BF;
+  --on-accent: #ffffff;    /* text on accent-colored surfaces */
   --card-bg: #fff;
-  --card-border: #e7dfd0;
-  --tag-border: #e3d9c5;
-  --input-border: #d8cfbc;
-  --foot-bg: #0b0d0f;
-  --foot-border: #1d2126;
+  --card-border: #DCE5E8;
+  --tag-border: #DCE5E8;
+  --input-border: #CBD8DC;
+  --foot-bg: #0A3A45;      /* deep petrol */
+  --foot-border: #145063;
 
-  /* Type */
-  --font-display: "Oswald", "Arial Narrow", sans-serif;
-  --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+  /* Type — Inter body (family resemblance to .edu); grotesk display.
+     No external fonts (CSP-blocked): system/Inter stack only. */
+  --font-display: "Inter Tight", "Inter", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
 
   /* Rhythm */
   --max-w: 1180px;
-  --radius: 10px;
-  --shadow: 0 18px 50px -18px rgba(8, 10, 12, .45);
+  --radius: 14px;
+  --shadow: 0 22px 60px -26px rgba(14, 77, 92, .42);
   --pad-section: clamp(64px, 9vw, 120px);
 }
 

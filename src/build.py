@@ -94,13 +94,13 @@ TEMPLATE = """<!DOCTYPE html>
     <a class="logo brand-plate" href="{root}index.html" aria-label="American Barber Institute — home" title="American Barber Institute">
       <img class="logo-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">
     </a>
-    <nav class="mainnav" aria-label="Main"><a href="{root}index.html">Home</a><a href="{root}about.html">About</a><a href="{root}programs/index.html">Programs</a><a href="{root}instructors.html">Instructors</a><a href="{root}partners.html">Partners</a><a href="{root}gallery.html">Gallery</a><a href="{root}haircuts.html">Haircuts</a><a href="{root}blog/index.html">Blog</a><span class="nav-drop"><a href="{root}jobs.html" class="nav-drop-trigger">Jobs ▾</a><span class="nav-drop-menu"><a href="{root}jobs.html">Jobs</a><a href="{root}resources.html">Resources</a></span></span><span class="nav-drop"><a href="{root}faq.html" class="nav-drop-trigger">FAQs ▾</a><span class="nav-drop-menu"><a href="{root}faq.html">FAQs</a><a href="{root}schedules.html">Schedules</a></span></span><a href="{root}contact.html">Contact</a></nav>
+    <nav class="mainnav" aria-label="Main"><a href="{root}index.html">Home</a><a href="{root}why-barbering.html">Why Barbering</a><a href="{root}training-experience.html">The Training Experience</a><a href="{root}programs/index.html">Programs</a><a href="{root}schedules.html">Schedules &amp; Flexibility</a><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a><a href="{root}student-stories.html">Student Stories</a><a href="{root}career-paths.html">Career Paths</a><a href="{root}guides/index.html">Guides</a><a href="{root}veterans.html">Veterans</a><a href="{root}contact.html">Contact</a></nav>
     {langtoggle}
     <div class="loc-toggle" role="group" aria-label="Campus"><a class="is-active" aria-current="true" href="/manhattan">MN</a><a href="/bronx">BX</a></div>
-    <a class="header-cta" href="{root}contact.html">Become a Barber</a>
+    <a class="header-cta" href="{root}contact.html">Book a Tour</a>
     <div class="hdr-right"><button class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
   </div>
-  <nav class="nav-drawer"><div class="container"><a href="{root}index.html">Home</a><a href="{root}about.html">About</a><a href="{root}programs/index.html">Programs</a><a href="{root}instructors.html">Instructors</a><a href="{root}partners.html">Partners</a><a href="{root}gallery.html">Gallery</a><a href="{root}haircuts.html">Haircuts</a><a href="{root}blog/index.html">Blog</a><a href="{root}jobs.html">Jobs</a><a href="{root}resources.html">Resources</a><a href="{root}faq.html">FAQs</a><a href="{root}schedules.html">Schedules</a><a href="{root}contact.html">Contact</a><a href="{root}es/index.html"><b>Español</b></a></div></nav>
+  <nav class="nav-drawer"><div class="container"><a href="{root}index.html">Home</a><a href="{root}why-barbering.html">Why Barbering</a><a href="{root}training-experience.html">The Training Experience</a><a href="{root}programs/index.html">Programs</a><a href="{root}schedules.html">Schedules &amp; Flexibility</a><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a><a href="{root}student-stories.html">Student Stories</a><a href="{root}career-paths.html">Career Paths</a><a href="{root}guides/index.html">Guides</a><a href="{root}veterans.html">Veterans</a><a href="{root}contact.html">Contact</a><a class="drawer-cta" href="{root}contact.html"><b>Book a Tour</b></a><a href="{root}es/index.html"><b>Español</b></a></div></nav>
 </header>
 <div class="mhx">
   <div class="mhx-promo">START YOUR BARBER JOURNEY TODAY FOR ONLY <b>$150 PER WEEK*</b></div>
@@ -144,7 +144,7 @@ TEMPLATE = """<!DOCTYPE html>
     <div class="foot-grid">
       <div class="foot-brand">
         <p class="foot-name">American Barber Institute</p>
-        <p>New York's only dedicated barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
+        <p>New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
         <div class="socials">
           <a class="soc soc-fb" href="https://www.facebook.com/Abi.Education/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.2-1.5 1.5-1.5h1.4V5.1C16.1 5 15.2 5 14.2 5c-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3z"/></svg></a>
           <a class="soc soc-ig" href="https://www.instagram.com/americanbarberinstitute/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
@@ -154,20 +154,18 @@ TEMPLATE = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <h4>Links</h4>
+        <h4>Explore</h4>
         <ul>
-          <li><a href="{root}about.html">About ABI</a></li>
+          <li><a href="{root}why-barbering.html">Why Barbering</a></li>
+          <li><a href="{root}training-experience.html">The Training Experience</a></li>
           <li><a href="{root}programs/index.html">Programs</a></li>
-          <li><a href="{root}instructors.html">Instructors</a></li>
-          <li><a href="{root}faq.html">FAQs</a></li>
-          <li><a href="{root}resources.html">Resources</a></li>
-          <li><a href="{root}jobs.html">Job Placement</a></li>
-          <li><a href="{root}partners.html">Partners</a></li>
-          <li><a href="{root}gallery.html">Gallery</a></li>
-          <li><a href="{root}haircuts.html">$3 Haircuts</a></li>
-          <li><a href="{root}about.html#tour">Virtual Tour</a></li>
-          <li><a href="{root}blog/index.html">Blog</a></li>
-          <li><a href="{root}contact.html">Contact</a></li>
+          <li><a href="{root}schedules.html">Schedules &amp; Flexibility</a></li>
+          <li><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a></li>
+          <li><a href="{root}career-paths.html">Career Paths</a></li>
+          <li><a href="{root}student-stories.html">Student Stories</a></li>
+          <li><a href="{root}guides/index.html">Guides &amp; Licensing</a></li>
+          <li><a href="{root}veterans.html">Veterans</a></li>
+          <li><a href="{root}contact.html">Book a Tour</a></li>
         </ul>
       </div>
       <div>
@@ -250,7 +248,7 @@ ORG_SCHEMA = {
     "logo": {"@type": "ImageObject", "url": SITE_URL + "/icon.png", "width": 512, "height": 512},
     "image": SITE_URL + "/assets/img/og-cover.jpg",
     "foundingDate": "1996",
-    "description": "New York's only dedicated barber school. NYS-licensed 500-hour Master Barber program in Midtown Manhattan with financial aid, veterans GI Bill and ACCESS-VR options, and job placement.",
+    "description": "New York's career-focused barber school. NYS-licensed 500-hour Master Barber program in Midtown Manhattan with financial aid, veterans GI Bill and ACCESS-VR options, and job placement.",
     "slogan": "Become a Licensed Barber in 4 Months",
     "telephone": "+1-212-290-2289",
     "email": "admission@abi.edu",
@@ -538,171 +536,204 @@ BLOG_AUTHORS = {
 PAGES = [
     # (output, partial, title, description, lang, extra_schema)
     ("about.html", "about.html",
-     "About Us | American Barber Institute NYC",
-     "Inside ABI: our Midtown Manhattan campus, NYS-licensed curriculum, instructors who are all ABI grads, and a mission to build lifetime barber careers.",
+     "Is ABI the Right Barber School for You? Meet the Team Behind the Chair",
+     "How American Barber Institute helps career-changers become licensed barbers — our mentors, our hands-on approach, and what 30+ years of building barber careers looks like.",
      "en", []),
     ("instructors.html", "instructors.html",
-     "Our Instructors | Master Barber Teachers in NYC",
-     "Meet ABI's master instructors — including King David Ayeoribe and Emmy-featured Harold “Barkim” Brown — with 50+ years of combined barbering experience.",
+     "Who Will Teach You to Barber? Meet the Mentors at ABI",
+     "The people who shape your career: ABI's master instructors, including King David Ayeoribe and Emmy-featured Harold “Barkim” Brown, with 50+ years of combined chair time.",
      "en", [INSTRUCTORS_SCHEMA]),
     ("jobs.html", "jobs.html",
-     "Job Placement & Shop Registration | American Barber Institute",
-     "ABI maintains a full-time job placement office. Graduates often finish with multiple offers. Barbershop owners: register your shop to hire our trained graduates.",
+     "What Can You Do After Barber School? Career Outcomes & Job Paths",
+     "Where a barber license can take you — shop chairs, booth rental, your own business — and how ABI's job-placement support helps graduates land their first role.",
      "en", []),
     ("gallery.html", "gallery.html",
-     "Gallery — Student Work & Campus | ABI",
-     "See our students' haircuts, our 3,000 sq ft Midtown Manhattan campus, and life at New York's only dedicated barber school.",
+     "See What Barber Training Actually Looks Like — Student Work & Floor",
+     "A look at real student cuts, the clinic floor, and day-to-day life while training to become a barber — so you know what you're stepping into before you enroll.",
      "en", []),
     ("haircuts.html", "haircuts.html",
-     "$3 Student Haircuts — Manhattan & Bronx | American Barber Institute",
-     "Great cuts for $3 at ABI. Student barbers supervised by licensed instructors at our Manhattan and Bronx locations. Fades, tapers, beard trims and more.",
+     "Want a $3 Cut — or Chair Time as a Student? How the ABI Clinic Works",
+     "Why the $3 student clinic matters: it's where trainees log real hands-on hours on real clients. Book a cut in Manhattan or the Bronx, or see what your training floor looks like.",
      "en", []),
     ("faq.html", "faq.html",
-     "Frequently Asked Questions | American Barber Institute",
-     "Answers about tuition costs, program length, schedules, age requirements, ACCESS-VR, job placement, and why students choose ABI.",
+     "Thinking About Barber School? Your Questions, Answered",
+     "Straight answers on cost, how long training takes, schedules, age and entry requirements, funding, and job placement — everything to decide if barbering is your next move.",
      "en", ["FAQ_SCHEMA"]),
     ("schedules.html", "schedules.html",
-     "Class Schedules & Holiday Calendar | American Barber Institute",
-     "Every upcoming class start date and federal-holiday closure for ABI's Manhattan and Bronx campuses through 2028.",
+     "Can You Fit Barber Training Around Your Life? Schedules & Flexibility",
+     "Morning, afternoon or weekend — see how ABI's 500-hour program fits a full-time job or family. Full-time finishes in about 4 months; weekend in about 6–7. New classes start the first Monday monthly.",
      "en", []),
     ("contact.html", "contact.html",
-     "Contact & Directions | American Barber Institute",
-     "Visit ABI at 48 West 39th Street, NYC — minutes from Penn Station, Grand Central & Times Square. Call (212) 290-2289 or book your free tour today.",
+     "Ready to Take the First Step? Book a Tour or Talk to Admissions",
+     "See the campus before you commit. Book a tour at 48 West 39th Street, NYC — minutes from Penn Station, Grand Central & Times Square — or talk it through with admissions in English or Spanish.",
      "en", [ORG_SCHEMA]),
     ("resources.html", "resources.html",
-     "Barbering Resources & State Licensing Boards | ABI",
-     "Regulatory agencies, state-by-state barber and cosmetology licensing boards, education resources and industry associations.",
+     "Barber Licensing Boards & Resources by State — Start Here",
+     "The regulatory agencies, state-by-state barber and cosmetology licensing boards, and industry resources you'll need as you plan your path to becoming a licensed barber.",
      "en", []),
     ("partners.html", "partners.html",
-     "Our Partners | Where ABI Barbers Work in NYC",
-     "Where ABI graduates work: Levels Barbershop, Diamond Fadez, Untouchable Cutz, Expo Gentlemen Salon, Otis & Finn and the NYC Barber Shop Museum.",
+     "Where Do ABI Barbers End Up Working? Our Shop Network",
+     "The NYC shops that hire and mentor our graduates — Levels Barbershop, Diamond Fadez, Untouchable Cutz, Expo Gentlemen Salon, Otis & Finn and the NYC Barber Shop Museum.",
      "en", []),
     ("404.html", "404.html",
-     "Page Not Found | American Barber Institute",
-     "The page you're looking for doesn't exist. Return to American Barber Institute's homepage or browse our barber programs.",
+     "Lost? Let's Get You Back on the Path to Barbering",
+     "This page took a wrong turn. Head back to the American Barber Institute homepage or explore how to start your barber career.",
      "en", []),
     ("programs/index.html", "programs-index.html",
-     "Barber Programs in NYC | American Barber Institute",
-     "ABI's NYS-licensed barber programs at our Manhattan & Bronx campuses: 500-Hour Master Barber, 50-Hour Barber Refresher (Manhattan campus only) and the 3-Hour Contagious Diseases course.",
+     "Which Barber Program Is Right for You? Compare Your Options",
+     "Compare ABI's three paths: the 500-hour Master Barber program (your route to a NY license), the 50-hour Refresher for licensed pros, and the 3-hour Contagious Diseases course.",
      "en", []),
     ("programs/500-hour-master-barber.html", "program-500.html",
-     "500-Hour Master Barber Program — Manhattan | ABI NYC",
-     "Become a licensed Master Barber in 4 months at our Manhattan campus. Morning, afternoon or weekend schedules from $4,600 with weekly payment plans.",
+     "The 500-Hour Master Barber Journey — From Beginner to Licensed",
+     "What it takes to go from first fade to licensed Master Barber at our Manhattan campus: 500 hours of hands-on training in about 4 months, morning, afternoon or weekend, from $4,600.",
      "en", [course_schema("500 Hour Master Barber Program",
-        "Four-month NYS-licensed master barber training: theory, practical work on real clients, State Board exam prep and job placement.", 500, 17, 5600)]),
+        "500-hour NYS-licensed master barber training completed in about 4 months full-time: theory, practical work on real clients, State Board exam prep and job placement.", 500, 17, 5600)]),
     ("programs/500-hour-master-barber-bronx.html", "program-500-bronx.html",
-     "500-Hour Master Barber Program — Bronx | ABI NYC",
-     "Become a licensed Master Barber at ABI's Bronx campus. 500-hour hands-on training, flexible schedules, payment plans, job placement and bilingual instruction.",
+     "Become a Licensed Barber in the Bronx — The 500-Hour Path",
+     "Your transformation at ABI's Bronx campus: 500 hours of hands-on, bilingual training in about 4 months, flexible schedules, payment plans and job-placement support.",
      "en", [course_schema("500 Hour Master Barber Program — Bronx",
-        "Four-month NYS-licensed master barber training at the Bronx campus with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600)]),
+        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600)]),
     ("programs/50-hour-barber-refresher.html", "program-50.html",
-     "50-Hour Barber Refresher (2 Weeks) — Manhattan | ABI",
-     "Sharpen your skills and prep for the NY State Board Exam in 2 weeks at our Manhattan campus. For cosmetologists, hairdressers and barber apprentices.",
+     "Already Licensed? How the 50-Hour Refresher Gets You Board-Ready",
+     "For cosmetologists, hairdressers and apprentices: sharpen your skills and prep for the NY State Board Exam in about 2 weeks at our Manhattan campus.",
      "en", [course_schema("50 Hour Barber Refresher Program",
         "Two-week refresher preparing licensed professionals for the New York State Barbering Licensing Examination. This course is offered only at ABI's Manhattan campus.", 50, 2, 1500)]),
     ("programs/contagious-diseases.html", "program-cd.html",
-     "3-Hour Contagious Diseases Home Study — $100 | ABI",
-     "NY-required Contagious Diseases course for barber operators and apprentices. Complete by mail for $100 — booklet, exam and two certificates.",
+     "Do You Need the Contagious Diseases Course? How to Complete It",
+     "The NY-required Contagious Diseases course for barber operators and apprentices, explained. Complete it by mail for $100 — booklet, exam and two certificates.",
      "en", [course_schema("3 Hours Contagious Diseases Program",
         "Home-study course on transmission of contagious diseases, sanitation and sterilization required for NY barber licensure.", 3, 1, 100)]),
     ("blog/index.html", "blog-index.html",
-     "Blog — Barbering Career Advice & News | American Barber Institute",
-     "Advice from NYC's only dedicated barber school: licensing, careers, shop ownership, marketing your barbershop, and life after barber school.",
+     "Barber Career Guides — Licensing, Money & Life Behind the Chair",
+     "Practical guides for anyone weighing a barber career: what a license takes, how much barbers earn, shop ownership, and what really happens after barber school.",
      "en", []),
     # ── Hidden SEO pages (parity with the old abi.edu sitemap) ──────────────
     # Not linked from nav/footer by design: reachable by URL, listed in
     # sitemap.xml, and interlinked among themselves only.
     ("financial-aid.html", "page-financial-aid.html",
-     "Financial Aid for Barber School NYC | ACCES-VR & GI Bill®",
-     "Barber school financial assistance in NYC: ACCES-VR funding, GI Bill® for veterans and weekly payment plans from $150 at American Barber Institute.",
+     "How Do People Pay for Barber School? Funding Options Explained",
+     "Worried about cost? Walk through the ways students fund barber training — ACCES-VR, GI Bill® for veterans, and weekly payment plans — and figure out what fits you.",
      "en", []),
     ("how-to-get-started.html", "page-how-to-get-started.html",
-     "How to Get Started | Enroll at American Barber Institute",
-     "Enroll at ABI in 4 steps: book a tour, bring your documents, pick a schedule and start on the first Monday of the month. Manhattan & Bronx campuses.",
-     "en", []),
-    ("va-approved-job-training-program.html", "page-va-approved-job-training-program.html",
-     "VA-Approved Barber Job Training Program in NYC | ABI",
-     "ABI's 500-Hour Master Barber Program is VA-approved under Title 38 USC § 3676 — hands-on training, veteran support and job placement in Manhattan & the Bronx.",
+     "How to Start a Barber Career: Your Step-by-Step First Move",
+     "The exact steps to go from curious to enrolled: book a tour, gather your documents, choose a schedule, and start on the first Monday of the month at our Manhattan or Bronx campus.",
      "en", []),
     ("access-vr-program.html", "page-access-vr-program.html",
-     "ACCES-VR Barber Training Program in NYC | ABI",
-     "ACCES-VR can cover tuition, tools and books for New Yorkers with documented disabilities at American Barber Institute. Eligibility, services and how to apply.",
+     "Could ACCES-VR Cover Your Barber Training? Eligibility & How to Apply",
+     "If you're a New Yorker with a documented disability, ACCES-VR may fund tuition, tools and books. Here's who qualifies, what's covered, and how to start the process.",
      "en", []),
     ("veterans.html", "page-veterans.html",
-     "Veterans Barber Training NYC | GI Bill® Accepted | ABI",
-     "Use GI Bill® benefits at ABI — Post-9/11 (Ch. 33), VR&E (Ch. 31), Montgomery GI Bill and DEA (Ch. 35). Train as a licensed Master Barber in about 4 months.",
+     "Veterans: How to Use Your GI Bill® to Become a Barber",
+     "A guide for veterans on turning GI Bill® benefits — Post-9/11 (Ch. 33), VR&E (Ch. 31), Montgomery and DEA (Ch. 35) — into a licensed barber career in about 4 months.",
      "en", []),
     ("privacy-and-policy.html", "page-privacy-and-policy.html",
      "Privacy Policy | American Barber Institute",
      "How American Barber Institute collects, protects and shares your information — including cookies from Google Analytics, Meta Pixel, Microsoft Clarity and LeadConnector forms.",
      "en", []),
     ("virtual-tour.html", "page-virtual-tour.html",
-     "Virtual Tour | American Barber Institute NYC",
-     "Take a video tour of ABI's 3,000 sq ft Manhattan barber school, get subway and bus directions, and book an in-person tour of our Manhattan or Bronx campus.",
+     "Take a Look Inside Before You Enroll — Virtual Campus Tour",
+     "See the clinic floor, the chairs and the space where you'd train, on video. Get directions and book an in-person tour of our Manhattan or Bronx campus.",
      "en", []),
     ("skills-and-techniques.html", "page-skills-and-techniques.html",
-     "Skills & Techniques Barber Students Learn | ABI NYC",
-     "What ABI students master in 4 months: fades, tapers, shears, razor lineups, shaves, sanitation, barber theory and NY State Board exam prep — on real clients.",
+     "What Will You Actually Learn? Skills You Build on the Floor",
+     "From your first fade to razor lineups, shaves, sanitation and board-exam theory — here's what you master hands-on, on real clients, during your 500 hours at ABI.",
      "en", []),
     ("shop-registration.html", "page-shop-registration.html",
-     "Shop Registration — Hire ABI Graduates | ABI NYC",
-     "Barbershop owners: register your shop with ABI's job placement office for free and hire trained, NYS Board-prepared barber graduates from our NYC campuses.",
+     "Hiring Barbers? Connect With ABI-Trained Graduates",
+     "Shop owners: register with ABI's job-placement office for free to meet trained, board-prepared graduates ready to take a chair at your NYC barbershop.",
      "en", []),
-    ("barber-school-queens-ny.html", "loc-barber-school-queens-ny.html",
-     "Barber School Queens, NY - American Barber Institute",
-     "American Barber Institute is just 30 minutes from Queens. NYS-licensed since 1996 — 500-hour Master Barber training with payment plans from $150/week.",
+
+    # ── .com career / decision / licensing hub — net-new pages ───────────────
+    # Career-journey hub pages (linked from the main nav).
+    ("why-barbering.html", "page-why-barbering.html",
+     "Why Barbering? The Case for a Career Behind the Chair",
+     "Thinking about a career change? Why barbering offers fast licensing, real income, creativity and independence — and how to tell if it's right for you.",
      "en", []),
-    ("barber-school-brooklyn-new-york.html", "loc-barber-school-brooklyn-new-york.html",
-     "Barber School Brooklyn, NY - American Barber Institute",
-     "Family-owned, NYS-licensed barber school minutes from Brooklyn. Learn tapers, fades and hot towel shaves — with job placement help after graduation.",
+    ("training-experience.html", "page-training-experience.html",
+     "The Barber Training Experience: What Learning Really Looks Like",
+     "What hands-on barber training actually feels like — the clinic floor, real clients, and how you go from your first cut to board-ready.",
      "en", []),
-    ("barber-school-yonkers-new-york.html", "loc-barber-school-yonkers-new-york.html",
-     "Barber School Yonkers, NY - American Barber Institute",
-     "One of New York's most regarded barber schools, minutes from Yonkers. Train at our Bronx campus at Westchester Square — Master Barber in about 4 months.",
+    ("career-paths.html", "page-career-paths.html",
+     "Barber Career Paths: 7 Ways to Build a Life Behind the Chair",
+     "From shop employee to booth renter, owner, educator and beyond — the seven career paths a barber license can open, and how to get there.",
      "en", []),
-    ("barber-school-westchester-ny.html", "loc-barber-school-westchester-ny.html",
-     "Barber School Westchester, NY - American Barber Institute",
-     "Become a Master Barber in under four months. ABI's Bronx campus at 121 Westchester Square puts NYS-licensed barber training within reach of Westchester.",
+    ("student-stories.html", "page-student-stories.html",
+     "Student Stories: Real Barber Career Transformations",
+     "How career-changers became working barbers — the paths, the turning points, and what the leap into barbering really takes.",
      "en", []),
-    ("barber-school-long-island-ny.html", "loc-barber-school-long-island-ny.html",
-     "Barber School Long Island, NY - American Barber Institute",
-     "ABI's Manhattan campus is minutes from Penn Station — an easy LIRR ride from Long Island. 500-hour Master Barber training with plans from $150/week.",
+    ("tuition-and-funding.html", "page-tuition-and-funding.html",
+     "Tuition & Funding: How to Pay for Barber Training in New York",
+     "Your options for paying for barber training — payment plans, GI Bill® and ACCES-VR — and how to figure out what fits your budget.",
      "en", []),
-    ("barber-school-staten-island-ny.html", "loc-barber-school-staten-island-ny.html",
-     "Barber School Staten Island, NY - American Barber Institute",
-     "Master Barber classes near Staten Island at ABI's Midtown Manhattan campus. Individualized training, NYS exam prep and job placement — about 4 months.",
+    ("is-barber-training-right-for-you.html", "page-is-barber-training-right-for-you.html",
+     "Is Barber Training Right for You? A Quick Self-Assessment",
+     "Not sure barbering is your move? Work through this honest self-check on fit, time, money and goals before you commit.",
      "en", []),
-    ("barber-school-mount-vernon-ny.html", "loc-barber-school-mount-vernon-ny.html",
-     "Barber School Mount Vernon NY - Westchester Barber Courses",
-     "Become a Master Barber in just four months. Fade and shaving classes, NYS board exam prep and job placement — minutes from Mount Vernon at our Bronx campus.",
+    ("ny-barber-licensing-checklist.html", "page-ny-barber-licensing-checklist.html",
+     "Free NY Barber Licensing Checklist (2026)",
+     "Get a free, step-by-step checklist to become a licensed barber in New York — requirements, training hours, the exam and documents in one place.",
      "en", []),
-    ("barber-school-port-chester-ny.html", "loc-barber-school-port-chester-ny.html",
-     "Barber School Port Chester NY - Westchester Barber School",
-     "Become a Master Barber in four months at ABI's Bronx campus — fade classes, shaving classes, NYS exam prep and job placement for Port Chester students.",
+
+    # Guides hub index + guide cluster (guides/<slug>.html).
+    ("guides/index.html", "guides-index.html",
+     "Barber Career & Licensing Guides — American Barber Institute",
+     "Free, in-depth guides to becoming a barber in New York: licensing, salary, exam prep, funding, career paths and more.",
      "en", []),
-    ("barber-school-connecticut.html", "loc-barber-school-connecticut.html",
-     "Barber School Connecticut - Get Licensed in NY & Transfer",
-     "Get your barber license in New York in half the time — and up to half the cost — then transfer it to Connecticut through reciprocity. ABI shows you how.",
+    ("guides/how-to-become-a-barber-in-new-york.html", "guide-how-to-become-a-barber-in-new-york.html",
+     "How to Become a Barber in New York: The Complete 2026 Roadmap",
+     "Every step to become a licensed barber in NY — eligibility, 500 training hours, the state board exam, fees and timelines — in one plain-English 2026 guide.",
      "en", []),
-    ("barber-school-pennsylvania.html", "loc-barber-school-pennsylvania.html",
-     "Barber School Pennsylvania - NY License Transfer",
-     "Licensed NY barber heading to Pennsylvania? Reciprocity saves about $10,400 and 700 training hours versus a full PA program. ABI guides you through it.",
+    ("guides/ny-barber-license-requirements.html", "guide-ny-barber-license-requirements.html",
+     "NY Barber License Requirements (2026): Hours, Exam & Fees",
+     "What New York actually requires for a barber license: training hours, eligibility, the exam, fees, and how to transfer a license from another state.",
      "en", []),
-    ("barber-school-bronx-new-york.html", "loc-barber-school-bronx-new-york.html",
-     "Barber School Bronx, NY - American Barber Institute",
-     "ABI's Bronx campus at 121 Westchester Square offers full barber training, NYS licensing exam prep and job placement — payment plans from $150/week.",
+    ("guides/how-much-do-barbers-make-nyc.html", "guide-how-much-do-barbers-make-nyc.html",
+     "How Much Do Barbers Make in NYC? 2026 New York Salary Guide",
+     "Real barber pay in New York — entry, median and top earnings, plus commission vs booth rent vs shop ownership — grounded in BLS wage data.",
      "en", []),
-    ("best-barber-school-in-bronx.html", "loc-best-barber-school-in-bronx.html",
-     "Bronx Barber School - Best Barber School in Bronx",
-     "The American Barber Institute welcomes aspiring barbers from the Bronx, Westchester, Mount Vernon, Yonkers and Port Chester. Top-notch training since 1996.",
+    ("guides/pass-ny-barber-state-board-exam.html", "guide-pass-ny-barber-state-board-exam.html",
+     "How to Pass the NY Barber State Board Exam (2026 Guide)",
+     "What's on the New York barber state board exam — written and practical — plus a prep plan and the most common reasons candidates fail.",
      "en", []),
-    ("barbershop-bronx.html", "loc-barbershop-bronx.html",
-     "Barbershop Bronx - $3 Haircuts - American Barber Institute",
-     "$3 haircuts at ABI's Bronx campus, 121 Westchester Square. Fades, classic cuts, shape-ups and hot shaves by supervised students — quality high, prices low.",
+    ("guides/barber-school-vs-apprenticeship.html", "guide-barber-school-vs-apprenticeship.html",
+     "Barber School vs. Apprenticeship in New York: Which Path Wins?",
+     "Compare barber school and apprenticeship in NY — cost, time, structure and licensing — to choose the route that fits your life.",
      "en", []),
-    ("barber-training-program-nyc.html", "loc-barber-training-program-nyc.html",
-     "Barber Training Program NYC - Become a Master Barber",
-     "Rigorous, hands-on barber training in NYC that prepares you to pass the NYS Board of Barbering exam and become a Master Barber. Manhattan & Bronx campuses.",
+    ("guides/barber-vs-cosmetologist.html", "guide-barber-vs-cosmetologist.html",
+     "Barber vs. Cosmetologist: Which License Should You Get?",
+     "Barber or cosmetologist? Compare what each does, the separate licenses, earning potential and how to decide which career fits you.",
+     "en", []),
+    ("guides/how-long-barber-school-takes.html", "guide-how-long-barber-school-takes.html",
+     "How Long Does Barber School Take? A New York Timeline",
+     "500 hours becomes about 4 months full-time or 6–7 months on weekends — here's the realistic enroll-to-licensed timeline in New York.",
+     "en", []),
+    ("guides/what-barber-school-costs.html", "guide-what-barber-school-costs.html",
+     "How Much Does Barber School Cost? NY Price Ranges (2026)",
+     "Typical New York barber-school tuition ranges, what's included, and the funding options — payment plans, GI Bill® and ACCES-VR — that lower the cost.",
+     "en", []),
+    ("guides/gi-bill-barber-school.html", "guide-gi-bill-barber-school.html",
+     "Using Your GI Bill® for Barber School in New York",
+     "How veterans can turn Post-9/11 and other GI Bill® benefits into a licensed barber career — what's covered and how to get started.",
+     "en", []),
+    ("guides/acces-vr-barber-training.html", "guide-acces-vr-barber-training.html",
+     "ACCES-VR for Barber Training: Who Qualifies & How to Apply",
+     "How New York's ACCES-VR program can fund barber training for eligible residents with a disability — eligibility, coverage and the application steps.",
+     "en", []),
+    ("guides/beginner-barber-tool-kit.html", "guide-beginner-barber-tool-kit.html",
+     "The Beginner Barber Tool Kit: What You Actually Need",
+     "A no-nonsense checklist of the clippers, trimmers, shears and gear a new barber needs — with a starter budget and what to skip.",
+     "en", []),
+    ("guides/day-in-the-life-barber-student.html", "guide-day-in-the-life-barber-student.html",
+     "A Day in the Life of a Barber Student",
+     "What a real training day looks like on the clinic floor — from theory to live clients — so you know exactly what barber school feels like.",
+     "en", []),
+    ("guides/is-barbering-a-good-career.html", "guide-is-barbering-a-good-career.html",
+     "Is Barbering a Good Career in 2026? Outlook, Pay & Reality",
+     "An honest look at barbering as a career in 2026 — job outlook, earning potential, the pros and cons, and who thrives behind the chair.",
+     "en", []),
+    ("guides/barbering-glossary.html", "guide-barbering-glossary.html",
+     "Barbering Terms Glossary: 40+ Words Every New Barber Should Know",
+     "Fade, taper, texturize, lineup and more — a plain-English glossary of the barbering terms you'll hear from day one.",
      "en", []),
 ]
 
@@ -717,7 +748,7 @@ if os.path.exists(_blog_manifest):
         PAGES.append((
             f"blog/{_p['slug']}.html", _p['partial'],
             f"{_p['title']} | ABI Blog",
-            f"{_p['title']} — career advice and industry insight from NYC's only dedicated barber school.",
+            f"{_p['title']} — career advice and industry insight from NYC's career-focused barber school.",
             "en", [article_schema(_p['title'], f"{SITE_URL}/blog/{_p['slug']}",
                                   slug=_p['slug'], body=_body)]))
 

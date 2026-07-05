@@ -1,17 +1,28 @@
-/* ABI Landing Pages — matches approved mockup design */
+/* ABI .com — Home & landing surfaces — BARBICIDE-TEAL / LIGHT-EDITORIAL.
+   This :root is the homepage's only theme source (index.html loads just
+   landing.css + upgrade.css). Token values mirror brand.css. */
 :root{
-  --blue:#1b2fd9;
-  --blue-dark:#1322a8;
-  --blue-light:#eef1ff;
-  --red:#e02b20;
-  --ink:#10131a;
-  --ink-soft:#3c4250;
-  --line:#e3e6ee;
-  --bg:#ffffff;
-  --radius:12px;
-  --shadow:0 10px 30px rgba(16,19,26,.18);
-  --font:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-  --script:'Caveat',cursive;
+  --teal:#12B3A6;
+  --teal-deep:#0E8C82;
+  --teal-bright:#2FD3C4;
+  --teal-soft:#B8ECE7;
+  --teal-tint:#E7F7F5;
+  --petrol:#0E4D5C;
+  --petrol-deep:#0A3A45;
+  --coral:#E4572E;
+  --blue:#12B3A6;          /* primary accent -> teal */
+  --blue-dark:#0E8C82;
+  --blue-light:#E7F7F5;
+  --red:#E4572E;           /* -> coral, sparing */
+  --ink:#0E1A1C;
+  --ink-soft:#47585E;
+  --line:#DCE5E8;
+  --bg:#F7FAFB;            /* cool near-white page base */
+  --radius:14px;
+  --shadow:0 22px 60px -26px rgba(14,77,92,.42);
+  --font:"Inter",-apple-system,"Segoe UI",Roboto,system-ui,sans-serif;
+  --font-display:"Inter Tight","Inter","Helvetica Neue","Segoe UI",system-ui,sans-serif;
+  --script:"Inter",system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -597,7 +608,7 @@ body::before{content:none!important;background:none!important}
 .page-hero .crumbs a{opacity:1}
 @media (max-width:768px){
   body{background-attachment:scroll!important}
-  .page-hero{background:linear-gradient(135deg,#eaf2ff 0%,#dfeaff 55%,#ffffff 100%)}
+  .page-hero{background:linear-gradient(135deg,#E7F7F5 0%,#DCF2EF 55%,#ffffff 100%)}
 }
 /* Glassmorphism — header + cards */
 .hdr{background:rgba(255,255,255,.62)!important;backdrop-filter:blur(20px) saturate(1.7);-webkit-backdrop-filter:blur(20px) saturate(1.7);border-bottom:1px solid rgba(255,255,255,.5)}
@@ -607,8 +618,8 @@ body::before{content:none!important;background:none!important}
 .card,.quote,.plan,.inst-card,.phil-card{background:rgba(255,255,255,.82)!important;border:1px solid rgba(255,255,255,.65);box-shadow:0 8px 30px rgba(15,20,32,.10)}
 .card:hover,.quote:hover,.inst-card:hover,.plan:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(27,47,217,.18);transition:transform .25s ease,box-shadow .25s ease}
 /* Brighter, bolder CTAs with glow */
-.btn-gold{background:linear-gradient(135deg,#ffc83d,#e5a019)!important;color:#1a1205!important;font-weight:800;box-shadow:0 6px 22px rgba(229,160,25,.5)}
-.btn-gold:hover{box-shadow:0 10px 30px rgba(229,160,25,.7);filter:brightness(1.05)}
+.btn-gold{background:linear-gradient(135deg,#16C2B4,#12B3A6)!important;color:#fff!important;font-weight:800;box-shadow:0 6px 22px rgba(18,179,166,.42)}
+.btn-gold:hover{box-shadow:0 10px 30px rgba(18,179,166,.6);filter:brightness(1.05)}
 .btn-blue{box-shadow:0 6px 20px rgba(27,47,217,.45)}
 .btn-blue:hover{box-shadow:0 10px 28px rgba(27,47,217,.6)}
 .btn-lg{letter-spacing:.01em}
@@ -653,7 +664,7 @@ section.alt{background:rgba(246,248,252,.60)!important;backdrop-filter:blur(7px)
 /* Glow / 3D polish */
 .btn-gold{position:relative}
 .btn-gold:hover{transform:translateY(-2px) scale(1.02)}
-.trust-item:hover strong{text-shadow:0 0 16px rgba(229,160,25,.6)}
+.trust-item:hover strong{text-shadow:0 0 16px rgba(47,211,196,.6)}
 .cta-band h2,.foot-cta h3{text-shadow:0 2px 18px rgba(0,0,0,.25)}
 .card,.quote,.inst-card,.plan,.visit-card{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease}
 .desk-cta{box-shadow:0 12px 32px rgba(27,47,217,.5),0 0 0 0 rgba(27,47,217,.4)}
@@ -775,12 +786,12 @@ section.alt{background:rgba(246,248,252,.60)!important;backdrop-filter:blur(7px)
 section.trust{background:#0f1420!important;border-top:1px solid rgba(255,255,255,.08);backdrop-filter:none!important}
 .trust-item{color:#fff!important;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .trust-item+.trust-item{border-left:1px solid rgba(255,255,255,.18)}
-.trust-item svg{color:#f4c44a!important;filter:drop-shadow(0 0 6px rgba(244,196,74,.7))}
+.trust-item svg{color:#2FD3C4!important;filter:drop-shadow(0 0 6px rgba(47,211,196,.7))}
 
 /* --- Skills ticker: solid dark band, bright legible text --- */
 .ticker{background:#0b0e16;color:#fff}
 .ticker span{font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.ticker .sc{color:#f4c44a;filter:drop-shadow(0 0 5px rgba(244,196,74,.7))}
+.ticker .sc{color:#2FD3C4;filter:drop-shadow(0 0 5px rgba(47,211,196,.7))}
 
 /* --- Stats band: keep accent bg but guarantee white reads on every theme --- */
 .stats{position:relative}
@@ -1315,15 +1326,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
    Refs: _audit/01-header-nav, 02-text-bg, 03-instructors, 05-schedule
    ========================================================================== */
 
-/* contrast-correct brand tokens (royal-blue anchor + on-dark variants) */
+/* contrast-correct brand tokens (barbicide-teal anchor + on-dark variants) */
 :root{
-  --blue-deep:#0f1b7a;
-  --blue-on-dark:#8b9bff;   /* accent text on dark/ink ~5.6:1 */
-  --blue-bright:#6e80ff;
+  --blue-deep:#0A3A45;      /* petrol-deep */
+  --blue-on-dark:#5FE0D3;   /* teal accent text on dark/ink ~6:1 */
+  --blue-bright:#2FD3C4;
   --surface:#ffffff;
-  --surface-alt:#f5f7fb;
-  --page-tint-a:#f5f7fb;
-  --page-tint-b:#eef2f9;
+  --surface-alt:#F2F7F8;
+  --page-tint-a:#FBFDFD;
+  --page-tint-b:#EEF5F6;
 }
 
 /* ---- 02: kill the full-page photo bleed; flat legible page tint ---- */
@@ -1339,9 +1350,9 @@ body::before{content:none !important;}          /* remove fixed page-wide photo 
 .hero-script::after{background:var(--blue-bright) !important;}
 .hero-grad{background:linear-gradient(90deg,rgba(8,10,16,.86) 0%,rgba(8,10,16,.62) 55%,rgba(8,10,16,.5) 100%) !important;}
 
-/* ---- 02: re-skin gold CTA to on-brand blue gradient ---- */
-.btn-gold{background:linear-gradient(135deg,#2742ff,#1b2fd9) !important;color:#fff !important;border:0 !important;}
-.btn-gold:hover{background:linear-gradient(135deg,#1b2fd9,#1322a8) !important;}
+/* ---- 02: re-skin CTA to on-brand barbicide-teal gradient ---- */
+.btn-gold{background:linear-gradient(135deg,#16C2B4,#12B3A6) !important;color:#fff !important;border:0 !important;}
+.btn-gold:hover{background:linear-gradient(135deg,#12B3A6,#0E8C82) !important;}
 
 /* ---- 01: ONE-LINE main nav, clean hamburger switch (defeats leaked flex-wrap:wrap) ---- */
 @media (max-width:1199px){

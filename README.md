@@ -1,6 +1,6 @@
 # American Barber Institute (ABI) — Website
 
-New York's only dedicated barber school (est. 1996). This repository contains the
+New York's career-focused barber school (est. 1996). This repository contains the
 complete marketing website: a fast, zero-framework static site generated from Python,
 served on Vercel, in English and Spanish.
 

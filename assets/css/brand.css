@@ -1,56 +1,180 @@
-/* ABI Blue brand — unifies interior pages with the landing page design */
-:root, html[data-theme="blue"] {
-  --ink: #10131a;
-  --ink-2: #171c26;
-  --ink-3: #242b3a;
-  --paper: #ffffff;
-  --paper-2: #f7f8fc;
-  --gold: #1b2fd9;            /* brand accent → ABI blue */
-  --gold-bright: #6e80ff;     /* accent on dark surfaces */
-  --gold-soft: #b9c2f5;
-  --red: #e02b20;
-  --blue: #1b2fd9;
-  --text-dark: #10131a;
-  --text-mute: #3c4250;
-  --text-on-dark: #e8eaf2;
-  --text-on-dark-mute: #aab0c0;
-  --on-accent: #ffffff;       /* white text on blue buttons */
-  --card-bg: #fff;
-  --card-border: #e3e6ee;
-  --tag-border: #e3e6ee;
-  --input-border: #d7dbe6;
-  --foot-bg: #0b0d12;
-  --foot-border: #23262e;
-  --font-display: "Poppins", "Segoe UI", sans-serif;
-  --font-body: "Poppins", -apple-system, "Segoe UI", sans-serif;
-}
-.t-blue { background: #1b2fd9; }
-.topbar { background: var(--blue); color: #fff; border-bottom: none; }
-.topbar a { color: #fff; }
-.topbar .langs a { color: #cdd4ff; }
-.topbar .langs a[aria-current="true"] { color: #fff; }
-.btn-gold, .btn.btn-gold { border-radius: 10px; }
+/* ============================================================
+   ABI .com — BARBICIDE-TEAL / LIGHT-EDITORIAL BRAND TOKEN LAYER
+   ------------------------------------------------------------
+   americanbarberinstitute.com is the career-decision & licensing
+   knowledge hub. Same brand FAMILY as abi.edu (Inter body, ABI
+   photography, card/kicker component language, reveal motion) but
+   UNMISTAKABLY its own site: light-first, editorial, barbicide-teal.
 
-/* White header on interior pages (match landing pages) */
-.site-head { background: rgba(255,255,255,.82); border-bottom: 1px solid var(--card-border); }
+   This file is the single source of truth for color/type tokens.
+   Everything downstream (style.css, landing.css, effects.css) reads
+   from these custom properties. abi.edu's dark+gold values are
+   fully overridden here.
+
+   Palette (name -> hex):
+     teal          #12B3A6   primary (barbicide-teal)
+     teal-deep     #0E8C82   pressed / gradient anchor
+     teal-bright   #2FD3C4   accent on dark surfaces / large text on dark
+     teal-soft     #B8ECE7   soft fills, faint borders
+     teal-tint     #E7F7F5   lightest wash (hover rows, chips)
+     petrol        #0E4D5C   deep accent (headings option, deep bg)
+     petrol-deep   #0A3A45   deepest petrol (footer)
+     ink           #0E1A1C   near-black editorial ink
+     ink-2         #14262A   raised dark surface
+     ink-3         #1E353B   borders on dark
+     paper         #FFFFFF   base page white
+     paper-2       #F2F7F8   deeper cool wash
+     steel-050     #F7FAFB   near-white cool background
+     steel-100     #EAF0F2   hairline surfaces
+     steel-200     #DCE5E8   borders
+     steel-400     #8A9AA0   muted text / icons
+     steel-600     #47585E   secondary text
+     coral         #E4572E   sparing warm accent (CTA emphasis, alerts)
+   ============================================================ */
+
+:root,
+html[data-theme="teal"],
+html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to teal */
+
+  /* ---- raw palette ---- */
+  --teal:        #12B3A6;
+  --teal-deep:   #0E8C82;
+  --teal-bright: #2FD3C4;
+  --teal-soft:   #B8ECE7;
+  --teal-tint:   #E7F7F5;
+  --petrol:      #0E4D5C;
+  --petrol-deep: #0A3A45;
+  --coral:       #E4572E;
+
+  /* ---- ink / dark surfaces (petrol-tinted, not neutral black) ---- */
+  --ink:   #0E1A1C;   /* near-black editorial ink */
+  --ink-2: #14262A;   /* raised dark surface */
+  --ink-3: #1E353B;   /* borders on dark */
+  --ink-soft: #47585E;
+
+  /* ---- light base ---- */
+  --paper:   #ffffff;
+  --paper-2: #F2F7F8;
+  --bg:      #F7FAFB;         /* cool near-white page background */
+  --surface:     #ffffff;
+  --surface-alt: #F2F7F8;
+  --page-tint-a: #FBFDFD;
+  --page-tint-b: #EEF5F6;
+
+  /* ---- cool-steel neutrals ---- */
+  --steel-050: #F7FAFB;
+  --steel-100: #EAF0F2;
+  --steel-200: #DCE5E8;
+  --steel-400: #8A9AA0;
+  --steel-600: #47585E;
+
+  /* ---- text roles (AA-checked on their intended surfaces) ---- */
+  --text-dark:         #0E1A1C;   /* body ink on light */
+  --text-mute:         #47585E;   /* secondary on light ~7:1 */
+  --text-on-dark:      #EAF4F3;   /* body on ink/petrol */
+  --text-on-dark-mute: #9FC0BF;   /* secondary on dark ~4.7:1 */
+  --line: #DCE5E8;                /* hairline dividers on light */
+
+  /* ---- ACCENT MAPPING ----
+     abi.edu keyed everything off --gold / --blue. We remap BOTH to
+     barbicide-teal so no downstream rule keeps the gold/royal-blue. */
+  --gold:        #12B3A6;   /* primary accent -> teal */
+  --gold-bright: #2FD3C4;   /* accent on dark / large text on dark */
+  --gold-soft:   #B8ECE7;
+
+  --blue:        #12B3A6;   /* landing.css primary -> teal */
+  --blue-dark:   #0E8C82;
+  --blue-deep:   #0A3A45;
+  --blue-light:  #E7F7F5;
+  --blue-bright: #2FD3C4;   /* accent on dark */
+  --blue-on-dark:#5FE0D3;   /* teal accent text on dark ~6:1 */
+
+  --red: #E4572E;           /* secondary/warm accent -> coral (used sparingly) */
+
+  /* text that sits ON an accent-colored surface (teal button, etc.) */
+  --on-accent: #ffffff;
+
+  /* ---- cards / inputs / chrome ---- */
+  --card-bg:      #ffffff;
+  --card-border:  #DCE5E8;
+  --tag-border:   #DCE5E8;
+  --input-border: #CBD8DC;
+
+  /* ---- footer (deep petrol, family resemblance to .edu's dark foot) ---- */
+  --foot-bg:     #0A3A45;
+  --foot-border: #145063;
+
+  /* ---- type: keep Inter body (family resemblance to .edu).
+     Headings use a strong modern grotesk stack; NO external fonts
+     (CSP blocks them) -> system grotesk + Inter fallback. ---- */
+  --font-display: "Inter Tight", "Inter", "Helvetica Neue", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body:    "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  --font:         "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  --script:       "Inter", system-ui, sans-serif;  /* no cursive; editorial */
+
+  /* ---- geometry / depth (softer, editorial) ---- */
+  --max-w: 1180px;
+  --radius: 14px;
+  --shadow: 0 22px 60px -26px rgba(14, 77, 92, .42);
+}
+
+/* ============================================================
+   Interior-page component treatment (light editorial).
+   These pages load: style.css -> brand.css -> landing.css.
+   landing.css re-declares --blue/--gold in its own :root, so we
+   keep this file to component-level overrides that survive that,
+   and mirror the token values into landing.css directly.
+   ============================================================ */
+
+/* Body base: cool near-white, ink text */
+body {
+  background: var(--bg);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+}
+
+/* Headings: display grotesk, tight, confident */
+h1, h2, h3, .sec h2, .section-head h2, .hero h1, .page-hero h1 {
+  font-family: var(--font-display);
+  letter-spacing: -0.018em;
+  color: var(--text-dark);
+}
+
+/* Top offer bar -> teal */
+.topbar, .t-blue { background: var(--teal); color: #fff; border-bottom: none; }
+.topbar a { color: #fff; }
+.topbar .langs a { color: var(--teal-soft); }
+.topbar .langs a[aria-current="true"] { color: #fff; }
+
+/* Buttons: editorial radius */
+.btn, .btn-gold, .btn.btn-gold, .btn-blue { border-radius: 12px; }
+
+/* Header: solid, airy white with cool hairline (light-first) */
+.site-head, .site-head.scrolled, header.site-head {
+  background: rgba(255,255,255,.86) !important;
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom: 1px solid var(--card-border);
+}
 .brand { color: var(--text-dark); }
 .brand small { color: var(--text-mute); }
 .nav > a, .nav .has-sub > a { color: var(--text-dark); }
-.nav > a:hover, .nav .has-sub:hover > a, .nav a[aria-current] { color: var(--blue); }
+.nav > a:hover, .nav .has-sub:hover > a, .nav a[aria-current] { color: var(--teal-deep); }
 .sub { background: #fff; border-color: var(--card-border); }
 .sub a { color: var(--text-dark); }
-.sub a:hover { background: #eef1ff; color: var(--blue); }
+.sub a:hover { background: var(--teal-tint); color: var(--teal-deep); }
 .menu-btn { color: var(--text-dark); }
-.mobile-nav, .m-nav { background: #fff; }
+.mobile-nav, .m-nav, .nav-drawer { background: #fff; }
 
-/* Header must stay solid white at all scroll positions */
-.site-head, .site-head.scrolled, header.site-head { background: rgba(255,255,255,.82) !important; backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
-
-/* Midnight Gold as an explicit theme (original palette) */
-html[data-theme="midnight"] {
-  --gold: #c9a227; --gold-bright: #e3b94e; --gold-soft: #f0d896;
-  --blue: #c9a227; --blue-dark: #a98b1f; --blue-light: #faf3dd;
-  --red: #8e2b2b; --on-accent: #14110a;
-  --paper: #f6f1e7; --paper-2: #efe7d8;
-  --card-border: #e7dfd0; --tag-border: #e3d9c5; --input-border: #d8cfbc;
+/* Kicker (eyebrow) — small caps, teal, editorial rule */
+.kicker {
+  color: var(--teal-deep);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
 }
+
+/* Footer -> deep petrol */
+.foot, footer.site, .site-foot { background: var(--foot-bg); color: var(--text-on-dark); }
+.foot a, footer.site a { color: var(--text-on-dark-mute); }
+.foot a:hover, footer.site a:hover { color: var(--teal-bright); }
