@@ -1871,3 +1871,133 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 /* ═══════════ v48 — chat widget: proper placement, no overlap ═══════════ */
 chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;z-index:9999!important}
 @media(max-width:768px){chat-widget{bottom:140px!important;right:12px!important}}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   v57 — LANDING HEADER RESTYLE
+   Match the main website's palette + typography WITHOUT importing the
+   website's global stylesheets (which would collide with the landing hero /
+   sections). Only the header + promo strip + seats banner get restyled.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Website tokens (hardcoded — brand.css is NOT loaded on landings) */
+.lf-page{
+  --site-paper:  #FCFBF8;   /* warm porcelain, matches --paper */
+  --site-paper-2:#F0ECE3;   /* deeper porcelain */
+  --site-ink:    #0E1A1C;   /* editorial ink */
+  --site-ink-soft:#47585E;
+  --site-teal:   #12B3A6;
+  --site-teal-deep:#0E8C82;
+  --site-teal-bright:#2FD3C4;
+  --site-teal-soft:#B8ECE7;
+  --site-teal-tint:#E7F7F5;
+  --site-line:   rgba(14,26,28,.10);
+}
+/* Bronx variants keep the same header structure but swap the teal gradient
+   to the same gold the main site's bronx.html uses (matches shell2.bx-gold) */
+.lf-page--bx-en,.lf-page--bx-es{
+  --site-teal:      #C9971F;
+  --site-teal-deep: #9C7414;
+  --site-teal-bright:#E3B34E;
+  --site-teal-soft: #F1E4C5;
+  --site-teal-tint: #FBF3DA;
+}
+
+/* Header bar — warm porcelain instead of pure white, with a hairline border
+   at the bottom matching the website's editorial feel */
+.lf-page .lfx-bar{
+  background: var(--site-paper);
+  box-shadow: 0 1px 0 var(--site-line), 0 4px 16px rgba(14,26,28,.06);
+}
+
+/* Phone pills — website-teal pill treatment instead of per-page accent */
+.lf-page .lfx-phone{
+  border: 1.6px solid var(--site-teal);
+  color: var(--site-ink);
+  background: transparent;
+}
+.lf-page .lfx-phone svg{ color: var(--site-teal-deep); }
+.lf-page .lfx-phone:hover{
+  background: var(--site-teal);
+  color: #fff;
+}
+.lf-page .lfx-phone:hover svg,
+.lf-page .lfx-phone:hover .lfx-phone__flag{ color: #fff; border-color: rgba(255,255,255,.85); }
+.lf-page .lfx-phone__flag{
+  border: 1.4px solid var(--site-teal);
+  color: var(--site-teal-deep);
+  background: var(--site-teal-tint);
+}
+
+/* Language toggle — match the pill treatment */
+.lf-page .lf-lang{
+  border: 1.6px solid var(--site-teal);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.lf-page .lf-lang a{
+  color: var(--site-ink);
+  padding: .4rem .75rem;
+}
+.lf-page .lf-lang a + a{ border-left: 1.6px solid var(--site-teal); }
+.lf-page .lf-lang a.is-active,
+.lf-page .lf-lang a:hover{
+  background: var(--site-teal);
+  color: #fff;
+}
+
+/* Promo strip — the sticky teal-gradient band directly below the header,
+   mirrors the website's `.ubar` gradient. Bronx pages get the gold gradient. */
+.lf-page .lfx-promo{
+  background: linear-gradient(90deg, var(--site-teal-deep) 0%, var(--site-teal) 100%);
+  color: #fff;
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.lf-page .lfx-promo b{
+  color: var(--site-teal-soft);
+  font-weight: 800;
+}
+
+/* Mobile phone row (the second row of chips on <=768px) — subtle porcelain
+   base with the teal border on each chip instead of a fully-colored strip */
+@media (max-width: 768px){
+  .lf-page .lfx-phonerow{
+    background: var(--site-paper-2);
+    padding: .5rem .5rem .9rem;
+  }
+  .lf-page .lfx-phonerow .lfx-phone{
+    border: 1.6px solid var(--site-teal);
+    color: var(--site-ink);
+    background: rgba(255,255,255,.65);
+  }
+  .lf-page .lfx-phonerow .lfx-phone svg{ color: var(--site-teal-deep); }
+}
+
+/* Seats banner — porcelain background + Fraunces display headline for the
+   "LIMITED SEATS AVAILABLE" line so it reads editorial like the main site */
+.lf-page .lfx-seats{
+  background: var(--site-paper-2);
+  border-bottom: 1px solid var(--site-line);
+}
+.lf-page .lfx-star{
+  background: var(--site-ink);
+  color: var(--site-teal-bright);
+  border: 2px solid var(--site-teal-deep);
+}
+.lf-page .lfx-seats-t b{
+  font-family: "Fraunces", "Georgia", "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: .015em;
+  color: var(--site-ink);
+  text-transform: none;
+  font-size: 1.1rem;
+}
+.lf-page .lfx-seats-t i{
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--site-teal-deep);
+  text-transform: uppercase;
+  font-size: .8rem;
+}
