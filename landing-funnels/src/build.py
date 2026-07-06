@@ -95,146 +95,55 @@ LOGO_ALT = ("American Barber Institute — "
 # Each campus logo already contains the street address baked into the
 # artwork, so we don't render a duplicate text address line in the header.
 def header(p):
-    """v56 — mirror the main site header (hdr2) so landings visually match the site.
-    Emits the same three-part structure the website uses: ubar (top phones bar) +
-    hdr2 (logo, nav, Book a Tour CTA, hamburger + drawer) + mstrip (compact mobile
-    phone strip). Full nav is included for brand parity; the landing content still
-    starts immediately below."""
+    """v45 — main-site header pattern, split by breakpoint:
+    DESKTOP (3 rows): [logo · phones · EN|ES]  /  promo strip  /  seats banner
+    MOBILE  (4 rows): [logo · EN|ES]  /  promo strip  /  phones row  /  seats banner
+    Row 1 is the only sticky row. Accent colors come from each page's theme class."""
     es = p["lang"] == "es"
-    root = "/"
-    lang = "es" if es else "en"
     en_href = "/" + p["path"] if not es else "/" + p["alt"]
     es_href = "/" + p["alt"] if not es else "/" + p["path"]
-    is_bronx = p["campus"]["slug"] == "bronx"
-
-    # Labels — translated for ES pages so the header reads correctly in Spanish
-    L = {
-        "book_tour": "Reservar Visita" if es else "Book a Tour",
-        "programs": "Programas" if es else "Programs",
-        "why_abi": "Por qué ABI" if es else "Why ABI",
-        "guides": "Guías" if es else "Guides",
-        "tuition": "Costo y Ayuda" if es else "Tuition & Funding",
-        "contact": "Contacto" if es else "Contact",
-        "master500": "Barbero Maestro 500h" if es else "500-Hour Master Barber",
-        "refresh50": "Repaso de 50 Horas" if es else "50-Hour Refresher",
-        "cd3": "Enfermedades Contagiosas" if es else "Contagious Diseases",
-        "sched": "Horarios y Flexibilidad" if es else "Schedules & Flexibility",
-        "why_barb": "Por qué la barbería" if es else "Why Barbering",
-        "training": "La experiencia" if es else "The Training Experience",
-        "careers": "Carreras" if es else "Career Paths",
-        "stories": "Historias" if es else "Student Stories",
-        "veterans": "Veteranos y GI Bill®" if es else "Veterans & GI Bill®",
-        "avr": "ACCES-VR",
-        "admis": "Admisiones" if es else "Admissions",
-        "cut_clinic": "Clínica de Cortes" if es else "Haircut Clinic",
-        "menu": "Menú" if es else "Menu",
-        "language_group": "Idioma" if es else "Language",
-    }
-    # Campus-context admissions phone for the mstrip strip
-    if is_bronx:
-        admis_num, admis_tel, admis_tag = "(718) 676-0640", "+17186760640", "Bronx " + L["admis"]
-    else:
-        admis_num, admis_tel, admis_tag = "(212) 290-2289", "+12122902289", L["admis"]
-
+    campus_phones = D.TOPBAR_PHONES_BY_CAMPUS[p["campus"]["slug"]]
+    pills = "".join(
+        '<a class="lfx-phone" href="tel:%s">%s<b class="lfx-phone__flag">%s</b>'
+        '<span class="lfx-phone__num">%s</span></a>' % (
+            h(ph["tel"]), svg("phone", 15), h(ph["label"]), h(ph["display"])
+        )
+        for ph in campus_phones
+    )
+    promo = h(p["promo_strip"])
+    for price in ("$150 per week*", "$150 por semana*"):
+        promo = promo.replace(price, "<b>%s</b>" % price)
+    seats_kicker, seats_lead = D.SEATS_BANNER[p["lang"]]
+    star_svg = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+                '<path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg>')
     return (
-      '<div class="ubar" role="banner"><div class="wrap"><div class="ubar-in">\n'
-      '  <div class="ubar-calls" data-campus-phones>\n'
-      '    <a class="ubar-call ubar-call--admis" href="tel:%(admis_tel)s"><span class="ubar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="ubar-tag">%(admis_tag)s</span><span class="ubar-num">%(admis_num)s</span></a>\n'
-      '    <a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span><span class="ubar-tag">Español</span><span class="ubar-num">(212) 290-0278</span></a>\n'
-      '    <a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg></span><span class="ubar-tag">%(cut_clinic)s</span><span class="ubar-num">(856) 316-1551</span></a>\n'
-      '  </div>\n'
-      '</div></div></div>\n'
-      '<header class="hdr2">\n'
-      '  <div class="hdr2-in">\n'
-      '    <a class="logo2" href="/" aria-label="American Barber Institute — home">\n'
-      '      <img class="logo2-img" src="%(logo_src)s" alt="%(logo_alt)s" width="%(logo_w)d" height="%(logo_h)d" fetchpriority="high">\n'
-      '    </a>\n'
-      '    <nav class="nav2" aria-label="Main">\n'
-      '      <div class="nav2-item nav2-has">\n'
-      '        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">%(programs)s<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
-      '        <div class="nav2-menu" role="menu">\n'
-      '          <a href="/programs/500-hour-master-barber" role="menuitem">%(master500)s</a>\n'
-      '          <a href="/programs/50-hour-barber-refresher" role="menuitem">%(refresh50)s</a>\n'
-      '          <a href="/programs/contagious-diseases" role="menuitem">%(cd3)s</a>\n'
-      '          <a href="/schedules" role="menuitem">%(sched)s</a>\n'
-      '        </div>\n'
-      '      </div>\n'
-      '      <div class="nav2-item nav2-has">\n'
-      '        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">%(why_abi)s<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
-      '        <div class="nav2-menu" role="menu">\n'
-      '          <a href="/why-barbering" role="menuitem">%(why_barb)s</a>\n'
-      '          <a href="/training-experience" role="menuitem">%(training)s</a>\n'
-      '          <a href="/career-paths" role="menuitem">%(careers)s</a>\n'
-      '          <a href="/student-stories" role="menuitem">%(stories)s</a>\n'
-      '        </div>\n'
-      '      </div>\n'
-      '      <div class="nav2-item"><a class="nav2-top" href="/guides/">%(guides)s</a></div>\n'
-      '      <div class="nav2-item nav2-has">\n'
-      '        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">%(tuition)s<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
-      '        <div class="nav2-menu" role="menu">\n'
-      '          <a href="/tuition-and-funding" role="menuitem">%(tuition)s</a>\n'
-      '          <a href="/veterans" role="menuitem">%(veterans)s</a>\n'
-      '          <a href="/access-vr-program" role="menuitem">%(avr)s</a>\n'
-      '        </div>\n'
-      '      </div>\n'
-      '      <div class="nav2-item"><a class="nav2-top" href="/contact">%(contact)s</a></div>\n'
-      '    </nav>\n'
-      '    <a class="hdr2-cta" href="#reserve">%(book_tour)s</a>\n'
-      '    <button class="hamburger" aria-label="%(menu)s" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>\n'
-      '  </div>\n'
-      '  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">\n'
-      '    <div class="drawer-switchers">\n'
-      '      <div class="lf-lang" role="group" aria-label="%(language_group)s"><a class="%(en_active)s" href="%(en_href)s"%(en_current)s>EN</a><a class="%(es_active)s" href="%(es_href)s"%(es_current)s>ES</a></div>\n'
-      '    </div>\n'
-      '    <div class="drawer-group"><p class="drawer-h">%(programs)s</p>\n'
-      '      <a href="/programs/500-hour-master-barber">%(master500)s</a>\n'
-      '      <a href="/programs/50-hour-barber-refresher">%(refresh50)s</a>\n'
-      '      <a href="/programs/contagious-diseases">%(cd3)s</a>\n'
-      '      <a href="/schedules">%(sched)s</a>\n'
-      '    </div>\n'
-      '    <div class="drawer-group"><p class="drawer-h">%(why_abi)s</p>\n'
-      '      <a href="/why-barbering">%(why_barb)s</a>\n'
-      '      <a href="/training-experience">%(training)s</a>\n'
-      '      <a href="/career-paths">%(careers)s</a>\n'
-      '      <a href="/student-stories">%(stories)s</a>\n'
-      '    </div>\n'
-      '    <div class="drawer-group"><p class="drawer-h">%(tuition)s</p>\n'
-      '      <a href="/tuition-and-funding">%(tuition)s</a>\n'
-      '      <a href="/veterans">%(veterans)s</a>\n'
-      '      <a href="/access-vr-program">%(avr)s</a>\n'
-      '    </div>\n'
-      '    <div class="drawer-group">\n'
-      '      <a class="drawer-solo" href="/guides/">%(guides)s</a>\n'
-      '      <a class="drawer-solo" href="/contact">%(contact)s</a>\n'
-      '    </div>\n'
-      '    <a class="drawer-cta" href="#reserve"><b>%(book_tour)s</b></a>\n'
-      '  </div></nav>\n'
-      '</header>\n'
-      '<div class="mstrip"><div class="mstrip-phones" data-mstrip-phones>\n'
-      '  <a class="mstrip-phone" href="tel:%(admis_tel)s"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="mstrip-t"><b>%(admis_num)s</b><i>%(admis_tag)s</i></span></a>\n'
-      '  <a class="mstrip-phone" href="tel:+18563161551"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg><span class="mstrip-t"><b>(856) 316-1551</b><i>%(cut_clinic)s</i></span></a>\n'
-      '</div></div>\n'
-    ) % {
-      "logo_src": h(LOGO_SRC), "logo_alt": h(LOGO_ALT),
-      "logo_w": LOGO_W, "logo_h": LOGO_H,
-      "book_tour": h(L["book_tour"]),
-      "programs": h(L["programs"]), "why_abi": h(L["why_abi"]),
-      "guides": h(L["guides"]), "tuition": h(L["tuition"]),
-      "contact": h(L["contact"]), "menu": h(L["menu"]),
-      "master500": h(L["master500"]), "refresh50": h(L["refresh50"]),
-      "cd3": h(L["cd3"]), "sched": h(L["sched"]),
-      "why_barb": h(L["why_barb"]), "training": h(L["training"]),
-      "careers": h(L["careers"]), "stories": h(L["stories"]),
-      "veterans": h(L["veterans"]), "avr": h(L["avr"]),
-      "language_group": h(L["language_group"]),
-      "en_active": "is-active" if not es else "",
-      "es_active": "is-active" if es else "",
-      "en_href": h(en_href), "es_href": h(es_href),
-      "en_current": ' aria-current="true"' if not es else '',
-      "es_current": ' aria-current="true"' if es else '',
-      "admis_num": h(admis_num), "admis_tel": h(admis_tel), "admis_tag": h(admis_tag),
-      "cut_clinic": h(L["cut_clinic"]),
-    }
+        '<header class="lfx-bar"><div class="lfx-bar__in">\n'
+        '  <a class="lfx-logo" href="#reserve" aria-label="American Barber Institute">\n'
+        '    <img src="%s" alt="%s" width="%d" height="%d" fetchpriority="high">\n'
+        '  </a>\n'
+        '  <div class="lfx-phones lfx-phones--bar">%s</div>\n'
+        '  <div class="lf-lang lfx-lang" role="group" aria-label="%s">\n'
+        '    <a class="%s" href="%s"%s>EN</a>\n'
+        '    <a class="%s" href="%s"%s>ES</a>\n'
+        '  </div>\n'
+        '</div></header>\n'
+        '<div class="lfx-promo">%s</div>\n'
+        '<div class="lfx-phonerow">%s</div>\n'
+        '<div class="lfx-seats" role="status">\n'
+        '  <span class="lfx-star" aria-hidden="true">%s</span>\n'
+        '  <span class="lfx-seats-t"><b>%s</b><i>%s</i></span>\n'
+        '</div>\n'
+    ) % (
+        h(LOGO_SRC), h(LOGO_ALT), LOGO_W, LOGO_H,
+        pills,
+        "Idioma" if es else "Language",
+        "is-active" if not es else "", h(en_href), ' aria-current="true"' if not es else "",
+        "is-active" if es else "", h(es_href), ' aria-current="true"' if es else "",
+        promo,
+        pills,
+        star_svg,
+        h(seats_kicker), h(seats_lead),
+    )
 
 
 # ── MOBILE HERO (image-led, mobile-only — hidden on desktop via CSS) ─
@@ -873,15 +782,10 @@ def page_head(p):
 '<link rel="preload" href="/assets/img/%(mhero_bg)s" as="image" media="(max-width:768px)" fetchpriority="high">\n'
 '<link rel="preload" href="/assets/img/hero-barber-clinic-2.jpg" as="image" media="(min-width:769px)">\n'
 '<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n'
-'<!-- v56 — website stylesheet stack so landings match the main site (header, palette, typography) -->\n'
-'<link rel="stylesheet" href="/assets/css/style.css?v=32">\n'
-'<link rel="stylesheet" href="/assets/css/brand.css?v=32">\n'
-'<link rel="stylesheet" href="/assets/css/landing.css?v=153">\n'
 '<link rel="stylesheet" href="/assets/css/funnels.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/chatbot.css?v=%(cssv)s">\n'
 '%(ld_scripts)s'
 '<script src="/assets/js/analytics.js?v=3" defer></script>\n'
-'<script src="/assets/js/campus.js?v=2" defer></script>\n'
 '</head>\n<body class="lf-page %(theme)s">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
     ) % {
