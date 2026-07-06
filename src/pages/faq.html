@@ -6,16 +6,23 @@
   </div>
 </div>
 
-<section>
+<section class="reveal">
   <div class="wrap">
-    <div class="answer-box reveal">
-      <p class="answer-kicker">The quick version</p>
-      <p>To become a barber in New York you complete a <b>500-hour</b> state-approved training program and pass the New York State Board Exam for the Master Barber license. Full-time, that takes about <b>4 months</b>; on weekends, about <b>6–7 months</b>. Training typically runs $4,600–$5,600 depending on schedule, and can be offset by weekly payment plans, the GI Bill® or ACCES-VR. Below, the same questions in more detail.</p>
+    <div class="answer-box reveal" style="max-width:860px;margin-inline:auto;background:var(--teal-tint);border:1px solid var(--teal-soft);border-left:5px solid var(--teal);border-radius:var(--radius-lg);padding:clamp(24px,4vw,36px);box-shadow:var(--shadow-sm)">
+      <p class="answer-kicker" style="color:var(--teal-deep);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;margin:0 0 var(--sp-3)">The quick version</p>
+      <p style="margin:0;font-size:1.1rem;line-height:1.7">To become a barber in New York you complete a <b>500-hour</b> state-approved training program and pass the New York State Board Exam for the Master Barber license. Full-time, that takes about <b>4 months</b>; on weekends, about <b>6–7 months</b>. Training typically runs $4,600–$5,600 depending on schedule, and can be offset by weekly payment plans, the GI Bill® or ACCES-VR. Below, the same questions in more detail.</p>
     </div>
+
+    <nav aria-label="FAQ categories" class="faq-nav" style="display:flex;flex-wrap:wrap;gap:var(--sp-3);justify-content:center;max-width:860px;margin:var(--sp-6) auto 0">
+      <a href="#the-decision" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-pill);padding:.55rem 1.1rem;font-weight:700;font-size:.9rem;color:var(--teal-deep);text-decoration:none;box-shadow:var(--shadow-sm)">The Decision</a>
+      <a href="#time-licensing" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-pill);padding:.55rem 1.1rem;font-weight:700;font-size:.9rem;color:var(--teal-deep);text-decoration:none;box-shadow:var(--shadow-sm)">Time &amp; Licensing</a>
+      <a href="#money" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-pill);padding:.55rem 1.1rem;font-weight:700;font-size:.9rem;color:var(--teal-deep);text-decoration:none;box-shadow:var(--shadow-sm)">What It Costs</a>
+      <a href="#getting-started" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-pill);padding:.55rem 1.1rem;font-weight:700;font-size:.9rem;color:var(--teal-deep);text-decoration:none;box-shadow:var(--shadow-sm)">Getting Started</a>
+    </nav>
   </div>
 </section>
 
-<section>
+<section class="reveal" id="the-decision" style="scroll-margin-top:120px">
   <div class="wrap">
     <div class="section-head" style="margin-bottom:1.4rem"><p class="kicker">The Decision</p><h2>Is Barbering Right For Me?</h2></div>
     <div class="faq">
@@ -26,7 +33,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section class="alt reveal" id="time-licensing" style="scroll-margin-top:120px">
   <div class="wrap">
     <div class="section-head" style="margin-bottom:1.4rem"><p class="kicker">Time &amp; Licensing</p><h2>How Long It Takes &amp; How You Get Licensed</h2></div>
     <div class="faq">
@@ -38,37 +45,59 @@
   </div>
 </section>
 
-<section>
+<section class="reveal" id="money" style="scroll-margin-top:120px">
   <div class="wrap">
     <div class="section-head" style="margin-bottom:1.4rem"><p class="kicker">Money</p><h2>What It Costs &amp; How to Pay</h2></div>
+
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:var(--sp-7)">
+      <div class="tilt-3d" style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:var(--radius-lg);padding:var(--sp-5);text-align:center;box-shadow:var(--shadow-sm)">
+        <b style="display:block;font-family:var(--font-display);font-size:1.9rem;color:var(--teal-deep);line-height:1">$5,600</b>
+        <span style="display:block;margin-top:var(--sp-2);font-size:.86rem;color:var(--text-mute);font-weight:600">Plan A · Morning schedule</span>
+      </div>
+      <div class="tilt-3d" style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:var(--radius-lg);padding:var(--sp-5);text-align:center;box-shadow:var(--shadow-sm)">
+        <b style="display:block;font-family:var(--font-display);font-size:1.9rem;color:var(--teal-deep);line-height:1">$4,600</b>
+        <span style="display:block;margin-top:var(--sp-2);font-size:.86rem;color:var(--text-mute);font-weight:600">Plan B · Afternoon schedule</span>
+      </div>
+      <div class="tilt-3d" style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:var(--radius-lg);padding:var(--sp-5);text-align:center;box-shadow:var(--shadow-sm)">
+        <b style="display:block;font-family:var(--font-display);font-size:1.9rem;color:var(--teal-deep);line-height:1">$4,600</b>
+        <span style="display:block;margin-top:var(--sp-2);font-size:.86rem;color:var(--text-mute);font-weight:600">Plan C · Weekend schedule</span>
+      </div>
+      <div class="tilt-3d" style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--coral);border-radius:var(--radius-lg);padding:var(--sp-5);text-align:center;box-shadow:var(--shadow-sm)">
+        <b style="display:block;font-family:var(--font-display);font-size:1.9rem;color:var(--coral);line-height:1">$0</b>
+        <span style="display:block;margin-top:var(--sp-2);font-size:.86rem;color:var(--text-mute);font-weight:600">Possible via ACCES-VR / GI Bill®</span>
+      </div>
+    </div>
     <div class="faq">
       <details><summary>How much does barber school cost?</summary><div class="a"><p>The 500-hour Master Barber program is $5,600 for the morning schedule and $4,600 for the afternoon or weekend schedule. Students also buy their own tools, books and supplies (a list is provided at registration). Compared to a multi-year college degree, it's a fraction of the cost for a licensed, working credential.</p></div></details>
       <details><summary>Are there payment plans?</summary><div class="a"><p>Yes — every schedule offers a weekly payment plan so you can pay gradually while you attend, rather than all at once up front. Talk to admissions and they'll map the weekly amount to whichever schedule you pick.</p></div></details>
-      <details><summary>Can veterans use the GI Bill®?</summary><div class="a"><p>Yes. ABI is VA-approved under Title 38 USC § 3676, and eligible veterans can use the Post-9/11 GI Bill® and VA benefits toward training. See our <a href="resources.html">funding &amp; veterans guide</a> for how the benefits apply.</p></div></details>
-      <details><summary>What is ACCES-VR and could it cover me?</summary><div class="a"><p>ACCES-VR is New York State's vocational rehabilitation program. If you qualify, it can cover tuition, tools and books and pay the school directly — meaning your out-of-pocket cost can be $0. Details are on our <a href="resources.html">funding guide</a>.</p></div></details>
+      <details><summary>Can veterans use the GI Bill®?</summary><div class="a"><p>Yes. ABI is VA-approved under Title 38 USC § 3676, and eligible veterans can use the Post-9/11 GI Bill® and VA benefits toward training. See our <a href="/resources">funding &amp; veterans guide</a> for how the benefits apply.</p></div></details>
+      <details><summary>What is ACCES-VR and could it cover me?</summary><div class="a"><p>ACCES-VR is New York State's vocational rehabilitation program. If you qualify, it can cover tuition, tools and books and pay the school directly — meaning your out-of-pocket cost can be $0. Details are on our <a href="/resources">funding guide</a>.</p></div></details>
     </div>
   </div>
 </section>
 
-<section class="alt">
+<section class="alt reveal" id="getting-started" style="scroll-margin-top:120px">
   <div class="wrap">
     <div class="section-head" style="margin-bottom:1.4rem"><p class="kicker">Getting Started</p><h2>Requirements &amp; What Comes After</h2></div>
     <div class="faq">
       <details><summary>What do I need to enroll?</summary><div class="a"><p>A Social Security card; a High School Diploma or GED (or pass the ATB entrance exam); you must be at least 17 years old; proof of residential address; and a valid photo ID or driver's license. No barbering background is needed.</p></div></details>
-      <details><summary>Do I need to buy my own tools?</summary><div class="a"><p>Yes — students purchase their own barbering tools, books and supplies. A list of acceptable tools is provided at registration, and you can buy them from the school or another supplier. See our <a href="resources.html">beginner resources</a>.</p></div></details>
-      <details><summary>Will I get help finding work after I'm licensed?</summary><div class="a"><p>A good school connects graduates to hiring shops. ABI graduates have gone on to work at — and own — respected barbershops across New York; see <a href="partners.html">where our graduates actually ended up</a> for real examples.</p></div></details>
+      <details><summary>Do I need to buy my own tools?</summary><div class="a"><p>Yes — students purchase their own barbering tools, books and supplies. A list of acceptable tools is provided at registration, and you can buy them from the school or another supplier. See our <a href="/resources">beginner resources</a>.</p></div></details>
+      <details><summary>Will I get help finding work after I'm licensed?</summary><div class="a"><p>A good school connects graduates to hiring shops. ABI graduates have gone on to work at — and own — respected barbershops across New York; see <a href="/partners">where our graduates actually ended up</a> for real examples.</p></div></details>
       <details><summary>How do I know a school is legitimate?</summary><div class="a"><p>Confirm it's licensed by the New York State Department of Education (NYSED / BPSS) and that its program meets the full 500-hour state requirement. ABI has been state-licensed since 1996. You can verify licensing directly through the <a href="https://dos.ny.gov/appearance-enhancement-and-barber-licensing" target="_blank" rel="noopener">NY Division of Licensing Services</a>.</p></div></details>
     </div>
   </div>
 </section>
 
-<section class="alt">
+<section class="dark reveal">
   <div class="wrap" style="text-align:center">
-    <h2>Decided Barbering Is Your Move?</h2>
-    <p class="lead" style="margin-inline:auto">When you're ready to enroll, ABI runs the 500-hour program with new classes the first Monday of every month. Still deciding? <a href="contact.html">Ask us anything</a>.</p>
-    <div class="hero-ctas" style="justify-content:center">
-      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=faq">Train at ABI →</a>
-      <a class="btn btn-ghost btn-lg" href="resources.html">See Funding Options</a>
+    <div style="max-width:760px;margin-inline:auto;background:linear-gradient(135deg,var(--petrol-deep),var(--petrol));border:1px solid var(--teal-deep);border-radius:var(--radius-lg);padding:clamp(32px,6vw,56px);box-shadow:var(--shadow-lg)">
+      <p class="kicker" style="justify-content:center;color:var(--teal-bright)">Ready When You Are</p>
+      <h2 style="color:#fff;margin:var(--sp-3) 0 var(--sp-4)">Decided Barbering Is Your Move?</h2>
+      <p class="lead" style="margin:0 auto var(--sp-6);color:var(--text-on-dark-mute);max-width:56ch">When you're ready to enroll, ABI runs the 500-hour program with new classes the first Monday of every month. Still deciding? <a href="/contact" style="color:var(--teal-bright)">Ask us anything</a>.</p>
+      <div class="hero-ctas" style="justify-content:center;margin-bottom:0">
+        <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=faq">Train at ABI →</a>
+        <a class="btn btn-ghost btn-lg" href="/resources">See Funding Options</a>
+      </div>
     </div>
   </div>
 </section>

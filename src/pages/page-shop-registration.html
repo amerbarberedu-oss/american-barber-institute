@@ -1,6 +1,18 @@
+<!-- Scoped brand fix: remap the legacy-blue res-* system (defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
+<style>
+.res-kicker,.res-eyebrow{color:var(--teal-deep)}
+.res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
+.res-card{border-top-color:var(--teal)}
+.res-card:hover{border-top-color:var(--teal-deep);box-shadow:0 20px 44px rgba(18,179,166,.22)}
+.res-points li::before,.res-checks li::before{background:var(--teal)}
+.res-link{color:var(--teal-deep)}
+.res-badge{color:var(--teal-deep);background:var(--teal-tint);border-color:var(--teal-soft)}
+.res-cta{background:linear-gradient(135deg,var(--petrol) 0%,var(--petrol-deep) 100%)}
+.res-cta .res-eyebrow--light{color:var(--teal-bright)}
+</style>
 <div class="page-hero">
   <div class="wrap">
-    <p class="crumbs"><a href="jobs.html">Career Paths</a> / Hiring Barbers</p>
+    <p class="crumbs"><a href="/jobs">Career Paths</a> / Hiring Barbers</p>
     <h1>How to Hire a Newly Licensed Barber</h1>
     <p>Filling a chair is one of the hardest parts of running a shop. This guide explains how barber-school job placement works, what a fresh graduate actually brings to your floor, and how to plug into a steady pipeline of board-prepared New York barbers — for free.</p>
   </div>
@@ -18,19 +30,19 @@
         <span class="res-num">1</span>
         <h3>Register Your Shop</h3>
         <p>Tell the placement office about your shop — owner or manager name, location and the positions you're hiring for. Registration is free, and your shop joins the pool the office draws from every time a class graduates.</p>
-        <a class="res-link" href="jobs.html">Register on the Jobs page <span aria-hidden="true">→</span></a>
+        <a class="res-link" href="/jobs">Register on the Jobs page <span aria-hidden="true">→</span></a>
       </article>
       <article class="res-card reveal">
         <span class="res-num">2</span>
         <h3>Get Matched With Graduates</h3>
         <p>A good placement office meets one-on-one with every graduate, so it knows who's available, what they want and where they'd like to work. When your opening fits a candidate, the office reaches out to connect you.</p>
-        <a class="res-link" href="how-much-do-barbers-make-nyc.html">Understand barber pay ranges <span aria-hidden="true">→</span></a>
+        <a class="res-link" href="/guides/how-much-do-barbers-make-nyc">Understand barber pay ranges <span aria-hidden="true">→</span></a>
       </article>
       <article class="res-card reveal">
         <span class="res-num">3</span>
         <h3>Interview &amp; Hire</h3>
         <p>You interview the candidates and make the call. Many graduates finish their program with multiple offers — registering early keeps your chairs from sitting empty.</p>
-        <a class="res-link" href="jobs.html">See how placement works <span aria-hidden="true">→</span></a>
+        <a class="res-link" href="/jobs">See how placement works <span aria-hidden="true">→</span></a>
       </article>
     </div>
   </div>
@@ -87,7 +99,7 @@
     <h2>Register Your Shop or Ask About Hiring</h2>
     <p>Use the shop registration form on the Jobs page, or reach the American Barber Institute placement office directly — Manhattan (212) 290-2289, Español (212) 290-0278, Bronx (718) 676-0640 — and get connected to newly licensed New York barbers.</p>
     <div class="res-cta-btns">
-      <a class="btn btn-gold btn-lg" href="jobs.html">Go to the Registration Form</a>
+      <a class="btn btn-gold btn-lg" href="/jobs">Go to the Registration Form</a>
       <a class="btn btn-ghost btn-lg" href="https://www.abi.edu/?utm_source=dotcom&amp;utm_medium=guide&amp;utm_campaign=shop-registration">See ABI Graduates →</a>
     </div>
   </div>

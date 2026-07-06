@@ -1,3 +1,17 @@
+<!-- Scoped brand fix: remap the legacy-blue res-* system (defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
+<style>
+.res-hero{background:linear-gradient(135deg,var(--petrol) 0%,var(--petrol-deep) 100%)}
+.res-hero .crumbs a{color:var(--teal-bright)}
+.res-kicker,.res-eyebrow{color:var(--teal-deep)}
+.res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
+.res-card{border-top-color:var(--teal)}
+.res-card:hover{border-top-color:var(--teal-deep);box-shadow:0 20px 44px rgba(18,179,166,.22)}
+.res-points li::before,.res-checks li::before{background:var(--teal)}
+.res-link{color:var(--teal-deep)}
+.res-badge{color:var(--teal-deep);background:var(--teal-tint);border-color:var(--teal-soft)}
+.res-cta{background:linear-gradient(135deg,var(--petrol) 0%,var(--petrol-deep) 100%)}
+.res-cta .res-eyebrow--light{color:var(--teal-bright)}
+</style>
 <!-- ============ HOW TO START HERO ============ -->
 <section class="res-hero">
   <div class="wrap">
@@ -56,7 +70,7 @@
           <li>Structured curriculum vs. learn-as-you-go</li>
           <li>Exam prep built into the program</li>
         </ul>
-        <a class="res-link" href="skills-and-techniques.html">What you'll actually learn <span aria-hidden="true">&rarr;</span></a>
+        <a class="res-link" href="/skills-and-techniques">What you'll actually learn <span aria-hidden="true">&rarr;</span></a>
       </article>
       <article class="res-card tilt-3d reveal">
         <span class="res-num">3</span>
@@ -66,7 +80,7 @@
           <li>Weekly pay-as-you-go plans are common</li>
           <li>GI Bill&reg; and ACCES-VR can cover eligible students</li>
         </ul>
-        <a class="res-link" href="financial-aid.html">Funding options explained <span aria-hidden="true">&rarr;</span></a>
+        <a class="res-link" href="/financial-aid">Funding options explained <span aria-hidden="true">&rarr;</span></a>
       </article>
       <article class="res-card tilt-3d reveal">
         <span class="res-num">4</span>
@@ -76,7 +90,7 @@
           <li>Full-time finishes in about 4 months</li>
           <li>Weekend track keeps your day job intact</li>
         </ul>
-        <a class="res-link" href="schedules.html">Compare schedules &amp; start dates <span aria-hidden="true">&rarr;</span></a>
+        <a class="res-link" href="/schedules">Compare schedules &amp; start dates <span aria-hidden="true">&rarr;</span></a>
       </article>
       <article class="res-card tilt-3d reveal">
         <span class="res-num">5</span>
@@ -129,19 +143,19 @@
       <p class="res-lead">Cost is the number-one reason people delay a career change &mdash; and often the weakest reason to. Barber training is one of the most affordable licensed-career paths in New York, and several funding routes exist for those who qualify.</p>
     </div>
     <div class="res-grid res-grid--3">
-      <a class="res-card res-card--link reveal" href="financial-aid.html">
+      <a class="res-card res-card--link reveal" href="/financial-aid">
         <span class="res-badge">Overview</span>
         <h3>How Barber Training Is Funded</h3>
         <p>Payment plans, veteran benefits, and state vocational funding &mdash; all your options in one place.</p>
         <span class="res-link">Funding guide <span aria-hidden="true">&rarr;</span></span>
       </a>
-      <a class="res-card res-card--link reveal" href="access-vr-program.html">
+      <a class="res-card res-card--link reveal" href="/access-vr-program">
         <span class="res-badge">ACCES-VR</span>
         <h3>ACCES-VR Funding</h3>
         <p>New York State vocational funding that can cover tuition, tools, and books for eligible students with a documented disability.</p>
         <span class="res-link">See who qualifies <span aria-hidden="true">&rarr;</span></span>
       </a>
-      <a class="res-card res-card--link reveal" href="veterans.html">
+      <a class="res-card res-card--link reveal" href="/veterans">
         <span class="res-badge">Veterans</span>
         <h3>GI Bill&reg; &amp; VA Benefits</h3>
         <p>How Post-9/11 GI Bill&reg; (Ch. 33), VR&amp;E (Ch. 31), and other VA education benefits apply to barber training.</p>
@@ -175,7 +189,7 @@
     <p>Once you've decided barbering is your move, the next step is choosing an accredited New York school. American Barber Institute is licensed by the New York State Department of Education, runs the 500-Hour Master Barber Program with morning, afternoon, and weekend tracks, and starts new classes the first Monday of every month.</p>
     <div class="res-cta-btns">
       <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=how-to-get-started">Train at ABI &rarr;</a>
-      <a class="btn btn-ghost btn-lg" href="schedules.html">See Schedule Options</a>
+      <a class="btn btn-ghost btn-lg" href="/schedules">See Schedule Options</a>
     </div>
   </div>
 </section>

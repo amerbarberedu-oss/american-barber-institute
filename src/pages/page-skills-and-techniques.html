@@ -1,3 +1,15 @@
+<!-- Scoped brand fix: remap the legacy-blue res-* system (defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
+<style>
+.res-kicker,.res-eyebrow{color:var(--teal-deep)}
+.res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
+.res-card{border-top-color:var(--teal)}
+.res-card:hover{border-top-color:var(--teal-deep);box-shadow:0 20px 44px rgba(18,179,166,.22)}
+.res-points li::before,.res-checks li::before{background:var(--teal)}
+.res-link{color:var(--teal-deep)}
+.res-badge{color:var(--teal-deep);background:var(--teal-tint);border-color:var(--teal-soft)}
+.res-cta{background:linear-gradient(135deg,var(--petrol) 0%,var(--petrol-deep) 100%)}
+.res-cta .res-eyebrow--light{color:var(--teal-bright)}
+</style>
 <div class="page-hero">
   <div class="wrap">
     <p class="crumbs"><a href="index.html">Home</a> / What You'll Learn</p>
@@ -71,7 +83,7 @@
       <article class="res-card reveal">
         <h3>Practice on a Live, Diverse Clientele</h3>
         <p>Good programs put you in front of real, paying-or-low-cost clients under a licensed instructor's supervision from early on. Every head of hair is different &mdash; and learning to handle all of them is exactly what makes you employable on day one after licensing.</p>
-        <a class="res-link" href="haircuts.html">How supervised student clinics work <span aria-hidden="true">&rarr;</span></a>
+        <a class="res-link" href="/haircuts">How supervised student clinics work <span aria-hidden="true">&rarr;</span></a>
       </article>
       <article class="res-card reveal">
         <h3>Everything Points at the State Exam</h3>
@@ -95,7 +107,7 @@
     <p>If this is the work you want to do, the fastest route is a NYS-licensed 500-hour program with hands-on practice from the start. American Barber Institute has taught these skills to New York's barbers since 1996, with morning, afternoon, and weekend schedules that fit around real life.</p>
     <div class="res-cta-btns">
       <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=skills-and-techniques">Train at ABI &rarr;</a>
-      <a class="btn btn-ghost btn-lg" href="how-to-get-started.html">How to Get Started</a>
+      <a class="btn btn-ghost btn-lg" href="/how-to-get-started">How to Get Started</a>
     </div>
   </div>
 </section>

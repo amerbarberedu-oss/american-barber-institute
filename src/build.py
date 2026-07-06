@@ -68,48 +68,107 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/brand.css?v=30">
-<link rel="stylesheet" href="{root}assets/css/landing.css?v=148">
+<link rel="stylesheet" href="{root}assets/css/style.css?v=33">
+<link rel="stylesheet" href="{root}assets/css/brand.css?v=31">
+<link rel="stylesheet" href="{root}assets/css/landing.css?v=151">
 <link rel="stylesheet" href="{root}assets/css/upgrade.css?v=2">
 <script src="{root}assets/js/analytics.js?v=3" defer></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
 <link rel="stylesheet" href="{root}assets/css/effects.css?v=30">
 {schema}
 </head>
-<body class="mhx-on" style="--page-bg:url('/assets/img/{pagebg}')">
+<body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <div class="abi-deco" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="topbar">
-  <div class="tb-promo">Start your barber journey today for only $150 per week*</div>
-  <div class="tb-calls">
-    <a class="tb-call" href="tel:+12122902289"><b class="tb-flag">EN</b><span class="tb-label">Call Admissions</span><span class="tb-num">(212) 290-2289</span></a>
-    <a class="tb-call" href="tel:+12122900278"><b class="tb-flag">ES</b><span class="tb-label">En Español</span><span class="tb-num">(212) 290-0278</span></a>
+<!-- ── UTILITY BAR: campus switcher · language · live campus phones ── -->
+<div class="ubar">
+  <div class="ubar-in">
+    <div class="ubar-left">
+      {campusswitch}
+      {langtoggle}
+    </div>
+    <div class="ubar-right tb-calls" data-campus-phones>
+      <a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="ubar-tag">Admissions</span><span class="ubar-num">(212) 290-2289</span></a>
+      <a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span><span class="ubar-tag">Español</span><span class="ubar-num">(212) 290-0278</span></a>
+      <a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg></span><span class="ubar-tag">Haircut Clinic</span><span class="ubar-num">(856) 316-1551</span></a>
+    </div>
   </div>
 </div>
-<header class="hdr">
-  <div class="hdr-in">
-    <a class="logo brand-plate" href="{root}index.html" aria-label="American Barber Institute — home" title="American Barber Institute">
-      <img class="logo-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">
+<header class="hdr2">
+  <div class="hdr2-in">
+    <a class="logo2" href="{root}index.html" aria-label="American Barber Institute — home" title="American Barber Institute">
+      <img class="logo2-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">
     </a>
-    <nav class="mainnav" aria-label="Main"><a href="{root}index.html">Home</a><a href="{root}why-barbering.html">Why Barbering</a><a href="{root}training-experience.html">The Training Experience</a><a href="{root}programs/index.html">Programs</a><a href="{root}schedules.html">Schedules &amp; Flexibility</a><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a><a href="{root}student-stories.html">Student Stories</a><a href="{root}career-paths.html">Career Paths</a><a href="{root}guides/index.html">Guides</a><a href="{root}veterans.html">Veterans</a><a href="{root}contact.html">Contact</a></nav>
-    {langtoggle}
-    <div class="loc-toggle" role="group" aria-label="Campus"><a class="is-active" aria-current="true" href="/manhattan">MN</a><a href="/bronx">BX</a></div>
-    <a class="header-cta" href="{root}contact.html">Book a Tour</a>
-    <div class="hdr-right"><button class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+    <nav class="nav2" aria-label="Main">
+      <div class="nav2-item nav2-has">
+        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Programs<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav2-menu" role="menu">
+          <a href="{root}programs/500-hour-master-barber.html" role="menuitem">500-Hour Master Barber</a>
+          <a href="{root}programs/50-hour-barber-refresher.html" role="menuitem">50-Hour Refresher</a>
+          <a href="{root}programs/contagious-diseases.html" role="menuitem">Contagious Diseases</a>
+          <a href="{root}schedules.html" role="menuitem">Schedules &amp; Flexibility</a>
+        </div>
+      </div>
+      <div class="nav2-item nav2-has">
+        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Why ABI<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav2-menu" role="menu">
+          <a href="{root}why-barbering.html" role="menuitem">Why Barbering</a>
+          <a href="{root}training-experience.html" role="menuitem">The Training Experience</a>
+          <a href="{root}career-paths.html" role="menuitem">Career Paths</a>
+          <a href="{root}student-stories.html" role="menuitem">Student Stories</a>
+        </div>
+      </div>
+      <div class="nav2-item"><a class="nav2-top" href="{root}guides/index.html">Guides</a></div>
+      <div class="nav2-item nav2-has">
+        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Tuition &amp; Funding<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav2-menu" role="menu">
+          <a href="{root}tuition-and-funding.html" role="menuitem">Tuition &amp; Funding</a>
+          <a href="{root}veterans.html" role="menuitem">Veterans &amp; GI Bill®</a>
+          <a href="{root}access-vr-program.html" role="menuitem">ACCES-VR</a>
+        </div>
+      </div>
+      <div class="nav2-item"><a class="nav2-top" href="{root}contact.html">Contact</a></div>
+    </nav>
+    <a class="hdr2-cta" href="{root}contact.html">Book a Tour</a>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
   </div>
-  <nav class="nav-drawer"><div class="container"><a href="{root}index.html">Home</a><a href="{root}why-barbering.html">Why Barbering</a><a href="{root}training-experience.html">The Training Experience</a><a href="{root}programs/index.html">Programs</a><a href="{root}schedules.html">Schedules &amp; Flexibility</a><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a><a href="{root}student-stories.html">Student Stories</a><a href="{root}career-paths.html">Career Paths</a><a href="{root}guides/index.html">Guides</a><a href="{root}veterans.html">Veterans</a><a href="{root}contact.html">Contact</a><a class="drawer-cta" href="{root}contact.html"><b>Book a Tour</b></a><a href="{root}es/index.html"><b>Español</b></a></div></nav>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">
+    <div class="drawer-switchers">{campusswitch}{langtoggle}</div>
+    <div class="drawer-group">
+      <p class="drawer-h">Programs</p>
+      <a href="{root}programs/500-hour-master-barber.html">500-Hour Master Barber</a>
+      <a href="{root}programs/50-hour-barber-refresher.html">50-Hour Refresher</a>
+      <a href="{root}programs/contagious-diseases.html">Contagious Diseases</a>
+      <a href="{root}schedules.html">Schedules &amp; Flexibility</a>
+    </div>
+    <div class="drawer-group">
+      <p class="drawer-h">Why ABI</p>
+      <a href="{root}why-barbering.html">Why Barbering</a>
+      <a href="{root}training-experience.html">The Training Experience</a>
+      <a href="{root}career-paths.html">Career Paths</a>
+      <a href="{root}student-stories.html">Student Stories</a>
+    </div>
+    <div class="drawer-group">
+      <p class="drawer-h">Tuition &amp; Funding</p>
+      <a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a>
+      <a href="{root}veterans.html">Veterans &amp; GI Bill®</a>
+      <a href="{root}access-vr-program.html">ACCES-VR</a>
+    </div>
+    <div class="drawer-group">
+      <a class="drawer-solo" href="{root}guides/index.html">Guides</a>
+      <a class="drawer-solo" href="{root}contact.html">Contact</a>
+    </div>
+    <a class="drawer-cta" href="{root}contact.html"><b>Book a Tour</b></a>
+  </div></nav>
 </header>
-<div class="mhx">
-  <div class="mhx-promo">START YOUR BARBER JOURNEY TODAY FOR ONLY <b>$150 PER WEEK*</b></div>
-  <div class="mhx-phones">
-    <a class="mhx-phone" href="tel:+12122902289"><span class="mhx-num">(212) 290-2289</span><span class="mhx-lab"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>ENGLISH</span></a>
-    <a class="mhx-phone" href="tel:+18563161551"><span class="mhx-num">(856) 316-1551</span><span class="mhx-lab"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg>HAIRCUT</span></a>
-    <a class="mhx-phone" href="tel:+12122900278"><span class="mhx-num">(212) 290-0278</span><span class="mhx-lab"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>SPANISH</span></a>
+<!-- ── Compact mobile phone strip (live per-campus via campus.js) ── -->
+<div class="mstrip">
+  <div class="mstrip-phones" data-mstrip-phones>
+    <a class="mstrip-phone" href="tel:+12122902289"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="mstrip-t"><b>(212) 290-2289</b><i>Admissions</i></span></a>
+    <a class="mstrip-phone" href="tel:+18563161551"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg><span class="mstrip-t"><b>(856) 316-1551</b><i>Haircut Clinic</i></span></a>
   </div>
-  <div class="mhx-seats"><span class="mhx-star" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg></span><span class="mhx-seats-t"><b>LIMITED SEATS AVAILABLE</b><i>ENROLLMENT NOW OPEN</i></span></div>
 </div>
 
 <main id="main">
@@ -128,23 +187,23 @@ TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
-<footer class="site">
-  <div class="foot-cta">
+<footer class="site2">
+  <div class="foot2-cta">
     <div class="wrap">
+      <p class="foot2-kicker">Classes begin the first Monday of each month</p>
       <h3>Start Barber School Today</h3>
-      <p>Your new career is one phone call away. Talk to admissions in English or Spanish.</p>
+      <p class="foot2-cta-sub">Your new career is one phone call away. Talk to admissions in English or Spanish.</p>
       <div class="foot-cta-btns">
         <a class="btn btn-gold btn-lg" href="{root}contact.html">Request a Call</a>
-        <a class="btn btn-blue btn-lg" href="{root}contact.html">Apply Now</a>
-        
+        <a class="btn btn-ghost2 btn-lg" href="{root}contact.html">Apply Now</a>
       </div>
     </div>
   </div>
   <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
+    <div class="ftr-grid">
+      <div class="foot2-brand">
         <p class="foot-name">American Barber Institute</p>
-        <p>New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
+        <p class="foot2-blurb">New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
         <div class="socials">
           <a class="soc soc-fb" href="https://www.facebook.com/Abi.Education/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.2-1.5 1.5-1.5h1.4V5.1C16.1 5 15.2 5 14.2 5c-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3z"/></svg></a>
           <a class="soc soc-ig" href="https://www.instagram.com/americanbarberinstitute/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
@@ -154,36 +213,31 @@ TEMPLATE = """<!DOCTYPE html>
         </div>
       </div>
       <div>
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="{root}programs/500-hour-master-barber.html">500-Hour Master Barber</a></li>
+          <li><a href="{root}programs/50-hour-barber-refresher.html">50-Hour Refresher</a></li>
+          <li><a href="{root}programs/contagious-diseases.html">Contagious Diseases</a></li>
+          <li><a href="{root}schedules.html">Schedules &amp; Flexibility</a></li>
+        </ul>
+      </div>
+      <div>
         <h4>Explore</h4>
         <ul>
           <li><a href="{root}why-barbering.html">Why Barbering</a></li>
-          <li><a href="{root}training-experience.html">The Training Experience</a></li>
-          <li><a href="{root}programs/index.html">Programs</a></li>
-          <li><a href="{root}schedules.html">Schedules &amp; Flexibility</a></li>
-          <li><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a></li>
           <li><a href="{root}career-paths.html">Career Paths</a></li>
-          <li><a href="{root}student-stories.html">Student Stories</a></li>
+          <li><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a></li>
+          <li><a href="{root}veterans.html">Veterans &amp; GI Bill®</a></li>
           <li><a href="{root}guides/index.html">Guides &amp; Licensing</a></li>
-          <li><a href="{root}veterans.html">Veterans</a></li>
-          <li><a href="{root}contact.html">Book a Tour</a></li>
         </ul>
       </div>
       <div>
-        <h4>Locations</h4>
-        <ul>
-          <li><b>Manhattan</b><br><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street<br>New York, NY 10018</a></li>
-          <li><b>Bronx</b><br><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square<br>Bronx, NY 10461</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+12122902289">(212) 290-2289 (English)</a></li>
-          <li><a href="tel:+12122900278">(212) 290-0278 (Español)</a></li>
+        <h4>Visit Us</h4>
+        <ul class="foot2-visit">
+          <li class="foot2-loc"><b>Manhattan</b><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street, New York, NY 10018</a></li>
+          <li class="foot2-loc"><b>Bronx</b><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square, Bronx, NY 10461</a></li>
+          <li class="foot2-phones" data-footer-phones><a href="tel:+12122902289">(212) 290-2289 · English</a><a href="tel:+12122900278">(212) 290-0278 · Español</a><a href="tel:+17186760640">(718) 676-0640 · Bronx</a></li>
           <li><a href="mailto:admission@abi.edu">admission@abi.edu</a></li>
-          <li>Monday – Friday: 8:00 AM – 8:00 PM</li>
-          <li>Saturday: 9:00 AM – 7:00 PM</li>
-          <li>Sunday: 9:00 AM – 7:00 PM</li>
         </ul>
       </div>
     </div>
@@ -229,7 +283,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/effects.js?v=32" defer></script>
 <script src="{root}assets/js/landing.js?v=32" defer></script>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
-<script src="{root}assets/js/campus.js?v=1" defer></script>
+<script src="{root}assets/js/campus.js?v=2" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335" defer></script>
 <script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent="@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
@@ -784,6 +838,57 @@ PAGE_BG = {
 }
 _DEFAULT_BG = 'gallery/cut-05.jpg'
 
+# ── Per-page campus context (drives header phone routing + body theme) ──
+#   'bronx'     → Bronx admissions + haircut line; body.bx-gold; data-campus=bronx
+#   'both'      → Haircuts page: shows BOTH campuses' admissions + haircut line
+#   'manhattan' → Manhattan admissions (EN+ES) + haircut line (default/neutral;
+#                 the campus switcher lets the user flip to Bronx live)
+# Anything not listed defaults to 'manhattan'/neutral.
+CAMPUS_BY_PAGE = {
+    'programs/500-hour-master-barber-bronx.html': 'bronx',
+    'haircuts.html': 'both',
+}
+
+def _campus_switch(root, campus):
+    """Polished segmented Manhattan ⇄ Bronx control with a sliding indicator.
+    campus.js reads data-campus / .is-active and swaps the live phone numbers.
+    The Bronx segment links to /bronx so neutral pages can navigate there."""
+    mn_active = '' if campus == 'bronx' else ' is-active'
+    bx_active = ' is-active' if campus == 'bronx' else ''
+    pin = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
+           'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" '
+           'aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>'
+           '<circle cx="12" cy="10" r="3"/></svg>')
+    return ('<div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus">'
+            '<span class="seg-glider" aria-hidden="true"></span>'
+            '<a class="seg-opt%s" data-campus-opt="manhattan" href="%sindex.html" aria-current="%s">%s<span class="seg-lab">Manhattan</span></a>'
+            '<a class="seg-opt%s" data-campus-opt="bronx" href="/bronx" aria-current="%s">%s<span class="seg-lab">Bronx</span></a>'
+            '</div>') % (
+        mn_active, root, ('true' if mn_active else 'false'), pin,
+        bx_active, ('true' if bx_active else 'false'), pin)
+
+def _lang_toggle(root, out):
+    """Segmented EN | ES control with a globe icon + sliding indicator.
+    Links each page to its ES counterpart (only the home has one today →
+    other EN pages send Spanish visitors to /es)."""
+    globe = ('<svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" '
+             'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
+             'aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
+             '<path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>')
+    if out.startswith('es/'):
+        en_href, es_href = '%s%s' % (root, out[3:]), '%s%s' % (root, out)
+        en_a, es_a = '', ' is-active'
+    else:
+        en_href, es_href = '%s%s' % (root, out), '%ses/index.html' % root
+        en_a, es_a = ' is-active', ''
+    return ('<div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang">'
+            '<span class="seg-glider" aria-hidden="true"></span>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab">EN</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab">ES</span></a>'
+            '</div>') % (
+        en_a, en_href, ('true' if en_a else 'false'), globe,
+        es_a, es_href, ('true' if es_a else 'false'))
+
 def build():
     written = []
     for out, partial, title, desc, lang, schemas in PAGES:
@@ -844,16 +949,14 @@ def build():
         schema_tags = '\n'.join(
             f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>'
             for s in resolved)
-        # One-click EN/ES toggle beside the logo. Full Spanish exists for the
-        # home/splash; other EN pages send Spanish visitors to the Spanish home.
-        if out.startswith('es/'):
-            langtoggle = ('<div class="lang-toggle" role="group" aria-label="Language">'
-                          '<a href="%s%s">EN</a><a class="is-active" aria-current="true" href="%s%s">ES</a></div>'
-                          % (root, out[3:], root, out))
-        else:
-            langtoggle = ('<div class="lang-toggle" role="group" aria-label="Language">'
-                          '<a class="is-active" aria-current="true" href="%s%s">EN</a><a href="%ses/index.html">ES</a></div>'
-                          % (root, out, root))
+        # Segmented EN|ES + Manhattan⇄Bronx switchers (see helpers above).
+        campus = CAMPUS_BY_PAGE.get(out.replace('es/', ''), 'manhattan')
+        langtoggle = _lang_toggle(root, out)
+        campusswitch = _campus_switch(root, campus)
+        # Body theme + data-campus so campus.js renders the right phones on load.
+        # 'both' (Haircuts) stays neutral/manhattan-themed but flags data-campus=both.
+        bodyclass = ' bx-gold' if campus == 'bronx' else ''
+        datacampus = campus
         # hreflang reciprocity: every EN page declares itself as en + x-default;
         # the home page additionally declares the ES alternate (and vice-versa).
         # Only the home page has a Spanish counterpart today.
@@ -885,6 +988,7 @@ def build():
             oglocale='es_ES' if lang == 'es' else 'en_US',
             pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
             root=root, body=body, schema=schema_tags, langtoggle=langtoggle,
+            campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
             hreflang_block=hreflang_block,
             lp=root + 'programs/index.html',
             en_cur='aria-current="true"' if lang == 'en' else '',

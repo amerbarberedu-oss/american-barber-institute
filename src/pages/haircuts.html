@@ -1,3 +1,9 @@
+<!-- Scoped brand fix: remap legacy-blue accents (price-callout, cta-band eyebrow, style-chip hover — all defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
+<style>
+.price-callout{background:linear-gradient(135deg,var(--teal-tint),var(--teal-soft));border-color:var(--teal-soft)}
+.style-chip:hover{box-shadow:0 12px 26px rgba(18,179,166,.18)}
+.cta-band .kicker{color:var(--teal-bright) !important}
+</style>
 <div class="page-hero hair-hero">
   <div class="wrap hair-hero-in">
     <p class="hair-kicker">The Clinic-Floor Model</p>
@@ -141,7 +147,7 @@
     <p>The clinic floor you just read about is where a barber career begins — 500 hours, about four months full-time or six to seven months on weekends, ending at the New York State Board. New classes start the first Monday of every month.</p>
     <div class="hero-ctas" style="justify-content:center">
       <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&amp;utm_medium=guide&amp;utm_campaign=haircuts">Train at ABI →</a>
-      <a class="btn btn-ghost btn-lg" href="how-to-become-a-barber-in-new-york.html">How to Become a Barber</a>
+      <a class="btn btn-ghost btn-lg" href="/guides/how-to-become-a-barber-in-new-york">How to Become a Barber</a>
     </div>
   </div>
 </section>

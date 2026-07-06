@@ -37,9 +37,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=32">
-<link rel="stylesheet" href="assets/css/brand.css?v=30">
-<link rel="stylesheet" href="assets/css/landing.css?v=148">
+<link rel="stylesheet" href="assets/css/style.css?v=33">
+<link rel="stylesheet" href="assets/css/brand.css?v=31">
+<link rel="stylesheet" href="assets/css/landing.css?v=151">
 <link rel="stylesheet" href="assets/css/upgrade.css?v=2">
 <script src="/assets/js/analytics.js?v=3" defer></script>
 <script>try{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}catch(e){}</script>
@@ -49,39 +49,97 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where is the ABI Bronx campus?", "acceptedAnswer": {"@type": "Answer", "text": "The Bronx campus is at 121 Westchester Square, Bronx, NY 10461 — in the Westchester Square neighborhood of the east Bronx, close to the 6 train, several bus lines, and the Cross Bronx and Bruckner Expressways."}}, {"@type": "Question", "name": "How do I get to the Westchester Square campus?", "acceptedAnswer": {"@type": "Answer", "text": "Take the 6 train to Westchester Square–East Tremont Avenue, which is a short walk from campus. Bx4, Bx8, Bx31, Bx40 and Bx42 buses also serve the area, and there is street parking nearby for drivers coming off the Cross Bronx or Bruckner Expressways."}}, {"@type": "Question", "name": "What is training at the Bronx campus like?", "acceptedAnswer": {"@type": "Answer", "text": "Most of your time is spent hands-on. After foundational instruction you practice on real, paying clients on a supervised clinic floor — the closest thing to a working shop — while an instructor guides every cut. Training covers the full New York 500-hour requirement and prepares you for the State Board exam."}}, {"@type": "Question", "name": "Who trains at the Bronx campus?", "acceptedAnswer": {"@type": "Answer", "text": "Career-changers, recent grads, parents fitting training around a job, veterans using GI Bill benefits, and ACCES-VR participants. The Bronx draws students from the east Bronx, Westchester County, and nearby neighborhoods who want to train close to home."}}, {"@type": "Question", "name": "How long does barber training take?", "acceptedAnswer": {"@type": "Answer", "text": "New York requires 500 hours of training. Full-time takes about 4 months (17 weeks at 30 hours per week); the weekend schedule takes about 6–7 months (27 weeks). Both lead to the same NY Master Barber license."}}, {"@type": "Question", "name": "Can I tour the Bronx campus before I decide?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can book a tour to see the clinic floor, meet instructors, and ask questions before committing. New classes begin the first Monday of every month, so it helps to visit early."}}]}</script>
 <style>.skip{position:absolute;left:-9999px;top:0;background:#0E4D5C;color:#fff;padding:12px 20px;z-index:2147483001;font-weight:700;border-radius:0 0 8px 0;text-decoration:none}.skip:focus{left:0}</style>
 </head>
-<body class="mhx-on" style="--page-bg:url('/assets/img/gallery/grp-01.jpg')">
+<body class="shell2 bx-gold" data-campus="bronx">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <div class="abi-deco" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="topbar">
-  <div class="tb-promo">Start your barber journey today for only $150 per week*</div>
-  <div class="tb-calls">
-    <a class="tb-call" href="tel:+12122902289"><b class="tb-flag">EN</b><span class="tb-label">Call Admissions</span><span class="tb-num">(212) 290-2289</span></a>
-    <a class="tb-call" href="tel:+12122900278"><b class="tb-flag">ES</b><span class="tb-label">En Español</span><span class="tb-num">(212) 290-0278</span></a>
+<!-- ── UTILITY BAR: campus switcher · language · live campus phones ── -->
+<div class="ubar">
+  <div class="ubar-in">
+    <div class="ubar-left">
+      <div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus"><span class="seg-glider" aria-hidden="true"></span><a class="seg-opt" data-campus-opt="manhattan" href="index.html" aria-current="false"><svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="seg-lab">Manhattan</span></a><a class="seg-opt is-active" data-campus-opt="bronx" href="/bronx" aria-current="true"><svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="seg-lab">Bronx</span></a></div>
+      <div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang"><span class="seg-glider" aria-hidden="true"></span><a class="seg-opt is-active" href="bronx.html" aria-current="true"><svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg><span class="seg-lab">EN</span></a><a class="seg-opt" href="es/index.html" aria-current="false"><span class="seg-lab">ES</span></a></div>
+    </div>
+    <div class="ubar-right tb-calls" data-campus-phones>
+      <a class="ubar-call ubar-call--admis" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="ubar-tag">Bronx Admissions</span><span class="ubar-num">(718) 676-0640</span></a>
+      <a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg></span><span class="ubar-tag">Haircut Clinic</span><span class="ubar-num">(856) 316-1551</span></a>
+    </div>
   </div>
 </div>
-<header class="hdr">
-  <div class="hdr-in">
-    <a class="logo brand-plate" href="/" aria-label="American Barber Institute — home" title="American Barber Institute">
-      <img class="logo-img" src="assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">
+<header class="hdr2">
+  <div class="hdr2-in">
+    <a class="logo2" href="index.html" aria-label="American Barber Institute — home" title="American Barber Institute">
+      <img class="logo2-img" src="assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">
     </a>
-    <nav class="mainnav" aria-label="Main"><a href="/">Home</a><a href="why-barbering">Why Barbering</a><a href="training-experience">The Training Experience</a><a href="programs/">Programs</a><a href="schedules">Schedules &amp; Flexibility</a><a href="tuition-and-funding">Tuition &amp; Funding</a><a href="student-stories">Student Stories</a><a href="career-paths">Career Paths</a><a href="guides/">Guides</a><a href="veterans">Veterans</a><a href="contact">Contact</a></nav>
-    <div class="lang-toggle" role="group" aria-label="Language"><a class="is-active" aria-current="true" href="bronx">EN</a><a href="es/">ES</a></div>
-    <div class="loc-toggle" role="group" aria-label="Campus"><a href="/manhattan">MN</a><a class="is-active" aria-current="true" href="/bronx">BX</a></div>
-    <a class="header-cta" href="contact">Book a Tour</a>
-    <div class="hdr-right"><button class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+    <nav class="nav2" aria-label="Main">
+      <div class="nav2-item nav2-has">
+        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Programs<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav2-menu" role="menu">
+          <a href="programs/500-hour-master-barber.html" role="menuitem">500-Hour Master Barber</a>
+          <a href="programs/50-hour-barber-refresher.html" role="menuitem">50-Hour Refresher</a>
+          <a href="programs/contagious-diseases.html" role="menuitem">Contagious Diseases</a>
+          <a href="schedules.html" role="menuitem">Schedules &amp; Flexibility</a>
+        </div>
+      </div>
+      <div class="nav2-item nav2-has">
+        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Why ABI<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav2-menu" role="menu">
+          <a href="why-barbering.html" role="menuitem">Why Barbering</a>
+          <a href="training-experience.html" role="menuitem">The Training Experience</a>
+          <a href="career-paths.html" role="menuitem">Career Paths</a>
+          <a href="student-stories.html" role="menuitem">Student Stories</a>
+        </div>
+      </div>
+      <div class="nav2-item"><a class="nav2-top" href="guides/index.html">Guides</a></div>
+      <div class="nav2-item nav2-has">
+        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Tuition &amp; Funding<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav2-menu" role="menu">
+          <a href="tuition-and-funding.html" role="menuitem">Tuition &amp; Funding</a>
+          <a href="veterans.html" role="menuitem">Veterans &amp; GI Bill®</a>
+          <a href="access-vr-program.html" role="menuitem">ACCES-VR</a>
+        </div>
+      </div>
+      <div class="nav2-item"><a class="nav2-top" href="contact.html">Contact</a></div>
+    </nav>
+    <a class="hdr2-cta" href="contact.html">Book a Tour</a>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
   </div>
-  <nav class="nav-drawer"><div class="container"><a href="/">Home</a><a href="why-barbering">Why Barbering</a><a href="training-experience">The Training Experience</a><a href="programs/">Programs</a><a href="schedules">Schedules &amp; Flexibility</a><a href="tuition-and-funding">Tuition &amp; Funding</a><a href="student-stories">Student Stories</a><a href="career-paths">Career Paths</a><a href="guides/">Guides</a><a href="veterans">Veterans</a><a href="contact">Contact</a><a class="drawer-cta" href="contact"><b>Book a Tour</b></a><a href="es/"><b>Español</b></a></div></nav>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">
+    <div class="drawer-switchers"><div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus"><span class="seg-glider" aria-hidden="true"></span><a class="seg-opt" data-campus-opt="manhattan" href="index.html" aria-current="false"><svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="seg-lab">Manhattan</span></a><a class="seg-opt is-active" data-campus-opt="bronx" href="/bronx" aria-current="true"><svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="seg-lab">Bronx</span></a></div><div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang"><span class="seg-glider" aria-hidden="true"></span><a class="seg-opt is-active" href="bronx.html" aria-current="true"><svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg><span class="seg-lab">EN</span></a><a class="seg-opt" href="es/index.html" aria-current="false"><span class="seg-lab">ES</span></a></div></div>
+    <div class="drawer-group">
+      <p class="drawer-h">Programs</p>
+      <a href="programs/500-hour-master-barber.html">500-Hour Master Barber</a>
+      <a href="programs/50-hour-barber-refresher.html">50-Hour Refresher</a>
+      <a href="programs/contagious-diseases.html">Contagious Diseases</a>
+      <a href="schedules.html">Schedules &amp; Flexibility</a>
+    </div>
+    <div class="drawer-group">
+      <p class="drawer-h">Why ABI</p>
+      <a href="why-barbering.html">Why Barbering</a>
+      <a href="training-experience.html">The Training Experience</a>
+      <a href="career-paths.html">Career Paths</a>
+      <a href="student-stories.html">Student Stories</a>
+    </div>
+    <div class="drawer-group">
+      <p class="drawer-h">Tuition &amp; Funding</p>
+      <a href="tuition-and-funding.html">Tuition &amp; Funding</a>
+      <a href="veterans.html">Veterans &amp; GI Bill®</a>
+      <a href="access-vr-program.html">ACCES-VR</a>
+    </div>
+    <div class="drawer-group">
+      <a class="drawer-solo" href="guides/index.html">Guides</a>
+      <a class="drawer-solo" href="contact.html">Contact</a>
+    </div>
+    <a class="drawer-cta" href="contact.html"><b>Book a Tour</b></a>
+  </div></nav>
 </header>
-<div class="mhx">
-  <div class="mhx-promo">START YOUR BARBER JOURNEY TODAY FOR ONLY <b>$150 PER WEEK*</b></div>
-  <div class="mhx-phones">
-    <a class="mhx-phone" href="tel:+17186760640"><span class="mhx-num">(718) 676-0640</span><span class="mhx-lab"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>BRONX</span></a>
-    <a class="mhx-phone" href="tel:+18563161551"><span class="mhx-num">(856) 316-1551</span><span class="mhx-lab"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg>HAIRCUT</span></a>
-    <a class="mhx-phone" href="tel:+12122900278"><span class="mhx-num">(212) 290-0278</span><span class="mhx-lab"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>SPANISH</span></a>
+<!-- ── Compact mobile phone strip (live per-campus via campus.js) ── -->
+<div class="mstrip">
+  <div class="mstrip-phones" data-mstrip-phones>
+    <a class="mstrip-phone" href="tel:+17186760640"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx Admissions</i></span></a>
+    <a class="mstrip-phone" href="tel:+18563161551"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg><span class="mstrip-t"><b>(856) 316-1551</b><i>Haircut Clinic</i></span></a>
   </div>
-  <div class="mhx-seats"><span class="mhx-star" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg></span><span class="mhx-seats-t"><b>LIMITED SEATS AVAILABLE</b><i>ENROLLMENT NOW OPEN</i></span></div>
 </div>
 
 <main id="main">
@@ -252,23 +310,23 @@
   </div>
 </section>
 
-<footer class="site">
-  <div class="foot-cta">
+<footer class="site2">
+  <div class="foot2-cta">
     <div class="wrap">
+      <p class="foot2-kicker">Classes begin the first Monday of each month</p>
       <h3>Start Barber School Today</h3>
-      <p>Your new career is one phone call away. Talk to admissions in English or Spanish.</p>
+      <p class="foot2-cta-sub">Your new career is one phone call away. Talk to admissions in English or Spanish.</p>
       <div class="foot-cta-btns">
         <a class="btn btn-gold btn-lg" href="contact">Request a Call</a>
-        <a class="btn btn-blue btn-lg" href="contact">Apply Now</a>
-
+        <a class="btn btn-ghost2 btn-lg" href="contact">Apply Now</a>
       </div>
     </div>
   </div>
   <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
+    <div class="ftr-grid">
+      <div class="foot2-brand">
         <p class="foot-name">American Barber Institute</p>
-        <p>New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
+        <p class="foot2-blurb">New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
         <div class="socials">
           <a class="soc soc-fb" href="https://www.facebook.com/Abi.Education/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.2-1.5 1.5-1.5h1.4V5.1C16.1 5 15.2 5 14.2 5c-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3z"/></svg></a>
           <a class="soc soc-ig" href="https://www.instagram.com/americanbarberinstitute/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
@@ -278,36 +336,31 @@
         </div>
       </div>
       <div>
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="programs/500-hour-master-barber.html">500-Hour Master Barber</a></li>
+          <li><a href="programs/50-hour-barber-refresher.html">50-Hour Refresher</a></li>
+          <li><a href="programs/contagious-diseases.html">Contagious Diseases</a></li>
+          <li><a href="schedules.html">Schedules &amp; Flexibility</a></li>
+        </ul>
+      </div>
+      <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="why-barbering">Why Barbering</a></li>
-          <li><a href="training-experience">The Training Experience</a></li>
-          <li><a href="programs/">Programs</a></li>
-          <li><a href="schedules">Schedules &amp; Flexibility</a></li>
-          <li><a href="tuition-and-funding">Tuition &amp; Funding</a></li>
-          <li><a href="career-paths">Career Paths</a></li>
-          <li><a href="student-stories">Student Stories</a></li>
-          <li><a href="guides/">Guides &amp; Licensing</a></li>
-          <li><a href="veterans">Veterans</a></li>
-          <li><a href="contact">Book a Tour</a></li>
+          <li><a href="why-barbering.html">Why Barbering</a></li>
+          <li><a href="career-paths.html">Career Paths</a></li>
+          <li><a href="tuition-and-funding.html">Tuition &amp; Funding</a></li>
+          <li><a href="veterans.html">Veterans &amp; GI Bill®</a></li>
+          <li><a href="guides/index.html">Guides &amp; Licensing</a></li>
         </ul>
       </div>
       <div>
-        <h4>Locations</h4>
-        <ul>
-          <li><b>Manhattan</b><br><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street<br>New York, NY 10018</a></li>
-          <li><b>Bronx</b><br><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square<br>Bronx, NY 10461</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+17186760640">(718) 676-0640 (Bronx)</a></li>
-          <li><a href="tel:+12122902289">(212) 290-2289 (English)</a></li>
-          <li><a href="tel:+12122900278">(212) 290-0278 (Español)</a></li>
+        <h4>Visit Us</h4>
+        <ul class="foot2-visit">
+          <li class="foot2-loc"><b>Manhattan</b><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street, New York, NY 10018</a></li>
+          <li class="foot2-loc"><b>Bronx</b><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square, Bronx, NY 10461</a></li>
+          <li class="foot2-phones" data-footer-phones><a href="tel:+17186760640">(718) 676-0640 · Bronx Admissions</a><a href="tel:+18563161551">(856) 316-1551 · Haircut Clinic</a></li>
           <li><a href="mailto:admission@abi.edu">admission@abi.edu</a></li>
-          <li>Monday – Friday: 8:00 AM – 8:00 PM</li>
-          <li>Saturday &amp; Sunday: 9:00 AM – 7:00 PM</li>
         </ul>
       </div>
     </div>
@@ -354,7 +407,7 @@
 <script src="assets/js/effects.js?v=32" defer></script>
 <script src="assets/js/landing.js?v=32" defer></script>
 <script src="assets/js/upgrade.js?v=2" defer></script>
-<script src="assets/js/campus.js?v=1" defer></script>
+<script src="assets/js/campus.js?v=2" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335" defer></script>
 <script>(function(){var t=setInterval(function(){var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){clearInterval(t);var s=document.createElement("style");s.textContent="@media(max-width:768px){.lc_text-widget,.lc_text-widget--bubble{bottom:140px!important;right:12px!important}}";w.shadowRoot.appendChild(s);}},400);setTimeout(function(){clearInterval(t)},15000);})();</script>

@@ -1,3 +1,15 @@
+<!-- Scoped brand fix: remap the legacy-blue res-* system (defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
+<style>
+.res-kicker,.res-eyebrow{color:var(--teal-deep)}
+.res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
+.res-card{border-top-color:var(--teal)}
+.res-card:hover{border-top-color:var(--teal-deep);box-shadow:0 20px 44px rgba(18,179,166,.22)}
+.res-points li::before,.res-checks li::before{background:var(--teal)}
+.res-link{color:var(--teal-deep)}
+.res-badge{color:var(--teal-deep);background:var(--teal-tint);border-color:var(--teal-soft)}
+.res-cta{background:linear-gradient(135deg,var(--petrol) 0%,var(--petrol-deep) 100%)}
+.res-cta .res-eyebrow--light{color:var(--teal-bright)}
+</style>
 <div class="page-hero">
   <div class="wrap">
     <p class="crumbs"><a href="index.html">Home</a> / See Inside a Barber School</p>
@@ -67,12 +79,12 @@
       <article class="res-card reveal">
         <h3>Ask the Students</h3>
         <p>Current students will tell you the truth about pace, support, and how much real practice they get. Their experience today is your experience tomorrow.</p>
-        <a class="res-link" href="skills-and-techniques.html">What you'll learn <span aria-hidden="true">&rarr;</span></a>
+        <a class="res-link" href="/skills-and-techniques">What you'll learn <span aria-hidden="true">&rarr;</span></a>
       </article>
       <article class="res-card reveal">
         <h3>Ask About Cost &amp; Schedule</h3>
         <p>Get the full picture: total tuition, payment plans, tools and books, and whether the schedule fits your job and family. A program that works on paper but not in your calendar isn't the right one.</p>
-        <a class="res-link" href="schedules.html">Compare schedules <span aria-hidden="true">&rarr;</span></a>
+        <a class="res-link" href="/schedules">Compare schedules <span aria-hidden="true">&rarr;</span></a>
       </article>
     </div>
   </div>
@@ -86,7 +98,7 @@
     <p>Videos are a great start, but the best way to judge a school is to visit, meet the instructors, and watch students at work. American Barber Institute &mdash; NYS-licensed since 1996 &mdash; welcomes prospective students to tour its campuses and see the 500-Hour Master Barber Program up close.</p>
     <div class="res-cta-btns">
       <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=virtual-tour">Book a Tour at ABI &rarr;</a>
-      <a class="btn btn-ghost btn-lg" href="how-to-get-started.html">How to Get Started</a>
+      <a class="btn btn-ghost btn-lg" href="/how-to-get-started">How to Get Started</a>
     </div>
   </div>
 </section>

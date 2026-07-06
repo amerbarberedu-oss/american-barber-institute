@@ -1,3 +1,47 @@
+<!-- ABI scoped helper styles for undefined hub components (no shared CSS touched) -->
+<style>
+/* Missing helper components defined in the barbicide-teal brand, scoped to .abi-hub. */
+.abi-hub .answer-box{background:var(--teal-tint);border:1px solid var(--teal-soft);border-left:4px solid var(--teal);border-radius:var(--radius-lg);padding:var(--sp-6) var(--sp-7);box-shadow:var(--shadow-sm);max-width:900px;margin-inline:auto}
+.abi-hub .answer-box .kicker{color:var(--teal-deep)}
+.abi-hub .answer-box h2{margin:.4rem 0 .6rem}
+.abi-hub .answer-box .lead{color:var(--text-dark);margin:0}
+/* Card grid + link cards (override landing.css !important blue-card treatment) */
+.abi-hub .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--sp-5);margin-top:var(--sp-6)}
+.abi-hub .card-grid .card{display:flex;flex-direction:column;background:#fff!important;border:1px solid var(--teal-soft)!important;border-top:4px solid var(--teal)!important;border-radius:var(--radius-lg)!important;padding:var(--sp-6);text-decoration:none;box-shadow:var(--shadow-sm)!important;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.abi-hub .card-grid .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)!important;border-top-color:var(--teal-deep)!important}
+.abi-hub .card-grid .card h3{color:var(--ink);font-size:1.18rem;margin:0 0 .55rem}
+.abi-hub .card-grid .card p{color:var(--text-mute);line-height:1.6;margin:0 0 1rem;flex:1}
+.abi-hub .card-link{margin-top:auto;align-self:flex-start;font-weight:700;color:var(--teal-deep);font-size:.92rem}
+/* Author / reviewed-by box */
+.abi-hub .author-box{background:var(--teal-tint);border:1px solid var(--teal-soft);border-radius:var(--radius-lg);padding:var(--sp-6);box-shadow:var(--shadow-sm)}
+.abi-hub .author-box .kicker{color:var(--teal-deep)}
+.abi-hub .author-box p{color:var(--text-mute);line-height:1.6}
+.abi-hub .author-box .muted{font-size:.82rem;color:var(--ink-soft)}
+.abi-hub .author-box a{color:var(--teal-deep);font-weight:600}
+/* Styled data / comparison tables */
+.abi-hub .data-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);font-size:.95rem}
+.abi-hub .data-table caption{caption-side:top;text-align:left;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-deep);font-weight:700;padding:0 0 10px}
+.abi-hub .data-table thead th{background:var(--teal-deep);color:#fff;text-align:left;padding:14px 18px;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.abi-hub .data-table td{padding:14px 18px;border-top:1px solid #e4f1ef;color:var(--text-dark);vertical-align:top;line-height:1.55}
+.abi-hub .data-table tbody tr:nth-child(even){background:var(--teal-tint)}
+/* Stat strip */
+.abi-hub .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);max-width:940px;margin:0 auto}
+@media (max-width:640px){.abi-hub .stat-strip{grid-template-columns:1fr 1fr}}
+.abi-hub .stat-strip .stat-cell{background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);padding:var(--sp-5) var(--sp-4);text-align:center;box-shadow:var(--shadow-sm)}
+.abi-hub .stat-strip .stat-cell b{display:block;font-family:var(--font-display,inherit);font-size:1.7rem;color:var(--teal-deep);line-height:1.1}
+.abi-hub .stat-strip .stat-cell span{display:block;margin-top:.35rem;font-size:.82rem;color:var(--text-mute);letter-spacing:.02em}
+/* Styled FAQ (details) */
+.abi-hub .faq{max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem}
+.abi-hub .faq details{background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm)}
+.abi-hub .faq details[open]{box-shadow:var(--shadow-md);border-color:var(--teal)}
+.abi-hub .faq summary{font-weight:700;cursor:pointer;padding:18px 0;color:var(--ink);list-style:none;position:relative;padding-right:34px}
+.abi-hub .faq summary::-webkit-details-marker{display:none}
+.abi-hub .faq summary::after{content:"+";position:absolute;right:2px;top:22px;font-size:1.4rem;color:var(--teal-deep);font-weight:400;line-height:1}
+.abi-hub .faq details[open] summary::after{content:"–"}
+.abi-hub .faq details p{padding:0 0 18px;margin:0;color:var(--text-mute);line-height:1.65}
+.abi-hub .faq details a{color:var(--teal-deep);font-weight:600}
+</style>
+
 <div class="page-hero">
   <div class="wrap">
     <p class="crumbs"><a href="index.html">Home</a> / Tuition &amp; Funding</p>
@@ -6,7 +50,19 @@
   </div>
 </div>
 
+<div class="abi-hub">
 <section class="reveal">
+  <div class="wrap">
+    <div class="stat-strip">
+      <div class="stat-cell"><b>500</b><span>licensed hours</span></div>
+      <div class="stat-cell"><b>~4 mo</b><span>full-time</span></div>
+      <div class="stat-cell"><b>$4,600&ndash;$5,600</b><span>ABI plan tuition</span></div>
+      <div class="stat-cell"><b>3</b><span>funding paths</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt reveal">
   <div class="wrap">
     <div class="answer-box tilt-3d">
       <p class="kicker">The Short Answer</p>
@@ -16,7 +72,7 @@
   </div>
 </section>
 
-<section class="alt reveal">
+<section class="reveal">
   <div class="wrap">
     <p class="kicker">How Tuition Is Structured</p>
     <h2>Understanding the "Plan" Concept</h2>
@@ -61,7 +117,7 @@
         <p>Realistic price ranges, what drives the differences, and how to compare programs without getting surprised by hidden fees.</p>
         <span class="card-link">See cost ranges →</span>
       </a>
-      <a class="card tilt-3d" href="page-what-barber-training-costs-ny.html">
+      <a class="card tilt-3d" href="/guides/what-barber-school-costs">
         <h3>What Your Training Will Actually Cost</h3>
         <p>A plain-English decision walkthrough: add up tuition, tools, and fees, then subtract the funding you qualify for.</p>
         <span class="card-link">Run the numbers →</span>
@@ -74,7 +130,8 @@
   <div class="wrap">
     <p class="kicker">Common Questions</p>
     <h2>Tuition &amp; Funding FAQ</h2>
-    <details>
+    <div class="faq">
+    <details open>
       <summary>Can I pay for barber school weekly instead of all at once?</summary>
       <p>Yes. Most New York barber schools, including ABI, offer payment plans that spread tuition across the length of the program rather than requiring the full amount upfront. Confirm the specific weekly or monthly terms with the school when you enroll.</p>
     </details>
@@ -84,12 +141,13 @@
     </details>
     <details>
       <summary>Are barber school tools included in tuition?</summary>
-      <p>It varies by school. Some bundle a starter kit into tuition; others sell tools separately or expect you to bring your own. Our <a href="guides/barber-starter-kit.html">beginner's tool kit guide</a> explains what you'll need either way.</p>
+      <p>It varies by school. Some bundle a starter kit into tuition; others sell tools separately or expect you to bring your own. Our <a href="/guides/beginner-barber-tool-kit">beginner's tool kit guide</a> explains what you'll need either way.</p>
     </details>
     <details>
       <summary>How much does the New York license itself cost?</summary>
       <p>State application and examination fees are paid to New York — separate from school tuition. Current amounts are published by the New York Department of State, Division of Licensing Services.</p>
     </details>
+    </div>
   </div>
 </section>
 
@@ -101,7 +159,7 @@
       <p class="lead">This hub gives you the general landscape. For American Barber Institute's exact current plans, deposits, weekly terms, and which funding it accepts, go straight to the source — ABI's admissions team can confirm your real cost in a short conversation.</p>
       <div class="hero-ctas">
         <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=tuition-and-funding">Train at ABI →</a>
-        <a class="btn btn-ghost btn-lg" href="guides-index.html">Browse all guides</a>
+        <a class="btn btn-ghost btn-lg" href="/guides">Browse all guides</a>
       </div>
     </div>
     <div>
@@ -114,3 +172,4 @@
     </div>
   </div>
 </section>
+</div><!-- /.abi-hub -->

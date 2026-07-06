@@ -116,6 +116,26 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   --max-w: 1180px;
   --radius: 14px;
   --shadow: 0 22px 60px -26px rgba(14, 77, 92, .42);
+
+  /* ---- SPACING SCALE (8pt base, editorial rhythm) ----
+     Consumed by the shell (header/footer) and section padding utilities. */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  /* Section vertical rhythm — generous, fluid, consistent */
+  --section-pad: clamp(3.5rem, 6vw, 6rem);
+  --shell-max: 1240px;               /* shared content max-width for shell */
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 2px 8px rgba(14, 77, 92, .08);
+  --shadow-md: 0 10px 30px -12px rgba(14, 77, 92, .22);
+  --shadow-lg: 0 24px 60px -22px rgba(14, 77, 92, .34);
 }
 
 /* ============================================================
