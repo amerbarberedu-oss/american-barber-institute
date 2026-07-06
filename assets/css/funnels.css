@@ -491,8 +491,8 @@ body.lf-page--brnx-es {
 .lf-hero__sub { color: #e8eaf2; font-size: clamp(1rem, 1.5vw, 1.18rem); margin: 1.1rem 0 1.4rem; max-width: 36rem; }
 .lf-hero__sub b { color: #fff; }
 
-/* hero chips */
-.lf-features { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1.4rem; }
+/* hero chips — DESKTOP: 3-column uniform grid to match website .hx-chips alignment (v56) */
+.lf-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; max-width: 46rem; margin-bottom: 1.4rem; }
 .lf-feature {
   display: inline-flex; align-items: center; gap: .5rem;
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35);
@@ -1329,12 +1329,16 @@ body.lf-page--brnx-es {
   .lf-hero__sub { color: rgba(255,255,255,.86); }
   .lf-hero__sub b { color: #fff; }
 
-  /* Feature chips: dark pill cards with circular icon background */
+  /* Feature chips: dark pill cards — mobile stacks 1-col (reset display so desktop
+     grid doesn't cascade into mobile) */
   .lf-features {
+    display: flex;
+    grid-template-columns: none;
     flex-direction: column;
     gap: .55rem;
     align-items: stretch;
     margin: .2rem 0 1.2rem;
+    max-width: none;
   }
   .lf-feature {
     display: flex;

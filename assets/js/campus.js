@@ -167,9 +167,37 @@ function initDropdowns(){
   });
 }
 
+// Programs-page detection helpers (per-campus routing)
+function isProgramsPage(){var p=location.pathname;return /\/programs\//.test(p)||/\/programs$/.test(p);}
+function isBronxProgramsPage(){var p=location.pathname;return /\/programs\/bronx(\.html)?$/.test(p)||/\/500-hour-master-barber-bronx/.test(p);}
+function isManhattanProgramsPage(){var p=location.pathname;return /\/programs\/manhattan(\.html)?$/.test(p)||/\/programs\/500-hour-master-barber(\.html)?$/.test(p)||/\/50-hour-barber-refresher/.test(p);}
+
+// Rewrite any generic "Programs" nav link to the campus-specific programs page.
+// Runs on every campus apply + init so nav always matches the visitor's campus.
+function rewriteProgramsLinks(campus){
+  var target=campus==="bronx"?"bronx.html":"manhattan.html";
+  var links=document.querySelectorAll('a[href]');
+  links.forEach(function(a){
+    var href=a.getAttribute("href")||"";
+    var raw=href.split("?")[0].split("#")[0];
+    // Match /programs, /programs/, /programs/index.html (absolute or relative)
+    if(/(^|\/)programs\/?(index\.html)?$/.test(raw)){
+      var base=raw.replace(/(index\.html)?$/, "").replace(/\/$/, "");
+      var newHref=base+"/"+target;
+      if(href.charAt(0)==="/"&&newHref.charAt(0)!=="/") newHref="/"+newHref;
+      a.setAttribute("href", newHref);
+      a.setAttribute("data-abi-programs-rewritten", campus);
+    }
+  });
+}
+
 function init(){
   // Language segment: position glider from the active option, no logic needed.
   syncSeg(document.querySelector(".seg-lang"));
+
+  // Programs pages set campus preference to match the page they're on.
+  if(isBronxProgramsPage()){setCampus("bronx");}
+  else if(isManhattanProgramsPage()){setCampus("manhattan");}
 
   // Campus segment.
   var seg=document.querySelector(".seg-campus");
@@ -177,23 +205,37 @@ function init(){
     // Fixed context (Bronx / Haircuts): render the page's own numbers, lock switcher.
     setCampus(pageCampus()==="bronx"?"bronx":"manhattan");
     applyCampus(pageCampus());
+    rewriteProgramsLinks(pageCampus());
   }else{
     var campus=getCampus();
     applyCampus(campus);
+    rewriteProgramsLinks(campus);
     // Live switching on neutral/Manhattan pages.
     if(seg){
       seg.addEventListener("click",function(e){
         var opt=e.target.closest(".seg-opt");
         if(!opt) return;
         var to=opt.getAttribute("data-campus-opt");
+        // On a /programs/* page, switching campus goes straight to the OTHER
+        // campus's programs page instead of the campus home.
+        var esPrefix=/\/es\//.test(location.pathname)?"/es":"";
         if(to==="bronx"){
-          // Bronx segment navigates to the dedicated /bronx experience.
           setCampus("bronx");
+          if(isProgramsPage()){
+            e.preventDefault();
+            location.href=esPrefix+"/programs/bronx.html";
+            return;
+          }
           return; // let the link navigate to /bronx
         }
         e.preventDefault();
         setCampus("manhattan");
+        if(isProgramsPage()){
+          location.href=esPrefix+"/programs/manhattan.html";
+          return;
+        }
         applyCampus("manhattan");
+        rewriteProgramsLinks("manhattan");
       });
     }
   }

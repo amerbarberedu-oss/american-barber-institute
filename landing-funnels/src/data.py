@@ -21,6 +21,8 @@ MANHATTAN = {
     "addr_full_en": "48 West 39th Street, New York, NY 10018",
     "addr_full_es": "48 West 39th Street, Nueva York, NY 10018",
     "latlng": (40.7522, -73.9849),
+    # Client-provided short URL for Manhattan Google Business Profile
+    "google_listing_url": "https://maps.app.goo.gl/42UjD6bFQ65NEt1E7",
 }
 BRONX = {
     "slug": "bronx",
@@ -31,6 +33,8 @@ BRONX = {
     "addr_full_en": "121 Westchester Square, Bronx, NY 10461",
     "addr_full_es": "121 Westchester Square, Bronx, NY 10461",
     "latlng": (40.8401, -73.8421),
+    # Client-provided short URL for Bronx Google Business Profile
+    "google_listing_url": "https://maps.app.goo.gl/9TJJh8ehUjSZ8kcaA",
 }
 
 # ─── page configs (one per landing page) ─────────────────────────────
