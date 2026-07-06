@@ -156,7 +156,7 @@
   font-size: clamp(.82rem, 3.4vw, 1.05rem);
 }
 .lf-cd__line--date .lf-cd__label { color: #fff; opacity: .88; font-weight: 600; }
-.lf-cd__line--date .lf-cd__date  { color: #ffd470; }
+.lf-cd__line--date .lf-cd__date  { color: var(--lf-hi); }
 .lf-cd__line--sub {
   font-weight: 500;
   font-size: clamp(.72rem, 2.95vw, .92rem);
@@ -179,18 +179,18 @@
    gradient so the FAB always renders the brand blue. */
 :root { --blue: #1b3bd9; --blue-deep: #0f2aa5; }
 .abibot-fab {
-  background: linear-gradient(135deg, #1b3bd9, #3a4ff0) !important;
-  color: #fff !important;
-  box-shadow: 0 12px 32px rgba(27, 47, 217, .50) !important;
+  background: linear-gradient(135deg, var(--lf-accent, #1b3bd9), var(--lf-accent-dark, #0f2aa5)) !important;
+  color: var(--lf-on-accent, #fff) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .32) !important;
 }
-.abibot-fab:hover { box-shadow: 0 16px 40px rgba(27, 47, 217, .60) !important; }
+.abibot-fab:hover { box-shadow: 0 16px 40px rgba(0, 0, 0, .42) !important; }
 .abibot-fab-label, .abibot-fab svg { color: #fff !important; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body.lf-page {
   margin: 0;
   font-family: 'Poppins','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   color: var(--lf-ink, #0a1020);
-  background: #ffffff;
+  background: var(--lf-bg, #ffffff);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -208,7 +208,8 @@ body.lf-page {
   --lf-bg:         #ffffff;
   --lf-bg-alt:     #f6f9ff;
 
-  /* universal "What You Get" sky-blue secondary accent */
+  /* secondary "cool" accent used on dark bands / feature icons / stats block.
+     Overridden per theme so every dark surface picks up its own palette. */
   --lf-sky:        #5fb8ff;
   --lf-sky-soft:   #eaf4ff;
   --lf-sky-deep:   #1b3bd9;
@@ -218,6 +219,16 @@ body.lf-page {
   --lf-accent-dark: #0f2aa5;
   --lf-accent-soft: #e7ecff;
   --lf-on-accent:   #ffffff;
+
+  /* deep tinted surface for hero band, mobile hero, video/reel sections,
+     and the sticky CTA bar — overridden per theme for a distinct dark tone */
+  --lf-ink-deep:      #0a1226;
+  --lf-ink-deep-2:    #10203a;   /* slightly lighter panel on the dark band */
+  --lf-on-deep-muted: rgba(255,255,255,.82);
+
+  /* bright highlight for the countdown date on the dark hero surface —
+     tuned per theme so it always pops against that funnel's dark band */
+  --lf-hi:            #ffd470;
 
   /* shadows */
   --lf-shadow-sm: 0 1px 2px rgba(15,30,80,.06), 0 4px 12px rgba(15,30,80,.05);
@@ -231,38 +242,107 @@ body.lf-page {
   --lf-r-pill: 999px;
 }
 
-/* Manhattan EN — deep gold (premium / established) */
+/* ═══════════════════════════════════════════════════════════════════════
+   PER-FUNNEL PALETTES — each landing page owns a fully distinct color world.
+   Every theme sets: primary (accent) + accent-dark + soft wash + on-accent,
+   a warm/cool page background tint (bg / bg-alt / line), a matching deep
+   dark surface (ink-deep) for the hero + reel + sticky bars, and a cool
+   secondary (sky) so the dark bands adopt the SAME palette instead of navy.
+   All pairings verified for WCAG AA text contrast.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · Manhattan EN — TEAL / PETROL ───────────────────────────────── */
 body.lf-page--mhtn-en {
-  --lf-accent: #c89c2a;
-  --lf-accent-dark: #9d7918;
-  --lf-accent-soft: #fbf3dd;
-  --lf-on-accent: #1a1205;
+  --lf-accent:      #0E4D5C;   /* deep petrol-teal primary */
+  --lf-accent-dark: #093843;   /* darker for gradients / hover */
+  --lf-accent-soft: #DCF1EF;   /* soft teal wash */
+  --lf-on-accent:   #ffffff;
+
+  --lf-ink:         #08262C;   /* petrol-black ink */
+  --lf-muted:       #33565E;
+  --lf-soft-ink:    #5E7C82;
+  --lf-line:        #CFE6E4;
+  --lf-bg:          #F2FAF8;   /* warm-teal porcelain */
+  --lf-bg-alt:      #E3F3F0;   /* teal wash alt band */
+
+  --lf-sky:         #12B3A6;   /* bright teal accent */
+  --lf-sky-soft:    #DAF4F0;
+  --lf-sky-deep:    #0E4D5C;
+
+  --lf-ink-deep:    #062A33;   /* deep petrol hero surface */
+  --lf-ink-deep-2:  #0C3B45;
+  --lf-hi:          #5FE9DC;   /* bright mint highlight */
 }
-/* Manhattan ES — emerald green (start / GO signal) */
+/* ── 2 · Manhattan ES — AMBER / TERRACOTTA ──────────────────────────── */
 body.lf-page--mhtn-es {
-  --lf-accent: #0e8f62;
-  --lf-accent-dark: #0a6e4b;
-  --lf-accent-soft: #e8f7f1;
-  --lf-on-accent: #ffffff;
+  --lf-accent:      #B45309;   /* burnt amber primary */
+  --lf-accent-dark: #8A3D05;
+  --lf-accent-soft: #FBEAD5;   /* soft cream-amber wash */
+  --lf-on-accent:   #ffffff;
+
+  --lf-ink:         #3A1D06;   /* espresso-brown ink */
+  --lf-muted:       #6B4A2E;
+  --lf-soft-ink:    #94745A;
+  --lf-line:        #EAD9C2;
+  --lf-bg:          #FBF3E9;   /* cream base */
+  --lf-bg-alt:      #F5E7D4;   /* deeper cream alt band */
+
+  --lf-sky:         #DC2626;   /* terracotta-red accent */
+  --lf-sky-soft:    #FBE3DC;
+  --lf-sky-deep:    #B45309;
+
+  --lf-ink-deep:    #3A1D06;   /* espresso hero surface */
+  --lf-ink-deep-2:  #55300F;
+  --lf-hi:          #FBBF24;   /* warm gold highlight */
 }
-/* Bronx EN — vivid orange (energy / urgency) */
+/* ── 3 · Bronx EN — INDIGO / VIOLET ─────────────────────────────────── */
 body.lf-page--brnx-en {
-  --lf-accent: #e85d3a;
-  --lf-accent-dark: #bf4623;
-  --lf-accent-soft: #fdeee6;
-  --lf-on-accent: #ffffff;
+  --lf-accent:      #3730A3;   /* deep indigo primary */
+  --lf-accent-dark: #26216F;
+  --lf-accent-soft: #E6E4F7;   /* soft indigo wash */
+  --lf-on-accent:   #ffffff;
+
+  --lf-ink:         #1B1745;   /* indigo-black ink */
+  --lf-muted:       #494370;
+  --lf-soft-ink:    #6F6A93;
+  --lf-line:        #DEDCF0;
+  --lf-bg:          #F6F5FC;   /* cool porcelain */
+  --lf-bg-alt:      #F1F0FB;   /* cool violet-tinted alt band */
+
+  --lf-sky:         #7C3AED;   /* vivid violet accent */
+  --lf-sky-soft:    #EEE6FB;
+  --lf-sky-deep:    #3730A3;
+
+  --lf-ink-deep:    #1E1A52;   /* deep indigo hero surface */
+  --lf-ink-deep-2:  #2A2568;
+  --lf-hi:          #C4B5FD;   /* light lavender highlight */
 }
-/* Bronx ES — royal blue (trust / calm) */
+/* ── 4 · Bronx ES — CRIMSON / GOLD ──────────────────────────────────── */
 body.lf-page--brnx-es {
-  --lf-accent: #1b3bd9;
-  --lf-accent-dark: #0f2aa5;
-  --lf-accent-soft: #e7ecff;
-  --lf-on-accent: #ffffff;
+  --lf-accent:      #9F1239;   /* crimson primary */
+  --lf-accent-dark: #760C2A;
+  --lf-accent-soft: #F8DCE3;   /* soft blush wash */
+  --lf-on-accent:   #ffffff;
+
+  --lf-ink:         #3D0A1A;   /* deep wine ink */
+  --lf-muted:       #6E374A;
+  --lf-soft-ink:    #96667A;
+  --lf-line:        #F0D3DA;
+  --lf-bg:          #FDF5F6;   /* blush porcelain */
+  --lf-bg-alt:      #FCF0F2;   /* blush alt band */
+
+  --lf-sky:         #B45309;   /* gold / amber accent */
+  --lf-sky-soft:    #F7E7D2;
+  --lf-sky-deep:    #9F1239;
+
+  --lf-ink-deep:    #3A0C1D;   /* deep wine hero surface */
+  --lf-ink-deep-2:  #55142B;
+  --lf-hi:          #FCD34D;   /* soft gold highlight */
 }
 
 /* ───── layout primitives ───── */
 .lf-wrap { width: min(1240px, 92%); margin-inline: auto; }
-.lf-section { padding: 3.4rem 0; }
+.lf-section { padding: 3.4rem 0; background: var(--lf-bg); }
 .lf-section--tight { padding: 2rem 0; }
 .lf-section--alt { background: var(--lf-bg-alt); }
 .lf-section__head { text-align: center; max-width: 720px; margin: 0 auto 2rem; }
@@ -388,8 +468,10 @@ body.lf-page--brnx-es {
 /* ───── hero ───── */
 .lf-hero {
   position: relative; overflow: hidden;
-  /* The photo now lives in .lf-mhero above; this band holds the form + details on a clean dark surface. */
-  background: #0a1226;
+  /* The photo now lives in .lf-mhero above; this band holds the form + details on a clean, themed dark surface. */
+  background:
+    radial-gradient(120% 90% at 12% 0%, var(--lf-ink-deep-2) 0%, var(--lf-ink-deep) 58%),
+    var(--lf-ink-deep);
   color: #fff;
   padding: 3.4rem 0;
 }
@@ -559,12 +641,12 @@ body.lf-page--brnx-es {
 @media (min-width: 1024px) { .lf-showcase { grid-template-columns: repeat(3, 1fr); } }
 .lf-clip {
   position: relative;
-  background: #141a2e; border-radius: var(--lf-r-md); overflow: hidden;
+  background: var(--lf-ink-deep); border-radius: var(--lf-r-md); overflow: hidden;
   aspect-ratio: 16 / 11;
   box-shadow: var(--lf-shadow-sm);
 }
 .lf-clip video {
-  width: 100%; height: 100%; object-fit: cover; background: #1a1f2e;
+  width: 100%; height: 100%; object-fit: cover; background: var(--lf-ink-deep-2);
   filter: brightness(1.04) saturate(1.03);
 }
 .lf-clip__cap {
@@ -590,12 +672,12 @@ body.lf-page--brnx-es {
   position: relative;
   aspect-ratio: 9 / 16;
   border-radius: var(--lf-r-md); overflow: hidden;
-  background: #141a2e; box-shadow: 0 14px 40px rgba(0,0,0,.18);
+  background: var(--lf-ink-deep); box-shadow: 0 14px 40px rgba(0,0,0,.18);
   max-width: 360px; margin: 0 auto;
 }
 .lf-reel__media video {
   width: 100%; height: 100%; object-fit: contain;
-  background: #1a1f2e;
+  background: var(--lf-ink-deep-2);
   filter: brightness(1.04) saturate(1.02);
 }
 .lf-reel__copy {
@@ -882,7 +964,7 @@ body.lf-page--brnx-es {
 .lf-clip__video {
   width: 100%; height: 100%;
   object-fit: cover;
-  background: #1a1f2e;
+  background: var(--lf-ink-deep-2);
 }
 .lf-clip__play {
   position: absolute; top: 50%; left: 50%;
@@ -999,16 +1081,17 @@ body.lf-page--brnx-es {
 /* H1 colored midline ("Barber Program.") — accent tint, full inherit weight */
 .lf-h1__b {
   display: inline;
-  color: var(--lf-accent);
+  color: var(--lf-hi);
 }
-/* H1 script tagline ("Start Today.") — italic serif, accented, underlined */
+/* H1 script tagline ("Start Today.") — italic serif, accented, underlined.
+   Only ever renders on the dark hero band, so use the bright highlight. */
 .lf-h1__script {
   display: inline-block;
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
   font-weight: 500;
-  color: var(--lf-accent);
-  border-bottom: 3px solid var(--lf-accent);
+  color: var(--lf-hi);
+  border-bottom: 3px solid var(--lf-hi);
   padding-bottom: 2px;
   line-height: 1;
 }
@@ -1234,9 +1317,9 @@ body.lf-page--brnx-es {
 /* ─ Mobile dark theme: hero, features, form, voices all dark navy ─ */
 @media (max-width: 768px) {
   /* Continuous dark surface from hero through Student Voices */
-  .lf-mhero { background: #0a1226; }
+  .lf-mhero { background: var(--lf-ink-deep); }
   .lf-hero {
-    background: #0a1226;
+    background: var(--lf-ink-deep);
     color: #fff;
     padding: 1.6rem 0 1.4rem;
   }
@@ -1273,8 +1356,8 @@ body.lf-page--brnx-es {
     width: 36px; height: 36px;
     padding: 8px;
     border-radius: 50%;
-    background: rgba(91, 142, 255, .22);
-    color: #9bc1ff;
+    background: color-mix(in srgb, var(--lf-sky) 26%, transparent);
+    color: color-mix(in srgb, var(--lf-sky) 62%, #ffffff);
   }
 
   /* Countdown card on dark theme */
@@ -1289,7 +1372,7 @@ body.lf-page--brnx-es {
   }
   .lf-cd__h, .lf-cd__sub { color: #fff; }
   .lf-cd__label { color: rgba(255,255,255,.7); font-weight: 600; }
-  .lf-cd__date { color: #ffd470; }
+  .lf-cd__date { color: var(--lf-hi); }
   .lf-cd__cell {
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.14);
@@ -1325,8 +1408,8 @@ body.lf-page--brnx-es {
   .lf-form__row--2 > * { margin: 0; }
 
   /* Student Voices section sits on dark too */
-  .lf-page .lf-section:has(.lf-reel) { background: #0a1226; color: #fff; }
-  .lf-page .lf-section:has(.lf-reel) .lf-eyebrow { color: #9bc1ff; }
+  .lf-page .lf-section:has(.lf-reel) { background: var(--lf-ink-deep); color: #fff; }
+  .lf-page .lf-section:has(.lf-reel) .lf-eyebrow { color: color-mix(in srgb, var(--lf-sky) 62%, #ffffff); }
   .lf-page .lf-section:has(.lf-reel) .lf-h2 { color: #fff; }
   .lf-page .lf-section:has(.lf-reel) .lf-lead { color: rgba(255,255,255,.78); }
 
@@ -1384,7 +1467,7 @@ body.lf-page--brnx-es {
   min-height: 600px;
   max-height: 860px;
   overflow: hidden;
-  background: #0a1020;
+  background: var(--lf-ink-deep, #0a1020);
   isolation: isolate;
 }
 .lf-mhero__bg {
@@ -1399,9 +1482,9 @@ body.lf-page--brnx-es {
   position: absolute; inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(10, 16, 32, .00) 0%,
-      rgba(10, 16, 32, .08) 45%,
-      rgba(10, 16, 32, .60) 100%);
+      color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%,
+      color-mix(in srgb, var(--lf-ink-deep) 10%, transparent) 45%,
+      color-mix(in srgb, var(--lf-ink-deep) 64%, transparent) 100%);
   z-index: 1;
 }
 .lf-mhero__copy {
@@ -1440,7 +1523,7 @@ body.lf-page--brnx-es {
 }
 .lf-mhero__h1 span {
   display: block;
-  color: var(--lf-accent);
+  color: var(--lf-hi);
   font-weight: 600;
 }
 .lf-mhero__h1 em {
@@ -1450,8 +1533,8 @@ body.lf-page--brnx-es {
   font-weight: 500;
   font-size: .82em;
   margin-top: .25em;
-  color: var(--lf-accent);
-  border-bottom: 3px solid var(--lf-accent);
+  color: var(--lf-hi);
+  border-bottom: 3px solid var(--lf-hi);
   padding-bottom: 2px;
   line-height: 1;
   text-shadow: 0 2px 16px rgba(0, 0, 0, .55);
@@ -1473,7 +1556,7 @@ body.lf-page--brnx-es {
     height: auto;
     min-height: 66.2vw;
     max-height: none;
-    background: #0a1226;
+    background: var(--lf-ink-deep);
   }
   .lf-mhero__bg {
     top: 0; bottom: auto;
@@ -1485,8 +1568,8 @@ body.lf-page--brnx-es {
     top: 0; bottom: auto;
     height: 66.4vw;
     background:
-      radial-gradient(130% 90% at 15% 100%, rgba(5,8,17,.94) 0%, rgba(5,8,17,.6) 45%, rgba(5,8,17,0) 75%),
-      linear-gradient(180deg, rgba(6,9,18,.05) 0%, rgba(6,9,18,.02) 34%, rgba(6,9,18,.55) 62%, rgba(6,9,18,.94) 86%, #0a1226 100%);
+      radial-gradient(130% 90% at 15% 100%, color-mix(in srgb, var(--lf-ink-deep) 94%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 60%, transparent) 45%, transparent 75%),
+      linear-gradient(180deg, color-mix(in srgb, var(--lf-ink-deep) 5%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 2%, transparent) 34%, color-mix(in srgb, var(--lf-ink-deep) 55%, transparent) 62%, color-mix(in srgb, var(--lf-ink-deep) 94%, transparent) 86%, var(--lf-ink-deep) 100%);
   }
   .lf-mhero__copy {
     position: relative;
@@ -1516,7 +1599,7 @@ body.lf-page--brnx-es {
     left: 0; right: 0; bottom: 0;
     z-index: 60;
     padding: .65rem .7rem calc(.65rem + env(safe-area-inset-bottom, 0px));
-    background: #0c1424;
+    background: var(--lf-ink-deep);
     border-top: 1px solid rgba(255, 255, 255, .08);
     box-shadow: 0 -8px 24px rgba(0, 0, 0, .25);
   }
@@ -1539,15 +1622,15 @@ body.lf-page--brnx-es {
   .lf-mcta__btn:active { transform: scale(.97); }
   .lf-mcta__btn svg { width: 16px; height: 16px; flex: 0 0 auto; }
   .lf-mcta__btn--call {
-    background: #0e1422;
+    background: var(--lf-ink-deep-2);
     border-color: rgba(255, 255, 255, .22);
   }
   .lf-mcta__btn--text {
-    background: #1b3bd9;
+    background: var(--lf-sky-deep);
   }
   .lf-mcta__btn--apply {
-    background: #d4a83b;
-    color: #1a1205;
+    background: var(--lf-accent);
+    color: var(--lf-on-accent);
     font-weight: 800;
   }
   /* Hide the floating chat bubble while the sticky bar is up (mobile only) */

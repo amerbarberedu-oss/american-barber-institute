@@ -64,7 +64,7 @@
 
   /* ---------- Card 3D tilt + glare ---------- */
   if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.card').forEach(function (card) {
+    document.querySelectorAll('.card, .ed-card, .tilt').forEach(function (card) {
       var glare = document.createElement('span');
       glare.className = 'glare';
       card.appendChild(glare);

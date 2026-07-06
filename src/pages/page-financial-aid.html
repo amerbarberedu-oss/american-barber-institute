@@ -1,193 +1,162 @@
-<!-- ABI teal re-skin for the res-* funding-guide system (scoped; no shared CSS touched) -->
-<style>
-/* Re-tint the res-* guide system from blue to the barbicide-teal brand. Scoped to .abi-res. */
-.abi-res .res-hero{background:linear-gradient(135deg,var(--teal-deep) 0%,var(--ink) 100%);position:relative;overflow:hidden}
-.abi-res .res-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(760px 380px at 82% -12%, rgba(47,211,196,.28), transparent 62%);pointer-events:none}
-.abi-res .res-hero .wrap{position:relative;z-index:1}
-.abi-res .res-hero .crumbs{color:var(--teal-soft)}
-.abi-res .res-hero .crumbs a{color:#fff}
-.abi-res .res-kicker{color:var(--teal-deep);background:#fff}
-.abi-res .res-hero-sub,.abi-res .res-cta p{color:#eafaf8}
-.abi-res .res-stat{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28)}
-.abi-res .res-stat span{color:var(--teal-soft)}
-.abi-res .res-sec--alt{background:linear-gradient(180deg,var(--teal-tint) 0%,#dcf3f0 100%)}
-.abi-res .res-eyebrow{color:var(--teal-deep)}
-.abi-res .res-head h2,.abi-res .res-card h3{color:var(--ink)}
-.abi-res .res-lead{color:var(--text-mute)}
-.abi-res .res-lead a,.abi-res .res-link{color:var(--teal-deep)}
-.abi-res .res-card{border-color:var(--teal-soft);border-top-color:var(--teal);box-shadow:var(--shadow-sm)}
-.abi-res .res-card:hover{box-shadow:var(--shadow-lg);border-top-color:var(--teal-deep)}
-.abi-res .res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
-.abi-res .res-points li::before,.abi-res .res-checks li::before{background:var(--teal)}
-.abi-res .res-card--list h3{border-bottom-color:var(--teal-soft)}
-.abi-res .res-cta{background:linear-gradient(135deg,var(--teal-deep) 0%,var(--ink) 100%)}
-.abi-res .res-cta .res-eyebrow--light{color:var(--teal-soft)}
-/* Direct-answer callout box (AEO) */
-.abi-res .answer-box{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);border-left:4px solid var(--teal-bright);border-radius:var(--radius-lg);padding:var(--sp-5) var(--sp-6);max-width:760px;box-shadow:var(--shadow-md);backdrop-filter:blur(4px)}
-.abi-res .res-hero .answer-box p{color:#eafaf8;margin:0;font-size:1.05rem;line-height:1.7}
-.abi-res .res-hero .answer-box strong{color:#fff}
-.abi-res .res-hero .answer-box a{color:var(--teal-soft);font-weight:600}
-/* Styled data/comparison tables */
-.abi-res .data-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);font-size:.95rem}
-.abi-res .data-table thead th{background:var(--teal-deep);color:#fff;text-align:left;padding:14px 18px;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
-.abi-res .data-table td{padding:14px 18px;border-top:1px solid #e4f1ef;color:var(--text-dark);vertical-align:top;line-height:1.55}
-.abi-res .data-table tbody tr:nth-child(even){background:var(--teal-tint)}
-.abi-res .data-table a{color:var(--teal-deep);font-weight:600}
-/* Hero stat strip */
-.abi-res .res-hero-stats{margin-top:.4rem}
-/* Styled FAQ (details) */
-.abi-res .faq{max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem}
-.abi-res .faq details{background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm);transition:box-shadow .25s ease}
-.abi-res .faq details[open]{box-shadow:var(--shadow-md);border-color:var(--teal)}
-.abi-res .faq summary{font-weight:700;cursor:pointer;padding:18px 0;color:var(--ink);list-style:none;position:relative;padding-right:34px}
-.abi-res .faq summary::-webkit-details-marker{display:none}
-.abi-res .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--teal-deep);font-weight:400;line-height:1}
-.abi-res .faq details[open] summary::after{content:"–"}
-.abi-res .faq .a{padding:0 0 18px;color:var(--text-mute);line-height:1.65}
-.abi-res .faq .a a{color:var(--teal-deep);font-weight:600}
-.abi-res .res-cta-btns .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
-.abi-res .res-cta-btns .btn-ghost:hover{border-color:var(--teal-bright);color:var(--teal-bright)}
-</style>
-
-<div class="abi-res">
-<!-- ============ FUNDING GUIDE HERO ============ -->
-<section class="res-hero">
-  <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> <span>/</span> Funding Guides</p>
-    <span class="res-kicker">Cost &amp; Funding Guide · Updated 2026</span>
-    <h1>How to Pay for Barber School in New York: A 2026 Funding Guide</h1>
-    <div class="answer-box reveal">
-      <p><strong>Short answer:</strong> There are three main ways New Yorkers pay for barber training. If you have a disability that affects your ability to work, <a href="/access-vr-program">ACCES-VR</a> may cover tuition, tools and supplies. If you're a veteran, <a href="/veterans">GI Bill&reg; benefits</a> can cover all or part of tuition. Everyone else can spread tuition across weekly payment plans while they train. A 500-hour Master Barber program typically runs a few thousand dollars in tuition, and most schools let you pay as you go rather than up front.</p>
+<!-- ============ HERO (paper) ============ -->
+<section class="band band--paper">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <p class="crumbs"><a href="/">Home</a> / Financial Aid &amp; Funding</p>
+    <p class="eyebrow reveal">Cost &amp; Funding Guide</p>
+    <h1 class="display display--xl reveal">How to pay for barber school in New York.</h1>
+    <p class="lead reveal dropcap">There are three main ways New Yorkers pay for barber training. If you have a disability that affects your ability to work, ACCES-VR may cover tuition, tools, and supplies. If you're a veteran, GI Bill&reg; benefits can cover all or part of tuition. Everyone else can spread tuition across weekly payment plans while they train. A 500-hour Master Barber program runs $4,600&ndash;$5,600 in tuition at ABI, and most students pay as they go rather than up front.</p>
+    <div class="reveal" style="margin-top:var(--sp-5);display:flex;gap:.6rem;flex-wrap:wrap">
+      <span class="chip">3 Ways To Pay</span>
+      <span class="chip">Weekly Payment Plans</span>
+      <span class="chip">Benefits Accepted</span>
     </div>
-    <ul class="res-hero-stats" aria-label="Funding facts at a glance">
-      <li class="res-stat"><strong>3</strong><span>ways to pay</span></li>
-      <li class="res-stat"><strong>500</strong><span>licensed hours</span></li>
-      <li class="res-stat"><strong>$4,600+</strong><span>plan tuition</span></li>
-      <li class="res-stat"><strong>Weekly</strong><span>payment plans</span></li>
-    </ul>
   </div>
 </section>
 
-<!-- ============ WHAT IT COSTS ============ -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">The Numbers</span>
-      <h2>What Barber School Actually Costs in New York</h2>
-      <p class="res-lead">Before you compare ways to pay, it helps to know the ballpark. Barbering is far cheaper and faster than a two- or four-year degree &mdash; you're funding one 500-hour program, not years of tuition.</p>
+<!-- ============ STATS (dark) ============ -->
+<section class="band band--dark">
+  <div class="eb-wrap">
+    <div class="statgrid reveal-stagger">
+      <div class="stat"><div class="stat__num" data-count="3">3</div><div class="stat__label">ways to pay</div></div>
+      <div class="stat"><div class="stat__num" data-count="500">500</div><div class="stat__label">licensed hours</div></div>
+      <div class="stat"><div class="stat__num">$4,600+</div><div class="stat__label">plan tuition</div></div>
+      <div class="stat"><div class="stat__num">Weekly</div><div class="stat__label">payment plans</div></div>
     </div>
-    <div class="table-wrap reveal" style="overflow-x:auto">
-      <table class="data-table">
+  </div>
+</section>
+
+<!-- ============ WHAT IT COSTS (sand) ============ -->
+<section class="band band--sand">
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">The Numbers</p>
+      <h2 class="display">What barber school actually costs in New York</h2>
+      <p class="lead">Before you compare ways to pay, it helps to know the ballpark. Barbering is far cheaper and faster than a two- or four-year degree — you're funding one 500-hour program, not years of tuition.</p>
+    </div>
+    <div class="reveal" style="overflow-x:auto">
+      <table style="width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--card-border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);min-width:520px">
         <thead>
-          <tr><th>Factor</th><th>Typical range for a NY Master Barber program</th></tr>
+          <tr>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">Factor</th>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">Typical for a NY Master Barber program</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Required hours</td><td>500 licensed hours (set by New York State)</td></tr>
-          <tr><td>Time to finish</td><td>~4 months full-time · ~6&ndash;7 months on weekends</td></tr>
-          <tr><td>Tuition (plan-dependent)</td><td>Commonly in the mid-four-figures &mdash; e.g. ABI plans run $4,600&ndash;$5,600</td></tr>
-          <tr><td>Tools / kit</td><td>Often bundled or available through funding programs</td></tr>
-          <tr><td>State licensing exam</td><td>A separate NY State Board fee at the end</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">Required hours</td><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">500 licensed hours (set by New York State)</td></tr>
+          <tr style="background:var(--band-tint)"><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">Time to finish</td><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">~4 months full-time · ~6&ndash;7 months on weekends</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">Tuition (plan-dependent)</td><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">ABI plans run $4,600&ndash;$5,600, with a $500&ndash;$550 down payment</td></tr>
+          <tr style="background:var(--band-tint)"><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">Tools / kit</td><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">Often bundled or available through funding programs</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">State licensing exam</td><td style="padding:14px 18px;border-top:1px solid var(--card-border);line-height:1.5">A separate NY State Board fee at the end</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="res-lead reveal" style="margin-top:1.25rem">Because tuition is modest and the timeline is short, the real question for most people isn't <em>can I afford it?</em> &mdash; it's <em>which funding path fits me?</em> That's what the rest of this guide answers.</p>
+    <p class="reveal" style="margin-top:var(--sp-4)">Because tuition is modest and the timeline is short, the real question for most people isn't <em>can I afford it?</em> — it's <em>which funding path fits me?</em> That's what the rest of this guide answers. See the exact plans on <a href="/tuition-and-funding">tuition &amp; funding</a>.</p>
   </div>
 </section>
 
-<!-- ============ THREE WAYS TO PAY ============ -->
-<section class="res-sec res-sec--alt">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">Your Options</span>
-      <h2>Three Ways to Fund Barber Training</h2>
-      <p class="res-lead">Most New Yorkers pay for barber school through one of these three paths &mdash; and some combine them (for example, benefits for most of the cost plus a payment plan for the gap).</p>
+<!-- ============ THREE WAYS TO PAY (tint) ============ -->
+<section class="band band--tint">
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Your Options</p>
+      <h2 class="display">Three ways to fund barber training</h2>
+      <p class="lead">Most New Yorkers pay for barber school through one of these three paths — and some combine them (for example, benefits for most of the cost plus a payment plan for the gap).</p>
     </div>
-    <div class="res-grid res-grid--3">
-      <article class="res-card tilt-3d reveal">
-        <span class="res-num">1</span>
-        <h3>ACCES-VR (Vocational Rehab)</h3>
-        <p>New York State's vocational rehabilitation program supports people with a documented disability that affects their ability to work. For approved clients, it can cover tuition, tools and supplies &mdash; potentially $0 out of pocket.</p>
-        <ul class="res-points">
-          <li>Tuition, tools &amp; textbooks potentially covered</li>
-          <li>Funding, not a loan &mdash; nothing to repay</li>
-        </ul>
-        <a class="res-link" href="/access-vr-program">Read the ACCES-VR guide <span aria-hidden="true">&rarr;</span></a>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <p class="eyebrow">Option 1</p>
+        <h3>ACCES-VR (vocational rehab)</h3>
+        <p>New York State's vocational rehabilitation program supports people with a documented disability that affects their ability to work. For approved clients it can cover tuition, tools, and supplies — potentially $0 out of pocket. It's funding, not a loan, so there's nothing to repay.</p>
+        <p><a href="/access-vr-program">Read the ACCES-VR guide &rarr;</a></p>
       </article>
-      <article class="res-card tilt-3d reveal">
-        <span class="res-num">2</span>
+      <article class="ed-card tilt">
+        <p class="eyebrow">Option 2</p>
         <h3>Veterans &amp; the GI Bill&reg;</h3>
-        <p>VA education benefits &mdash; Post-9/11 (Ch. 33), VR&amp;E (Ch. 31), Montgomery (Ch. 30) and DEA (Ch. 35) &mdash; can pay for a VA-approved barbering program, in full or in part, and may extend to some dependents.</p>
-        <ul class="res-points">
-          <li>Four VA benefit chapters commonly apply</li>
-          <li>Some spouses &amp; dependents may qualify</li>
-        </ul>
-        <a class="res-link" href="/veterans">Read the GI Bill guide <span aria-hidden="true">&rarr;</span></a>
+        <p>VA education benefits — Post-9/11 (Ch. 33), VR&amp;E (Ch. 31), Montgomery (Ch. 30) and DEA (Ch. 35) — can pay for a VA-approved barbering program, in full or in part, and may extend to some spouses and dependents.</p>
+        <p><a href="/veterans">Read the GI Bill&reg; guide &rarr;</a></p>
       </article>
-      <article class="res-card tilt-3d reveal">
-        <span class="res-num">3</span>
-        <h3>Weekly Payment Plans</h3>
-        <p>No benefits? You don't have to pay everything up front. Most schools let you make a down payment at registration and pay weekly while you attend &mdash; so tuition tracks with your training instead of preceding it.</p>
-        <ul class="res-points">
-          <li>Pay as you train, not all at once</li>
-          <li>Covers any gap left by benefits, too</li>
-        </ul>
-        <a class="res-link" href="/guides/how-long-barber-school-takes">See how the timeline works <span aria-hidden="true">&rarr;</span></a>
+      <article class="ed-card tilt">
+        <p class="eyebrow">Option 3</p>
+        <h3>Weekly payment plans</h3>
+        <p>No benefits? You don't have to pay everything up front. ABI takes a $500&ndash;$550 down payment at registration, then weekly payments while you attend — so tuition tracks with your training. Payment plans also cover any gap left by benefits.</p>
+        <p><a href="/schedules">See how the timeline works &rarr;</a></p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ HOW TO CHOOSE ============ -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">Decide</span>
-      <h2>Which Funding Path Fits You?</h2>
-      <p class="res-lead">Use this quick map to find your starting point, then read the matching guide for the full details.</p>
+<!-- ============ WHICH PATH (petrol) ============ -->
+<section class="band band--petrol">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Decide</p>
+      <h2 class="display">Which funding path fits you?</h2>
+      <p class="lead">Use this quick map to find your starting point, then read the matching guide for the full details.</p>
     </div>
-    <div class="table-wrap reveal" style="overflow-x:auto">
-      <table class="data-table">
+    <div class="reveal" style="overflow-x:auto">
+      <table style="width:100%;border-collapse:separate;border-spacing:0;background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);overflow:hidden;min-width:520px">
         <thead>
-          <tr><th>If you...</th><th>Start here</th></tr>
+          <tr>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">If you…</th>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">Start here</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Have a disability affecting your ability to work</td><td><a href="/access-vr-program">ACCES-VR guide</a></td></tr>
-          <tr><td>Served in the military or are an eligible dependent</td><td><a href="/veterans">GI Bill guide</a></td></tr>
-          <tr><td>Want to start now and pay as you go</td><td>Ask any school about weekly payment plans</td></tr>
-          <tr><td>Qualify for benefits but they won't cover 100%</td><td>Combine benefits with a payment plan for the gap</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Have a disability affecting your ability to work</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);line-height:1.5"><a href="/access-vr-program">ACCES-VR guide</a></td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Served in the military or are an eligible dependent</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);line-height:1.5"><a href="/veterans">GI Bill&reg; guide</a></td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Want to start now and pay as you go</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);line-height:1.5"><a href="/tuition-and-funding">Weekly payment plans</a></td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Qualify for benefits but they won't cover 100%</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Combine benefits with a payment plan for the gap</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="res-sec res-sec--alt">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">Funding FAQs</span>
-      <h2>Paying for Barber School: Common Questions</h2>
+<!-- ============ FAQ (paper) ============ -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Funding FAQs</p>
+      <h2 class="display">Paying for barber school: common questions</h2>
     </div>
-    <div class="faq reveal">
-      <details open><summary>How much does barber school cost in New York?</summary><div class="a"><p>Tuition for a 500-hour Master Barber program is typically in the mid-four figures &mdash; for example, ABI's plans run $4,600 to $5,600 depending on the option you choose. That's far less than a college degree, and the program takes about four months full-time (or six to seven on weekends).</p></div></details>
-      <details><summary>Can I go to barber school for free?</summary><div class="a"><p>Possibly. For New Yorkers with a qualifying disability, <a href="/access-vr-program">ACCES-VR</a> may cover the full cost. Veterans with full <a href="/veterans">GI Bill</a> eligibility can also have approved tuition covered. Otherwise, weekly payment plans keep it affordable without a lump sum.</p></div></details>
-      <details><summary>Do I have to pay tuition all at once?</summary><div class="a"><p>No. Most barbering schools offer a weekly payment plan &mdash; a down payment at registration, then weekly payments while you train &mdash; so you can pay as you go instead of paying everything up front.</p></div></details>
-      <details><summary>Can I combine funding sources?</summary><div class="a"><p>Yes. It's common to use benefits (ACCES-VR or the GI Bill) for most of the cost and a weekly payment plan for any remaining balance.</p></div></details>
-      <details><summary>Is barber school worth the cost?</summary><div class="a"><p>For a short, in-demand trade with self-employment upside, many people find it pays back quickly. See <a href="/guides/how-much-do-barbers-make-nyc">how much barbers make</a> and <a href="/career-paths">career paths behind the chair</a> to weigh the return.</p></div></details>
+    <div class="reveal" style="max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem">
+      <details open style="background:var(--surface);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm)">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0">How much does barber school cost in New York?</summary>
+        <p style="padding:0 0 18px;margin:0">Tuition for a 500-hour Master Barber program is typically in the mid-four figures — ABI's plans run $4,600 to $5,600 depending on the option you choose, with a $500&ndash;$550 down payment. That's far less than a college degree, and the program takes about four months full-time (or six to seven on weekends).</p>
+      </details>
+      <details style="background:var(--surface);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm)">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0">Can I go to barber school for free?</summary>
+        <p style="padding:0 0 18px;margin:0">Possibly. For New Yorkers with a qualifying disability, <a href="/access-vr-program">ACCES-VR</a> may cover the full cost. Veterans with full <a href="/veterans">GI Bill&reg;</a> eligibility can also have approved tuition covered. Otherwise, weekly payment plans keep it affordable without a lump sum.</p>
+      </details>
+      <details style="background:var(--surface);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm)">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0">Do I have to pay tuition all at once?</summary>
+        <p style="padding:0 0 18px;margin:0">No. ABI offers a weekly payment plan — a $500&ndash;$550 down payment at registration, then weekly payments while you train — so you can pay as you go instead of paying everything up front. See <a href="/tuition-and-funding">the tuition plans</a>.</p>
+      </details>
+      <details style="background:var(--surface);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm)">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0">Can I combine funding sources?</summary>
+        <p style="padding:0 0 18px;margin:0">Yes. It's common to use benefits (ACCES-VR or the GI Bill&reg;) for most of the cost and a weekly payment plan for any remaining balance.</p>
+      </details>
+      <details style="background:var(--surface);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm)">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0">Is barber school worth the cost?</summary>
+        <p style="padding:0 0 18px;margin:0">For a short, in-demand trade with self-employment upside, many people find it pays back quickly. Weigh the return with the <a href="/programs/500-hour-master-barber">500-hour program</a> overview and pick a pace on the <a href="/schedules">schedules page</a>.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="res-cta">
-  <div class="wrap">
-    <span class="res-eyebrow res-eyebrow--light">From Research to Ready</span>
-    <h2>Know Your Options? Take the Next Step.</h2>
-    <p>Once you've picked a funding path, the next move is enrolling in a program. American Barber Institute accepts ACCES-VR and VA benefits and offers weekly payment plans, and their admissions team can confirm exactly what you qualify for.</p>
-    <div class="res-cta-btns">
-      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&amp;utm_medium=guide&amp;utm_campaign=financial-aid">Train at ABI &rarr;</a>
-      <a class="btn btn-ghost btn-lg" href="/how-to-get-started">How to Get Started</a>
+<!-- ============ CTA (dark) ============ -->
+<section class="band band--dark">
+  <div class="eb-wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">From Research To Ready</p>
+      <h2 class="display">Know your options? Take the next step.</h2>
+      <p class="lead" style="margin-inline:auto">Once you've picked a funding path, the next move is enrolling. American Barber Institute accepts ACCES-VR and VA benefits and offers weekly payment plans, and admissions can confirm exactly what you qualify for.</p>
+    </div>
+    <div class="reveal" style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center">
+      <a class="btn btn-gold btn-lg" href="/contact">Request a Call</a>
+      <a class="btn btn-ghost btn-lg" href="/tuition-and-funding">See Tuition Plans</a>
     </div>
   </div>
 </section>
-</div><!-- /.abi-res -->

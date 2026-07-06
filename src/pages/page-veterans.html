@@ -1,223 +1,203 @@
-<!-- ABI teal re-skin for the res-* funding-guide system (scoped; no shared CSS touched) -->
-<style>
-/* Re-tint the res-* guide system from blue to the barbicide-teal brand. Scoped to .abi-res. */
-.abi-res .res-hero{background:linear-gradient(135deg,var(--teal-deep) 0%,var(--ink) 100%);position:relative;overflow:hidden}
-.abi-res .res-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(760px 380px at 82% -12%, rgba(47,211,196,.28), transparent 62%);pointer-events:none}
-.abi-res .res-hero .wrap{position:relative;z-index:1}
-.abi-res .res-hero .crumbs{color:var(--teal-soft)}
-.abi-res .res-hero .crumbs a{color:#fff}
-.abi-res .res-kicker{color:var(--teal-deep);background:#fff}
-.abi-res .res-hero-sub,.abi-res .res-cta p{color:#eafaf8}
-.abi-res .res-stat{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28)}
-.abi-res .res-stat span{color:var(--teal-soft)}
-.abi-res .res-sec--alt{background:linear-gradient(180deg,var(--teal-tint) 0%,#dcf3f0 100%)}
-.abi-res .res-eyebrow{color:var(--teal-deep)}
-.abi-res .res-head h2,.abi-res .res-card h3{color:var(--ink)}
-.abi-res .res-lead{color:var(--text-mute)}
-.abi-res .res-lead a,.abi-res .res-link{color:var(--teal-deep)}
-.abi-res .res-card{border-color:var(--teal-soft);border-top-color:var(--teal);box-shadow:var(--shadow-sm)}
-.abi-res .res-card:hover{box-shadow:var(--shadow-lg);border-top-color:var(--teal-deep)}
-.abi-res .res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
-.abi-res .res-points li::before,.abi-res .res-checks li::before{background:var(--teal)}
-.abi-res .res-card--list h3{border-bottom-color:var(--teal-soft)}
-.abi-res .res-cta{background:linear-gradient(135deg,var(--teal-deep) 0%,var(--ink) 100%)}
-.abi-res .res-cta .res-eyebrow--light{color:var(--teal-soft)}
-/* Direct-answer callout box (AEO) */
-.abi-res .answer-box{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);border-left:4px solid var(--teal-bright);border-radius:var(--radius-lg);padding:var(--sp-5) var(--sp-6);max-width:760px;box-shadow:var(--shadow-md);backdrop-filter:blur(4px)}
-.abi-res .res-hero .answer-box p{color:#eafaf8;margin:0;font-size:1.05rem;line-height:1.7}
-.abi-res .res-hero .answer-box strong{color:#fff}
-/* Styled data/comparison tables */
-.abi-res .data-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);font-size:.95rem}
-.abi-res .data-table thead th{background:var(--teal-deep);color:#fff;text-align:left;padding:14px 18px;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
-.abi-res .data-table td{padding:14px 18px;border-top:1px solid #e4f1ef;color:var(--text-dark);vertical-align:top;line-height:1.55}
-.abi-res .data-table tbody tr:nth-child(even){background:var(--teal-tint)}
-.abi-res .data-table a{color:var(--teal-deep);font-weight:600}
-/* Hero stat strip */
-.abi-res .res-hero-stats{margin-top:.4rem}
-/* Styled FAQ (details) */
-.abi-res .faq{max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem}
-.abi-res .faq details{background:#fff;border:1px solid var(--teal-soft);border-radius:var(--radius-lg);padding:2px 22px;box-shadow:var(--shadow-sm);transition:box-shadow .25s ease}
-.abi-res .faq details[open]{box-shadow:var(--shadow-md);border-color:var(--teal)}
-.abi-res .faq summary{font-weight:700;cursor:pointer;padding:18px 0;color:var(--ink);list-style:none;position:relative;padding-right:34px}
-.abi-res .faq summary::-webkit-details-marker{display:none}
-.abi-res .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--teal-deep);font-weight:400;line-height:1}
-.abi-res .faq details[open] summary::after{content:"–"}
-.abi-res .faq .a{padding:0 0 18px;color:var(--text-mute);line-height:1.65}
-.abi-res .faq .a a{color:var(--teal-deep);font-weight:600}
-.abi-res .res-cta-btns .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
-.abi-res .res-cta-btns .btn-ghost:hover{border-color:var(--teal-bright);color:var(--teal-bright)}
-</style>
-
-<div class="abi-res">
-<!-- ============ GI BILL GUIDE HERO ============ -->
-<section class="res-hero">
-  <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> <span>/</span> <a href="/financial-aid">Funding Guides</a> <span>/</span> GI Bill for Barber School</p>
-    <span class="res-kicker">Veterans Funding Guide · Updated 2026</span>
-    <h1>GI Bill for Barber School in New York: A Veteran's Funding Guide</h1>
-    <div class="answer-box reveal">
-      <p><strong>Short answer:</strong> Yes — you can use GI Bill&reg; education benefits to pay for barber training in New York, as long as the school runs a VA-approved barbering program. Barbering is a 500-hour, license-track trade you can typically finish in about four months full-time (roughly six to seven months on weekends), which makes it one of the faster civilian-career pivots your benefits can fund. This guide explains which benefit chapters apply, what they cover, and the paperwork you need to start.</p>
+<!-- ============ HERO (paper) ============ -->
+<section class="band band--paper">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/financial-aid">Funding Guides</a> / Veterans &amp; GI Bill&reg;</p>
+    <p class="eyebrow reveal">Veterans Funding Guide</p>
+    <h1 class="display display--xl reveal">From service to the chair: the GI Bill&reg; guide to barber school.</h1>
+    <p class="lead reveal dropcap">Yes — you can use GI Bill&reg; education benefits to pay for barber training in New York, as long as the school runs a VA-approved barbering program. Barbering is a 500-hour, license-track trade you can typically finish in about four months full-time (roughly six to seven months on weekends), which makes it one of the faster civilian-career pivots your benefits can fund. This guide explains which benefit chapters apply, what they cover, and the paperwork to get started.</p>
+    <div class="reveal" style="margin-top:var(--sp-5);display:flex;gap:.6rem;flex-wrap:wrap">
+      <span class="chip">VA-Approved Program</span>
+      <span class="chip">4 Benefit Chapters</span>
+      <span class="chip">Dependents May Qualify</span>
     </div>
-    <ul class="res-hero-stats" aria-label="Program facts at a glance">
-      <li class="res-stat"><strong>500</strong><span>licensed hours</span></li>
-      <li class="res-stat"><strong>~4 mo</strong><span>full-time</span></li>
-      <li class="res-stat"><strong>4</strong><span>VA benefit chapters</span></li>
-      <li class="res-stat"><strong>1st Mon</strong><span>monthly start</span></li>
-    </ul>
   </div>
 </section>
 
-<!-- ============ WHY BARBERING IS A STRONG POST-SERVICE MOVE ============ -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">The Career Fit</span>
-      <h2>Why Barbering Works for a Military-to-Civilian Transition</h2>
-      <p class="res-lead">Choosing what to do with your benefits is the real decision — the paperwork comes after. Barbering keeps coming up for veterans for concrete reasons.</p>
+<!-- ============ STATS (dark) ============ -->
+<section class="band band--dark">
+  <div class="eb-wrap">
+    <div class="statgrid reveal-stagger">
+      <div class="stat"><div class="stat__num" data-count="500">500</div><div class="stat__label">licensed hours</div></div>
+      <div class="stat"><div class="stat__num" data-count="4">4</div><div class="stat__label">months full-time</div></div>
+      <div class="stat"><div class="stat__num" data-count="4">4</div><div class="stat__label">VA benefit chapters</div></div>
+      <div class="stat"><div class="stat__num">1st</div><div class="stat__label">Monday monthly start</div></div>
     </div>
-    <div class="res-grid res-grid--3">
-      <article class="res-card res-card--list tilt-3d reveal">
-        <h3>Fast to a Credential</h3>
-        <ul class="res-checks">
-          <li>500 licensed hours — not a multi-year degree</li>
-          <li>About 4 months full-time, ~6&ndash;7 months on weekends</li>
-          <li>A recognized state license at the end, not just a certificate</li>
-        </ul>
+  </div>
+</section>
+
+<!-- ============ CAREER FIT (tint) ============ -->
+<section class="band band--tint">
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">The Career Fit</p>
+      <h2 class="display">Why barbering works for a military-to-civilian transition</h2>
+      <p class="lead">Choosing what to do with your benefits is the real decision — the paperwork comes after. Barbering keeps coming up for veterans, for concrete reasons.</p>
+    </div>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <h3>Fast to a credential</h3>
+        <p>500 licensed hours — not a multi-year degree. About 4 months full-time or ~6&ndash;7 months on weekends, ending in a recognized state license, not just a certificate.</p>
       </article>
-      <article class="res-card res-card--list tilt-3d reveal">
-        <h3>Structure You Already Know</h3>
-        <ul class="res-checks">
-          <li>Standards, repetition and discipline map to shop work</li>
-          <li>Hands-on from early on, not lecture-only</li>
-          <li>A trade you carry with you if you relocate</li>
-        </ul>
+      <article class="ed-card tilt">
+        <h3>Structure you already know</h3>
+        <p>Standards, repetition, and discipline map directly to shop work. You're hands-on from early on — not stuck in lecture — and you carry the trade with you if you relocate.</p>
       </article>
-      <article class="res-card res-card--list tilt-3d reveal">
-        <h3>Room to Build</h3>
-        <ul class="res-checks">
-          <li>Chair rental, commission or your own shop over time</li>
-          <li>Steady demand that doesn't offshore or automate away</li>
-          <li>A clear path from licensed barber to owner &mdash; see <a href="/career-paths">barber career paths</a></li>
-        </ul>
+      <article class="ed-card tilt">
+        <h3>Room to build</h3>
+        <p>Chair rental, commission, or your own shop over time. Steady demand that doesn't offshore or automate away, with a clear path from licensed barber to owner. See the <a href="/programs/500-hour-master-barber">500-hour program</a>.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ WHICH BENEFITS APPLY ============ -->
-<section class="res-sec res-sec--alt">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">Benefit Chapters</span>
-      <h2>Which VA Education Benefits Can Fund Barber Training</h2>
-      <p class="res-lead">Under Title 38 U.S.C. &sect; 3676, approved job-training programs &mdash; including barbering &mdash; can be paid for with these benefit chapters. Some also extend to qualifying spouses and dependents.</p>
+<!-- ============ BENEFIT CHAPTERS (paper) ============ -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Benefit Chapters</p>
+      <h2 class="display">Which VA education benefits can fund barber training</h2>
+      <p class="lead">Under Title 38 U.S.C. &sect; 3676, approved job-training programs — including barbering — can be paid for with these benefit chapters. Some also extend to qualifying spouses and dependents.</p>
     </div>
-    <div class="res-grid">
-      <article class="res-card reveal">
-        <span class="res-num">1</span>
-        <h3>Post-9/11 GI Bill&reg; &mdash; Ch. 33</h3>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <p class="eyebrow">Chapter 33</p>
+        <h3>Post-9/11 GI Bill&reg;</h3>
         <p>The most widely used benefit for those with qualifying service after September 10, 2001. Depending on your eligibility percentage, it can cover all or part of tuition for an approved barbering program.</p>
       </article>
-      <article class="res-card reveal">
-        <span class="res-num">2</span>
-        <h3>VR&amp;E &mdash; Ch. 31</h3>
+      <article class="ed-card tilt">
+        <p class="eyebrow">Chapter 31</p>
+        <h3>VR&amp;E</h3>
         <p>Veteran Readiness &amp; Employment supports veterans with a service-connected disability in training for suitable civilian work. Barbering is a common approved goal because it leads to a licensed, self-sustaining trade.</p>
       </article>
-      <article class="res-card reveal">
-        <span class="res-num">3</span>
-        <h3>Montgomery GI Bill&reg; &mdash; Ch. 30</h3>
+      <article class="ed-card tilt">
+        <p class="eyebrow">Chapter 30</p>
+        <h3>Montgomery GI Bill&reg;</h3>
         <p>If you contributed to the Montgomery GI Bill&reg; during service, you can apply those education benefits toward barber training at an approved school.</p>
       </article>
-      <article class="res-card reveal">
-        <span class="res-num">4</span>
-        <h3>DEA &mdash; Ch. 35</h3>
+      <article class="ed-card tilt">
+        <p class="eyebrow">Chapter 35</p>
+        <h3>DEA</h3>
         <p>Dependents' Educational Assistance extends education benefits to qualifying spouses and children of certain permanently disabled or deceased veterans.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ WHAT BENEFITS TYPICALLY COVER ============ -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">What They Cover</span>
-      <h2>What GI Bill Benefits Pay For &mdash; and What They Don't</h2>
-      <p class="res-lead">Coverage varies by chapter and by your individual eligibility, so treat the table below as a general map, then confirm your own numbers with the VA.</p>
+<!-- ============ WHAT'S COVERED (petrol) ============ -->
+<section class="band band--petrol">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What They Cover</p>
+      <h2 class="display">What GI Bill&reg; benefits pay for — and what they don't</h2>
+      <p class="lead">Coverage varies by chapter and by your individual eligibility, so treat this as a general map, then confirm your own numbers with the VA.</p>
     </div>
-    <div class="table-wrap reveal" style="overflow-x:auto">
-      <table class="data-table">
+    <div class="reveal" style="overflow-x:auto">
+      <table style="width:100%;border-collapse:separate;border-spacing:0;background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);overflow:hidden;min-width:560px">
         <thead>
-          <tr><th>Item</th><th>Typically covered?</th><th>Notes</th></tr>
+          <tr>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">Item</th>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">Typically covered?</th>
+            <th style="background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase">Notes</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Tuition for an approved program</td><td>Often, in full or part</td><td>Depends on chapter &amp; eligibility percentage</td></tr>
-          <tr><td>Required books &amp; tool kit</td><td>Sometimes (esp. Ch. 31)</td><td>VR&amp;E can cover occupational tools</td></tr>
-          <tr><td>Monthly housing allowance</td><td>Ch. 33 (in-person, at rate)</td><td>Based on training rate &amp; location</td></tr>
-          <tr><td>State licensing exam fee</td><td>May be reimbursable</td><td>Ask the VA about license/cert reimbursement</td></tr>
-          <tr><td>Any tuition gap</td><td>Not by VA</td><td>Schools usually offer weekly payment plans for the balance</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Tuition for an approved program</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Often, in full or part</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Depends on chapter &amp; eligibility percentage</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Required books &amp; tool kit</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Sometimes (esp. Ch. 31)</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">VR&amp;E can cover occupational tools</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Monthly housing allowance</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Ch. 33 (in-person, at rate)</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Based on training rate &amp; location</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">State licensing exam fee</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">May be reimbursable</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Ask the VA about license/cert reimbursement</td></tr>
+          <tr><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark);line-height:1.5">Any tuition gap</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Not by VA</td><td style="padding:14px 18px;border-top:1px solid var(--ink-3);color:var(--on-dark-muted);line-height:1.5">Schools offer weekly payment plans for the balance</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="res-lead reveal" style="margin-top:1.25rem">If your benefit doesn't cover 100% of tuition, most barbering schools let you spread the remaining balance across weekly installments while you train. For how those plans work alongside benefits, see our <a href="/financial-aid">complete funding guide</a>.</p>
+    <p class="reveal" style="margin-top:var(--sp-4)">If your benefit doesn't cover 100% of tuition, most barbering schools let you spread the remaining balance across weekly installments while you train. For how those plans work alongside benefits, see the <a href="/financial-aid">complete funding guide</a> and <a href="/tuition-and-funding">the ABI tuition plans</a>.</p>
   </div>
 </section>
 
-<!-- ============ HOW TO START ============ -->
-<section class="res-sec res-sec--alt">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">Step by Step</span>
-      <h2>How to Use Your GI Bill for Barber Training</h2>
+<!-- ============ HOW TO START (sand) ============ -->
+<section class="band band--sand">
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Step By Step</p>
+      <h2 class="display">How to use your GI Bill&reg; for barber training</h2>
     </div>
-    <div class="res-grid res-grid--3">
-      <article class="res-card reveal">
-        <span class="res-num">1</span>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <div class="stat__num" style="font-size:2rem">01</div>
         <h3>Confirm eligibility</h3>
         <p>Request your Certificate of Eligibility from the VA and locate your discharge papers (Form DD-214). New York veterans can also contact the NYS Bureau of Veterans Education for state-level guidance.</p>
       </article>
-      <article class="res-card reveal">
-        <span class="res-num">2</span>
+      <article class="ed-card tilt">
+        <div class="stat__num" style="font-size:2rem">02</div>
         <h3>Pick an approved school</h3>
-        <p>Verify the barbering program is VA-approved before enrolling &mdash; benefits only apply to approved programs. Ask the school's finance office to certify your enrollment directly with the VA.</p>
+        <p>Verify the barbering program is VA-approved before enrolling — benefits only apply to approved programs. Ask the school's finance office to certify your enrollment directly with the VA.</p>
       </article>
-      <article class="res-card reveal">
-        <span class="res-num">3</span>
+      <article class="ed-card tilt">
+        <div class="stat__num" style="font-size:2rem">03</div>
         <h3>Enroll &amp; get licensed</h3>
-        <p>New barbering cohorts generally begin the first Monday of each month. Complete the 500-hour program, sit the NY State Board exam, and step onto the shop floor with a Master Barber license.</p>
+        <p>New barbering cohorts begin the first Monday of every month. Complete the 500-hour program, sit the NY State Board exam, and step onto the shop floor with a Master Barber license.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head reveal">
-      <span class="res-eyebrow">Veteran FAQs</span>
-      <h2>GI Bill &amp; Barber School: Common Questions</h2>
+<!-- ============ FAQ (dark) ============ -->
+<section class="band band--dark">
+  <div class="eb-wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Veteran FAQs</p>
+      <h2 class="display">GI Bill&reg; &amp; barber school: common questions</h2>
     </div>
-    <div class="faq reveal">
-      <details open><summary>Can I use the GI Bill for barber school?</summary><div class="a"><p>Yes, if the barbering program is VA-approved. Approved job-training programs fall under Title 38 U.S.C. &sect; 3676, and barbering qualifies because it leads to a state license. Post-9/11 (Ch. 33), VR&amp;E (Ch. 31), Montgomery (Ch. 30) and DEA (Ch. 35) are the chapters most commonly used.</p></div></details>
-      <details><summary>How long does barber school take with the GI Bill?</summary><div class="a"><p>The program itself is 500 hours &mdash; about four months of full-time training, or roughly six to seven months on a weekend schedule. Your benefit length isn't changed by barbering; the trade simply uses relatively few months of entitlement compared with a degree.</p></div></details>
-      <details><summary>Does the GI Bill cover 100% of tuition?</summary><div class="a"><p>It depends on your chapter and eligibility percentage. Full Post-9/11 eligibility can cover all approved tuition; partial eligibility covers a portion. Any gap is typically handled through a school's weekly payment plan &mdash; see our <a href="/financial-aid">funding guide</a>.</p></div></details>
-      <details><summary>What documents do I need to get started?</summary><div class="a"><p>At minimum, a Certificate of Eligibility from the VA and your discharge papers (Form DD-214). VR&amp;E applicants work through a VA counselor. The enrolling school's finance office handles the VA enrollment certification once you're admitted.</p></div></details>
-      <details><summary>Can my spouse or dependents use these benefits for barbering?</summary><div class="a"><p>In some cases, yes. Transferred Post-9/11 benefits and the DEA program (Ch. 35) can allow qualifying spouses and children to pursue an approved barbering program. Confirm transferability with the VA before enrolling.</p></div></details>
+    <div class="reveal" style="max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:.75rem">
+      <details open style="background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);padding:2px 22px">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0;color:var(--on-dark)">Can I use the GI Bill&reg; for barber school?</summary>
+        <p style="padding:0 0 18px;margin:0;color:var(--on-dark-muted)">Yes, if the barbering program is VA-approved. Approved job-training programs fall under Title 38 U.S.C. &sect; 3676, and barbering qualifies because it leads to a state license. Post-9/11 (Ch. 33), VR&amp;E (Ch. 31), Montgomery (Ch. 30) and DEA (Ch. 35) are the chapters most commonly used.</p>
+      </details>
+      <details style="background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);padding:2px 22px">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0;color:var(--on-dark)">How long does barber school take with the GI Bill&reg;?</summary>
+        <p style="padding:0 0 18px;margin:0;color:var(--on-dark-muted)">The program itself is 500 hours — about four months of full-time training, or roughly six to seven months on a weekend schedule. Barbering uses relatively few months of entitlement compared with a degree.</p>
+      </details>
+      <details style="background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);padding:2px 22px">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0;color:var(--on-dark)">Does the GI Bill&reg; cover 100% of tuition?</summary>
+        <p style="padding:0 0 18px;margin:0;color:var(--on-dark-muted)">It depends on your chapter and eligibility percentage. Full Post-9/11 eligibility can cover all approved tuition; partial eligibility covers a portion. Any gap is typically handled through a school's weekly payment plan — see the <a href="/financial-aid">funding guide</a>.</p>
+      </details>
+      <details style="background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);padding:2px 22px">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0;color:var(--on-dark)">What documents do I need to get started?</summary>
+        <p style="padding:0 0 18px;margin:0;color:var(--on-dark-muted)">At minimum, a Certificate of Eligibility from the VA and your discharge papers (Form DD-214). VR&amp;E applicants work through a VA counselor. The enrolling school's finance office handles the VA enrollment certification once you're admitted.</p>
+      </details>
+      <details style="background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius-lg);padding:2px 22px">
+        <summary style="font-weight:700;cursor:pointer;padding:18px 0;color:var(--on-dark)">Can my spouse or dependents use these benefits for barbering?</summary>
+        <p style="padding:0 0 18px;margin:0;color:var(--on-dark-muted)">In some cases, yes. Transferred Post-9/11 benefits and the DEA program (Ch. 35) can allow qualifying spouses and children to pursue an approved barbering program. Confirm transferability with the VA before enrolling.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="res-cta">
-  <div class="wrap">
-    <span class="res-eyebrow res-eyebrow--light">From Service to the Chair</span>
-    <h2>Ready to Put Your Benefits to Work?</h2>
-    <p>American Barber Institute runs a VA-approved 500-hour Master Barber program and certifies veteran enrollments directly with the VA. When you're ready to move from research to enrollment, they can walk you through eligibility, paperwork and start dates.</p>
-    <div class="res-cta-btns">
-      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&amp;utm_medium=guide&amp;utm_campaign=veterans-gi-bill">Train at ABI &rarr;</a>
-      <a class="btn btn-ghost btn-lg" href="/financial-aid">Compare Funding Options</a>
+<!-- ============ CTA (paper) ============ -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="ed-split">
+      <div class="reveal">
+        <p class="eyebrow">From Service To The Chair</p>
+        <h2 class="display">Ready to put your benefits to work?</h2>
+        <p class="lead">American Barber Institute runs a VA-approved 500-hour Master Barber program and certifies veteran enrollments directly with the VA. When you're ready to move from research to enrollment, admissions can walk you through eligibility, paperwork, and start dates.</p>
+        <div style="margin-top:var(--sp-4);display:flex;gap:.6rem;flex-wrap:wrap">
+          <a class="btn btn-gold btn-lg" href="/contact">Request a Call</a>
+          <a class="btn btn-ghost btn-lg" href="/financial-aid">Compare Funding Options</a>
+        </div>
+        <p style="margin-top:var(--sp-4);font-size:.85rem;color:var(--text-mute)">GI Bill&reg; is a registered trademark of the U.S. Department of Veterans Affairs (VA). This guide is informational; confirm your specific benefits at benefits.va.gov/gibill.</p>
+      </div>
+      <div class="reveal">
+        <div class="ed-card tilt">
+          <p class="eyebrow">Related Guides</p>
+          <h3>Keep researching</h3>
+          <p><a href="/access-vr-program">ACCES-VR for barber training</a> — vocational funding for eligible New Yorkers.</p>
+          <p><a href="/tuition-and-funding">Tuition &amp; funding</a> — the three ABI plans and weekly payments.</p>
+          <p><a href="/schedules">Schedules</a> — morning, afternoon, and weekend tracks with start dates.</p>
+          <p><a href="/programs/500-hour-master-barber">The 500-hour program</a> — full curriculum and licensing path.</p>
+        </div>
+      </div>
     </div>
-    <p class="res-fineprint" style="margin-top:1.25rem;font-size:.85rem;opacity:.8">GI Bill&reg; is a registered trademark of the U.S. Department of Veterans Affairs (VA). This guide is informational; confirm your specific benefits at benefits.va.gov/gibill.</p>
   </div>
 </section>
-</div><!-- /.abi-res -->

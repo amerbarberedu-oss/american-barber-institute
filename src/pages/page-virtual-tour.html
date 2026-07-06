@@ -1,103 +1,125 @@
-<!-- Scoped brand fix: remap the legacy-blue res-* system (defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
-<style>
-.res-kicker,.res-eyebrow{color:var(--teal-deep)}
-.res-num{background:linear-gradient(150deg,var(--teal-bright),var(--teal-deep))}
-.res-card{border-top-color:var(--teal)}
-.res-card:hover{border-top-color:var(--teal-deep);box-shadow:0 20px 44px rgba(18,179,166,.22)}
-.res-points li::before,.res-checks li::before{background:var(--teal)}
-.res-link{color:var(--teal-deep)}
-.res-badge{color:var(--teal-deep);background:var(--teal-tint);border-color:var(--teal-soft)}
-.res-cta{background:linear-gradient(135deg,var(--petrol) 0%,var(--petrol-deep) 100%)}
-.res-cta .res-eyebrow--light{color:var(--teal-bright)}
-</style>
 <div class="page-hero">
   <div class="wrap">
-    <p class="crumbs"><a href="index.html">Home</a> / See Inside a Barber School</p>
+    <p class="crumbs"><a href="/">Home</a> / See Inside a Barber School</p>
     <h1>See Inside a Barber School Before You Commit</h1>
-    <p class="reveal">Choosing where to train is one of the biggest decisions on the path to a barber career. Before you sign up anywhere, it helps to see what a real training floor looks and feels like &mdash; and to know what separates a program that will actually prepare you from one that won't.</p>
+    <p>Choosing where to train is one of the biggest decisions on the path to a barber career. Before you sign up anywhere, it helps to see what a real training floor looks and feels like — and to know what separates a program that will actually prepare you from one that won't.</p>
   </div>
 </div>
 
-<!-- DIRECT ANSWER / WHAT TO LOOK FOR -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head">
-      <span class="res-eyebrow">Before You Enroll</span>
-      <h2>What to Look for in a Barber School</h2>
-      <p class="res-lead">A good barber school does three things: it's state-licensed and meets the 500-hour requirement, it gives you real hands-on practice on live clients (not just mannequins), and it prepares you specifically for the New York State board exam. Use the checklist below when you visit &mdash; in person or through video &mdash; so you can compare programs on what actually matters.</p>
+<!-- ── BAND 1 · paper · what to look for + FAQ ── -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Before You Enroll</p>
+      <h2 class="display">What to look for in a barber school</h2>
+      <p class="lead">A good barber school does three things: it's state-licensed and meets the 500-hour requirement, it gives you real hands-on practice on live clients (not just mannequins), and it prepares you specifically for the New York State board exam. Use the checklist below when you visit — in person or through video — so you can compare programs on what actually matters.</p>
     </div>
-    <div class="faq">
-      <details open><summary>Is the school state-licensed?</summary><div class="a"><p>Only training at a school licensed by the New York State Department of Education counts toward your 500 hours and qualifies you to sit for the state board exam. Confirm this first &mdash; everything else is secondary.</p></div></details>
-      <details><summary>Will I practice on real people?</summary><div class="a"><p>Ask how soon and how often you'll work on live clients under supervision. Barbering is a hands-on trade; the more supervised real-world practice, the more exam-ready and hireable you'll be.</p></div></details>
-      <details><summary>Does the schedule fit my life?</summary><div class="a"><p>Look for morning, afternoon, and weekend tracks. The right schedule is what lets a working career-changer actually finish rather than drop out.</p></div></details>
+    <div class="faq reveal">
+      <details open><summary>Is the school state-licensed?</summary><div class="a"><p>Only training at a school licensed by the New York State Department of Education counts toward your 500 hours and qualifies you to sit for the state board exam. Confirm this first — everything else is secondary.</p></div></details>
+      <details><summary>Will I practice on real people?</summary><div class="a"><p>Ask how soon and how often you'll work on live clients under supervision. Barbering is a hands-on trade; the more supervised real-world practice, the more exam-ready and hireable you'll be. See <a href="/skills-and-techniques">the skills you'll practice</a>.</p></div></details>
+      <details><summary>Does the schedule fit my life?</summary><div class="a"><p>Look for morning, afternoon, and weekend tracks. The right schedule is what lets a working career-changer actually finish rather than drop out. Compare <a href="/schedules">schedule options</a>.</p></div></details>
     </div>
   </div>
 </section>
 
-<!-- VIDEO TOUR -->
-<section class="res-sec res-sec--alt">
-  <div class="wrap">
-    <div class="res-head">
-      <span class="res-eyebrow">A Look Inside</span>
-      <h2>What a Real Training Floor Looks Like</h2>
-      <p class="res-lead">These short videos give you a feel for day-to-day life inside a working barber school &mdash; the training floors, the instructors, and the culture. Watch them as a benchmark for what to expect when you tour a program in person.</p>
+<!-- ── BAND 2 · petrol · the video tour (iframes kept intact) ── -->
+<section class="band band--petrol">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">A Look Inside</p>
+      <h2 class="display">What a real training floor looks like</h2>
+      <p class="lead" style="margin-inline:auto">These short videos give you a feel for day-to-day life inside a working barber school — the training floors, the instructors, and the culture. Watch them as a benchmark for what to expect when you tour a program in person.</p>
     </div>
-    <div class="res-grid res-grid--3">
-      <article class="res-card reveal">
-        <h3>The Path to Master Barber</h3>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <h3 style="margin:0 0 .6rem">The Path to Master Barber</h3>
         <iframe src="https://www.youtube-nocookie.com/embed/TFpNNqsc_EA" title="The path to becoming a Master Barber" style="width:100%;aspect-ratio:16/9;border:0;border-radius:8px" loading="lazy" allowfullscreen></iframe>
-        <p>Quality training covers both craft and the business of barbering &mdash; the two things you need to eventually rent a chair or own a shop.</p>
+        <p style="margin-top:.7rem">Quality training covers both craft and the business of barbering — the two things you need to eventually rent a chair or own a shop.</p>
       </article>
-      <article class="res-card reveal">
-        <h3>Inside a Working Facility</h3>
+      <article class="ed-card tilt">
+        <h3 style="margin:0 0 .6rem">Inside a Working Facility</h3>
         <iframe src="https://www.youtube-nocookie.com/embed/ozV_RcSk0P4" title="Inside a working barber training facility" style="width:100%;aspect-ratio:16/9;border:0;border-radius:8px" loading="lazy" allowfullscreen></iframe>
-        <p>Notice the split between theory space and hands-on practical floors &mdash; a sign a program takes both the exam and real skill seriously.</p>
+        <p style="margin-top:.7rem">Notice the split between theory space and hands-on practical floors — a sign a program takes both the exam and real skill seriously.</p>
       </article>
-      <article class="res-card reveal">
-        <h3>The Culture of Learning</h3>
+      <article class="ed-card tilt">
+        <h3 style="margin:0 0 .6rem">The Culture of Learning</h3>
         <iframe src="https://www.youtube-nocookie.com/embed/iU0fUj3a8uw" title="The culture of learning at a barber school" style="width:100%;aspect-ratio:16/9;border:0;border-radius:8px" loading="lazy" allowfullscreen></iframe>
-        <p>The environment matters. A supportive, engaged floor is where beginners gain the confidence to cut in front of real clients.</p>
+        <p style="margin-top:.7rem">The environment matters. A supportive, engaged floor is where beginners gain the confidence to cut in front of real clients.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- COMPARE -->
-<section class="res-sec">
-  <div class="wrap">
-    <div class="res-head">
-      <span class="res-eyebrow">Questions to Ask on a Tour</span>
-      <h2>Turn a Visit Into a Smart Decision</h2>
-      <p class="res-lead">Whether you tour a school on video or walk the floor in person, come with questions. The answers tell you far more than a glossy brochure ever will.</p>
+<!-- ── BAND 3 · tint · campus highlights ── -->
+<section class="band band--tint">
+  <div class="eb-wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Two NYC Campuses</p>
+      <h2 class="display">Where you'd actually train</h2>
+      <p class="lead" style="margin-inline:auto">American Barber Institute runs two New York campuses, each with full training floors, supervised student clinics, and licensed instructors.</p>
     </div>
-    <div class="res-grid">
-      <article class="res-card reveal">
-        <h3>Ask the Instructors</h3>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <span class="chip">Manhattan</span>
+        <h3 style="margin:.6rem 0 .5rem">48 West 39th Street</h3>
+        <p>In the heart of Midtown, minutes from Bryant Park and every major subway line. A busy, diverse clientele means real-world practice from early in your training.</p>
+        <p style="margin:.4rem 0 0"><b>Admissions:</b> (212) 290-2289 EN · (212) 290-0278 ES</p>
+      </article>
+      <article class="ed-card tilt">
+        <span class="chip">Bronx</span>
+        <h3 style="margin:.6rem 0 .5rem">121 Westchester Square</h3>
+        <p>Our Bronx campus brings the same 500-hour program and hands-on floor to the borough, serving a steady stream of neighborhood clients.</p>
+        <p style="margin:.4rem 0 0"><b>Admissions:</b> (718) 676-0640</p>
+      </article>
+      <article class="ed-card tilt">
+        <span class="chip">Student Clinic</span>
+        <h3 style="margin:.6rem 0 .5rem">Real, supervised practice</h3>
+        <p>Low-cost haircut clinics put you in front of paying clients under a licensed instructor — the fastest way to build speed, confidence and a portfolio.</p>
+        <p style="margin:.4rem 0 0"><b>Haircut clinic:</b> (856) 316-1551</p>
+      </article>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:clamp(1.4rem,3vw,2rem)"><a href="/contact">Book an in-person tour →</a></p>
+  </div>
+</section>
+
+<!-- ── BAND 4 · sand · questions to ask on a tour ── -->
+<section class="band band--sand">
+  <div class="eb-wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Questions to Ask on a Tour</p>
+      <h2 class="display">Turn a visit into a smart decision</h2>
+      <p class="lead" style="margin-inline:auto">Whether you tour a school on video or walk the floor in person, come with questions. The answers tell you far more than a glossy brochure ever will.</p>
+    </div>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt">
+        <h3 style="margin:0 0 .5rem">Ask the Instructors</h3>
         <p>Are they licensed, working barbers? How much one-on-one time will you get? Instructors who genuinely enjoy teaching the next generation are the single biggest factor in how fast you'll improve.</p>
-        <a class="res-link" href="blog/barber-school-instructors-in-nyc.html">What great instructors do <span aria-hidden="true">&rarr;</span></a>
+        <a href="/skills-and-techniques">What you'll learn →</a>
       </article>
-      <article class="res-card reveal">
-        <h3>Ask the Students</h3>
+      <article class="ed-card tilt">
+        <h3 style="margin:0 0 .5rem">Ask the Students</h3>
         <p>Current students will tell you the truth about pace, support, and how much real practice they get. Their experience today is your experience tomorrow.</p>
-        <a class="res-link" href="/skills-and-techniques">What you'll learn <span aria-hidden="true">&rarr;</span></a>
+        <a href="/is-barber-training-right-for-you">Is it right for you? →</a>
       </article>
-      <article class="res-card reveal">
-        <h3>Ask About Cost &amp; Schedule</h3>
+      <article class="ed-card tilt">
+        <h3 style="margin:0 0 .5rem">Ask About Cost &amp; Schedule</h3>
         <p>Get the full picture: total tuition, payment plans, tools and books, and whether the schedule fits your job and family. A program that works on paper but not in your calendar isn't the right one.</p>
-        <a class="res-link" href="/schedules">Compare schedules <span aria-hidden="true">&rarr;</span></a>
+        <a href="/tuition-and-funding">Compare cost &amp; funding →</a>
       </article>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="res-cta">
-  <div class="wrap">
-    <span class="res-eyebrow res-eyebrow--light">Ready to See One in Person</span>
-    <h2>Nothing Beats Walking the Floor Yourself</h2>
-    <p>Videos are a great start, but the best way to judge a school is to visit, meet the instructors, and watch students at work. American Barber Institute &mdash; NYS-licensed since 1996 &mdash; welcomes prospective students to tour its campuses and see the 500-Hour Master Barber Program up close.</p>
-    <div class="res-cta-btns">
-      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=virtual-tour">Book a Tour at ABI &rarr;</a>
+<!-- ── BAND 5 · dark · CTA ── -->
+<section class="band band--dark">
+  <span class="band__blob"></span>
+  <div class="eb-wrap" style="text-align:center">
+    <p class="eyebrow">Ready to See One in Person</p>
+    <h2 class="display reveal">Nothing beats walking the floor yourself</h2>
+    <p class="lead reveal" style="margin:0 auto var(--sp-6);max-width:62ch">Videos are a great start, but the best way to judge a school is to visit, meet the instructors, and watch students at work. American Barber Institute — NYS-licensed since 1996 — welcomes prospective students to tour its campuses and see the 500-Hour Master Barber Program up close.</p>
+    <div class="hero-ctas reveal" style="justify-content:center;margin-bottom:0">
+      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&utm_medium=guide&utm_campaign=virtual-tour">Book a Tour at ABI →</a>
       <a class="btn btn-ghost btn-lg" href="/how-to-get-started">How to Get Started</a>
     </div>
   </div>

@@ -62,9 +62,16 @@
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
     }, { threshold: 0, rootMargin: "0px 0px 15% 0px" });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) { io.observe(el); });
+    /* failsafe: anything still hidden after 1.6s (observer missed / print) is revealed */
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.in), .reveal-stagger:not(.in)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 1.2) el.classList.add('in');
+      });
+    }, 1600);
   } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(function (el) { el.classList.add('in'); });
   }
 
   /* ---------- Stat count-up ---------- */

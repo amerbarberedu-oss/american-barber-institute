@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "52"
+CSS_V = "53"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -765,7 +765,7 @@ def page_head(p):
 '<meta name="twitter:description" content="%(desc)s">\n'
 '<meta name="twitter:image" content="%(site)s/assets/img/lf-og-cover.jpg">\n'
 '<meta name="robots" content="index, follow, max-image-preview:large">\n'
-'<meta name="theme-color" content="#1b3bd9">\n'
+'<meta name="theme-color" content="%(theme_color)s">\n'
 '<link rel="icon" href="/favicon.ico" sizes="any">\n'
 '<link rel="apple-touch-icon" href="/apple-icon.png">\n'
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
@@ -786,6 +786,7 @@ def page_head(p):
         "canonical": h(canonical), "en_url": h(en_url), "es_url": h(es_url),
         "site": SITE, "oglocale": "es_US" if es else "en_US", "cssv": CSS_V,
         "mhero_bg": MHERO_BG_BY_PAGE[(p["campus"]["slug"], p["lang"])],
+        "theme_color": p.get("theme_color", "#0E4D5C"),
         "ld_scripts": "".join(
             '<script type="application/ld+json">%s</script>\n' % json.dumps(b, ensure_ascii=False)
             for b in ld_blocks

@@ -1,88 +1,110 @@
-<!-- Scoped brand fix: remap legacy-blue accents (price-callout, cta-band eyebrow, style-chip hover — all defined in landing.css) to the barbicide-teal palette. Body-level style beats head stylesheets by source order; no CSS files touched. -->
-<style>
-.price-callout{background:linear-gradient(135deg,var(--teal-tint),var(--teal-soft));border-color:var(--teal-soft)}
-.style-chip:hover{box-shadow:0 12px 26px rgba(18,179,166,.18)}
-.cta-band .kicker{color:var(--teal-bright) !important}
-</style>
-<div class="page-hero hair-hero">
-  <div class="wrap hair-hero-in">
-    <p class="hair-kicker">The Clinic-Floor Model</p>
-    <h1 class="hair-h1">Why Barber Schools Offer $3 Haircuts</h1>
-    <p class="hair-lead">Ever wondered why a barber school cuts hair for a few dollars? It's the single most important part of how barbers are trained — and if you're thinking about the career, it's exactly what your own training would look like. Here's how the student-clinic model works, why it exists, and what it tells you about becoming a barber in New York.</p>
-    <p class="hair-call-eyebrow">Questions About Training? Call</p>
-    <a class="hair-call-btn" href="tel:+18563161551" aria-label="Call about barber training at (856) 316-1551">
-      <span class="hair-call-dot" aria-hidden="true"></span>
-      <svg class="hair-call-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-      <span class="hair-call-num">(856) 316-1551</span>
-    </a>
-  </div>
-</div>
+<!-- ============================================================
+     HAIRCUTS — The low-cost student clinic (rebuilt v3, serves BOTH campuses)
+     Band arc: paper(hero) → tint(answer) → paper(split) → petrol(stages) →
+               sand(services) → dark(video) → paper(student work) →
+               tint(reviews) → sand(campuses+book) → paper(FAQ) → petrol(CTA)
+     Keeps YouTube data-yt button + .gallery-grid lightbox hooks intact.
+     Haircut clinic booking line: (856) 316-1551.
+     ============================================================ -->
 
-<section>
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">The Short Answer</p><h2>Direct Answer: Why $3?</h2></div>
-    <div class="prose" style="max-width:60rem;margin-inline:auto">
-      <p><b>Barber schools charge only a few dollars for a haircut because the cut is a training exercise, not a commercial service.</b> To earn a New York barber license you must complete 500 supervised hours, and a large share of those hours are hands-on work on real clients. Low-cost clinic haircuts bring in the volume of live clients students need to practice — so the "customer" is really helping the student log required hours. It's a fair trade: the client gets a genuine cut at a fraction of shop prices, and the student gets the real-world reps that turn a beginner into a job-ready barber.</p>
+<!-- ── HERO (paper) ── -->
+<section class="band band--paper">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <p class="crumbs"><a href="/">Home</a> / Low-Cost Haircuts</p>
+    <p class="eyebrow">The Clinic-Floor Model</p>
+    <h1 class="display display--xl">Low-Cost Haircuts at Our NYC Barber Clinics</h1>
+    <p class="lead dropcap reveal">Get a real haircut for a few dollars &mdash; and help train the next generation of New York barbers. Every clinic cut is performed by a student in training under the supervision of a licensed master instructor. It's the single most important part of how barbers are made, and if you're thinking about the career, it's exactly what your own training would look like. Below: how the model works, what's offered, and how to book at our Manhattan and Bronx floors.</p>
+    <p class="reveal" style="font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep);margin-top:1.6rem;margin-bottom:.5rem">Book or Ask About a Haircut &mdash; Call</p>
+    <a class="btn btn-gold btn-lg reveal" href="tel:+18563161551" aria-label="Call the haircut clinic at (856) 316-1551">Haircut Line: (856) 316-1551</a>
+  </div>
+</section>
+
+<!-- ── DIRECT ANSWER (tint) ── -->
+<section class="band band--tint">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">The Short Answer</p>
+      <h2 class="display">Why Are Barber-School Haircuts So Cheap?</h2>
+    </div>
+    <p class="lead reveal" style="margin-inline:auto;text-align:center;max-width:70ch"><b>Barber schools charge only a few dollars for a haircut because the cut is a training exercise, not a commercial service.</b> To earn a New York barber license you must complete <b>500 supervised hours</b>, and a large share of those hours are hands-on work on real clients. Low-cost clinic haircuts bring in the volume of live clients students need to practice &mdash; so the "customer" is really helping the student log required hours. It's a fair trade: the client gets a genuine cut at a fraction of shop prices, and the student gets the real-world reps that turn a beginner into a job-ready barber.</p>
+  </div>
+</section>
+
+<!-- ── SPLIT: THE CLINIC FLOOR (paper) ── -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="ed-split reveal">
+      <div>
+        <p class="eyebrow">What It Means For You</p>
+        <h2 class="display" style="font-size:clamp(1.9rem,4vw,3rem)">The Clinic Floor Is Where Barbers Are Made</h2>
+        <p>If you become a barber, you won't learn the craft from a textbook. You'll learn it on a supervised clinic floor &mdash; cutting real, paying-a-few-dollars clients while a licensed master instructor watches, corrects and coaches every step. Those <b>500 hours</b> are the legal backbone of a New York barber license, and most of them are spent exactly this way.</p>
+        <p>Understanding this model matters when you're choosing a school: the ones that graduate confident, hireable barbers are the ones that get students on live clients early and often. A program is only as good as the reps it gives you.</p>
+        <p style="font-size:.9rem;color:var(--text-mute)"><b>Note for clients:</b> Clinic haircuts are performed by students in training, under the supervision of licensed instructors. Student barbers are not yet licensed professionals &mdash; which is precisely why the cut is only a few dollars.</p>
+        <div class="chip" style="font-size:1.4rem;padding:.5em 1em;margin-top:.4rem">From $3 &middot; typical clinic cut</div>
+      </div>
+      <figure class="ed-media">
+        <img src="assets/img/gallery/cut-01.jpg" alt="A barber student giving a client a fresh fade on the clinic floor under instructor supervision" loading="lazy" width="760" height="820">
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap split">
-    <div class="prose">
-      <p class="kicker">What It Means For You</p>
-      <h2>The Clinic Floor Is Where Barbers Are Made</h2>
-      <p>If you become a barber, you won't learn the craft from a textbook. You'll learn it on a supervised clinic floor — cutting real, paying-a-few-dollars clients while a licensed master instructor watches, corrects and coaches every step. Those <b>500 hours</b> are the legal backbone of a New York barber license, and most of them are spent exactly this way.</p>
-      <p>Understanding this model matters when you're choosing a school: the schools that graduate confident, hireable barbers are the ones that get students on live clients early and often. A program is only as good as the reps it gives you.</p>
-      <p class="disclaimer" style="font-size:.9rem;color:var(--ink-soft)"><b>Note for clients:</b> Clinic haircuts are performed by students in training, under the supervision of licensed instructors. Student barbers are not yet licensed professionals — which is precisely why the cut is only a few dollars.</p>
-      <div class="price-callout"><span class="price-amt">$3</span><span class="price-note">typical clinic cut · the student logs required hours · additional services may cost extra</span></div>
+<!-- ── 3 STAGES (petrol, ed-grid) ── -->
+<section class="band band--petrol">
+  <span class="band__blob"></span>
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">How Training Works</p>
+      <h2 class="display">From First Client to State Board, in 3 Stages</h2>
     </div>
-    <div class="split-media reveal">
-      <img src="assets/img/gallery/cut-01.jpg" alt="A barber student giving a client a fresh fade on the clinic floor under instructor supervision" loading="lazy" width="760" height="820">
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">How Training Works</p><h2>From First Client to State Board, in 3 Stages</h2></div>
-    <div class="cards">
-      <article class="card"><div class="card-body"><span class="step-num">01</span><h3>Fundamentals First</h3><p>You start with sanitation, tool control and the building blocks — holds, guards, sectioning — before you ever touch a live client. This is the foundation every cut is built on.</p></div></article>
-      <article class="card"><div class="card-body"><span class="step-num">02</span><h3>Live Clients, Supervised</h3><p>Within the first few weeks you move to the clinic floor and cut real people, an instructor at your shoulder. Each low-cost client is a rep toward your 500 required hours — and toward real confidence.</p></div></article>
-      <article class="card"><div class="card-body"><span class="step-num">03</span><h3>Board-Ready &amp; Working</h3><p>By the end you've logged your hours across the full range of services and you're prepared for the New York State Board practical exam — the last step before a license and a paying chair.</p></div></article>
+    <div class="ed-grid reveal-stagger">
+      <article class="ed-card tilt"><h3>01 · Fundamentals First</h3><p>You start with sanitation, tool control and the building blocks &mdash; holds, guards, sectioning &mdash; before you ever touch a live client. This is the foundation every cut is built on.</p></article>
+      <article class="ed-card tilt"><h3>02 · Live Clients, Supervised</h3><p>Within the first few weeks you move to the clinic floor and cut real people, an instructor at your shoulder. Each low-cost client is a rep toward your 500 required hours &mdash; and toward real confidence.</p></article>
+      <article class="ed-card tilt"><h3>03 · Board-Ready &amp; Working</h3><p>By the end you've logged your hours across the full range of services and you're prepared for the New York State Board practical exam &mdash; the last step before a license and a paying chair.</p></article>
     </div>
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">The Skill Set</p><h2>Every Service You'll Learn to Perform</h2><p class="lead" style="margin-inline:auto">A licensed barber has to handle it all. These are the services students practice on the clinic floor — and the same range the state board expects you to master.</p></div>
-    <div class="styles-grid">
-      <span class="style-chip">Classic Tapers</span>
-      <span class="style-chip">Low Fades</span>
-      <span class="style-chip">Mid Fades</span>
-      <span class="style-chip">High Fades</span>
-      <span class="style-chip">Caesars</span>
-      <span class="style-chip">Flat Tops</span>
-      <span class="style-chip">Shape Ups</span>
-      <span class="style-chip">Razor Lineups</span>
-      <span class="style-chip">Beard Trims</span>
-      <span class="style-chip">Shampoos</span>
-      <span class="style-chip">Blowouts</span>
-      <span class="style-chip">Mohawks</span>
-      <span class="style-chip">Afro Cuts</span>
-      <span class="style-chip">Pompadours</span>
-      <span class="style-chip">Bald Head Shaves</span>
-      <span class="style-chip">Scissor Cuts</span>
-      <span class="style-chip">Clipper Cuts</span>
-      <span class="style-chip">Fohawks</span>
+<!-- ── SERVICES OFFERED (sand, chips) ── -->
+<section class="band band--sand">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">The Skill Set</p>
+      <h2 class="display">Every Service Offered on the Clinic Floor</h2>
+      <p class="lead" style="margin-inline:auto">A licensed barber has to handle it all. These are the services clients can get at the clinic &mdash; and the same range the state board expects every student to master.</p>
     </div>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;max-width:900px;margin-inline:auto">
+      <span class="chip">Classic Tapers</span>
+      <span class="chip">Low Fades</span>
+      <span class="chip">Mid Fades</span>
+      <span class="chip">High Fades</span>
+      <span class="chip">Caesars</span>
+      <span class="chip">Flat Tops</span>
+      <span class="chip">Shape Ups</span>
+      <span class="chip">Razor Lineups</span>
+      <span class="chip">Beard Trims</span>
+      <span class="chip">Shampoos</span>
+      <span class="chip">Blowouts</span>
+      <span class="chip">Mohawks</span>
+      <span class="chip">Afro Cuts</span>
+      <span class="chip">Pompadours</span>
+      <span class="chip">Bald Head Shaves</span>
+      <span class="chip">Scissor Cuts</span>
+      <span class="chip">Clipper Cuts</span>
+      <span class="chip">Fohawks</span>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:1.6rem;font-size:.92rem;color:var(--text-mute)">Prices start at $3 for a standard clinic cut; some added services may cost a little more. Call the <a href="tel:+18563161551">haircut line (856) 316-1551</a> for details.</p>
   </div>
 </section>
 
-<section class="dark">
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker">See It For Yourself</p><h2>A Training Cut, Start to Finish</h2></div>
+<!-- ── VIDEO (dark) — KEEP data-yt button ── -->
+<section class="band band--dark">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">See It For Yourself</p>
+      <h2 class="display">A Training Cut, Start to Finish</h2>
+    </div>
     <div class="videos" style="grid-template-columns:minmax(0,720px);justify-content:center">
       <button class="yt" data-yt="oM8KfWfeTWA" aria-label="Play a barber training cut video">
         <img src="https://i.ytimg.com/vi/oM8KfWfeTWA/hqdefault.jpg" alt="A barber student performing a supervised haircut on the clinic floor" loading="lazy" width="480" height="360">
@@ -92,9 +114,14 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">Student Work</p><h2>What Trainees Are Producing</h2><p class="lead" style="margin-inline:auto">These aren't finished professionals — they're students partway through their hours. It's a preview of what your own hands could be doing a few months from now.</p></div>
+<!-- ── STUDENT WORK (paper) — KEEP .gallery-grid lightbox ── -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Student Work</p>
+      <h2 class="display">What Trainees Are Producing</h2>
+      <p class="lead" style="margin-inline:auto">These aren't finished professionals &mdash; they're students partway through their hours. It's a preview of the cut you'll get at the clinic, and of what your own hands could be doing a few months from now. Tap any photo to enlarge.</p>
+    </div>
     <div class="gallery-grid">
       <a href="assets/img/gallery/hair-01.jpg"><img loading="lazy" src="assets/img/gallery/hair-01.jpg" alt="Student haircut — bold mohawk with design"></a>
       <a href="assets/img/gallery/hair-02.jpg"><img loading="lazy" src="assets/img/gallery/hair-02.jpg" alt="Student haircut — clean fade with sharp beard line"></a>
@@ -106,48 +133,84 @@
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">From the Chair</p><h2>What the Model Looks Like to Clients</h2></div>
-    <div class="testi">
-      <div class="testi-card"><div class="stars">★★★★★</div><p>"Passed by a barber school — only $3 for a regular haircut and it's not bad at all. Great that we could help student trainees practice and reach the hours required for graduating."</p><div class="testi-who"><div class="testi-av">VL</div><div><b>Vincybie Lee</b><span>Manhattan</span></div></div></div>
-      <div class="testi-card"><div class="stars">★★★★★</div><p>"Donovan gave me a great haircut. He did exactly what I asked. Well worth $3 plus a $7 tip — $10 for a haircut! I would give 5 stars."</p><div class="testi-who"><div class="testi-av">TB</div><div><b>Tina Banee</b><span>Verified client</span></div></div></div>
+<!-- ── REVIEWS (tint) ── -->
+<section class="band band--tint">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">From the Chair</p>
+      <h2 class="display">What Clients Say About the $3 Cut</h2>
+    </div>
+    <div class="ed-grid reveal-stagger" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">
+      <article class="ed-card tilt">
+        <div style="color:var(--teal-deep);letter-spacing:.1em">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="pullquote" style="font-size:clamp(1.1rem,2.2vw,1.4rem);border:none;padding:0;margin:.6rem 0">"Passed by a barber school &mdash; only $3 for a regular haircut and it's not bad at all. Great that we could help student trainees practice and reach the hours required for graduating."</blockquote>
+        <p style="margin:0;font-weight:700">Vincybie Lee <span style="font-weight:400;color:var(--text-mute)">&middot; Manhattan</span></p>
+      </article>
+      <article class="ed-card tilt">
+        <div style="color:var(--teal-deep);letter-spacing:.1em">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="pullquote" style="font-size:clamp(1.1rem,2.2vw,1.4rem);border:none;padding:0;margin:.6rem 0">"Donovan gave me a great haircut. He did exactly what I asked. Well worth $3 plus a $7 tip &mdash; $10 for a haircut! I would give 5 stars."</blockquote>
+        <p style="margin:0;font-weight:700">Tina Banee <span style="font-weight:400;color:var(--text-mute)">&middot; Verified client</span></p>
+      </article>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">Common Questions</p><h2>Barber-School Haircuts, Answered</h2></div>
-    <div class="prose" style="max-width:60rem;margin-inline:auto">
-      <h3>Are student haircuts actually any good?</h3>
-      <p>Often, yes — and always supervised. Students are watched by licensed instructors who step in to correct and finish when needed. You're trading the polish of a seasoned pro for a big discount, and helping someone learn the trade.</p>
-      <h3>How does a cheap cut help someone become a barber?</h3>
-      <p>New York requires 500 supervised hours to sit for the barber license exam. Real clients are how students accumulate those hours on actual heads of hair instead of mannequins. Every clinic cut moves a student closer to graduation and the state board.</p>
-      <h3>Is this what my training would be like if I enrolled?</h3>
-      <p>Exactly like this — you'd be on the other side of the chair. After learning fundamentals, you'd spend most of your program cutting live clients under supervision. It's the fastest, most realistic way to get job-ready, which is why every accredited program is built around it.</p>
+<!-- ── CAMPUSES + BOOK (sand) ── -->
+<section class="band band--sand">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Where to Book</p>
+      <h2 class="display">Two NYC Clinic Floors, One Low Price</h2>
+      <p class="lead" style="margin-inline:auto">Both campuses run a supervised student clinic. Walk in or call ahead &mdash; the haircut line rings through to booking for either location.</p>
+    </div>
+    <div class="ed-grid reveal-stagger" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <article class="ed-card tilt">
+        <span class="chip">Manhattan</span>
+        <h3 style="margin-top:.6rem">48 West 39th Street</h3>
+        <p>New York, NY 10018<br>Mon&ndash;Fri &middot; 8:00 AM &ndash; 8:00 PM</p>
+        <p style="margin-bottom:0"><a href="tel:+18563161551"><b>Haircut line: (856) 316-1551</b></a><br>Campus: <a href="tel:+12122902289">(212) 290-2289</a></p>
+      </article>
+      <article class="ed-card tilt">
+        <span class="chip">Bronx</span>
+        <h3 style="margin-top:.6rem">121 Westchester Square</h3>
+        <p>Bronx, NY 10461<br>Mon&ndash;Fri &middot; 8:00 AM &ndash; 8:00 PM</p>
+        <p style="margin-bottom:0"><a href="tel:+18563161551"><b>Haircut line: (856) 316-1551</b></a><br>Campus: <a href="tel:+17186760640">(718) 676-0640</a></p>
+      </article>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:2rem">
+      <a class="btn btn-gold btn-lg" href="tel:+18563161551">Call to Book: (856) 316-1551</a>
+      <a class="btn btn-ghost btn-lg" href="/contact" style="margin-left:.6rem">Contact a Campus</a>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head center" style="margin-inline:auto"><p class="kicker" style="justify-content:center">Where This Happens</p><h2>Barber Training Clinics in New York</h2></div>
-    <div class="visit-grid" style="text-align:left">
-      <div class="visit-card-lite"><h3>Manhattan</h3><p>48 West 39th Street, New York, NY 10018</p><p>Mon–Fri · 8:00 AM – 8:00 PM</p><a href="tel:+12122902289">(212) 290-2289</a></div>
-      <div class="visit-card-lite"><h3>Bronx</h3><p>121 Westchester Square, Bronx, NY 10461</p><p>Mon–Fri · 8:00 AM – 8:00 PM</p><a href="tel:+17186760640">(718) 676-0640</a></div>
+<!-- ── FAQ (paper) ── -->
+<section class="band band--paper">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">Common Questions</p>
+      <h2 class="display">Barber-School Haircuts, Answered</h2>
+    </div>
+    <div style="max-width:760px;margin-inline:auto">
+      <details open><summary>Are student haircuts actually any good?</summary><div class="a"><p>Often, yes &mdash; and always supervised. Students are watched by licensed instructors who step in to correct and finish when needed. You're trading the polish of a seasoned pro for a big discount, and helping someone learn the trade.</p></div></details>
+      <details><summary>How much does a clinic haircut cost?</summary><div class="a"><p>A standard clinic cut starts at just $3. Some added services may cost a little more. Call the haircut line at <a href="tel:+18563161551">(856) 316-1551</a> for current pricing at either campus.</p></div></details>
+      <details><summary>Do I need an appointment, or can I walk in?</summary><div class="a"><p>Both campuses take walk-ins during clinic hours (Mon&ndash;Fri, 8 AM&ndash;8 PM), but calling ahead on the <a href="tel:+18563161551">haircut line</a> helps us pair you with an available student and cut your wait.</p></div></details>
+      <details><summary>How does a cheap cut help someone become a barber?</summary><div class="a"><p>New York requires 500 supervised hours to sit for the barber license exam. Real clients are how students accumulate those hours on actual heads of hair instead of mannequins. Every clinic cut moves a student closer to graduation and the state board.</p></div></details>
+      <details><summary>Is this what my training would be like if I enrolled?</summary><div class="a"><p>Exactly like this &mdash; you'd be on the other side of the chair. After learning fundamentals, you'd spend most of your program cutting live clients under supervision. See <a href="/programs/500-hour-master-barber">the 500-hour program</a> for how it works.</p></div></details>
     </div>
   </div>
 </section>
 
-<section class="cta-band">
-  <div class="wrap" style="text-align:center">
-    <p class="kicker" style="justify-content:center">On the Other Side of the Chair</p>
-    <h2>Want to Be the One Holding the Clippers?</h2>
-    <p>The clinic floor you just read about is where a barber career begins — 500 hours, about four months full-time or six to seven months on weekends, ending at the New York State Board. New classes start the first Monday of every month.</p>
-    <div class="hero-ctas" style="justify-content:center">
-      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&amp;utm_medium=guide&amp;utm_campaign=haircuts">Train at ABI →</a>
-      <a class="btn btn-ghost btn-lg" href="/guides/how-to-become-a-barber-in-new-york">How to Become a Barber</a>
+<!-- ── CTA (petrol) ── -->
+<section class="band band--petrol">
+  <span class="band__blob"></span>
+  <div class="eb-wrap" style="text-align:center">
+    <p class="eyebrow">On the Other Side of the Chair</p>
+    <h2 class="display">Want to Be the One Holding the Clippers?</h2>
+    <p class="lead" style="margin-inline:auto;max-width:62ch">The clinic floor you just read about is where a barber career begins &mdash; 500 hours, about four months full-time or six to seven months on weekends, ending at the New York State Board. New classes start the first Monday of every month.</p>
+    <div class="hero-ctas" style="justify-content:center;margin-top:1.8rem">
+      <a class="btn btn-gold btn-lg" href="https://www.abi.edu/?utm_source=dotcom&amp;utm_medium=guide&amp;utm_campaign=haircuts">Train at ABI &rarr;</a>
+      <a class="btn btn-ghost2 btn-lg" href="/guides/how-to-become-a-barber-in-new-york">How to Become a Barber</a>
     </div>
   </div>
 </section>

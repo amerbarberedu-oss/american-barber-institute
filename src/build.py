@@ -67,14 +67,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="/apple-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/brand.css?v=31">
-<link rel="stylesheet" href="{root}assets/css/landing.css?v=151">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{root}assets/css/style.css?v=34">
+<link rel="stylesheet" href="{root}assets/css/brand.css?v=32">
+<link rel="stylesheet" href="{root}assets/css/landing.css?v=152">
 <link rel="stylesheet" href="{root}assets/css/upgrade.css?v=2">
 <script src="{root}assets/js/analytics.js?v=3" defer></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.css?v=30">
+<link rel="stylesheet" href="{root}assets/css/effects.css?v=31">
+<link rel="stylesheet" href="{root}assets/css/editorial.css?v=1">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -279,8 +280,8 @@ TEMPLATE = """<!DOCTYPE html>
 <script>(function(){{var b=document.querySelector('[data-call-toggle]'),s=document.querySelector('.call-sheet');if(!b||!s)return;function close(){{s.hidden=true;b.setAttribute('aria-expanded','false');}}b.addEventListener('click',function(e){{e.stopPropagation();var open=s.hidden;s.hidden=!open;b.setAttribute('aria-expanded',String(open));}});document.addEventListener('click',function(e){{if(!s.hidden&&!s.contains(e.target)&&e.target!==b)close();}});document.addEventListener('keydown',function(e){{if(e.key==='Escape')close();}});s.querySelectorAll('a').forEach(function(a){{a.addEventListener('click',close);}});}})();</script>
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<script src="{root}assets/js/main.js?v=32" defer></script>
-<script src="{root}assets/js/effects.js?v=32" defer></script>
+<script src="{root}assets/js/main.js?v=33" defer></script>
+<script src="{root}assets/js/effects.js?v=33" defer></script>
 <script src="{root}assets/js/landing.js?v=32" defer></script>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
 <script src="{root}assets/js/campus.js?v=2" defer></script>

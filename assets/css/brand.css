@@ -52,14 +52,25 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   --ink-3: #1E353B;   /* borders on dark */
   --ink-soft: #47585E;
 
-  /* ---- light base ---- */
-  --paper:   #ffffff;
-  --paper-2: #F2F7F8;
-  --bg:      #F7FAFB;         /* cool near-white page background */
-  --surface:     #ffffff;
-  --surface-alt: #F2F7F8;
-  --page-tint-a: #FBFDFD;
-  --page-tint-b: #EEF5F6;
+  /* ---- WARM EDITORIAL BASE (v3 — no flat white anywhere) ----
+     The page base is warm porcelain, never #FFF. Sections alternate
+     across a 5-tone BAND SYSTEM (see editorial.css .band--*). */
+  --band-paper:  #F6F4EF;   /* warm porcelain — DEFAULT page + light bands */
+  --band-sand:   #EFE8DA;   /* warm sand — alternate light band */
+  --band-tint:   #E3F3F0;   /* teal wash — brand-tinted band */
+  --band-petrol: #0E3A42;   /* deep petrol — dark band */
+  --band-dark:   #12181A;   /* near-black — stats / proof band */
+  --on-dark:        #F4F1EA;   /* body/headings on dark bands (warm off-white) */
+  --on-dark-muted:  #B9C7C7;   /* secondary text on dark ~5:1 */
+
+  /* card surfaces sit ABOVE bands (lifted, warm, never stark white) */
+  --paper:   #FCFBF8;
+  --paper-2: #F0ECE3;
+  --bg:      #F6F4EF;         /* porcelain page background */
+  --surface:     #FCFBF8;
+  --surface-alt: #F0ECE3;
+  --page-tint-a: #FBFAF6;
+  --page-tint-b: #ECE5D8;
 
   /* ---- cool-steel neutrals ---- */
   --steel-050: #F7FAFB;
@@ -104,13 +115,15 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   --foot-bg:     #0A3A45;
   --foot-border: #145063;
 
-  /* ---- type: keep Inter body (family resemblance to .edu).
-     Headings use a strong modern grotesk stack; NO external fonts
-     (CSP blocks them) -> system grotesk + Inter fallback. ---- */
-  --font-display: "Inter Tight", "Inter", "Helvetica Neue", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* ---- type (v3 EDITORIAL): Fraunces soft-serif for display headlines
+     (warmth + authority), Inter for body/UI, JetBrains Mono for eyebrows,
+     stat figures and section labels. Loaded via Google Fonts (CSP allows
+     fonts.googleapis.com / fonts.gstatic.com). ---- */
+  --font-display: "Fraunces", "Georgia", "Times New Roman", serif;
   --font-body:    "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
   --font:         "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-  --script:       "Inter", system-ui, sans-serif;  /* no cursive; editorial */
+  --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --script:       "Fraunces", Georgia, serif;  /* italic editorial pull-quotes */
 
   /* ---- geometry / depth (softer, editorial) ---- */
   --max-w: 1180px;
@@ -186,13 +199,18 @@ h1, h2, h3, .sec h2, .section-head h2, .hero h1, .page-hero h1 {
 .menu-btn { color: var(--text-dark); }
 .mobile-nav, .m-nav, .nav-drawer { background: #fff; }
 
-/* Kicker (eyebrow) — small caps, teal, editorial rule */
-.kicker {
+/* Kicker / eyebrow — MONO label, teal, tracked (editorial section tag) */
+.kicker, .eyebrow {
+  font-family: var(--font-mono);
   color: var(--teal-deep);
-  font-weight: 700;
-  letter-spacing: .16em;
+  font-weight: 500;
+  font-size: .74rem;
+  letter-spacing: .18em;
   text-transform: uppercase;
 }
+/* On dark bands the eyebrow brightens for contrast */
+.band--petrol .kicker, .band--dark .kicker,
+.band--petrol .eyebrow, .band--dark .eyebrow { color: var(--teal-bright); }
 
 /* Footer -> deep petrol */
 .foot, footer.site, .site-foot { background: var(--foot-bg); color: var(--text-on-dark); }
