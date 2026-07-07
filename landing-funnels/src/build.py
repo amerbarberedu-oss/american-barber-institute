@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "58"
+CSS_V = "59"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -95,54 +95,159 @@ LOGO_ALT = ("American Barber Institute — "
 # Each campus logo already contains the street address baked into the
 # artwork, so we don't render a duplicate text address line in the header.
 def header(p):
-    """v45 — main-site header pattern, split by breakpoint:
-    DESKTOP (3 rows): [logo · phones · EN|ES]  /  promo strip  /  seats banner
-    MOBILE  (4 rows): [logo · EN|ES]  /  promo strip  /  phones row  /  seats banner
-    Row 1 is the only sticky row. Accent colors come from each page's theme class."""
+    """v46 — the actual abi.edu website header ported to landings:
+    ubar (campus + language + phones) → hdr2 (logo + nav + Book) → mstrip (mobile phones)
+    Then landings keep .lfx-promo + .lfx-seats below for urgency/conversion signals.
+    Requires body.shell2 class + site-header.css + campus.js."""
     es = p["lang"] == "es"
-    en_href = "/" + p["path"] if not es else "/" + p["alt"]
-    es_href = "/" + p["alt"] if not es else "/" + p["path"]
-    campus_phones = D.TOPBAR_PHONES_BY_CAMPUS[p["campus"]["slug"]]
-    pills = "".join(
-        '<a class="lfx-phone" href="tel:%s">%s<b class="lfx-phone__flag">%s</b>'
-        '<span class="lfx-phone__num">%s</span></a>' % (
-            h(ph["tel"]), svg("phone", 15), h(ph["label"]), h(ph["display"])
-        )
-        for ph in campus_phones
+    campus_slug = p["campus"]["slug"]
+    is_manhattan = campus_slug == "manhattan"
+
+    # Language toggle: same campus, other language
+    en_href = "/" + (p["path"] if not es else p["alt"])
+    es_href = "/" + (p["alt"] if not es else p["path"])
+
+    # Campus toggle: other campus, same language
+    mht_href = "/500-hours-master-barber-program-landing-page" + ("/spanish" if es else "")
+    bx_href  = "/master-barber-program-bronx" + ("/spanish" if es else "")
+
+    lang_label = "Idioma" if es else "Language"
+
+    pin_svg = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
+               'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>')
+    globe_svg = ('<svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" '
+                 'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                 '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
+                 '<path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>')
+
+    campus_switch = (
+        '<div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus">'
+        '<span class="seg-glider" aria-hidden="true"></span>'
+        '<a class="seg-opt %s" data-campus-opt="manhattan" href="%s" aria-current="%s">%s<span class="seg-lab">Manhattan</span></a>'
+        '<a class="seg-opt %s" data-campus-opt="bronx" href="%s" aria-current="%s">%s<span class="seg-lab">Bronx</span></a>'
+        '</div>'
+    ) % (
+        "is-active" if is_manhattan else "", h(mht_href), "true" if is_manhattan else "false", pin_svg,
+        "is-active" if not is_manhattan else "", h(bx_href), "true" if not is_manhattan else "false", pin_svg,
     )
+    lang_toggle = (
+        '<div class="seg seg-lang" role="group" aria-label="%s" data-seg="lang">'
+        '<span class="seg-glider" aria-hidden="true"></span>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab">EN</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab">ES</span></a>'
+        '</div>'
+    ) % (
+        h(lang_label),
+        "is-active" if not es else "", h(en_href), "true" if not es else "false", globe_svg,
+        "is-active" if es else "", h(es_href), "true" if es else "false",
+    )
+
+    # Per-campus phones for ubar (desktop) and mstrip (mobile)
+    phone_svg = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                 'stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'
+                 '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 '
+                 '2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 '
+                 '6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>')
+    scissors_svg = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                    'stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'
+                    '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>'
+                    '<path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg>')
+    mphone_svg = phone_svg.replace('width="14" height="14"', 'width="12" height="12"').replace(
+        'stroke-width="2.1"', 'stroke-width="2.2"').replace(' aria-hidden="true"', ' aria-hidden="true"')
+    mscissors_svg = scissors_svg.replace('width="14" height="14"', 'width="12" height="12"').replace(
+        'stroke-width="2.1"', 'stroke-width="2.2"')
+
+    if is_manhattan:
+        ubar_calls = (
+            '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
+            '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
+            '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
+            '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
+            '<a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true">%s</span>'
+            '<span class="ubar-tag">Haircut</span><span class="ubar-num">(856) 316-1551</span></a>'
+        ) % (phone_svg, scissors_svg)
+        mstrip_phones = (
+            '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
+            '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
+            '<a class="mstrip-phone" href="tel:+18563161551">%s<span class="mstrip-t"><b>(856) 316-1551</b><i>Haircut</i></span></a>'
+        ) % (mphone_svg, mphone_svg, mscissors_svg)
+    else:  # bronx
+        ubar_calls = (
+            '<a class="ubar-call ubar-call--admis" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
+            '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
+            '<a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true">%s</span>'
+            '<span class="ubar-tag">Haircut</span><span class="ubar-num">(856) 316-1551</span></a>'
+        ) % (phone_svg, scissors_svg)
+        mstrip_phones = (
+            '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
+            '<a class="mstrip-phone" href="tel:+18563161551">%s<span class="mstrip-t"><b>(856) 316-1551</b><i>Haircut</i></span></a>'
+        ) % (mphone_svg, mscissors_svg)
+
+    # Nav labels (translate for ES)
+    if es:
+        L = {"programs": "Programas", "why": "Por qué ABI", "guides": "Guías",
+             "tuition": "Costo y Ayuda", "contact": "Contacto",
+             "book": "Reservar Visita", "menu": "Menú",
+             "prog500": "500 horas — Barbero Maestro"}
+    else:
+        L = {"programs": "Programs", "why": "Why ABI", "guides": "Guides",
+             "tuition": "Tuition & Funding", "contact": "Contact",
+             "book": "Book a Tour", "menu": "Menu",
+             "prog500": "500-Hour Master Barber"}
+
+    # Promo strip + Limited Seats banner sit BELOW the new header — landings still need urgency.
     promo = h(p["promo_strip"])
     for price in ("$150 per week*", "$150 por semana*"):
         promo = promo.replace(price, "<b>%s</b>" % price)
     seats_kicker, seats_lead = D.SEATS_BANNER[p["lang"]]
     star_svg = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
                 '<path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg>')
+
     return (
-        '<header class="lfx-bar"><div class="lfx-bar__in">\n'
-        '  <a class="lfx-logo" href="#reserve" aria-label="American Barber Institute">\n'
-        '    <img src="%s" alt="%s" width="%d" height="%d" fetchpriority="high">\n'
-        '  </a>\n'
-        '  <div class="lfx-phones lfx-phones--bar">%s</div>\n'
-        '  <div class="lf-lang lfx-lang" role="group" aria-label="%s">\n'
-        '    <a class="%s" href="%s"%s>EN</a>\n'
-        '    <a class="%s" href="%s"%s>ES</a>\n'
-        '  </div>\n'
-        '</div></header>\n'
+        '<div class="ubar"><div class="ubar-in">'
+        '<div class="ubar-left">%s%s</div>'
+        '<div class="ubar-right tb-calls" data-campus-phones>%s</div>'
+        '</div></div>\n'
+        '<header class="hdr2"><div class="hdr2-in">'
+        '<a class="logo2" href="/" aria-label="American Barber Institute — home">'
+        '<img class="logo2-img" src="/assets/img/logo-final.gif" alt="American Barber Institute" width="385" height="99" fetchpriority="high">'
+        '</a>'
+        '<nav class="nav2" aria-label="Main">'
+        '<div class="nav2-item"><a class="nav2-top" href="/">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="/about">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="/guides">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="/tuition-and-funding">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="/contact">%s</a></div>'
+        '</nav>'
+        '<a class="hdr2-cta" href="#reserve">%s</a>'
+        '<button class="hamburger" aria-label="%s" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>'
+        '</div>'
+        '<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">'
+        '<div class="drawer-switchers">%s%s</div>'
+        '<div class="drawer-group"><p class="drawer-h">%s</p><a href="/">%s</a></div>'
+        '<div class="drawer-group">'
+        '<a class="drawer-solo" href="/about">%s</a>'
+        '<a class="drawer-solo" href="/guides">%s</a>'
+        '<a class="drawer-solo" href="/tuition-and-funding">%s</a>'
+        '<a class="drawer-solo" href="/contact">%s</a>'
+        '</div>'
+        '<a class="drawer-cta" href="#reserve"><b>%s</b></a>'
+        '</div></nav>'
+        '</header>\n'
+        '<div class="mstrip"><div class="mstrip-phones">%s</div></div>\n'
         '<div class="lfx-promo">%s</div>\n'
-        '<div class="lfx-phonerow">%s</div>\n'
-        '<div class="lfx-seats" role="status">\n'
-        '  <span class="lfx-star" aria-hidden="true">%s</span>\n'
-        '  <span class="lfx-seats-t"><b>%s</b><i>%s</i></span>\n'
-        '</div>\n'
+        '<div class="lfx-seats" role="status"><span class="lfx-star" aria-hidden="true">%s</span>'
+        '<span class="lfx-seats-t"><b>%s</b><i>%s</i></span></div>\n'
     ) % (
-        h(LOGO_SRC), h(LOGO_ALT), LOGO_W, LOGO_H,
-        pills,
-        "Idioma" if es else "Language",
-        "is-active" if not es else "", h(en_href), ' aria-current="true"' if not es else "",
-        "is-active" if es else "", h(es_href), ' aria-current="true"' if es else "",
-        promo,
-        pills,
-        star_svg,
-        h(seats_kicker), h(seats_lead),
+        campus_switch, lang_toggle, ubar_calls,
+        L["programs"], L["why"], L["guides"], L["tuition"], L["contact"],
+        L["book"], L["menu"],
+        campus_switch, lang_toggle,
+        L["programs"], L["prog500"],
+        L["why"], L["guides"], L["tuition"], L["contact"],
+        L["book"],
+        mstrip_phones, promo, star_svg, h(seats_kicker), h(seats_lead),
     )
 
 
@@ -782,11 +887,14 @@ def page_head(p):
 '<link rel="preload" href="/assets/img/%(mhero_bg)s" as="image" media="(max-width:768px)" fetchpriority="high">\n'
 '<link rel="preload" href="/assets/img/hero-barber-clinic-2.jpg" as="image" media="(min-width:769px)">\n'
 '<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">\n'
+'<link rel="stylesheet" href="/assets/css/site-header.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/funnels.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/chatbot.css?v=%(cssv)s">\n'
 '%(ld_scripts)s'
 '<script src="/assets/js/analytics.js?v=3" defer></script>\n'
-'</head>\n<body class="lf-page %(theme)s">\n'
+'<script src="/assets/js/campus.js?v=2" defer></script>\n'
+'<script src="/assets/js/landing.js?v=32" defer></script>\n'
+'</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
     ) % {
         "lang": p["lang"], "title": h(p["title"]), "desc": h(p["desc"]),
@@ -799,6 +907,7 @@ def page_head(p):
             for b in ld_blocks
         ),
         "theme": p["theme_class"],
+        "campus_slug": p["campus"]["slug"],
     }
 
 
