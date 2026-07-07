@@ -963,7 +963,7 @@ def page_tail():
         ''
         '<script src="https://widgets.leadconnectorhq.com/loader.js" '
         'data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" '
-        'data-widget-id="689f4917512e48b4268bf335" defer></script>\n'
+        'data-widget-id="689f4917512e48b4268bf335"></script>\n'
         '<script>(function(){var t=setInterval(function(){var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){clearInterval(t);var s=document.createElement("style");s.textContent="@media(max-width:768px){.lc_text-widget,.lc_text-widget--bubble{bottom:140px!important;right:12px!important}}";w.shadowRoot.appendChild(s);}},400);setTimeout(function(){clearInterval(t)},15000);})();</script>\n'
         '</body>\n</html>\n'
     ) % (JS_V,)

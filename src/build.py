@@ -258,26 +258,7 @@ TEMPLATE = """<!DOCTYPE html>
 </a>
 <button class="to-top" aria-label="Back to top" title="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
-<div class="mobile-cta">
-  <button class="call" type="button" aria-haspopup="true" aria-expanded="false" data-call-toggle>
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-    <span>Call Now</span>
-  </button>
-  <a class="text" href="sms:+12122902289" aria-label="Text us">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-    <span>Text Us</span>
-  </a>
-  <a class="apply" href="{root}contact.html" aria-label="Apply now">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-    <span>Apply Now</span>
-  </a>
-  <div class="call-sheet" hidden role="menu" aria-label="Choose a language to call">
-    <p class="call-sheet-h">Call us — choose a language</p>
-    <a href="tel:+12122902289" role="menuitem"><span class="cs-lang">English</span><span class="cs-num">(212) 290-2289</span></a>
-    <a href="tel:+12122900278" role="menuitem"><span class="cs-lang">Español</span><span class="cs-num">(212) 290-0278</span></a>
-  </div>
-</div>
-<script>(function(){{var b=document.querySelector('[data-call-toggle]'),s=document.querySelector('.call-sheet');if(!b||!s)return;function close(){{s.hidden=true;b.setAttribute('aria-expanded','false');}}b.addEventListener('click',function(e){{e.stopPropagation();var open=s.hidden;s.hidden=!open;b.setAttribute('aria-expanded',String(open));}});document.addEventListener('click',function(e){{if(!s.hidden&&!s.contains(e.target)&&e.target!==b)close();}});document.addEventListener('keydown',function(e){{if(e.key==='Escape')close();}});s.querySelectorAll('a').forEach(function(a){{a.addEventListener('click',close);}});}})();</script>
+{mbar}
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 <script src="{root}assets/js/main.js?v=33" defer></script>
@@ -286,7 +267,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
 <script src="{root}assets/js/campus.js?v=2" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335" defer></script>
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335"></script>
 <script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent="@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
 <script src="{root}assets/js/video-sound.js?v=3" defer></script>
 </body>
@@ -878,6 +859,36 @@ def _campus_switch(root, campus):
         mn_active, root, ('true' if mn_active else 'false'), pin,
         bx_active, ('true' if bx_active else 'false'), pin)
 
+def _mbar(root, es, apply_href):
+    """Sticky mobile action bar — Call Now / Text Us / Apply Now.
+    Exact markup/behavior match for abi.edu's `.mbar` (client 2026-07-08:
+    'fetch the abi.edu footer... exact same thing... on every page').
+    Call Now is a direct tel: link (no language picker, matching abi.edu's
+    own simplification — the ubar/mstrip further up the page already offer
+    the Spanish number). Text Us always goes to the shared GHL AI SMS line."""
+    call_svg = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+                '<path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1'
+                'C10.8 21 3 13.2 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>')
+    text_svg = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+                'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1'
+                '-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>')
+    apply_svg = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+                 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                 '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>'
+                 '<line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/>'
+                 '<line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>')
+    call_label = "Llamar" if es else "Call Now"
+    text_label = "Mensaje" if es else "Text Us"
+    apply_label = "Aplicar" if es else "Apply Now"
+    return (
+        '<div class="mbar">\n'
+        '  <a class="mbar-call" href="tel:+12122902289">%s <span>%s</span></a>\n'
+        '  <a class="mbar-text" href="sms:+19295888448?&amp;body=Hi%%2C%%20how%%20are%%20you%%3F">%s <span>%s</span></a>\n'
+        '  <a class="mbar-cta" href="%s">%s <span>%s</span></a>\n'
+        '</div>'
+    ) % (call_svg, call_label, text_svg, text_label, apply_href, apply_svg, apply_label)
+
 def _lang_toggle(root, out):
     """Segmented EN | ES control with a globe icon + sliding indicator.
     Every EN page now has a Spanish twin at /es/<slug>, so the ES link
@@ -1076,6 +1087,7 @@ def build():
         campus = CAMPUS_BY_PAGE.get(out.replace('es/', ''), 'manhattan')
         langtoggle = _lang_toggle(root, out)
         campusswitch = _campus_switch(root, campus)
+        mbar = _mbar(root, False, root + 'contact.html')
         # Body theme + data-campus so campus.js renders the right phones on load.
         # 'both' (Haircuts) stays neutral/manhattan-themed but flags data-campus=both.
         bodyclass = ' bx-gold' if campus == 'bronx' else ''
@@ -1117,7 +1129,7 @@ def build():
             pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
             root=root, body=body, schema=schema_tags, langtoggle=langtoggle,
             campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
-            hreflang_block=hreflang_block,
+            hreflang_block=hreflang_block, mbar=mbar,
             lp=root + 'programs/index.html',
             en_cur='aria-current="true"' if lang == 'en' else '',
             es_cur='aria-current="true"' if lang == 'es' else '')
@@ -1160,7 +1172,12 @@ def build():
             es_title, es_desc = es_meta
             es_canonical = f"{SITE_URL}/es/{out}".replace('/index.html', '/').replace('.html', '')
             es_en_href = canonical
-            es_langtoggle = _lang_toggle('/' if out == 'index.html' else ('../' + '../' * out.count('/')), 'es/' + out)
+            es_root = '../' + ('../' * out.count('/'))
+            es_langtoggle = _lang_toggle('/' if out == 'index.html' else es_root, 'es/' + out)
+            # apply_href uses `root` (not `es_root`) — it links to the ES-sibling
+            # contact page (es/contact.html), which sits at the SAME relative
+            # depth within es/ as `root` describes within the site root.
+            es_mbar = _mbar(es_root, True, root + 'contact.html')
             es_hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{es_en_href}">\n'
                 f'<link rel="alternate" hreflang="en-US" href="{es_en_href}">\n'
@@ -1177,7 +1194,7 @@ def build():
                 root='../' + ('../' * out.count('/')),
                 body=es_body, schema=schema_tags, langtoggle=es_langtoggle,
                 campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
-                hreflang_block=es_hreflang_block,
+                hreflang_block=es_hreflang_block, mbar=es_mbar,
                 lp='../' + ('../' * out.count('/')) + 'programs/index.html',
                 en_cur='', es_cur='aria-current="true"')
             es_html = (es_html
