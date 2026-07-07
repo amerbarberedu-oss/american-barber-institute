@@ -110,87 +110,7 @@ TEMPLATE = """<!DOCTYPE html>
 {body}
 </main>
 
-<section class="cta-band">
-  <div class="wrap">
-    <p class="kicker" style="justify-content:center">Classes begin the first Monday of each month</p>
-    <h2>Ready to Become a Licensed Barber?</h2>
-    <p>Next class starts <span data-start-date>soon</span>. Seats fill fast — start your barber school enrollment, request a call, or speak with admissions in English or Spanish.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-gold btn-lg" href="{root}contact.html">Start Barber School</a>
-      <a class="btn btn-ghost btn-lg" href="{root}contact.html">Speak With Admissions</a>
-    </div>
-  </div>
-</section>
-
-<footer class="site2">
-  <div class="foot2-cta">
-    <div class="wrap">
-      <p class="foot2-kicker">Classes begin the first Monday of each month</p>
-      <h3>Start Barber School Today</h3>
-      <p class="foot2-cta-sub">Your new career is one phone call away. Talk to admissions in English or Spanish.</p>
-      <div class="foot-cta-btns">
-        <a class="btn btn-gold btn-lg" href="{root}contact.html">Request a Call</a>
-        <a class="btn btn-ghost2 btn-lg" href="{root}contact.html">Apply Now</a>
-      </div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="ftr-grid">
-      <div class="foot2-brand">
-        <p class="foot-name">American Barber Institute</p>
-        <p class="foot2-blurb">New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.</p>
-        <div class="socials">
-          <a class="soc soc-fb" href="https://www.facebook.com/Abi.Education/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.2-1.5 1.5-1.5h1.4V5.1C16.1 5 15.2 5 14.2 5c-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3z"/></svg></a>
-          <a class="soc soc-ig" href="https://www.instagram.com/americanbarberinstitute/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-          <a class="soc soc-x" href="https://twitter.com/amerbarberedu" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.3L5.6 21h-3l7.1-8.1L2 3h6.3l4.3 5.7L17.8 3zm-1 16.2h1.7L7.3 4.7H5.5l11.3 14.5z"/></svg></a>
-          <a class="soc soc-yt" href="https://www.youtube.com/channel/UCy_pQUDfk2ldEp6_zyaIMhQ" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.6A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2zM9.8 15.3V8.7L15.9 12l-6.1 3.3z"/></svg></a>
-          <a class="soc soc-pin" href="https://www.pinterest.com/alexzholendz/american-barber-institute/" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-4.9 0-2.6-1.9-4.4-4.5-4.4a4.7 4.7 0 0 0-4.9 4.7c0 .9.4 1.9.8 2.5l-.3 1.1c-.1.4-.3.5-.7.3-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.1l-.6 2.4c-.2.9-.8 1.9-1.2 2.6A10 10 0 1 0 12 2z"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Programs</h4>
-        <ul>
-          <li><a href="{root}programs/500-hour-master-barber.html">500-Hour Master Barber</a></li>
-          <li><a href="{root}programs/50-hour-barber-refresher.html">50-Hour Refresher</a></li>
-          <li><a href="{root}programs/contagious-diseases.html">Contagious Diseases</a></li>
-          <li><a href="{root}schedules.html">Schedules &amp; Flexibility</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="{root}why-barbering.html">Why Barbering</a></li>
-          <li><a href="{root}career-paths.html">Career Paths</a></li>
-          <li><a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a></li>
-          <li><a href="{root}veterans.html">Veterans &amp; GI Bill®</a></li>
-          <li><a href="{root}guides/index.html">Guides &amp; Licensing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Visit Us</h4>
-        <ul class="foot2-visit">
-          <li class="foot2-loc"><b>Manhattan</b><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street, New York, NY 10018</a></li>
-          <li class="foot2-loc"><b>Bronx</b><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square, Bronx, NY 10461</a></li>
-          <li class="foot2-phones" data-footer-phones><a href="tel:+12122902289">(212) 290-2289 · English</a><a href="tel:+12122900278">(212) 290-0278 · Español</a><a href="tel:+17186760640">(718) 676-0640 · Bronx</a></li>
-          <li><a href="mailto:admission@abi.edu">admission@abi.edu</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="foot-legal">
-    <div class="wrap">
-      <div>© <span id="yr"></span> American Barber Institute (ABI). All rights reserved.</div>
-      <div class="foot-legal-links"><a href="/privacy-and-policy">Privacy Policy</a></div>
-      <div>GI BILL® is a registered trademark of the U.S. Department of Veterans Affairs (VA). Info: <a href="https://www.benefits.va.gov/gibill" rel="noopener">benefits.va.gov/gibill</a></div>
-    </div>
-  </div>
-</footer>
-
-<a class="desk-cta" href="{root}contact.html" aria-label="Request a call from admissions">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-  Request a Call
-</a>
-<button class="to-top" aria-label="Back to top" title="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+{footer_block}
 
 {mbar}
 
@@ -891,6 +811,124 @@ def _header_nav(root, es, campusswitch, langtoggle):
         '</header>'
     )
 
+def _footer_block(root, es):
+    """CTA band + <footer> + floating desk-cta + to-top button.
+    EN/ES-aware, same gap class as _header_nav: the shared footer showed
+    English labels/links on every Spanish page (client 2026-07-08 audit)."""
+    L = {
+        "kicker": "Las clases comienzan el primer lunes de cada mes" if es else "Classes begin the first Monday of each month",
+        "cta_h2": "¿Listo para Convertirte en Barbero Licenciado?" if es else "Ready to Become a Licensed Barber?",
+        "cta_p_a": "La próxima clase comienza" if es else "Next class starts",
+        "cta_p_b": "pronto" if es else "soon",
+        "cta_p_c": ("Los cupos se llenan rápido — inscríbete, solicita una llamada, o habla con admisiones en inglés o español."
+                    if es else "Seats fill fast — start your barber school enrollment, request a call, or speak with admissions in English or Spanish."),
+        "start": "Empieza la Escuela de Barbería" if es else "Start Barber School",
+        "speak": "Habla con Admisiones" if es else "Speak With Admissions",
+        "foot_h3": "Empieza la Escuela de Barbería Hoy" if es else "Start Barber School Today",
+        "foot_cta_sub": "Tu nueva carrera está a una llamada de distancia. Habla con admisiones en inglés o español." if es else "Your new career is one phone call away. Talk to admissions in English or Spanish.",
+        "request_call": "Solicita una Llamada" if es else "Request a Call",
+        "apply_now": "Aplicar Ahora" if es else "Apply Now",
+        "foot_blurb": "La escuela de barbería de Nueva York enfocada en carreras. Licenciada por el Departamento de Educación del Estado de NY. Cambiando vidas por más de 30 años." if es else "New York's career-focused barber school. Licensed by the NY State Department of Education. Changing lives for over 30 years.",
+        "programs": "Programas" if es else "Programs",
+        "master500": "Barbero Maestro (500 Horas)" if es else "500-Hour Master Barber",
+        "refresher50": "Repaso de 50 Horas" if es else "50-Hour Refresher",
+        "contagious": "Enfermedades Contagiosas" if es else "Contagious Diseases",
+        "schedules": "Horarios y Flexibilidad" if es else "Schedules &amp; Flexibility",
+        "explore": "Explorar" if es else "Explore",
+        "why_barbering": "Por Qué la Barbería" if es else "Why Barbering",
+        "career_paths": "Trayectorias Profesionales" if es else "Career Paths",
+        "tuition": "Costo y Financiamiento" if es else "Tuition &amp; Funding",
+        "veterans": "Veteranos y GI Bill®" if es else "Veterans &amp; GI Bill®",
+        "guides_licensing": "Guías y Licencia" if es else "Guides &amp; Licensing",
+        "visit_us": "Visítanos" if es else "Visit Us",
+        "privacy": "Política de Privacidad" if es else "Privacy Policy",
+        "rights": "Todos los derechos reservados." if es else "All rights reserved.",
+        "request_a_call_from_admissions": "Solicita una llamada de admisiones" if es else "Request a call from admissions",
+        "back_to_top": "Volver arriba" if es else "Back to top",
+    }
+    prefix = '/es' if es else ''
+    return (
+        '<section class="cta-band">\n'
+        '  <div class="wrap">\n'
+        f'    <p class="kicker" style="justify-content:center">{L["kicker"]}</p>\n'
+        f'    <h2>{L["cta_h2"]}</h2>\n'
+        f'    <p>{L["cta_p_a"]} <span data-start-date>{L["cta_p_b"]}</span>. {L["cta_p_c"]}</p>\n'
+        '    <div class="hero-ctas">\n'
+        f'      <a class="btn btn-gold btn-lg" href="{root}contact.html">{L["start"]}</a>\n'
+        f'      <a class="btn btn-ghost btn-lg" href="{root}contact.html">{L["speak"]}</a>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '</section>\n\n'
+        '<footer class="site2">\n'
+        '  <div class="foot2-cta">\n'
+        '    <div class="wrap">\n'
+        f'      <p class="foot2-kicker">{L["kicker"]}</p>\n'
+        f'      <h3>{L["foot_h3"]}</h3>\n'
+        f'      <p class="foot2-cta-sub">{L["foot_cta_sub"]}</p>\n'
+        '      <div class="foot-cta-btns">\n'
+        f'        <a class="btn btn-gold btn-lg" href="{root}contact.html">{L["request_call"]}</a>\n'
+        f'        <a class="btn btn-ghost2 btn-lg" href="{root}contact.html">{L["apply_now"]}</a>\n'
+        '      </div>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '  <div class="wrap">\n'
+        '    <div class="ftr-grid">\n'
+        '      <div class="foot2-brand">\n'
+        '        <p class="foot-name">American Barber Institute</p>\n'
+        f'        <p class="foot2-blurb">{L["foot_blurb"]}</p>\n'
+        '        <div class="socials">\n'
+        '          <a class="soc soc-fb" href="https://www.facebook.com/Abi.Education/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.2-1.5 1.5-1.5h1.4V5.1C16.1 5 15.2 5 14.2 5c-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3z"/></svg></a>\n'
+        '          <a class="soc soc-ig" href="https://www.instagram.com/americanbarberinstitute/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>\n'
+        '          <a class="soc soc-x" href="https://twitter.com/amerbarberedu" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.3L5.6 21h-3l7.1-8.1L2 3h6.3l4.3 5.7L17.8 3zm-1 16.2h1.7L7.3 4.7H5.5l11.3 14.5z"/></svg></a>\n'
+        '          <a class="soc soc-yt" href="https://www.youtube.com/channel/UCy_pQUDfk2ldEp6_zyaIMhQ" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.6A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2zM9.8 15.3V8.7L15.9 12l-6.1 3.3z"/></svg></a>\n'
+        '          <a class="soc soc-pin" href="https://www.pinterest.com/alexzholendz/american-barber-institute/" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-4.9 0-2.6-1.9-4.4-4.5-4.4a4.7 4.7 0 0 0-4.9 4.7c0 .9.4 1.9.8 2.5l-.3 1.1c-.1.4-.3.5-.7.3-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.1l-.6 2.4c-.2.9-.8 1.9-1.2 2.6A10 10 0 1 0 12 2z"/></svg></a>\n'
+        '        </div>\n'
+        '      </div>\n'
+        '      <div>\n'
+        f'        <h4>{L["programs"]}</h4>\n'
+        '        <ul>\n'
+        f'          <li><a href="{root}programs/500-hour-master-barber.html">{L["master500"]}</a></li>\n'
+        f'          <li><a href="{root}programs/50-hour-barber-refresher.html">{L["refresher50"]}</a></li>\n'
+        f'          <li><a href="{root}programs/contagious-diseases.html">{L["contagious"]}</a></li>\n'
+        f'          <li><a href="{root}schedules.html">{L["schedules"]}</a></li>\n'
+        '        </ul>\n'
+        '      </div>\n'
+        '      <div>\n'
+        f'        <h4>{L["explore"]}</h4>\n'
+        '        <ul>\n'
+        f'          <li><a href="{root}why-barbering.html">{L["why_barbering"]}</a></li>\n'
+        f'          <li><a href="{root}career-paths.html">{L["career_paths"]}</a></li>\n'
+        f'          <li><a href="{root}tuition-and-funding.html">{L["tuition"]}</a></li>\n'
+        f'          <li><a href="{root}veterans.html">{L["veterans"]}</a></li>\n'
+        f'          <li><a href="{root}guides/index.html">{L["guides_licensing"]}</a></li>\n'
+        '        </ul>\n'
+        '      </div>\n'
+        '      <div>\n'
+        f'        <h4>{L["visit_us"]}</h4>\n'
+        '        <ul class="foot2-visit">\n'
+        '          <li class="foot2-loc"><b>Manhattan</b><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street, New York, NY 10018</a></li>\n'
+        '          <li class="foot2-loc"><b>Bronx</b><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square, Bronx, NY 10461</a></li>\n'
+        '          <li class="foot2-phones" data-footer-phones><a href="tel:+12122902289">(212) 290-2289 · English</a><a href="tel:+12122900278">(212) 290-0278 · Español</a><a href="tel:+17186760640">(718) 676-0640 · Bronx</a></li>\n'
+        '          <li><a href="mailto:admission@abi.edu">admission@abi.edu</a></li>\n'
+        '        </ul>\n'
+        '      </div>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '  <div class="foot-legal">\n'
+        '    <div class="wrap">\n'
+        f'      <div>© <span id="yr"></span> American Barber Institute (ABI). {L["rights"]}</div>\n'
+        f'      <div class="foot-legal-links"><a href="{prefix}/privacy-and-policy">{L["privacy"]}</a></div>\n'
+        '      <div>GI BILL® is a registered trademark of the U.S. Department of Veterans Affairs (VA). Info: <a href="https://www.benefits.va.gov/gibill" rel="noopener">benefits.va.gov/gibill</a></div>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '</footer>\n\n'
+        f'<a class="desk-cta" href="{root}contact.html" aria-label="{L["request_a_call_from_admissions"]}">\n'
+        '  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>\n'
+        f'  {L["request_call"]}\n'
+        '</a>\n'
+        f'<button class="to-top" aria-label="{L["back_to_top"]}" title="{L["back_to_top"]}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>'
+    )
+
 def _mbar(root, es, apply_href):
     """Sticky mobile action bar — Call Now / Text Us / Apply Now.
     Exact markup/behavior match for abi.edu's `.mbar` (client 2026-07-08:
@@ -1121,6 +1159,7 @@ def build():
         campusswitch = _campus_switch(root, campus)
         mbar = _mbar(root, False, root + 'contact.html')
         header_nav = _header_nav(root, False, campusswitch, langtoggle)
+        footer_block = _footer_block(root, False)
         # Body theme + data-campus so campus.js renders the right phones on load.
         # 'both' (Haircuts) stays neutral/manhattan-themed but flags data-campus=both.
         bodyclass = ' bx-gold' if campus == 'bronx' else ''
@@ -1162,7 +1201,7 @@ def build():
             pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
             root=root, body=body, schema=schema_tags, langtoggle=langtoggle,
             campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
-            hreflang_block=hreflang_block, mbar=mbar, header_nav=header_nav,
+            hreflang_block=hreflang_block, mbar=mbar, header_nav=header_nav, footer_block=footer_block,
             lp=root + 'programs/index.html',
             en_cur='aria-current="true"' if lang == 'en' else '',
             es_cur='aria-current="true"' if lang == 'es' else '')
@@ -1216,6 +1255,7 @@ def build():
             # of jumping back to the English page at the repo root.
             es_campusswitch = _campus_switch(root, campus, es=True)
             es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle)
+            es_footer_block = _footer_block(root, True)
             es_hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{es_en_href}">\n'
                 f'<link rel="alternate" hreflang="en-US" href="{es_en_href}">\n'
@@ -1254,7 +1294,7 @@ def build():
                 root='../' + ('../' * out.count('/')),
                 body=es_body, schema=schema_tags, langtoggle=es_langtoggle,
                 campusswitch=es_campusswitch, bodyclass=bodyclass, datacampus=datacampus,
-                hreflang_block=es_hreflang_block, mbar=es_mbar, header_nav=es_header_nav,
+                hreflang_block=es_hreflang_block, mbar=es_mbar, header_nav=es_header_nav, footer_block=es_footer_block,
                 lp='../' + ('../' * out.count('/')) + 'programs/index.html',
                 en_cur='', es_cur='aria-current="true"')
             es_html = (es_html
