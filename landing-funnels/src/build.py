@@ -261,10 +261,10 @@ def header(p):
 
 # ── MOBILE HERO (image-led, mobile-only — hidden on desktop via CSS) ─
 MHERO_BG_BY_PAGE = {
-    ("manhattan", "en"): "hero-barber-clinic-2.jpg",
-    ("manhattan", "es"): "hero-barber-clinic-2.jpg",
-    ("bronx",     "en"): "hero-barber-clinic-2.jpg",
-    ("bronx",     "es"): "hero-barber-clinic-2.jpg",
+    ("manhattan", "en"): "hero-barber-clinic-2-portrait",
+    ("manhattan", "es"): "hero-barber-clinic-2-portrait",
+    ("bronx",     "en"): "hero-barber-clinic-2-portrait",
+    ("bronx",     "es"): "hero-barber-clinic-2-portrait",
 }
 
 def mobile_hero(p):
@@ -273,11 +273,16 @@ def mobile_hero(p):
     cta_label = "Reserve Your Spot" if not es else "Reserva Tu Lugar"
     bg_file = MHERO_BG_BY_PAGE[(p["campus"]["slug"], lang)]
     # v3.6 — per-page mobile hero image (4 distinct color palettes)
+    # Portrait-cropped WebP+JPEG pair pre-sized to the actual 1080x1609
+    # display dimensions (69% smaller than serving the full landscape source).
     return (
         '<section class="lf-mhero" aria-label="American Barber Institute %s clinic floor">\n'
-        '  <img class="lf-mhero__bg" src="/assets/img/' + bg_file + '"'
+        '  <picture>\n'
+        '    <source srcset="/assets/img/' + bg_file + '.webp" type="image/webp">\n'
+        '    <img class="lf-mhero__bg" src="/assets/img/' + bg_file + '.jpg"'
         ' alt="ABI barber students training on the clinic floor at the %s" loading="eager"'
         ' fetchpriority="high" width="1080" height="1609">\n'
+        '  </picture>\n'
         '  <div class="lf-mhero__scrim"></div>\n'
         '  <div class="lf-mhero__copy">\n'
         '    <p class="lf-mhero__h1" role="heading" aria-level="1">%s <span>%s</span> <em>%s</em></p>\n'
@@ -892,8 +897,8 @@ def page_head(p):
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
 '<link rel="preconnect" href="https://text.pollinations.ai" crossorigin>\n'
 '<link rel="preload" href="/assets/img/logo-final.gif" as="image" fetchpriority="high">\n'
-'<link rel="preload" href="/assets/img/%(mhero_bg)s" as="image" media="(max-width:768px)" fetchpriority="high">\n'
-'<link rel="preload" href="/assets/img/hero-barber-clinic-2.jpg" as="image" media="(min-width:769px)">\n'
+'<link rel="preload" href="/assets/img/%(mhero_bg)s.webp" as="image" type="image/webp" media="(max-width:768px)" fetchpriority="high">\n'
+'<link rel="preload" href="/assets/img/hero-barber-clinic-2.webp" as="image" type="image/webp" media="(min-width:769px)">\n'
 '<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">\n'
 '<link rel="stylesheet" href="/assets/css/site-header.min.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/funnels.min.css?v=%(cssv)s">\n'

@@ -331,7 +331,7 @@ html.js .rv.in{opacity:1;transform:none}
 @media (max-width:768px){
   .hero{background-color:#0a1020}
   .hero .hero-bg{
-    background-image:url('/assets/img/hero-barber-clinic-2.jpg')!important;
+    background-image:image-set(url('/assets/img/hero-barber-clinic-2-mobile.webp') type('image/webp'),url('/assets/img/hero-barber-clinic-2-mobile.jpg') type('image/jpeg'))!important;
     background-size:contain!important;          /* show whole image, no crop */
     background-position:top center!important;   /* anchor at top */
     background-repeat:no-repeat!important;
@@ -2710,7 +2710,7 @@ video{background-color:#1a1f2e}
    .hx — clinic photo full-bleed; left: 500 HOUR / BARBER OPERATOR / Start Today.,
    copy, 6 chips (2×3), Next Starting Date bar with countdown; right: compact contact box. */
 .hx{position:relative;background:#0a1020!important;color:#fff;overflow:hidden}
-.hx-bg{position:absolute;top:0;left:0;right:0;height:66.2vw;background:url('/assets/img/hero-barber-clinic-2.jpg') top center/cover no-repeat}
+.hx-bg{position:absolute;top:0;left:0;right:0;height:66.2vw;background:image-set(url('/assets/img/hero-barber-clinic-2.webp') type('image/webp'),url('/assets/img/hero-barber-clinic-2.jpg') type('image/jpeg')) top center/cover no-repeat}
 .hx-grad{position:absolute;top:0;left:0;right:0;height:66.4vw;background:radial-gradient(115% 95% at 6% 100%,rgba(5,8,17,.96) 0%,rgba(5,8,17,.68) 40%,rgba(5,8,17,0) 70%),linear-gradient(180deg,rgba(5,8,17,.12) 0%,rgba(5,8,17,.06) 40%,rgba(5,8,17,.5) 66%,rgba(5,8,17,.94) 88%,#0a1020 100%)}
 .hx-in{position:relative;width:min(1400px,94%);margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(330px,368px);gap:2.4rem;padding:49.6vw 0 2.8rem;align-items:start}
 .hx-h1{margin:0;line-height:1;text-transform:uppercase;font-weight:800;letter-spacing:-.01em}
@@ -2752,7 +2752,7 @@ video{background-color:#1a1f2e}
 }
 /* MOBILE: full-width photo on top → headline → copy → chips → countdown → contact box */
 @media (max-width:768px){
-  .hx-bg{height:66.2vw;background:url('/assets/img/hero-barber-clinic-2.jpg') top center/cover no-repeat;background-color:#0a1020}
+  .hx-bg{height:66.2vw;background:image-set(url('/assets/img/hero-barber-clinic-2-mobile.webp') type('image/webp'),url('/assets/img/hero-barber-clinic-2-mobile.jpg') type('image/jpeg')) top center/cover no-repeat;background-color:#0a1020}
   .hx-grad{height:66.4vw;background:radial-gradient(130% 90% at 15% 100%,rgba(5,8,17,.94) 0%,rgba(5,8,17,.6) 45%,rgba(5,8,17,0) 75%),linear-gradient(180deg,rgba(6,9,18,.05) 0%,rgba(6,9,18,.02) 34%,rgba(6,9,18,.55) 62%,rgba(6,9,18,.94) 86%,#0a1020 100%)}
   .hx-in{display:flex;flex-direction:column;gap:0;padding:49.6vw 0 2.2rem}
   .hx-l1,.hx-l2{font-size:clamp(2.1rem,10vw,2.7rem)}
