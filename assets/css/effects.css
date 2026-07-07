@@ -134,12 +134,11 @@ html.js .reveal { transition-delay: var(--d, 0s); }
 @keyframes ripple-out { to { transform: scale(2.6); opacity: 0; } }
 
 @keyframes sheen-sweep { 0%, 72% { transform: translateX(-130%) skewX(-18deg); } 100% { transform: translateX(240%) skewX(-18deg); } }
-.btn-gold::after, .head-cta::after, .mobile-cta .apply::after {
+.btn-gold::after, .head-cta::after {
   content: ""; position: absolute; top: 0; bottom: 0; width: 38%;
   background: linear-gradient(100deg, transparent, rgba(255,255,255,.34), transparent);
   animation: sheen-sweep 4.2s ease-in-out infinite; pointer-events: none;
 }
-.mobile-cta .apply { position: relative; overflow: hidden; }
 
 /* ---------- Header morph on scroll ---------- */
 .site-head { transition: box-shadow .3s ease, background .3s ease; }
@@ -215,7 +214,7 @@ html.js .split-media img { will-change: transform; }
 /* ---------- Reduced motion: kill the party ---------- */
 @media (prefers-reduced-motion: reduce) {
   .hero-bg, .marquee-track, .divider-pole, .start-banner, .cta-band,
-  .btn-gold::after, .head-cta::after, .mobile-cta .apply::after,
+  .btn-gold::after, .head-cta::after,
   .scroll-cue svg, .float-deco, .page-hero::before {
     animation: none !important;
   }

@@ -68,14 +68,14 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.css?v=34">
-<link rel="stylesheet" href="{root}assets/css/brand.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/landing.css?v=154">
-<link rel="stylesheet" href="{root}assets/css/upgrade.css?v=2">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=35">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=155">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=3" defer></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.css?v=31">
-<link rel="stylesheet" href="{root}assets/css/editorial.css?v=1">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=2">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -1185,8 +1185,20 @@ def build():
                 f'<link rel="alternate" hreflang="es-US" href="{es_canonical}">\n'
                 f'<link rel="alternate" hreflang="x-default" href="{es_en_href}">'
             )
+            # Body partials hardcode relative asset paths (src="assets/..." or
+            # src="../assets/...") sized for THEIR OWN EN depth. The ES twin
+            # always lives exactly one directory level deeper (es/<same-path>),
+            # so every such relative reference needs exactly one extra '../'
+            # prepended, or it 404s (e.g. es/gallery's images resolving to
+            # /es/assets/... instead of /assets/...). Absolute (/assets/...)
+            # and external (http...) references are untouched.
+            _fixed_body = re.sub(
+                r'((?:src|href)=")((?:\.\./)*)(assets/)',
+                lambda m: m.group(1) + '../' + m.group(2) + m.group(3),
+                body
+            )
             # Wrap the body with the Spanish notification banner
-            es_body = ES_BANNER + '\n' + body
+            es_body = ES_BANNER + '\n' + _fixed_body
             es_html = TEMPLATE.format(
                 lang='es', title=es_title, desc=es_desc, canonical=es_canonical, site=SITE_URL,
                 oglocale='es_ES',
