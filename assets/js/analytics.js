@@ -28,6 +28,10 @@
   "use strict";
 
   var GTM_ID = "GTM-NKLLGPC";
+  // Direct GA4 config for this domain's OWN stream (americanbarberinstitute.com).
+  // The GTM container's GA4 tag is hardcoded to abi.edu's stream (G-J6BNX36TS3);
+  // this line ensures .com traffic also lands in the .com property.
+  var GA4_MEASUREMENT_ID = "G-B4TC0VGH2S";
 
   var w = window,
     d = document;
@@ -35,6 +39,10 @@
   function gtag() {
     w.dataLayer.push(arguments);
   }
+
+  // ---- Direct GA4 config for the .com stream (parallel to GTM's abi.edu tag) ----
+  gtag("js", new Date());
+  gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
 
   // ---- Consent Mode v2 : granted by default (no banner) ----
   // security_storage/functionality_storage stay granted (essential).

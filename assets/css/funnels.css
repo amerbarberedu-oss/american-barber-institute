@@ -2001,3 +2001,59 @@ chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;
   text-transform: uppercase;
   font-size: .8rem;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   Landing phone chips v58 — label BELOW number pattern (matches main site).
+   .lfx-phone__flag becomes the caption UNDER the number, not beside it.
+   ═══════════════════════════════════════════════════════════════════ */
+.lfx-phone{
+  display:inline-grid !important;
+  grid-template-columns:auto 1fr;
+  grid-template-areas:"ico num" "gap tag";
+  align-items:center;
+  column-gap:.42rem;
+  row-gap:2px;
+  padding:.42rem .85rem;
+}
+.lfx-phone svg{grid-area:ico;align-self:center}
+.lfx-phone__num{
+  grid-area:num;
+  font-size:.94rem;
+  font-weight:800;
+  line-height:1.05;
+  text-align:left;
+}
+.lfx-phone__flag{
+  grid-area:tag;
+  font-size:.58rem !important;
+  padding:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-align:center;
+  line-height:1;
+  min-width:auto !important;
+  height:auto !important;
+  color:var(--lf-accent);
+  opacity:.9;
+  font-weight:800;
+  justify-self:stretch;
+}
+.lfx-phone:hover .lfx-phone__flag{color:var(--lf-on-accent) !important;border:0 !important;background:transparent !important}
+.lf-page .lfx-phone__flag{color:var(--site-teal-deep) !important;opacity:.85}
+.lf-page .lfx-phone:hover .lfx-phone__flag{color:#fff !important}
+
+/* Mobile phone row — same stacking */
+@media (max-width:640px){
+  .lfx-phonerow .lfx-phone{
+    grid-template-columns:1fr !important;
+    grid-template-areas:"num" "tag" !important;
+    row-gap:1px;
+    padding:.44rem .35rem !important;
+    text-align:center;
+  }
+  .lfx-phonerow .lfx-phone svg{display:none}
+  .lfx-phonerow .lfx-phone__flag{display:inline !important;color:var(--lf-on-accent) !important;opacity:.9}
+  .lfx-phonerow .lfx-phone__num{text-align:center;font-size:.85rem}
+}

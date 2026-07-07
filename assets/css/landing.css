@@ -3151,3 +3151,58 @@ body.shell2 .sec{padding-block:var(--section-pad)}
   body.shell2 .seg-glider{transition:none}
   body.shell2 .nav2-menu{transition:none}
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   Phone chips v154 — label ("English" / "Spanish" / "Haircut" / "Bronx")
+   ALWAYS stacks BELOW the number, both desktop (ubar) and mobile (mstrip).
+   Number is the visual anchor; label is the small caption under it.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Desktop utility bar chips — icon on left, number top-right, label full-width below */
+body.shell2 .ubar-call{
+  display:inline-grid;
+  grid-template-columns:auto 1fr;
+  grid-template-areas:"ico num" "tag tag";
+  column-gap:.42rem;
+  row-gap:1px;
+  align-items:center;
+  padding:.34rem .78rem;
+}
+body.shell2 .ubar-ico{grid-area:ico;align-self:center}
+body.shell2 .ubar-num{
+  grid-area:num;
+  font-size:.9rem;
+  font-weight:800;
+  line-height:1.05;
+  text-align:left;
+}
+body.shell2 .ubar-tag{
+  grid-area:tag;
+  font-size:.6rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:.9;
+  text-align:center;
+  line-height:1;
+  font-weight:700;
+  padding-top:1px;
+}
+
+/* Mobile phone strip — hide icon on tightest screens, number bold on top, label small below */
+body.shell2 .mstrip-phone{gap:.35rem;padding:.55rem .5rem}
+body.shell2 .mstrip-t{align-items:center;text-align:center;line-height:1.15}
+body.shell2 .mstrip-t b{font-size:.9rem;font-weight:800}
+body.shell2 .mstrip-t i{
+  font-size:.6rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:.9;
+  font-weight:700;
+  font-style:normal;
+}
+@media (max-width:420px){
+  body.shell2 .mstrip-phone{padding:.5rem .35rem;gap:.3rem}
+  body.shell2 .mstrip-phone svg{width:11px;height:11px}
+  body.shell2 .mstrip-t b{font-size:.82rem}
+  body.shell2 .mstrip-t i{font-size:.55rem}
+}

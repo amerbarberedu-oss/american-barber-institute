@@ -209,14 +209,23 @@
     },
     {
       "source": "/splash-page-1",
-      "destination": "/",
+      "destination": "/500-hours-master-barber-program-landing-page",
       "permanent": true
     },
     {
       "source": "/splash-page-2",
-      "destination": "/",
+      "destination": "/master-barber-program-bronx",
       "permanent": true
-    }
+    },
+    { "source": "/barber-school-bronx-new-york",     "destination": "/bronx",            "permanent": true },
+    { "source": "/barber-school-brooklyn-new-york",  "destination": "/",                 "permanent": true },
+    { "source": "/barber-school-queens-ny",          "destination": "/",                 "permanent": true },
+    { "source": "/barber-school-long-island-ny",     "destination": "/",                 "permanent": true },
+    { "source": "/barber-school-westchester-ny",     "destination": "/bronx",            "permanent": true },
+    { "source": "/barber-school-staten-island-ny",   "destination": "/",                 "permanent": true },
+    { "source": "/barber-school-yonkers-new-york",   "destination": "/bronx",            "permanent": true },
+    { "source": "/programs/500-hour-master-barber-program",     "destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
+    { "source": "/programs/500-hour-master-barber-program.html","destination": "/500-hours-master-barber-program-landing-page", "permanent": true }
   ],
   "rewrites": [
     {
