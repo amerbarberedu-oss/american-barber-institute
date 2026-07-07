@@ -347,3 +347,10 @@ body.shell2 .mstrip-t i{
   body.shell2 .mstrip-t b{font-size:.82rem}
   body.shell2 .mstrip-t i{font-size:.55rem}
 }
+
+/* Landings: 1 or 2 phone chips (no Haircut). Adapt mstrip grid to child count. */
+body.shell2.lf-page .mstrip-phones{grid-template-columns:repeat(auto-fit,minmax(0,1fr))}
+body.shell2.lf-page .mstrip-phones:has(> :nth-child(2)){grid-template-columns:1fr 1fr}
+body.shell2.lf-page .mstrip-phones:not(:has(> :nth-child(2))){grid-template-columns:1fr;max-width:340px}
+/* Desktop ubar: with only 1-2 chips (no Haircut), keep them tight-right, not stretched. */
+body.shell2.lf-page .ubar-right{gap:.55rem}

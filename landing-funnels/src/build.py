@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "59"
+CSS_V = "60"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -158,43 +158,48 @@ def header(p):
     mscissors_svg = scissors_svg.replace('width="14" height="14"', 'width="12" height="12"').replace(
         'stroke-width="2.1"', 'stroke-width="2.2"')
 
+    # Landings intentionally OMIT the Haircut number (per client 2026-07-07):
+    # Manhattan landing → 2 chips (English + Spanish). Bronx landing → 1 chip (Bronx).
     if is_manhattan:
         ubar_calls = (
             '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
             '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
             '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
             '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
-            '<a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true">%s</span>'
-            '<span class="ubar-tag">Haircut</span><span class="ubar-num">(856) 316-1551</span></a>'
-        ) % (phone_svg, scissors_svg)
+        ) % (phone_svg,)
         mstrip_phones = (
             '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
             '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
-            '<a class="mstrip-phone" href="tel:+18563161551">%s<span class="mstrip-t"><b>(856) 316-1551</b><i>Haircut</i></span></a>'
-        ) % (mphone_svg, mphone_svg, mscissors_svg)
+        ) % (mphone_svg, mphone_svg)
     else:  # bronx
         ubar_calls = (
             '<a class="ubar-call ubar-call--admis" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
             '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
-            '<a class="ubar-call ubar-call--cut" href="tel:+18563161551"><span class="ubar-ico" aria-hidden="true">%s</span>'
-            '<span class="ubar-tag">Haircut</span><span class="ubar-num">(856) 316-1551</span></a>'
-        ) % (phone_svg, scissors_svg)
+        ) % (phone_svg,)
         mstrip_phones = (
             '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
-            '<a class="mstrip-phone" href="tel:+18563161551">%s<span class="mstrip-t"><b>(856) 316-1551</b><i>Haircut</i></span></a>'
-        ) % (mphone_svg, mscissors_svg)
+        ) % (mphone_svg,)
 
-    # Nav labels (translate for ES)
+    # Nav labels (translate for ES) + language-consistent nav hrefs.
+    # ES landings link back to /es/ (Spanish site landing) so Spanish visitors
+    # never bounce to an English page mid-flow. Full ES parity for /es/about,
+    # /es/guides, etc. is Phase 2 — for launch we consolidate to /es/.
     if es:
         L = {"programs": "Programas", "why": "Por qué ABI", "guides": "Guías",
              "tuition": "Costo y Ayuda", "contact": "Contacto",
              "book": "Reservar Visita", "menu": "Menú",
              "prog500": "500 horas — Barbero Maestro"}
+        NAV = {"home": "/es", "about": "/es", "guides": "/es",
+               "tuition": "/es", "contact": "/es"}
+        home_href = "/es"
     else:
         L = {"programs": "Programs", "why": "Why ABI", "guides": "Guides",
              "tuition": "Tuition & Funding", "contact": "Contact",
              "book": "Book a Tour", "menu": "Menu",
              "prog500": "500-Hour Master Barber"}
+        NAV = {"home": "/", "about": "/about", "guides": "/guides",
+               "tuition": "/tuition-and-funding", "contact": "/contact"}
+        home_href = "/"
 
     # Promo strip + Limited Seats banner sit BELOW the new header — landings still need urgency.
     promo = h(p["promo_strip"])
@@ -210,27 +215,27 @@ def header(p):
         '<div class="ubar-right tb-calls" data-campus-phones>%s</div>'
         '</div></div>\n'
         '<header class="hdr2"><div class="hdr2-in">'
-        '<a class="logo2" href="/" aria-label="American Barber Institute — home">'
+        '<a class="logo2" href="%s" aria-label="American Barber Institute — home">'
         '<img class="logo2-img" src="/assets/img/logo-final.gif" alt="American Barber Institute" width="385" height="99" fetchpriority="high">'
         '</a>'
         '<nav class="nav2" aria-label="Main">'
-        '<div class="nav2-item"><a class="nav2-top" href="/">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="/about">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="/guides">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="/tuition-and-funding">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="/contact">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
+        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
         '</nav>'
         '<a class="hdr2-cta" href="#reserve">%s</a>'
         '<button class="hamburger" aria-label="%s" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>'
         '</div>'
         '<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">'
         '<div class="drawer-switchers">%s%s</div>'
-        '<div class="drawer-group"><p class="drawer-h">%s</p><a href="/">%s</a></div>'
+        '<div class="drawer-group"><p class="drawer-h">%s</p><a href="%s">%s</a></div>'
         '<div class="drawer-group">'
-        '<a class="drawer-solo" href="/about">%s</a>'
-        '<a class="drawer-solo" href="/guides">%s</a>'
-        '<a class="drawer-solo" href="/tuition-and-funding">%s</a>'
-        '<a class="drawer-solo" href="/contact">%s</a>'
+        '<a class="drawer-solo" href="%s">%s</a>'
+        '<a class="drawer-solo" href="%s">%s</a>'
+        '<a class="drawer-solo" href="%s">%s</a>'
+        '<a class="drawer-solo" href="%s">%s</a>'
         '</div>'
         '<a class="drawer-cta" href="#reserve"><b>%s</b></a>'
         '</div></nav>'
@@ -241,11 +246,19 @@ def header(p):
         '<span class="lfx-seats-t"><b>%s</b><i>%s</i></span></div>\n'
     ) % (
         campus_switch, lang_toggle, ubar_calls,
-        L["programs"], L["why"], L["guides"], L["tuition"], L["contact"],
+        home_href,
+        NAV["home"], L["programs"],
+        NAV["about"], L["why"],
+        NAV["guides"], L["guides"],
+        NAV["tuition"], L["tuition"],
+        NAV["contact"], L["contact"],
         L["book"], L["menu"],
         campus_switch, lang_toggle,
-        L["programs"], L["prog500"],
-        L["why"], L["guides"], L["tuition"], L["contact"],
+        L["programs"], NAV["home"], L["prog500"],
+        NAV["about"], L["why"],
+        NAV["guides"], L["guides"],
+        NAV["tuition"], L["tuition"],
+        NAV["contact"], L["contact"],
         L["book"],
         mstrip_phones, promo, star_svg, h(seats_kicker), h(seats_lead),
     )
