@@ -97,73 +97,7 @@ TEMPLATE = """<!DOCTYPE html>
     </div>
   </div>
 </div>
-<header class="hdr2">
-  <div class="hdr2-in">
-    <a class="logo2" href="{root}index.html" aria-label="American Barber Institute — home" title="American Barber Institute">
-      <img class="logo2-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">
-    </a>
-    <nav class="nav2" aria-label="Main">
-      <div class="nav2-item nav2-has">
-        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Programs<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="nav2-menu" role="menu">
-          <a href="{root}programs/500-hour-master-barber.html" role="menuitem">500-Hour Master Barber</a>
-          <a href="{root}programs/50-hour-barber-refresher.html" role="menuitem">50-Hour Refresher</a>
-          <a href="{root}programs/contagious-diseases.html" role="menuitem">Contagious Diseases</a>
-          <a href="{root}schedules.html" role="menuitem">Schedules &amp; Flexibility</a>
-        </div>
-      </div>
-      <div class="nav2-item nav2-has">
-        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Why ABI<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="nav2-menu" role="menu">
-          <a href="{root}why-barbering.html" role="menuitem">Why Barbering</a>
-          <a href="{root}training-experience.html" role="menuitem">The Training Experience</a>
-          <a href="{root}career-paths.html" role="menuitem">Career Paths</a>
-          <a href="{root}student-stories.html" role="menuitem">Student Stories</a>
-        </div>
-      </div>
-      <div class="nav2-item"><a class="nav2-top" href="{root}guides/index.html">Guides</a></div>
-      <div class="nav2-item nav2-has">
-        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">Tuition &amp; Funding<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="nav2-menu" role="menu">
-          <a href="{root}tuition-and-funding.html" role="menuitem">Tuition &amp; Funding</a>
-          <a href="{root}veterans.html" role="menuitem">Veterans &amp; GI Bill®</a>
-          <a href="{root}access-vr-program.html" role="menuitem">ACCES-VR</a>
-        </div>
-      </div>
-      <div class="nav2-item"><a class="nav2-top" href="{root}contact.html">Contact</a></div>
-    </nav>
-    <a class="hdr2-cta" href="{root}contact.html">Book a Tour</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
-  </div>
-  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">
-    <div class="drawer-switchers">{campusswitch}{langtoggle}</div>
-    <div class="drawer-group">
-      <p class="drawer-h">Programs</p>
-      <a href="{root}programs/500-hour-master-barber.html">500-Hour Master Barber</a>
-      <a href="{root}programs/50-hour-barber-refresher.html">50-Hour Refresher</a>
-      <a href="{root}programs/contagious-diseases.html">Contagious Diseases</a>
-      <a href="{root}schedules.html">Schedules &amp; Flexibility</a>
-    </div>
-    <div class="drawer-group">
-      <p class="drawer-h">Why ABI</p>
-      <a href="{root}why-barbering.html">Why Barbering</a>
-      <a href="{root}training-experience.html">The Training Experience</a>
-      <a href="{root}career-paths.html">Career Paths</a>
-      <a href="{root}student-stories.html">Student Stories</a>
-    </div>
-    <div class="drawer-group">
-      <p class="drawer-h">Tuition &amp; Funding</p>
-      <a href="{root}tuition-and-funding.html">Tuition &amp; Funding</a>
-      <a href="{root}veterans.html">Veterans &amp; GI Bill®</a>
-      <a href="{root}access-vr-program.html">ACCES-VR</a>
-    </div>
-    <div class="drawer-group">
-      <a class="drawer-solo" href="{root}guides/index.html">Guides</a>
-      <a class="drawer-solo" href="{root}contact.html">Contact</a>
-    </div>
-    <a class="drawer-cta" href="{root}contact.html"><b>Book a Tour</b></a>
-  </div></nav>
-</header>
+{header_nav}
 <!-- ── Compact mobile phone strip (live per-campus via campus.js) ── -->
 <div class="mstrip">
   <div class="mstrip-phones" data-mstrip-phones>
@@ -841,12 +775,14 @@ CAMPUS_BY_PAGE = {
     'haircuts.html': 'both',
 }
 
-def _campus_switch(root, campus):
+def _campus_switch(root, campus, es=False):
     """Polished segmented Manhattan ⇄ Bronx control with a sliding indicator.
     campus.js reads data-campus / .is-active and swaps the live phone numbers.
-    The Bronx segment links to /bronx so neutral pages can navigate there."""
+    The Bronx segment used to hardcode /bronx (English) on every page,
+    including Spanish ones — fixed to link to /es/bronx when es=True."""
     mn_active = '' if campus == 'bronx' else ' is-active'
     bx_active = ' is-active' if campus == 'bronx' else ''
+    bronx_href = '/es/bronx' if es else '/bronx'
     pin = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
            'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" '
            'aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>'
@@ -854,10 +790,106 @@ def _campus_switch(root, campus):
     return ('<div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus">'
             '<span class="seg-glider" aria-hidden="true"></span>'
             '<a class="seg-opt%s" data-campus-opt="manhattan" href="%sindex.html" aria-current="%s">%s<span class="seg-lab">Manhattan</span></a>'
-            '<a class="seg-opt%s" data-campus-opt="bronx" href="/bronx" aria-current="%s">%s<span class="seg-lab">Bronx</span></a>'
+            '<a class="seg-opt%s" data-campus-opt="bronx" href="%s" aria-current="%s">%s<span class="seg-lab">Bronx</span></a>'
             '</div>') % (
         mn_active, root, ('true' if mn_active else 'false'), pin,
-        bx_active, ('true' if bx_active else 'false'), pin)
+        bx_active, bronx_href, ('true' if bx_active else 'false'), pin)
+
+def _header_nav(root, es, campusswitch, langtoggle):
+    """Full <header class="hdr2">...</header> block (logo + desktop nav +
+    Book-a-Tour CTA + hamburger + mobile drawer). EN/ES-aware: on Spanish
+    pages every label AND every href now stays inside /es/ — this was a
+    sitewide gap (client 2026-07-08 audit) where the shared header showed
+    English nav text and linked every ES page back to its English twin."""
+    L = {
+        "programs": "Programas" if es else "Programs",
+        "master500": "Barbero Maestro (500 Horas)" if es else "500-Hour Master Barber",
+        "refresher50": "Repaso de 50 Horas" if es else "50-Hour Refresher",
+        "contagious": "Enfermedades Contagiosas" if es else "Contagious Diseases",
+        "schedules": "Horarios y Flexibilidad" if es else "Schedules &amp; Flexibility",
+        "why": "Por Qué ABI" if es else "Why ABI",
+        "why_barbering": "Por Qué la Barbería" if es else "Why Barbering",
+        "training_exp": "La Experiencia de Formación" if es else "The Training Experience",
+        "career_paths": "Trayectorias Profesionales" if es else "Career Paths",
+        "student_stories": "Historias de Estudiantes" if es else "Student Stories",
+        "guides": "Guías" if es else "Guides",
+        "tuition": "Costo y Financiamiento" if es else "Tuition &amp; Funding",
+        "veterans": "Veteranos y GI Bill®" if es else "Veterans &amp; GI Bill®",
+        "accesvr": "ACCES-VR" if es else "ACCES-VR",
+        "contact": "Contacto" if es else "Contact",
+        "book": "Reserva un Tour" if es else "Book a Tour",
+        "menu": "Menú" if es else "Menu",
+        "home": "inicio" if es else "home",
+    }
+    return (
+        '<header class="hdr2">\n'
+        '  <div class="hdr2-in">\n'
+        f'    <a class="logo2" href="{root}index.html" aria-label="American Barber Institute — {L["home"]}" title="American Barber Institute">\n'
+        f'      <img class="logo2-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">\n'
+        '    </a>\n'
+        '    <nav class="nav2" aria-label="Main">\n'
+        '      <div class="nav2-item nav2-has">\n'
+        f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["programs"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
+        '        <div class="nav2-menu" role="menu">\n'
+        f'          <a href="{root}programs/500-hour-master-barber.html" role="menuitem">{L["master500"]}</a>\n'
+        f'          <a href="{root}programs/50-hour-barber-refresher.html" role="menuitem">{L["refresher50"]}</a>\n'
+        f'          <a href="{root}programs/contagious-diseases.html" role="menuitem">{L["contagious"]}</a>\n'
+        f'          <a href="{root}schedules.html" role="menuitem">{L["schedules"]}</a>\n'
+        '        </div>\n'
+        '      </div>\n'
+        '      <div class="nav2-item nav2-has">\n'
+        f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["why"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
+        '        <div class="nav2-menu" role="menu">\n'
+        f'          <a href="{root}why-barbering.html" role="menuitem">{L["why_barbering"]}</a>\n'
+        f'          <a href="{root}training-experience.html" role="menuitem">{L["training_exp"]}</a>\n'
+        f'          <a href="{root}career-paths.html" role="menuitem">{L["career_paths"]}</a>\n'
+        f'          <a href="{root}student-stories.html" role="menuitem">{L["student_stories"]}</a>\n'
+        '        </div>\n'
+        '      </div>\n'
+        f'      <div class="nav2-item"><a class="nav2-top" href="{root}guides/index.html">{L["guides"]}</a></div>\n'
+        '      <div class="nav2-item nav2-has">\n'
+        f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["tuition"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
+        '        <div class="nav2-menu" role="menu">\n'
+        f'          <a href="{root}tuition-and-funding.html" role="menuitem">{L["tuition"]}</a>\n'
+        f'          <a href="{root}veterans.html" role="menuitem">{L["veterans"]}</a>\n'
+        f'          <a href="{root}access-vr-program.html" role="menuitem">{L["accesvr"]}</a>\n'
+        '        </div>\n'
+        '      </div>\n'
+        f'      <div class="nav2-item"><a class="nav2-top" href="{root}contact.html">{L["contact"]}</a></div>\n'
+        '    </nav>\n'
+        f'    <a class="hdr2-cta" href="{root}contact.html">{L["book"]}</a>\n'
+        f'    <button class="hamburger" aria-label="{L["menu"]}" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>\n'
+        '  </div>\n'
+        '  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">\n'
+        f'    <div class="drawer-switchers">{campusswitch}{langtoggle}</div>\n'
+        '    <div class="drawer-group">\n'
+        f'      <p class="drawer-h">{L["programs"]}</p>\n'
+        f'      <a href="{root}programs/500-hour-master-barber.html">{L["master500"]}</a>\n'
+        f'      <a href="{root}programs/50-hour-barber-refresher.html">{L["refresher50"]}</a>\n'
+        f'      <a href="{root}programs/contagious-diseases.html">{L["contagious"]}</a>\n'
+        f'      <a href="{root}schedules.html">{L["schedules"]}</a>\n'
+        '    </div>\n'
+        '    <div class="drawer-group">\n'
+        f'      <p class="drawer-h">{L["why"]}</p>\n'
+        f'      <a href="{root}why-barbering.html">{L["why_barbering"]}</a>\n'
+        f'      <a href="{root}training-experience.html">{L["training_exp"]}</a>\n'
+        f'      <a href="{root}career-paths.html">{L["career_paths"]}</a>\n'
+        f'      <a href="{root}student-stories.html">{L["student_stories"]}</a>\n'
+        '    </div>\n'
+        '    <div class="drawer-group">\n'
+        f'      <p class="drawer-h">{L["tuition"]}</p>\n'
+        f'      <a href="{root}tuition-and-funding.html">{L["tuition"]}</a>\n'
+        f'      <a href="{root}veterans.html">{L["veterans"]}</a>\n'
+        f'      <a href="{root}access-vr-program.html">{L["accesvr"]}</a>\n'
+        '    </div>\n'
+        '    <div class="drawer-group">\n'
+        f'      <a class="drawer-solo" href="{root}guides/index.html">{L["guides"]}</a>\n'
+        f'      <a class="drawer-solo" href="{root}contact.html">{L["contact"]}</a>\n'
+        '    </div>\n'
+        f'    <a class="drawer-cta" href="{root}contact.html"><b>{L["book"]}</b></a>\n'
+        '  </div></nav>\n'
+        '</header>'
+    )
 
 def _mbar(root, es, apply_href):
     """Sticky mobile action bar — Call Now / Text Us / Apply Now.
@@ -1088,6 +1120,7 @@ def build():
         langtoggle = _lang_toggle(root, out)
         campusswitch = _campus_switch(root, campus)
         mbar = _mbar(root, False, root + 'contact.html')
+        header_nav = _header_nav(root, False, campusswitch, langtoggle)
         # Body theme + data-campus so campus.js renders the right phones on load.
         # 'both' (Haircuts) stays neutral/manhattan-themed but flags data-campus=both.
         bodyclass = ' bx-gold' if campus == 'bronx' else ''
@@ -1129,7 +1162,7 @@ def build():
             pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
             root=root, body=body, schema=schema_tags, langtoggle=langtoggle,
             campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
-            hreflang_block=hreflang_block, mbar=mbar,
+            hreflang_block=hreflang_block, mbar=mbar, header_nav=header_nav,
             lp=root + 'programs/index.html',
             en_cur='aria-current="true"' if lang == 'en' else '',
             es_cur='aria-current="true"' if lang == 'es' else '')
@@ -1178,6 +1211,11 @@ def build():
             # contact page (es/contact.html), which sits at the SAME relative
             # depth within es/ as `root` describes within the site root.
             es_mbar = _mbar(es_root, True, root + 'contact.html')
+            # Same insight for the header/nav/drawer: use plain `root` (not
+            # es_root) so every nav link stays inside the es/ subtree instead
+            # of jumping back to the English page at the repo root.
+            es_campusswitch = _campus_switch(root, campus, es=True)
+            es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle)
             es_hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{es_en_href}">\n'
                 f'<link rel="alternate" hreflang="en-US" href="{es_en_href}">\n'
@@ -1192,21 +1230,31 @@ def build():
             # prepended, or it 404s (e.g. es/gallery's images resolving to
             # /es/assets/... instead of /assets/...). Absolute (/assets/...)
             # and external (http...) references are untouched.
+            #
+            # REAL TRANSLATION OVERRIDE: if src/pages/es-<partial> exists,
+            # use its (fully Spanish, human-translated) body instead of the
+            # English-passthrough + banner. Translators keep asset paths
+            # byte-identical to the English partial (same relative depth) —
+            # the same depth-fix regex below normalizes them for the ES twin,
+            # so translated partials never need their own path arithmetic.
+            _es_override_path = os.path.join(SRC, 'es-' + partial)
+            _real_translation = os.path.exists(_es_override_path)
+            _source_body = open(_es_override_path, encoding='utf-8').read() if _real_translation else body
             _fixed_body = re.sub(
                 r'((?:src|href)=")((?:\.\./)*)(assets/)',
                 lambda m: m.group(1) + '../' + m.group(2) + m.group(3),
-                body
+                _source_body
             )
-            # Wrap the body with the Spanish notification banner
-            es_body = ES_BANNER + '\n' + _fixed_body
+            # Real translations don't need the "coming soon" banner.
+            es_body = _fixed_body if _real_translation else (ES_BANNER + '\n' + _fixed_body)
             es_html = TEMPLATE.format(
                 lang='es', title=es_title, desc=es_desc, canonical=es_canonical, site=SITE_URL,
                 oglocale='es_ES',
                 pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
                 root='../' + ('../' * out.count('/')),
                 body=es_body, schema=schema_tags, langtoggle=es_langtoggle,
-                campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
-                hreflang_block=es_hreflang_block, mbar=es_mbar,
+                campusswitch=es_campusswitch, bodyclass=bodyclass, datacampus=datacampus,
+                hreflang_block=es_hreflang_block, mbar=es_mbar, header_nav=es_header_nav,
                 lp='../' + ('../' * out.count('/')) + 'programs/index.html',
                 en_cur='', es_cur='aria-current="true"')
             es_html = (es_html
