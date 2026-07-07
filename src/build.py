@@ -880,8 +880,8 @@ def _campus_switch(root, campus):
 
 def _lang_toggle(root, out):
     """Segmented EN | ES control with a globe icon + sliding indicator.
-    Links each page to its ES counterpart (only the home has one today →
-    other EN pages send Spanish visitors to /es)."""
+    Every EN page now has a Spanish twin at /es/<slug>, so the ES link
+    points there — Spanish visitors stay on the same content, not the ES home."""
     globe = ('<svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" '
              'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
              'aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
@@ -890,7 +890,7 @@ def _lang_toggle(root, out):
         en_href, es_href = '%s%s' % (root, out[3:]), '%s%s' % (root, out)
         en_a, es_a = '', ' is-active'
     else:
-        en_href, es_href = '%s%s' % (root, out), '%ses/index.html' % root
+        en_href, es_href = '%s%s' % (root, out), '%ses/%s' % (root, out)
         en_a, es_a = ' is-active', ''
     return ('<div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang">'
             '<span class="seg-glider" aria-hidden="true"></span>'
@@ -899,6 +899,118 @@ def _lang_toggle(root, out):
             '</div>') % (
         en_a, en_href, ('true' if en_a else 'false'), globe,
         es_a, es_href, ('true' if es_a else 'false'))
+
+# ── ES META — Spanish title + description for every EN page ─────────────
+# Body content still English for now (a small Spanish banner is prepended
+# via ES_BANNER at build time). Real Spanish translations are Phase 2.
+ES_META = {
+    'about.html': ("¿Es ABI la escuela de barbería adecuada para ti? Conoce al equipo",
+                   "Cómo el American Barber Institute ayuda a quienes cambian de carrera a convertirse en barberos licenciados en NY: nuestros mentores, formación práctica y más de 30 años construyendo carreras detrás de la silla."),
+    'instructors.html': ("¿Quién te enseñará a barbeer? Conoce a los mentores de ABI",
+                         "Las personas que forjan tu carrera: los instructores maestros de ABI, incluidos King David Ayeoribe y Harold “Barkim” Brown, con más de 50 años combinados detrás de la silla."),
+    'jobs.html': ("¿Qué puedes hacer después de la escuela de barbería? Salidas profesionales",
+                  "A dónde puede llevarte una licencia de barbero — sillas de barbería, alquiler de espacio, tu propio negocio — y cómo el apoyo de colocación laboral de ABI ayuda a los graduados."),
+    'gallery.html': ("Ve cómo se ve realmente el entrenamiento — trabajos de estudiantes y sala",
+                     "Un vistazo a los cortes reales de estudiantes, la clínica y el día a día del entrenamiento para ser barbero — para que sepas dónde te inscribes antes de firmar."),
+    'haircuts.html': ("¿Quieres un corte a $3 — o tiempo de silla como estudiante? Cómo funciona la clínica",
+                      "Por qué importa la clínica de estudiantes de $3: es donde practican horas reales con clientes reales. Reserva un corte en Manhattan o el Bronx."),
+    'faq.html': ("¿Piensas en la escuela de barbería? Tus preguntas, contestadas",
+                 "Respuestas directas sobre costo, duración del entrenamiento, horarios, requisitos de edad, financiamiento y colocación laboral — todo para decidir si la barbería es tu próximo paso."),
+    'schedules.html': ("¿Puedes encajar el entrenamiento en tu vida? Horarios y flexibilidad",
+                       "Mañana, tarde o fin de semana — cómo el programa de 500 horas de ABI cabe con un trabajo o familia. Tiempo completo termina en unos 4 meses; fines de semana en 6–7. Nuevas clases el primer lunes de cada mes."),
+    'contact.html': ("¿Listo para el primer paso? Reserva un tour o habla con Admisiones",
+                     "Visita el campus antes de comprometerte. Reserva un tour en 48 West 39th Street, NYC — minutos de Penn Station, Grand Central y Times Square — o habla en inglés o español."),
+    'resources.html': ("Juntas de licencias de barbería y recursos por estado — comienza aquí",
+                       "Los organismos reguladores, juntas estatales de barbería y cosmetología, y recursos de la industria que necesitarás al planificar tu camino como barbero licenciado."),
+    'partners.html': ("¿Dónde acaban trabajando los barberos de ABI? Nuestra red de barberías",
+                      "Las barberías de NYC que contratan y capacitan a nuestros graduados — Levels, Diamond Fadez, Untouchable Cutz, Expo Gentlemen, Otis & Finn y el NYC Barber Shop Museum."),
+    '404.html': ("¿Perdido? Volvamos al camino de la barbería",
+                 "Esta página tomó un giro equivocado. Regresa al inicio del American Barber Institute o explora cómo comenzar tu carrera."),
+    'bronx.html': ("Entrenamiento en el campus del Bronx: cómo es",
+                   "El programa de 500 horas en el Bronx (121 Westchester Square) — instrucción bilingüe, horarios flexibles, planes de pago semanales y apoyo de colocación laboral."),
+    'why-barbering.html': ("¿Por qué la barbería? Una carrera que no puede ser reemplazada por IA",
+                           "Por qué la barbería sigue siendo una carrera resistente: demanda estable, ingresos que crecen con la destreza, dueño de tu propio libro de clientes."),
+    'training-experience.html': ("La experiencia de entrenamiento en ABI",
+                                 "Cómo se ve realmente el entrenamiento en ABI — teoría, práctica en clientes reales, preparación para el examen — de manera que sepas qué esperar."),
+    'career-paths.html': ("Trayectorias profesionales para barberos licenciados en NY",
+                          "Sillas de barbería, alquiler de espacio, tu propio negocio o educador — todos los caminos que abre una licencia de barbero maestro en NY."),
+    'student-stories.html': ("Historias de estudiantes: vidas transformadas detrás de la silla",
+                             "Voces reales de graduados de ABI — cambios de carrera, veteranos, inmigrantes — que ahora ganan su vida con la barbería."),
+    'skills-and-techniques.html': ("Habilidades y técnicas que dominarás",
+                                   "Fades clásicos, mid, high y bald; taperes, pompadours, líneas con navaja, afeitados con toalla caliente — todo lo que aprenderás en las 500 horas."),
+    'is-barber-training-right-for-you.html': ("¿Es el entrenamiento de barbería adecuado para ti?",
+                                              "Una guía honesta para decidir si la barbería encaja con tu personalidad, tu ritmo de aprendizaje y tus metas — antes de gastar tiempo o dinero."),
+    'how-to-get-started.html': ("Cómo empezar tu carrera de barbero",
+                                "Los pasos claros para inscribirte: tour, elección de horario, financiamiento, matrícula y primer día en la clínica."),
+    'ny-barber-licensing-checklist.html': ("Lista de verificación para la licencia de barbero en NY",
+                                           "Todo lo que necesitas — documentos, horas, examen, tarifas — para obtener tu licencia de barbero maestro en el estado de Nueva York."),
+    'financial-aid.html': ("Ayuda financiera para barbería en ABI",
+                           "GI Bill®, ACCES-VR, planes de pago semanales y otros caminos para pagar tu entrenamiento en ABI."),
+    'tuition-and-funding.html': ("Costo y ayuda financiera: cómo pagar la escuela de barbería",
+                                 "Cuánto cuesta el programa de 500 horas y los caminos de financiamiento — pagos semanales, GI Bill®, ACCES-VR — que reducen el costo real."),
+    'veterans.html': ("Veteranos: cómo usar tu GI Bill® para la escuela de barbería",
+                      "Cómo los veteranos pueden convertir los beneficios del Post-9/11 y otras versiones del GI Bill® en una carrera de barbería licenciada."),
+    'access-vr-program.html': ("¿ACCES-VR podría cubrir tu entrenamiento de barbería?",
+                               "Cómo el programa ACCES-VR de Nueva York puede financiar la formación de barbero para residentes elegibles con una discapacidad — elegibilidad, cobertura y pasos."),
+    'virtual-tour.html': ("Recorrido virtual del campus de ABI",
+                          "Ve el interior de nuestras aulas y clínicas de Manhattan y el Bronx sin salir de casa."),
+    'shop-registration.html': ("¿Necesitas registrar tu barbería? Cómo funciona",
+                               "Registra tu barbería con ABI para acceder a graduados listos para contratar y publicar vacantes."),
+    'privacy-and-policy.html': ("Política de privacidad | American Barber Institute",
+                                "Cómo el American Barber Institute recopila, usa y protege tu información personal."),
+    'programs/index.html': ("¿Qué programa de barbería es para ti? Compara tus opciones",
+                            "Compara los tres caminos de ABI: 500 horas (licencia de NY), 50 horas de repaso para profesionales licenciados, y el curso de Enfermedades Contagiosas de 3 horas."),
+    'programs/manhattan.html': ("Programas del campus de Manhattan | American Barber Institute",
+                                "Cada programa de barbería en nuestro campus de Midtown Manhattan (48 West 39th Street): 500 horas de Barbero Maestro, 50 horas de Repaso (solo Manhattan) y 3 horas de Enfermedades Contagiosas."),
+    'programs/bronx.html': ("Programas del campus del Bronx | American Barber Institute",
+                            "Cada programa en nuestro campus del Bronx (121 Westchester Square, junto al tren 6): 500 horas de Barbero Maestro y 3 horas de Enfermedades Contagiosas. Aprobado por NYSED con planes de pago semanales e instrucción bilingüe."),
+    'programs/500-hour-master-barber.html': ("El viaje de 500 horas — de principiante a licenciado",
+                                             "Lo que se necesita para pasar del primer fade a barbero maestro licenciado en nuestro campus de Manhattan: 500 horas prácticas en unos 4 meses, mañana, tarde o fin de semana, desde $4,600."),
+    'programs/500-hour-master-barber-bronx.html': ("Conviértete en barbero licenciado en el Bronx — la ruta de 500 horas",
+                                                   "Tu transformación en el campus del Bronx de ABI: 500 horas de entrenamiento bilingüe y práctico en unos 4 meses, horarios flexibles, planes de pago y apoyo de colocación laboral."),
+    'programs/50-hour-barber-refresher.html': ("¿Ya licenciado? Cómo el Repaso de 50 horas te prepara para el examen",
+                                               "Para cosmetólogos, estilistas y aprendices: pule tus habilidades y prepárate para el examen estatal en unas 2 semanas en nuestro campus de Manhattan."),
+    'programs/contagious-diseases.html': ("¿Necesitas el curso de Enfermedades Contagiosas? Cómo completarlo",
+                                          "El curso requerido de Enfermedades Contagiosas para operadores de barbería y aprendices en NY, explicado. Complétalo por correo por $100."),
+    'blog/index.html': ("Guías de carrera en barbería — licencia, dinero y vida detrás de la silla",
+                        "La biblioteca del American Barber Institute con guías honestas sobre licencia, salario, colocación laboral y qué esperar realmente detrás de la silla."),
+    'guides/index.html': ("Guías de carrera y licencia de barbería — American Barber Institute",
+                          "Guías gratuitas y detalladas para convertirte en barbero en Nueva York: licencia, salario, preparación para el examen, financiamiento, trayectorias y más."),
+    'guides/how-to-become-a-barber-in-new-york.html': ("Cómo convertirte en barbero en Nueva York: hoja de ruta 2026",
+                                                       "Cada paso para obtener una licencia de barbero en NY — elegibilidad, 500 horas de entrenamiento, examen estatal, tarifas y tiempos — en una guía 2026 en inglés claro."),
+    'guides/ny-barber-license-requirements.html': ("Requisitos de licencia de barbero en NY (2026): horas, examen y tarifas",
+                                                   "Lo que Nueva York realmente exige para una licencia de barbero: horas de entrenamiento, elegibilidad, examen, tarifas y cómo transferir una licencia de otro estado."),
+    'guides/how-much-do-barbers-make-nyc.html': ("¿Cuánto ganan los barberos en NYC? Guía salarial 2026",
+                                                  "Pago real de barberos en Nueva York — inicial, mediano y máximo, más comisión vs alquiler de espacio vs dueño — basado en datos del BLS."),
+    'guides/pass-ny-barber-state-board-exam.html': ("Cómo aprobar el examen estatal de barbería de NY (guía 2026)",
+                                                    "Qué contiene el examen estatal de barbería de NY — escrito y práctico — más un plan de preparación y las razones más comunes de fracaso."),
+    'guides/barber-school-vs-apprenticeship.html': ("Escuela de barbería vs aprendizaje en NY: ¿cuál gana?",
+                                                    "Compara la escuela de barbería y el aprendizaje en NY — costo, tiempo, estructura y licencia — para elegir la ruta que te conviene."),
+    'guides/barber-vs-cosmetologist.html': ("Barbero vs cosmetólogo: ¿qué licencia deberías obtener?",
+                                            "¿Barbero o cosmetólogo? Compara qué hace cada uno, las licencias separadas, el potencial de ingresos y cómo decidir cuál carrera te conviene."),
+    'guides/how-long-barber-school-takes.html': ("¿Cuánto dura la escuela de barbería? Línea de tiempo NY",
+                                                 "500 horas equivalen a unos 4 meses tiempo completo o 6–7 meses fines de semana — aquí está el cronograma realista de inscripción a licencia en NY."),
+    'guides/what-barber-school-costs.html': ("¿Cuánto cuesta la escuela de barbería? Rangos de precios NY (2026)",
+                                             "Rangos típicos de matrícula en escuelas de barbería en NY, qué incluye, y las opciones de financiamiento — planes de pago, GI Bill® y ACCES-VR."),
+    'guides/gi-bill-barber-school.html': ("Usar tu GI Bill® para la escuela de barbería en Nueva York",
+                                          "Cómo los veteranos pueden convertir los beneficios Post-9/11 y otros de GI Bill® en una carrera de barbería licenciada — qué cubre y cómo empezar."),
+    'guides/acces-vr-barber-training.html': ("ACCES-VR para entrenamiento de barbería: quién califica y cómo aplicar",
+                                             "Cómo el programa ACCES-VR de NY puede financiar el entrenamiento de barbería para residentes elegibles con una discapacidad — elegibilidad, cobertura y pasos."),
+    'guides/beginner-barber-tool-kit.html': ("El kit del barbero principiante: lo que realmente necesitas",
+                                             "Una lista sin rodeos de las clippers, trimmers, tijeras y equipo que necesita un nuevo barbero — con un presupuesto inicial y qué evitar."),
+    'guides/day-in-the-life-barber-student.html': ("Un día en la vida de un estudiante de barbería",
+                                                   "Cómo es un día real de entrenamiento en la clínica — desde la teoría hasta clientes en vivo — para que sepas exactamente cómo se siente la escuela de barbería."),
+    'guides/is-barbering-a-good-career.html': ("¿Es la barbería una buena carrera en 2026? Perspectiva y realidad",
+                                               "Una mirada honesta a la barbería como carrera en 2026 — perspectiva laboral, potencial de ingresos, ventajas y desventajas, y quién prospera."),
+    'guides/barbering-glossary.html': ("Glosario de barbería: 40+ términos que todo nuevo barbero debe conocer",
+                                       "Fade, taper, texturize, lineup y más — un glosario en español claro de los términos de barbería que escucharás desde el primer día."),
+}
+# Blog posts get an auto-generated ES title/desc (translation deferred).
+ES_BANNER = ('<div style="background:linear-gradient(90deg,#0E8C82,#12B3A6);color:#fff;'
+             'padding:.65rem 1rem;text-align:center;font-size:.92rem;font-weight:600;'
+             'letter-spacing:.01em">Traducción completa en español próximamente — '
+             'contenido en inglés a continuación. '
+             '<a href="/contact" style="color:#fff;text-decoration:underline">Contáctanos en español al (212) 290-0278</a>.</div>')
 
 def build():
     written = []
@@ -990,8 +1102,13 @@ def build():
                 f'<link rel="alternate" hreflang="x-default" href="{_en_home}">'
             )
         else:
+            # Every EN page now has a Spanish twin at /es/<slug> — declare it
+            _es_alt = f"{SITE_URL}/es/{out}".replace('/index.html', '/').replace('.html', '')
             hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{canonical}">\n'
+                f'<link rel="alternate" hreflang="en-US" href="{canonical}">\n'
+                f'<link rel="alternate" hreflang="es" href="{_es_alt}">\n'
+                f'<link rel="alternate" hreflang="es-US" href="{_es_alt}">\n'
                 f'<link rel="alternate" hreflang="x-default" href="{canonical}">'
             )
         html = TEMPLATE.format(
@@ -1024,6 +1141,63 @@ def build():
         open(dest, 'w', encoding='utf-8').write(html)
         if out != '404.html':  # keep the error page out of the sitemap
             written.append(out)
+
+        # ── ES TWIN — emit /es/<same-path> for every EN page ────────────
+        # Reuses the same English partial body prefixed with a Spanish
+        # notification banner. <html lang="es">, ES title/desc/hreflang.
+        # This guarantees every URL has a Spanish counterpart at /es/<slug>
+        # so language toggles + Google's hreflang crawl land on real pages.
+        if lang == 'en' and out != 'es/index.html':
+            es_out = 'es/' + out
+            es_meta = ES_META.get(out)
+            if not es_meta and out.startswith('blog/'):
+                # Blog posts fall back to a generic Spanish title/desc
+                es_meta = (title.replace('| ABI Blog', '| Blog ABI') if '| ABI Blog' in title else title + ' (Español)',
+                           'Consejos de carrera e insights de la industria — ' +
+                           'la escuela de barbería enfocada en carreras de NYC.')
+            if not es_meta:
+                es_meta = (title, desc)  # last-resort fallback
+            es_title, es_desc = es_meta
+            es_canonical = f"{SITE_URL}/es/{out}".replace('/index.html', '/').replace('.html', '')
+            es_en_href = canonical
+            es_langtoggle = _lang_toggle('/' if out == 'index.html' else ('../' + '../' * out.count('/')), 'es/' + out)
+            es_hreflang_block = (
+                f'<link rel="alternate" hreflang="en" href="{es_en_href}">\n'
+                f'<link rel="alternate" hreflang="en-US" href="{es_en_href}">\n'
+                f'<link rel="alternate" hreflang="es" href="{es_canonical}">\n'
+                f'<link rel="alternate" hreflang="es-US" href="{es_canonical}">\n'
+                f'<link rel="alternate" hreflang="x-default" href="{es_en_href}">'
+            )
+            # Wrap the body with the Spanish notification banner
+            es_body = ES_BANNER + '\n' + body
+            es_html = TEMPLATE.format(
+                lang='es', title=es_title, desc=es_desc, canonical=es_canonical, site=SITE_URL,
+                oglocale='es_ES',
+                pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
+                root='../' + ('../' * out.count('/')),
+                body=es_body, schema=schema_tags, langtoggle=es_langtoggle,
+                campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
+                hreflang_block=es_hreflang_block,
+                lp='../' + ('../' * out.count('/')) + 'programs/index.html',
+                en_cur='', es_cur='aria-current="true"')
+            es_html = (es_html
+                    .replace('<span class="date" data-start-date>First Monday of next month</span>',
+                             '<span class="date" data-start-date>%s</span>' % NEXT_START_LONG)
+                    .replace('<b data-d>0</b>', '<b data-d>%s</b>' % CD_D)
+                    .replace('<b data-h>0</b>', '<b data-h>%s</b>' % CD_H)
+                    .replace('<b data-m>0</b>', '<b data-m>%s</b>' % CD_M)
+                    .replace('<b data-s>0</b>', '<b data-s>%s</b>' % CD_S))
+            # ES 404 must also stay unindexed
+            if out == '404.html':
+                es_html = es_html.replace(
+                    '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
+                    '<meta name="robots" content="noindex">')
+            es_html = clean_links(es_html)
+            es_dest = os.path.join(ROOT, es_out)
+            os.makedirs(os.path.dirname(es_dest), exist_ok=True)
+            open(es_dest, 'w', encoding='utf-8').write(es_html)
+            if out != '404.html':
+                written.append(es_out)
     # sitemap — adds priority/changefreq hints and xhtml:link hreflang annotations
     # so Google indexes the EN ↔ ES home variants as one logical URL.
     written += ['index.html', 'es/index.html', 'bronx.html']
