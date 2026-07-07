@@ -354,3 +354,6 @@ body.shell2.lf-page .mstrip-phones:has(> :nth-child(2)){grid-template-columns:1f
 body.shell2.lf-page .mstrip-phones:not(:has(> :nth-child(2))){grid-template-columns:1fr;max-width:340px}
 /* Desktop ubar: with only 1-2 chips (no Haircut), keep them tight-right, not stretched. */
 body.shell2.lf-page .ubar-right{gap:.55rem}
+
+/* Landings: with 3 chips, mstrip goes 3-col; override the auto-fit rule above */
+body.shell2.lf-page .mstrip-phones:has(> :nth-child(3)){grid-template-columns:1fr 1fr 1fr;max-width:640px}

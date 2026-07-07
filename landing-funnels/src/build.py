@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "60"
+CSS_V = "61"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -158,27 +158,22 @@ def header(p):
     mscissors_svg = scissors_svg.replace('width="14" height="14"', 'width="12" height="12"').replace(
         'stroke-width="2.1"', 'stroke-width="2.2"')
 
-    # Landings intentionally OMIT the Haircut number (per client 2026-07-07):
-    # Manhattan landing → 2 chips (English + Spanish). Bronx landing → 1 chip (Bronx).
-    if is_manhattan:
-        ubar_calls = (
-            '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
-            '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
-            '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
-            '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
-        ) % (phone_svg,)
-        mstrip_phones = (
-            '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
-            '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
-        ) % (mphone_svg, mphone_svg)
-    else:  # bronx
-        ubar_calls = (
-            '<a class="ubar-call ubar-call--admis" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
-            '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
-        ) % (phone_svg,)
-        mstrip_phones = (
-            '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
-        ) % (mphone_svg,)
+    # Landings show ALL 3 admissions numbers regardless of campus (per client
+    # 2026-07-07): Manhattan English + Manhattan Spanish + Bronx. No Haircut.
+    # Visitors on either landing can reach any campus's admissions line.
+    ubar_calls = (
+        '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
+        '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
+        '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
+        '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
+        '<a class="ubar-call ubar-call--bx" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
+        '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
+    ) % (phone_svg, phone_svg)
+    mstrip_phones = (
+        '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
+        '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
+        '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
+    ) % (mphone_svg, mphone_svg, mphone_svg)
 
     # Nav labels (translate for ES) + language-consistent nav hrefs.
     # ES landings link back to /es/ (Spanish site landing) so Spanish visitors
