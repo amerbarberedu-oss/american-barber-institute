@@ -122,7 +122,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/campus.js?v=2" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335"></script>
-<script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent="@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
+<script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget,.lc_text-widget--bubble{{display:none!important}}@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
 <script src="{root}assets/js/video-sound.js?v=3" defer></script>
 </body>
 </html>
@@ -698,10 +698,16 @@ CAMPUS_BY_PAGE = {
 def _campus_switch(root, campus, es=False):
     """Polished segmented Manhattan ⇄ Bronx control with a sliding indicator.
     campus.js reads data-campus / .is-active and swaps the live phone numbers.
-    The Bronx segment used to hardcode /bronx (English) on every page,
-    including Spanish ones — fixed to link to /es/bronx when es=True."""
+    Both segments use absolute hrefs (like /es/bronx) rather than a relative
+    root-prefix — a relative 'root+index.html' collapsed to the ABSOLUTE
+    English '/' via clean_links() on every depth-0 ES page (es/about.html,
+    es/contact.html, etc.), so switching to Manhattan from an ES page bounced
+    you to the English homepage instead of /es/. Absolute hrefs sidestep the
+    relative-path/clean_links interaction entirely and stay correct at any
+    page depth or language."""
     mn_active = '' if campus == 'bronx' else ' is-active'
     bx_active = ' is-active' if campus == 'bronx' else ''
+    mn_href = '/es' if es else '/'
     bronx_href = '/es/bronx' if es else '/bronx'
     pin = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
            'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" '
@@ -709,10 +715,10 @@ def _campus_switch(root, campus, es=False):
            '<circle cx="12" cy="10" r="3"/></svg>')
     return ('<div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus">'
             '<span class="seg-glider" aria-hidden="true"></span>'
-            '<a class="seg-opt%s" data-campus-opt="manhattan" href="%sindex.html" aria-current="%s">%s<span class="seg-lab">Manhattan</span></a>'
+            '<a class="seg-opt%s" data-campus-opt="manhattan" href="%s" aria-current="%s">%s<span class="seg-lab">Manhattan</span></a>'
             '<a class="seg-opt%s" data-campus-opt="bronx" href="%s" aria-current="%s">%s<span class="seg-lab">Bronx</span></a>'
             '</div>') % (
-        mn_active, root, ('true' if mn_active else 'false'), pin,
+        mn_active, mn_href, ('true' if mn_active else 'false'), pin,
         bx_active, bronx_href, ('true' if bx_active else 'false'), pin)
 
 def _header_nav(root, es, campusswitch, langtoggle):
@@ -777,11 +783,10 @@ def _header_nav(root, es, campusswitch, langtoggle):
         '      </div>\n'
         f'      <div class="nav2-item"><a class="nav2-top" href="{root}contact.html">{L["contact"]}</a></div>\n'
         '    </nav>\n'
-        f'    <a class="hdr2-cta" href="{root}contact.html">{L["book"]}</a>\n'
+        f'    <a class="hdr2-cta" href="{root}contact.html#request-a-call">{L["book"]}</a>\n'
         f'    <button class="hamburger" aria-label="{L["menu"]}" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>\n'
         '  </div>\n'
         '  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">\n'
-        f'    <div class="drawer-switchers">{campusswitch}{langtoggle}</div>\n'
         '    <div class="drawer-group">\n'
         f'      <p class="drawer-h">{L["programs"]}</p>\n'
         f'      <a href="{root}programs/500-hour-master-barber.html">{L["master500"]}</a>\n'
@@ -806,7 +811,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         f'      <a class="drawer-solo" href="{root}guides/index.html">{L["guides"]}</a>\n'
         f'      <a class="drawer-solo" href="{root}contact.html">{L["contact"]}</a>\n'
         '    </div>\n'
-        f'    <a class="drawer-cta" href="{root}contact.html"><b>{L["book"]}</b></a>\n'
+        f'    <a class="drawer-cta" href="{root}contact.html#request-a-call"><b>{L["book"]}</b></a>\n'
         '  </div></nav>\n'
         '</header>'
     )
@@ -866,8 +871,8 @@ def _footer_block(root, es):
         f'      <h3>{L["foot_h3"]}</h3>\n'
         f'      <p class="foot2-cta-sub">{L["foot_cta_sub"]}</p>\n'
         '      <div class="foot-cta-btns">\n'
-        f'        <a class="btn btn-gold btn-lg" href="{root}contact.html">{L["request_call"]}</a>\n'
-        f'        <a class="btn btn-ghost2 btn-lg" href="{root}contact.html">{L["apply_now"]}</a>\n'
+        f'        <a class="btn btn-gold btn-lg" href="{root}contact.html#request-a-call">{L["request_call"]}</a>\n'
+        f'        <a class="btn btn-ghost2 btn-lg" href="{root}contact.html#request-a-call">{L["apply_now"]}</a>\n'
         '      </div>\n'
         '    </div>\n'
         '  </div>\n'
@@ -1157,7 +1162,7 @@ def build():
         campus = CAMPUS_BY_PAGE.get(out.replace('es/', ''), 'manhattan')
         langtoggle = _lang_toggle(root, out)
         campusswitch = _campus_switch(root, campus)
-        mbar = _mbar(root, False, root + 'contact.html')
+        mbar = _mbar(root, False, root + 'contact.html#request-a-call')
         header_nav = _header_nav(root, False, campusswitch, langtoggle)
         footer_block = _footer_block(root, False)
         # Body theme + data-campus so campus.js renders the right phones on load.
@@ -1249,7 +1254,7 @@ def build():
             # apply_href uses `root` (not `es_root`) — it links to the ES-sibling
             # contact page (es/contact.html), which sits at the SAME relative
             # depth within es/ as `root` describes within the site root.
-            es_mbar = _mbar(es_root, True, root + 'contact.html')
+            es_mbar = _mbar(es_root, True, root + 'contact.html#request-a-call')
             # Same insight for the header/nav/drawer: use plain `root` (not
             # es_root) so every nav link stays inside the es/ subtree instead
             # of jumping back to the English page at the repo root.

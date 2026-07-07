@@ -224,7 +224,6 @@ def header(p):
         '<button class="hamburger" aria-label="%s" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>'
         '</div>'
         '<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">'
-        '<div class="drawer-switchers">%s%s</div>'
         '<div class="drawer-group"><p class="drawer-h">%s</p><a href="%s">%s</a></div>'
         '<div class="drawer-group">'
         '<a class="drawer-solo" href="%s">%s</a>'
@@ -248,7 +247,6 @@ def header(p):
         NAV["tuition"], L["tuition"],
         NAV["contact"], L["contact"],
         L["book"], L["menu"],
-        campus_switch, lang_toggle,
         L["programs"], NAV["home"], L["prog500"],
         NAV["about"], L["why"],
         NAV["guides"], L["guides"],
@@ -611,16 +609,46 @@ def section_videos(p):
             % (section_head(eb, ti), cards))
 
 
-# ── GALLERY ──────────────────────────────────────────────────────────
+# ── GALLERY — horizontal "real floor" film-strip, not a static grid ──
+_FLOOR_VIDEO = "https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/floor/floor-03.mp4"
+
 def section_gallery(p):
+    es = p["lang"] == "es"
     eb, ti = D.GALLERY_HEAD[p["lang"]]
-    items = "".join(
-        '<img decoding="async" fetchpriority="low" src="/assets/img/%s" alt="ABI clinic floor photo %d" width="800" height="600">'
-        % (h(g), i + 1) for i, g in enumerate(D.GALLERY)
+    see_link = "Ver la Galería Completa &rarr;" if es else "See the Full Gallery &rarr;"
+    see_more = "Ver Más Fotos" if es else "See More Photos"
+    gallery_href = "/es/gallery" if es else "/gallery"
+    alts_es = [
+        "Foto real de la clínica de ABI %d" % (i + 1) for i in range(len(D.GALLERY))
+    ]
+    alts_en = [
+        "Real photo from the ABI clinic floor %d" % (i + 1) for i in range(len(D.GALLERY))
+    ]
+    alts = alts_es if es else alts_en
+    cards = "".join(
+        '<a class="lf-floor__card" href="%s"><img loading="lazy" decoding="async" src="/assets/img/%s" alt="%s"></a>'
+        % (h(gallery_href), h(g), h(a)) for g, a in zip(D.GALLERY, alts)
     )
-    return ('<section class="lf-section lf-section--alt"><div class="lf-wrap">%s'
-            '<div class="lf-gallery">%s</div></div></section>\n'
-            % (section_head(eb, ti), items))
+    video_card = (
+        '<div class="lf-floor__card lf-floor__card--video" '
+        'onmouseenter="this.querySelector(\'video\').play()" onmouseleave="this.querySelector(\'video\').pause()">'
+        '<video muted loop playsinline preload="none" poster="/assets/img/gallery/posters/floor-03.jpg" src="%s"></video>'
+        '<span class="lf-floor__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>'
+        % h(_FLOOR_VIDEO)
+    )
+    end_card = (
+        '<a class="lf-floor__card lf-floor__card--end" href="%s">'
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span>%s</span></a>'
+        % (h(gallery_href), h(see_more))
+    )
+    return (
+        '<section class="lf-section lf-section--alt lf-floor"><div class="lf-wrap">'
+        '<div class="lf-floor__head">%s<a class="lf-floor__see" href="%s">%s</a></div>'
+        '<div class="lf-floor__track">%s%s%s</div>'
+        '</div></section>\n'
+        % (section_head(eb, ti), h(gallery_href), see_link, cards, video_card, end_card)
+    )
 
 
 # ── REVIEWS (split per campus; real Google reviews, no widget) ──────
@@ -969,7 +997,7 @@ def page_tail():
         '<script src="https://widgets.leadconnectorhq.com/loader.js" '
         'data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" '
         'data-widget-id="689f4917512e48b4268bf335"></script>\n'
-        '<script>(function(){var t=setInterval(function(){var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){clearInterval(t);var s=document.createElement("style");s.textContent="@media(max-width:768px){.lc_text-widget,.lc_text-widget--bubble{bottom:140px!important;right:12px!important}}";w.shadowRoot.appendChild(s);}},400);setTimeout(function(){clearInterval(t)},15000);})();</script>\n'
+        '<script>(function(){var t=setInterval(function(){var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget,.lc_text-widget--bubble{display:none!important}@media(max-width:768px){.lc_text-widget,.lc_text-widget--bubble{bottom:140px!important;right:12px!important}}";w.shadowRoot.appendChild(s);}},400);setTimeout(function(){clearInterval(t)},15000);})();</script>\n'
         '</body>\n</html>\n'
     ) % (JS_V,)
 

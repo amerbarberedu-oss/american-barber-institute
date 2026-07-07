@@ -2057,3 +2057,23 @@ chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;
   .lfx-phonerow .lfx-phone__flag{display:inline !important;color:var(--lf-on-accent) !important;opacity:.9}
   .lfx-phonerow .lfx-phone__num{text-align:center;font-size:.85rem}
 }
+
+/* ── FLOOR STRIP — horizontal scroll-snap "real floor" gallery teaser,
+   replaces the old static .lf-gallery grid (client 2026-07-08: creative,
+   not a stock-photo grid) ── */
+.lf-floor__head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.lf-floor__see{white-space:nowrap;font-weight:700;color:var(--lf-accent-deep,#0E4D5C);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.lf-floor__track{display:flex;gap:1rem;overflow-x:auto;padding:.5rem .25rem 1rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.lf-floor__track::-webkit-scrollbar{display:none}
+.lf-floor__card{flex:0 0 auto;width:200px;aspect-ratio:3/4;border-radius:14px;overflow:hidden;position:relative;scroll-snap-align:start;box-shadow:0 8px 24px rgba(15,20,32,.12);transition:transform .25s ease,box-shadow .25s ease;background:#111;display:block}
+.lf-floor__card:nth-child(3n+1){transform:rotate(-2deg)}
+.lf-floor__card:nth-child(3n+2){transform:rotate(1.5deg)}
+.lf-floor__card:nth-child(3n){transform:rotate(-1deg)}
+.lf-floor__card:hover{transform:rotate(0) translateY(-6px) scale(1.03);box-shadow:0 16px 36px rgba(15,20,32,.22);z-index:2}
+.lf-floor__card img,.lf-floor__card video{width:100%;height:100%;object-fit:cover;display:block}
+.lf-floor__card--video{border:2px solid var(--lf-accent-bright,#28C7B8)}
+.lf-floor__play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,20,20,.18);pointer-events:none}
+.lf-floor__play svg{width:38px;height:38px;fill:#fff;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+.lf-floor__card--end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(150deg,var(--lf-accent-deep,#0E4D5C),var(--lf-accent,#146B78));color:#fff;text-decoration:none;text-align:center;padding:1rem;font-weight:700}
+.lf-floor__card--end svg{width:26px;height:26px}
+@media (max-width:640px){.lf-floor__card{width:150px}}

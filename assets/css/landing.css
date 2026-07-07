@@ -3073,8 +3073,12 @@ body.shell2 .mstrip-t i{font-style:normal;font-size:.62rem;font-weight:700;lette
   /* Campus switcher: keep names but tighten; nothing clips or scrolls */
   body.shell2 .seg-campus .seg-lab{font-size:.72rem}
   body.shell2 .seg-opt{padding:.34rem .5rem;gap:.26rem}
-  body.shell2 .mstrip-phones{grid-template-columns:1fr;gap:var(--sp-2)}
-  body.shell2 .mstrip-phone{justify-content:flex-start;padding:.6rem .8rem}
+  /* Phone chips stay side-by-side even on the smallest phones (previously
+     collapsed to a single column here, stacking them one-after-another). */
+  body.shell2 .mstrip-phones{grid-template-columns:1fr 1fr;gap:var(--sp-1,.4rem)}
+  body.shell2 .mstrip-phone{justify-content:center;padding:.55rem .3rem;gap:.4rem}
+  body.shell2 .mstrip-t b{font-size:.78rem}
+  body.shell2 .mstrip-t i{font-size:.56rem}
 }
 
 /* ══════════ FOOTER 2.0 ══════════ */

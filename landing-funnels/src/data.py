@@ -304,7 +304,7 @@ STUDENT_VOICES = {
 # Videos hosted on Vercel Blob CDN; posters remain in /assets/img/.
 STUDENT_VOICES_VIDEOS = [
     ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/video-321.mp4", "video-321-poster.jpg"),
-    ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/Video-124.mp4", "video-124-poster.jpg"),
+    ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/Video-146-6wEuaWz8rTLEBoFyQqWWuyptA3WL4p.mp4", "video-146-poster.jpg"),
     ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/student-voice-3.mp4", "student-voice-3-poster.jpg"),
 ]
 
@@ -317,7 +317,7 @@ BRONX_EXTRA = {
 }
 BRONX_EXTRA_VIDEOS = [
     ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/video-321.mp4", "video-321-poster.jpg"),
-    ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/Video-124.mp4", "video-124-poster.jpg"),
+    ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/Video-146-6wEuaWz8rTLEBoFyQqWWuyptA3WL4p.mp4", "video-146-poster.jpg"),
     ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/video-321.mp4", "video-321-poster.jpg"),
 ]
 

@@ -1366,8 +1366,8 @@ def sec_brandband(p, s, pre):
             '</div>'
             '<div class="abi-reel__media" data-abi-reel>'
             '<video class="abi-reel__video" muted loop playsinline preload="metadata" '
-            'src="https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/Video-124.mp4" '
-            'poster="/assets/img/video-124-poster.jpg" '
+            'src="https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/Video-146-6wEuaWz8rTLEBoFyQqWWuyptA3WL4p.mp4" '
+            'poster="/assets/img/video-146-poster.jpg" '
             'aria-label="ABI student testimonial video — second voice"></video>'
             + play_btn +
             '</div>'
