@@ -698,17 +698,17 @@ CAMPUS_BY_PAGE = {
 def _campus_switch(root, campus, es=False):
     """Polished segmented Manhattan ⇄ Bronx control with a sliding indicator.
     campus.js reads data-campus / .is-active and swaps the live phone numbers.
-    Both segments use absolute hrefs (like /es/bronx) rather than a relative
+    Both segments use absolute hrefs (like /spanish/bronx) rather than a relative
     root-prefix — a relative 'root+index.html' collapsed to the ABSOLUTE
     English '/' via clean_links() on every depth-0 ES page (es/about.html,
     es/contact.html, etc.), so switching to Manhattan from an ES page bounced
-    you to the English homepage instead of /es/. Absolute hrefs sidestep the
+    you to the English homepage instead of /spanish/. Absolute hrefs sidestep the
     relative-path/clean_links interaction entirely and stay correct at any
     page depth or language."""
     mn_active = '' if campus == 'bronx' else ' is-active'
     bx_active = ' is-active' if campus == 'bronx' else ''
-    mn_href = '/es' if es else '/'
-    bronx_href = '/es/bronx' if es else '/bronx'
+    mn_href = '/spanish' if es else '/'
+    bronx_href = '/spanish/bronx' if es else '/bronx'
     pin = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
            'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" '
            'aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>'
@@ -724,7 +724,7 @@ def _campus_switch(root, campus, es=False):
 def _header_nav(root, es, campusswitch, langtoggle):
     """Full <header class="hdr2">...</header> block (logo + desktop nav +
     Book-a-Tour CTA + hamburger + mobile drawer). EN/ES-aware: on Spanish
-    pages every label AND every href now stays inside /es/ — this was a
+    pages every label AND every href now stays inside /spanish/ — this was a
     sitewide gap (client 2026-07-08 audit) where the shared header showed
     English nav text and linked every ES page back to its English twin."""
     L = {
@@ -851,7 +851,7 @@ def _footer_block(root, es):
         "request_a_call_from_admissions": "Solicita una llamada de admisiones" if es else "Request a call from admissions",
         "back_to_top": "Volver arriba" if es else "Back to top",
     }
-    prefix = '/es' if es else ''
+    prefix = '/spanish' if es else ''
     return (
         '<section class="cta-band">\n'
         '  <div class="wrap">\n'
@@ -966,17 +966,17 @@ def _mbar(root, es, apply_href):
 
 def _lang_toggle(root, out):
     """Segmented EN | ES control with a globe icon + sliding indicator.
-    Every EN page now has a Spanish twin at /es/<slug>, so the ES link
+    Every EN page now has a Spanish twin at /spanish/<slug>, so the ES link
     points there — Spanish visitors stay on the same content, not the ES home."""
     globe = ('<svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" '
              'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
              'aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
              '<path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>')
-    if out.startswith('es/'):
-        en_href, es_href = '%s%s' % (root, out[3:]), '%s%s' % (root, out)
+    if out.startswith('spanish/'):
+        en_href, es_href = '%s%s' % (root, out[8:]), '%s%s' % (root, out)
         en_a, es_a = '', ' is-active'
     else:
-        en_href, es_href = '%s%s' % (root, out), '%ses/%s' % (root, out)
+        en_href, es_href = '%s%s' % (root, out), '%sspanish/%s' % (root, out)
         en_a, es_a = ' is-active', ''
     return ('<div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang">'
             '<span class="seg-glider" aria-hidden="true"></span>'
@@ -1159,7 +1159,7 @@ def build():
             f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>'
             for s in resolved)
         # Segmented EN|ES + Manhattan⇄Bronx switchers (see helpers above).
-        campus = CAMPUS_BY_PAGE.get(out.replace('es/', ''), 'manhattan')
+        campus = CAMPUS_BY_PAGE.get(out.replace('spanish/', ''), 'manhattan')
         langtoggle = _lang_toggle(root, out)
         campusswitch = _campus_switch(root, campus)
         mbar = _mbar(root, False, root + 'contact.html#request-a-call')
@@ -1173,7 +1173,7 @@ def build():
         # the home page additionally declares the ES alternate (and vice-versa).
         # Only the home page has a Spanish counterpart today.
         _en_home = SITE_URL + "/"
-        _es_home = SITE_URL + "/es/"
+        _es_home = SITE_URL + "/spanish/"
         if out in ('index.html',):
             hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{_en_home}">\n'
@@ -1182,7 +1182,7 @@ def build():
                 f'<link rel="alternate" hreflang="es-US" href="{_es_home}">\n'
                 f'<link rel="alternate" hreflang="x-default" href="{_en_home}">'
             )
-        elif out.startswith('es/'):
+        elif out.startswith('spanish/'):
             hreflang_block = (
                 f'<link rel="alternate" hreflang="es" href="{_es_home}">\n'
                 f'<link rel="alternate" hreflang="es-US" href="{_es_home}">\n'
@@ -1191,8 +1191,8 @@ def build():
                 f'<link rel="alternate" hreflang="x-default" href="{_en_home}">'
             )
         else:
-            # Every EN page now has a Spanish twin at /es/<slug> — declare it
-            _es_alt = f"{SITE_URL}/es/{out}".replace('/index.html', '/').replace('.html', '')
+            # Every EN page now has a Spanish twin at /spanish/<slug> — declare it
+            _es_alt = f"{SITE_URL}/spanish/{out}".replace('/index.html', '/').replace('.html', '')
             hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{canonical}">\n'
                 f'<link rel="alternate" hreflang="en-US" href="{canonical}">\n'
@@ -1203,7 +1203,7 @@ def build():
         html = TEMPLATE.format(
             lang=lang, title=title, desc=desc, canonical=canonical, site=SITE_URL,
             oglocale='es_ES' if lang == 'es' else 'en_US',
-            pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
+            pagebg=PAGE_BG.get(out.replace('spanish/', ''), _DEFAULT_BG),
             root=root, body=body, schema=schema_tags, langtoggle=langtoggle,
             campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
             hreflang_block=hreflang_block, mbar=mbar, header_nav=header_nav, footer_block=footer_block,
@@ -1231,13 +1231,15 @@ def build():
         if out != '404.html':  # keep the error page out of the sitemap
             written.append(out)
 
-        # ── ES TWIN — emit /es/<same-path> for every EN page ────────────
+        # ── ES TWIN — emit /spanish/<same-path> for every EN page ────────
         # Reuses the same English partial body prefixed with a Spanish
         # notification banner. <html lang="es">, ES title/desc/hreflang.
-        # This guarantees every URL has a Spanish counterpart at /es/<slug>
+        # This guarantees every URL has a Spanish counterpart at /spanish/<slug>
         # so language toggles + Google's hreflang crawl land on real pages.
-        if lang == 'en' and out != 'es/index.html':
-            es_out = 'es/' + out
+        # (URL segment is "spanish" not "es" — matches the old WordPress
+        # site's existing, already-indexed Spanish URL convention.)
+        if lang == 'en' and out != 'spanish/index.html':
+            es_out = 'spanish/' + out
             es_meta = ES_META.get(out)
             if not es_meta and out.startswith('blog/'):
                 # Blog posts fall back to a generic Spanish title/desc
@@ -1247,10 +1249,10 @@ def build():
             if not es_meta:
                 es_meta = (title, desc)  # last-resort fallback
             es_title, es_desc = es_meta
-            es_canonical = f"{SITE_URL}/es/{out}".replace('/index.html', '/').replace('.html', '')
+            es_canonical = f"{SITE_URL}/spanish/{out}".replace('/index.html', '/').replace('.html', '')
             es_en_href = canonical
             es_root = '../' + ('../' * out.count('/'))
-            es_langtoggle = _lang_toggle('/' if out == 'index.html' else es_root, 'es/' + out)
+            es_langtoggle = _lang_toggle('/' if out == 'index.html' else es_root, 'spanish/' + out)
             # apply_href uses `root` (not `es_root`) — it links to the ES-sibling
             # contact page (es/contact.html), which sits at the SAME relative
             # depth within es/ as `root` describes within the site root.
@@ -1273,7 +1275,7 @@ def build():
             # always lives exactly one directory level deeper (es/<same-path>),
             # so every such relative reference needs exactly one extra '../'
             # prepended, or it 404s (e.g. es/gallery's images resolving to
-            # /es/assets/... instead of /assets/...). Absolute (/assets/...)
+            # /spanish/assets/... instead of /assets/...). Absolute (/assets/...)
             # and external (http...) references are untouched.
             #
             # REAL TRANSLATION OVERRIDE: if src/pages/es-<partial> exists,
@@ -1295,7 +1297,7 @@ def build():
             es_html = TEMPLATE.format(
                 lang='es', title=es_title, desc=es_desc, canonical=es_canonical, site=SITE_URL,
                 oglocale='es_ES',
-                pagebg=PAGE_BG.get(out.replace('es/', ''), _DEFAULT_BG),
+                pagebg=PAGE_BG.get(out.replace('spanish/', ''), _DEFAULT_BG),
                 root='../' + ('../' * out.count('/')),
                 body=es_body, schema=schema_tags, langtoggle=es_langtoggle,
                 campusswitch=es_campusswitch, bodyclass=bodyclass, datacampus=datacampus,
@@ -1322,12 +1324,14 @@ def build():
                 written.append(es_out)
     # sitemap — adds priority/changefreq hints and xhtml:link hreflang annotations
     # so Google indexes the EN ↔ ES home variants as one logical URL.
-    written += ['index.html', 'es/index.html', 'bronx.html']
+    # Both hand-crafted ES twins (spanish/index.html, spanish/bronx.html) were
+    # previously missing from this list entirely — fixed (client audit 2026-07-08).
+    written += ['index.html', 'spanish/index.html', 'bronx.html', 'spanish/bronx.html']
     import datetime
     _today = datetime.date.today().isoformat()
     def _pri(o):
         if o in ('index.html',):                                  return ('1.0', 'weekly')
-        if o == 'es/index.html':                                  return ('0.9', 'weekly')
+        if o == 'spanish/index.html':                             return ('0.9', 'weekly')
         if o.startswith('programs/') or o == 'contact.html':      return ('0.9', 'weekly')
         if o in ('about.html', 'haircuts.html', 'instructors.html'): return ('0.8', 'monthly')
         if o.startswith('blog/'):                                 return ('0.7', 'monthly')
@@ -1335,9 +1339,9 @@ def build():
         return ('0.6', 'monthly')
     def _abs(o):
         # Vercel cleanUrls + trailingSlash:false → URLs are bare (no .html, no /).
-        # Root paths (index.html, es/index.html) are special-cased to /  and /es .
+        # Root paths (index.html, spanish/index.html) are special-cased to / and /spanish .
         if o == 'index.html': return SITE_URL + '/'
-        if o == 'es/index.html': return SITE_URL + '/es'
+        if o == 'spanish/index.html': return SITE_URL + '/spanish'
         u = f'{SITE_URL}/{o}'.replace('/index.html', '').replace('.html', '')
         return u
     def _entry(o):
@@ -1351,9 +1355,9 @@ def build():
             f'    <priority>{pri}</priority>',
         ]
         # hreflang annotations only where both EN and ES counterparts exist.
-        if o == 'index.html' or o == 'es/index.html':
+        if o == 'index.html' or o == 'spanish/index.html':
             block.append(f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}/"/>')
-            block.append(f'    <xhtml:link rel="alternate" hreflang="es" href="{SITE_URL}/es"/>')
+            block.append(f'    <xhtml:link rel="alternate" hreflang="es" href="{SITE_URL}/spanish"/>')
             block.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}/"/>')
         block.append('  </url>')
         return '\n'.join(block)

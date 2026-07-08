@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/es",
+      "destination": "/spanish",
+      "permanent": true
+    },
+    {
+      "source": "/es/:path*",
+      "destination": "/spanish/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/programs/500-hour-master-barber-program-4-months",
+      "destination": "/spanish/programs/500-hour-master-barber",
+      "permanent": true
+    },
+    {
       "source": "/programs/200-hour-barber-fundamentals",
       "destination": "/programs/",
       "permanent": true

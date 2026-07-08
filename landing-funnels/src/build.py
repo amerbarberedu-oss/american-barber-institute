@@ -184,9 +184,9 @@ def header(p):
              "tuition": "Costo y Ayuda", "contact": "Contacto",
              "book": "Reservar Visita", "menu": "Menú",
              "prog500": "500 horas — Barbero Maestro"}
-        NAV = {"home": "/es", "about": "/es", "guides": "/es",
-               "tuition": "/es", "contact": "/es"}
-        home_href = "/es"
+        NAV = {"home": "/spanish", "about": "/spanish", "guides": "/spanish",
+               "tuition": "/spanish", "contact": "/spanish"}
+        home_href = "/spanish"
     else:
         L = {"programs": "Programs", "why": "Why ABI", "guides": "Guides",
              "tuition": "Tuition & Funding", "contact": "Contact",
@@ -617,7 +617,7 @@ def section_gallery(p):
     eb, ti = D.GALLERY_HEAD[p["lang"]]
     see_link = "Ver la Galería Completa &rarr;" if es else "See the Full Gallery &rarr;"
     see_more = "Ver Más Fotos" if es else "See More Photos"
-    gallery_href = "/es/gallery" if es else "/gallery"
+    gallery_href = "/spanish/gallery" if es else "/gallery"
     alts_es = [
         "Foto real de la clínica de ABI %d" % (i + 1) for i in range(len(D.GALLERY))
     ]
