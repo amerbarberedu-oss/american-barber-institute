@@ -77,6 +77,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="stylesheet" href="{root}assets/css/landing.min.css?v=155">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=6" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
 <link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
 <link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=2">
