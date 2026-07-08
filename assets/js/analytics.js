@@ -61,7 +61,8 @@
   gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
 
   // ---- 3. GTM install (Google's official snippet, inlined) ----
-  // GTM sends to abi.edu's GA4 stream — both streams now receive data.
+  // GTM's GA4 tag fires G-J6BNX36TS3 (abi.edu). Combined with the
+  // direct G-B4TC0VGH2S above, .com traffic reaches BOTH streams.
   (function (w, d, s, l, i) {
     w[l] = w[l] || [];
     w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
