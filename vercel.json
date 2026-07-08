@@ -13,6 +13,16 @@
       "permanent": true
     },
     {
+      "source": "/espanol",
+      "destination": "/spanish",
+      "permanent": true
+    },
+    {
+      "source": "/espanol/:path*",
+      "destination": "/spanish/:path*",
+      "permanent": true
+    },
+    {
       "source": "/spanish/programs/500-hour-master-barber-program-4-months",
       "destination": "/spanish/programs/500-hour-master-barber",
       "permanent": true
@@ -249,6 +259,24 @@
     { "source": "/courses/:path+",                   "destination": "/programs",                     "permanent": true },
     { "source": "/about/:path+",                     "destination": "/about",                        "permanent": true },
     { "source": "/resources/:path+",                 "destination": "/resources",                    "permanent": true },
+
+    { "source": "/spanish/about/instructors",                "destination": "/spanish/instructors",                  "permanent": true },
+    { "source": "/spanish/about/skills-and-techniques",      "destination": "/spanish/skills-and-techniques",        "permanent": true },
+    { "source": "/spanish/about/how-to-get-started",         "destination": "/spanish/how-to-get-started",           "permanent": true },
+    { "source": "/spanish/about/virtual-tour",               "destination": "/spanish/virtual-tour",                 "permanent": true },
+    { "source": "/spanish/courses/500-hour-master-barber",   "destination": "/spanish/programs/500-hour-master-barber",       "permanent": true },
+    { "source": "/spanish/courses/540-hour-master-barber-bronx", "destination": "/spanish/programs/500-hour-master-barber-bronx", "permanent": true },
+    { "source": "/spanish/courses/50-hour-barber-refresher", "destination": "/spanish/programs/50-hour-barber-refresher",     "permanent": true },
+    { "source": "/spanish/courses/3-hour-contagious-diseases", "destination": "/spanish/programs/contagious-diseases",        "permanent": true },
+    { "source": "/spanish/faqs",                             "destination": "/spanish/faq",                          "permanent": true },
+    { "source": "/spanish/resources/veterans",               "destination": "/spanish/veterans",                     "permanent": true },
+    { "source": "/spanish/resources/acces-vr",               "destination": "/spanish/access-vr-program",            "permanent": true },
+    { "source": "/spanish/jobs/job-opportunities",           "destination": "/spanish/jobs",                         "permanent": true },
+    { "source": "/spanish/jobs/shop-registration",           "destination": "/spanish/shop-registration",            "permanent": true },
+
+    { "source": "/spanish/courses/:path+",                   "destination": "/spanish/programs",                     "permanent": true },
+    { "source": "/spanish/about/:path+",                     "destination": "/spanish/about",                        "permanent": true },
+    { "source": "/spanish/resources/:path+",                 "destination": "/spanish/resources",                    "permanent": true },
 
     { "source": "/programs/500-hour-master-barber-program",     "destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
     { "source": "/programs/500-hour-master-barber-program.html","destination": "/500-hours-master-barber-program-landing-page", "permanent": true }
