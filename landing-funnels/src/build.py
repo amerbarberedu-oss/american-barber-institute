@@ -920,8 +920,9 @@ def page_head(p):
 '<meta name="twitter:image" content="%(site)s/assets/img/lf-og-cover.jpg">\n'
 '<meta name="robots" content="index, follow, max-image-preview:large">\n'
 '<meta name="theme-color" content="%(theme_color)s">\n'
-'<link rel="icon" href="/favicon.ico" sizes="any">\n'
-'<link rel="apple-touch-icon" href="/apple-icon.png">\n'
+'<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\n'
+'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">\n'
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
 '<link rel="preconnect" href="https://text.pollinations.ai" crossorigin>\n'
