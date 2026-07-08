@@ -40,11 +40,7 @@
     w.dataLayer.push(arguments);
   }
 
-  // ---- Direct GA4 config for the .com stream (parallel to GTM's abi.edu tag) ----
-  gtag("js", new Date());
-  gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
-
-  // ---- Consent Mode v2 : granted by default (no banner) ----
+  // ---- 1. Consent Mode v2 : MUST come FIRST (before any gtag config) ----
   // security_storage/functionality_storage stay granted (essential).
   gtag("consent", "default", {
     ad_storage: "granted",
@@ -53,7 +49,19 @@
     analytics_storage: "granted"
   });
 
-  // ---- GTM install (Google's official snippet, inlined) ----
+  // ---- 2. Load gtag.js library + configure GA4 stream ----
+  // This is the ONLY source for G-B4TC0VGH2S (the .com stream).
+  // GTM's GA4 tag sends to abi.edu's stream (G-J6BNX36TS3), not here.
+  var gtagScript = d.createElement("script");
+  gtagScript.async = true;
+  gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_MEASUREMENT_ID;
+  d.head.appendChild(gtagScript);
+
+  gtag("js", new Date());
+  gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
+
+  // ---- 3. GTM install (Google's official snippet, inlined) ----
+  // GTM sends to abi.edu's GA4 stream — both streams now receive data.
   (function (w, d, s, l, i) {
     w[l] = w[l] || [];
     w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });

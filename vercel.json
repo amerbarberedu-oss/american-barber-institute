@@ -279,7 +279,36 @@
     { "source": "/spanish/resources/:path+",                 "destination": "/spanish/resources",                    "permanent": true },
 
     { "source": "/programs/500-hour-master-barber-program",     "destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
-    { "source": "/programs/500-hour-master-barber-program.html","destination": "/500-hours-master-barber-program-landing-page", "permanent": true }
+    { "source": "/programs/500-hour-master-barber-program.html","destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
+
+    { "source": "/blog",                                       "destination": "https://www.abi.edu/blog",                                   "permanent": true },
+    { "source": "/blog/:slug",                                 "destination": "https://www.abi.edu/blog/:slug",                             "permanent": true },
+
+    { "source": "/barber-school-brooklyn-new-york",             "destination": "https://www.abi.edu/barber-school-brooklyn-new-york",         "permanent": true },
+    { "source": "/barber-school-connecticut",                   "destination": "https://www.abi.edu/barber-school-connecticut",               "permanent": true },
+    { "source": "/barber-school-long-island-ny",                "destination": "https://www.abi.edu/barber-school-long-island-ny",            "permanent": true },
+    { "source": "/barber-school-mount-vernon-ny",               "destination": "https://www.abi.edu/barber-school-mount-vernon-ny",           "permanent": true },
+    { "source": "/barber-school-pennsylvania",                  "destination": "https://www.abi.edu/barber-school-pennsylvania",              "permanent": true },
+    { "source": "/barber-school-port-chester-ny",               "destination": "https://www.abi.edu/barber-school-port-chester-ny",           "permanent": true },
+    { "source": "/barber-school-queens-ny",                     "destination": "https://www.abi.edu/barber-school-queens-ny",                 "permanent": true },
+    { "source": "/barber-school-staten-island-ny",              "destination": "https://www.abi.edu/barber-school-staten-island-ny",          "permanent": true },
+    { "source": "/barber-school-westchester-ny",                "destination": "https://www.abi.edu/barber-school-westchester-ny",            "permanent": true },
+    { "source": "/barber-school-yonkers-new-york",              "destination": "https://www.abi.edu/barber-school-yonkers-new-york",          "permanent": true },
+
+    { "source": "/500-hours-master-barber-program-landing-page",         "destination": "https://www.abi.edu/500-hours-master-barber-program-landing-page",         "permanent": true },
+    { "source": "/500-hours-master-barber-program-landing-page/spanish", "destination": "https://www.abi.edu/500-hours-master-barber-program-landing-page/spanish", "permanent": true },
+    { "source": "/master-barber-program-bronx",                          "destination": "https://www.abi.edu/master-barber-program-bronx",                          "permanent": true },
+    { "source": "/master-barber-program-bronx/spanish",                  "destination": "https://www.abi.edu/master-barber-program-bronx/spanish",                  "permanent": true },
+
+    { "source": "/shop-registration",                          "destination": "https://www.abi.edu/shop-registration",                      "permanent": true },
+    { "source": "/thank-you",                                  "destination": "https://www.abi.edu/thank-you",                              "permanent": true },
+    { "source": "/gracias",                                    "destination": "https://www.abi.edu/gracias",                                "permanent": true },
+
+    { "source": "/spanish/barber-school-brooklyn-new-york",    "destination": "https://www.abi.edu/es/barber-school-brooklyn-new-york",      "permanent": true },
+    { "source": "/spanish/barber-school-mount-vernon-ny",      "destination": "https://www.abi.edu/es/barber-school-mount-vernon-ny",       "permanent": true },
+    { "source": "/spanish/barber-school-pennsylvania",         "destination": "https://www.abi.edu/es/barber-school-pennsylvania",          "permanent": true },
+    { "source": "/spanish/barber-school-port-chester-ny",      "destination": "https://www.abi.edu/es/barber-school-port-chester-ny",       "permanent": true },
+    { "source": "/spanish/barber-school-queens-ny",            "destination": "https://www.abi.edu/es/barber-school-queens-ny",             "permanent": true }
   ],
   "rewrites": [
     {
