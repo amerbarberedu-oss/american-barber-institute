@@ -1,5 +1,5 @@
 /* ============================================================
-   ABI — Analytics loader   (v3)
+   ABI — Analytics loader   (v4)
    ------------------------------------------------------------
    ONE dependency: Google Tag Manager container GTM-NKLLGPC.
    GA4 (G-J6BNX36TS3), Meta Pixel (580471737041846), Microsoft
