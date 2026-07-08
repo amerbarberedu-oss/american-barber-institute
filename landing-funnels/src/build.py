@@ -722,7 +722,7 @@ def section_contact(p):
     )
 
 
-# ── FAQ ──────────────────────────────────────────────────────────────
+# ── FAQ ─────────────────────────────────────────�����────────────────────
 def section_faq(p):
     eb, ti = D.FAQ_HEAD[p["lang"]]
     items = "".join(
@@ -921,8 +921,8 @@ def page_head(p):
 '<meta name="robots" content="index, follow, max-image-preview:large">\n'
 '<meta name="theme-color" content="%(theme_color)s">\n'
 '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\n'
-'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">\n'
+'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">\n'
+'<link rel="manifest" href="/site.webmanifest">\n'
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
 '<link rel="preconnect" href="https://text.pollinations.ai" crossorigin>\n'
@@ -1000,6 +1000,10 @@ def page_tail():
         '<script src="https://widgets.leadconnectorhq.com/loader.js" '
         'data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" '
         'data-widget-id="689f4917512e48b4268bf335"></script>\n'
+        '<script>\n'
+        '  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };\n'
+        '</script>\n'
+        '<script defer src="/_vercel/insights/script.js"></script>\n'
         '<script>(function(){var t=setInterval(function(){var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget--prompt{display:none!important}@media(max-width:768px){.lc_text-widget,.lc_text-widget--bubble{bottom:140px!important;right:12px!important}}";w.shadowRoot.appendChild(s);}},400);setTimeout(function(){clearInterval(t)},15000);})();</script>\n'
         '</body>\n</html>\n'
     ) % (JS_V,)
