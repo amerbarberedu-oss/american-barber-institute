@@ -3,7 +3,6 @@ Allow: /
 Disallow: /src/
 Disallow: /docs/
 Disallow: /_archive/
-Disallow: /blog/
 
 User-agent: GPTBot
 Allow: /
