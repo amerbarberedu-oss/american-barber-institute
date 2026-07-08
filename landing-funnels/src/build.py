@@ -934,7 +934,7 @@ def page_head(p):
 '<link rel="stylesheet" href="/assets/css/funnels.min.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/chatbot.min.css?v=%(cssv)s">\n'
 '%(ld_scripts)s'
-'<script src="/assets/js/analytics.js?v=6" defer></script>\n'
+'<script src="/assets/js/analytics.js?v=7" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
 '<script src="/assets/js/campus.js?v=2" defer></script>\n'
 '<script src="/assets/js/landing.js?v=32" defer></script>\n'

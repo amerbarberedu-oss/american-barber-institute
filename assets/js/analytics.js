@@ -1,5 +1,5 @@
 /* ============================================================
-   ABI — Analytics loader   (v5)
+   ABI — Analytics loader   (v6)
    ------------------------------------------------------------
    ONE dependency: Google Tag Manager container GTM-NKLLGPC.
    GA4 (G-J6BNX36TS3), Meta Pixel (580471737041846), Microsoft
@@ -75,10 +75,23 @@
     f.parentNode.insertBefore(j, f);
   })(window, document, "script", "dataLayer", GTM_ID);
 
-  // ---- semantic click events ----
+  // ---- semantic events ----
+  // push():  feeds the GTM dataLayer  (→ abi.edu stream + any GTM tags).
   function push(event, extra) {
     w.dataLayer.push(assign({ event: event }, extra || {}));
   }
+  // ga4Event(): sends a GA4 event STRAIGHT to this domain's own stream
+  // (G-B4TC0VGH2S) via gtag. GTM does not forward to the .com property, so
+  // form/lead conversions must be sent here to show up in this GA4 account.
+  function ga4Event(name, params) {
+    gtag("event", name, params || {});
+  }
+  // lead(): a single form-submit → fire "generate_lead" to BOTH destinations.
+  function lead(params) {
+    push("generate_lead", params);      // → GTM / abi.edu stream
+    ga4Event("generate_lead", params);  // → .com GA4 stream (G-B4TC0VGH2S)
+  }
+
   d.addEventListener(
     "click",
     function (e) {
@@ -96,7 +109,7 @@
     "submit",
     function (e) {
       var form = e.target;
-      push("generate_lead", {
+      lead({
         form_id: (form && form.id) || "",
         form_name: (form && form.getAttribute("name")) || "",
         source: "native_form"
@@ -110,7 +123,7 @@
   function fireLead(source, extra) {
     if (leadFired) return; // de-dupe within a pageview
     leadFired = true;
-    push("generate_lead", assign({ source: source || "ghl_form" }, extra || {}));
+    lead(assign({ source: source || "ghl_form" }, extra || {}));
   }
 
   // (a) best-effort: listen for GoHighLevel/LeadConnector submit messages.
