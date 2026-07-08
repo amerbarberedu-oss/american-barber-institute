@@ -19,32 +19,32 @@
     },
     {
       "source": "/programs/200-hour-barber-fundamentals",
-      "destination": "/programs/",
+      "destination": "/programs",
       "permanent": true
     },
     {
       "source": "/programs/200-hour-barber-fundamentals.html",
-      "destination": "/programs/",
+      "destination": "/programs",
       "permanent": true
     },
     {
       "source": "/programs/scalp-micro-pigmentation",
-      "destination": "/programs/",
+      "destination": "/programs",
       "permanent": true
     },
     {
       "source": "/programs/scalp-micro-pigmentation.html",
-      "destination": "/programs/",
+      "destination": "/programs",
       "permanent": true
     },
     {
       "source": "/programs/license-transfer",
-      "destination": "/programs/",
+      "destination": "/programs",
       "permanent": true
     },
     {
       "source": "/programs/license-transfer.html",
-      "destination": "/programs/",
+      "destination": "/programs",
       "permanent": true
     },
     {

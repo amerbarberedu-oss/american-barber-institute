@@ -908,6 +908,7 @@ def page_head(p):
 '<meta property="og:title" content="%(title)s">\n'
 '<meta property="og:description" content="%(desc)s">\n'
 '<meta property="og:type" content="website">\n'
+'<meta property="og:site_name" content="American Barber Institute">\n'
 '<meta property="og:url" content="%(canonical)s">\n'
 '<meta property="og:image" content="%(site)s/assets/img/lf-og-cover.jpg">\n'
 '<meta property="og:image:width" content="1200">\n'
@@ -1045,11 +1046,47 @@ def build_page(p):
     return out_path
 
 
+def _write_landing_sitemap():
+    """These 4 pages are real ad-landing pages but were never in any sitemap
+    (audit finding 2026-07-08) — write a dedicated sub-sitemap for them at the
+    true repo root (one level above landing-funnels/) and reference it from
+    the main site's sitemap.xml index."""
+    repo_root = os.path.dirname(ROOT)
+    today = datetime.date.today().isoformat()
+    entries = []
+    for p in D.PAGES:
+        loc = f"{SITE}/{p['path']}"
+        alt_lang = 'es' if p['lang'] == 'en' else 'en'
+        alt_loc = f"{SITE}/{p['alt']}"
+        block = [
+            '  <url>',
+            f'    <loc>{loc}</loc>',
+            f'    <lastmod>{today}</lastmod>',
+            '    <changefreq>weekly</changefreq>',
+            '    <priority>0.9</priority>',
+            f'    <xhtml:link rel="alternate" hreflang="{p["lang"]}" href="{loc}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="{alt_lang}" href="{alt_loc}"/>',
+            '  </url>',
+        ]
+        entries.append('\n'.join(block))
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        + '\n'.join(entries) + '\n</urlset>\n'
+    )
+    dest = os.path.join(repo_root, 'landing-sitemap.xml')
+    open(dest, 'w', encoding='utf-8').write(xml)
+    print("✓ landing-sitemap.xml (%d URLs)" % len(D.PAGES))
+
+
 def main():
     written = [build_page(p) for p in D.PAGES]
     for w in written:
         print("✓", os.path.relpath(w, ROOT))
     print("%d landing pages generated." % len(written))
+    _write_landing_sitemap()
 
 
 if __name__ == "__main__":

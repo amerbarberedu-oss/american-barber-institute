@@ -239,7 +239,9 @@ ORG_SCHEMA = {
     "currenciesAccepted": "USD"
 }
 
-def course_schema(name, desc, hours, weeks, price):
+def course_schema(name, desc, hours, weeks, price, campus="manhattan"):
+    location_address = ("121 Westchester Square, Bronx, NY 10461" if campus == "bronx"
+                         else "48 West 39th Street, New York, NY 10018")
     return {
         "@context": "https://schema.org",
         "@type": "Course",
@@ -252,9 +254,8 @@ def course_schema(name, desc, hours, weeks, price):
             "courseMode": "onsite",
             "courseWorkload": f"PT{hours}H",
             "location": {"@type": "Place", "name": "American Barber Institute",
-                         "address": "48 West 39th Street, New York, NY 10018"}
+                         "address": location_address}
         },
-        "totalHistoricalEnrollment": None,
         "timeRequired": f"P{weeks}W"
     }
 
@@ -423,6 +424,9 @@ BLOG_AUTHORS = {
     "exploring-the-benefits-of-enrolling-in-the-ameri": ("David Ayeoribe", "Lead Senior Instructor & Director"),
 }
 
+FAQ_SCHEMA_PLACEHOLDER = "FAQ_SCHEMA"
+VIDEO_SCHEMA_PLACEHOLDER = "GALLERY_VIDEO_SCHEMA"
+
 PAGES = [
     # (output, partial, title, description, lang, extra_schema)
     ("about.html", "about.html",
@@ -440,7 +444,7 @@ PAGES = [
     ("gallery.html", "gallery.html",
      "See What Barber Training Actually Looks Like — Student Work & Floor",
      "A look at real student cuts, the clinic floor, and day-to-day life while training to become a barber — so you know what you're stepping into before you enroll.",
-     "en", []),
+     "en", [VIDEO_SCHEMA_PLACEHOLDER]),
     ("haircuts.html", "haircuts.html",
      "Want a $3 Cut — or Chair Time as a Student? How the ABI Clinic Works",
      "Why the $3 student clinic matters: it's where trainees log real hands-on hours on real clients. Book a cut in Manhattan or the Bronx, or see what your training floor looks like.",
@@ -475,11 +479,11 @@ PAGES = [
      "en", []),
     ("programs/manhattan.html", "programs-manhattan.html",
      "Manhattan Campus Programs | American Barber Institute",
-     "Every barber program at our Midtown Manhattan campus (48 West 39th Street): 500-Hour Master Barber, 50-Hour Barber Refresher (Manhattan only) and 3-Hour Contagious Diseases. NYSED-approved with weekly payment plans.",
+     "Every barber program at our Midtown Manhattan campus: 500-Hour Master Barber, 50-Hour Refresher and Contagious Diseases. NYSED-approved, weekly payment plans.",
      "en", []),
     ("programs/bronx.html", "programs-bronx.html",
      "Bronx Campus Programs | American Barber Institute",
-     "Every barber program at our Bronx campus (121 Westchester Square, by the 6 train): 500-Hour Master Barber and 3-Hour Contagious Diseases. NYSED-approved with weekly payment plans and bilingual instruction.",
+     "Every barber program at our Bronx campus (Westchester Square): 500-Hour Master Barber and Contagious Diseases. NYSED-approved, bilingual, weekly payment plans.",
      "en", []),
     ("programs/500-hour-master-barber.html", "program-500.html",
      "The 500-Hour Master Barber Journey — From Beginner to Licensed",
@@ -490,7 +494,7 @@ PAGES = [
      "Become a Licensed Barber in the Bronx — The 500-Hour Path",
      "Your transformation at ABI's Bronx campus: 500 hours of hands-on, bilingual training in about 4 months, flexible schedules, payment plans and job-placement support.",
      "en", [course_schema("500 Hour Master Barber Program — Bronx",
-        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600)]),
+        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600, campus="bronx")]),
     ("programs/50-hour-barber-refresher.html", "program-50.html",
      "Already Licensed? How the 50-Hour Refresher Gets You Board-Ready",
      "For cosmetologists, hairdressers and apprentices: sharpen your skills and prep for the NY State Board Exam in about 2 weeks at our Manhattan campus.",
@@ -580,59 +584,59 @@ PAGES = [
     ("guides/how-to-become-a-barber-in-new-york.html", "guide-how-to-become-a-barber-in-new-york.html",
      "How to Become a Barber in New York: The Complete 2026 Roadmap",
      "Every step to become a licensed barber in NY — eligibility, 500 training hours, the state board exam, fees and timelines — in one plain-English 2026 guide.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/ny-barber-license-requirements.html", "guide-ny-barber-license-requirements.html",
      "NY Barber License Requirements (2026): Hours, Exam & Fees",
      "What New York actually requires for a barber license: training hours, eligibility, the exam, fees, and how to transfer a license from another state.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/how-much-do-barbers-make-nyc.html", "guide-how-much-do-barbers-make-nyc.html",
      "How Much Do Barbers Make in NYC? 2026 New York Salary Guide",
      "Real barber pay in New York — entry, median and top earnings, plus commission vs booth rent vs shop ownership — grounded in BLS wage data.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/pass-ny-barber-state-board-exam.html", "guide-pass-ny-barber-state-board-exam.html",
      "How to Pass the NY Barber State Board Exam (2026 Guide)",
      "What's on the New York barber state board exam — written and practical — plus a prep plan and the most common reasons candidates fail.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/barber-school-vs-apprenticeship.html", "guide-barber-school-vs-apprenticeship.html",
      "Barber School vs. Apprenticeship in New York: Which Path Wins?",
      "Compare barber school and apprenticeship in NY — cost, time, structure and licensing — to choose the route that fits your life.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/barber-vs-cosmetologist.html", "guide-barber-vs-cosmetologist.html",
      "Barber vs. Cosmetologist: Which License Should You Get?",
      "Barber or cosmetologist? Compare what each does, the separate licenses, earning potential and how to decide which career fits you.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/how-long-barber-school-takes.html", "guide-how-long-barber-school-takes.html",
      "How Long Does Barber School Take? A New York Timeline",
      "500 hours becomes about 4 months full-time or 6–7 months on weekends — here's the realistic enroll-to-licensed timeline in New York.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/what-barber-school-costs.html", "guide-what-barber-school-costs.html",
      "How Much Does Barber School Cost? NY Price Ranges (2026)",
      "Typical New York barber-school tuition ranges, what's included, and the funding options — payment plans, GI Bill® and ACCES-VR — that lower the cost.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/gi-bill-barber-school.html", "guide-gi-bill-barber-school.html",
      "Using Your GI Bill® for Barber School in New York",
      "How veterans can turn Post-9/11 and other GI Bill® benefits into a licensed barber career — what's covered and how to get started.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/acces-vr-barber-training.html", "guide-acces-vr-barber-training.html",
      "ACCES-VR for Barber Training: Who Qualifies & How to Apply",
      "How New York's ACCES-VR program can fund barber training for eligible residents with a disability — eligibility, coverage and the application steps.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/beginner-barber-tool-kit.html", "guide-beginner-barber-tool-kit.html",
      "The Beginner Barber Tool Kit: What You Actually Need",
      "A no-nonsense checklist of the clippers, trimmers, shears and gear a new barber needs — with a starter budget and what to skip.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/day-in-the-life-barber-student.html", "guide-day-in-the-life-barber-student.html",
      "A Day in the Life of a Barber Student",
      "What a real training day looks like on the clinic floor — from theory to live clients — so you know exactly what barber school feels like.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/is-barbering-a-good-career.html", "guide-is-barbering-a-good-career.html",
      "Is Barbering a Good Career in 2026? Outlook, Pay & Reality",
      "An honest look at barbering as a career in 2026 — job outlook, earning potential, the pros and cons, and who thrives behind the chair.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
     ("guides/barbering-glossary.html", "guide-barbering-glossary.html",
      "Barbering Terms Glossary: 40+ Words Every New Barber Should Know",
      "Fade, taper, texturize, lineup and more — a plain-English glossary of the barbering terms you'll hear from day one.",
-     "en", []),
+     "en", [FAQ_SCHEMA_PLACEHOLDER]),
 ]
 
 # blog posts: content partials in src/pages/blog-*.html, listed in src/blog_manifest.json.
@@ -650,7 +654,31 @@ if os.path.exists(_blog_manifest):
             "en", [article_schema(_p['title'], f"{SITE_URL}/blog/{_p['slug']}",
                                   slug=_p['slug'], body=_body)]))
 
-FAQ_SCHEMA_PLACEHOLDER = "FAQ_SCHEMA"
+def gallery_video_schemas(body, limit=15):
+    """Build VideoObject entries for the self-hosted (Vercel Blob) 'floor-XX'
+    reel videos on the gallery page -- these had zero VideoObject schema
+    despite having real, distinct captions per clip (audit 2026-07-08).
+    Capped at `limit` clips: schema.org VideoObject rich results only surface
+    a handful of videos per page regardless of how many are marked up, so
+    cataloguing all 30+ clips across 3 different hosts wouldn't add value
+    proportional to the effort -- this covers the cleanest, best-captioned set."""
+    pattern = (r'<video src="(https://vutumew2863lb0bx\.public\.blob\.vercel-storage\.com/[^"]+)"\s+'
+               r'poster="([^"]+)"[^>]*></video><figcaption>([^<]+)</figcaption>')
+    matches = re.findall(pattern, body)[:limit]
+    schemas = []
+    for src, poster, caption in matches:
+        poster_url = poster if poster.startswith('http') else f"{SITE_URL}/{poster}"
+        schemas.append({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": caption,
+            "description": f"{caption} — real training footage from the American Barber Institute clinic floor.",
+            "thumbnailUrl": [poster_url],
+            "uploadDate": "2026-07-06",
+            "contentUrl": src,
+        })
+    return schemas
+
 
 def faq_schema_from(body):
     """Build FAQPage JSON-LD from the faq partial's <summary>/<div class="a"> pairs."""
@@ -1139,6 +1167,8 @@ def build():
         for s in schemas:
             if s == FAQ_SCHEMA_PLACEHOLDER:
                 resolved.append(faq_schema_from(body))
+            elif s == VIDEO_SCHEMA_PLACEHOLDER:
+                resolved.extend(gallery_video_schemas(body))
             else:
                 resolved.append(s)
         # BreadcrumbList for every page (entity clarity for AI/answer engines)
@@ -1242,10 +1272,16 @@ def build():
             es_out = 'spanish/' + out
             es_meta = ES_META.get(out)
             if not es_meta and out.startswith('blog/'):
-                # Blog posts fall back to a generic Spanish title/desc
+                # Blog posts without a bespoke ES_META entry fall back to a
+                # templated title/desc. Previously the description was 100%
+                # identical across all such posts (a duplicate-meta-description
+                # SEO gap, audit 2026-07-08) -- now interpolates the post's own
+                # title so each is at least unique, matching how the EN
+                # description is built two lines above this block.
+                _clean_title = title.replace(' | ABI Blog', '')
                 es_meta = (title.replace('| ABI Blog', '| Blog ABI') if '| ABI Blog' in title else title + ' (Español)',
-                           'Consejos de carrera e insights de la industria — ' +
-                           'la escuela de barbería enfocada en carreras de NYC.')
+                           f'{_clean_title} — consejos de carrera e información de la industria '
+                           'de la escuela de barbería de NYC enfocada en carreras.')
             if not es_meta:
                 es_meta = (title, desc)  # last-resort fallback
             es_title, es_desc = es_meta
@@ -1382,7 +1418,7 @@ def build():
     _write_urlset('programs-sitemap.xml', progs)
     subs = ''.join(
         f'  <sitemap>\n    <loc>{SITE_URL}/{n}</loc>\n    <lastmod>{_today}</lastmod>\n  </sitemap>\n'
-        for n in ('page-sitemap.xml', 'post-sitemap.xml', 'programs-sitemap.xml'))
+        for n in ('page-sitemap.xml', 'post-sitemap.xml', 'programs-sitemap.xml', 'landing-sitemap.xml'))
     open(os.path.join(ROOT, 'sitemap.xml'), 'w').write(
         _XML_HEAD +
         '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
