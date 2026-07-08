@@ -1,5 +1,5 @@
 /* ============================================================
-   ABI — Analytics loader   (v4)
+   ABI — Analytics loader   (v5)
    ------------------------------------------------------------
    ONE dependency: Google Tag Manager container GTM-NKLLGPC.
    GA4 (G-J6BNX36TS3), Meta Pixel (580471737041846), Microsoft
@@ -49,16 +49,17 @@
     analytics_storage: "granted"
   });
 
-  // ---- 2. Load gtag.js library + configure GA4 stream ----
-  // This is the ONLY source for G-B4TC0VGH2S (the .com stream).
-  // GTM's GA4 tag sends to abi.edu's stream (G-J6BNX36TS3), not here.
+  // ---- 2. Google tag (gtag.js) — fresh install of GA4 stream ----
+  // Reinstalled per Google's official gtag.js snippet (Jul 2026).
+  // This is the ONLY source for G-B4TC0VGH2S (the .com stream);
+  // GTM's own GA4 tag sends to abi.edu's stream (G-J6BNX36TS3), not here.
   var gtagScript = d.createElement("script");
   gtagScript.async = true;
   gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_MEASUREMENT_ID;
   d.head.appendChild(gtagScript);
 
   gtag("js", new Date());
-  gtag("config", GA4_MEASUREMENT_ID, { send_page_view: true });
+  gtag("config", GA4_MEASUREMENT_ID);
 
   // ---- 3. GTM install (Google's official snippet, inlined) ----
   // GTM's GA4 tag fires G-J6BNX36TS3 (abi.edu). Combined with the
