@@ -219,7 +219,7 @@
     },
     {
       "source": "/jobs/shop-registration",
-      "destination": "/jobs",
+      "destination": "/shop-registration",
       "permanent": true
     },
     {
@@ -233,6 +233,22 @@
       "permanent": true
     },
     { "source": "/barber-school-bronx-new-york",     "destination": "/bronx",            "permanent": true },
+
+    { "source": "/about/instructors",                "destination": "/instructors",                  "permanent": true },
+    { "source": "/about/skills-and-techniques",      "destination": "/skills-and-techniques",        "permanent": true },
+    { "source": "/about/how-to-get-started",         "destination": "/how-to-get-started",           "permanent": true },
+    { "source": "/about/virtual-tour",               "destination": "/virtual-tour",                 "permanent": true },
+    { "source": "/courses/500-hour-master-barber",   "destination": "/programs/500-hour-master-barber",       "permanent": true },
+    { "source": "/courses/540-hour-master-barber-bronx", "destination": "/programs/500-hour-master-barber-bronx", "permanent": true },
+    { "source": "/courses/50-hour-barber-refresher", "destination": "/programs/50-hour-barber-refresher",     "permanent": true },
+    { "source": "/courses/3-hour-contagious-diseases", "destination": "/programs/contagious-diseases",        "permanent": true },
+    { "source": "/faqs",                             "destination": "/faq",                          "permanent": true },
+    { "source": "/resources/veterans",               "destination": "/veterans",                     "permanent": true },
+    { "source": "/resources/acces-vr",               "destination": "/access-vr-program",            "permanent": true },
+
+    { "source": "/courses/:path+",                   "destination": "/programs",                     "permanent": true },
+    { "source": "/about/:path+",                     "destination": "/about",                        "permanent": true },
+    { "source": "/resources/:path+",                 "destination": "/resources",                    "permanent": true },
 
     { "source": "/programs/500-hour-master-barber-program",     "destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
     { "source": "/programs/500-hour-master-barber-program.html","destination": "/500-hours-master-barber-program-landing-page", "permanent": true }
