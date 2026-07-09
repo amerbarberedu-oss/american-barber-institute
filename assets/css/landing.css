@@ -3012,8 +3012,9 @@ body.shell2 .drawer-switchers{display:flex;flex-wrap:wrap;gap:var(--sp-3);
   padding:var(--sp-2) 0 var(--sp-4);margin-bottom:var(--sp-2);border-bottom:1px solid var(--sh-line)}
 /* Drawer switcher segments read on white → teal chrome */
 body.shell2 .nav-drawer .seg{background:var(--teal-tint,#E7F7F5);border-color:var(--teal-soft,#B8ECE7)}
+body.shell2 .nav-drawer .seg-glider{background:var(--sh-teal-deep,#0E8C82);box-shadow:0 2px 8px rgba(14,77,92,.32)}
 body.shell2 .nav-drawer .seg-opt{color:var(--sh-teal-deep)}
-body.shell2 .nav-drawer .seg-opt.is-active{color:var(--sh-teal-deep)}
+body.shell2 .nav-drawer .seg-opt.is-active{color:#fff}
 body.shell2 .drawer-group{padding:var(--sp-4) 0;border-bottom:1px solid var(--sh-line)}
 body.shell2 .drawer-h{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
   color:var(--sh-teal-deep);margin:0 0 var(--sp-2)}
