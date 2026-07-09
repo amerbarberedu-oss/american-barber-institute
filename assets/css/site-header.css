@@ -227,6 +227,30 @@ body.shell2 .mstrip-t i{font-style:normal;font-size:.62rem;font-weight:700;lette
   body.shell2 .mstrip-phone{justify-content:flex-start;padding:.6rem .8rem}
 }
 
+/* ═══ RESPONSIVE SAFETY: hamburger must NEVER be clipped ═══
+   All header flex children can shrink EXCEPT the hamburger button. */
+body.shell2 .hdr2-in > * { min-width: 0; }
+body.shell2 .hamburger { flex-shrink: 0 !important; min-width: 34px !important; }
+body.shell2 .hdr2, body.shell2 .hdr2-in { overflow: visible !important; }
+
+/* Ultra-narrow: ≤320px (Galaxy Fold, very small Android) */
+@media (max-width:320px){
+  body.shell2 .logo2-img { height: 32px; }
+  body.shell2 .hamburger { width: 38px; }
+  body.shell2 .hdr2-in { gap: var(--sp-2); min-height: 54px; }
+  body.shell2 .seg-campus { min-width: 152px; }
+  body.shell2 .seg-lang { min-width: 88px; }
+  body.shell2 .seg-opt { font-size: .68rem; padding: .3rem .44rem; }
+}
+/* Extreme: ≤280px (Galaxy Fold folded) */
+@media (max-width:280px){
+  body.shell2 .logo2-img { height: 28px; }
+  body.shell2 .hdr2-in { gap: var(--sp-1); padding: .4rem .3rem; }
+  body.shell2 .seg-campus { min-width: 130px; }
+  body.shell2 .seg-lang { min-width: 80px; }
+  body.shell2 .seg-opt { font-size: .62rem; padding: .26rem .38rem; }
+}
+
 /* ══════════ FOOTER 2.0 ══════════ */
 body.shell2 .site2{background:var(--foot-bg,#0A3A45);color:var(--text-on-dark,#EAF4F3)}
 body.shell2 .foot2-cta{background:linear-gradient(115deg,var(--sh-teal-deep) 0%,var(--sh-teal) 100%);
