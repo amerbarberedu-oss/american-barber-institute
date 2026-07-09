@@ -28,6 +28,8 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
+/* Lighten all content images slightly (client request) */
+.gallery img,.sec img,article img,.card img,.team-card img,.photo img,.fade-card img,video{filter:brightness(1.08) contrast(.97)}
 a{color:inherit;text-decoration:none}
 .container{width:min(1240px,92%);margin-inline:auto}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;border:none;cursor:pointer;border-radius:10px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;font-family:inherit}
@@ -365,8 +367,8 @@ html.js .rv.in{opacity:1;transform:none}
   .hero-in{display:flex;flex-direction:column;gap:0}
   .hero-copy{display:contents}
   .hero-h1{order:1;padding-top:68vw}
-  .hero-sub{order:2;margin-top:.9rem;margin-bottom:.3rem}
-  .hero-in .formcard{order:3;margin:1rem 0 .4rem;scroll-margin-top:72px}
+  .hero-sub{order:2;margin-top:.9rem;margin-bottom:.15rem}
+  .hero-in .formcard{order:3;margin:.3rem 0 .4rem;scroll-margin-top:72px}
   .hero-copy .features{order:4;margin-top:1.6rem}
   .hero-copy .hero-cd{order:5;margin-top:1.4rem}
 }
@@ -2761,7 +2763,7 @@ video{background-color:#1a1f2e}
   .hx-chips{grid-template-columns:1fr;gap:.6rem;max-width:none}
   .hx-next{grid-template-columns:1fr;row-gap:.9rem;max-width:none;margin-top:1rem}
   .hx-cells{grid-template-columns:repeat(4,1fr)}
-  .hx-in .formcard{margin-top:1.6rem}
+  .hx-in .formcard{margin-top:.3rem}
 }
 
 /* ═══════════ v139 — tighter vertical rhythm on home pages (client: reduce big gaps) ═══════════ */
