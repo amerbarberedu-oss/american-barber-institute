@@ -12,6 +12,24 @@ sites don't compete with each other in search.
 - **Vercel alias:** https://american-barber-institute.vercel.app
 - **Vercel project:** `american-barber-institute` on team `amerbarberedu-oss-projects`
 
+## Recent changes (2026-07-09)
+
+**Developer roles defined:**
+- **Kazi** — Frontend, UI/UX, HTML/CSS/JS, SEO, build scripts
+- **Arhum Abdullah** — GA4, GTM, Google Ads, Meta Pixel, Clarity, CallRail, ClickCease, Vercel Analytics, consent mode, CSP analytics domains
+
+> ⚠️ **Do NOT modify** `assets/js/analytics.js`, GTM/GA4/Ads/Pixel config, or CSP analytics domains without Arhum's sign-off.
+
+**What changed:**
+- **Mobile responsiveness** — bulletproof hamburger menu on all devices using `min()` clamping
+- **Toggle styling** — seg-toggle glider in nav-drawer now teal with white active text (was invisible white-on-white); fixed `calc()` spacing in minified CSS
+- **campus.js v3** — phone labels now show language ("English"/"Spanish") not location; auto-detects `/spanish/` pages and renders Spanish labels ("Inglés"/"Español"/"Corte"); removed "Clinic" from "Haircut Clinic" everywhere
+- **Full Spanish translation** — 72 `/spanish/` pages: nav, footer, CTAs, drawer links, CTA buttons, countdown, Google reviews, contagious diseases course, form labels. Comprehensive body content translation.
+- **Spanish image fixes** — 35 pages had broken logo (relative `src="assets/"` → absolute `src="/assets/"`)
+- **Google rating** — standardized to 4.1 across all pages and structured data
+- **2-card grid** — program pages with 2 cards center properly
+- **Contact form placement** — form appears immediately after hero text on mobile
+
 ## What this is
 
 A fully static site — plain HTML/CSS/vanilla JS, no framework, no build
@@ -95,13 +113,7 @@ convention abi.edu uses). `vercel.json` 301-redirects any `/es/...` request to
 its `/spanish/...` equivalent.
 
 `src/build.py` auto-generates a `/spanish/<slug>` twin for every English page.
-By default the twin is the English body behind a small "translation coming
-soon" banner (not real translation — a genuine duplicate-content risk, flagged
-in an SEO audit 2026-07-08). If a real, human-translated override file exists
-at `src/pages/es-<partial>.html`, that content is used instead and the banner
-is omitted. As of this writing, 10 priority pages have real translations;
-the rest are still English-passthrough — see the SEO audit findings before
-assuming Spanish content is complete.
+By default the twin is the English body with Spanish headers/footers. Common UI phrases (headings, CTAs, buttons, nav, footer) have been bulk-translated via scripts. Longer body content on interior pages (blogs, guides) still has some English paragraphs — these need individual human translation. If a real, human-translated override file exists at `src/pages/es-<partial>.html`, that content is used instead.
 
 ## Tracking & analytics
 
@@ -148,6 +160,26 @@ theme.
 - **Secrets:** never commit tokens or `.env*` files — `.gitignore`/`.vercelignore`
   already exclude them; if you ever see one tracked, treat it as a live incident
   (rotate the credential), not just a cleanup item.
+
+---
+
+## Live URLs
+
+### Main Website
+| Page | URL |
+|---|---|
+| **Homepage (English)** | https://www.americanbarberinstitute.com/ |
+| **Homepage (Spanish)** | https://www.americanbarberinstitute.com/spanish/ |
+| **Bronx (English)** | https://www.americanbarberinstitute.com/bronx |
+| **Bronx (Spanish)** | https://www.americanbarberinstitute.com/spanish/bronx |
+
+### Landing Pages
+| Landing Page | URL |
+|---|---|
+| **500-Hour Master Barber (Manhattan EN)** | https://www.americanbarberinstitute.com/500-hours-master-barber-program-landing-page/ |
+| **500-Hour Master Barber (Manhattan ES)** | https://www.americanbarberinstitute.com/500-hours-master-barber-program-landing-page/spanish/ |
+| **Master Barber Program (Bronx EN)** | https://www.americanbarberinstitute.com/master-barber-program-bronx/ |
+| **Master Barber Program (Bronx ES)** | https://www.americanbarberinstitute.com/master-barber-program-bronx/spanish/ |
 
 ---
 
