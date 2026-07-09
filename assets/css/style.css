@@ -314,6 +314,8 @@ section { padding: var(--pad-section) 0; }
 
 /* ---------- Program cards ---------- */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+/* When only 2 cards: center them with proper spacing */
+.cards:has(.card:nth-child(2)):not(:has(.card:nth-child(3))) { grid-template-columns: repeat(2, 1fr); max-width: 860px; margin-inline: auto; }
 @media (max-width: 980px) { .cards { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
 
