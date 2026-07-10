@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=35">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=36">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=155">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=158">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
 <link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=2">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=3">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -1403,6 +1403,20 @@ def build():
                     '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
                     '<meta name="robots" content="noindex">')
             es_html = clean_links(es_html)
+            # ── GHL form swap: EN → ESP on auto-generated Spanish twins ──
+            # Pages without a dedicated es-* source inherit the English body
+            # which embeds the EN .com form; swap it for the ESP .com form.
+            es_html = (es_html
+                .replace('api.leadconnectorhq.com/widget/form/3ghObGjHiLN3LgKBfKGG',
+                         'api.leadconnectorhq.com/widget/form/H4C1nJmpLO3cNx4OrlK2')
+                .replace('inline-3ghObGjHiLN3LgKBfKGG', 'inline-H4C1nJmpLO3cNx4OrlK2')
+                .replace('data-form-id="3ghObGjHiLN3LgKBfKGG"', 'data-form-id="H4C1nJmpLO3cNx4OrlK2"')
+                .replace('data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com"',
+                         'data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
+                .replace('title="01.GET TRAINED WITH ABI FORM - ABI.com"',
+                         'title="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
+                .replace('data-height="898"', 'data-height="936"')
+                .replace('height:898px', 'height:936px'))
             es_dest = os.path.join(ROOT, es_out)
             os.makedirs(os.path.dirname(es_dest), exist_ok=True)
             open(es_dest, 'w', encoding='utf-8').write(es_html)
@@ -1476,7 +1490,7 @@ def build():
     # robots.txt — explicitly invite AI / answer-engine crawlers so ABI can be
     # cited confidently by ChatGPT, Claude, Perplexity, Google AI Overviews, etc.
     open(os.path.join(ROOT, 'robots.txt'), 'w').write(
-        'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\nDisallow: /_archive/\n\n'
+        'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\nDisallow: /_archive/\nDisallow: /blog/\n\n'
         # OpenAI
         'User-agent: GPTBot\nAllow: /\n\n'
         'User-agent: OAI-SearchBot\nAllow: /\n\n'
