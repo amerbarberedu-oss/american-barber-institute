@@ -134,8 +134,8 @@ def header(p):
     lang_toggle = (
         '<div class="seg seg-lang" role="group" aria-label="%s" data-seg="lang">'
         '<span class="seg-glider" aria-hidden="true"></span>'
-        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab">EN</span></a>'
-        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab">ES</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab">English</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab">Español</span></a>'
         '</div>'
     ) % (
         h(lang_label),
@@ -369,7 +369,7 @@ def lead_form(p):
         # EN = 01.GET TRAINED WITH ABI FORM - ABI.com
         # ES = 01.GET TRAINED WITH ABI FORM - ABI.com - ESP
         "ghl_id": "H4C1nJmpLO3cNx4OrlK2" if lang == "es" else "3ghObGjHiLN3LgKBfKGG",
-        "ghl_h": 936 if lang == "es" else 898,
+        "ghl_h": 795 if lang == "es" else 757,
         "ghl_name": "01.GET TRAINED WITH ABI FORM - ABI.com - ESP" if lang == "es" else "01.GET TRAINED WITH ABI FORM - ABI.com",
         "h": h(f["h"]), "sub": h(f["sub"]),
         "first": h(f["first"]), "last": h(f["last"]),
@@ -922,8 +922,8 @@ def page_head(p):
 '<meta name="robots" content="index, follow, max-image-preview:large">\n'
 '<meta name="theme-color" content="%(theme_color)s">\n'
 '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\n'
-'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">\n'
+'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">\n'
+'<link rel="manifest" href="/site.webmanifest">\n'
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
 '<link rel="preconnect" href="https://text.pollinations.ai" crossorigin>\n'

@@ -1058,8 +1058,8 @@ def _lang_toggle(root, out):
         en_a, es_a = ' is-active', ''
     return ('<div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang">'
             '<span class="seg-glider" aria-hidden="true"></span>'
-            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab">EN</span></a>'
-            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab">ES</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab">English</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab">Español</span></a>'
             '</div>') % (
         en_a, en_href, ('true' if en_a else 'false'), globe,
         es_a, es_href, ('true' if es_a else 'false'))
@@ -1415,7 +1415,7 @@ def build():
                          'data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
                 .replace('title="01.GET TRAINED WITH ABI FORM - ABI.com"',
                          'title="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
-                .replace('data-height="898"', 'data-height="936"')
+                .replace('data-height="757"', 'data-height="795"')
                 .replace('height:898px', 'height:936px'))
             es_dest = os.path.join(ROOT, es_out)
             os.makedirs(os.path.dirname(es_dest), exist_ok=True)
