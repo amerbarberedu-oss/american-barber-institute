@@ -82,8 +82,7 @@ function pageCampus(){
   return d[c]?c:"manhattan";
 }
 function isFixedPage(){
-  var c=pageCampus();
-  return c==="bronx"||c==="both"||document.body.classList.contains("bx-gold");
+  return true;
 }
 function getCampus(){
   if(isFixedPage()) return pageCampus();

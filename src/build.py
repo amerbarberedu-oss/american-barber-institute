@@ -785,8 +785,8 @@ def _campus_switch(root, campus, es=False):
     page depth or language."""
     mn_active = '' if campus == 'bronx' else ' is-active'
     bx_active = ' is-active' if campus == 'bronx' else ''
-    mn_href = '/spanish' if es else '/'
-    bronx_href = '/spanish/bronx' if es else '/bronx'
+    mn_href = root + 'spanish/index.html' if es else root + 'index.html'
+    bronx_href = root + 'spanish/bronx.html' if es else root + 'bronx.html'
     pin = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
            'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" '
            'aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>'
@@ -1349,7 +1349,7 @@ def build():
             # Same insight for the header/nav/drawer: use plain `root` (not
             # es_root) so every nav link stays inside the es/ subtree instead
             # of jumping back to the English page at the repo root.
-            es_campusswitch = _campus_switch(root, campus, es=True)
+            es_campusswitch = _campus_switch(es_root, campus, es=True)
             es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle)
             es_footer_block = _footer_block(root, True)
             es_hreflang_block = (
