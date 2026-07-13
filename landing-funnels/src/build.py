@@ -800,7 +800,7 @@ def page_head(p):
         "name": "American Barber Institute — " + p["campus"]["name_en"],
         "url": canonical,
         "telephone": p["phone"][2],
-        "email": "admission@abi.edu",
+        "email": "admissions@americanbarberinstitute.com",
         "image": SITE + "/assets/img/lf-og-cover.jpg",
         "logo": SITE + LOGO_SRC,
         "description": p["desc"],

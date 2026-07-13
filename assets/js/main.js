@@ -152,7 +152,7 @@
       var lines = [];
       data.forEach(function (v, k) { if (v) lines.push(k.replace(/_/g, ' ') + ': ' + v); });
       var subject = form.getAttribute('data-subject') || 'Website inquiry';
-      window.location.href = 'mailto:admission@abi.edu?subject=' + encodeURIComponent(subject) +
+      window.location.href = 'mailto:admissions@americanbarberinstitute.com?subject=' + encodeURIComponent(subject) +
         '&body=' + encodeURIComponent(lines.join('\n'));
       var ok = form.querySelector('.form-ok');
       if (ok) ok.hidden = false;

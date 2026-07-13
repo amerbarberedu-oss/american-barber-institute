@@ -465,7 +465,7 @@ def head(p, s, pre):
         "foundingDate": "1996",
         "slogan": "Become a Licensed Barber in 4 Months",
         "description": "New York's career-focused barber school. NYS-licensed 500-hour Master Barber program in Midtown Manhattan and the Bronx with financial aid, veterans GI Bill and ACCES-VR options, and job placement.",
-        "telephone": "+1-212-290-2289", "email": "admission@abi.edu",
+        "telephone": "+1-212-290-2289", "email": "admissions@americanbarberinstitute.com",
         "address": [
             {"@type": "PostalAddress", "streetAddress": "48 West 39th Street", "addressLocality": "New York", "addressRegion": "NY", "postalCode": "10018", "addressCountry": "US"},
             {"@type": "PostalAddress", "streetAddress": "121 Westchester Square", "addressLocality": "Bronx", "addressRegion": "NY", "postalCode": "10461", "addressCountry": "US"}],
@@ -1155,7 +1155,7 @@ def footer(p, s, pre):
       <a href="tel:+12122902289">(212) 290-2289 · English</a>
       <a href="tel:+12122900278">(212) 290-0278 · Español</a>
       <a href="tel:+17186760640">(718) 676-0640 · Bronx</a>
-      <a href="mailto:admission@abi.edu">admission@abi.edu</a>
+      <a href="mailto:admissions@americanbarberinstitute.com">admissions@americanbarberinstitute.com</a>
     </div>
   </div>
   <div class="ftr-legal">© American Barber Institute (ABI). All rights reserved. · %s · *$150/week refers to Plan C weekly payments.</div>

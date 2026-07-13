@@ -146,7 +146,7 @@ ORG_SCHEMA = {
     "description": "New York's career-focused barber school. NYS-licensed 500-hour Master Barber program in Midtown Manhattan with financial aid, veterans GI Bill and ACCESS-VR options, and job placement.",
     "slogan": "Become a Licensed Barber in 4 Months",
     "telephone": "+1-212-290-2289",
-    "email": "admission@abi.edu",
+    "email": "admissions@americanbarberinstitute.com",
     "address": [{
         "@type": "PostalAddress",
         "streetAddress": "48 West 39th Street",
@@ -995,7 +995,7 @@ def _footer_block(root, es):
         '          <li class="foot2-loc"><b>Manhattan</b><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street, New York, NY 10018</a></li>\n'
         '          <li class="foot2-loc"><b>Bronx</b><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square, Bronx, NY 10461</a></li>\n'
         '          <li class="foot2-phones" data-footer-phones><a href="tel:+12122902289">(212) 290-2289 · English</a><a href="tel:+12122900278">(212) 290-0278 · Español</a><a href="tel:+17186760640">(718) 676-0640 · Bronx</a></li>\n'
-        '          <li><a href="mailto:admission@abi.edu">admission@abi.edu</a></li>\n'
+        '          <li><a href="mailto:admissions@americanbarberinstitute.com">admissions@americanbarberinstitute.com</a></li>\n'
         '        </ul>\n'
         '      </div>\n'
         '    </div>\n'

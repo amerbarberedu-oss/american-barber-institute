@@ -585,7 +585,7 @@ SEATS_BANNER = {
 
 # ─── Contact box (campus-aware) ──────────────────────────────────────
 # Manhattan shows 2 numbers (EN + ES). Bronx shows 1 number only.
-CONTACT_EMAIL = "admission@abi.edu"
+CONTACT_EMAIL = "admissions@americanbarberinstitute.com"
 # v3.3 — actual posted hours per the campus signage:
 #   Monday–Friday      8:00 AM – 8:00 PM
 #   Saturday & Sunday  9:00 AM – 7:00 PM
