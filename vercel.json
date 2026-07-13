@@ -295,10 +295,7 @@
     { "source": "/barber-school-westchester-ny",                "destination": "https://www.abi.edu/barber-school-westchester-ny",            "permanent": true },
     { "source": "/barber-school-yonkers-new-york",              "destination": "https://www.abi.edu/barber-school-yonkers-new-york",          "permanent": true },
 
-    { "source": "/500-hours-master-barber-program-landing-page",         "destination": "https://www.abi.edu/500-hours-master-barber-program-landing-page",         "permanent": true },
-    { "source": "/500-hours-master-barber-program-landing-page/spanish", "destination": "https://www.abi.edu/500-hours-master-barber-program-landing-page/spanish", "permanent": true },
-    { "source": "/master-barber-program-bronx",                          "destination": "https://www.abi.edu/master-barber-program-bronx",                          "permanent": true },
-    { "source": "/master-barber-program-bronx/spanish",                  "destination": "https://www.abi.edu/master-barber-program-bronx/spanish",                  "permanent": true },
+
 
     { "source": "/shop-registration",                          "destination": "https://www.abi.edu/shop-registration",                      "permanent": true },
     { "source": "/thank-you",                                  "destination": "https://www.abi.edu/thank-you",                              "permanent": true },
