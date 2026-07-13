@@ -147,39 +147,207 @@
 </div>
 
 <main id="main">
+<style>
+/* ══════════ HOME HERO v4 — text+countdown overlay the TOP-LEFT of the photo (not the bottom),
+   dark gradient fades left→right so the right portion of the photo stays clear/undarkened.
+   Matches the client's final reference (2026-07-13): text starts at the top, not 75-80% down;
+   the countdown is embedded in the image overlay, not a separate box below it. ══════════ */
+#main .hx{padding-block:clamp(1.4rem,3.5vw,2.2rem);background:#fff!important}
+#main .hx .hx-in{width:min(1400px,94%);margin-inline:auto;padding:0!important;
+  display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,400px);gap:clamp(1.2rem,2.4vw,2rem);
+  align-items:start}
+/* photo card — its own bounded, rounded box. Height just needs to comfortably fit the top-anchored
+   copy+countdown with room to spare below (so the photo visibly continues past them, per
+   reference) — no more chasing a bottom percentage now that content anchors at the top. */
+#main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-lg);
+  min-height:clamp(640px,68vw,820px);display:flex;align-items:flex-start;background:#0a1416}
+/* landing.css's base .hx-bg sets a fixed height:66.2vw (its own legacy top-strip layout) which
+   over-constrains an absolutely-positioned box and wins over inset:0's implicit height — explicit
+   height:100% below is required, inset:0 alone does not neutralize it (found via live inspection
+   2026-07-13: the image was rendering only 248px tall inside a 920px-tall mobile photo card). */
+#main .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
+  background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat}
+/* dark left→right (not top→bottom): the left ~2/3 (where copy+countdown sit) stays legible, the
+   right third stays clear so the photo itself still reads through, per reference */
+#main .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(8,18,20,.72) 0%,rgba(8,18,20,.6) 38%,rgba(8,18,20,.32) 58%,rgba(8,18,20,.08) 76%,rgba(8,18,20,0) 90%)}
+#main .hx .hx-copy{position:relative;z-index:2;max-width:63%;
+  padding:clamp(1.3rem,2.8vw,2.2rem);color:#fff}
+#main .hx .hx-h1{margin:0 0 .35rem;text-transform:none;font-family:var(--font-display);
+  font-weight:600;line-height:1.02;letter-spacing:-.02em}
+/* each line on its own row — "Build a Career" / "You Own" / "Become a Barber." */
+#main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
+  text-transform:none;font-weight:600;letter-spacing:-.02em;
+  font-size:clamp(2rem,4.6vw,3.6rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
+#main .hx .hx-h1 .hx-l1{color:#fff}
+#main .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
+#main .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
+  text-transform:none;font-weight:500;color:#fff;
+  font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+#main .hx .hx-h1 .hx-script::after{content:"";display:block;width:min(220px,50%);height:4px;
+  margin-top:.4rem;border-radius:99px;background:var(--teal)!important}
+/* no max-width cap — fills the full copy column (was capped at 34rem, leaving the right half of
+   the darkened area empty; client feedback 2026-07-13: "fill the left side... not just first half") */
+#main .hx .hx-sub{margin:.5rem 0 .8rem;max-width:none;font-size:clamp(1rem,1.5vw,1.15rem);
+  line-height:1.5;color:#eef4f3;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+#main .hx .hx-sub b{color:var(--teal-bright)!important}
+#main .hx .hx-cta-row{display:flex}
+#main .hx .btn-tour{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;
+  font-size:.86rem;letter-spacing:.03em}
+#main .hx .btn-tour svg{flex-shrink:0}
+/* form card (unchanged look — white card, teal icon circle — just the header copy changed below) */
+#main .hx .formcard{align-self:start;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 
-<!-- ══ BAND 1 · HERO (paper) ══ -->
-<section class="band band--paper">
-  <span class="band__blob" aria-hidden="true"></span>
-  <div class="eb-wrap">
-    <p class="crumbs" style="font-family:var(--font-mono);font-size:.82rem;letter-spacing:.04em;color:var(--text-mute);margin-bottom:1rem"><a href="/">Home</a> / The Training Experience / Bronx Campus</p>
-    <div class="ed-split">
-      <div class="reveal">
-        <p class="eyebrow">Bronx Campus · Westchester Square</p>
-        <h1 class="display display--xl">Learn to barber in the east Bronx</h1>
-        <p class="lead">ABI&rsquo;s Bronx campus sits at <b>121 Westchester Square</b>, a short walk from the <b>6 train</b>. Training here is overwhelmingly hands-on: after the fundamentals, you spend most of your <b>500 hours</b> cutting real, paying clients on a supervised clinic floor. In about <b>4 months full-time</b> — or 6&ndash;7 months on weekends — you go from first fade to State-Board ready, close to home.</p>
-        <div class="reveal-stagger" style="display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 1.6rem">
-          <span class="chip">NYS-Licensed</span>
-          <span class="chip">500 Hours · ~4 Months</span>
-          <span class="chip">6 Train · Westchester Sq</span>
-          <span class="chip">GI Bill® &amp; ACCES-VR</span>
-          <span class="chip">Real Clinic Floor</span>
+/* countdown — now embedded inside .hx-copy (below the CTA), overlaying the photo directly, per
+   reference. A semi-transparent "glass" box (not solid), so it reads as part of the same overlay
+   rather than a separate card. Full resets (not just the properties we care about) — landing.css's
+   base .hx-next/.hx-cell set their own background/border/backdrop-filter/border-radius that a
+   partial override would leave showing through underneath ours. */
+#main .hx-next{background:rgba(6,14,16,.68)!important;border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:var(--radius)!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.4rem;
+  padding:1rem 1.2rem;max-width:none!important;margin:1rem 0 0!important}
+#main .hx-next-label{color:#c7d3d1!important;font-size:.82rem;font-weight:600;margin-right:.4rem;display:inline!important}
+#main .hx-next-date{color:var(--teal-bright)!important;font-weight:700;display:inline!important;margin-top:0!important;font-size:1rem!important}
+#main .hx-next-sub{display:block;color:#9fb0ae!important;font-size:.78rem;margin-top:.15rem}
+#main .hx-cells{display:flex!important;gap:0;column-gap:0!important}
+#main .hx-cell{display:flex;flex-direction:column;align-items:center;min-width:2.8rem;
+  background:none!important;border:0!important;border-radius:0!important;padding:0 .75rem!important;
+  border-left:1px solid rgba(255,255,255,.14)!important}
+#main .hx-cell:first-child{border-left:0!important}
+#main .hx-cell b{font-size:1.4rem;font-weight:800;color:#fff;line-height:1}
+#main .hx-cell span{font-size:.68rem;color:#9fb0ae!important;text-transform:uppercase;letter-spacing:.04em;margin-top:.15rem;font-weight:600!important;letter-spacing:.04em!important}
+
+/* features band — new full-width section below the hero, replaces the old in-copy chips grid.
+   !important throughout: something in the shared stylesheet cascade (not tracked down — no rule
+   anywhere greps for ".hx-feature") was still winning over plain-specificity overrides here, so
+   these are forced rather than relying on source order. */
+section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0!important;border-top:1px solid #eee!important}
+.hx-features-in{width:min(1400px,94%);margin-inline:auto;display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));gap:1.2rem}
+.hx-feature{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;
+  padding-inline:.5rem;border-left:1px solid #e6e6e6}
+.hx-feature:first-child{border-left:0}
+.hx-feature svg{color:var(--teal)!important;flex-shrink:0}
+.hx-feature span{font-size:.82rem;line-height:1.35;color:var(--ink-2)!important}
+.hx-feature b{display:block;font-weight:700}
+.hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.74rem;margin-top:.3rem;font-weight:600}
+
+@media(max-width:900px){
+  #main .hx .hx-in{grid-template-columns:1fr}
+  /* mobile only: text starts around 60-70% down the image (client feedback 2026-07-13) — desktop
+     stays top-anchored (approved as-is), so this flips to bottom-anchoring just for this breakpoint */
+  #main .hx .hx-photo{min-height:1220px;align-items:flex-end}
+  #main .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-mobile.jpg') center 18%/cover no-repeat}
+  /* the desktop gradient is a diagonal (100deg) fade tuned for a WIDE, SHORT box — on a narrow,
+     very tall mobile box the same angle's gradient LINE is dominated by the vertical extent, so it
+     renders as a near-uniform dark wash across the whole photo instead of a left-right fade
+     (client feedback 2026-07-13: "remove this blackness, the image should be clearer"). Mobile
+     text is bottom-anchored and full-width now anyway, so a plain top-to-bottom fade — clear for
+     most of the photo, dark only behind the text block — is the correct pattern here, not a
+     rescaled version of the desktop diagonal. */
+  /* kept LIGHT on purpose (max ~.58 at the very bottom, vs the old .95 near-black): the client's
+     mobile mockup (2026-07-14) shows the photo staying clear with only a soft ease-in behind the
+     text; the countdown supplies its own dark glass background so it never depends on this scrim.
+     The earlier "separation line" was the 338px mobile jpg being upscaled ~1.74-3.5x by cover —
+     regenerated at 750px (2026-07-14), which is why no hard gradient stops are needed here either. */
+  #main .hx .hx-photo .hx-grad{background:linear-gradient(180deg,rgba(8,18,20,0) 0%,rgba(8,18,20,0) 38%,rgba(8,18,20,.12) 48%,rgba(8,18,20,.26) 58%,rgba(8,18,20,.38) 68%,rgba(8,18,20,.48) 80%,rgba(8,18,20,.55) 92%,rgba(8,18,20,.58) 100%)!important}
+  /* text should fill the left side properly, not sit cramped in a narrow corner column —
+     63% (tuned for a wide desktop photo showing a person's face on the right) reads as a tiny
+     box on a narrow mobile screen and wraps every word. Mobile gets its own wider column and
+     slightly larger type, per client feedback 2026-07-13. Sizes trimmed a second pass so the
+     block is short enough to land at ~60-70% instead of ~35% in a reasonably-sized photo. */
+  #main .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
+  #main .hx .hx-h1{margin:0 0 .25rem}
+  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.8rem,8vw,2.3rem)}
+  #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4.6vw,1.4rem);margin-top:.05rem}
+  #main .hx .hx-h1 .hx-script::after{margin-top:.3rem}
+  #main .hx .hx-sub{font-size:clamp(.9rem,3.6vw,1rem);max-width:none;margin:.4rem 0 .6rem;line-height:1.4}
+  #main .hx .btn-tour{white-space:nowrap}
+  section.hx-features{background:var(--ink)!important;padding:0!important;border-top:0!important}
+  .hx-features-in{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0!important}
+  .hx-feature{flex-direction:row!important;text-align:left!important;align-items:flex-start!important;border-left:0!important;gap:.7rem!important;
+    padding:1rem .5rem!important;border-bottom:1px solid rgba(255,255,255,.12)!important}
+  .hx-feature:nth-child(5),.hx-feature:nth-child(6){border-bottom:0!important}
+  .hx-feature svg{color:var(--teal-bright)!important;margin-top:.1rem}
+  .hx-feature span{color:#fff!important}
+  .hx-feature i{color:var(--teal-bright)!important}
+}
+@media(max-width:560px){
+  #main .hx .hx-in{width:92%}
+  #main .hx .hx-cta-row .btn-lg{flex:1 1 100%;justify-content:center}
+}
+</style>
+<section class="hx reveal">
+  <div class="hx-in">
+    <div class="hx-photo">
+      <div class="hx-bg" aria-hidden="true"></div>
+      <div class="hx-grad" aria-hidden="true"></div>
+      <div class="hx-copy">
+        <h1 class="hx-h1"><span class="hx-l1">Build a Career</span><span class="hx-l2">You Own</span><span class="hx-script">Become a Barber.</span></h1>
+        <p class="hx-sub">Change careers and become a <b>licensed barber in New York</b> in as little as <b>4 months</b> — hands-on, at our <b>Bronx campus</b> at 121 Westchester Square.</p>
+        <div class="hx-cta-row">
+          <a class="btn btn-gold btn-lg btn-tour" href="/contact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Book a Bronx Campus Tour
+          </a>
         </div>
-        <div class="hero-ctas">
-          <a class="btn btn-gold btn-lg" href="#reserve">Book a Tour of the Bronx Campus</a>
-          <a class="btn btn-ghost btn-lg" href="/programs/500-hour-master-barber-bronx">See the Bronx Program</a>
+        <div class="hx-next" data-countdown>
+          <div class="hx-next-l">
+            <span class="hx-next-label">Next Starting Date:</span>
+            <span class="hx-next-date" data-next-start>Monday, August 3, 2026</span>
+            <span class="hx-next-sub">New classes begin the first Monday of each month.</span>
+          </div>
+          <div class="hx-cells">
+            <div class="hx-cell"><b data-cd-d>4</b><span>Days</span></div>
+            <div class="hx-cell"><b data-cd-h>0</b><span>Hours</span></div>
+            <div class="hx-cell"><b data-cd-m>56</b><span>Min</span></div>
+            <div class="hx-cell"><b data-cd-s>10</b><span>Sec</span></div>
+          </div>
         </div>
-        <p style="margin-top:1.3rem;font-family:var(--font-mono);font-size:.86rem;letter-spacing:.04em;color:var(--text-mute)">
-          Bronx Admissions:
-          <a href="tel:+17186760640" style="font-weight:700;white-space:nowrap">(718) 676-0640</a>
-        </p>
       </div>
-      <figure class="ed-media reveal">
-        <img src="assets/img/gallery/hair-06.jpg" alt="Hands-on training on the clinic floor at ABI's Bronx campus in Westchester Square" loading="lazy" width="800" height="600">
-      </figure>
+    </div>
+    <div class="formcard" id="reserve">
+  <div class="formcard-head">
+    <div class="formcard-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
+    <div>
+      <div class="formcard-title">Reserve Your Spot Today</div>
+      <div class="formcard-sub">Fill out the form and an Admissions Advisor will contact you.<br><i>Kindly fill out the form to receive a call from one of AI Agents</i></div>
     </div>
   </div>
+  <div class="ghl-form-wrap">
+  <iframe
+    src="https://api.leadconnectorhq.com/widget/form/3ghObGjHiLN3LgKBfKGG"
+    style="width:100%;height:898px;border:none;border-radius:3px"
+    id="inline-3ghObGjHiLN3LgKBfKGG"
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com"
+    data-height="757"
+    data-layout-iframe-id="inline-3ghObGjHiLN3LgKBfKGG"
+    data-form-id="3ghObGjHiLN3LgKBfKGG"
+    title="01.GET TRAINED WITH ABI FORM - ABI.com"></iframe>
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+</div>
+  </div>
 </section>
+<section class="hx-features">
+  <div class="hx-features-in">
+    <div class="hx-feature"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7.5 22l4.5-2.5L16.5 22 15 14.5"/><path d="m10 9 1.5 1.5L14.5 7"/></svg><span>A licensed trade you can build a life on</span></div>
+    <div class="hx-feature"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg><span>Fits your life — day, evening &amp; weekend tracks</span></div>
+    <div class="hx-feature"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8"/></svg><span>Hands-on training on real clients from your first weeks</span></div>
+    <div class="hx-feature"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3.4"/><path d="M12 4.6v2.8M10.9 5.4h2.2"/><path d="M3 15.5c2-1.6 4-1.6 5.6-.6l3 1.8c.9.6.9 1.9-.2 2.2H8M11.4 18.9l5.2.1c2 0 3.4-.9 4.4-2.3"/></svg><span><b>Funding that fits — ACCES-VR, GI Bill®, weekly plans</b><i>Figure out what works for your budget</i></span></div>
+    <div class="hx-feature"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg><span>Career support &amp; job-placement help when you graduate</span></div>
+    <div class="hx-feature"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"/></svg><span>Bronx campus — 121 Westchester Square</span></div>
+  </div>
+</section>
+
 
 <!-- ══ BAND 2 · STAT RAIL (dark) ══ -->
 <section class="band band--dark">
