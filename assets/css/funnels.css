@@ -468,7 +468,6 @@ body.lf-page--brnx-es {
 /* ───── hero ───── */
 .lf-hero {
   position: relative; overflow: hidden;
-  /* The photo now lives in .lf-mhero above; this band holds the form + details on a clean, themed dark surface. */
   background:
     radial-gradient(120% 90% at 12% 0%, var(--lf-ink-deep-2) 0%, var(--lf-ink-deep) 58%),
     var(--lf-ink-deep);
@@ -1098,8 +1097,6 @@ body.lf-page--brnx-es {
 
 /* Kill any inherited border-radius on hero image surfaces — edge-to-edge */
 .lf-hero,
-.lf-mhero,
-.lf-mhero__bg,
 .lf-hero__form { border-radius: 0; }
 .lf-hero__form { border-radius: var(--lf-r-lg); }  /* form card keeps its radius */
 
@@ -1317,7 +1314,6 @@ body.lf-page--brnx-es {
 /* ─ Mobile dark theme: hero, features, form, voices all dark navy ─ */
 @media (max-width: 768px) {
   /* Continuous dark surface from hero through Student Voices */
-  .lf-mhero { background: var(--lf-ink-deep); }
   .lf-hero {
     background: var(--lf-ink-deep);
     color: #fff;
@@ -1460,131 +1456,105 @@ body.lf-page--brnx-es {
   .lf-hdr__right .lf-phone { display: none; }
 }
 
-/* ───── Image hero (lf-mhero) — photo-first on ALL breakpoints ───── */
-/* Full-bleed image with the headline overlaid at 75% of the image; the lead
-   form + supporting details sit in the .lf-hero band directly below. */
-.lf-mhero {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 76vh;
-  min-height: 600px;
-  max-height: 860px;
-  overflow: hidden;
-  background: var(--lf-ink-deep, #0a1020);
-  isolation: isolate;
-}
-.lf-mhero__bg {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
-  z-index: 0;
-  filter: brightness(1.12) contrast(1.05) saturate(1.05);
-}
-.lf-mhero__scrim {
-  position: absolute; inset: 0;
-  background:
-    none;
-  z-index: 1;
-}
-.lf-mhero__copy {
-  position: absolute;
-  /* Copy begins at 75% of the hero image height (image occupies the top 75%). */
-  left: 0; right: 0; top: auto; bottom: 1.4rem;
-  z-index: 2;
-  color: #fff;
-  text-align: left;
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 1.2rem clamp(1.2rem, 5vw, 3.2rem) 1.4rem;
-}
-.lf-mhero__kicker {
-  display: block;
-  margin: 0 0 .55rem;
-  padding: 0;
-  background: transparent;
-  color: #fff;
-  font-size: clamp(.72rem, 1vw, .92rem);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  text-shadow: 0 2px 6px rgba(0,0,0,.9), 0 0 26px rgba(0,0,0,.75);
-}
-.lf-mhero__h1 {
-  font-family: 'Oswald', 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2rem, 4.6vw, 3.5rem);
-  line-height: 1.04;
-  letter-spacing: -.01em;
-  margin: 0 0 1.1rem;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 30px rgba(0,0,0,.75);
-}
-.lf-mhero__h1 span {
-  display: block;
-  color: var(--lf-hi);
-  font-weight: 600;
-}
-.lf-mhero__h1 em {
-  display: inline-block;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: .82em;
-  margin-top: .25em;
-  color: var(--lf-hi);
-  border-bottom: 3px solid var(--lf-hi);
-  padding-bottom: 2px;
-  line-height: 1;
-  text-shadow: 0 2px 6px rgba(0,0,0,.9), 0 0 22px rgba(0,0,0,.7);
-}
-/* Hero CTA is hidden — the lead form sits directly below the photo on every breakpoint. */
-.lf-mhero__cta { display: none; }
-
 /* The photo hero carries the headline — hide the duplicate in the .lf-hero band. */
 .lf-hero__kicker,
 .lf-hero .lf-h1,
 .lf-hero__sub { display: none; }
 
 @media (max-width: 768px) {
-  /* Mobile hero mirrors the abi.edu homepage hero (.hx) EXACTLY: the image is a
-     top band sized by aspect ratio (height = 66.2vw, `top center / cover`), a
-     gradient fades it into the dark section, and the headline begins at ~75% of
-     the image band (content padding-top = 49.6vw). This matches the homepage. */
-  .lf-mhero {
-    height: auto;
-    min-height: 66.2vw;
-    max-height: none;
-    background: var(--lf-ink-deep);
-  }
-  .lf-mhero__bg {
-    top: 0; bottom: auto;
-    height: 66.2vw;
-    object-position: top center;
-    filter: none;
-  }
-  .lf-mhero__scrim {
-    top: 0; bottom: auto;
-    height: 66.4vw;
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 60%, color-mix(in srgb, var(--lf-ink-deep) 10%, transparent) 80%, color-mix(in srgb, var(--lf-ink-deep) 20%, transparent) 100%);
-  }
-  .lf-mhero__copy {
-    position: relative;
-    top: auto; bottom: auto; left: auto; right: auto;
-    max-width: none;
-    margin: 0;
-    /* headline begins at ~75% of the image band, exactly like the homepage */
-    padding: 49.6vw 1.2rem 1.4rem;
-  }
-  .lf-mhero__kicker { font-size: .72rem; }
-  .lf-mhero__h1 { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
-  /* CTA hidden on mobile — hero form directly below + sticky bottom bar carry the action. */
-  .lf-mhero__cta { display: none; }
   /* Leave room at the bottom for the sticky 3-CTA bar */
   body.lf-page { padding-bottom: 78px; }
+}
+
+/* ═══════════ .hx hero — identical to the homepage hero (index.html #main .hx),
+   scoped to #content so it renders the same on all 4 landing-funnel pages. ═══ */
+/* formcard base — landing pages never linked landing.css (where this normally
+   lives), so it needs its own copy here to render as a white card, not raw text. */
+#content .formcard{background:#fff;color:#0E1A1C;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:1.6rem 1.7rem 1.7rem}
+#content .formcard-head{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1rem}
+#content .formcard-ico{width:40px;height:40px;border-radius:50%;background:var(--blue,#1b3bd9);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#content .formcard-title{font-size:1.35rem;font-weight:700;line-height:1.2}
+#content .formcard-sub{font-size:.86rem;color:#5b6a6c;margin-top:.15rem}
+@media(max-width:900px){
+  #content .formcard{padding:1.1rem 1.15rem 1.2rem;margin-top:.3rem}
+  #content .formcard-head{margin-bottom:.65rem;gap:.6rem}
+  #content .formcard-ico{transform:scale(.85)}
+  #content .formcard-title{font-size:1.1rem}
+  #content .formcard-sub{font-size:.78rem}
+}
+
+#content .hx{padding-block:clamp(1.4rem,3.5vw,2.2rem);background:#fff!important}
+#content .hx .hx-in{width:min(1400px,94%);margin-inline:auto;padding:0!important;
+  display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,400px);gap:clamp(1.2rem,2.4vw,2rem);
+  align-items:start}
+#content .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-lg,14px);
+  min-height:clamp(640px,68vw,820px);display:flex;align-items:flex-start;background:#0a1416}
+#content .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
+  background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat}
+#content .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(8,18,20,.72) 0%,rgba(8,18,20,.6) 38%,rgba(8,18,20,.32) 58%,rgba(8,18,20,.08) 76%,rgba(8,18,20,0) 90%)}
+#content .hx .hx-copy{position:relative;z-index:2;max-width:63%;
+  padding:clamp(1.3rem,2.8vw,2.2rem);color:#fff}
+#content .hx .hx-h1{margin:0 0 .35rem;text-transform:none;font-family:var(--font-display);
+  font-weight:600;line-height:1.02;letter-spacing:-.02em}
+#content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
+  text-transform:none;font-weight:600;letter-spacing:-.02em;
+  font-size:clamp(2rem,4.6vw,3.6rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
+#content .hx .hx-h1 .hx-l1{color:#fff}
+#content .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
+#content .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
+  text-transform:none;font-weight:500;color:#fff;
+  font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+#content .hx .hx-h1 .hx-script::after{content:"";display:block;width:min(220px,50%);height:4px;
+  margin-top:.4rem;border-radius:99px;background:var(--teal)!important}
+#content .hx .hx-sub{margin:.5rem 0 .8rem;max-width:none;font-size:clamp(1rem,1.5vw,1.15rem);
+  line-height:1.5;color:#eef4f3;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+#content .hx .hx-sub b{color:var(--teal-bright)!important}
+#content .hx .hx-cta-row{display:flex}
+#content .hx .btn-tour{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;
+  font-size:.86rem;letter-spacing:.03em}
+#content .hx .btn-tour svg{flex-shrink:0}
+#content .hx .formcard{align-self:start;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+
+#content .hx-next{background:rgba(6,14,16,.68)!important;border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:var(--radius,8px)!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.4rem;
+  padding:1rem 1.2rem;max-width:none!important;margin:1rem 0 0!important}
+#content .hx-next-label{color:#c7d3d1!important;font-size:.82rem;font-weight:600;margin-right:.4rem;display:inline!important}
+#content .hx-next-date{color:var(--teal-bright)!important;font-weight:700;display:inline!important;margin-top:0!important;font-size:1rem!important}
+#content .hx-next-sub{display:block;color:#9fb0ae!important;font-size:.78rem;margin-top:.15rem}
+#content .hx-cells{display:flex!important;gap:0;column-gap:0!important}
+#content .hx-cell{display:flex;flex-direction:column;align-items:center;min-width:2.8rem;
+  background:none!important;border:0!important;border-radius:0!important;padding:0 .75rem!important;
+  border-left:1px solid rgba(255,255,255,.14)!important}
+#content .hx-cell:first-child{border-left:0!important}
+#content .hx-cell b{font-size:1.4rem;font-weight:800;color:#fff;line-height:1}
+#content .hx-cell span{font-size:.68rem;color:#9fb0ae!important;text-transform:uppercase;letter-spacing:.04em;margin-top:.15rem;font-weight:600!important;letter-spacing:.04em!important}
+
+#content .hx-featbox{margin-top:1rem}
+#content .hx-featbox-grid{display:grid;grid-template-columns:1fr;gap:.55rem}
+#content .hx-featbox-item{display:flex;align-items:flex-start;gap:.6rem;color:#eef4f3}
+#content .hx-featbox-item svg{flex-shrink:0;color:var(--teal-bright)!important;margin-top:.15rem}
+#content .hx-featbox-item span{font-size:.9rem;line-height:1.4}
+#content .hx-featbox-item b{display:block;font-weight:700;color:#fff}
+#content .hx-featbox-item i{display:block;font-style:normal;color:#9fb0ae!important;font-size:.78rem;margin-top:.1rem}
+
+@media(max-width:900px){
+  #content .hx .hx-in{grid-template-columns:1fr}
+  #content .hx .hx-photo{min-height:1220px;align-items:flex-end}
+  #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-mobile.jpg') center 18%/cover no-repeat}
+  #content .hx .hx-photo .hx-grad{background:linear-gradient(180deg,rgba(8,18,20,0) 0%,rgba(8,18,20,0) 38%,rgba(8,18,20,.12) 48%,rgba(8,18,20,.26) 58%,rgba(8,18,20,.38) 68%,rgba(8,18,20,.48) 80%,rgba(8,18,20,.55) 92%,rgba(8,18,20,.58) 100%)!important}
+  #content .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
+  #content .hx .hx-h1{margin:0 0 .25rem}
+  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.8rem,8vw,2.3rem)}
+  #content .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4.6vw,1.4rem);margin-top:.05rem}
+  #content .hx .hx-h1 .hx-script::after{margin-top:.3rem}
+  #content .hx .hx-sub{font-size:clamp(.9rem,3.6vw,1rem);max-width:none;margin:.4rem 0 .6rem;line-height:1.4}
+  #content .hx .btn-tour{white-space:nowrap}
+}
+@media(max-width:560px){
+  #content .hx .hx-in{width:92%}
+  #content .hx .hx-cta-row .btn-lg{flex:1 1 100%;justify-content:center}
 }
 
 /* ───── Mobile-only sticky 3-CTA footer bar ───── */
@@ -1856,7 +1826,7 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 }
 /* v45.1 — wallet chip second line: flexible payment plans */
 .lf-feature__sub{display:block;font-style:normal;font-weight:800;font-size:.86em;letter-spacing:.02em;margin-top:.2rem;color:var(--lf-accent-dark)}
-.lf-hero .lf-feature__sub,.lf-mhero .lf-feature__sub{color:inherit;opacity:.92}
+.lf-hero .lf-feature__sub{color:inherit;opacity:.92}
 
 /* v47 — GHL form embed on landing pages: force visible (same fix as main site) */
 .lf-form--ghl{background:#fff;border-radius:var(--lf-r-lg,22px);padding:1.3rem 1.2rem;box-shadow:var(--lf-shadow-md)}

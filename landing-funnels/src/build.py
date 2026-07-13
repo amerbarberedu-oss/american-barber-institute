@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "62"
+CSS_V = "63"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -254,68 +254,46 @@ def header(p):
     )
 
 
-# ── MOBILE HERO (image-led, mobile-only — hidden on desktop via CSS) ─
-MHERO_BG_BY_PAGE = {
-    ("manhattan", "en"): "hero-barber-clinic-2-portrait",
-    ("manhattan", "es"): "hero-barber-clinic-2-portrait",
-    ("bronx",     "en"): "hero-barber-clinic-2-portrait",
-    ("bronx",     "es"): "hero-barber-clinic-2-portrait",
-}
-
-def mobile_hero(p):
-    lang = p["lang"]; es = lang == "es"
-    H_ = D.HERO[lang]
-    cta_label = "Reserve Your Spot" if not es else "Reserva Tu Lugar"
-    bg_file = MHERO_BG_BY_PAGE[(p["campus"]["slug"], lang)]
-    # v3.6 — per-page mobile hero image (4 distinct color palettes)
-    # Portrait-cropped WebP+JPEG pair pre-sized to the actual 1080x1609
-    # display dimensions (69% smaller than serving the full landscape source).
-    return (
-        '<section class="lf-mhero" aria-label="American Barber Institute %s clinic floor">\n'
-        '  <picture>\n'
-        '    <source srcset="/assets/img/' + bg_file + '.webp" type="image/webp">\n'
-        '    <img class="lf-mhero__bg" src="/assets/img/' + bg_file + '.jpg"'
-        ' alt="ABI barber students training on the clinic floor at the %s" loading="eager"'
-        ' fetchpriority="high" width="1080" height="1609">\n'
-        '  </picture>\n'
-        '  <div class="lf-mhero__scrim"></div>\n'
-        '  <div class="lf-mhero__copy">\n'
-        '    <p class="lf-mhero__h1" role="heading" aria-level="1">%s <span>%s</span> <em>%s</em></p>\n'
-        '    <a class="lf-btn lf-btn--primary lf-btn--lg lf-mhero__cta" href="#reserve">%s</a>\n'
-        '  </div>\n'
-        '</section>\n'
-    ) % (h(p["campus"]["name_en"]), h(p["campus"]["name_en"]),
-         h(H_["h1_a"]), h(H_["h1_b"]), h(H_["h1_script"]), h(cta_label))
-
-
-# ── HERO ─────────────────────────────────────────────────────────────
+# ── HERO (identical structure to homepage .hx hero — see index.html) ─
 def hero(p):
     lang = p["lang"]; es = lang == "es"
     is_bx = p["campus"]["slug"] == "bronx"
     ghl_id = "2FvHzLvYji1iSmNmCP46" if not is_bx else "v1SNzWsAZZVodCsnsDbe"
     ghl_h = 734 if not is_bx else 794
     ghl_name = "02.GET TRAINED WITH ABI FORM -  Manhattan " if not is_bx else "02.GET TRAINED WITH ABI FORM - Bronx"
-    
-    # Text from home page hero
-    h1 = '500 Hours. <span>Barber Program.</span> <em>Start Today.</em>'
-    sub = 'Become a licensed Master Barber in New York in as little as 4 months. Train hands-on with real clients, get full State Board Exam prep, and land your first chair with our job-placement help.'
+
+    # Same 3-line breakdown as the homepage .hx-h1 (l1 / l2 / italic script line)
+    l1, l2, script = ("500 Hours.", "Barber Program.", "Start Today.")
+    sub = 'Become a licensed <b>Master Barber</b> in New York in as little as <b>4 months</b>. Train hands-on with real clients, get full State Board Exam prep, and land your first chair with our job-placement help.'
     if es:
-        h1 = '500 Horas. <span>Programa de Barbería.</span> <em>Empieza Hoy.</em>'
-        sub = 'Conviértete en un Barbero Maestro con licencia en Nueva York en solo 4 meses. Entrena en forma práctica con clientes reales, obtén preparación completa para el Examen de la Junta Estatal, y consigue tu primera silla con nuestra ayuda de colocación laboral.'
-    
-    why_title = 'Why Train at ABI?' if not es else '¿Por qué estudiar en ABI?'
-    why_sub = 'Everything you need to go from beginner to licensed professional.' if not es else 'Todo lo que necesitas para pasar de principiante a profesional con licencia.'
-    
+        l1, l2, script = ("500 Horas.", "Programa de Barbería.", "Empieza Hoy.")
+        sub = 'Conviértete en un <b>Barbero Maestro</b> con licencia en Nueva York en solo <b>4 meses</b>. Entrena en forma práctica con clientes reales, obtén preparación completa para el Examen de la Junta Estatal, y consigue tu primera silla con nuestra ayuda de colocación laboral.'
+
+    tour_label = "Book a Campus Tour" if not es else "Reserva un Tour del Campus"
+    next_label = "Next Starting Date:" if not es else "Próxima Fecha de Inicio:"
+    next_sub = "New classes begin the first Monday of each month." if not es else "Las nuevas clases comienzan el primer lunes de cada mes."
+    next_date = next_start().strftime("%A, %B %-d, %Y")
+    days_label = "Days" if not es else "Días"
+    hours_label = "Hours" if not es else "Horas"
+    min_label = "Min" if not es else "Min"
+    sec_label = "Sec" if not es else "Seg"
+
     feats = [
-        ('Fits your life — day, evening & weekend tracks' if not es else 'Se adapta a tu vida — clases de día, tarde y fines de semana', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>'),
-        ('Hands-on training on real clients from your first weeks' if not es else 'Entrenamiento práctico con clientes reales desde las primeras semanas', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8"/></svg>'),
-        ('Funding that fits — ACCES-VR, GI Bill®, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, GI Bill®, planes semanales|Descubre lo que funciona para tu presupuesto', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3.4"/><path d="M12 4.6v2.8M10.9 5.4h2.2"/><path d="M3 15.5c2-1.6 4-1.6 5.6-.6l3 1.8c.9.6.9 1.9-.2 2.2H8M11.4 18.9l5.2.1c2 0 3.4-.9 4.4-2.3"/></svg>'),
-        ('Career support & job-placement help when you graduate' if not es else 'Apoyo profesional y ayuda para encontrar empleo al graduarte', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg>'),
-        ('Two NYC campuses — Manhattan and the Bronx' if not es else 'Dos sedes en NYC — Manhattan y el Bronx', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"/></svg>')
+        'Fits your life — day, evening & weekend tracks' if not es else 'Se adapta a tu vida — clases de día, tarde y fines de semana',
+        'Hands-on training on real clients from your first weeks' if not es else 'Entrenamiento práctico con clientes reales desde las primeras semanas',
+        'Funding that fits — ACCES-VR, GI Bill®, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, GI Bill®, planes semanales|Descubre lo que funciona para tu presupuesto',
+        'Career support & job-placement help when you graduate' if not es else 'Apoyo profesional y ayuda para encontrar empleo al graduarte',
+        'Two NYC campuses — Manhattan and the Bronx' if not es else 'Dos sedes en NYC — Manhattan y el Bronx',
     ]
-    
+    feat_svgs = [
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3.4"/><path d="M12 4.6v2.8M10.9 5.4h2.2"/><path d="M3 15.5c2-1.6 4-1.6 5.6-.6l3 1.8c.9.6.9 1.9-.2 2.2H8M11.4 18.9l5.2.1c2 0 3.4-.9 4.4-2.3"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"/></svg>',
+    ]
     feats_html = ""
-    for txt, svg in feats:
+    for txt, svg in zip(feats, feat_svgs):
         if "|" in txt:
             main, sub_ = txt.split("|", 1)
             feats_html += f'''            <div class="hx-featbox-item">
@@ -324,31 +302,49 @@ def hero(p):
                 <b>{main}</b>
                 <i>{sub_}</i>
               </span>
-            </div>'''
+            </div>
+'''
         else:
             feats_html += f'''            <div class="hx-featbox-item">
               {svg}
               <span>{txt}</span>
-            </div>'''
+            </div>
+'''
 
     form_title = "Reserve Your Spot Today" if not es else "Reserva Tu Lugar Hoy"
     form_sub = "Fill out the form and an Admissions Advisor will contact you.<br><i>Kindly fill out the form to receive a call from one of AI Agents</i>" if not es else "Completa el formulario y un asesor de admisiones te contactará.<br><i>Por favor, completa el formulario para recibir una llamada de nuestros Agentes de IA</i>"
 
     html = f'''<section class="hx reveal">
   <div class="hx-in">
-    <div class="hx-copy">
-      <h1 class="hx-h1">{h1}</h1>
-      <p class="hx-sub">{sub}</p>
-      
-      <div class="hx-featbox">
-        <div class="hx-featbox-head">
-          <div class="hx-featbox-title">{why_title}</div>
-          <p>{why_sub}</p>
+    <div class="hx-photo">
+      <div class="hx-bg" aria-hidden="true"></div>
+      <div class="hx-grad" aria-hidden="true"></div>
+      <div class="hx-copy">
+        <h1 class="hx-h1"><span class="hx-l1">{l1}</span><span class="hx-l2">{l2}</span><span class="hx-script">{script}</span></h1>
+        <p class="hx-sub">{sub}</p>
+        <div class="hx-cta-row">
+          <a class="lf-btn lf-btn--primary lf-btn--lg btn-tour" href="#reserve">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            {tour_label}
+          </a>
         </div>
-        <div class="hx-featbox-grid">
-          <div class="hx-featbox-col">
-{feats_html}
+        <div class="hx-next" data-countdown>
+          <div class="hx-next-l">
+            <span class="hx-next-label">{next_label}</span>
+            <span class="hx-next-date" data-next-start>{next_date}</span>
+            <span class="hx-next-sub">{next_sub}</span>
           </div>
+          <div class="hx-cells">
+            <div class="hx-cell"><b data-cd-d>0</b><span>{days_label}</span></div>
+            <div class="hx-cell"><b data-cd-h>0</b><span>{hours_label}</span></div>
+            <div class="hx-cell"><b data-cd-m>0</b><span>{min_label}</span></div>
+            <div class="hx-cell"><b data-cd-s>0</b><span>{sec_label}</span></div>
+          </div>
+        </div>
+
+        <div class="hx-featbox">
+          <div class="hx-featbox-grid">
+{feats_html}          </div>
         </div>
       </div>
     </div>
@@ -934,8 +930,8 @@ def page_head(p):
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
 '<link rel="preconnect" href="https://text.pollinations.ai" crossorigin>\n'
 '<link rel="preload" href="/assets/img/logo-final.gif" as="image" fetchpriority="high">\n'
-'<link rel="preload" href="/assets/img/%(mhero_bg)s.webp" as="image" type="image/webp" media="(max-width:768px)" fetchpriority="high">\n'
-'<link rel="preload" href="/assets/img/hero-barber-clinic-2.webp" as="image" type="image/webp" media="(min-width:769px)">\n'
+'<link rel="preload" href="/assets/img/hero-training-floor-mobile.jpg" as="image" type="image/jpeg" media="(max-width:768px)" fetchpriority="high">\n'
+'<link rel="preload" href="/assets/img/hero-training-floor.jpg" as="image" type="image/jpeg" media="(min-width:769px)" fetchpriority="high">\n'
 '<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">\n'
 '<link rel="stylesheet" href="/assets/css/site-header.min.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/funnels.min.css?v=%(cssv)s">\n'
@@ -951,7 +947,6 @@ def page_head(p):
         "lang": p["lang"], "title": h(p["title"]), "desc": h(p["desc"]),
         "canonical": h(canonical), "en_url": h(en_url), "es_url": h(es_url),
         "site": SITE, "oglocale": "es_US" if es else "en_US", "cssv": CSS_V,
-        "mhero_bg": MHERO_BG_BY_PAGE[(p["campus"]["slug"], p["lang"])],
         "theme_color": p.get("theme_color", "#0E4D5C"),
         "ld_scripts": "".join(
             '<script type="application/ld+json">%s</script>\n' % json.dumps(b, ensure_ascii=False)
@@ -1022,7 +1017,6 @@ def build_page(p):
         skip_link,
         header(p),
         '<main id="content">\n',
-        mobile_hero(p),
         hero(p),
         section_student_voices(p),
         section_stats(p),
