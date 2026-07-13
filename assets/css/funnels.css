@@ -373,11 +373,11 @@ body.lf-page--brnx-es {
 }
 .lf-btn--primary:hover { transform: translateY(-1px); filter: brightness(1.06); }
 .lf-btn--secondary {
-  background: var(--lf-sky-deep);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(27,59,217,.32);
+  background: var(--lf-accent-dark);
+  color: var(--lf-on-accent);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--lf-accent) 32%, transparent);
 }
-.lf-btn--secondary:hover { transform: translateY(-1px); background: #1426a5; }
+.lf-btn--secondary:hover { transform: translateY(-1px); filter: brightness(1.08); }
 .lf-btn--ghost {
   background: transparent;
   color: var(--lf-accent-dark);
@@ -1487,8 +1487,8 @@ body.lf-page--brnx-es {
   background:
     linear-gradient(180deg,
       color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%,
-      color-mix(in srgb, var(--lf-ink-deep) 10%, transparent) 45%,
-      color-mix(in srgb, var(--lf-ink-deep) 64%, transparent) 100%);
+      color-mix(in srgb, var(--lf-ink-deep) 4%, transparent) 45%,
+      color-mix(in srgb, var(--lf-ink-deep) 40%, transparent) 100%);
   z-index: 1;
 }
 .lf-mhero__copy {
@@ -1572,8 +1572,8 @@ body.lf-page--brnx-es {
     top: 0; bottom: auto;
     height: 66.4vw;
     background:
-      radial-gradient(130% 90% at 15% 100%, color-mix(in srgb, var(--lf-ink-deep) 94%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 60%, transparent) 45%, transparent 75%),
-      linear-gradient(180deg, color-mix(in srgb, var(--lf-ink-deep) 5%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 2%, transparent) 34%, color-mix(in srgb, var(--lf-ink-deep) 55%, transparent) 62%, color-mix(in srgb, var(--lf-ink-deep) 94%, transparent) 86%, var(--lf-ink-deep) 100%);
+      radial-gradient(130% 90% at 15% 100%, color-mix(in srgb, var(--lf-ink-deep) 62%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 30%, transparent) 45%, transparent 75%),
+      linear-gradient(180deg, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 34%, color-mix(in srgb, var(--lf-ink-deep) 25%, transparent) 62%, color-mix(in srgb, var(--lf-ink-deep) 55%, transparent) 86%, color-mix(in srgb, var(--lf-ink-deep) 65%, transparent) 100%);
   }
   .lf-mhero__copy {
     position: relative;

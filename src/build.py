@@ -824,6 +824,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         "book": "Reserva un Tour" if es else "Book a Tour",
         "menu": "Menú" if es else "Menu",
         "home": "inicio" if es else "home",
+        "home_label": "Inicio" if es else "Home",
     }
     return (
         '<header class="hdr2">\n'
@@ -832,6 +833,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         f'      <img class="logo2-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">\n'
         '    </a>\n'
         '    <nav class="nav2" aria-label="Main">\n'
+        f'      <div class="nav2-item"><a class="nav2-top" href="{root}index.html">{L["home_label"]}</a></div>\n'
         '      <div class="nav2-item nav2-has">\n'
         f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["programs"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
         '        <div class="nav2-menu" role="menu">\n'
@@ -865,6 +867,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         f'    <button class="hamburger" aria-label="{L["menu"]}" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>\n'
         '  </div>\n'
         '  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">\n'
+        f'    <a class="drawer-home" href="{root}index.html">{L["home_label"]}</a>\n'
         '    <div class="drawer-group">\n'
         f'      <p class="drawer-h">{L["programs"]}</p>\n'
         f'      <a href="{root}programs/500-hour-master-barber.html">{L["master500"]}</a>\n'
