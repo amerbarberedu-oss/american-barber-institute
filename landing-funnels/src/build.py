@@ -121,16 +121,7 @@ def header(p):
                  '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
                  '<path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>')
 
-    campus_switch = (
-        '<div class="seg seg-campus" role="group" aria-label="Choose campus" data-seg="campus">'
-        '<span class="seg-glider" aria-hidden="true"></span>'
-        '<a class="seg-opt %s" data-campus-opt="manhattan" href="%s" aria-current="%s">%s<span class="seg-lab">Manhattan</span></a>'
-        '<a class="seg-opt %s" data-campus-opt="bronx" href="%s" aria-current="%s">%s<span class="seg-lab">Bronx</span></a>'
-        '</div>'
-    ) % (
-        "is-active" if is_manhattan else "", h(mht_href), "true" if is_manhattan else "false", pin_svg,
-        "is-active" if not is_manhattan else "", h(bx_href), "true" if not is_manhattan else "false", pin_svg,
-    )
+    campus_switch = ""
     lang_toggle = (
         '<div class="seg seg-lang" role="group" aria-label="%s" data-seg="lang">'
         '<span class="seg-glider" aria-hidden="true"></span>'
@@ -161,19 +152,25 @@ def header(p):
     # Landings show ALL 3 admissions numbers regardless of campus (per client
     # 2026-07-07): Manhattan English + Manhattan Spanish + Bronx. No Haircut.
     # Visitors on either landing can reach any campus's admissions line.
-    ubar_calls = (
-        '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
-        '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
-        '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
-        '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
-        '<a class="ubar-call ubar-call--bx" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
-        '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
-    ) % (phone_svg, phone_svg)
-    mstrip_phones = (
-        '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
-        '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
-        '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
-    ) % (mphone_svg, mphone_svg, mphone_svg)
+    if is_manhattan:
+        ubar_calls = (
+            '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
+            '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
+            '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
+            '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
+        ) % (phone_svg,)
+        mstrip_phones = (
+            '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
+            '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
+        ) % (mphone_svg, mphone_svg)
+    else:
+        ubar_calls = (
+            '<a class="ubar-call ubar-call--bx" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
+            '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
+        ) % (phone_svg,)
+        mstrip_phones = (
+            '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
+        ) % (mphone_svg,)
 
     # Nav labels (translate for ES) + language-consistent nav hrefs.
     # ES landings link back to /es/ (Spanish site landing) so Spanish visitors
@@ -294,95 +291,102 @@ def mobile_hero(p):
 # ── HERO ─────────────────────────────────────────────────────────────
 def hero(p):
     lang = p["lang"]; es = lang == "es"
-    H_ = D.HERO[lang]
     is_bx = p["campus"]["slug"] == "bronx"
-    sub    = H_["sub_bx"]    if is_bx else H_["sub_man"]
-    def _feat(t, ic):
-        # "main|subline" renders the subline as a second emphasized row
-        if "|" in t:
-            main, sub_ = t.split("|", 1)
-            return ('<span class="lf-feature lf-feature--multi">%s<span>%s'
-                    '<i class="lf-feature__sub">%s</i></span></span>'
-                    % (svg(ic, 18), h(main), h(sub_)))
-        return '<span class="lf-feature">%s<span>%s</span></span>' % (svg(ic, 18), h(t))
-    feats = "".join(_feat(t, ic) for t, ic in D.FEATURES[lang])
-    cd = D.COUNTDOWN[lang]
-    cells = "".join(
-        '<div class="lf-cd__cell"><b data-cd-%s>0</b><span>%s</span></div>' % (k, h(lbl))
-        for k, lbl in zip("dhms", cd["cells"])
-    )
-    # 2-line countdown:
-    #   Line 1: <icon> NEXT STARTING DATE: MONDAY, JULY 6, 2026
-    #   Line 2: <icon> NEW CLASSES BEGIN THE FIRST MONDAY OF EACH MONTH.
-    countdown = (
-        '<div class="lf-cd" data-target="%s">\n'
-        '  <p class="lf-cd__line lf-cd__line--date">'
-        '<span class="lf-cd__label">%s</span> '
-        '<span class="lf-cd__date"></span></p>\n'
-        '  <p class="lf-cd__line lf-cd__line--sub">%s</p>\n'
-        '  <div class="lf-cd__grid">%s</div>\n'
-        '</div>'
-    ) % (NEXT_ISO, h(cd["label"]), h(cd["sub"]), cells)
-    # v3.1 — campus kicker removed per spec
-    return (
-        '<section class="lf-hero">\n'
-        '  <div class="lf-wrap lf-hero__in">\n'
-        '    <div class="lf-hero__copy lf-rv">\n'
-        '      <h1 class="lf-h1">%s <span class="lf-h1__b">%s</span> '
-        '<span class="lf-h1__script">%s</span></h1>\n'
-        '      <p class="lf-hero__sub">%s</p>\n'
-        '      <div class="lf-features">%s</div>\n'
-        '      %s\n'
-        '    </div>\n'
-        '    %s\n'
-        '  </div>\n'
-        '</section>\n'
-    ) % (h(H_["h1_a"]), h(H_["h1_b"]), h(H_["h1_script"]),
-         sub, feats, countdown, lead_form(p))
+    ghl_id = "2FvHzLvYji1iSmNmCP46" if not is_bx else "v1SNzWsAZZVodCsnsDbe"
+    ghl_h = 734 if not is_bx else 794
+    ghl_name = "02.GET TRAINED WITH ABI FORM -  Manhattan " if not is_bx else "02.GET TRAINED WITH ABI FORM - Bronx"
+    
+    # Text from home page hero
+    h1 = '500 Hours. <span>Barber Program.</span> <em>Start Today.</em>'
+    sub = 'Become a licensed Master Barber in New York in as little as 4 months. Train hands-on with real clients, get full State Board Exam prep, and land your first chair with our job-placement help.'
+    if es:
+        h1 = '500 Horas. <span>Programa de Barbería.</span> <em>Empieza Hoy.</em>'
+        sub = 'Conviértete en un Barbero Maestro con licencia en Nueva York en solo 4 meses. Entrena en forma práctica con clientes reales, obtén preparación completa para el Examen de la Junta Estatal, y consigue tu primera silla con nuestra ayuda de colocación laboral.'
+    
+    why_title = 'Why Train at ABI?' if not es else '¿Por qué estudiar en ABI?'
+    why_sub = 'Everything you need to go from beginner to licensed professional.' if not es else 'Todo lo que necesitas para pasar de principiante a profesional con licencia.'
+    
+    feats = [
+        ('Fits your life — day, evening & weekend tracks' if not es else 'Se adapta a tu vida — clases de día, tarde y fines de semana', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>'),
+        ('Hands-on training on real clients from your first weeks' if not es else 'Entrenamiento práctico con clientes reales desde las primeras semanas', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8"/></svg>'),
+        ('Funding that fits — ACCES-VR, GI Bill®, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, GI Bill®, planes semanales|Descubre lo que funciona para tu presupuesto', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3.4"/><path d="M12 4.6v2.8M10.9 5.4h2.2"/><path d="M3 15.5c2-1.6 4-1.6 5.6-.6l3 1.8c.9.6.9 1.9-.2 2.2H8M11.4 18.9l5.2.1c2 0 3.4-.9 4.4-2.3"/></svg>'),
+        ('Career support & job-placement help when you graduate' if not es else 'Apoyo profesional y ayuda para encontrar empleo al graduarte', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg>'),
+        ('Two NYC campuses — Manhattan and the Bronx' if not es else 'Dos sedes en NYC — Manhattan y el Bronx', '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"/></svg>')
+    ]
+    
+    feats_html = ""
+    for txt, svg in feats:
+        if "|" in txt:
+            main, sub_ = txt.split("|", 1)
+            feats_html += f'''            <div class="hx-featbox-item">
+              {svg}
+              <span>
+                <b>{main}</b>
+                <i>{sub_}</i>
+              </span>
+            </div>'''
+        else:
+            feats_html += f'''            <div class="hx-featbox-item">
+              {svg}
+              <span>{txt}</span>
+            </div>'''
 
+    form_title = "Reserve Your Spot Today" if not es else "Reserva Tu Lugar Hoy"
+    form_sub = "Fill out the form and an Admissions Advisor will contact you.<br><i>Kindly fill out the form to receive a call from one of AI Agents</i>" if not es else "Completa el formulario y un asesor de admisiones te contactará.<br><i>Por favor, completa el formulario para recibir una llamada de nuestros Agentes de IA</i>"
+
+    html = f'''<section class="hx reveal">
+  <div class="hx-in">
+    <div class="hx-copy">
+      <h1 class="hx-h1">{h1}</h1>
+      <p class="hx-sub">{sub}</p>
+      
+      <div class="hx-featbox">
+        <div class="hx-featbox-head">
+          <div class="hx-featbox-title">{why_title}</div>
+          <p>{why_sub}</p>
+        </div>
+        <div class="hx-featbox-grid">
+          <div class="hx-featbox-col">
+{feats_html}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="formcard" id="reserve">
+      <div class="formcard-head">
+        <div class="formcard-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
+        <div>
+          <div class="formcard-title">{form_title}</div>
+          <div class="formcard-sub">{form_sub}</div>
+        </div>
+      </div>
+      <div class="ghl-form-wrap">
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/{ghl_id}"
+        style="width:100%;height:100%;border:none;border-radius:3px"
+        id="inline-{ghl_id}"
+        data-layout="{{'id':'INLINE'}}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="{ghl_name}"
+        data-height="{ghl_h}"
+        data-layout-iframe-id="inline-{ghl_id}"
+        data-form-id="{ghl_id}"
+        title="{ghl_name}"></iframe>
+    </div>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    </div>
+  </div>
+</section>'''
+    return html
 
 def lead_form(p):
-    lang = p["lang"]
-    f = D.FORM[lang]
-    # Campus dropdown is locked to the page's own campus — no cross-campus options.
-    loc_opts = "".join('<option>%s</option>' % h(o)
-                       for o in D.LOC_OPTS_BY_CAMPUS[(p["campus"]["slug"], lang)])
-    lang_opts = "".join('<option>%s</option>' % h(o) for o in f["lang_opts"])
-    return (
-        '<div class="lf-hero__form lf-rv">\n'
-        '<div class="lf-form lf-form--ghl" id="reserve">\n'
-        '  <h3 class="lf-form__h">%(h)s</h3>\n'
-        '  <p class="lf-form__sub">%(sub)s</p>\n'
-        '  <div class="ghl-form-wrap">'
-        '<iframe src="https://api.leadconnectorhq.com/widget/form/%(ghl_id)s" '
-        'style="width:100%%;height:100%%;border:none;border-radius:3px" '
-        'id="inline-%(ghl_id)s" data-layout="{\'id\':\'INLINE\'}" data-trigger-type="alwaysShow" '
-        'data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" '
-        'data-deactivation-type="neverDeactivate" data-deactivation-value="" '
-        'data-form-name="%(ghl_name)s" data-height="%(ghl_h)s" data-layout-iframe-id="inline-%(ghl_id)s" '
-        'data-form-id="%(ghl_id)s" title="%(ghl_name)s"></iframe></div>\n'
-        '<script src="https://link.msgsndr.com/js/form_embed.js"></script>\n'
-        '</div>'
-    ) % {
-        "id": p["id"], "campus": p["campus"]["slug"], "lang": lang,
-        # GHL form IDs are per-language (unified form for all campuses).
-        # EN = 01.GET TRAINED WITH ABI FORM - ABI.com
-        # ES = 01.GET TRAINED WITH ABI FORM - ABI.com - ESP
-        # Client 2026-07-14: campus-specific GHL forms — Manhattan or Bronx,
-        # same form for EN + ES (no separate ESP variant anymore).
-        "ghl_id": "2FvHzLvYji1iSmNmCP46" if p["campus"]["slug"] == "manhattan" else "v1SNzWsAZZVodCsnsDbe",
-        "ghl_h": 734 if p["campus"]["slug"] == "manhattan" else 794,
-        "ghl_name": "02.GET TRAINED WITH ABI FORM -  Manhattan " if p["campus"]["slug"] == "manhattan" else "02.GET TRAINED WITH ABI FORM - Bronx",
-        "h": h(f["h"]), "sub": h(f["sub"]),
-        "first": h(f["first"]), "last": h(f["last"]),
-        "phone": h(f["phone"]), "email": h(f["email"]),
-        "loc_label": h(f["loc_label"]), "loc_opts": loc_opts,
-        "lang_label": h(f["lang_label"]), "lang_opts": lang_opts,
-        "msg_label": h(f["msg_label"]), "msg_ph": h(f["msg_ph"]),
-        "submit": h(f["submit"]), "trust": h(f["trust"]),
-        "consent_call": h(f["consent_call"]), "consent_sms": h(f["consent_sms"]),
-        "consent": h(f["consent"]),
-    }
+    return ""
+
 
 
 # ── STATS ────────────────────────────────────────────────────────────
