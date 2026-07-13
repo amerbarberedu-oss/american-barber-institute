@@ -3247,3 +3247,13 @@ body.shell2 .mstrip-t i{
     font-size:.78rem;letter-spacing:.06em;font-weight:600;
   }
 }
+
+
+/* ── GHL form wrapper sizes (2026-07-14): iframes now use style="height:100%"
+      per client's exact embed code, so the wrapper needs an explicit height
+      to give them something to fill. Heights match each form's data-height. ── */
+.ghl-form-wrap{width:100%}
+.ghl-form-wrap:has(iframe[data-form-id="3ghObGjHiLN3LgKBfKGG"]){height:757px}
+.ghl-form-wrap:has(iframe[data-form-id="WZjNHh9wcd1FTnlj0eCR"]){height:820px}
+.ghl-form-wrap:has(iframe[data-form-id="2FvHzLvYji1iSmNmCP46"]){height:734px}
+.ghl-form-wrap:has(iframe[data-form-id="v1SNzWsAZZVodCsnsDbe"]){height:794px}

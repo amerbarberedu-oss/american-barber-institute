@@ -355,13 +355,13 @@ def lead_form(p):
         '  <p class="lf-form__sub">%(sub)s</p>\n'
         '  <div class="ghl-form-wrap">'
         '<iframe src="https://api.leadconnectorhq.com/widget/form/%(ghl_id)s" '
-        'style="width:100%%;height:%(ghl_h)spx;border:none;border-radius:3px" '
+        'style="width:100%%;height:100%%;border:none;border-radius:3px" '
         'id="inline-%(ghl_id)s" data-layout="{\'id\':\'INLINE\'}" data-trigger-type="alwaysShow" '
         'data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" '
         'data-deactivation-type="neverDeactivate" data-deactivation-value="" '
         'data-form-name="%(ghl_name)s" data-height="%(ghl_h)s" data-layout-iframe-id="inline-%(ghl_id)s" '
         'data-form-id="%(ghl_id)s" title="%(ghl_name)s"></iframe></div>\n'
-        '<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>\n'
+        '<script src="https://link.msgsndr.com/js/form_embed.js"></script>\n'
         '</div>'
     ) % {
         "id": p["id"], "campus": p["campus"]["slug"], "lang": lang,
