@@ -2935,6 +2935,7 @@ body.bx-gold .phone-pill:hover{box-shadow:0 6px 18px rgba(180,140,30,.3)}
    handshake is slow/blocked the form never appears. Our !important overrides its inline styles. */
 .ghl-form-wrap iframe{position:static!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;display:block!important;width:100%!important}
 .ghl-form-wrap:has(.ep-wrapper) > iframe{display:none!important}
+.ghl-form-wrap:has(.ep-wrapper){height:auto!important}
 
 /* ═══════════ v148 — chat widget: proper placement, no overlap ═══════════ */
 chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;z-index:9999!important}

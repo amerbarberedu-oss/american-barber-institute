@@ -1862,6 +1862,7 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 .lf-form--ghl{background:#fff;border-radius:var(--lf-r-lg,22px);padding:1.3rem 1.2rem;box-shadow:var(--lf-shadow-md)}
 .ghl-form-wrap iframe{position:static!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;display:block!important;width:100%!important}
 .ghl-form-wrap:has(.ep-wrapper) > iframe{display:none!important}
+.ghl-form-wrap:has(.ep-wrapper){height:auto!important}
 
 /* ═══════════ v48 — chat widget: proper placement, no overlap ═══════════ */
 chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;z-index:9999!important}
