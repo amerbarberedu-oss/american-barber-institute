@@ -1485,17 +1485,13 @@ body.lf-page--brnx-es {
 .lf-mhero__scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg,
-      color-mix(in srgb, var(--lf-ink-deep) 55%, transparent) 0%,
-      color-mix(in srgb, var(--lf-ink-deep) 32%, transparent) 30%,
-      color-mix(in srgb, var(--lf-ink-deep) 10%, transparent) 55%,
-      transparent 75%);
+    none;
   z-index: 1;
 }
 .lf-mhero__copy {
   position: absolute;
   /* Copy begins at 75% of the hero image height (image occupies the top 75%). */
-  left: 0; right: 0; top: 75%; bottom: auto;
+  left: 0; right: 0; top: auto; bottom: 1.4rem;
   z-index: 2;
   color: #fff;
   text-align: left;
@@ -1514,7 +1510,7 @@ body.lf-page--brnx-es {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .12em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, .7);
+  text-shadow: 0 2px 6px rgba(0,0,0,.9), 0 0 26px rgba(0,0,0,.75);
 }
 .lf-mhero__h1 {
   font-family: 'Oswald', 'Poppins', sans-serif;
@@ -1524,7 +1520,7 @@ body.lf-page--brnx-es {
   letter-spacing: -.01em;
   margin: 0 0 1.1rem;
   color: #fff;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, .55);
+  text-shadow: 0 2px 8px rgba(0,0,0,.95), 0 0 30px rgba(0,0,0,.75);
 }
 .lf-mhero__h1 span {
   display: block;
@@ -1542,7 +1538,7 @@ body.lf-page--brnx-es {
   border-bottom: 3px solid var(--lf-hi);
   padding-bottom: 2px;
   line-height: 1;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, .55);
+  text-shadow: 0 2px 6px rgba(0,0,0,.9), 0 0 22px rgba(0,0,0,.7);
 }
 /* Hero CTA is hidden — the lead form sits directly below the photo on every breakpoint. */
 .lf-mhero__cta { display: none; }
