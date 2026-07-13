@@ -3228,3 +3228,22 @@ body.shell2 .mstrip-t i{
   body.shell2 .mstrip-t b{font-size:.82rem}
   body.shell2 .mstrip-t i{font-size:.55rem}
 }
+
+
+/* ── mobile: swap long language labels for EN/ES via data-short. Client
+      2026-07-14: full words break the mobile navbar. Desktop keeps
+      English/Español (batch 1 rollout). Scoped tightly so the swap only
+      affects language switcher chips, not any other data-short usage. ── */
+@media (max-width: 768px) {
+  .seg-lang .seg-lab[data-short],
+  .lang-toggle a[data-short],
+  .lf-lang a[data-short],
+  .lfx-lang a[data-short]{font-size:0!important;letter-spacing:0!important}
+  .seg-lang .seg-lab[data-short]::before,
+  .lang-toggle a[data-short]::before,
+  .lf-lang a[data-short]::before,
+  .lfx-lang a[data-short]::before{
+    content:attr(data-short);
+    font-size:.78rem;letter-spacing:.06em;font-weight:600;
+  }
+}

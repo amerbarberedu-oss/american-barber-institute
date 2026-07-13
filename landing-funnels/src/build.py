@@ -134,8 +134,8 @@ def header(p):
     lang_toggle = (
         '<div class="seg seg-lang" role="group" aria-label="%s" data-seg="lang">'
         '<span class="seg-glider" aria-hidden="true"></span>'
-        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab">English</span></a>'
-        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab">Español</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab" data-short="EN">English</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab" data-short="ES">Español</span></a>'
         '</div>'
     ) % (
         h(lang_label),

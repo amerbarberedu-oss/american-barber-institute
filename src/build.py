@@ -1061,8 +1061,8 @@ def _lang_toggle(root, out):
         en_a, es_a = ' is-active', ''
     return ('<div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang">'
             '<span class="seg-glider" aria-hidden="true"></span>'
-            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab">English</span></a>'
-            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab">Español</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab" data-short="EN">English</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab" data-short="ES">Español</span></a>'
             '</div>') % (
         en_a, en_href, ('true' if en_a else 'false'), globe,
         es_a, es_href, ('true' if es_a else 'false'))

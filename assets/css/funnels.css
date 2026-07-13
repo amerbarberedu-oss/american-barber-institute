@@ -1485,10 +1485,11 @@ body.lf-page--brnx-es {
 .lf-mhero__scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%,
-      color-mix(in srgb, var(--lf-ink-deep) 4%, transparent) 45%,
-      color-mix(in srgb, var(--lf-ink-deep) 40%, transparent) 100%);
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--lf-ink-deep) 55%, transparent) 0%,
+      color-mix(in srgb, var(--lf-ink-deep) 32%, transparent) 30%,
+      color-mix(in srgb, var(--lf-ink-deep) 10%, transparent) 55%,
+      transparent 75%);
   z-index: 1;
 }
 .lf-mhero__copy {
@@ -1572,8 +1573,7 @@ body.lf-page--brnx-es {
     top: 0; bottom: auto;
     height: 66.4vw;
     background:
-      radial-gradient(130% 90% at 15% 100%, color-mix(in srgb, var(--lf-ink-deep) 62%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 30%, transparent) 45%, transparent 75%),
-      linear-gradient(180deg, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 34%, color-mix(in srgb, var(--lf-ink-deep) 25%, transparent) 62%, color-mix(in srgb, var(--lf-ink-deep) 55%, transparent) 86%, color-mix(in srgb, var(--lf-ink-deep) 65%, transparent) 100%);
+      linear-gradient(180deg, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 0%, color-mix(in srgb, var(--lf-ink-deep) 0%, transparent) 60%, color-mix(in srgb, var(--lf-ink-deep) 10%, transparent) 80%, color-mix(in srgb, var(--lf-ink-deep) 20%, transparent) 100%);
   }
   .lf-mhero__copy {
     position: relative;
@@ -2077,3 +2077,18 @@ chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;
 .lf-floor__card--end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(150deg,var(--lf-accent-deep,#0E4D5C),var(--lf-accent,#146B78));color:#fff;text-decoration:none;text-align:center;padding:1rem;font-weight:700}
 .lf-floor__card--end svg{width:26px;height:26px}
 @media (max-width:640px){.lf-floor__card{width:150px}}
+
+
+/* ── mobile: swap long language labels for EN/ES via data-short. Client
+      2026-07-14: full words break the mobile navbar on landing pages. ── */
+@media (max-width: 768px) {
+  .lf-lang a[data-short],
+  .lfx-lang a[data-short],
+  .seg-lang .seg-lab[data-short]{font-size:0!important;letter-spacing:0!important}
+  .lf-lang a[data-short]::before,
+  .lfx-lang a[data-short]::before,
+  .seg-lang .seg-lab[data-short]::before{
+    content:attr(data-short);
+    font-size:.78rem;letter-spacing:.06em;font-weight:600;
+  }
+}
