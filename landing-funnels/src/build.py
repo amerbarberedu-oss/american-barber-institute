@@ -368,9 +368,11 @@ def lead_form(p):
         # GHL form IDs are per-language (unified form for all campuses).
         # EN = 01.GET TRAINED WITH ABI FORM - ABI.com
         # ES = 01.GET TRAINED WITH ABI FORM - ABI.com - ESP
-        "ghl_id": "H4C1nJmpLO3cNx4OrlK2" if lang == "es" else "3ghObGjHiLN3LgKBfKGG",
-        "ghl_h": 795 if lang == "es" else 757,
-        "ghl_name": "01.GET TRAINED WITH ABI FORM - ABI.com - ESP" if lang == "es" else "01.GET TRAINED WITH ABI FORM - ABI.com",
+        # Client 2026-07-14: campus-specific GHL forms — Manhattan or Bronx,
+        # same form for EN + ES (no separate ESP variant anymore).
+        "ghl_id": "2FvHzLvYji1iSmNmCP46" if p["campus"]["slug"] == "manhattan" else "v1SNzWsAZZVodCsnsDbe",
+        "ghl_h": 734 if p["campus"]["slug"] == "manhattan" else 794,
+        "ghl_name": "02.GET TRAINED WITH ABI FORM -  Manhattan " if p["campus"]["slug"] == "manhattan" else "02.GET TRAINED WITH ABI FORM - Bronx",
         "h": h(f["h"]), "sub": h(f["sub"]),
         "first": h(f["first"]), "last": h(f["last"]),
         "phone": h(f["phone"]), "email": h(f["email"]),

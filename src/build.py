@@ -1406,20 +1406,9 @@ def build():
                     '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
                     '<meta name="robots" content="noindex">')
             es_html = clean_links(es_html)
-            # ── GHL form swap: EN → ESP on auto-generated Spanish twins ──
-            # Pages without a dedicated es-* source inherit the English body
-            # which embeds the EN .com form; swap it for the ESP .com form.
-            es_html = (es_html
-                .replace('api.leadconnectorhq.com/widget/form/3ghObGjHiLN3LgKBfKGG',
-                         'api.leadconnectorhq.com/widget/form/H4C1nJmpLO3cNx4OrlK2')
-                .replace('inline-3ghObGjHiLN3LgKBfKGG', 'inline-H4C1nJmpLO3cNx4OrlK2')
-                .replace('data-form-id="3ghObGjHiLN3LgKBfKGG"', 'data-form-id="H4C1nJmpLO3cNx4OrlK2"')
-                .replace('data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com"',
-                         'data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
-                .replace('title="01.GET TRAINED WITH ABI FORM - ABI.com"',
-                         'title="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
-                .replace('data-height="757"', 'data-height="795"')
-                .replace('height:898px', 'height:936px'))
+            # Client 2026-07-14: unified GHL forms — ES pages reuse the same
+            # .com form as EN pages (single form per domain, no ESP variant).
+            # Removed the EN→ESP swap that used to fire here.
             es_dest = os.path.join(ROOT, es_out)
             os.makedirs(os.path.dirname(es_dest), exist_ok=True)
             open(es_dest, 'w', encoding='utf-8').write(es_html)
