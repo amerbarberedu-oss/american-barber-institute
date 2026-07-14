@@ -74,7 +74,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/css/style.min.css?v=36">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=158">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=160">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -124,7 +124,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/effects.js?v=33" defer></script>
 <script src="{root}assets/js/landing.js?v=32" defer></script>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
-<script src="{root}assets/js/campus.js?v=2" defer></script>
+<script src="{root}assets/js/campus.js?v=4" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335"></script>
 <script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget--prompt{{display:none!important}}@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
@@ -147,7 +147,7 @@ ORG_SCHEMA = {
     "description": "New York's career-focused barber school. NYS-licensed 500-hour Master Barber program in Midtown Manhattan with financial aid, veterans GI Bill and ACCESS-VR options, and job placement.",
     "slogan": "Become a Licensed Barber in 4 Months",
     "telephone": "+1-212-290-2289",
-    "email": "admission@abi.edu",
+    "email": "admissions@americanbarberinstitute.com",
     "address": [{
         "@type": "PostalAddress",
         "streetAddress": "48 West 39th Street",
@@ -786,8 +786,8 @@ def _campus_switch(root, campus, es=False):
     page depth or language."""
     mn_active = '' if campus == 'bronx' else ' is-active'
     bx_active = ' is-active' if campus == 'bronx' else ''
-    mn_href = '/spanish' if es else '/'
-    bronx_href = '/spanish/bronx' if es else '/bronx'
+    mn_href = root + 'spanish/index.html' if es else root + 'index.html'
+    bronx_href = root + 'spanish/bronx.html' if es else root + 'bronx.html'
     pin = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
            'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" '
            'aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>'
@@ -825,6 +825,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         "book": "Reserva un Tour" if es else "Book a Tour",
         "menu": "Menú" if es else "Menu",
         "home": "inicio" if es else "home",
+        "home_label": "Inicio" if es else "Home",
     }
     return (
         '<header class="hdr2">\n'
@@ -833,6 +834,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         f'      <img class="logo2-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">\n'
         '    </a>\n'
         '    <nav class="nav2" aria-label="Main">\n'
+        f'      <div class="nav2-item"><a class="nav2-top" href="{root}index.html">{L["home_label"]}</a></div>\n'
         '      <div class="nav2-item nav2-has">\n'
         f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["programs"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
         '        <div class="nav2-menu" role="menu">\n'
@@ -866,6 +868,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         f'    <button class="hamburger" aria-label="{L["menu"]}" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>\n'
         '  </div>\n'
         '  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">\n'
+        f'    <a class="drawer-home" href="{root}index.html">{L["home_label"]}</a>\n'
         '    <div class="drawer-group">\n'
         f'      <p class="drawer-h">{L["programs"]}</p>\n'
         f'      <a href="{root}programs/500-hour-master-barber.html">{L["master500"]}</a>\n'
@@ -993,7 +996,7 @@ def _footer_block(root, es):
         '          <li class="foot2-loc"><b>Manhattan</b><a href="https://maps.google.com/?q=48+West+39th+Street,+New+York,+NY+10018">48 West 39th Street, New York, NY 10018</a></li>\n'
         '          <li class="foot2-loc"><b>Bronx</b><a href="https://maps.google.com/?q=121+Westchester+Square,+Bronx,+NY+10461">121 Westchester Square, Bronx, NY 10461</a></li>\n'
         '          <li class="foot2-phones" data-footer-phones><a href="tel:+12122902289">(212) 290-2289 · English</a><a href="tel:+12122900278">(212) 290-0278 · Español</a><a href="tel:+17186760640">(718) 676-0640 · Bronx</a></li>\n'
-        '          <li><a href="mailto:admission@abi.edu">admission@abi.edu</a></li>\n'
+        '          <li><a href="mailto:admissions@americanbarberinstitute.com">admissions@americanbarberinstitute.com</a></li>\n'
         '        </ul>\n'
         '      </div>\n'
         '    </div>\n'
@@ -1059,8 +1062,8 @@ def _lang_toggle(root, out):
         en_a, es_a = ' is-active', ''
     return ('<div class="seg seg-lang" role="group" aria-label="Language" data-seg="lang">'
             '<span class="seg-glider" aria-hidden="true"></span>'
-            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab">EN</span></a>'
-            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab">ES</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s">%s<span class="seg-lab" data-short="EN">English</span></a>'
+            '<a class="seg-opt%s" href="%s" aria-current="%s"><span class="seg-lab" data-short="ES">Español</span></a>'
             '</div>') % (
         en_a, en_href, ('true' if en_a else 'false'), globe,
         es_a, es_href, ('true' if es_a else 'false'))
@@ -1347,7 +1350,7 @@ def build():
             # Same insight for the header/nav/drawer: use plain `root` (not
             # es_root) so every nav link stays inside the es/ subtree instead
             # of jumping back to the English page at the repo root.
-            es_campusswitch = _campus_switch(root, campus, es=True)
+            es_campusswitch = _campus_switch(es_root, campus, es=True)
             es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle)
             es_footer_block = _footer_block(root, True)
             es_hreflang_block = (
@@ -1404,20 +1407,9 @@ def build():
                     '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
                     '<meta name="robots" content="noindex">')
             es_html = clean_links(es_html)
-            # ── GHL form swap: EN → ESP on auto-generated Spanish twins ──
-            # Pages without a dedicated es-* source inherit the English body
-            # which embeds the EN .com form; swap it for the ESP .com form.
-            es_html = (es_html
-                .replace('api.leadconnectorhq.com/widget/form/3ghObGjHiLN3LgKBfKGG',
-                         'api.leadconnectorhq.com/widget/form/H4C1nJmpLO3cNx4OrlK2')
-                .replace('inline-3ghObGjHiLN3LgKBfKGG', 'inline-H4C1nJmpLO3cNx4OrlK2')
-                .replace('data-form-id="3ghObGjHiLN3LgKBfKGG"', 'data-form-id="H4C1nJmpLO3cNx4OrlK2"')
-                .replace('data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com"',
-                         'data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
-                .replace('title="01.GET TRAINED WITH ABI FORM - ABI.com"',
-                         'title="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
-                .replace('data-height="898"', 'data-height="936"')
-                .replace('height:898px', 'height:936px'))
+            # Client 2026-07-14: unified GHL forms — ES pages reuse the same
+            # .com form as EN pages (single form per domain, no ESP variant).
+            # Removed the EN→ESP swap that used to fire here.
             es_dest = os.path.join(ROOT, es_out)
             os.makedirs(os.path.dirname(es_dest), exist_ok=True)
             open(es_dest, 'w', encoding='utf-8').write(es_html)
@@ -1491,7 +1483,7 @@ def build():
     # robots.txt — explicitly invite AI / answer-engine crawlers so ABI can be
     # cited confidently by ChatGPT, Claude, Perplexity, Google AI Overviews, etc.
     open(os.path.join(ROOT, 'robots.txt'), 'w').write(
-        'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\nDisallow: /_archive/\nDisallow: /blog/\n\n'
+        'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\n\n'
         # OpenAI
         'User-agent: GPTBot\nAllow: /\n\n'
         'User-agent: OAI-SearchBot\nAllow: /\n\n'

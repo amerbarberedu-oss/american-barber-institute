@@ -7,10 +7,10 @@
 
   /* ── CONFIG ──────────────────────────────────────────────
      Lead form endpoint. Posts to FormSubmit's AJAX endpoint, which
-     delivers submissions to admission@abi.edu (the same inbox the
+     delivers submissions to admissions@americanbarberinstitute.com (the same inbox the
      site's mailto forms use). Returns JSON; the submit handler shows
      success only on response.ok and an error message otherwise.      */
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/admission@abi.edu';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/admissions@americanbarberinstitute.com';
 
   /* ── Next start date: first Monday of next month ───────── */
   function nextFirstMonday() {

@@ -242,73 +242,171 @@
       "destination": "/master-barber-program-bronx",
       "permanent": true
     },
-    { "source": "/barber-school-bronx-new-york",     "destination": "/bronx",            "permanent": true },
-
-    { "source": "/about/instructors",                "destination": "/instructors",                  "permanent": true },
-    { "source": "/about/skills-and-techniques",      "destination": "/skills-and-techniques",        "permanent": true },
-    { "source": "/about/how-to-get-started",         "destination": "/how-to-get-started",           "permanent": true },
-    { "source": "/about/virtual-tour",               "destination": "/virtual-tour",                 "permanent": true },
-    { "source": "/courses/500-hour-master-barber",   "destination": "/programs/500-hour-master-barber",       "permanent": true },
-    { "source": "/courses/540-hour-master-barber-bronx", "destination": "/programs/500-hour-master-barber-bronx", "permanent": true },
-    { "source": "/courses/50-hour-barber-refresher", "destination": "/programs/50-hour-barber-refresher",     "permanent": true },
-    { "source": "/courses/3-hour-contagious-diseases", "destination": "/programs/contagious-diseases",        "permanent": true },
-    { "source": "/faqs",                             "destination": "/faq",                          "permanent": true },
-    { "source": "/resources/veterans",               "destination": "/veterans",                     "permanent": true },
-    { "source": "/resources/acces-vr",               "destination": "/access-vr-program",            "permanent": true },
-
-    { "source": "/courses/:path+",                   "destination": "/programs",                     "permanent": true },
-    { "source": "/about/:path+",                     "destination": "/about",                        "permanent": true },
-    { "source": "/resources/:path+",                 "destination": "/resources",                    "permanent": true },
-
-    { "source": "/spanish/about/instructors",                "destination": "/spanish/instructors",                  "permanent": true },
-    { "source": "/spanish/about/skills-and-techniques",      "destination": "/spanish/skills-and-techniques",        "permanent": true },
-    { "source": "/spanish/about/how-to-get-started",         "destination": "/spanish/how-to-get-started",           "permanent": true },
-    { "source": "/spanish/about/virtual-tour",               "destination": "/spanish/virtual-tour",                 "permanent": true },
-    { "source": "/spanish/courses/500-hour-master-barber",   "destination": "/spanish/programs/500-hour-master-barber",       "permanent": true },
-    { "source": "/spanish/courses/540-hour-master-barber-bronx", "destination": "/spanish/programs/500-hour-master-barber-bronx", "permanent": true },
-    { "source": "/spanish/courses/50-hour-barber-refresher", "destination": "/spanish/programs/50-hour-barber-refresher",     "permanent": true },
-    { "source": "/spanish/courses/3-hour-contagious-diseases", "destination": "/spanish/programs/contagious-diseases",        "permanent": true },
-    { "source": "/spanish/faqs",                             "destination": "/spanish/faq",                          "permanent": true },
-    { "source": "/spanish/resources/veterans",               "destination": "/spanish/veterans",                     "permanent": true },
-    { "source": "/spanish/resources/acces-vr",               "destination": "/spanish/access-vr-program",            "permanent": true },
-    { "source": "/spanish/jobs/job-opportunities",           "destination": "/spanish/jobs",                         "permanent": true },
-    { "source": "/spanish/jobs/shop-registration",           "destination": "/spanish/shop-registration",            "permanent": true },
-
-    { "source": "/spanish/courses/:path+",                   "destination": "/spanish/programs",                     "permanent": true },
-    { "source": "/spanish/about/:path+",                     "destination": "/spanish/about",                        "permanent": true },
-    { "source": "/spanish/resources/:path+",                 "destination": "/spanish/resources",                    "permanent": true },
-
-    { "source": "/programs/500-hour-master-barber-program",     "destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
-    { "source": "/programs/500-hour-master-barber-program.html","destination": "/500-hours-master-barber-program-landing-page", "permanent": true },
-
-    { "source": "/blog",                                       "destination": "https://www.abi.edu/blog",                                   "permanent": true },
-    { "source": "/blog/:slug",                                 "destination": "https://www.abi.edu/blog/:slug",                             "permanent": true },
-
-    { "source": "/barber-school-brooklyn-new-york",             "destination": "https://www.abi.edu/barber-school-brooklyn-new-york",         "permanent": true },
-    { "source": "/barber-school-connecticut",                   "destination": "https://www.abi.edu/barber-school-connecticut",               "permanent": true },
-    { "source": "/barber-school-long-island-ny",                "destination": "https://www.abi.edu/barber-school-long-island-ny",            "permanent": true },
-    { "source": "/barber-school-mount-vernon-ny",               "destination": "https://www.abi.edu/barber-school-mount-vernon-ny",           "permanent": true },
-    { "source": "/barber-school-pennsylvania",                  "destination": "https://www.abi.edu/barber-school-pennsylvania",              "permanent": true },
-    { "source": "/barber-school-port-chester-ny",               "destination": "https://www.abi.edu/barber-school-port-chester-ny",           "permanent": true },
-    { "source": "/barber-school-queens-ny",                     "destination": "https://www.abi.edu/barber-school-queens-ny",                 "permanent": true },
-    { "source": "/barber-school-staten-island-ny",              "destination": "https://www.abi.edu/barber-school-staten-island-ny",          "permanent": true },
-    { "source": "/barber-school-westchester-ny",                "destination": "https://www.abi.edu/barber-school-westchester-ny",            "permanent": true },
-    { "source": "/barber-school-yonkers-new-york",              "destination": "https://www.abi.edu/barber-school-yonkers-new-york",          "permanent": true },
-
-    { "source": "/500-hours-master-barber-program-landing-page",         "destination": "https://www.abi.edu/500-hours-master-barber-program-landing-page",         "permanent": true },
-    { "source": "/500-hours-master-barber-program-landing-page/spanish", "destination": "https://www.abi.edu/500-hours-master-barber-program-landing-page/spanish", "permanent": true },
-    { "source": "/master-barber-program-bronx",                          "destination": "https://www.abi.edu/master-barber-program-bronx",                          "permanent": true },
-    { "source": "/master-barber-program-bronx/spanish",                  "destination": "https://www.abi.edu/master-barber-program-bronx/spanish",                  "permanent": true },
-
-    { "source": "/shop-registration",                          "destination": "https://www.abi.edu/shop-registration",                      "permanent": true },
-    { "source": "/thank-you",                                  "destination": "https://www.abi.edu/thank-you",                              "permanent": true },
-    { "source": "/gracias",                                    "destination": "https://www.abi.edu/gracias",                                "permanent": true },
-
-    { "source": "/spanish/barber-school-brooklyn-new-york",    "destination": "https://www.abi.edu/es/barber-school-brooklyn-new-york",      "permanent": true },
-    { "source": "/spanish/barber-school-mount-vernon-ny",      "destination": "https://www.abi.edu/es/barber-school-mount-vernon-ny",       "permanent": true },
-    { "source": "/spanish/barber-school-pennsylvania",         "destination": "https://www.abi.edu/es/barber-school-pennsylvania",          "permanent": true },
-    { "source": "/spanish/barber-school-port-chester-ny",      "destination": "https://www.abi.edu/es/barber-school-port-chester-ny",       "permanent": true },
-    { "source": "/spanish/barber-school-queens-ny",            "destination": "https://www.abi.edu/es/barber-school-queens-ny",             "permanent": true }
+    {
+      "source": "/barber-school-bronx-new-york",
+      "destination": "/bronx",
+      "permanent": true
+    },
+    {
+      "source": "/about/instructors",
+      "destination": "/instructors",
+      "permanent": true
+    },
+    {
+      "source": "/about/skills-and-techniques",
+      "destination": "/skills-and-techniques",
+      "permanent": true
+    },
+    {
+      "source": "/about/how-to-get-started",
+      "destination": "/how-to-get-started",
+      "permanent": true
+    },
+    {
+      "source": "/about/virtual-tour",
+      "destination": "/virtual-tour",
+      "permanent": true
+    },
+    {
+      "source": "/courses/500-hour-master-barber",
+      "destination": "/programs/500-hour-master-barber",
+      "permanent": true
+    },
+    {
+      "source": "/courses/540-hour-master-barber-bronx",
+      "destination": "/programs/500-hour-master-barber-bronx",
+      "permanent": true
+    },
+    {
+      "source": "/courses/50-hour-barber-refresher",
+      "destination": "/programs/50-hour-barber-refresher",
+      "permanent": true
+    },
+    {
+      "source": "/courses/3-hour-contagious-diseases",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/faqs",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/resources/veterans",
+      "destination": "/veterans",
+      "permanent": true
+    },
+    {
+      "source": "/resources/acces-vr",
+      "destination": "/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/courses/:path+",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/about/:path+",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/resources/:path+",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/about/instructors",
+      "destination": "/spanish/instructors",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/about/skills-and-techniques",
+      "destination": "/spanish/skills-and-techniques",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/about/how-to-get-started",
+      "destination": "/spanish/how-to-get-started",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/about/virtual-tour",
+      "destination": "/spanish/virtual-tour",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/courses/500-hour-master-barber",
+      "destination": "/spanish/programs/500-hour-master-barber",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/courses/540-hour-master-barber-bronx",
+      "destination": "/spanish/programs/500-hour-master-barber-bronx",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/courses/50-hour-barber-refresher",
+      "destination": "/spanish/programs/50-hour-barber-refresher",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/courses/3-hour-contagious-diseases",
+      "destination": "/spanish/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/faqs",
+      "destination": "/spanish/faq",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/resources/veterans",
+      "destination": "/spanish/veterans",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/resources/acces-vr",
+      "destination": "/spanish/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/jobs/job-opportunities",
+      "destination": "/spanish/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/jobs/shop-registration",
+      "destination": "/spanish/shop-registration",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/courses/:path+",
+      "destination": "/spanish/programs",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/about/:path+",
+      "destination": "/spanish/about",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/resources/:path+",
+      "destination": "/spanish/resources",
+      "permanent": true
+    },
+    {
+      "source": "/programs/500-hour-master-barber-program",
+      "destination": "/500-hours-master-barber-program-landing-page",
+      "permanent": true
+    },
+    {
+      "source": "/programs/500-hour-master-barber-program.html",
+      "destination": "/500-hours-master-barber-program-landing-page",
+      "permanent": true
+    }
   ],
   "rewrites": [
     {

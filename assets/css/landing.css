@@ -2735,6 +2735,75 @@ video{background-color:#1a1f2e}
 .hx-cell{border:1.5px solid rgba(255,255,255,.5);border-radius:12px;background:rgba(6,10,24,.55);text-align:center;padding:.65rem .25rem .5rem}
 .hx-cell b{display:block;font-size:1.5rem;font-weight:800;line-height:1;color:#fff}
 .hx-cell span{display:block;margin-top:.32rem;font-size:.6rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#c8d0e4}
+
+/* ── v159: hx-featbox features overlay card ── */
+.hx-featbox {
+  margin-top: 1.1rem;
+  background: rgba(9, 13, 28, 0.78);
+  border: 1px solid rgba(130, 150, 255, 0.3);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  max-width: 46rem;
+}
+body.bx-gold .hx-featbox {
+  border-color: rgba(201, 151, 31, 0.3);
+}
+.hx-featbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem 1.5rem;
+}
+.hx-featbox-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.hx-featbox-item svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #9db4ff;
+  margin-top: 0.15rem;
+}
+body.bx-gold .hx-featbox-item svg {
+  color: #dcb34c;
+}
+.hx-featbox-item span {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #f2f4fa;
+  font-weight: 500;
+}
+.hx-featbox-item span b {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.1rem;
+}
+.hx-featbox-item span i {
+  display: block;
+  font-style: normal;
+  font-size: 0.82rem;
+  color: #a5b8eb;
+  font-weight: 500;
+}
+body.bx-gold .hx-featbox-item span i {
+  color: #e5cf97;
+}
+
+@media (max-width: 768px) {
+  .hx-featbox-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .hx-featbox {
+    padding: 1.1rem 1.2rem;
+    margin-top: 1rem;
+  }
+}
 /* compact contact box (desktop right column) */
 @media (min-width:769px){
   .hx-in .formcard{padding:1.1rem 1.15rem 1.2rem}
@@ -2864,9 +2933,9 @@ body.bx-gold .phone-pill:hover{box-shadow:0 6px 18px rgba(180,140,30,.3)}
 /* ═══════════ v147 — GHL form: force visible (don't depend on iframe-resizer handshake).
    form_embed.js parks the iframe at -9999px until a postMessage handshake; when that
    handshake is slow/blocked the form never appears. Our !important overrides its inline styles. */
-.ghl-form-wrap{min-height:940px}
-.ghl-form-wrap .ep-iFrameContainer,.ghl-form-wrap .ep-wrapper{height:auto!important;min-height:940px}
-.ghl-form-wrap iframe{position:static!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;display:block!important;width:100%!important;min-height:940px}
+.ghl-form-wrap iframe{position:static!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;display:block!important;width:100%!important}
+.ghl-form-wrap:has(.ep-wrapper) > iframe{display:none!important}
+.ghl-form-wrap:has(.ep-wrapper){height:auto!important}
 
 /* ═══════════ v148 — chat widget: proper placement, no overlap ═══════════ */
 chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;z-index:9999!important}
@@ -3228,3 +3297,17 @@ body.shell2 .mstrip-t i{
   body.shell2 .mstrip-t b{font-size:.82rem}
   body.shell2 .mstrip-t i{font-size:.55rem}
 }
+
+
+/* Client 2026-07-14: language switcher shows full "English"/"Español" on ALL
+   viewports, including mobile (the earlier EN/ES abbreviation was removed). */
+
+
+/* ── GHL form wrapper sizes (2026-07-14): iframes now use style="height:100%"
+      per client's exact embed code, so the wrapper needs an explicit height
+      to give them something to fill. Heights match each form's data-height. ── */
+.ghl-form-wrap{width:100%}
+.ghl-form-wrap:has(iframe[src*="3ghObGjHiLN3LgKBfKGG"]){height:880px}
+.ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){height:920px}
+.ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){height:870px}
+.ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){height:920px}
