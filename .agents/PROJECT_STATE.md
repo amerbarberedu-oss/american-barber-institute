@@ -4,38 +4,37 @@
 - **Owner:** Alex — American Barber Institute
 - **GitHub:** amerbarberedu-oss/american-barber-institute
 - **Vercel:** amerbarberedu-oss-projects (prj_2RZVHYjsjp1QifRzSAdPamax1xEh)
-- **Domain:** americanbarberinstitute.com / www.americanbarberinstitute.com
-- **Developers:** Kazi (Frontend), Arhum Abdullah (Analytics/GTM)
+- **Domain:** americanbarberinstitute.com / www.americanbarberinstitute.com (DNS cutover pending)
+- **Developers:** Kazi (Frontend/UI/SEO/build), Arhum Abdullah (Analytics/GTM/CSP)
 
 ## Last Updated
-- **Date:** 2026-07-11
-- **Agent:** Antigravity
-- **Branch:** `main`
-- **Status:** ✅ STABLE — Starting new change cycle
+- **Date:** 2026-07-14
+- **Branch:** `preview/mass-rollout-2026-07-14` (not yet merged to `main`)
+- **Status:** ✅ Pre-launch audit complete (READY-AFTER-FIXES). All blocker/high SEO
+  findings fixed on the preview branch; awaiting explicit client go-live to merge to `main`.
 
-## Rollback Point (DO NOT DELETE)
-- **Commit:** `74e0c8f` — chore: unify GHL forms
-- **Date:** 2026-07-11
-- **Note:** This is the last known stable state BEFORE any new changes.
-  If anything goes wrong, revert to this commit:
-  ```bash
-  git reset --hard 74e0c8f
-  ```
-
-## Deployment Workflow
-1. Make all changes locally
-2. Test on localhost (python3 src/serve.py)
-3. Deploy to preview (vercel deploy --no-prod)
-4. Verify preview in browser
-5. Only then deploy to production (vercel deploy --prod)
+## Deployment Workflow (git-integrated — no CLI deploys)
+Vercel is connected to the GitHub repo and auto-deploys on push.
+1. Make changes locally; run the generators:
+   `cd src && python3 build.py`, then `cd landing-funnels/src && python3 build.py`.
+2. Verify locally in a browser (any static server, e.g. `python3 -m http.server`),
+   or push the preview branch and open the Vercel preview URL.
+3. Commit as `American Barber Institute <amerbarberedu@gmail.com>`.
+4. Push the preview branch: `git push client preview/<topic>`.
+5. **Preview-first go-live:** only after explicit client approval, merge the
+   preview branch into `main`. The push to `main` is what auto-deploys production.
+   **Never push `main` directly.**
 
 ## Git Remote
-- `origin` → amerbarberedu-oss/american-barber-institute (Alex's GitHub)
-- Push command: `git push origin main`
+- Single remote: `client` → https://github.com/amerbarberedu-oss/american-barber-institute
+- Push command: `git push client <branch>`  (there is no `origin` remote)
 
-## Current Versions
-- Check `src/build.py` for CSS/JS version numbers
+## Current Asset Versions
+Source of truth is the generators. As of 2026-07-14:
+`landing.min.css?v=160`, `campus.js?v=4`, main `main.js`/`effects.js?v=33`,
+`chatbot.js?v=32`; landing-funnels `CSS_V=65`. Check `src/build.py` and
+`landing-funnels/src/build.py` for live values.
 
-## Stashed Changes
-- Experiment branch `experiment/compact-contact-form` has stashed contact form changes
-- Apply with: `git stash pop` (on that branch only)
+## Rollback
+- Production `main` is the rollback point until a new release is merged.
+- To undo an unmerged preview change, revert the commit or reset the preview branch.

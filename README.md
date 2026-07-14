@@ -12,6 +12,15 @@ sites don't compete with each other in search.
 - **Vercel alias:** https://american-barber-institute.vercel.app
 - **Vercel project:** `american-barber-institute` on team `amerbarberedu-oss-projects`
 
+## Recent changes (2026-07-14)
+
+Landing-page + homepage release pass and full pre-launch audit:
+- **Landing pages** (4): rebuilt hero to exactly mirror the homepage `.hx` hero (photo + gradient + live countdown + feature list + form card); removed the navbar and campus switcher — header is now two clean rows (language toggle, then logo + campus phones); logo is non-clickable (landing pages are standalone); campus-only phone numbers (no Haircut line); multi-channel chat launcher (SMS/Instagram/WhatsApp/Messenger) ported from abi.edu.
+- **Homepage + Bronx**: hero gradient switched from a 100° diagonal (drew a slanted "seam") to a smooth left→right fade; mobile nav drawer now includes Home; language switcher shows full "English/Español" on all viewports; Manhattan shows 3 phone chips (EN/ES + Haircut), Bronx 2 (Bronx + Haircut) on desktop and mobile.
+- **SEO/AEO pre-launch fixes**: corrected cross-domain canonicals on `bronx.html` + Spanish home/bronx (were pointing at abi.edu); added hreflang to the 4 hand-crafted pages; removed the `robots.txt` `Disallow: /blog/` (contradicted the submitted post-sitemap) and the stale `/_archive/` rule; fixed `llms.txt` contact email to the .com address.
+- **Cleanup**: dropped tracked dev cruft (`patch_build.py`, `fix.py`, `.vscode/`) and stale docs (`AUDIT-REPORT.md`, `content-audit.md`).
+- Asset versions: `landing.min.css?v=160`, `campus.js?v=4`; landing-funnels `CSS_V=65`.
+
 ## Recent changes (2026-07-09)
 
 **Developer roles defined:**
@@ -23,7 +32,7 @@ sites don't compete with each other in search.
 **What changed:**
 - **Mobile responsiveness** — bulletproof hamburger menu on all devices using `min()` clamping
 - **Toggle styling** — seg-toggle glider in nav-drawer now teal with white active text (was invisible white-on-white); fixed `calc()` spacing in minified CSS
-- **campus.js v3** — phone labels now show language ("English"/"Spanish") not location; auto-detects `/spanish/` pages and renders Spanish labels ("Inglés"/"Español"/"Corte"); removed "Clinic" from "Haircut Clinic" everywhere
+- **campus.js v4** — phone labels now show language ("English"/"Spanish") not location; auto-detects `/spanish/` pages and renders Spanish labels ("Inglés"/"Español"/"Corte"); removed "Clinic" from "Haircut Clinic" everywhere
 - **Full Spanish translation** — 72 `/spanish/` pages: nav, footer, CTAs, drawer links, CTA buttons, countdown, Google reviews, contagious diseases course, form labels. Comprehensive body content translation.
 - **Spanish image fixes** — 35 pages had broken logo (relative `src="assets/"` → absolute `src="/assets/"`)
 - **Google rating** — standardized to 4.1 across all pages and structured data

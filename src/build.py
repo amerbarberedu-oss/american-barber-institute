@@ -1483,7 +1483,7 @@ def build():
     # robots.txt — explicitly invite AI / answer-engine crawlers so ABI can be
     # cited confidently by ChatGPT, Claude, Perplexity, Google AI Overviews, etc.
     open(os.path.join(ROOT, 'robots.txt'), 'w').write(
-        'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\nDisallow: /_archive/\nDisallow: /blog/\n\n'
+        'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\n\n'
         # OpenAI
         'User-agent: GPTBot\nAllow: /\n\n'
         'User-agent: OAI-SearchBot\nAllow: /\n\n'
