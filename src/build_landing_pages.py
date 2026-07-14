@@ -1175,7 +1175,7 @@ def footer(p, s, pre):
   </div>
 </div>
 <script src="/assets/js/effects.js?v=32" defer></script>
-<script src="%sassets/js/landing.js?v=32" defer></script>
+<script src="%sassets/js/landing.js?v=33" defer></script>
 <script src="/assets/js/upgrade.js?v=2" defer></script>
 <script src="/assets/js/chatbot.js?v=3" defer></script>
 <script src="/assets/js/video-sound.js?v=3" defer></script>

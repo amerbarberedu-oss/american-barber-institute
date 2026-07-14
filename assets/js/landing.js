@@ -24,17 +24,21 @@
     }
     return d;
   }
-  var startDate = nextFirstMonday();
   var fmt = new Intl.DateTimeFormat(LANG === 'es' ? 'es-US' : 'en-US', {
     weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
   });
-  var dateStr = fmt.format(startDate);
-  if (LANG === 'es') dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
-  document.querySelectorAll('[data-next-start]').forEach(function (el) {
-    el.textContent = dateStr;
-  });
+  var nextStartEls = document.querySelectorAll('[data-next-start]');
+  function renderNextStart(d) {
+    var dateStr = fmt.format(d);
+    if (LANG === 'es') dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+    nextStartEls.forEach(function (el) { el.textContent = dateStr; });
+  }
+  var startDate = nextFirstMonday();
+  renderNextStart(startDate);
 
-  /* ── Countdown ──────────────────────────────────────────── */
+  /* ── Countdown (perpetual: rolls to the next month's cohort the instant
+     the current one starts and keeps ticking -- runs correctly for as many
+     months/years as the page stays open, no reload ever required) ──────── */
   var cd = document.querySelector('[data-countdown]');
   if (cd) {
     var cells = {
@@ -44,7 +48,11 @@
     if (cells.d && cells.h && cells.m && cells.s) {
       var tick = function () {
         var diff = startDate.getTime() - Date.now();
-        if (diff < 0) diff = 0;
+        if (diff <= 0) {
+          startDate = nextFirstMonday();
+          renderNextStart(startDate);
+          diff = startDate.getTime() - Date.now();
+        }
         var s = Math.floor(diff / 1000);
         cells.d.textContent = Math.floor(s / 86400);
         cells.h.textContent = Math.floor((s % 86400) / 3600);

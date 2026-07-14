@@ -120,9 +120,9 @@ TEMPLATE = """<!DOCTYPE html>
 {mbar}
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<script src="{root}assets/js/main.js?v=33" defer></script>
+<script src="{root}assets/js/main.js?v=34" defer></script>
 <script src="{root}assets/js/effects.js?v=33" defer></script>
-<script src="{root}assets/js/landing.js?v=32" defer></script>
+<script src="{root}assets/js/landing.js?v=33" defer></script>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
 <script src="{root}assets/js/campus.js?v=4" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->

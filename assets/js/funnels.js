@@ -57,17 +57,10 @@
       } catch (e) {}
     }
     function tick() {
-      var diff = Math.max(0, target - new Date());
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-      if (dEl) dEl.textContent = pad(d);
-      if (hEl) hEl.textContent = pad(h);
-      if (mEl) mEl.textContent = pad(m);
-      if (sEl) sEl.textContent = pad(s);
+      var diff = target - new Date();
       if (diff <= 0) {
-        /* roll target forward */
+        /* roll target forward -- and recompute diff immediately so the
+           display never flashes 00:00:00:00 while waiting for the next tick */
         target = firstMondayOfNextMonth(new Date());
         if (dateEl) {
           var lng = document.documentElement.lang || 'en';
@@ -77,7 +70,16 @@
             });
           } catch (e) {}
         }
+        diff = target - new Date();
       }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      if (dEl) dEl.textContent = pad(d);
+      if (hEl) hEl.textContent = pad(h);
+      if (mEl) mEl.textContent = pad(m);
+      if (sEl) sEl.textContent = pad(s);
     }
     tick();
     setInterval(tick, 1000);

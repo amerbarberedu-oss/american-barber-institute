@@ -28,14 +28,19 @@
     if (fm <= now) fm = firstMonday(now.getFullYear(), now.getMonth() + 1);
     return fm;
   }
-  var now = new Date();
-  var start = nextStartDate(now);
   var fmt = { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' };
-  document.querySelectorAll('[data-start-date]').forEach(function (el) {
-    el.textContent = start.toLocaleDateString(document.documentElement.lang === 'es' ? 'es-US' : 'en-US', fmt);
-  });
+  var startDateEls = document.querySelectorAll('[data-start-date]');
+  function renderStartDate(d) {
+    startDateEls.forEach(function (el) {
+      el.textContent = d.toLocaleDateString(document.documentElement.lang === 'es' ? 'es-US' : 'en-US', fmt);
+    });
+  }
+  var start = nextStartDate(new Date());
+  renderStartDate(start);
 
-  /* ---------- Countdown ---------- */
+  /* ---------- Countdown (perpetual: the instant the current cohort's start
+     time passes, it rolls forward to the next month's first Monday and keeps
+     ticking -- runs correctly indefinitely, no page reload ever required) --- */
   var cd = document.querySelector('[data-countdown]');
   if (cd) {
     var units = {
@@ -44,7 +49,13 @@
     };
     var classStart = new Date(start); classStart.setHours(8, 0, 0, 0);
     function tick() {
-      var diff = Math.max(0, classStart - new Date());
+      var diff = classStart - new Date();
+      if (diff <= 0) {
+        start = nextStartDate(new Date());
+        classStart = new Date(start); classStart.setHours(8, 0, 0, 0);
+        renderStartDate(start);
+        diff = classStart - new Date();
+      }
       var s = Math.floor(diff / 1000);
       if (units.d) units.d.textContent = Math.floor(s / 86400);
       if (units.h) units.h.textContent = Math.floor((s % 86400) / 3600);
