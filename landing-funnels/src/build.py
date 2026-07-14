@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "63"
+CSS_V = "64"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -95,10 +95,10 @@ LOGO_ALT = ("American Barber Institute — "
 # Each campus logo already contains the street address baked into the
 # artwork, so we don't render a duplicate text address line in the header.
 def header(p):
-    """v46 — the actual abi.edu website header ported to landings:
-    ubar (campus + language + phones) → hdr2 (logo + nav + Book) → mstrip (mobile phones)
-    Then landings keep .lfx-promo + .lfx-seats below for urgency/conversion signals.
-    Requires body.shell2 class + site-header.css + campus.js."""
+    """v47 (2026-07-14, client): no navbar, no campus switcher on landing
+    pages — just two rows: a language row (full English/Español, all
+    viewports) and a logo+phone row. Phones are campus-only (no Haircut).
+    Requires body.shell2 lf-page classes + site-header.css."""
     es = p["lang"] == "es"
     campus_slug = p["campus"]["slug"]
     is_manhattan = campus_slug == "manhattan"
@@ -106,27 +106,20 @@ def header(p):
     # Language toggle: same campus, other language
     en_href = "/" + (p["path"] if not es else p["alt"])
     es_href = "/" + (p["alt"] if not es else p["path"])
-
-    # Campus toggle: other campus, same language
-    mht_href = "/500-hours-master-barber-program-landing-page" + ("/spanish" if es else "")
-    bx_href  = "/master-barber-program-bronx" + ("/spanish" if es else "")
+    home_href = "/spanish" if es else "/"
 
     lang_label = "Idioma" if es else "Language"
 
-    pin_svg = ('<svg class="seg-pin" width="12" height="12" viewBox="0 0 24 24" fill="none" '
-               'stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-               '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>')
     globe_svg = ('<svg class="seg-globe" width="12" height="12" viewBox="0 0 24 24" fill="none" '
                  'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
                  '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
                  '<path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>')
 
-    campus_switch = ""
     lang_toggle = (
         '<div class="seg seg-lang" role="group" aria-label="%s" data-seg="lang">'
         '<span class="seg-glider" aria-hidden="true"></span>'
-        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab" data-short="EN">English</span></a>'
-        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab" data-short="ES">Español</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s">%s<span class="seg-lab">English</span></a>'
+        '<a class="seg-opt %s" href="%s" aria-current="%s"><span class="seg-lab">Español</span></a>'
         '</div>'
     ) % (
         h(lang_label),
@@ -134,66 +127,31 @@ def header(p):
         "is-active" if es else "", h(es_href), "true" if es else "false",
     )
 
-    # Per-campus phones for ubar (desktop) and mstrip (mobile)
-    phone_svg = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
-                 'stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'
+    # Per-campus phones, shown in the logo row. Manhattan = EN+ES; Bronx = 1.
+    phone_svg = ('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                 'stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
                  '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 '
                  '2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 '
                  '6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>')
-    scissors_svg = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
-                    'stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'
-                    '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>'
-                    '<path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg>')
-    mphone_svg = phone_svg.replace('width="14" height="14"', 'width="12" height="12"').replace(
-        'stroke-width="2.1"', 'stroke-width="2.2"').replace(' aria-hidden="true"', ' aria-hidden="true"')
-    mscissors_svg = scissors_svg.replace('width="14" height="14"', 'width="12" height="12"').replace(
-        'stroke-width="2.1"', 'stroke-width="2.2"')
 
-    # Landings show ALL 3 admissions numbers regardless of campus (per client
-    # 2026-07-07): Manhattan English + Manhattan Spanish + Bronx. No Haircut.
-    # Visitors on either landing can reach any campus's admissions line.
     if is_manhattan:
-        ubar_calls = (
-            '<a class="ubar-call ubar-call--admis" href="tel:+12122902289"><span class="ubar-ico" aria-hidden="true">%s</span>'
-            '<span class="ubar-tag">English</span><span class="ubar-num">(212) 290-2289</span></a>'
-            '<a class="ubar-call ubar-call--es" href="tel:+12122900278"><span class="ubar-ico" aria-hidden="true">ES</span>'
-            '<span class="ubar-tag">Spanish</span><span class="ubar-num">(212) 290-0278</span></a>'
+        phones = (
+            '<a class="hdr2-phone" href="tel:+12122902289">%s'
+            '<span class="hdr2-phone-num">(212) 290-2289</span>'
+            '<span class="hdr2-phone-tag">English</span></a>'
+            '<a class="hdr2-phone" href="tel:+12122900278">'
+            '<span class="hdr2-phone-ico" aria-hidden="true">ES</span>'
+            '<span class="hdr2-phone-num">(212) 290-0278</span>'
+            '<span class="hdr2-phone-tag">Spanish</span></a>'
         ) % (phone_svg,)
-        mstrip_phones = (
-            '<a class="mstrip-phone" href="tel:+12122902289">%s<span class="mstrip-t"><b>(212) 290-2289</b><i>English</i></span></a>'
-            '<a class="mstrip-phone" href="tel:+12122900278">%s<span class="mstrip-t"><b>(212) 290-0278</b><i>Spanish</i></span></a>'
-        ) % (mphone_svg, mphone_svg)
     else:
-        ubar_calls = (
-            '<a class="ubar-call ubar-call--bx" href="tel:+17186760640"><span class="ubar-ico" aria-hidden="true">%s</span>'
-            '<span class="ubar-tag">Bronx</span><span class="ubar-num">(718) 676-0640</span></a>'
+        phones = (
+            '<a class="hdr2-phone" href="tel:+17186760640">%s'
+            '<span class="hdr2-phone-num">(718) 676-0640</span>'
+            '<span class="hdr2-phone-tag">Bronx</span></a>'
         ) % (phone_svg,)
-        mstrip_phones = (
-            '<a class="mstrip-phone" href="tel:+17186760640">%s<span class="mstrip-t"><b>(718) 676-0640</b><i>Bronx</i></span></a>'
-        ) % (mphone_svg,)
 
-    # Nav labels (translate for ES) + language-consistent nav hrefs.
-    # ES landings link back to /es/ (Spanish site landing) so Spanish visitors
-    # never bounce to an English page mid-flow. Full ES parity for /es/about,
-    # /es/guides, etc. is Phase 2 — for launch we consolidate to /es/.
-    if es:
-        L = {"programs": "Programas", "why": "Por qué ABI", "guides": "Guías",
-             "tuition": "Costo y Ayuda", "contact": "Contacto",
-             "book": "Reservar Visita", "menu": "Menú",
-             "prog500": "500 horas — Barbero Maestro"}
-        NAV = {"home": "/spanish", "about": "/spanish", "guides": "/spanish",
-               "tuition": "/spanish", "contact": "/spanish"}
-        home_href = "/spanish"
-    else:
-        L = {"programs": "Programs", "why": "Why ABI", "guides": "Guides",
-             "tuition": "Tuition & Funding", "contact": "Contact",
-             "book": "Book a Tour", "menu": "Menu",
-             "prog500": "500-Hour Master Barber"}
-        NAV = {"home": "/", "about": "/about", "guides": "/guides",
-               "tuition": "/tuition-and-funding", "contact": "/contact"}
-        home_href = "/"
-
-    # Promo strip + Limited Seats banner sit BELOW the new header — landings still need urgency.
+    # Promo strip + Limited Seats banner sit BELOW the header — landings still need urgency.
     promo = h(p["promo_strip"])
     for price in ("$150 per week*", "$150 por semana*"):
         promo = promo.replace(price, "<b>%s</b>" % price)
@@ -202,55 +160,21 @@ def header(p):
                 '<path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg>')
 
     return (
-        '<div class="ubar"><div class="ubar-in">'
-        '<div class="ubar-left">%s%s</div>'
-        '<div class="ubar-right tb-calls" data-campus-phones>%s</div>'
-        '</div></div>\n'
+        '<div class="ubar"><div class="ubar-in">%s</div></div>\n'
         '<header class="hdr2"><div class="hdr2-in">'
         '<a class="logo2" href="%s" aria-label="American Barber Institute — home">'
         '<img class="logo2-img" src="/assets/img/logo-final.gif" alt="American Barber Institute" width="385" height="99" fetchpriority="high">'
         '</a>'
-        '<nav class="nav2" aria-label="Main">'
-        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
-        '<div class="nav2-item"><a class="nav2-top" href="%s">%s</a></div>'
-        '</nav>'
-        '<a class="hdr2-cta" href="#reserve">%s</a>'
-        '<button class="hamburger" aria-label="%s" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>'
-        '</div>'
-        '<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile"><div class="container">'
-        '<div class="drawer-group"><p class="drawer-h">%s</p><a href="%s">%s</a></div>'
-        '<div class="drawer-group">'
-        '<a class="drawer-solo" href="%s">%s</a>'
-        '<a class="drawer-solo" href="%s">%s</a>'
-        '<a class="drawer-solo" href="%s">%s</a>'
-        '<a class="drawer-solo" href="%s">%s</a>'
-        '</div>'
-        '<a class="drawer-cta" href="#reserve"><b>%s</b></a>'
-        '</div></nav>'
-        '</header>\n'
-        '<div class="mstrip"><div class="mstrip-phones">%s</div></div>\n'
+        '<div class="hdr2-phones">%s</div>'
+        '</div></header>\n'
         '<div class="lfx-promo">%s</div>\n'
         '<div class="lfx-seats" role="status"><span class="lfx-star" aria-hidden="true">%s</span>'
         '<span class="lfx-seats-t"><b>%s</b><i>%s</i></span></div>\n'
     ) % (
-        campus_switch, lang_toggle, ubar_calls,
+        lang_toggle,
         home_href,
-        NAV["home"], L["programs"],
-        NAV["about"], L["why"],
-        NAV["guides"], L["guides"],
-        NAV["tuition"], L["tuition"],
-        NAV["contact"], L["contact"],
-        L["book"], L["menu"],
-        L["programs"], NAV["home"], L["prog500"],
-        NAV["about"], L["why"],
-        NAV["guides"], L["guides"],
-        NAV["tuition"], L["tuition"],
-        NAV["contact"], L["contact"],
-        L["book"],
-        mstrip_phones, promo, star_svg, h(seats_kicker), h(seats_lead),
+        phones,
+        promo, star_svg, h(seats_kicker), h(seats_lead),
     )
 
 

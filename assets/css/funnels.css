@@ -2045,20 +2045,6 @@ chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;
 @media (max-width:640px){.lf-floor__card{width:150px}}
 
 
-/* ── mobile: swap long language labels for EN/ES via data-short. Client
-      2026-07-14: full words break the mobile navbar on landing pages. ── */
-@media (max-width: 768px) {
-  .lf-lang a[data-short],
-  .lfx-lang a[data-short],
-  .seg-lang .seg-lab[data-short]{font-size:0!important;letter-spacing:0!important}
-  .lf-lang a[data-short]::before,
-  .lfx-lang a[data-short]::before,
-  .seg-lang .seg-lab[data-short]::before{
-    content:attr(data-short);
-    font-size:.78rem;letter-spacing:.06em;font-weight:600;
-  }
-}
-
 
 /* ── GHL form wrapper sizes (2026-07-14): iframes now use style="height:100%"
       per client's exact embed code, so the wrapper needs an explicit height
