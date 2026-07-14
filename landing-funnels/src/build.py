@@ -939,7 +939,7 @@ def page_head(p):
 '%(ld_scripts)s'
 '<script src="/assets/js/analytics.js?v=7" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
-'<script src="/assets/js/campus.js?v=2" defer></script>\n'
+'<script src="/assets/js/campus.js?v=3" defer></script>\n'
 '<script src="/assets/js/landing.js?v=32" defer></script>\n'
 '</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'

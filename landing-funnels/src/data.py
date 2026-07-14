@@ -564,16 +564,15 @@ EARNINGS_NOTE = {
 
 
 # ─── Promo topbar — phone chips per campus ───────────────────────────
-# Manhattan shows 2 chips (EN + ES). Bronx shows 1 chip.
+# Manhattan shows 2 chips (EN + ES), both Manhattan numbers. Bronx shows 1
+# chip, its own number. No haircut/walk-in number on landing pages.
 TOPBAR_PHONES_BY_CAMPUS = {
     "manhattan": [
         {"label": "EN", "display": "(212) 290-2289", "tel": "+12122902289"},
         {"label": "ES", "display": "(212) 290-0278", "tel": "+12122900278"},
-        {"label": "Haircut", "display": "(856) 316-1551", "tel": "+18563161551"},
     ],
     "bronx": [
         {"label": "Bronx", "display": "(718) 676-0640", "tel": "+17186760640"},
-        {"label": "Haircut", "display": "(856) 316-1551", "tel": "+18563161551"},
     ],
 }
 

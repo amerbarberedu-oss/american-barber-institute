@@ -74,7 +74,26 @@ function buildBOTH(){return{
   mbar:{call:"+12122902289",text:"+12122902289"}
 };}
 
-function getData(){return{manhattan:buildMN(),bronx:buildBX(),both:buildBOTH()};}
+/* Landing-funnel pages (body.lf-page) show campus-only numbers — no haircut/walk-in line */
+function isLandingPage(){return document.body.classList.contains("lf-page");}
+function stripHaircut(d){
+  var isCut=function(p){return p.tel==="+18563161551";};
+  return{
+    ubar:d.ubar.filter(function(p){return !isCut(p);}),
+    mstrip:d.mstrip.filter(function(p){return !isCut(p);}),
+    footer:d.footer.filter(function(p){return !isCut(p);}),
+    mbar:d.mbar
+  };
+}
+function getData(){
+  var d={manhattan:buildMN(),bronx:buildBX(),both:buildBOTH()};
+  if(isLandingPage()){
+    d.manhattan=stripHaircut(d.manhattan);
+    d.bronx=stripHaircut(d.bronx);
+    d.both=stripHaircut(d.both);
+  }
+  return d;
+}
 
 function pageCampus(){
   var c=(document.body.getAttribute("data-campus")||"manhattan").toLowerCase();
