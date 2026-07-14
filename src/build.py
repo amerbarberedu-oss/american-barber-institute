@@ -1081,7 +1081,7 @@ def _lang_toggle(root, out):
 ES_META = {
     'about.html': ("¿Es ABI la escuela de barbería adecuada para ti? Conoce al equipo",
                    "Cómo el American Barber Institute ayuda a quienes cambian de carrera a convertirse en barberos licenciados en NY: nuestros mentores, formación práctica y más de 30 años construyendo carreras detrás de la silla."),
-    'instructors.html': ("¿Quién te enseñará a barbeer? Conoce a los mentores de ABI",
+    'instructors.html': ("¿Quién te enseñará a ser barbero? Conoce a los mentores de ABI",
                          "Las personas que forjan tu carrera: los instructores maestros de ABI, incluidos King David Ayeoribe y Harold “Barkim” Brown, con más de 50 años combinados detrás de la silla."),
     'jobs.html': ("¿Qué puedes hacer después de la escuela de barbería? Salidas profesionales",
                   "A dónde puede llevarte una licencia de barbero — sillas de barbería, alquiler de espacio, tu propio negocio — y cómo el apoyo de colocación laboral de ABI ayuda a los graduados."),
