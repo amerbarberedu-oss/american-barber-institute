@@ -800,12 +800,19 @@ def _campus_switch(root, campus, es=False):
         mn_active, mn_href, ('true' if mn_active else 'false'), pin,
         bx_active, bronx_href, ('true' if bx_active else 'false'), pin)
 
-def _header_nav(root, es, campusswitch, langtoggle):
+def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
     """Full <header class="hdr2">...</header> block (logo + desktop nav +
     Book-a-Tour CTA + hamburger + mobile drawer). EN/ES-aware: on Spanish
     pages every label AND every href now stays inside /spanish/ — this was a
     sitewide gap (client 2026-07-08 audit) where the shared header showed
-    English nav text and linked every ES page back to its English twin."""
+    English nav text and linked every ES page back to its English twin.
+
+    `root` prefixes NAV LINKS (kept relative so ES nav stays inside /spanish/).
+    `aroot` prefixes ASSET paths (the logo). On ES twins the nav-link `root` is
+    the EN root (one level too shallow for an asset, since the ES page lives one
+    dir deeper under /spanish/), so the caller passes aroot=es_root to keep the
+    logo pointing at the real /assets/ dir. Defaults to root for EN pages."""
+    aroot = root if aroot is None else aroot
     L = {
         "programs": "Programas" if es else "Programs",
         "master500": "Barbero Maestro (500 Horas)" if es else "500-Hour Master Barber",
@@ -831,7 +838,7 @@ def _header_nav(root, es, campusswitch, langtoggle):
         '<header class="hdr2">\n'
         '  <div class="hdr2-in">\n'
         f'    <a class="logo2" href="{root}index.html" aria-label="American Barber Institute — {L["home"]}" title="American Barber Institute">\n'
-        f'      <img class="logo2-img" src="{root}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">\n'
+        f'      <img class="logo2-img" src="{aroot}assets/img/logo-final.gif" alt="American Barber Institute — 48 West 39th Street, New York, NY 10018 & 121 Westchester Square, Bronx, NY 10461" width="385" height="99" fetchpriority="high">\n'
         '    </a>\n'
         '    <nav class="nav2" aria-label="Main">\n'
         f'      <div class="nav2-item"><a class="nav2-top" href="{root}index.html">{L["home_label"]}</a></div>\n'
@@ -1173,6 +1180,56 @@ ES_META = {
     'guides/barbering-glossary.html': ("Glosario de barbería: 40+ términos que todo nuevo barbero debe conocer",
                                        "Fade, taper, texturize, lineup y más — un glosario en español claro de los términos de barbería que escucharás desde el primer día."),
 }
+# Bespoke Spanish title/desc for the 10 location pages (previously fell through
+# to the English fallback -> duplicate EN meta on the ES twin) and the 11 blog
+# posts (previously auto-generated). Added 2026-07-14 alongside full-body ES
+# translation of these pages. Keyed by the EN `out` path, same as ES_META.
+ES_META.update({
+    # ── Location pages (fixes duplicate-EN-title bug on /spanish/ twins) ──
+    'barber-school-queens-ny.html': ("Escuela de Barbería cerca de Queens, NY | Tu Carrera",
+                                      "ABI está a 30 min de Queens. Con licencia de NY desde 1996. Maestro Barbero de 500 horas con planes de $150/semana. Visita el campus de Manhattan hoy."),
+    'barber-school-brooklyn-new-york.html': ("Escuela de Barbería cerca de Brooklyn, NY — Inicia tu Carrera",
+                                             "A minutos de Brooklyn en metro. La escuela de barbería de ABI, con licencia de NY, forma profesionales desde 1996. Programa de 500 horas, $150/semana."),
+    'barber-school-yonkers-new-york.html': ("Escuela de Barbería cerca de Yonkers, NY — Carrera Real",
+                                            "ABI es una de las escuelas de barbería más reconocidas cerca de Yonkers. Fórmate en el campus del Bronx: 500 horas y planes de pago desde $150/semana."),
+    'barber-school-westchester-ny.html': ("Escuela de Barbería cerca de Westchester, NY — 4 Meses",
+                                          "Estudiantes de Westchester se forman en el campus del Bronx de ABI. Barbero Maestro con licencia en ~4 meses, programa de 500 horas desde $150/semana."),
+    'barber-school-long-island-ny.html': ("Escuela de Barbería en Manhattan cerca de Long Island, NY",
+                                          "Toma el LIRR al campus de ABI en Manhattan. Programa Master Barber de 500 horas, planes de pago de $150/semana y colocación laboral. Desde 1996."),
+    'barber-school-staten-island-ny.html': ("Escuela de Barbería cerca de Staten Island, NY",
+                                            "Estudiantes de Staten Island: el campus de ABI en Manhattan queda a un ferry. Barbero Maestro de 500 horas en ~4 meses, planes de $150/semana."),
+    'barber-school-mount-vernon-ny.html': ("Escuela de Barbería cerca de Mount Vernon, NY",
+                                           "Estudiantes de Mount Vernon: el campus del Bronx de ABI en Westchester Square está a minutos. Master Barber de 500 h, planes de $150/semana y colocación."),
+    'barber-school-port-chester-ny.html': ("Escuela de Barbería cerca de Port Chester, NY — Barbero Maestro",
+                                           "Estudiantes de Port Chester se forman en el campus del Bronx de ABI. Fades, afeitado y licencia de Barbero Maestro en ~4 meses; planes de $150/semana."),
+    'barber-school-connecticut.html': ("Escuela de Barbería para Connecticut — Estudia en NY y Transfiere",
+                                       "Residentes de CT: obtén tu licencia de barbero de NY en mitad de tiempo y costo, luego transfiérela por reciprocidad. Programa de 500 horas desde $150/semana."),
+    'barber-school-pennsylvania.html': ("Escuela de Barbería para Pensilvania — Transferir Licencia",
+                                        "Transfiere tu licencia de barbero de NY a PA por reciprocidad. Ahorra ~$10,400 y 700 horas frente al programa completo de PA. ABI te guía en el proceso."),
+    # ── Blog posts (upgrade from auto-generated to bespoke Spanish meta) ──
+    'blog/why-should-i-go-to-barber-school.html': ("¿Vale la pena la escuela de barbería? | Blog ABI",
+                                                   "¿Vale la pena la escuela de barbería? Consejos de carrera y perspectiva del sector desde una escuela de barbería de NYC enfocada en tu futuro laboral."),
+    'blog/a-women-barber-the-benefits-of-barber-school.html': ("Mujer barbera: las ventajas de la escuela de barbería | Blog ABI",
+                                                              "Ser mujer barbera: las ventajas de la escuela de barbería y cómo abrirte camino detrás de la silla — consejos de carrera de una escuela de NYC."),
+    'blog/are-barbershops-profitable-everything-you-need-t.html': ("¿Son rentables las barberías? Todo lo que debes saber | Blog ABI",
+                                                                   "¿Son rentables las barberías? Todo lo que debes saber: consejos de carrera y visión del sector desde la escuela de barbería enfocada en la carrera de NYC."),
+    'blog/first-things-first-what-happens-after-barber-sch.html': ("¿Qué pasa después de la escuela de barbería? | Blog ABI",
+                                                                   "Lo primero es lo primero: qué pasa después de la escuela de barbería — licencia, primer empleo y próximos pasos, según una escuela de NYC."),
+    'blog/how-to-successfully-market-your-barbershop.html': ("Cómo promocionar tu barbería con éxito | Blog ABI",
+                                                            "Cómo promocionar tu barbería con éxito: estrategias para atraer clientes y llenar tu silla, con consejos de una escuela de barbería de NYC."),
+    'blog/modern-day-barbering-problem-overcome-them.html': ("Problemas de la barbería moderna y cómo superarlos | Blog ABI",
+                                                            "Los problemas de la barbería moderna y cómo superarlos: retos reales detrás de la silla y soluciones prácticas, según una escuela de NYC."),
+    'blog/diverse-haircut-training-at-american-barber-inst.html': ("Entrenamiento en cortes diversos en ABI | Blog ABI",
+                                                                  "Entrenamiento en cortes diversos en American Barber Institute: consejos de carrera e ideas del sector desde una escuela de barbería de NYC."),
+    'blog/barber-school-instructors-in-nyc.html': ("Instructores de escuela de barbería en NYC | Blog ABI",
+                                                   "Conoce a los instructores de escuela de barbería en NYC: quién te enseña y por qué importa, desde una escuela de barbería enfocada en la carrera."),
+    'blog/exploring-the-benefits-of-enrolling-in-the-ameri.html': ("Ventajas de estudiar en American Barber Institute | Blog ABI",
+                                                                  "Beneficios de estudiar en American Barber Institute: consejos de carrera y visión del sector desde la escuela de barbería de NYC enfocada en tu futuro."),
+    'blog/affordable-barber-school-nyc.html': ("Escuela de Barbería Económica en NYC sin Arruinarte | Blog ABI",
+                                               "Escuela de barbería económica en NYC: formación de calidad con licencia de 500 horas y planes de pago semanales, sin arruinar tu presupuesto."),
+    'blog/how-much-money-do-barbers-make.html': ("¿Cuánto ganan los barberos? Guía de ingresos | Blog ABI",
+                                                 "Cuánto ganan los barberos en Nueva York en 2026: una guía de ingresos por etapa de carrera, de recién graduado a dueño de barbería."),
+})
 # Blog posts get an auto-generated ES title/desc (translation deferred).
 ES_BANNER = ('<div style="background:linear-gradient(90deg,#0E8C82,#12B3A6);color:#fff;'
              'padding:.65rem 1rem;text-align:center;font-size:.92rem;font-weight:600;'
@@ -1351,7 +1408,7 @@ def build():
             # es_root) so every nav link stays inside the es/ subtree instead
             # of jumping back to the English page at the repo root.
             es_campusswitch = _campus_switch(es_root, campus, es=True)
-            es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle)
+            es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle, aroot=es_root)
             es_footer_block = _footer_block(root, True)
             es_hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{es_en_href}">\n'
@@ -1377,6 +1434,29 @@ def build():
             _es_override_path = os.path.join(SRC, 'es-' + partial)
             _real_translation = os.path.exists(_es_override_path)
             _source_body = open(_es_override_path, encoding='utf-8').read() if _real_translation else body
+            # ES blog posts get the same author byline as EN (E-E-A-T parity),
+            # rendered in Spanish and linking to the Spanish instructors page.
+            if _real_translation and out.startswith('blog/') and out != 'blog/index.html':
+                _es_slug = out[len('blog/'):-len('.html')]
+                _es_bname, _es_brole = BLOG_AUTHORS.get(_es_slug, ("David Ayeoribe", "Lead Senior Instructor & Director"))
+                _ES_ROLE = {
+                    "Lead Senior Instructor & Director": "Instructor Principal Senior y Director",
+                    "Lead Instructor": "Instructor Principal",
+                    "Founding Director, ABI Bronx": "Director Fundador, ABI Bronx",
+                }
+                _es_role_es = _ES_ROLE.get(_es_brole, _es_brole)
+                _es_byline = (
+                    '<p class="post-meta" style="margin:.4rem 0 1.6rem;font-size:.92rem;'
+                    'color:#5b6273;letter-spacing:.01em">'
+                    'Por <a href="/spanish/instructors" rel="author" style="color:inherit;text-decoration:underline">'
+                    f'<span itemprop="author">{_es_bname}</span></a> · {_es_role_es} · '
+                    '<time datetime="2024-02-01" itemprop="datePublished">1 de febrero de 2024</time>'
+                    '</p>'
+                )
+                if '</h1>' in _source_body:
+                    _source_body = _source_body.replace('</h1>', '</h1>' + _es_byline, 1)
+                else:
+                    _source_body = _es_byline + _source_body
             _fixed_body = re.sub(
                 r'((?:src|href)=")((?:\.\./)*)(assets/)',
                 lambda m: m.group(1) + '../' + m.group(2) + m.group(3),
