@@ -1491,8 +1491,11 @@ body.lf-page--brnx-es {
   min-height:clamp(640px,68vw,820px);display:flex;align-items:flex-start;background:#0a1416}
 #content .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
   background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat}
+/* straight LEFT→RIGHT fade (not the old 100deg diagonal, which drew a slanted
+   dark band / "line" across a tall photo). Dark only on the left behind the
+   headline, fully clear by ~80% so the photo reads bright with no seam. */
 #content .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,rgba(8,18,20,.72) 0%,rgba(8,18,20,.6) 38%,rgba(8,18,20,.32) 58%,rgba(8,18,20,.08) 76%,rgba(8,18,20,0) 90%)}
+  background:linear-gradient(to right,rgba(8,18,20,.78) 0%,rgba(8,18,20,.6) 32%,rgba(8,18,20,.32) 50%,rgba(8,18,20,.1) 66%,rgba(8,18,20,0) 80%)}
 #content .hx .hx-copy{position:relative;z-index:2;max-width:63%;
   padding:clamp(1.3rem,2.8vw,2.2rem);color:#fff}
 #content .hx .hx-h1{margin:0 0 .35rem;text-transform:none;font-family:var(--font-display);

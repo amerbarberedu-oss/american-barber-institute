@@ -30,6 +30,7 @@ function buildMN(){return{
   ],
   mstrip:[
     {ico:PHONE_SVG,num:"(212) 290-2289",lab:L("English","Inglés"),tel:"+12122902289"},
+    {ico:PHONE_SVG,num:"(212) 290-0278",lab:L("Spanish","Español"),tel:"+12122900278"},
     {ico:SCISSORS_SVG,num:"(856) 316-1551",lab:L("Haircut","Corte"),tel:"+18563161551"}
   ],
   footer:[

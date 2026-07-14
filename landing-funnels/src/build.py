@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "64"
+CSS_V = "65"
 JS_V  = "15"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -106,7 +106,6 @@ def header(p):
     # Language toggle: same campus, other language
     en_href = "/" + (p["path"] if not es else p["alt"])
     es_href = "/" + (p["alt"] if not es else p["path"])
-    home_href = "/spanish" if es else "/"
 
     lang_label = "Idioma" if es else "Language"
 
@@ -159,12 +158,14 @@ def header(p):
     star_svg = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
                 '<path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg>')
 
+    # Landing pages are standalone — logo is NOT a link (must never navigate to
+    # the main site home). Rendered as a plain span (client 2026-07-14).
     return (
         '<div class="ubar"><div class="ubar-in">%s</div></div>\n'
         '<header class="hdr2"><div class="hdr2-in">'
-        '<a class="logo2" href="%s" aria-label="American Barber Institute — home">'
+        '<span class="logo2" aria-label="American Barber Institute">'
         '<img class="logo2-img" src="/assets/img/logo-final.gif" alt="American Barber Institute" width="385" height="99" fetchpriority="high">'
-        '</a>'
+        '</span>'
         '<div class="hdr2-phones">%s</div>'
         '</div></header>\n'
         '<div class="lfx-promo">%s</div>\n'
@@ -172,7 +173,6 @@ def header(p):
         '<span class="lfx-seats-t"><b>%s</b><i>%s</i></span></div>\n'
     ) % (
         lang_toggle,
-        home_href,
         phones,
         promo, star_svg, h(seats_kicker), h(seats_lead),
     )
@@ -863,7 +863,7 @@ def page_head(p):
 '%(ld_scripts)s'
 '<script src="/assets/js/analytics.js?v=7" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
-'<script src="/assets/js/campus.js?v=3" defer></script>\n'
+'<script src="/assets/js/campus.js?v=4" defer></script>\n'
 '<script src="/assets/js/landing.js?v=32" defer></script>\n'
 '</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
