@@ -1,8 +1,9 @@
 <!-- ============================================================
      GALLERY — What barber training looks like (rebuilt v3)
-     Band arc: paper(hero) → dark(film) → paper(cuts grid) → sand(color) →
+     Band arc: paper(hero) → sand(film) → paper(cuts grid) → sand(color) →
                petrol(shaves) → sand(coverflow) → dark(reel wall) →
-               paper(people) → tint(graduates) → sand(floor) → petrol(37 reels) → dark(CTA)
+               paper(people) → tint(graduates) → sand(floor) → paper(37 reels) → dark(CTA)
+               [2026-07-16: film + 37-reels lightened from dark/petrol per client density-reduction request]
      PRESERVED (JS-dependent — do not restructure):
        • .gallery-grid <a> lightbox hooks (effects.js)
        • .cf3d-* coverflow markup + the <script> at the bottom
@@ -10,7 +11,7 @@
      Scoped <style> below remaps legacy-blue kicker gradients to teal (from original).
      ============================================================ -->
 <style>
-.gal-film-sec .eyebrow{background:linear-gradient(90deg,var(--teal),var(--teal-bright)) !important;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gal-film-sec .eyebrow{background:linear-gradient(90deg,var(--teal),var(--teal-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 </style>
 
 <!-- ── HERO (paper) ── -->
@@ -24,8 +25,8 @@
   </div>
 </section>
 
-<!-- ── FILM: A DAY ON THE FLOOR (dark) ── -->
-<section class="band band--dark gal-film-sec" data-reveal>
+<!-- ── FILM: A DAY ON THE FLOOR (sand — lightened from dark 2026-07-16) ── -->
+<section class="band band--sand gal-film-sec" data-reveal>
   <div class="eb-wrap">
     <div class="section-head center">
       <p class="eyebrow">A Day on the Floor</p>
@@ -273,8 +274,8 @@
   </div>
 </section>
 
-<!-- ── 37 REELS (petrol) — KEEP .cf3d-reel markup for the script ── -->
-<section class="band band--petrol" data-reveal>
+<!-- ── 37 REELS (paper — lightened from petrol 2026-07-16) — KEEP .cf3d-reel markup for the script ── -->
+<section class="band band--paper" data-reveal>
   <span class="band__blob"></span>
   <div class="eb-wrap">
     <div class="section-head">

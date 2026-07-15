@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "65"
+CSS_V = "68"
 JS_V  = "16"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -178,7 +178,8 @@ def header(p):
     )
 
 
-# ── HERO (identical structure to homepage .hx hero — see index.html) ─
+# ── HERO (matches the approved homepage v5 hero pattern — see index.html;
+#    features render in a separate .hx-features band after the hero, not overlaid on the photo) ─
 def hero(p):
     lang = p["lang"]; es = lang == "es"
     is_bx = p["campus"]["slug"] == "bronx"
@@ -202,12 +203,14 @@ def hero(p):
     min_label = "Min" if not es else "Min"
     sec_label = "Sec" if not es else "Seg"
 
+    campus_feat_en = f'{p["campus"]["name_en"]} — {p["campus"]["addr_short_en"]}'
+    campus_feat_es = f'{p["campus"]["name_es"]} — {p["campus"]["addr_short_es"]}'
     feats = [
         'Fits your life — day, evening & weekend tracks' if not es else 'Se adapta a tu vida — clases de día, tarde y fines de semana',
         'Hands-on training on real clients from your first weeks' if not es else 'Entrenamiento práctico con clientes reales desde las primeras semanas',
         'Funding that fits — ACCES-VR, GI Bill®, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, GI Bill®, planes semanales|Descubre lo que funciona para tu presupuesto',
         'Career support & job-placement help when you graduate' if not es else 'Apoyo profesional y ayuda para encontrar empleo al graduarte',
-        'Two NYC campuses — Manhattan and the Bronx' if not es else 'Dos sedes en NYC — Manhattan y el Bronx',
+        campus_feat_en if not es else campus_feat_es,
     ]
     feat_svgs = [
         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
@@ -220,23 +223,23 @@ def hero(p):
     for txt, svg in zip(feats, feat_svgs):
         if "|" in txt:
             main, sub_ = txt.split("|", 1)
-            feats_html += f'''            <div class="hx-featbox-item">
-              {svg}
-              <span>
-                <b>{main}</b>
-                <i>{sub_}</i>
-              </span>
-            </div>
+            feats_html += f'''    <div class="hx-feature">
+      {svg}
+      <span>
+        <b>{main}</b>
+        <i>{sub_}</i>
+      </span>
+    </div>
 '''
         else:
-            feats_html += f'''            <div class="hx-featbox-item">
-              {svg}
-              <span>{txt}</span>
-            </div>
+            feats_html += f'''    <div class="hx-feature">
+      {svg}
+      <span>{txt}</span>
+    </div>
 '''
 
     form_title = "Reserve Your Spot Today" if not es else "Reserva Tu Lugar Hoy"
-    form_sub = "Fill out the form and an Admissions Advisor will contact you.<br><i>Kindly fill out the form to receive a call from one of AI Agents</i>" if not es else "Completa el formulario y un asesor de admisiones te contactará.<br><i>Por favor, completa el formulario para recibir una llamada de nuestros Agentes de IA</i>"
+    form_sub = "Fill out the form and an Admissions Advisor will contact you.<br><i>Kindly fill out the form to receive a call from one of our Agents</i>" if not es else "Completa el formulario y un asesor de admisiones te contactará.<br><i>Por favor completa el formulario para recibir una llamada de uno de nuestros Agentes</i>"
 
     html = f'''<section class="hx reveal">
   <div class="hx-in">
@@ -264,11 +267,6 @@ def hero(p):
             <div class="hx-cell"><b data-cd-m>0</b><span>{min_label}</span></div>
             <div class="hx-cell"><b data-cd-s>0</b><span>{sec_label}</span></div>
           </div>
-        </div>
-
-        <div class="hx-featbox">
-          <div class="hx-featbox-grid">
-{feats_html}          </div>
         </div>
       </div>
     </div>
@@ -301,6 +299,11 @@ def hero(p):
     <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     </div>
   </div>
+</section>
+
+<section class="hx-features">
+  <div class="hx-features-in">
+{feats_html}  </div>
 </section>'''
     return html
 
@@ -432,7 +435,9 @@ def section_tuition(p):
                h(pl["price"]), h(pl["terms"]),
                "¡Hagámoslo!" if p["lang"] == "es" else "Let's Do It")
         )
-    return ('<section class="lf-section"><div class="lf-wrap">%s'
+    return ('<section class="lf-section lf-section--depth">'
+            '<div class="lf-blob" aria-hidden="true"></div>'
+            '<div class="lf-wrap">%s'
             '<div class="lf-tuition">%s</div>'
             '<p class="lf-tuition__note lf-rv">%s</p></div></section>\n'
             % (section_head(eb, ti, note if False else None), cards, h(note)))
@@ -861,7 +866,7 @@ def page_head(p):
 '%(ld_scripts)s'
 '<script src="/assets/js/analytics.js?v=7" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
-'<script src="/assets/js/campus.js?v=4" defer></script>\n'
+'<script src="/assets/js/campus.js?v=5" defer></script>\n'
 '<script src="/assets/js/landing.js?v=33" defer></script>\n'
 '</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'

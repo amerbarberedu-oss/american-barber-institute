@@ -74,13 +74,13 @@ TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/css/style.min.css?v=36">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=160">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=170">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
 <link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=3">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=6">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -124,7 +124,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/effects.js?v=33" defer></script>
 <script src="{root}assets/js/landing.js?v=33" defer></script>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
-<script src="{root}assets/js/campus.js?v=4" defer></script>
+<script src="{root}assets/js/campus.js?v=5" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335"></script>
 <script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget--prompt{{display:none!important}}@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
@@ -821,10 +821,14 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         "schedules": "Horarios y Flexibilidad" if es else "Schedules &amp; Flexibility",
         "why": "Por Qué ABI" if es else "Why ABI",
         "why_barbering": "Por Qué la Barbería" if es else "Why Barbering",
+        "about": "Sobre Nosotros" if es else "About Us",
+        "instructors": "Nuestros Instructores" if es else "Our Instructors",
+        "partners": "Nuestros Socios" if es else "Our Partners",
         "training_exp": "La Experiencia de Formación" if es else "The Training Experience",
         "career_paths": "Trayectorias Profesionales" if es else "Career Paths",
         "student_stories": "Historias de Estudiantes" if es else "Student Stories",
         "guides": "Guías" if es else "Guides",
+        "haircuts": "Cortes de Cabello" if es else "Haircuts",
         "tuition": "Costo y Financiamiento" if es else "Tuition &amp; Funding",
         "veterans": "Veteranos y GI Bill®" if es else "Veterans &amp; GI Bill®",
         "accesvr": "ACCES-VR" if es else "ACCES-VR",
@@ -855,12 +859,16 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["why"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
         '        <div class="nav2-menu" role="menu">\n'
         f'          <a href="{root}why-barbering.html" role="menuitem">{L["why_barbering"]}</a>\n'
+        f'          <a href="{root}about.html" role="menuitem">{L["about"]}</a>\n'
+        f'          <a href="{root}instructors.html" role="menuitem">{L["instructors"]}</a>\n'
+        f'          <a href="{root}partners.html" role="menuitem">{L["partners"]}</a>\n'
         f'          <a href="{root}training-experience.html" role="menuitem">{L["training_exp"]}</a>\n'
         f'          <a href="{root}career-paths.html" role="menuitem">{L["career_paths"]}</a>\n'
         f'          <a href="{root}student-stories.html" role="menuitem">{L["student_stories"]}</a>\n'
         '        </div>\n'
         '      </div>\n'
         f'      <div class="nav2-item"><a class="nav2-top" href="{root}guides/index.html">{L["guides"]}</a></div>\n'
+        f'      <div class="nav2-item"><a class="nav2-top" href="{root}haircuts.html">{L["haircuts"]}</a></div>\n'
         '      <div class="nav2-item nav2-has">\n'
         f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["tuition"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
         '        <div class="nav2-menu" role="menu">\n'
@@ -886,6 +894,9 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         '    <div class="drawer-group">\n'
         f'      <p class="drawer-h">{L["why"]}</p>\n'
         f'      <a href="{root}why-barbering.html">{L["why_barbering"]}</a>\n'
+        f'      <a href="{root}about.html">{L["about"]}</a>\n'
+        f'      <a href="{root}instructors.html">{L["instructors"]}</a>\n'
+        f'      <a href="{root}partners.html">{L["partners"]}</a>\n'
         f'      <a href="{root}training-experience.html">{L["training_exp"]}</a>\n'
         f'      <a href="{root}career-paths.html">{L["career_paths"]}</a>\n'
         f'      <a href="{root}student-stories.html">{L["student_stories"]}</a>\n'
@@ -898,6 +909,7 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         '    </div>\n'
         '    <div class="drawer-group">\n'
         f'      <a class="drawer-solo" href="{root}guides/index.html">{L["guides"]}</a>\n'
+        f'      <a class="drawer-solo" href="{root}haircuts.html">{L["haircuts"]}</a>\n'
         f'      <a class="drawer-solo" href="{root}contact.html">{L["contact"]}</a>\n'
         '    </div>\n'
         f'    <a class="drawer-cta" href="{root}contact.html#request-a-call"><b>{L["book"]}</b></a>\n'

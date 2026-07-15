@@ -935,6 +935,9 @@ body.lf-page--brnx-es {
   .lf-reel__media,
   .lf-reel__play,
   .lf-soc { transition: none !important; }
+  /* tuition card hover lift/tilt + depth blob — no motion under reduced-motion */
+  .lf-plan:hover { transform: none; box-shadow: var(--lf-shadow-sm); }
+  .lf-blob { display: none; }
 }
 
 /* perf: explicit aspect-ratio on lazy images (CLS-safe) */
@@ -1162,6 +1165,33 @@ body.lf-page--brnx-es {
 }
 .lf-plan { position: relative; display: flex; flex-direction: column; }
 .lf-plan__cta { margin-top: auto; }
+
+/* Tuition card hover polish — ports editorial.css's .ed-card/.tilt pattern
+   (lift + shadow-depth increase) onto the existing mousemove tilt above
+   (TILT_TARGETS in funnels.js already sets --rx/--ry on .lf-plan), so a
+   subtle rotateX/rotateY tilt and a lift both apply together on hover.
+   Scoped to real-mouse pointers so tap-and-hold on touch doesn't stick. */
+@media (hover: hover) and (pointer: fine) {
+  .lf-plan:hover {
+    transform: perspective(1000px) rotateY(var(--rx, 0deg)) rotateX(var(--ry, 0deg)) translateY(-6px) translateZ(0);
+    box-shadow: var(--lf-shadow-lg);
+  }
+}
+
+/* Soft radial depth accent behind the tuition cards — ports editorial.css's
+   .band__blob pattern, scoped to lf- tokens so var(--lf-accent) auto-matches
+   each page's own theme color (petrol-teal MHTN-EN, amber MHTN-ES, indigo
+   BRNX-EN, crimson BRNX-ES). Purely decorative: pointer-events:none + z-index:0
+   behind content, and the section clips it so it can never cause overflow. */
+.lf-section--depth { position: relative; overflow: hidden; }
+.lf-section--depth > .lf-wrap { position: relative; z-index: 1; }
+.lf-blob {
+  position: absolute; inset: auto auto 0 0; z-index: 0;
+  width: min(34vw, 420px); aspect-ratio: 1; border-radius: 50%;
+  filter: blur(60px); opacity: .16; pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, var(--lf-accent), transparent 70%);
+}
+
 .lf-tuition__note {
   max-width: 760px; margin: 1.6rem auto 0; text-align: center;
   color: var(--lf-soft-ink); font-size: .85rem; line-height: 1.6;
@@ -1485,17 +1515,17 @@ body.lf-page--brnx-es {
 
 #content .hx{padding-block:clamp(1.4rem,3.5vw,2.2rem);background:#fff!important}
 #content .hx .hx-in{width:min(1400px,94%);margin-inline:auto;padding:0!important;
-  display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,400px);gap:clamp(1.2rem,2.4vw,2rem);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(680px,702px);gap:clamp(1.2rem,2.4vw,2rem);
   align-items:start}
 #content .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-lg,14px);
   min-height:clamp(640px,68vw,820px);display:flex;align-items:flex-start;background:#0a1416}
 #content .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
-  background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat}
-/* straight LEFT→RIGHT fade (not the old 100deg diagonal, which drew a slanted
-   dark band / "line" across a tall photo). Dark only on the left behind the
-   headline, fully clear by ~80% so the photo reads bright with no seam. */
+  background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat;
+  filter:brightness(1.12)}
+/* soft fade only at the right edge (where the photo meets the white form panel), matching the
+   approved homepage v5 treatment — no darkening across the photo itself. */
 #content .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to right,rgba(8,18,20,.78) 0%,rgba(8,18,20,.6) 32%,rgba(8,18,20,.32) 50%,rgba(8,18,20,.1) 66%,rgba(8,18,20,0) 80%)}
+  background:linear-gradient(90deg,transparent 90%,rgba(255,255,255,.35) 100%)}
 #content .hx .hx-copy{position:relative;z-index:2;max-width:63%;
   padding:clamp(1.3rem,2.8vw,2.2rem);color:#fff}
 #content .hx .hx-h1{margin:0 0 .35rem;text-transform:none;font-family:var(--font-display);
@@ -1517,7 +1547,8 @@ body.lf-page--brnx-es {
 #content .hx .btn-tour{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;
   font-size:.86rem;letter-spacing:.03em}
 #content .hx .btn-tour svg{flex-shrink:0}
-#content .hx .formcard{align-self:start;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+/* form card — flattened to match the approved homepage v5 panel (no shadow, square corners) */
+#content .hx .formcard{align-self:start;box-shadow:none;border-radius:0;padding:1.5rem 1.3rem}
 
 #content .hx-next{background:rgba(6,14,16,.68)!important;border:1px solid rgba(255,255,255,.18)!important;
   border-radius:var(--radius,8px)!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
@@ -1534,19 +1565,24 @@ body.lf-page--brnx-es {
 #content .hx-cell b{font-size:1.4rem;font-weight:800;color:#fff;line-height:1}
 #content .hx-cell span{font-size:.68rem;color:#9fb0ae!important;text-transform:uppercase;letter-spacing:.04em;margin-top:.15rem;font-weight:600!important;letter-spacing:.04em!important}
 
-#content .hx-featbox{margin-top:1rem}
-#content .hx-featbox-grid{display:grid;grid-template-columns:1fr;gap:.55rem}
-#content .hx-featbox-item{display:flex;align-items:flex-start;gap:.6rem;color:#eef4f3}
-#content .hx-featbox-item svg{flex-shrink:0;color:var(--teal-bright)!important;margin-top:.15rem}
-#content .hx-featbox-item span{font-size:.9rem;line-height:1.4}
-#content .hx-featbox-item b{display:block;font-weight:700;color:#fff}
-#content .hx-featbox-item i{display:block;font-style:normal;color:#9fb0ae!important;font-size:.78rem;margin-top:.1rem}
+/* features band — separate full-width section below the hero (replaces the old in-copy
+   .hx-featbox vertical list), matching the approved homepage v5 pattern. */
+section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0!important;border-top:1px solid #eee!important}
+.hx-features-in{width:min(1400px,94%);margin-inline:auto;display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));gap:1.2rem}
+.hx-feature{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;
+  padding-inline:.5rem;border-left:1px solid #e6e6e6}
+.hx-feature:first-child{border-left:0}
+.hx-feature svg{color:var(--teal)!important;flex-shrink:0}
+.hx-feature span{font-size:.82rem;line-height:1.35;color:var(--ink-2)!important}
+.hx-feature b{display:block;font-weight:700}
+.hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.74rem;margin-top:.3rem;font-weight:600}
 
 @media(max-width:900px){
   #content .hx .hx-in{grid-template-columns:1fr}
   #content .hx .hx-photo{min-height:1220px;align-items:flex-end}
   #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-mobile.jpg') center 18%/cover no-repeat}
-  #content .hx .hx-photo .hx-grad{background:linear-gradient(180deg,rgba(8,18,20,0) 0%,rgba(8,18,20,0) 38%,rgba(8,18,20,.12) 48%,rgba(8,18,20,.26) 58%,rgba(8,18,20,.38) 68%,rgba(8,18,20,.48) 80%,rgba(8,18,20,.55) 92%,rgba(8,18,20,.58) 100%)!important}
+  #content .hx .hx-photo .hx-grad{background:none}
   #content .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
   #content .hx .hx-h1{margin:0 0 .25rem}
   #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.8rem,8vw,2.3rem)}
@@ -1554,6 +1590,13 @@ body.lf-page--brnx-es {
   #content .hx .hx-h1 .hx-script::after{margin-top:.3rem}
   #content .hx .hx-sub{font-size:clamp(.9rem,3.6vw,1rem);max-width:none;margin:.4rem 0 .6rem;line-height:1.4}
   #content .hx .btn-tour{white-space:nowrap}
+  section.hx-features{background:var(--ink,#0b0d0f)!important}
+  .hx-features-in{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0!important}
+  .hx-feature{flex-direction:row!important;text-align:left!important;align-items:flex-start!important;border-left:0!important;gap:.7rem!important;
+    padding:1rem .5rem!important;border-bottom:1px solid rgba(255,255,255,.12)!important}
+  .hx-feature svg{color:var(--teal-bright)!important}
+  .hx-feature span{color:#fff!important}
+  .hx-feature i{color:var(--teal-bright)!important}
 }
 @media(max-width:560px){
   #content .hx .hx-in{width:92%}

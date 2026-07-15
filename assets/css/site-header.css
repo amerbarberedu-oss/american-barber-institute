@@ -103,8 +103,14 @@ body.shell2 .seg-opt.is-active .seg-globe{opacity:1}
 body.shell2 .seg-lang .seg-opt{padding:.42rem .85rem}
 body.shell2 .seg-lang{min-width:0}
 
-/* ── OVERFLOW SAFETY: shell containers never cause horizontal scroll ──── */
-body.shell2{overflow-x:hidden}
+/* ── OVERFLOW SAFETY: shell containers never cause horizontal scroll ────
+   `clip` (not `hidden`) is required: `hidden` still leaves body as a
+   programmatically-scrollable container, so any focus-driven scroll-into-view
+   near the header can shove body.scrollLeft to its max and — with no visible
+   scrollbar to undo it — leave the whole page shifted left until reload.
+   `clip` disallows scrolling on this axis entirely. Kept in sync with the
+   identical fix in assets/css/landing.css. */
+body.shell2{overflow-x:clip}
 body.shell2 .ubar,body.shell2 .hdr2{max-width:100%}
 body.shell2 .ubar-in{flex-wrap:wrap;row-gap:var(--sp-2)}
 
@@ -120,6 +126,16 @@ body.shell2 .ubar-in{flex-wrap:wrap;row-gap:var(--sp-2)}
   body.shell2 .hdr2-phone{padding:.34rem .55rem;font-size:.78rem;gap:.3rem}
   body.shell2 .hdr2-phone-tag{display:none}
   body.shell2 .seg-opt{font-size:.78rem;padding:.38rem .62rem}
+}
+/* Below ~480px the logo + both phone pills no longer fit one row together —
+   the pills themselves were wrapping onto separate lines to compensate.
+   Give the phones row the full width on its own line instead, so the two
+   (or three, for the main site's Manhattan pages) numbers always stay
+   side-by-side in one line rather than stacking vertically. */
+@media (max-width:480px){
+  body.shell2 .hdr2-in{flex-wrap:wrap;row-gap:.5rem}
+  body.shell2 .hdr2-phones{flex-wrap:nowrap;flex-basis:100%;justify-content:center}
+  body.shell2 .hdr2-phone{flex:0 1 auto}
 }
 @media (max-width:400px){
   body.shell2 .logo2-img{height:32px}

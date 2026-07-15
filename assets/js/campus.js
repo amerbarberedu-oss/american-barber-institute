@@ -25,13 +25,13 @@ function L(en,es){ return isSpanish()?es:en; }
 function buildMN(){return{
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:L("English","Inglés"),num:"(212) 290-2289",tel:"+12122902289"},
-    {ico:"ES",cls:"ubar-call ubar-call--es",tag:L("Spanish","Español"),num:"(212) 290-0278",tel:"+12122900278"},
-    {ico:SCISSORS_SVG,cls:"ubar-call ubar-call--cut",tag:L("Haircut","Corte"),num:"(856) 316-1551",tel:"+18563161551"}
+    {ico:SCISSORS_SVG,cls:"ubar-call ubar-call--cut",tag:L("Haircut","Corte"),num:"(856) 316-1551",tel:"+18563161551"},
+    {ico:"ES",cls:"ubar-call ubar-call--es",tag:L("Spanish","Español"),num:"(212) 290-0278",tel:"+12122900278"}
   ],
   mstrip:[
     {ico:PHONE_SVG,num:"(212) 290-2289",lab:L("English","Inglés"),tel:"+12122902289"},
-    {ico:PHONE_SVG,num:"(212) 290-0278",lab:L("Spanish","Español"),tel:"+12122900278"},
-    {ico:SCISSORS_SVG,num:"(856) 316-1551",lab:L("Haircut","Corte"),tel:"+18563161551"}
+    {ico:SCISSORS_SVG,num:"(856) 316-1551",lab:L("Haircut","Corte"),tel:"+18563161551"},
+    {ico:PHONE_SVG,num:"(212) 290-0278",lab:L("Spanish","Español"),tel:"+12122900278"}
   ],
   footer:[
     {text:"(212) 290-2289 · "+L("English","Inglés"),tel:"+12122902289"},

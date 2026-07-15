@@ -57,7 +57,7 @@
   letter-spacing:-.02em;font-size:clamp(2.4rem,6vw,4.6rem);
   font-optical-sizing:auto;text-wrap:balance;margin:0 0 .35em;
 }
-.display--xl{font-size:clamp(2.8rem,8vw,6rem);}
+.display--xl{font-size:clamp(2.6rem,6.2vw,4.8rem);}
 .h-serif{font-family:var(--font-display);font-weight:600;letter-spacing:-.015em;}
 .lead{font-size:clamp(1.06rem,1.9vw,1.32rem);line-height:1.6;max-width:62ch;color:var(--text-mute);}
 .section-head{max-width:70ch;margin:0 auto clamp(2rem,4vw,3rem);}
@@ -105,6 +105,11 @@
   .ed-split{grid-template-columns:1.15fr .85fr;}
   .ed-split.rev{grid-template-columns:.85fr 1.15fr;}
   .ed-split.rev > :first-child{order:2;}
+  /* GHL forms only switch to their native 2-column field layout at >=~650px net container
+     width — the default .85fr split column falls well short of that. Widen just the two
+     pages whose .ed-split holds a GHL embed (contact's #request-a-call, the licensing
+     checklist's #checklist-form) without touching every other .ed-split on the site. */
+  #request-a-call .ed-split,#checklist-form .ed-split{grid-template-columns:1fr minmax(700px,760px)}
 }
 .ed-media{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);}
 .ed-media img,.ed-media video{display:block;width:100%;height:100%;object-fit:cover;}
