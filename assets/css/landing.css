@@ -3185,6 +3185,15 @@ body.shell2 .socials a:hover{transform:translateY(-3px) scale(1.1);background:va
 body.shell2 .foot-legal{border-top:1px solid var(--foot-border,#145063);padding:var(--sp-5) 0;font-size:.78rem}
 body.shell2 .foot-legal .wrap{display:flex;justify-content:space-between;align-items:center;
   gap:var(--sp-4);flex-wrap:wrap;color:var(--text-on-dark-mute,#9FC0BF)}
+/* Reserve room below the last footer line so the fixed sticky mobile CTA bar
+   (.mbar) and the .to-top button never sit on top of it (audit 2026-07-16).
+   Matches the same-specificity `body.shell2 .foot-legal` selector above, which
+   was silently winning over a plain `.foot-legal` override placed in
+   style.css — the main site's <body> carries class="shell2" too, not just
+   landing-funnels pages. */
+@media (max-width:768px){
+  body.shell2 .foot-legal{padding-bottom:calc(80px + env(safe-area-inset-bottom,0))}
+}
 @media (max-width:940px){body.shell2 .ftr-grid{grid-template-columns:1fr 1fr;gap:var(--sp-6)}
   body.shell2 .foot2-brand{grid-column:1 / -1;max-width:52ch}}
 @media (max-width:560px){body.shell2 .ftr-grid{grid-template-columns:1fr;gap:var(--sp-6)}}
