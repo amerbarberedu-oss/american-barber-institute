@@ -80,7 +80,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
 <link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=6">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=7">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
