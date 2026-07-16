@@ -37,15 +37,19 @@ module.exports = (req, res) => {
   const path = (req.url || "/").split("?")[0];
   const segments = path.split("/").filter(Boolean);
 
+  // Only "spanish" is a real prefix here -- an existing redirect already
+  // normalizes "/es/*" to "/spanish/*" before any request reaches this
+  // function, so recognizing "es" too would be dead weight.
   let langPrefix = "";
   let rest = segments;
-  if (segments[0] === "es" || segments[0] === "spanish") {
+  if (segments[0] === "spanish") {
     langPrefix = "/" + segments[0];
     rest = segments.slice(1);
   }
 
   const category = rest[0];
-  const target = (category && CATEGORY_FALLBACKS[category]) || "/";
+  const hasCategory = category && Object.prototype.hasOwnProperty.call(CATEGORY_FALLBACKS, category);
+  const target = hasCategory ? CATEGORY_FALLBACKS[category] : "/";
   const destination = target === "/" ? langPrefix || "/" : langPrefix + target;
 
   res.statusCode = 301;
