@@ -1283,18 +1283,28 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   #content .hx .hx-photo{display:contents}
   #content .hx .hx-photo .hx-bg{position:relative!important;order:1;width:100%;height:auto!important;aspect-ratio:872/1804;background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center top/cover no-repeat}
   #content .hx .hx-photo .hx-grad{display:none}
-  #content .hx .hx-copy{order:2;max-width:100%;width:100%;background:#0b0d0f;padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
-  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:none}
-  #content .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:none}
-  #content .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none}
+  #content .hx .hx-copy{order:2;position:relative;z-index:2;max-width:100%;width:100%;
+    margin-top:-40vw;background:linear-gradient(180deg,transparent 0,transparent 16vw,#fff 34vw,#fff 100%);
+    padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
+  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:0 2px 16px rgba(0,0,0,.65)}
+  #content .hx .hx-h1 .hx-l1{color:#fff}
+  #content .hx .hx-h1 .hx-l2{color:#2FD3C4!important}
+  #content .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:0 2px 14px rgba(0,0,0,.65);color:#fff}
+  #content .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none;color:var(--steel-600)}
+  #content .hx .hx-sub b{color:var(--teal-deep)!important}
+  #content .hx-next{background:var(--teal-tint)!important;border:1px solid var(--teal-soft)!important;color:var(--ink)}
+  #content .hx-next-label{color:var(--ink)!important}
+  #content .hx-next-date{color:var(--teal-deep)!important}
+  #content .hx-next-sub{color:var(--steel-600)!important}
+  #content .hx-cell b{border-color:var(--teal-soft);background:#fff;color:var(--ink)}
+  #content .hx-cell span{color:var(--steel-600)!important}
   #content .hx .formcard{order:3;padding:1.625rem 1.25rem 2.125rem}
-  section.hx-features{background:#0b0d0f!important}
-  .hx-features-in{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0}
+  section.hx-features{background:var(--teal-deep)!important}
+  .hx-features-in{grid-template-columns:1fr!important;gap:0}
   .hx-feature{flex-direction:row!important;align-items:flex-start!important;border-left:0!important;
-    padding:1.1rem .75rem!important;border-top:1px solid rgba(255,255,255,.14)!important}
-  .hx-feature:nth-child(1),.hx-feature:nth-child(2),.hx-feature:nth-child(3){border-top:0!important}
-  .hx-feature:nth-child(2),.hx-feature:nth-child(3),.hx-feature:nth-child(5),.hx-feature:nth-child(6){border-left:1px solid rgba(255,255,255,.14)!important}
-  .hx-feature svg{color:var(--teal-bright)!important}
+    padding:1.1rem .75rem!important;border-top:1px solid rgba(255,255,255,.22)!important}
+  .hx-feature:first-child{border-top:0!important}
+  .hx-feature svg{color:#fff!important}
   .hx-feature span{color:#fff!important}
   .hx-feature i{color:var(--teal-bright)!important}
 }
