@@ -867,12 +867,12 @@ def page_head(p):
 '<link rel="stylesheet" href="/assets/css/funnels.min.css?v=%(cssv)s">\n'
 '<link rel="stylesheet" href="/assets/css/chatbot.min.css?v=%(cssv)s">\n'
 '%(ld_scripts)s'
-'<script src="/assets/js/analytics.js?v=7" defer></script>\n'
+'<script src="/assets/js/analytics.js?v=8" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
 '<script src="/assets/js/campus.js?v=6" defer></script>\n'
 '<script src="/assets/js/landing.js?v=33" defer></script>\n'
 '</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s" data-campus-locked="true">\n'
-'<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
+'<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9GTRLN" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
     ) % {
         "lang": p["lang"], "title": h(p["title"]), "desc": h(p["desc"]),
         "canonical": h(canonical), "en_url": h(en_url), "es_url": h(es_url),
