@@ -453,7 +453,7 @@
       "permanent": true
     },
     {
-      "source": "/Animation/beauty_gazette_1.htm",
+      "source": "/Animation/beauty_gazette_1",
       "destination": "/",
       "permanent": true
     },
@@ -473,47 +473,47 @@
       "permanent": true
     },
     {
-      "source": "/HairGallery/braiding_gallery.html",
+      "source": "/HairGallery/braiding_gallery",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/clipper_design.html",
+      "source": "/HairGallery/clipper_design",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/clipper_designs_gallery_1.html",
+      "source": "/HairGallery/clipper_designs_gallery_1",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/clipper_designs_gallery_2.html",
+      "source": "/HairGallery/clipper_designs_gallery_2",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/clipper_gallery.html",
+      "source": "/HairGallery/clipper_gallery",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/hair_cutting_gallery.html",
+      "source": "/HairGallery/hair_cutting_gallery",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/hair_styling_gallery.html",
+      "source": "/HairGallery/hair_styling_gallery",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/mixed_pix.html",
+      "source": "/HairGallery/mixed_pix",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/nail_gallery.html",
+      "source": "/HairGallery/nail_gallery",
       "destination": "/",
       "permanent": true
     },
@@ -523,22 +523,22 @@
       "permanent": true
     },
     {
-      "source": "/HairGallery/our_instructors.html",
+      "source": "/HairGallery/our_instructors",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/our_students.html",
+      "source": "/HairGallery/our_students",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/shave_gallery.html",
+      "source": "/HairGallery/shave_gallery",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/HairGallery/student_hair_show.html",
+      "source": "/HairGallery/student_hair_show",
       "destination": "/",
       "permanent": true
     },
@@ -548,42 +548,42 @@
       "permanent": true
     },
     {
-      "source": "/abi_FAQ.htm",
+      "source": "/abi_FAQ",
       "destination": "/faq",
       "permanent": true
     },
     {
-      "source": "/abi_checklist.htm",
+      "source": "/abi_checklist",
       "destination": "/ny-barber-licensing-checklist",
       "permanent": true
     },
     {
-      "source": "/abi_course_order_form_test.htm",
+      "source": "/abi_course_order_form_test",
       "destination": "/programs",
       "permanent": true
     },
     {
-      "source": "/abi_courses2.htm",
+      "source": "/abi_courses2",
       "destination": "/programs",
       "permanent": true
     },
     {
-      "source": "/abi_promo_video.htm",
+      "source": "/abi_promo_video",
       "destination": "/virtual-tour",
       "permanent": true
     },
     {
-      "source": "/about1.htm",
+      "source": "/about1",
       "destination": "/about",
       "permanent": true
     },
     {
-      "source": "/about_abi.htm",
+      "source": "/about_abi",
       "destination": "/about",
       "permanent": true
     },
     {
-      "source": "/about_us.html",
+      "source": "/about_us",
       "destination": "/about",
       "permanent": true
     },
@@ -593,17 +593,17 @@
       "permanent": true
     },
     {
-      "source": "/admission.html",
+      "source": "/admission",
       "destination": "/contact",
       "permanent": true
     },
     {
-      "source": "/admission1.htm",
+      "source": "/admission1",
       "destination": "/contact",
       "permanent": true
     },
     {
-      "source": "/admission_process.htm",
+      "source": "/admission_process",
       "destination": "/contact",
       "permanent": true
     },
@@ -658,47 +658,42 @@
       "permanent": true
     },
     {
-      "source": "/aeca/index.html",
+      "source": "/aeca/index",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/amerbarber_home.html",
+      "source": "/amerbarber_home",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/banner-pg4.html",
+      "source": "/banner-pg4",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/barber1.htm",
+      "source": "/barber1",
       "destination": "/about",
       "permanent": true
     },
     {
-      "source": "/barbers_gazette.htm",
+      "source": "/barbers_gazette",
       "destination": "/blog",
       "permanent": true
     },
     {
-      "source": "/certification.htm",
+      "source": "/certification",
       "destination": "/programs",
       "permanent": true
     },
     {
-      "source": "/certification.html",
+      "source": "/certification1",
       "destination": "/programs",
       "permanent": true
     },
     {
-      "source": "/certification1.htm",
-      "destination": "/programs",
-      "permanent": true
-    },
-    {
-      "source": "/classes.html",
+      "source": "/classes",
       "destination": "/programs",
       "permanent": true
     },
@@ -723,7 +718,7 @@
       "permanent": true
     },
     {
-      "source": "/contactus1.htm",
+      "source": "/contactus1",
       "destination": "/contact",
       "permanent": true
     },
@@ -733,12 +728,12 @@
       "permanent": true
     },
     {
-      "source": "/courses1.htm",
+      "source": "/courses1",
       "destination": "/programs",
       "permanent": true
     },
     {
-      "source": "/cutting_edge_news.html",
+      "source": "/cutting_edge_news",
       "destination": "/blog",
       "permanent": true
     },
@@ -748,12 +743,12 @@
       "permanent": true
     },
     {
-      "source": "/enrollment_agreement.htm",
+      "source": "/enrollment_agreement",
       "destination": "/contact",
       "permanent": true
     },
     {
-      "source": "/examAIDS.htm",
+      "source": "/examAIDS",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
@@ -883,32 +878,32 @@
       "permanent": true
     },
     {
-      "source": "/infection_course/infection_control_course.htm",
+      "source": "/infection_course/infection_control_course",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
     {
-      "source": "/infection_course/instructions.htm",
+      "source": "/infection_course/instructions",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
     {
-      "source": "/infection_course_paypal_signup.html",
+      "source": "/infection_course_paypal_signup",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
     {
-      "source": "/infection_course_signup.html",
+      "source": "/infection_course_signup",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
     {
-      "source": "/infection_course_thankyou.html",
+      "source": "/infection_course_thankyou",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
     {
-      "source": "/items-pg.html",
+      "source": "/items-pg",
       "destination": "/",
       "permanent": true
     },
@@ -1078,7 +1073,7 @@
       "permanent": true
     },
     {
-      "source": "/on-line-course-pt.3.htm",
+      "source": "/on-line-course-pt.3",
       "destination": "/programs",
       "permanent": true
     },
@@ -1103,7 +1098,7 @@
       "permanent": true
     },
     {
-      "source": "/return.html",
+      "source": "/return",
       "destination": "/",
       "permanent": true
     },
@@ -1133,7 +1128,7 @@
       "permanent": true
     },
     {
-      "source": "/site_map.html",
+      "source": "/site_map",
       "destination": "/",
       "permanent": true
     },
@@ -1208,32 +1203,32 @@
       "permanent": true
     },
     {
-      "source": "/state_approved_hiv.htm",
+      "source": "/state_approved_hiv",
       "destination": "/programs/contagious-diseases",
       "permanent": true
     },
     {
-      "source": "/state_sweep.htm",
+      "source": "/state_sweep",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/subpage/Animation/beauty_gazette_1.htm",
+      "source": "/subpage/Animation/beauty_gazette_1",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/subpage/barbers_gazette.htm",
+      "source": "/subpage/barbers_gazette",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/subpage/classes.html",
+      "source": "/subpage/classes",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/table_of_contents.htm",
+      "source": "/table_of_contents",
       "destination": "/",
       "permanent": true
     },
