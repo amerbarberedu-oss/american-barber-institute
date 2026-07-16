@@ -83,7 +83,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=8">
 {schema}
 </head>
-<body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
+<body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKLLGPC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <div class="abi-deco" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
@@ -124,7 +124,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/effects.js?v=33" defer></script>
 <script src="{root}assets/js/landing.js?v=33" defer></script>
 <script src="{root}assets/js/upgrade.js?v=2" defer></script>
-<script src="{root}assets/js/campus.js?v=5" defer></script>
+<script src="{root}assets/js/campus.js?v=6" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="689f4917512e48b4268bf335"></script>
 <script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget--prompt{{display:none!important}}@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
@@ -790,7 +790,24 @@ _DEFAULT_BG = 'gallery/cut-05.jpg'
 # Anything not listed defaults to 'manhattan'/neutral.
 CAMPUS_BY_PAGE = {
     'programs/500-hour-master-barber-bronx.html': 'bronx',
+    'programs/bronx.html': 'bronx',
     'haircuts.html': 'both',
+}
+
+# ── Pages whose campus is part of their identity (a Bronx-titled page must
+#     always show Bronx info) vs. generic shared pages (blog, guides, FAQ,
+#     schedules, contact, location pages, etc.) that merely default to
+#     'manhattan' with no real campus identity of their own. campus.js reads
+#     data-campus-locked: locked pages always show their own data-campus AND
+#     persist it as the visitor's preference; unlocked pages instead read
+#     that persisted preference (localStorage) so a visitor who came from a
+#     Bronx page keeps seeing Bronx admissions info as they browse shared
+#     pages, instead of silently reverting to Manhattan on every other page.
+LOCKED_CAMPUS_PAGES = {
+    'index.html', 'bronx.html',
+    'programs/manhattan.html', 'programs/bronx.html',
+    'programs/500-hour-master-barber.html', 'programs/500-hour-master-barber-bronx.html',
+    'haircuts.html',
 }
 
 def _campus_switch(root, campus, es=False):
@@ -1341,6 +1358,7 @@ def build():
         # 'both' (Haircuts) stays neutral/manhattan-themed but flags data-campus=both.
         bodyclass = ' bx-gold' if campus == 'bronx' else ''
         datacampus = campus
+        campuslocked = 'true' if out.replace('spanish/', '') in LOCKED_CAMPUS_PAGES else 'false'
         # hreflang reciprocity: every EN page declares itself as en + x-default;
         # the home page additionally declares the ES alternate (and vice-versa).
         # Only the home page has a Spanish counterpart today.
@@ -1377,7 +1395,7 @@ def build():
             oglocale='es_ES' if lang == 'es' else 'en_US',
             pagebg=PAGE_BG.get(out.replace('spanish/', ''), _DEFAULT_BG),
             root=root, body=body, schema=schema_tags, langtoggle=langtoggle,
-            campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus,
+            campusswitch=campusswitch, bodyclass=bodyclass, datacampus=datacampus, campuslocked=campuslocked,
             hreflang_block=hreflang_block, mbar=mbar, header_nav=header_nav, footer_block=footer_block,
             lp=root + 'programs/index.html',
             en_cur='aria-current="true"' if lang == 'en' else '',
@@ -1529,7 +1547,7 @@ def build():
                 pagebg=PAGE_BG.get(out.replace('spanish/', ''), _DEFAULT_BG),
                 root='../' + ('../' * out.count('/')),
                 body=es_body, schema=es_schema_tags, langtoggle=es_langtoggle,
-                campusswitch=es_campusswitch, bodyclass=bodyclass, datacampus=datacampus,
+                campusswitch=es_campusswitch, bodyclass=bodyclass, datacampus=datacampus, campuslocked=campuslocked,
                 hreflang_block=es_hreflang_block, mbar=es_mbar, header_nav=es_header_nav, footer_block=es_footer_block,
                 lp='../' + ('../' * out.count('/')) + 'programs/index.html',
                 en_cur='', es_cur='aria-current="true"')
