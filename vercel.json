@@ -446,6 +446,831 @@
       "source": "/spanish/faq/veteran",
       "destination": "/spanish/veterans",
       "permanent": true
+    },
+    {
+      "source": "/0,0,0,0.3",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Animation/beauty_gazette_1.htm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Animation/hiv_course2.swf",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Animation/opening/abi_intro_4f.swf",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Flash/state_sweep4a.swf",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/braiding_gallery.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/clipper_design.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/clipper_designs_gallery_1.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/clipper_designs_gallery_2.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/clipper_gallery.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/hair_cutting_gallery.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/hair_styling_gallery.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/mixed_pix.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/nail_gallery.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/obj.tempobj=iebrowser",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/our_instructors.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/our_students.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/shave_gallery.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/student_hair_show.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/HairGallery/this.tempobj=iebrowser",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/abi_FAQ.htm",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/abi_checklist.htm",
+      "destination": "/ny-barber-licensing-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/abi_course_order_form_test.htm",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/abi_courses2.htm",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/abi_promo_video.htm",
+      "destination": "/virtual-tour",
+      "permanent": true
+    },
+    {
+      "source": "/about1.htm",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about_abi.htm",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about_us.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/administrator",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/admission.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admission1.htm",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admission_process.htm",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/basic-requirements",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/discontinuance",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/frequently-asked-questions",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/handicap-access-compliance",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/leave-of-absence",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/permit-to-leave",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/readmittance",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/requirements-checklist",
+      "destination": "/ny-barber-licensing-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/termination-by-school",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/uniform-and-appearance",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/aeca/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/amerbarber_home.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/banner-pg4.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/barber1.htm",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/barbers_gazette.htm",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/certification.htm",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/certification.html",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/certification1.htm",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/classes.html",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/component/mailto",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/component/visforms",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/component/visforms/send",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contactus1.htm",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/control-panel",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/courses1.htm",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/cutting_edge_news.html",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/ecms-1.0",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/enrollment_agreement.htm",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/examAIDS.htm",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/1",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/11",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/12",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/13",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/2",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/3",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/nggallery/page/4",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/home/abi-goals-aims-objectives-and-philosophy",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/about-abi",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/barber-gazette",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/home/basic-requirements",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/beauty-gazette",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/home/education",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/home/faqs",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/home/grad-rates-jobs",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/home/how-to-get-started",
+      "destination": "/how-to-get-started",
+      "permanent": true
+    },
+    {
+      "source": "/home/mission-statement",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/pioneer-in-the-classroom",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/school-mission-statement",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/services-price-list",
+      "destination": "/tuition-and-funding",
+      "permanent": true
+    },
+    {
+      "source": "/home/shop-compliance",
+      "destination": "/shop-registration",
+      "permanent": true
+    },
+    {
+      "source": "/home/state-of-the-industry",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/home/the-practical-area",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/home/videos",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/infection_course/infection_control_course.htm",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/infection_course/instructions.htm",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/infection_course_paypal_signup.html",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/infection_course_signup.html",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/infection_course_thankyou.html",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/items-pg.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/job-opportunities",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/certificate-of-completion",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/co-op-education-program",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/grad-rates-and-placement",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/graduate-occupations-and-codes",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/job-placement-office",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/placement-office",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/room-and-board",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/shops",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/jobss",
+      "destination": "/jobs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/4-abi-school-section/licensing-category",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/basic-requirements",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/discontinuance",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/financial-aid",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/frequently-asked-questions",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/handicap-access-compliance",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/how-to-get-started",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/leave-of-absence",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/permit-to-leave",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/readmittance",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/requirements-checklist",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/termination-by-school",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/accreditation-and-licensing/admissions/uniform-and-appearance",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/licensing/certificate-of-completion",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/members/photos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/members/register",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/members/videos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/mission-statement",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/npcalc",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/obj.tempobj=iebrowser",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/on-line-course-pt.3.htm",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/phpThumb/phpThumb.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/potential_student_form.php",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/programs/200-hour-barber-fundamentals-program",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/registration-form",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/return.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/schedule/holiday-calendar",
+      "destination": "/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/schedule/school-hours-of-operation",
+      "destination": "/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/schedule/specially-designed-schedule",
+      "destination": "/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/schedule/starting-dates",
+      "destination": "/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/schedule/starting-dates-for-20092010",
+      "destination": "/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/site_map.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/site_map.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/skleroz.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/about-us",
+      "destination": "/spanish/about",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/acces-vr-program",
+      "destination": "/spanish/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/courses",
+      "destination": "/spanish/programs",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/frequently-asked-questions",
+      "destination": "/spanish/faq",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/gallery/nggallery/page/13",
+      "destination": "/spanish/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/gallery/nggallery/page/2",
+      "destination": "/spanish/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/phpThumb/phpThumb.php",
+      "destination": "/spanish",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/programs/3-hours-contagious-diseases-program",
+      "destination": "/spanish/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/programs/50-hours-barber-refresher-program",
+      "destination": "/spanish/programs/50-hour-barber-refresher",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/programs/license-transfer",
+      "destination": "/spanish/programs",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/programs/transferencia-de-licencia",
+      "destination": "/spanish/programs",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/schedule",
+      "destination": "/spanish/schedules",
+      "permanent": true
+    },
+    {
+      "source": "/state_approved_hiv.htm",
+      "destination": "/programs/contagious-diseases",
+      "permanent": true
+    },
+    {
+      "source": "/state_sweep.htm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/subpage/Animation/beauty_gazette_1.htm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/subpage/barbers_gazette.htm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/subpage/classes.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/table_of_contents.htm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/this.tempobj=iebrowser",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/vesid-program",
+      "destination": "/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/vesid-program/requirements",
+      "destination": "/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/veterans/about-our-vets",
+      "destination": "/veterans",
+      "permanent": true
+    },
+    {
+      "source": "/web-stats",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/www.abi.edu",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [
