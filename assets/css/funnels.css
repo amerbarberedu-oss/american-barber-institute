@@ -1563,3 +1563,55 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 .ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){min-height:920px}
 .ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){min-height:870px}
 .ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){min-height:920px}
+
+/* ── Google reviews badge (ported verbatim from abi.edu's assets/css/landing.css
+      v13.5 — same component, same visual language, so the rating reads as one
+      consistent trust signal across both sites). ── */
+.greviews-badge{
+  display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap;
+  background:#fff;
+  border:0!important;
+  border-radius:22px!important;
+  padding:1.25rem 1.55rem;margin:1.6rem auto 1rem;
+  max-width:680px;
+  box-shadow:0 18px 44px rgba(16,19,26,.10),0 1px 0 rgba(16,19,26,.04);
+}
+.greviews-badge .g-mark{flex:0 0 auto;line-height:0}
+.greviews-badge .g-meta{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;gap:.05rem}
+.greviews-badge .g-top{display:flex;align-items:center;gap:.55rem}
+.greviews-badge .g-score{font-size:2rem;font-weight:800;color:#1a1d24}
+.greviews-badge .g-stars{color:#fbbc05;font-size:1.2rem;letter-spacing:1px}
+.greviews-badge .g-count{font-size:.88rem;color:#5a6070;font-weight:500;margin-top:.2rem}
+.greviews-badge .g-cta{
+  margin-left:auto;white-space:nowrap;
+  background:#f4f6fc!important;
+  color:#1f2433!important;
+  border:1px solid #e5e8f0!important;
+  border-radius:14px!important;
+  padding:.7rem 1.15rem!important;
+  font-weight:700!important;font-size:.9rem!important;
+  box-shadow:none!important;
+  transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.greviews-badge .g-cta:hover{
+  background:#eaf0fb!important;
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(16,19,26,.08)!important;
+}
+.g-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin:.4rem auto 1.7rem;max-width:780px}
+.g-chip{
+  background:#f4f6fc!important;
+  color:#3a4660!important;
+  border:0!important;
+  border-radius:999px!important;
+  padding:.5rem 1rem!important;
+  font-size:.84rem!important;font-weight:600!important;
+  box-shadow:0 1px 0 rgba(16,19,26,.04);
+  transition:background .18s ease;
+}
+.g-chip:hover{background:#eaf0fb!important}
+@media (max-width:600px){
+  .greviews-badge{flex-direction:column;text-align:center;padding:1.1rem 1.2rem}
+  .greviews-badge .g-cta{margin:.5rem 0 0;width:100%;text-align:center}
+  .greviews-badge .g-meta{align-items:center}
+}
