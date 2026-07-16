@@ -267,6 +267,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.americanbarberinstitute.com/landingpage</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.americanbarberinstitute.com/ny-barber-licensing-checklist</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -598,6 +604,12 @@
   </url>
   <url>
     <loc>https://www.americanbarberinstitute.com/spanish/jobs</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.americanbarberinstitute.com/spanish/landingpage</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

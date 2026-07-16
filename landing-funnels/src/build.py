@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "80"
+CSS_V = "82"
 JS_V  = "16"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -577,9 +577,14 @@ def section_gallery(p):
 # ── REVIEWS (split per campus; real Google reviews, no widget) ──────
 def section_reviews(p):
     eb, ti = D.REVIEWS_HEAD[p["lang"]]
-    lead = D.REVIEWS_LEAD[p["lang"]]
+    campus = p["campus"]
+    rating, count = campus["google_rating"], campus["google_review_count"]
+    badge_label = ("%s★ on Google — %s reviews" % (rating, count) if p["lang"] == "en"
+                   else "%s★ en Google — %s reseñas" % (rating, count))
+    badge = ('<a class="lf-reviews__badge" href="%s" target="_blank" rel="noopener">%s →</a>'
+             % (h(campus["google_listing_url"]), h(badge_label)))
     cards = ""
-    campus_slug = p["campus"]["slug"]
+    campus_slug = campus["slug"]
     for r in D.REVIEWS_BY_CAMPUS[campus_slug][p["lang"]]:
         ini = "".join(w[0] for w in r["name"].split()[:2]).upper()
         cards += (
@@ -590,9 +595,9 @@ def section_reviews(p):
             '<div class="lf-review__role">%s</div></div></div></div>'
             % (h(r["q"]), h(ini), h(r["name"]), h(r["role"]))
         )
-    return ('<section class="lf-section"><div class="lf-wrap">%s'
+    return ('<section class="lf-section"><div class="lf-wrap">%s%s'
             '<div class="lf-reviews">%s</div></div></section>\n'
-            % (section_head(eb, ti, lead), cards))
+            % (section_head(eb, ti), badge, cards))
 
 
 # ── CONTACT BOX (campus-aware: Manhattan = 2 numbers, Bronx = 1) ─────
@@ -740,8 +745,8 @@ def page_head(p):
              "opens": "09:00", "closes": "19:00"},
         ],
         "aggregateRating": {
-            "@type": "AggregateRating", "ratingValue": "4.6",
-            "reviewCount": "100", "bestRating": "5", "worstRating": "1"
+            "@type": "AggregateRating", "ratingValue": p["campus"]["google_rating"],
+            "reviewCount": str(p["campus"]["google_review_count"]), "bestRating": "5", "worstRating": "1"
         },
         "review": [
             {"@type": "Review",
