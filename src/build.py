@@ -74,7 +74,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=175">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=176">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
