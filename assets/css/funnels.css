@@ -1217,7 +1217,7 @@ body.lf-page--brnx-es {
    no darkening across the photo itself, just a short transition right at the seam. */
 #content .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
   background:linear-gradient(90deg,transparent 90%,rgba(255,255,255,.35) 100%)}
-#content .hx .hx-copy{position:relative;z-index:2;max-width:400px;box-sizing:border-box;
+#content .hx .hx-copy{position:relative;z-index:2;max-width:400px;width:100%;box-sizing:border-box;
   padding:clamp(1.6rem,3vw,2.75rem) clamp(1.4rem,2.6vw,2.5rem) clamp(1.2rem,2vw,1.75rem);color:#fff}
 #content .hx .hx-h1{margin:0;text-transform:none;font-family:var(--font-display);
   font-weight:600;line-height:1.06;letter-spacing:-.02em}
@@ -1383,7 +1383,7 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   color: var(--lf-soft-ink);
   padding-top: .2rem;
 }
-.lf-contact__val { color: var(--lf-ink); display: inline-flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
+.lf-contact__val { color: var(--lf-ink); display: inline-flex; align-items: center; gap: .4rem; flex-wrap: wrap; min-width: 0; overflow-wrap: break-word; }
 .lf-contact__val svg { color: var(--lf-accent); flex: 0 0 auto; }
 .lf-contact__map {
   color: var(--lf-accent-dark);
