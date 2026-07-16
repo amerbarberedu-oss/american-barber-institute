@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.min.css?v=36">
 <link rel="stylesheet" href="/assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="/assets/css/landing.min.css?v=170">
+<link rel="stylesheet" href="/assets/css/landing.min.css?v=171">
 <link rel="stylesheet" href="/assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -181,7 +181,7 @@
    height:100% below is required, inset:0 alone does not neutralize it (found via live inspection
    2026-07-13: the image was rendering only 248px tall inside a 920px-tall mobile photo card). */
 #main .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
-  background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat}
+  background:url('/assets/img/hero-training-floor-v2.jpg') 50% 32%/cover no-repeat}
 /* dark left→right (not top→bottom): the left ~2/3 (where copy+countdown sit) stays legible, the
    right third stays clear so the photo itself still reads through, per reference */
 #main .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
@@ -193,12 +193,12 @@
 /* each line on its own row — "Build a Career" / "You Own" / "Become a Barber." */
 #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
   text-transform:none;font-weight:600;letter-spacing:-.02em;
-  font-size:clamp(2rem,4.6vw,3.6rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
+  font-size:clamp(1.85rem,3.7vw,2.95rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
 #main .hx .hx-h1 .hx-l1{color:#fff}
 #main .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
 #main .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
   text-transform:none;font-weight:500;color:#fff;
-  font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+  font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 #main .hx .hx-h1 .hx-script::after{content:"";display:block;width:min(220px,50%);height:4px;
   margin-top:.4rem;border-radius:99px;background:var(--teal)!important}
 /* no max-width cap — fills the full copy column (was capped at 34rem, leaving the right half of
@@ -253,7 +253,7 @@ section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0
   /* mobile only: text starts around 60-70% down the image (client feedback 2026-07-13) — desktop
      stays top-anchored (approved as-is), so this flips to bottom-anchoring just for this breakpoint */
   #main .hx .hx-photo{min-height:1220px;align-items:flex-end}
-  #main .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-mobile.jpg') center 18%/cover no-repeat}
+  #main .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center 18%/cover no-repeat}
   /* the desktop gradient is a diagonal (100deg) fade tuned for a WIDE, SHORT box — on a narrow,
      very tall mobile box the same angle's gradient LINE is dominated by the vertical extent, so it
      renders as a near-uniform dark wash across the whole photo instead of a left-right fade
@@ -274,8 +274,8 @@ section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0
      block is short enough to land at ~60-70% instead of ~35% in a reasonably-sized photo. */
   #main .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
   #main .hx .hx-h1{margin:0 0 .25rem}
-  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.8rem,8vw,2.3rem)}
-  #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4.6vw,1.4rem);margin-top:.05rem}
+  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.65rem,6.4vw,1.85rem)}
+  #main .hx .hx-h1 .hx-script{font-size:clamp(1rem,3.7vw,1.15rem);margin-top:.05rem}
   #main .hx .hx-h1 .hx-script::after{margin-top:.3rem}
   #main .hx .hx-sub{font-size:clamp(.9rem,3.6vw,1rem);max-width:none;margin:.4rem 0 .6rem;line-height:1.4}
   #main .hx .btn-tour{white-space:nowrap}

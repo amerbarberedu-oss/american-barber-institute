@@ -1520,7 +1520,7 @@ body.lf-page--brnx-es {
 #content .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-lg,14px);
   min-height:clamp(640px,68vw,820px);display:flex;align-items:flex-start;background:#0a1416}
 #content .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
-  background:url('/assets/img/hero-training-floor.jpg') center 22%/cover no-repeat;
+  background:url('/assets/img/hero-training-floor-v2.jpg') 50% 32%/cover no-repeat;
   filter:brightness(1.12)}
 /* soft fade only at the right edge (where the photo meets the white form panel), matching the
    approved homepage v5 treatment — no darkening across the photo itself. */
@@ -1532,12 +1532,12 @@ body.lf-page--brnx-es {
   font-weight:600;line-height:1.02;letter-spacing:-.02em}
 #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
   text-transform:none;font-weight:600;letter-spacing:-.02em;
-  font-size:clamp(2rem,4.6vw,3.6rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
+  font-size:clamp(1.85rem,3.7vw,2.95rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
 #content .hx .hx-h1 .hx-l1{color:#fff}
 #content .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
 #content .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
   text-transform:none;font-weight:500;color:#fff;
-  font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+  font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 #content .hx .hx-h1 .hx-script::after{content:"";display:block;width:min(220px,50%);height:4px;
   margin-top:.4rem;border-radius:99px;background:var(--teal)!important}
 #content .hx .hx-sub{margin:.5rem 0 .8rem;max-width:none;font-size:clamp(1rem,1.5vw,1.15rem);
@@ -1581,12 +1581,12 @@ section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0
 @media(max-width:900px){
   #content .hx .hx-in{grid-template-columns:1fr}
   #content .hx .hx-photo{min-height:1220px;align-items:flex-end}
-  #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-mobile.jpg') center 18%/cover no-repeat}
+  #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center 18%/cover no-repeat}
   #content .hx .hx-photo .hx-grad{background:none}
   #content .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
   #content .hx .hx-h1{margin:0 0 .25rem}
-  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.8rem,8vw,2.3rem)}
-  #content .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4.6vw,1.4rem);margin-top:.05rem}
+  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.65rem,6.4vw,1.85rem)}
+  #content .hx .hx-h1 .hx-script{font-size:clamp(1rem,3.7vw,1.15rem);margin-top:.05rem}
   #content .hx .hx-h1 .hx-script::after{margin-top:.3rem}
   #content .hx .hx-sub{font-size:clamp(.9rem,3.6vw,1rem);max-width:none;margin:.4rem 0 .6rem;line-height:1.4}
   #content .hx .btn-tour{white-space:nowrap}

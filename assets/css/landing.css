@@ -2720,9 +2720,9 @@ video{background-color:#1a1f2e}
 .hx-grad{position:absolute;top:0;left:0;right:0;height:66.4vw;background:radial-gradient(115% 95% at 6% 100%,rgba(5,8,17,.96) 0%,rgba(5,8,17,.68) 40%,rgba(5,8,17,0) 70%),linear-gradient(180deg,rgba(5,8,17,.12) 0%,rgba(5,8,17,.06) 40%,rgba(5,8,17,.5) 66%,rgba(5,8,17,.94) 88%,#0a1020 100%)}
 .hx-in{position:relative;width:min(1400px,94%);margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(330px,368px);gap:2.4rem;padding:49.6vw 0 2.8rem;align-items:start}
 .hx-h1{margin:0;line-height:1;text-transform:uppercase;font-weight:800;letter-spacing:-.01em}
-.hx-l1{display:block;font-size:clamp(2.5rem,4.6vw,4.4rem);color:#fff;text-shadow:0 3px 24px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.6)}
-.hx-l2{display:block;font-size:clamp(2.5rem,4.6vw,4.4rem);color:#4d78ff;text-shadow:0 3px 24px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.55)}
-.hx-script{display:block;font-family:'Caveat',cursive;text-transform:none;font-weight:700;font-size:clamp(2.3rem,3.6vw,3.5rem);line-height:1.05;margin:.35rem 0 0;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.6)}
+.hx-l1{display:block;font-size:clamp(2.3rem,3.7vw,3.6rem);color:#fff;text-shadow:0 3px 24px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.6)}
+.hx-l2{display:block;font-size:clamp(2.3rem,3.7vw,3.6rem);color:#4d78ff;text-shadow:0 3px 24px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.55)}
+.hx-script{display:block;font-family:'Caveat',cursive;text-transform:none;font-weight:700;font-size:clamp(2.15rem,2.9vw,2.9rem);line-height:1.05;margin:.35rem 0 0;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.6)}
 .hx-script::after{content:"";display:block;width:min(240px,58%);height:5px;margin-top:.15rem;border-radius:99px;background:#4d78ff}
 .hx-sub{margin:1.15rem 0 1.35rem;max-width:33rem;font-size:1.02rem;line-height:1.55;color:#fff;font-weight:500;text-shadow:0 2px 16px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.6)}
 .hx-sub b{color:#7ba0ff}
@@ -2830,8 +2830,8 @@ body.bx-gold .hx-featbox-item span i {
   .hx-bg{height:66.2vw;background:image-set(url('/assets/img/hero-barber-clinic-2-mobile.webp') type('image/webp'),url('/assets/img/hero-barber-clinic-2-mobile.jpg') type('image/jpeg')) top center/cover no-repeat;background-color:#0a1020}
   .hx-grad{height:66.4vw;background:radial-gradient(130% 90% at 15% 100%,rgba(5,8,17,.94) 0%,rgba(5,8,17,.6) 45%,rgba(5,8,17,0) 75%),linear-gradient(180deg,rgba(6,9,18,.05) 0%,rgba(6,9,18,.02) 34%,rgba(6,9,18,.55) 62%,rgba(6,9,18,.94) 86%,#0a1020 100%)}
   .hx-in{display:flex;flex-direction:column;gap:0;padding:49.6vw 0 2.2rem}
-  .hx-l1,.hx-l2{font-size:clamp(2.1rem,10vw,2.7rem)}
-  .hx-script{font-size:clamp(2rem,9vw,2.5rem)}
+  .hx-l1,.hx-l2{font-size:clamp(1.95rem,8vw,2.2rem)}
+  .hx-script{font-size:clamp(1.85rem,7.2vw,2.05rem)}
   .hx-sub{font-size:.98rem;max-width:none}
   .hx-chips{grid-template-columns:1fr;gap:.6rem;max-width:none}
   .hx-next{grid-template-columns:1fr;row-gap:.9rem;max-width:none;margin-top:1rem}
