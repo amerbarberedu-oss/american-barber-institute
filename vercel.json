@@ -406,6 +406,46 @@
       "source": "/programs/500-hour-master-barber-program.html",
       "destination": "/500-hours-master-barber-program-landing-page",
       "permanent": true
+    },
+    {
+      "source": "/admissions/financial-aid",
+      "destination": "/financial-aid",
+      "permanent": true
+    },
+    {
+      "source": "/admissions/how-to-get-started",
+      "destination": "/how-to-get-started",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/admissions/financial-aid",
+      "destination": "/spanish/financial-aid",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/admissions/how-to-get-started",
+      "destination": "/spanish/how-to-get-started",
+      "permanent": true
+    },
+    {
+      "source": "/faq/access-vr",
+      "destination": "/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/faq/veteran",
+      "destination": "/veterans",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/faq/access-vr",
+      "destination": "/spanish/access-vr-program",
+      "permanent": true
+    },
+    {
+      "source": "/spanish/faq/veteran",
+      "destination": "/spanish/veterans",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -432,6 +472,10 @@
     {
       "source": "/master-barber-program-bronx/spanish",
       "destination": "/landing-funnels/master-barber-program-bronx/spanish"
+    },
+    {
+      "source": "/((?!.*\\.).*)",
+      "destination": "/api/legacy-redirect"
     }
   ],
   "headers": [
