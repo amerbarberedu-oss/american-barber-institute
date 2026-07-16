@@ -74,7 +74,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=176">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=177">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -1943,9 +1943,26 @@ def build():
                     '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
                     '<meta name="robots" content="noindex">')
             es_html = clean_links(es_html)
-            # Client 2026-07-14: unified GHL forms — ES pages reuse the same
-            # .com form as EN pages (single form per domain, no ESP variant).
-            # Removed the EN→ESP swap that used to fire here.
+            # ── GHL form swap: EN → ESP on Spanish pages ──────────────────
+            # Client 2026-07-17: reinstated the ESP form variant, reversing the
+            # 2026-07-14 "single form per domain" decision. Spanish visitors get
+            # the Spanish-language form; EN pages keep 3ghO untouched.
+            # Fires here (post-template) so it catches BOTH auto-generated
+            # /spanish/* twins and the hand-written es-*.html sources.
+            # NOTE: campus landing funnels are NOT built by this script — they
+            # keep their campus-specific forms (Manhattan 2Fv / Bronx v1S).
+            es_html = (es_html
+                .replace('api.leadconnectorhq.com/widget/form/3ghObGjHiLN3LgKBfKGG',
+                         'api.leadconnectorhq.com/widget/form/H4C1nJmpLO3cNx4OrlK2')
+                .replace('inline-3ghObGjHiLN3LgKBfKGG', 'inline-H4C1nJmpLO3cNx4OrlK2')
+                .replace('data-form-id="3ghObGjHiLN3LgKBfKGG"',
+                         'data-form-id="H4C1nJmpLO3cNx4OrlK2"')
+                .replace('data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com"',
+                         'data-form-name="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
+                .replace('title="01.GET TRAINED WITH ABI FORM - ABI.com"',
+                         'title="01.GET TRAINED WITH ABI FORM - ABI.com - ESP"')
+                # ESP form is taller than the EN one (client-supplied heights).
+                .replace('data-height="757"', 'data-height="792"'))
             es_dest = os.path.join(ROOT, es_out)
             os.makedirs(os.path.dirname(es_dest), exist_ok=True)
             open(es_dest, 'w', encoding='utf-8').write(es_html)

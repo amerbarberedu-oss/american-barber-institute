@@ -3306,6 +3306,9 @@ body.shell2 .mstrip-t i{
       to give them something to fill. Heights match each form's data-height. ── */
 .ghl-form-wrap{width:100%}
 .ghl-form-wrap:has(iframe[src*="3ghObGjHiLN3LgKBfKGG"]){height:880px}
+/* ESP form (data-height 792) — restored 2026-07-17. Without a rule here the
+   wrapper has no height and the iframe's height:100% collapses to nothing. */
+.ghl-form-wrap:has(iframe[src*="H4C1nJmpLO3cNx4OrlK2"]){height:920px}
 .ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){height:920px}
 .ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){height:870px}
 .ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){height:920px}
