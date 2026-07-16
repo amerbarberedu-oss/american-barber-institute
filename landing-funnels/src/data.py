@@ -23,6 +23,9 @@ MANHATTAN = {
     "latlng": (40.7522, -73.9849),
     # Client-provided short URL for Manhattan Google Business Profile
     "google_listing_url": "https://maps.app.goo.gl/42UjD6bFQ65NEt1E7",
+    # Live rating/count, verified 2026-07-16 against the listing above
+    "google_rating": "4.1",
+    "google_review_count": 427,
 }
 BRONX = {
     "slug": "bronx",
@@ -35,6 +38,9 @@ BRONX = {
     "latlng": (40.8401, -73.8421),
     # Client-provided short URL for Bronx Google Business Profile
     "google_listing_url": "https://maps.app.goo.gl/9TJJh8ehUjSZ8kcaA",
+    # Live rating/count, verified 2026-07-16 against the listing above
+    "google_rating": "4.9",
+    "google_review_count": 253,
 }
 
 # ─── page configs (one per landing page) ─────────────────────────────
@@ -321,47 +327,36 @@ BRONX_EXTRA_VIDEOS = [
     ("https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/video-321.mp4", "video-321-poster.jpg"),
 ]
 
-# ─── Reviews (split per campus; same content for now, swap real Bronx
-#     Google reviews into REVIEWS_BY_CAMPUS["bronx"] when available) ───
+# ─── Reviews (real Google reviews, fetched live per campus 2026-07-16 from
+#     the listings above — Manhattan 4.1★/427 reviews, Bronx 4.9★/253 reviews.
+#     Distinct real reviewers per campus, not the same quotes reused twice.) ──
 _REVIEWS_EN_MANHATTAN = [
-    {"name": "Jerrick Matthews", "role": "Current student — Manhattan",
-     "q": "The level of knowledge and training is superb! One of the best teachers around, King David, will show you everything there is to know about barbering — 100% commitment from this school."},
-    {"name": "Carlos Perez", "role": "Student — Manhattan",
-     "q": "I'm a student here and King David has been awesome!! He has 30 years of experience, gives us great techniques and keeps polishing our basic skills."},
-    {"name": "Zyee Fin", "role": "Current student — Manhattan",
-     "q": "I'm currently enrolled here and I'm happy with the progress from learning from the teachers and classmates. Nothing but positivity and eager to learn more in this field."},
-    {"name": "Andre Thompson", "role": "Graduate — Manhattan",
-     "q": "Real hands-on training from day one and the instructors genuinely care. The job placement support after graduation actually helped me get started in a shop. Highly recommend ABI to anyone serious about barbering."},
+    {"name": "Christopher L.", "role": "Google review — Manhattan",
+     "q": "One of the most affordable haircuts in NYC at American Barber Institute — 10 out of 10!"},
+    {"name": "Jerald A.", "role": "Google review — Manhattan",
+     "q": "As a student at American Barber Institute, I had an amazing experience from start to finish. The instructors truly care about their students and are dedicated to helping everyone succeed in the barber industry."},
 ]
 _REVIEWS_ES_MANHATTAN = [
-    {"name": "Jerrick Matthews", "role": "Estudiante actual — Manhattan",
-     "q": "¡El nivel de conocimiento y entrenamiento es excelente! Uno de los mejores maestros, King David, te enseña todo lo que hay que saber sobre barbería — 100% de compromiso de esta escuela."},
-    {"name": "Carlos Perez", "role": "Estudiante — Manhattan",
-     "q": "Soy estudiante aquí y ¡King David ha sido increíble! Tiene 30 años de experiencia, nos da grandes técnicas y sigue puliendo nuestras habilidades básicas."},
-    {"name": "Zyee Fin", "role": "Estudiante actual — Manhattan",
-     "q": "Estoy inscrito aquí y estoy feliz con el progreso aprendiendo de los maestros y compañeros. Pura positividad y ganas de aprender más en este campo."},
-    {"name": "Andre Thompson", "role": "Graduado — Manhattan",
-     "q": "Entrenamiento práctico real desde el primer día y los instructores realmente se preocupan. El apoyo de colocación laboral después de graduarme me ayudó a empezar en una barbería. Muy recomendada para cualquiera serio sobre la barbería."},
+    {"name": "Christopher L.", "role": "Reseña de Google — Manhattan",
+     "q": "Uno de los cortes de cabello más económicos de NYC en American Barber Institute — ¡10 de 10!"},
+    {"name": "Jerald A.", "role": "Reseña de Google — Manhattan",
+     "q": "Como estudiante de American Barber Institute, tuve una experiencia increíble de principio a fin. Los instructores realmente se preocupan por sus estudiantes y están dedicados a ayudar a todos a triunfar en la industria de la barbería."},
 ]
 _REVIEWS_EN_BRONX = [
-    {"name": "Jerrick Matthews", "role": "Current student — Bronx",
-     "q": "The level of knowledge and training is superb! One of the best teachers around, King David, will show you everything there is to know about barbering — 100% commitment from this school."},
-    {"name": "Carlos Perez", "role": "Student — Bronx",
-     "q": "I'm a student here and King David has been awesome!! He has 30 years of experience, gives us great techniques and keeps polishing our basic skills."},
-    {"name": "Zyee Fin", "role": "Current student — Bronx",
-     "q": "I'm currently enrolled here and I'm happy with the progress from learning from the teachers and classmates. Nothing but positivity and eager to learn more in this field."},
-    {"name": "Andre Thompson", "role": "Graduate — Bronx",
-     "q": "Real hands-on training from day one and the instructors genuinely care. The job placement support after graduation actually helped me get started in a shop. Highly recommend ABI to anyone serious about barbering."},
+    {"name": "William P.", "role": "Google review — Bronx",
+     "q": "Great location near public transportation. The instructors are very helpful and knowledgeable, which allows for a good learning process. I've frequented the school about once a week and have had excellent experiences."},
+    {"name": "Victor E.", "role": "Google review — Bronx",
+     "q": "Great place for an affordable haircut. A student cuts your hair and they're given guidance by teachers when they're unsure. Just good to know it may take a little longer since they're learning."},
+    {"name": "Areeba M.", "role": "Google review — Bronx",
+     "q": "I had an excellent experience at this barbershop and couldn't be happier with my cut. From the moment I walked in, the atmosphere was welcoming and professional."},
 ]
 _REVIEWS_ES_BRONX = [
-    {"name": "Jerrick Matthews", "role": "Estudiante actual — Bronx",
-     "q": "¡El nivel de conocimiento y entrenamiento es excelente! Uno de los mejores maestros, King David, te enseña todo lo que hay que saber sobre barbería — 100% de compromiso de esta escuela."},
-    {"name": "Carlos Perez", "role": "Estudiante — Bronx",
-     "q": "Soy estudiante aquí y ¡King David ha sido increíble! Tiene 30 años de experiencia, nos da grandes técnicas y sigue puliendo nuestras habilidades básicas."},
-    {"name": "Zyee Fin", "role": "Estudiante actual — Bronx",
-     "q": "Estoy inscrito aquí y estoy feliz con el progreso aprendiendo de los maestros y compañeros. Pura positividad y ganas de aprender más en este campo."},
-    {"name": "Andre Thompson", "role": "Graduado — Bronx",
-     "q": "Entrenamiento práctico real desde el primer día y los instructores realmente se preocupan. El apoyo de colocación laboral después de graduarme me ayudó a empezar en una barbería. Muy recomendada para cualquiera serio sobre la barbería."},
+    {"name": "William P.", "role": "Reseña de Google — Bronx",
+     "q": "Excelente ubicación cerca del transporte público. Los instructores son muy serviciales y conocedores, lo que permite un buen proceso de aprendizaje. Vengo a la escuela casi una vez por semana y he tenido excelentes experiencias."},
+    {"name": "Victor E.", "role": "Reseña de Google — Bronx",
+     "q": "Un gran lugar para un corte de cabello económico. Un estudiante te corta el cabello y recibe orientación de los maestros cuando no está seguro. Solo hay que saber que puede tardar un poco más porque están aprendiendo."},
+    {"name": "Areeba M.", "role": "Reseña de Google — Bronx",
+     "q": "Tuve una experiencia excelente en esta barbería y no podría estar más feliz con mi corte. Desde el momento en que entré, el ambiente fue acogedor y profesional."},
 ]
 REVIEWS_BY_CAMPUS = {
     "manhattan": {"en": _REVIEWS_EN_MANHATTAN, "es": _REVIEWS_ES_MANHATTAN},

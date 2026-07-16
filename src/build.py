@@ -74,7 +74,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=175">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=176">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -586,6 +586,10 @@ PAGES = [
     ("tuition-and-funding.html", "page-tuition-and-funding.html",
      "Tuition & Funding: How to Pay for Barber Training in New York",
      "Your options for paying for barber training — payment plans, GI Bill® and ACCES-VR — and how to figure out what fits your budget.",
+     "en", ["FAQ_SCHEMA"]),
+    ("landingpage.html", "landingpage.html",
+     "Become a Licensed Barber in NYC — Enroll at American Barber Institute",
+     "Enroll at American Barber Institute and train for your NY Master Barber license — 500 hours, about 4 months full-time, Manhattan & Bronx campuses, weekly payment plans plus GI Bill® and ACCES-VR funding. New classes start the first Monday of every month.",
      "en", ["FAQ_SCHEMA"]),
     ("is-barber-training-right-for-you.html", "page-is-barber-training-right-for-you.html",
      "Is Barber Training Right for You? A Quick Self-Assessment",

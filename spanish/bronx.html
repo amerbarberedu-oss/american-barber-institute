@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="/assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="/assets/css/landing.min.css?v=175">
+<link rel="stylesheet" href="/assets/css/landing.min.css?v=176">
 <link rel="stylesheet" href="/assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -231,15 +231,19 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 .hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
 @media(max-width:1000px){
-  #main .hx .hx-in{grid-template-columns:1fr}
-  #main .hx .hx-photo{min-height:0;aspect-ratio:872/1804;align-items:flex-end}
-  #main .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center top/cover no-repeat}
-  #main .hx .hx-photo .hx-grad{background:none}
-  #main .hx .hx-copy{max-width:100%;width:100%;padding-bottom:7rem}
-  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem)}
-  #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem)}
-  #main .hx .hx-sub{font-size:1.03rem;max-width:330px}
-  #main .hx .formcard{padding:1.625rem 1.25rem 2.125rem}
+  /* MOBILE HERO STACK (<=1000px): strict vertical order — full photo first, marketing copy as
+     its OWN block below the photo, then the contact form. .hx-photo is unwrapped via
+     display:contents so its children (.hx-bg/.hx-grad/.hx-copy) promote to direct flex items of
+     .hx-in alongside .formcard, then ordered 1/2/3. Desktop (>1000px) overlay is NOT touched. */
+  #main .hx .hx-in{display:flex;flex-direction:column;grid-template-columns:none}
+  #main .hx .hx-photo{display:contents}
+  #main .hx .hx-photo .hx-bg{position:relative!important;order:1;width:100%;height:auto!important;aspect-ratio:872/1804;background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center top/cover no-repeat}
+  #main .hx .hx-photo .hx-grad{display:none}
+  #main .hx .hx-copy{order:2;max-width:100%;width:100%;background:#0b0d0f;padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
+  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:none}
+  #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:none}
+  #main .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none}
+  #main .hx .formcard{order:3;padding:1.625rem 1.25rem 2.125rem}
   section.hx-features{background:#0b0d0f!important}
   .hx-features-in{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0}
   .hx-feature{flex-direction:row!important;align-items:flex-start!important;border-left:0!important;

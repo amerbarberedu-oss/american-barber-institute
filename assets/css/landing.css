@@ -3275,7 +3275,7 @@ body.shell2 .mstrip-t i{
   font-weight:700;
   font-style:normal;
 }
-@media (max-width:420px){
+@media (max-width:480px){
   body.shell2 .mstrip-phone{padding:.5rem .35rem;gap:.3rem}
   body.shell2 .mstrip-phone svg{width:11px;height:11px}
   body.shell2 .mstrip-t b{font-size:.82rem}
