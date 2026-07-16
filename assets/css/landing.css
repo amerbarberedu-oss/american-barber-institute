@@ -921,10 +921,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .btn-ghost{color:var(--ink,#10131a);border:1.5px solid rgba(16,19,26,.30);background:transparent}
 .btn-ghost:hover{border-color:var(--blue,#1b2fd9);color:var(--blue,#1b2fd9);background:rgba(27,47,217,.06)}
 .hero .btn-ghost,.page-hero .btn-ghost,section.dark .btn-ghost,.dark .btn-ghost,
-.cta-band .btn-ghost,.visit360 .btn-ghost,.jobs-track--owners .btn-ghost,.inst-hero .btn-ghost{
+.cta-band .btn-ghost,.visit360 .btn-ghost,.jobs-track--owners .btn-ghost,.inst-hero .btn-ghost,
+.band--dark .btn-ghost,.band--petrol .btn-ghost{
   color:#fff;border-color:rgba(255,255,255,.55);background:transparent}
 .hero .btn-ghost:hover,.page-hero .btn-ghost:hover,section.dark .btn-ghost:hover,.dark .btn-ghost:hover,
-.cta-band .btn-ghost:hover,.visit360 .btn-ghost:hover,.inst-hero .btn-ghost:hover{
+.cta-band .btn-ghost:hover,.visit360 .btn-ghost:hover,.inst-hero .btn-ghost:hover,
+.band--dark .btn-ghost:hover,.band--petrol .btn-ghost:hover{
   border-color:var(--gold-bright,#f4c44a);color:var(--gold-bright,#f4c44a);background:rgba(255,255,255,.10)}
 
 /* --- Mobile backgrounds: STILL (no parallax/zoom) + properly fitted --- */

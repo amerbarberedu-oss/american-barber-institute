@@ -74,13 +74,13 @@ TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=173">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=174">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
 <link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=7">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=8">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" style="--page-bg:url('/assets/img/{pagebg}')">
