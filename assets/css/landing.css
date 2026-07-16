@@ -706,16 +706,6 @@ section.alt{background:rgba(246,248,252,.60)!important;backdrop-filter:blur(7px)
 /* "Every Employee, a Graduate" creed */
 .inst-creed{max-width:660px;margin:0 auto 1.5rem;font-size:1rem;line-height:1.6;color:#eef1ff;opacity:.95}
 .inst-creed span{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-bright);font-weight:700;font-size:.92rem;margin-bottom:.35rem}
-/* Monogram avatars (no-face, premium gradient discs) */
-.inst-avatar{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;
-  font-family:'Oswald',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:.02em;color:#fff;
-  box-shadow:0 6px 18px rgba(15,20,32,.22),inset 0 1px 0 rgba(255,255,255,.35);
-  border:2px solid rgba(255,255,255,.55);align-self:flex-start;
-  transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
-.inst-avatar--lg{width:84px;height:84px;font-size:2rem;margin-bottom:.4rem}
-.inst-avatar--gold{background:linear-gradient(140deg,#e8a13a 0%,#c87d22 55%,#9a5d12 100%)}
-.inst-avatar--blue{background:linear-gradient(140deg,#3a63d8 0%,#1f3fb0 55%,#16307e 100%)}
-.inst-card:hover .inst-avatar{transform:rotate(-4deg) scale(1.06);box-shadow:0 10px 26px rgba(27,47,217,.32),inset 0 1px 0 rgba(255,255,255,.4)}
 /* Subtle 3D lift already on cards; add gold edge glow on featured */
 .inst-feature{position:relative;overflow:hidden}
 .inst-feature::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 0% 0%,rgba(232,161,58,.10),transparent 60%);pointer-events:none}
@@ -1090,8 +1080,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
    ============================================================ */
 /* real instructor photos in place of monogram avatars */
 /* Instructor photos: large, centered circular headshots, consistent across cards */
-.inst-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:center top;display:block;border:3px solid rgba(27,47,217,.2);box-shadow:0 6px 20px rgba(15,20,32,.22);align-self:center;transform:none!important}
-.inst-avatar--lg.inst-photo{width:172px;height:172px;margin-bottom:.4rem}
 .inst-group-photo{width:100%;height:auto;max-height:540px;object-fit:contain;border-radius:18px;margin:0 0 1.6rem;box-shadow:0 12px 34px rgba(15,20,32,.18);display:block}
 /* center the photo, role badge and name; keep bio text left-aligned for readability */
 .inst-card{align-items:center;text-align:center}
@@ -1585,72 +1573,6 @@ body.page-splash .sec--testi,
 body.page-splash .sec--faq{
   background-image:none!important;
   background:#ffffff!important;
-}
-
-/* v13.7 — Haircuts hero: centered layout with periwinkle pill CALL button
-   matching client screenshot 1:1 */
-.hair-hero{text-align:center}
-.hair-hero-in{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.4rem;padding:2.2rem 1rem 2.6rem}
-.hair-kicker{
-  margin:0 0 .6rem;
-  font-size:.82rem;font-weight:800;
-  letter-spacing:.32em;text-transform:uppercase;
-  color:#9aa4ff!important;
-  text-shadow:0 1px 10px rgba(0,0,0,.55);
-}
-.hair-h1{
-  margin:0 0 1rem;
-  font-size:clamp(2.4rem,5.8vw,4.6rem);
-  font-weight:900;line-height:1.05;
-  color:#fff!important;
-  text-shadow:0 2px 22px rgba(0,0,0,.65);
-}
-.hair-lead{
-  margin:0 auto 1.6rem;max-width:48rem;
-  font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.55;
-  color:#e8eaf2!important;
-  text-shadow:0 1px 10px rgba(0,0,0,.55);
-}
-.hair-call-eyebrow{
-  margin:1.5rem 0 .9rem;
-  font-size:.78rem;font-weight:700;
-  letter-spacing:.34em;text-transform:uppercase;
-  color:rgba(255,255,255,.78)!important;
-  text-shadow:0 1px 8px rgba(0,0,0,.45);
-}
-.hair-call-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.85rem;
-  padding:1.1rem 2.6rem;
-  background:#7c84ff;
-  color:#fff!important;
-  text-decoration:none;
-  font-size:clamp(1.5rem,3vw,2.3rem);
-  font-weight:800;letter-spacing:.01em;
-  border-radius:9999px;
-  box-shadow:0 14px 40px rgba(124,132,255,.45),0 0 0 1px rgba(255,255,255,.12) inset;
-  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
-}
-.hair-call-btn:hover{
-  background:#8a91ff;
-  transform:translateY(-2px);
-  box-shadow:0 18px 48px rgba(124,132,255,.6),0 0 0 1px rgba(255,255,255,.18) inset;
-}
-.hair-call-dot{
-  flex-shrink:0;
-  width:9px;height:9px;border-radius:50%;
-  background:#ff4d4f;
-  box-shadow:0 0 10px rgba(255,77,79,.65);
-}
-.hair-call-icon{
-  width:clamp(28px,3.4vw,42px);height:clamp(28px,3.4vw,42px);
-  flex-shrink:0;color:#fff;
-}
-.hair-call-num{white-space:nowrap}
-
-@media (max-width:560px){
-  .hair-h1{font-size:clamp(2rem,8vw,2.6rem)}
-  .hair-call-btn{padding:.95rem 1.6rem;gap:.6rem;font-size:1.35rem}
-  .hair-call-icon{width:26px;height:26px}
 }
 
 /* v13.5 — Softer Google Reviews badge: no dark-blue dominance, true rounded corners,

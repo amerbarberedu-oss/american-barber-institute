@@ -71,10 +71,10 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,900;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=36">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=171">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=172">
 <link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
 <script src="{root}assets/js/analytics.js?v=7" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -244,6 +244,16 @@ ORG_SCHEMA = {
     "paymentAccepted": ["Cash", "Credit Card", "Financial Aid", "GI Bill", "ACCES-VR"],
     "currenciesAccepted": "USD"
 }
+# Spanish twin of ORG_SCHEMA — only `description`/`slogan` are prose that needs
+# translating (address/phone/geo/URLs are language-neutral). Uses the same
+# approved Spanish copy already live in the hand-crafted spanish/index.html
+# (audit 2026-07-16: every generated Spanish page was reusing the English
+# ORG_SCHEMA verbatim instead of this).
+ORG_SCHEMA_ES = dict(ORG_SCHEMA,
+    description="La única escuela dedicada de barbería en Nueva York. Programa de Barbero Maestro de 500 horas "
+                "licenciado por el Estado de NY, en Midtown Manhattan y el Bronx, con ayuda financiera, GI Bill "
+                "para veteranos, ACCES-VR y colocación laboral.",
+    slogan="Conviértete en Barbero Licenciado en 4 Meses")
 
 def course_schema(name, desc, hours, weeks, price, campus="manhattan"):
     location_address = ("121 Westchester Square, Bronx, NY 10461" if campus == "bronx"
@@ -438,7 +448,7 @@ PAGES = [
     ("about.html", "about.html",
      "Is ABI the Right Barber School for You? Meet the Team",
      "How ABI helps career-changers become licensed barbers. Our mentors, hands-on approach, and 30+ years building barber careers.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("instructors.html", "instructors.html",
      "Who Will Teach You to Barber? Meet the Mentors at ABI",
      "ABI's master instructors, including King David Ayeoribe and Emmy-featured Harold Brown, bring 50+ years of combined barbering chair time.",
@@ -446,7 +456,7 @@ PAGES = [
     ("jobs.html", "jobs.html",
      "What Can You Do After Barber School? Career Outcomes & Job Paths",
      "Where a barber license can take you — shop chairs, booth rental, your own business — and how ABI's job-placement support helps graduates land their first role.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("gallery.html", "gallery.html",
      "See What Barber Training Looks Like — Student Work",
      "Real student cuts, the clinic floor, and daily life while training to become a barber. See what you're stepping into.",
@@ -454,7 +464,7 @@ PAGES = [
     ("haircuts.html", "haircuts.html",
      "$3 Haircuts at ABI — How the Student Clinic Works",
      "The $3 student clinic is where trainees log real hours on real clients. Book a cut in Manhattan or the Bronx.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("faq.html", "faq.html",
      "Thinking About Barber School? Your Questions, Answered",
      "Answers on cost, training duration, schedules, age requirements, funding, and job placement. Everything to decide if barbering is right for you.",
@@ -462,11 +472,11 @@ PAGES = [
     ("schedules.html", "schedules.html",
      "Fit Barber School Around Your Life — ABI Schedules",
      "Morning, afternoon or weekend. Full-time finishes in about 4 months; weekends in 6-7. New classes start the first Monday monthly.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("contact.html", "contact.html",
      "Book a Tour or Talk to Admissions — Contact ABI",
      "See the campus before you commit. Tour 48 West 39th St, NYC, near Penn Station and Grand Central. Admissions in English or Spanish.",
-     "en", [ORG_SCHEMA]),
+     "en", [ORG_SCHEMA, "FAQ_SCHEMA"]),
     ("resources.html", "resources.html",
      "Barber Licensing Boards & Resources by State",
      "State-by-state barber licensing boards, regulatory agencies, and industry resources for your path to becoming a licensed barber.",
@@ -482,7 +492,7 @@ PAGES = [
     ("programs/index.html", "programs-index.html",
      "Which Barber Program Is Right for You? Compare Your Options",
      "Compare ABI's three paths: the 500-hour Master Barber program (your route to a NY license), the 50-hour Refresher for licensed pros, and the 3-hour Contagious Diseases course.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("programs/manhattan.html", "programs-manhattan.html",
      "Manhattan Campus Programs | American Barber Institute",
      "Every barber program at our Midtown Manhattan campus: 500-Hour Master Barber, 50-Hour Refresher and Contagious Diseases. NYSED-approved, weekly payment plans.",
@@ -495,22 +505,26 @@ PAGES = [
      "500-Hour Master Barber — Beginner to Licensed",
      "First fade to licensed Master Barber in Manhattan: 500 hours of hands-on training in ~4 months, flexible schedules, from $4,600.",
      "en", [course_schema("500 Hour Master Barber Program",
-        "500-hour NYS-licensed master barber training completed in about 4 months full-time: theory, practical work on real clients, State Board exam prep and job placement.", 500, 17, 5600)]),
+        "500-hour NYS-licensed master barber training completed in about 4 months full-time: theory, practical work on real clients, State Board exam prep and job placement.", 500, 17, 5600),
+        FAQ_SCHEMA_PLACEHOLDER]),
     ("programs/500-hour-master-barber-bronx.html", "program-500-bronx.html",
      "Become a Licensed Barber in the Bronx — The 500-Hour Path",
      "Your transformation at ABI's Bronx campus: 500 hours of hands-on, bilingual training in about 4 months, flexible schedules, payment plans and job-placement support.",
      "en", [course_schema("500 Hour Master Barber Program — Bronx",
-        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600, campus="bronx")]),
+        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600, campus="bronx"),
+        FAQ_SCHEMA_PLACEHOLDER]),
     ("programs/50-hour-barber-refresher.html", "program-50.html",
      "50-Hour Barber Refresher — Get Board-Ready Fast",
      "For cosmetologists, hairdressers and apprentices: sharpen skills and prep for the NY State Board Exam in ~2 weeks in Manhattan.",
      "en", [course_schema("50 Hour Barber Refresher Program",
-        "Two-week refresher preparing licensed professionals for the New York State Barbering Licensing Examination. This course is offered only at ABI's Manhattan campus.", 50, 2, 1500)]),
+        "Two-week refresher preparing licensed professionals for the New York State Barbering Licensing Examination. This course is offered only at ABI's Manhattan campus.", 50, 2, 1500),
+        FAQ_SCHEMA_PLACEHOLDER]),
     ("programs/contagious-diseases.html", "program-cd.html",
      "Contagious Diseases Course — NY Barber Requirement",
      "The NY-required Contagious Diseases course for barber operators and apprentices. Complete by mail for $100 with booklet and exam.",
      "en", [course_schema("3 Hours Contagious Diseases Program",
-        "Home-study course on transmission of contagious diseases, sanitation and sterilization required for NY barber licensure.", 3, 1, 100)]),
+        "Home-study course on transmission of contagious diseases, sanitation and sterilization required for NY barber licensure.", 3, 1, 100),
+        FAQ_SCHEMA_PLACEHOLDER]),
     ("blog/index.html", "blog-index.html",
      "Barber Career Guides — Licensing, Money & Life Behind the Chair",
      "Practical guides for anyone weighing a barber career: what a license takes, how much barbers earn, shop ownership, and what really happens after barber school.",
@@ -521,19 +535,19 @@ PAGES = [
     ("financial-aid.html", "page-financial-aid.html",
      "How Do People Pay for Barber School? Funding Options",
      "How students fund barber training: ACCES-VR, GI Bill for veterans, and $150/week payment plans. Find the option that fits.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("how-to-get-started.html", "page-how-to-get-started.html",
      "How to Start a Barber Career — Your First Steps",
      "From curious to enrolled: book a tour, gather documents, choose a schedule, and start on the first Monday at our Manhattan or Bronx campus.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("access-vr-program.html", "page-access-vr-program.html",
      "Could ACCES-VR Cover Your Barber Training?",
      "New Yorkers with a documented disability may get tuition, tools and books funded by ACCES-VR. See who qualifies and how to apply.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("veterans.html", "page-veterans.html",
      "Veterans: How to Use Your GI Bill® to Become a Barber",
      "Turn GI Bill benefits into a barber career: Post-9/11 (Ch. 33), VR&E (Ch. 31), Montgomery and DEA (Ch. 35). Licensed in about 4 months.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("privacy-and-policy.html", "page-privacy-and-policy.html",
      "Privacy Policy | American Barber Institute",
      "How ABI collects, protects and shares your information, including cookies from Google Analytics, Meta Pixel, Clarity and forms.",
@@ -541,7 +555,7 @@ PAGES = [
     ("virtual-tour.html", "page-virtual-tour.html",
      "Take a Look Inside Before You Enroll — Virtual Campus Tour",
      "See the clinic floor, the chairs and the space where you'd train, on video. Get directions and book an in-person tour of our Manhattan or Bronx campus.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("skills-and-techniques.html", "page-skills-and-techniques.html",
      "What Will You Learn? Skills Built on the Floor",
      "From first fade to razor lineups, shaves, sanitation and board-exam theory. What you master hands-on during 500 hours at ABI.",
@@ -549,38 +563,38 @@ PAGES = [
     ("shop-registration.html", "page-shop-registration.html",
      "Hiring Barbers? Connect With ABI-Trained Graduates",
      "Shop owners: register with ABI's job-placement office for free to meet trained, board-prepared graduates ready to take a chair at your NYC barbershop.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
 
     # ── .com career / decision / licensing hub — net-new pages ───────────────
     # Career-journey hub pages (linked from the main nav).
     ("why-barbering.html", "page-why-barbering.html",
      "Why Barbering? The Case for a Career Behind the Chair",
      "Thinking about a career change? Why barbering offers fast licensing, real income, creativity and independence — and how to tell if it's right for you.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("training-experience.html", "page-training-experience.html",
      "The Barber Training Experience: What It Really Looks Like",
      "What hands-on barber training actually feels like — the clinic floor, real clients, and how you go from your first cut to board-ready.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("career-paths.html", "page-career-paths.html",
      "Barber Career Paths: 7 Ways to Build a Life Behind the Chair",
      "From shop employee to booth renter, owner, educator and beyond — the seven career paths a barber license can open, and how to get there.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("student-stories.html", "page-student-stories.html",
      "Student Stories: Real Barber Career Transformations",
      "How career-changers became working barbers — the paths, the turning points, and what the leap into barbering really takes.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("tuition-and-funding.html", "page-tuition-and-funding.html",
      "Tuition & Funding: How to Pay for Barber Training in New York",
      "Your options for paying for barber training — payment plans, GI Bill® and ACCES-VR — and how to figure out what fits your budget.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("is-barber-training-right-for-you.html", "page-is-barber-training-right-for-you.html",
      "Is Barber Training Right for You? A Quick Self-Assessment",
      "Not sure barbering is your move? Work through this honest self-check on fit, time, money and goals before you commit.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("ny-barber-licensing-checklist.html", "page-ny-barber-licensing-checklist.html",
      "Free NY Barber Licensing Checklist (2026)",
      "Get a free, step-by-step checklist to become a licensed barber in New York — requirements, training hours, the exam and documents in one place.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
 
     # ── Location / geo-targeted SEO pages ──────────────────────────────────
     # Output slugs match abi.edu's existing URL structure exactly. Titles and
@@ -631,7 +645,7 @@ PAGES = [
     ("guides/index.html", "guides-index.html",
      "Barber Career & Licensing Guides — American Barber Institute",
      "Free, in-depth guides to becoming a barber in New York: licensing, salary, exam prep, funding, career paths and more.",
-     "en", []),
+     "en", ["FAQ_SCHEMA"]),
     ("guides/how-to-become-a-barber-in-new-york.html", "guide-how-to-become-a-barber-in-new-york.html",
      "How to Become a Barber in New York: The Complete 2026 Roadmap",
      "Every step to become a licensed barber in NY — eligibility, 500 training hours, the state board exam, fees and timelines — in one plain-English 2026 guide.",
@@ -703,7 +717,7 @@ if os.path.exists(_blog_manifest):
             f"{_p['title']} | ABI Blog",
             f"{_p['title']} — career advice and industry insight from NYC's career-focused barber school.",
             "en", [article_schema(_p['title'], f"{SITE_URL}/blog/{_p['slug']}",
-                                  slug=_p['slug'], body=_body)]))
+                                  slug=_p['slug'], body=_body), FAQ_SCHEMA_PLACEHOLDER]))
 
 def gallery_video_schemas(body, limit=15):
     """Build VideoObject entries for the self-hosted (Vercel Blob) 'floor-XX'
@@ -732,11 +746,16 @@ def gallery_video_schemas(body, limit=15):
 
 
 def faq_schema_from(body):
-    """Build FAQPage JSON-LD from the faq partial's <summary>/<div class="a"> pairs."""
-    qa = re.findall(r'<summary>(.*?)</summary>\s*<div class="a">(.*?)</div>', body, re.S)
+    """Build FAQPage JSON-LD from a page's <summary>/answer pairs. Supports both
+    markup patterns used across the site: `<div class="a">` wrapping the answer
+    (faq.html, guides), or a bare `<p>` directly after `</summary>` (dark-band
+    inline-styled FAQs, e.g. tuition-and-funding.html, veterans.html)."""
+    qa = re.findall(
+        r'<summary[^>]*>(.*?)</summary>\s*(?:<div class="a">(.*?)</div>|<p[^>]*>(.*?)</p>)',
+        body, re.S)
     items = []
-    for q, a in qa:
-        clean_a = re.sub(r'<[^>]+>', ' ', a)
+    for q, a_div, a_p in qa:
+        clean_a = re.sub(r'<[^>]+>', ' ', a_div or a_p)
         clean_a = re.sub(r'\s+', ' ', clean_a).strip()
         items.append({"@type": "Question", "name": re.sub(r'<[^>]+>', '', q).strip(),
                       "acceptedAnswer": {"@type": "Answer", "text": clean_a}})
@@ -1476,12 +1495,40 @@ def build():
             )
             # Real translations don't need the "coming soon" banner.
             es_body = _fixed_body if _real_translation else (ES_BANNER + '\n' + _fixed_body)
+            # ── ES-SPECIFIC STRUCTURED DATA (audit 2026-07-16) ───────────────
+            # Previously every Spanish page reused the English `schema_tags`
+            # verbatim: FAQPage answers, the BreadcrumbList name/URL, and the
+            # sitewide Organization description/slogan were all English on a
+            # Spanish page. Rebuilt here from the Spanish title/canonical/body
+            # (the real translated body when one exists, matching what the
+            # visible page actually says) instead of reusing the EN version.
+            es_resolved = []
+            for s in schemas:
+                if s == FAQ_SCHEMA_PLACEHOLDER:
+                    es_resolved.append(faq_schema_from(_fixed_body))
+                elif s == VIDEO_SCHEMA_PLACEHOLDER:
+                    es_resolved.extend(gallery_video_schemas(_fixed_body))
+                else:
+                    es_resolved.append(s)
+            es_crumb_items = [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": SITE_URL + "/"}]
+            if not is_home:
+                es_short = re.sub(r'\s*[|—].*$', '', es_title).strip()
+                es_crumb_items.append({"@type": "ListItem", "position": 2, "name": es_short, "item": es_canonical})
+            es_resolved.append({"@context": "https://schema.org", "@type": "BreadcrumbList",
+                                "itemListElement": es_crumb_items})
+            if ORG_SCHEMA_ES not in es_resolved:
+                es_resolved.append(ORG_SCHEMA_ES)
+            for vs in VIDEO_SCHEMAS.get(out, []):
+                es_resolved.append(vs)
+            es_schema_tags = '\n'.join(
+                f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>'
+                for s in es_resolved)
             es_html = TEMPLATE.format(
                 lang='es', title=es_title, desc=es_desc, canonical=es_canonical, site=SITE_URL,
                 oglocale='es_ES',
                 pagebg=PAGE_BG.get(out.replace('spanish/', ''), _DEFAULT_BG),
                 root='../' + ('../' * out.count('/')),
-                body=es_body, schema=schema_tags, langtoggle=es_langtoggle,
+                body=es_body, schema=es_schema_tags, langtoggle=es_langtoggle,
                 campusswitch=es_campusswitch, bodyclass=bodyclass, datacampus=datacampus,
                 hreflang_block=es_hreflang_block, mbar=es_mbar, header_nav=es_header_nav, footer_block=es_footer_block,
                 lp='../' + ('../' * out.count('/')) + 'programs/index.html',

@@ -30,39 +30,6 @@
   letter-spacing: .02em;
 }
 
-/* ===== Consent checkboxes (TCPA: AI calls + SMS) ===== */
-.lf-consent {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-  margin: .9rem 0 1rem;
-  padding: .9rem;
-  background: #f7f8fc;
-  border: 1px solid var(--lf-line);
-  border-radius: 10px;
-}
-.lf-consent__row {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  gap: .65rem;
-  align-items: start;
-  cursor: pointer;
-  font-size: .78rem;
-  line-height: 1.45;
-  color: var(--lf-muted);
-}
-.lf-consent__row input[type="checkbox"] {
-  width: 18px; height: 18px;
-  margin-top: .15rem;
-  accent-color: var(--lf-accent);
-  cursor: pointer;
-}
-.lf-consent__row input[type="checkbox"]:focus-visible {
-  outline: 2px solid var(--lf-accent);
-  outline-offset: 2px;
-}
-.lf-consent__row:hover { color: var(--lf-ink); }
-
 /* ===== Skills & Techniques — proper grid (was ragged flex wrap) ===== */
 .lf-tech-grid {
   display: grid !important;
@@ -136,35 +103,6 @@
   color: var(--lf-muted);
   font-size: .96rem;
   line-height: 1.55;
-}
-
-/* ===== Countdown — STRICT 2 lines only =====
-   Line 1: "Next Starting Date: Monday, July 6, 2026"
-   Line 2: "New Classes Begin the First Monday of Each Month."
-   Auto-scales font so neither line ever wraps to a third line. */
-.lf-cd__line {
-  margin: 0 0 .35rem;
-  line-height: 1.3;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: -.005em;
-}
-.lf-cd__line--date {
-  font-weight: 800;
-  font-size: clamp(.82rem, 3.4vw, 1.05rem);
-}
-.lf-cd__line--date .lf-cd__label { color: #fff; opacity: .88; font-weight: 600; }
-.lf-cd__line--date .lf-cd__date  { color: var(--lf-hi); }
-.lf-cd__line--sub {
-  font-weight: 500;
-  font-size: clamp(.72rem, 2.95vw, .92rem);
-  opacity: .9;
-  margin-bottom: 1rem;
-}
-@media (min-width: 769px) {
-  .lf-cd__line { text-align: left; }
 }
 
 /* ===== Hide play button while a video is playing (set by funnels.js) ===== */
@@ -388,180 +326,6 @@ body.lf-page--brnx-es {
 }
 .lf-btn--lg { padding: 1rem 2rem; font-size: 1.05rem; min-width: 200px; }
 
-/* ───── top banner + header (slim — no nav) ───── */
-.lf-topbar {
-  background: linear-gradient(180deg, var(--lf-accent), var(--lf-accent-dark));
-  color: var(--lf-on-accent);
-  padding: .55rem 1rem; text-align: center;
-  font-size: .92rem; font-weight: 700; letter-spacing: .02em;
-}
-.lf-hdr {
-  position: sticky; top: 0; z-index: 50;
-  background: #fff; border-bottom: 1px solid var(--lf-line);
-  box-shadow: 0 1px 0 rgba(15,23,42,.04);
-}
-.lf-hdr__in {
-  max-width: 1280px; margin: 0 auto;
-  padding: .5rem 1rem;
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  min-height: 0;
-}
-.lf-brand { display: flex; align-items: center; gap: .9rem; min-width: 0; }
-.lf-brand,
-.lf-brand--campus { text-decoration: none; }
-.lf-brand__logo { height: 48px; width: auto; }
-/* v2.11 — Campus logos sized to fit cleanly inside the slim header.
-   Animated GIFs keep their continuous spinning pole; mix-blend-mode
-   multiply blends the artwork into the white header background. */
-.lf-brand__logo--campus {
-  height: 80px; width: auto;
-  max-width: 420px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  background: transparent;
-  display: block;
-}
-.lf-brand__addr {
-  font-size: .78rem; color: var(--lf-muted); line-height: 1.35;
-  font-weight: 600; max-width: 26ch;
-}
-.lf-hdr__right { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; justify-content: flex-end; }
-/* v3.5 — multiple campus phones side by side in header (Manhattan = 2, Bronx = 1) */
-/* v3.9 — desktop header: spread the 2 Manhattan phones much farther apart */
-.lf-hdr__phones { display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 5rem); flex-wrap: wrap; }
-.lf-phone {
-  display: inline-flex; align-items: center; gap: .45rem;
-  padding: .5rem .85rem; background: var(--lf-accent-soft);
-  border: 1.5px solid var(--lf-accent); border-radius: var(--lf-r-pill);
-  color: var(--lf-accent-dark); font-weight: 700; font-size: .88rem;
-  transition: background .2s ease, color .2s ease, transform .15s ease;
-}
-.lf-phone:hover { background: var(--lf-accent); color: var(--lf-on-accent); transform: translateY(-1px); }
-.lf-phone__flag {
-  font-size: .62rem; letter-spacing: .12em;
-  padding: .08rem .35rem; border-radius: 4px;
-  background: rgba(0,0,0,.06);
-}
-.lf-phone:hover .lf-phone__flag { background: rgba(255,255,255,.22); }
-.lf-lang {
-  display: inline-flex; align-items: center;
-  background: #fff; border: 2px solid var(--lf-accent); border-radius: var(--lf-r-pill);
-  font-size: .82rem; font-weight: 800; overflow: hidden;
-}
-.lf-lang a {
-  padding: .42rem .7rem; color: var(--lf-accent-dark); transition: background .2s, color .2s;
-}
-.lf-lang a + a { border-left: 2px solid var(--lf-accent); }
-.lf-lang a.is-active,
-.lf-lang a:hover { background: var(--lf-accent); color: var(--lf-on-accent); }
-
-@media (max-width: 720px) {
-  .lf-brand__addr { display: none; }
-  .lf-brand__logo { height: 40px; }
-  .lf-brand__logo--campus { height: 64px; max-width: 300px; }
-  .lf-phone__num { display: none; }
-  .lf-phone { padding: .45rem .6rem; }
-  /* v3.5 — hide header phones on mobile; the topbar chips already show all campus numbers */
-  .lf-hdr__phones { display: none; }
-}
-
-/* ───── hero ───── */
-.lf-hero {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 12% 0%, var(--lf-ink-deep-2) 0%, var(--lf-ink-deep) 58%),
-    var(--lf-ink-deep);
-  color: #fff;
-  padding: 3.4rem 0;
-}
-.lf-hero__in {
-  display: grid; grid-template-columns: 1fr; gap: 2rem;
-  align-items: start;
-}
-@media (min-width: 980px) {
-  .lf-hero__in { grid-template-columns: 1.15fr .85fr; gap: 3rem; }
-}
-/* Mobile: contact form first, then trust list + countdown */
-@media (max-width: 979px) {
-  .lf-hero__form { order: 1; }
-  .lf-hero__copy { order: 2; }
-}
-.lf-hero h1 { color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.55); }
-.lf-hero__sub { color: #e8eaf2; font-size: clamp(1rem, 1.5vw, 1.18rem); margin: 1.1rem 0 1.4rem; max-width: 36rem; }
-.lf-hero__sub b { color: #fff; }
-
-/* hero chips — DESKTOP: 3-column uniform grid to match website .hx-chips alignment (v56) */
-.lf-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; max-width: 46rem; margin-bottom: 1.4rem; }
-.lf-feature {
-  display: inline-flex; align-items: center; gap: .5rem;
-  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.35);
-  color: #fff; padding: .45rem .85rem; border-radius: var(--lf-r-pill);
-  font-size: .85rem; font-weight: 600;
-  text-shadow: 0 1px 6px rgba(0,0,0,.55);
-}
-.lf-feature svg { width: 18px; height: 18px; color: var(--lf-sky); filter: drop-shadow(0 0 4px rgba(127,217,255,.6)); }
-
-/* hero CTAs removed on desktop — see .lf-mbar (mobile fixed bottom bar) below */
-.lf-hero__ctas { display: none; }
-
-/* countdown card */
-.lf-cd {
-  margin: 1.1rem 0 0;
-  padding: 1.25rem 1.3rem 1.35rem;
-  max-width: 34rem;
-  background: rgba(8,12,28,.55);
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 18px;
-  backdrop-filter: blur(8px) saturate(1.05);
-  -webkit-backdrop-filter: blur(8px) saturate(1.05);
-  box-shadow: 0 18px 44px rgba(0,0,0,.4);
-}
-.lf-cd__h {
-  margin: 0 0 .5rem;
-  font-family: Georgia, 'Times New Roman', serif; font-weight: 400;
-  font-size: clamp(1.1rem, 2.1vw, 1.55rem); line-height: 1.2;
-  display: flex; flex-wrap: wrap; gap: .4rem; align-items: baseline;
-}
-.lf-cd__label { color: #fff; }
-.lf-cd__date { color: var(--lf-sky); text-shadow: 0 1px 8px rgba(0,0,0,.4); font-weight: 500; }
-.lf-cd__sub { margin: 0 0 1rem; font-size: .92rem; color: #e8eaf2; font-weight: 500; }
-.lf-cd__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; }
-.lf-cd__cell {
-  text-align: center; padding: .7rem .3rem .55rem;
-  border: 1.5px solid rgba(255,255,255,.6); border-radius: 14px;
-}
-.lf-cd__cell b {
-  display: block; font-family: Georgia, 'Times New Roman', serif; font-weight: 400;
-  font-size: clamp(1.3rem, 2.4vw, 1.85rem); color: #fff; line-height: 1;
-}
-.lf-cd__cell span {
-  display: block; margin-top: .35rem; font-size: .62rem; font-weight: 700;
-  letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.9);
-}
-
-/* lead form (hero right column) */
-.lf-form {
-  background: #fff; border: 1px solid var(--lf-line); border-radius: var(--lf-r-lg);
-  box-shadow: var(--lf-shadow-lg);
-  padding: 1.5rem 1.3rem; color: var(--lf-ink);
-}
-.lf-form__h { font-size: 1.25rem; margin: 0 0 .3rem; color: var(--lf-ink); }
-.lf-form__sub { margin: 0 0 1rem; color: var(--lf-muted); font-size: .92rem; }
-.lf-form__row { display: grid; gap: .65rem; margin-bottom: .65rem; }
-@media (min-width: 520px) { .lf-form__row--2 { grid-template-columns: 1fr 1fr; } }
-.lf-form input, .lf-form select, .lf-form textarea {
-  width: 100%; padding: .75rem .9rem; font: inherit; font-size: .95rem;
-  background: #f8fafc; color: var(--lf-ink);
-  border: 1.5px solid #d8dee9; border-radius: var(--lf-r-md);
-  outline: none; transition: border-color .15s, box-shadow .15s;
-}
-.lf-form input:focus, .lf-form select:focus, .lf-form textarea:focus {
-  border-color: var(--lf-accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lf-accent) 22%, transparent);
-}
-.lf-form__submit { width: 100%; margin-top: .35rem; }
-.lf-form__fine { font-size: .72rem; color: var(--lf-soft-ink); margin: .8rem 0 0; }
-
 /* ───── stats row ───── */
 .lf-stats {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem;
@@ -575,29 +339,6 @@ body.lf-page--brnx-es {
 .lf-stat__n { font-family: 'Oswald', sans-serif; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 700; color: var(--lf-accent-dark); line-height: 1; }
 .lf-stat__label { display: block; margin-top: .35rem; font-size: .82rem; color: var(--lf-muted); font-weight: 600; }
 
-/* ───── "What You Get" pills (light-blue band) ───── */
-.lf-pills {
-  background: linear-gradient(180deg, var(--lf-sky-soft) 0%, #fff 100%);
-  border-top: 1px solid var(--lf-line);
-}
-.lf-pills__grid {
-  display: grid; grid-template-columns: 1fr; gap: .85rem;
-}
-@media (min-width: 720px) { .lf-pills__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .lf-pills__grid { grid-template-columns: repeat(3, 1fr); } }
-.lf-pill {
-  display: flex; align-items: center; gap: .8rem;
-  background: #fff; border: 1px solid var(--lf-line); border-radius: var(--lf-r-md);
-  padding: 1rem 1.1rem; box-shadow: var(--lf-shadow-sm);
-}
-.lf-pill__icon {
-  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%;
-  background: var(--lf-sky-soft); color: var(--lf-sky-deep);
-  display: grid; place-items: center;
-}
-.lf-pill__icon svg { width: 22px; height: 22px; }
-.lf-pill__txt { font-weight: 600; color: var(--lf-ink); font-size: .96rem; }
-
 /* v3.6 — removed duplicate .lf-steps + .lf-step block ("Hands-On Training",
    a legacy section no longer emitted by build.py). Its 4-column definition
    was overriding the 3-Easy-Steps 3-column layout on ≥1024px screens. */
@@ -605,17 +346,6 @@ body.lf-page--brnx-es {
 /* ───── earnings tiers ───── */
 .lf-earn { display: grid; grid-template-columns: 1fr; gap: 1rem; }
 @media (min-width: 720px) { .lf-earn { grid-template-columns: repeat(3, 1fr); } }
-.lf-earn-card {
-  background: linear-gradient(180deg, var(--lf-accent-soft) 0%, #fff 100%);
-  border: 1px solid var(--lf-line); border-radius: var(--lf-r-md);
-  padding: 1.6rem 1.3rem; text-align: center; box-shadow: var(--lf-shadow-sm);
-}
-.lf-earn-card__amount {
-  font-family: 'Oswald', sans-serif; font-size: clamp(1.5rem, 3.4vw, 2.2rem);
-  color: var(--lf-ink); font-weight: 700; line-height: 1.1;
-}
-.lf-earn-card__role { margin-top: .35rem; font-weight: 600; color: var(--lf-accent-dark); }
-.lf-earn-card__note { margin-top: .35rem; color: var(--lf-soft-ink); font-size: .85rem; }
 
 /* ───── tuition table ───── */
 .lf-tuition { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -761,34 +491,6 @@ body.lf-page--brnx-es {
 .lf-review__name { font-weight: 700; color: var(--lf-ink); font-size: .92rem; line-height: 1.2; }
 .lf-review__role { color: var(--lf-soft-ink); font-size: .8rem; }
 
-/* ───── gallery — v3.4: lifted EXACTLY from main marketing site's `.gal`
-   pattern (https://www.americanbarberinstitute.com/). 4-up on desktop,
-   2-up on mobile (≤840px). Images are 4:3, scale gently on hover.   ───── */
-.lf-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: .8rem;
-  margin-top: 2rem;
-}
-.lf-gallery img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-  border-radius: 10px;
-  overflow: hidden;
-  filter: brightness(1.08) contrast(1.05) saturate(1.06);
-  transition: transform .3s ease, filter .2s ease;
-}
-.lf-gallery img:hover {
-  transform: scale(1.06);
-  filter: brightness(1.16) contrast(1.08) saturate(1.1);
-}
-@media (max-width: 840px) {
-  .lf-gallery { grid-template-columns: repeat(2, 1fr); }
-}
-
 /* ───── FAQ ───── */
 .lf-faq { max-width: 820px; margin-inline: auto; display: grid; gap: .75rem; }
 .lf-faq details {
@@ -832,19 +534,6 @@ body.lf-page--brnx-es {
 .lf-soc:hover { background: var(--lf-accent); color: var(--lf-on-accent); border-color: var(--lf-accent); transform: translateY(-2px); }
 .lf-soc svg { width: 20px; height: 20px; fill: currentColor; }
 .lf-footer__fine { font-size: .78rem; color: var(--lf-soft-ink); margin: .5rem 0 0; }
-
-/* ───── floating chat bubble (chatbot launcher) ───── */
-.lf-chat {
-  position: fixed; bottom: 22px; right: 22px; z-index: 80;
-  width: 60px; height: 60px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--lf-accent), var(--lf-accent-dark));
-  color: var(--lf-on-accent);
-  display: grid; place-items: center; border: 0;
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--lf-accent) 50%, transparent);
-  transition: transform .15s ease, box-shadow .2s ease;
-}
-.lf-chat:hover { transform: translateY(-2px); }
-.lf-chat svg { width: 26px; height: 26px; fill: currentColor; }
 
 /* ───── reveal-on-scroll ───── */
 .lf-rv { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
@@ -954,10 +643,6 @@ body.lf-page--brnx-es {
    v1.2 — Hard-hide mbar on desktop · Showcase clip thumbnails ·
           Conversion-focused micro-animations (3D tilt, counter, glow)
    ═════════════════════════════════════════════════════════════════════ */
-
-/* Hard guarantee: the sticky bottom bar is mobile-only. */
-@media (min-width: 769px) {
-}
 
 /* Showcase clip — poster always visible, centered play overlay until played */
 .lf-clip {
@@ -1573,10 +1258,10 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 .hx-features-in{width:min(1500px,96%);margin-inline:auto;display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
 .hx-feature{display:flex;align-items:flex-start;text-align:left;gap:.75rem;
-  padding:.25rem 1rem;border-left:1px solid #e8ecef}
+  padding:.25rem 1rem;border-left:1px solid #e8ecef;min-width:0}
 .hx-feature:first-child{border-left:0}
 .hx-feature svg{color:var(--teal)!important;flex-shrink:0;margin-top:.1rem}
-.hx-feature span{font-size:.78rem;line-height:1.5;color:var(--ink-2)!important}
+.hx-feature span{font-size:.78rem;line-height:1.5;color:var(--ink-2)!important;min-width:0}
 .hx-feature b{display:block;font-weight:700}
 .hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
@@ -1636,6 +1321,11 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
     color: #fff;
     border: 1px solid transparent;
     transition: transform .12s ease, filter .15s ease;
+    /* Grid items default to min-width:auto, which refuses to shrink below the
+       label's unwrapped width — at 360px that pushed the whole bar past the
+       viewport edge (audit 2026-07-16). Letting it shrink allows the label to
+       wrap instead of forcing overflow. */
+    min-width: 0;
   }
   .lf-mcta__btn:active { transform: scale(.97); }
   .lf-mcta__btn svg { width: 16px; height: 16px; flex: 0 0 auto; }
@@ -1813,209 +1503,6 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
   font-size: .8rem;
   text-align: center;
   line-height: 1.5;
-}
-
-/* ═══════════ v45 — LANDING HEADER (main-site pattern) ═══════════
-   Desktop 3 rows: [logo · phones · EN|ES] sticky / accent promo / seats.
-   Mobile 4 rows:  [logo · EN|ES] sticky / promo / phones row / seats. */
-.lfx-bar{position:sticky;top:0;z-index:90;background:#fff;box-shadow:0 4px 16px rgba(15,30,80,.12)}
-.lfx-bar__in{display:flex;align-items:center;gap:1rem;width:100%;padding:.7rem 1.3rem}
-.lfx-logo{flex-shrink:0;display:inline-flex}
-.lfx-logo img{height:58px;width:auto;display:block}
-.lfx-phones{display:flex;align-items:center;gap:.7rem}
-.lfx-phones--bar{flex:1;justify-content:space-evenly;min-width:0}
-.lfx-phone{display:inline-flex;align-items:center;gap:.45rem;border:1.8px solid var(--lf-accent);border-radius:999px;padding:.5rem .95rem;color:var(--lf-ink,#10131a);font-weight:800;font-size:.95rem;white-space:nowrap;text-decoration:none;transition:background .2s,color .2s,transform .2s}
-.lfx-phone svg{color:var(--lf-accent);flex-shrink:0}
-.lfx-phone:hover{background:var(--lf-accent);color:var(--lf-on-accent);transform:translateY(-1px)}
-.lfx-phone:hover svg{color:var(--lf-on-accent)}
-.lfx-phone__flag{display:inline-grid;place-items:center;min-width:30px;height:21px;padding:0 .35rem;border:1.6px solid var(--lf-accent);border-radius:6px;font-size:.66rem;font-weight:900;letter-spacing:.05em;color:var(--lf-accent)}
-.lfx-phone:hover .lfx-phone__flag{border-color:var(--lf-on-accent);color:var(--lf-on-accent)}
-.lfx-phone__num{font-variant-numeric:tabular-nums}
-.lfx-lang{flex-shrink:0;margin-left:auto}
-.lfx-phonerow{display:none}
-/* narrow desktop: keep row 1 comfortable */
-@media (min-width:769px) and (max-width:1080px){
-  .lfx-logo img{height:46px}
-  .lfx-phone{font-size:.84rem;padding:.44rem .7rem}
-  .lfx-bar__in{gap:.7rem;padding:.6rem .9rem}
-}
-/* MOBILE — 4 rows: phones move OUT of the bar into their own accent row */
-@media (max-width:768px){
-  .lfx-phones--bar{display:none}
-  .lfx-bar__in{padding:.55rem .7rem;gap:.6rem}
-  .lfx-logo img{height:46px}
-  .lfx-phonerow{display:flex;justify-content:center;align-items:stretch;gap:.4rem;background:var(--lf-accent);padding:.2rem .5rem .9rem;flex-wrap:nowrap;max-width:100%}
-  /* each phone stretches to an equal share so 2 or 3 numbers fill the row evenly (no empty "third slot") */
-  .lfx-phonerow .lfx-phone{flex:1 1 0;justify-content:center;border:2px solid color-mix(in srgb,var(--lf-on-accent) 72%,transparent);color:var(--lf-on-accent);background:rgba(0,0,0,.16);font-size:clamp(.62rem,2.9vw,.85rem);padding:.45rem .55rem;gap:.3rem;min-width:0}
-  .lfx-phonerow .lfx-phone svg{color:var(--lf-on-accent);width:13px;height:13px}
-  /* mobile: drop the EN/ES/Haircut/Bronx labels so the numbers fit the row */
-  .lfx-phonerow .lfx-phone__flag{display:none}
-}
-@media (max-width:400px){
-  .lfx-logo img{height:40px}
-  .lfx-phonerow{gap:.32rem;padding-left:.4rem;padding-right:.4rem}
-  .lfx-phonerow .lfx-phone{padding:.42rem .45rem;gap:.26rem}
-  .lfx-phonerow .lfx-phone svg{width:12px;height:12px}
-}
-@media (max-width:340px){
-  .lfx-phonerow .lfx-phone{padding:.38rem .4rem;gap:.22rem}
-}
-/* v45.1 — wallet chip second line: flexible payment plans */
-.lf-feature__sub{display:block;font-style:normal;font-weight:800;font-size:.86em;letter-spacing:.02em;margin-top:.2rem;color:var(--lf-accent-dark)}
-.lf-hero .lf-feature__sub{color:inherit;opacity:.92}
-
-/* v47 — GHL form embed on landing pages: force visible (same fix as main site) */
-.lf-form--ghl{background:#fff;border-radius:var(--lf-r-lg,22px);padding:1.3rem 1.2rem;box-shadow:var(--lf-shadow-md)}
-.ghl-form-wrap iframe{position:static!important;left:0!important;top:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;display:block!important;width:100%!important}
-.ghl-form-wrap:has(.ep-wrapper) > iframe{display:none!important}
-.ghl-form-wrap:has(.ep-wrapper){height:auto!important}
-
-/* ═══════════ v48 — chat widget: proper placement, no overlap ═══════════ */
-chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;z-index:9999!important}
-@media(max-width:768px){chat-widget{bottom:140px!important;right:12px!important}}
-
-/* ══════════════════════════════════════════════════════════════════════════
-   v57 — LANDING HEADER RESTYLE
-   Match the main website's palette + typography WITHOUT importing the
-   website's global stylesheets (which would collide with the landing hero /
-   sections). Only the header + promo strip + seats banner get restyled.
-   ══════════════════════════════════════════════════════════════════════════ */
-
-/* Website tokens (hardcoded — brand.css is NOT loaded on landings) */
-.lf-page{
-  --site-paper:  #FCFBF8;   /* warm porcelain, matches --paper */
-  --site-paper-2:#F0ECE3;   /* deeper porcelain */
-  --site-ink:    #0E1A1C;   /* editorial ink */
-  --site-ink-soft:#47585E;
-  --site-teal:   #12B3A6;
-  --site-teal-deep:#0E8C82;
-  --site-teal-bright:#2FD3C4;
-  --site-teal-soft:#B8ECE7;
-  --site-teal-tint:#E7F7F5;
-  --site-line:   rgba(14,26,28,.10);
-}
-/* Bronx variants keep the same header structure but swap the teal gradient
-   to the same gold the main site's bronx.html uses (matches shell2.bx-gold) */
-.lf-page--bx-en,.lf-page--bx-es{
-  --site-teal:      #C9971F;
-  --site-teal-deep: #9C7414;
-  --site-teal-bright:#E3B34E;
-  --site-teal-soft: #F1E4C5;
-  --site-teal-tint: #FBF3DA;
-}
-
-/* Header bar — warm porcelain instead of pure white, with a hairline border
-   at the bottom matching the website's editorial feel */
-.lf-page .lfx-bar{
-  background: var(--site-paper);
-  box-shadow: 0 1px 0 var(--site-line), 0 4px 16px rgba(14,26,28,.06);
-}
-
-/* Phone pills — website-teal pill treatment instead of per-page accent */
-.lf-page .lfx-phone{
-  border: 1.6px solid var(--site-teal);
-  color: var(--site-ink);
-  background: transparent;
-}
-.lf-page .lfx-phone svg{ color: var(--site-teal-deep); }
-.lf-page .lfx-phone:hover{
-  background: var(--site-teal);
-  color: #fff;
-}
-.lf-page .lfx-phone:hover svg,
-.lf-page .lfx-phone:hover .lfx-phone__flag{ color: #fff; border-color: rgba(255,255,255,.85); }
-.lf-page .lfx-phone__flag{
-  border: 1.4px solid var(--site-teal);
-  color: var(--site-teal-deep);
-  background: var(--site-teal-tint);
-}
-
-/* Language toggle — match the pill treatment */
-.lf-page .lf-lang{
-  border: 1.6px solid var(--site-teal);
-  border-radius: 999px;
-  overflow: hidden;
-}
-.lf-page .lf-lang a{
-  color: var(--site-ink);
-  padding: .4rem .75rem;
-}
-.lf-page .lf-lang a + a{ border-left: 1.6px solid var(--site-teal); }
-.lf-page .lf-lang a.is-active,
-.lf-page .lf-lang a:hover{
-  background: var(--site-teal);
-  color: #fff;
-}
-
-/* Mobile phone row (the second row of chips on <=768px) — subtle porcelain
-   base with the teal border on each chip instead of a fully-colored strip */
-@media (max-width: 768px){
-  .lf-page .lfx-phonerow{
-    background: var(--site-paper-2);
-    padding: .5rem .5rem .9rem;
-  }
-  .lf-page .lfx-phonerow .lfx-phone{
-    border: 1.6px solid var(--site-teal);
-    color: var(--site-ink);
-    background: rgba(255,255,255,.65);
-  }
-  .lf-page .lfx-phonerow .lfx-phone svg{ color: var(--site-teal-deep); }
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   Landing phone chips v58 — label BELOW number pattern (matches main site).
-   .lfx-phone__flag becomes the caption UNDER the number, not beside it.
-   ═══════════════════════════════════════════════════════════════════ */
-.lfx-phone{
-  display:inline-grid !important;
-  grid-template-columns:auto 1fr;
-  grid-template-areas:"ico num" "gap tag";
-  align-items:center;
-  column-gap:.42rem;
-  row-gap:2px;
-  padding:.42rem .85rem;
-}
-.lfx-phone svg{grid-area:ico;align-self:center}
-.lfx-phone__num{
-  grid-area:num;
-  font-size:.94rem;
-  font-weight:800;
-  line-height:1.05;
-  text-align:left;
-}
-.lfx-phone__flag{
-  grid-area:tag;
-  font-size:.58rem !important;
-  padding:0 !important;
-  border:0 !important;
-  background:transparent !important;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  text-align:center;
-  line-height:1;
-  min-width:auto !important;
-  height:auto !important;
-  color:var(--lf-accent);
-  opacity:.9;
-  font-weight:800;
-  justify-self:stretch;
-}
-.lfx-phone:hover .lfx-phone__flag{color:var(--lf-on-accent) !important;border:0 !important;background:transparent !important}
-.lf-page .lfx-phone__flag{color:var(--site-teal-deep) !important;opacity:.85}
-.lf-page .lfx-phone:hover .lfx-phone__flag{color:#fff !important}
-
-/* Mobile phone row — same stacking */
-@media (max-width:640px){
-  .lfx-phonerow .lfx-phone{
-    grid-template-columns:1fr !important;
-    grid-template-areas:"num" "tag" !important;
-    row-gap:1px;
-    padding:.44rem .35rem !important;
-    text-align:center;
-  }
-  .lfx-phonerow .lfx-phone svg{display:none}
-  .lfx-phonerow .lfx-phone__flag{display:inline !important;color:var(--lf-on-accent) !important;opacity:.9}
-  .lfx-phonerow .lfx-phone__num{text-align:center;font-size:.85rem}
 }
 
 /* ── FLOOR STRIP — horizontal scroll-snap "real floor" gallery teaser,
