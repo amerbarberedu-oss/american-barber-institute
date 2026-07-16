@@ -5,6 +5,97 @@ Format follows [Keep a Changelog](https://keepachangelog.com/). Versions stay in
 the **0.x** range throughout the upgrade cycle; the move to **1.0.0** happens only
 when the client approves the official production release.
 
+## [0.4.0] — 2026-07-16
+Nav/hero/header redesign parity across the whole site, a critical contrast bug
+fix, and a full-site audit (cleanup, SEO/AEO, performance, responsive QA).
+
+### Fixed — critical
+- **Sitewide dark-section contrast bug.** `editorial.min.css`'s minifier was
+  stripping the descendant-combinator space before every `:is(...)` selector
+  (e.g. `.band--petrol .ed-card :is(h3,h4)` → broken `...ed-card:is(h3,h4)`),
+  silently breaking ~22 selectors and dropping text contrast to ~1.1:1 on dark
+  sections sitewide. Fixed; verified 7–16:1 across sampled pages.
+- **Spanish structured data was English on 70 of 72 `/spanish/` pages.**
+  `src/build.py` built one `schema_tags` string from the English title/body and
+  reused it verbatim for the Spanish twin — FAQPage answers, BreadcrumbList
+  name/URL, and the Organization `description`/`slogan` were all English on a
+  Spanish page. Now builds a separate ES schema from the Spanish
+  title/canonical/body (the real translated body when one exists), with a new
+  `ORG_SCHEMA_ES` constant for the org description/slogan.
+- **Mobile hero was buried ~1200px below the fold on Bronx + all 4 landing
+  pages.** They used a fixed `min-height:1220px` for the mobile hero photo box
+  instead of the homepage's `aspect-ratio:872/1804`, pushing the entire
+  headline/CTA/countdown off the first screen.
+- **Bronx + all 4 landing pages were running the homepage's superseded "v4"
+  hero design** (own code comment literally said so) while the homepage had
+  moved to "v5": gapped grid + rounded photo card + top-anchored copy + dark
+  gradient overlay + 900px breakpoint, instead of v5's no-gap full-bleed photo,
+  bottom-anchored copy, no gradient, bordered countdown cells, and 1000px
+  breakpoint. Rebuilt to match, keeping only campus copy/photo-crop/accent-color
+  as legitimate differences.
+- Landing-page header unified into one responsive component (`.hdr2`, see
+  Design system below) instead of two always-stacked rows; removed the
+  "$150/week" promo strip and "LIMITED SEATS AVAILABLE" banner per client
+  request.
+- Spanish landing pages: hero feature-chip text overflowed the viewport on
+  mobile (a classic flexbox/grid `min-width:auto` bug — longer Spanish labels
+  couldn't shrink/wrap inside their grid column). Fixed with `min-width:0`.
+- Sticky mobile CTA bar and the fixed to-top button covered the last line(s) of
+  footer text on mobile/tablet; footer now reserves space for them.
+- Sticky 3-button CTA bar overflowed by ~10px at exactly 360px viewport width
+  (same `min-width:auto` grid-item issue as above).
+- 35 English pages had visible, well-formatted FAQ accordions with **no**
+  `FAQPage` schema (19 other pages on the site already paired the same content
+  pattern with schema correctly) — added across the flagship program page, all
+  11 blog posts, and 23 other pages. `faq_schema_from()` extended to support
+  both markup patterns used site-wide (`<div class="a">` wrapper and bare `<p>`
+  after `</summary>`) so no page silently got an empty/invalid FAQPage block.
+- Removed the Fraunces Google Fonts request (7 weight/style variants, loaded
+  on every single page): confirmed unused anywhere on the live site — a later
+  CSS file overrides `--font-display` to Inter Tight, and that override was
+  never reverted after Fraunces was originally wired in. Added weight 900 to
+  the Inter request to cover the site's existing `font-weight:900` usage that
+  Fraunces had been (invisibly) supplying.
+- `.display`/`.display--xl` (the H1/H2 heading system used on ~200 guide/blog/
+  pillar pages) reduced from up to 4.6–4.8rem down to 3.1–3.5rem — H2 section
+  headers were rendering almost as large as the page H1.
+- Bronx page's `<title>` trimmed from 94 characters (will truncate in SERPs)
+  to 63.
+
+### Removed (dead code)
+- 4 unreferenced images (~924KB): superseded pre-v2 hero photos and an orphaned
+  webp variant.
+- ~550 lines of dead CSS across `funnels.css`/`landing.css`: three successive
+  generations of superseded landing-page header/hero/countdown/promo/seats
+  components (`.lfx-*`, `.lf-topbar`/`.lf-hdr`/`.lf-brand`/`.lf-phone`/
+  `.lf-lang`/`.lf-hero`/`.lf-cd`/`.lf-form`/`.lf-pills`, `.hair-*`), a dead
+  "monogram avatar" instructors-page module (`.inst-avatar*`), `.site-seats*`,
+  `.hair-call-btn`, `.hx-featbox`, `.inst-photo`. Each confirmed via HTML *and*
+  JS grep (some classes are only ever applied at runtime by `funnels.js`) before
+  removal, not by static search alone. **Not fully exhaustive** — a large dead
+  "v1 splash-page" module (`.inst-*` continues beyond what's listed above,
+  `.lf-form`/`.lf-stats` neighbors) remains in `landing.css`, confirmed dead but
+  deferred to a dedicated cleanup pass since it's interleaved with live rules
+  rather than cleanly contiguous.
+- 3 fully-merged, no-longer-needed git branches
+  (`preview/mass-rollout-2026-07-14`, `preview/spanish-translation-2026-07-14`,
+  `countdown-perpetual-fix-2026-07-14`).
+
+### Changed
+- Cache-bust versions bumped for every touched asset, in the same commit as
+  both generators' own templates/constants (the "sed the pages but not the
+  TEMPLATE" failure mode was specifically checked for and found clean).
+
+### Notes
+- Full-site audit also surfaced (not yet acted on, flagged for follow-up):
+  a local-only git branch with real unmerged SEO work and no remote backup;
+  a `client/preview/ghl-form-2col-2026-07-15` remote branch that contradicts a
+  memory note claiming it was deleted; guides pages missing `Article`/author
+  schema despite showing a byline; several page titles/descriptions outside
+  the ideal SEO length range; sitemap hreflang annotations only present for 3
+  of 74 EN/ES page pairs; ~45 gallery images that would benefit from WebP;
+  `logo-final.gif` is a 60-frame animated GIF used as a static logo.
+
 ## [0.3.0] — 2026-07-14
 Full Spanish (`/spanish/`) content parity + ES header-logo fix.
 

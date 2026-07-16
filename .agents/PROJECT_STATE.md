@@ -8,10 +8,14 @@
 - **Developers:** Kazi (Frontend/UI/SEO/build), Arhum Abdullah (Analytics/GTM/CSP)
 
 ## Last Updated
-- **Date:** 2026-07-14
-- **Branch:** `preview/mass-rollout-2026-07-14` (not yet merged to `main`)
-- **Status:** ✅ Pre-launch audit complete (READY-AFTER-FIXES). All blocker/high SEO
-  findings fixed on the preview branch; awaiting explicit client go-live to merge to `main`.
+- **Date:** 2026-07-16
+- **Branch:** `preview/nav-contrast-content-audit-2026-07-16` (not yet merged to `main`)
+- **Status:** Full-site audit + cleanup pass complete: nav/hero/header redesign parity
+  (Bronx + all 4 landing pages now match the homepage's v5 hero and unified `.hdr2`
+  header), sitewide contrast fix, heading-size reduction, dead file/CSS/branch cleanup,
+  Spanish structured-data localization fix, FAQPage schema added to 35 pages, 3
+  responsive bugs fixed, Fraunces webfont removed (was unused sitewide). Awaiting
+  explicit client go-live to merge to `main`.
 
 ## Deployment Workflow (git-integrated — no CLI deploys)
 Vercel is connected to the GitHub repo and auto-deploys on push.
@@ -30,10 +34,12 @@ Vercel is connected to the GitHub repo and auto-deploys on push.
 - Push command: `git push client <branch>`  (there is no `origin` remote)
 
 ## Current Asset Versions
-Source of truth is the generators. As of 2026-07-14:
-`landing.min.css?v=160`, `campus.js?v=4`, main `main.js`/`effects.js?v=33`,
-`chatbot.js?v=32`; landing-funnels `CSS_V=65`. Check `src/build.py` and
-`landing-funnels/src/build.py` for live values.
+Do not hardcode specific version numbers here — they change on every CSS/JS edit
+and this note has gone stale twice already. Source of truth is always the
+generators themselves: grep `?v=` in `src/build.py`'s TEMPLATE string and
+`landing-funnels/src/build.py`'s `CSS_V`/`JS_V` constants. A version bump must
+be applied to BOTH the already-built HTML files and the generator's own
+template/constant in the same commit, or the next rebuild silently reverts it.
 
 ## Rollback
 - Production `main` is the rollback point until a new release is merged.

@@ -102,7 +102,7 @@ a{color:inherit;text-decoration:none}
 /* ═══════════ v29 — hamburger-only nav, icon socials, bigger theme switcher ═══════════ */
 /* Hide inline nav on ALL widths — everything lives in the hamburger menu */
 .mainnav{display:none!important}
-.hamburger{display:flex!important;margin-left:1.1rem;width:44px;height:40px;align-items:center;justify-content:center;gap:5px;border-radius:10px;transition:background .2s ease}
+body:not(.shell2) .hamburger{display:flex!important;margin-left:1.1rem;width:44px;height:40px;align-items:center;justify-content:center;gap:5px;border-radius:10px;transition:background .2s ease}
 .hamburger:hover{background:rgba(27,63,217,.08)}
 .hamburger span{width:26px;height:3px;background:var(--ink,#0f1420);border-radius:2px;transition:transform .25s ease,opacity .2s ease}
 .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
@@ -620,6 +620,10 @@ body::before{content:none!important;background:none!important}
 .cta-band,.foot-cta{position:relative;overflow:hidden}
 /* Clean navy CTA band (no photo) */
 .cta-band{background:linear-gradient(120deg,#0f1726 0%,#142a4d 100%)!important}
+/* Match .band's section rhythm — .cta-band was falling through to the generic
+   section{padding-block:...} rule below (~17% less vertical padding than
+   every other .band section on the page) */
+.cta-band{padding-block:var(--section-pad)}
 .cta-band .kicker{color:var(--gold-bright,#f4c44a)}
 .cta-band h2,.cta-band p{color:#fff}
 /* Clean content surfaces (photos live in dedicated bands, not behind every section) */
@@ -702,16 +706,6 @@ section.alt{background:rgba(246,248,252,.60)!important;backdrop-filter:blur(7px)
 /* "Every Employee, a Graduate" creed */
 .inst-creed{max-width:660px;margin:0 auto 1.5rem;font-size:1rem;line-height:1.6;color:#eef1ff;opacity:.95}
 .inst-creed span{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-bright);font-weight:700;font-size:.92rem;margin-bottom:.35rem}
-/* Monogram avatars (no-face, premium gradient discs) */
-.inst-avatar{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;
-  font-family:'Oswald',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:.02em;color:#fff;
-  box-shadow:0 6px 18px rgba(15,20,32,.22),inset 0 1px 0 rgba(255,255,255,.35);
-  border:2px solid rgba(255,255,255,.55);align-self:flex-start;
-  transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
-.inst-avatar--lg{width:84px;height:84px;font-size:2rem;margin-bottom:.4rem}
-.inst-avatar--gold{background:linear-gradient(140deg,#e8a13a 0%,#c87d22 55%,#9a5d12 100%)}
-.inst-avatar--blue{background:linear-gradient(140deg,#3a63d8 0%,#1f3fb0 55%,#16307e 100%)}
-.inst-card:hover .inst-avatar{transform:rotate(-4deg) scale(1.06);box-shadow:0 10px 26px rgba(27,47,217,.32),inset 0 1px 0 rgba(255,255,255,.4)}
 /* Subtle 3D lift already on cards; add gold edge glow on featured */
 .inst-feature{position:relative;overflow:hidden}
 .inst-feature::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 0% 0%,rgba(232,161,58,.10),transparent 60%);pointer-events:none}
@@ -1009,14 +1003,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .mainnav a{color:#e7ebf5;border:0!important;padding:.4rem .15rem;font-size:.9rem;white-space:nowrap;min-height:auto}
   .mainnav a:hover{color:#5b8bff;background:transparent}
   .header-cta{display:inline-flex}
-  .hamburger{display:none!important}
+  body:not(.shell2) .hamburger{display:none!important}
   .tb-call .tb-label{display:inline}
   .tb-call{font-size:1rem;padding:.55rem 1.3rem}
 }
 /* MOBILE / TABLET (<1200): hamburger + drawer; inline nav and CTA hidden */
 @media (max-width:1199px){
   .mainnav{display:none!important}
-  .hamburger{display:flex!important}
+  body:not(.shell2) .hamburger{display:flex!important}
   .header-cta{display:none!important}
 }
 @media (max-width:380px){.tb-call{font-size:.82rem;gap:.4rem}}
@@ -1086,8 +1080,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
    ============================================================ */
 /* real instructor photos in place of monogram avatars */
 /* Instructor photos: large, centered circular headshots, consistent across cards */
-.inst-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:center top;display:block;border:3px solid rgba(27,47,217,.2);box-shadow:0 6px 20px rgba(15,20,32,.22);align-self:center;transform:none!important}
-.inst-avatar--lg.inst-photo{width:172px;height:172px;margin-bottom:.4rem}
 .inst-group-photo{width:100%;height:auto;max-height:540px;object-fit:contain;border-radius:18px;margin:0 0 1.6rem;box-shadow:0 12px 34px rgba(15,20,32,.18);display:block}
 /* center the photo, role badge and name; keep bio text left-aligned for readability */
 .inst-card{align-items:center;text-align:center}
@@ -1351,7 +1343,7 @@ body::before{content:none !important;}          /* remove fixed page-wide photo 
 /* ---- 01: ONE-LINE main nav, clean hamburger switch (defeats leaked flex-wrap:wrap) ---- */
 @media (max-width:1199px){
   .mainnav{display:none !important;}
-  .hamburger{display:flex !important;}
+  body:not(.shell2) .hamburger{display:flex !important;}
   .header-cta{display:none !important;}
 }
 @media (min-width:1200px){
@@ -1363,7 +1355,7 @@ body::before{content:none !important;}          /* remove fixed page-wide photo 
            transform:none !important;white-space:nowrap;}
   .mainnav a{white-space:nowrap;flex:0 0 auto;border:0 !important;padding:.4rem .25rem;
              font-size:clamp(.7rem,.85vw,.86rem);min-height:auto;}
-  .hamburger{display:none !important;}
+  body:not(.shell2) .hamburger{display:none !important;}
   .header-cta{display:inline-flex !important;}
 }
 
@@ -1581,72 +1573,6 @@ body.page-splash .sec--testi,
 body.page-splash .sec--faq{
   background-image:none!important;
   background:#ffffff!important;
-}
-
-/* v13.7 — Haircuts hero: centered layout with periwinkle pill CALL button
-   matching client screenshot 1:1 */
-.hair-hero{text-align:center}
-.hair-hero-in{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.4rem;padding:2.2rem 1rem 2.6rem}
-.hair-kicker{
-  margin:0 0 .6rem;
-  font-size:.82rem;font-weight:800;
-  letter-spacing:.32em;text-transform:uppercase;
-  color:#9aa4ff!important;
-  text-shadow:0 1px 10px rgba(0,0,0,.55);
-}
-.hair-h1{
-  margin:0 0 1rem;
-  font-size:clamp(2.4rem,5.8vw,4.6rem);
-  font-weight:900;line-height:1.05;
-  color:#fff!important;
-  text-shadow:0 2px 22px rgba(0,0,0,.65);
-}
-.hair-lead{
-  margin:0 auto 1.6rem;max-width:48rem;
-  font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.55;
-  color:#e8eaf2!important;
-  text-shadow:0 1px 10px rgba(0,0,0,.55);
-}
-.hair-call-eyebrow{
-  margin:1.5rem 0 .9rem;
-  font-size:.78rem;font-weight:700;
-  letter-spacing:.34em;text-transform:uppercase;
-  color:rgba(255,255,255,.78)!important;
-  text-shadow:0 1px 8px rgba(0,0,0,.45);
-}
-.hair-call-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.85rem;
-  padding:1.1rem 2.6rem;
-  background:#7c84ff;
-  color:#fff!important;
-  text-decoration:none;
-  font-size:clamp(1.5rem,3vw,2.3rem);
-  font-weight:800;letter-spacing:.01em;
-  border-radius:9999px;
-  box-shadow:0 14px 40px rgba(124,132,255,.45),0 0 0 1px rgba(255,255,255,.12) inset;
-  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
-}
-.hair-call-btn:hover{
-  background:#8a91ff;
-  transform:translateY(-2px);
-  box-shadow:0 18px 48px rgba(124,132,255,.6),0 0 0 1px rgba(255,255,255,.18) inset;
-}
-.hair-call-dot{
-  flex-shrink:0;
-  width:9px;height:9px;border-radius:50%;
-  background:#ff4d4f;
-  box-shadow:0 0 10px rgba(255,77,79,.65);
-}
-.hair-call-icon{
-  width:clamp(28px,3.4vw,42px);height:clamp(28px,3.4vw,42px);
-  flex-shrink:0;color:#fff;
-}
-.hair-call-num{white-space:nowrap}
-
-@media (max-width:560px){
-  .hair-h1{font-size:clamp(2rem,8vw,2.6rem)}
-  .hair-call-btn{padding:.95rem 1.6rem;gap:.6rem;font-size:1.35rem}
-  .hair-call-icon{width:26px;height:26px}
 }
 
 /* v13.5 — Softer Google Reviews badge: no dark-blue dominance, true rounded corners,
@@ -2716,9 +2642,9 @@ video{background-color:#1a1f2e}
 .hx-grad{position:absolute;top:0;left:0;right:0;height:66.4vw;background:radial-gradient(115% 95% at 6% 100%,rgba(5,8,17,.96) 0%,rgba(5,8,17,.68) 40%,rgba(5,8,17,0) 70%),linear-gradient(180deg,rgba(5,8,17,.12) 0%,rgba(5,8,17,.06) 40%,rgba(5,8,17,.5) 66%,rgba(5,8,17,.94) 88%,#0a1020 100%)}
 .hx-in{position:relative;width:min(1400px,94%);margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(330px,368px);gap:2.4rem;padding:49.6vw 0 2.8rem;align-items:start}
 .hx-h1{margin:0;line-height:1;text-transform:uppercase;font-weight:800;letter-spacing:-.01em}
-.hx-l1{display:block;font-size:clamp(2.5rem,4.6vw,4.4rem);color:#fff;text-shadow:0 3px 24px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.6)}
-.hx-l2{display:block;font-size:clamp(2.5rem,4.6vw,4.4rem);color:#4d78ff;text-shadow:0 3px 24px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.55)}
-.hx-script{display:block;font-family:'Caveat',cursive;text-transform:none;font-weight:700;font-size:clamp(2.3rem,3.6vw,3.5rem);line-height:1.05;margin:.35rem 0 0;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.6)}
+.hx-l1{display:block;font-size:clamp(2.3rem,3.7vw,3.6rem);color:#fff;text-shadow:0 3px 24px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.6)}
+.hx-l2{display:block;font-size:clamp(2.3rem,3.7vw,3.6rem);color:#4d78ff;text-shadow:0 3px 24px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.55)}
+.hx-script{display:block;font-family:'Caveat',cursive;text-transform:none;font-weight:700;font-size:clamp(2.15rem,2.9vw,2.9rem);line-height:1.05;margin:.35rem 0 0;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.85),0 1px 4px rgba(0,0,0,.6)}
 .hx-script::after{content:"";display:block;width:min(240px,58%);height:5px;margin-top:.15rem;border-radius:99px;background:#4d78ff}
 .hx-sub{margin:1.15rem 0 1.35rem;max-width:33rem;font-size:1.02rem;line-height:1.55;color:#fff;font-weight:500;text-shadow:0 2px 16px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.6)}
 .hx-sub b{color:#7ba0ff}
@@ -2826,8 +2752,8 @@ body.bx-gold .hx-featbox-item span i {
   .hx-bg{height:66.2vw;background:image-set(url('/assets/img/hero-barber-clinic-2-mobile.webp') type('image/webp'),url('/assets/img/hero-barber-clinic-2-mobile.jpg') type('image/jpeg')) top center/cover no-repeat;background-color:#0a1020}
   .hx-grad{height:66.4vw;background:radial-gradient(130% 90% at 15% 100%,rgba(5,8,17,.94) 0%,rgba(5,8,17,.6) 45%,rgba(5,8,17,0) 75%),linear-gradient(180deg,rgba(6,9,18,.05) 0%,rgba(6,9,18,.02) 34%,rgba(6,9,18,.55) 62%,rgba(6,9,18,.94) 86%,#0a1020 100%)}
   .hx-in{display:flex;flex-direction:column;gap:0;padding:49.6vw 0 2.2rem}
-  .hx-l1,.hx-l2{font-size:clamp(2.1rem,10vw,2.7rem)}
-  .hx-script{font-size:clamp(2rem,9vw,2.5rem)}
+  .hx-l1,.hx-l2{font-size:clamp(1.95rem,8vw,2.2rem)}
+  .hx-script{font-size:clamp(1.85rem,7.2vw,2.05rem)}
   .hx-sub{font-size:.98rem;max-width:none}
   .hx-chips{grid-template-columns:1fr;gap:.6rem;max-width:none}
   .hx-next{grid-template-columns:1fr;row-gap:.9rem;max-width:none;margin-top:1rem}
@@ -2986,7 +2912,7 @@ body.shell2 .hdr2-in{width:min(var(--shell-max,1240px),94%);margin-inline:auto;
 
 /* Logo — vertically centered, fixed height, no layout shift, no spin */
 body.shell2 .logo2{display:inline-flex;align-items:center;flex-shrink:0;line-height:0}
-body.shell2 .logo2-img{height:52px;width:auto;display:block;
+body.shell2 .logo2-img{height:62px;width:auto;display:block;
   transition:transform .25s ease,filter .25s ease}
 body.shell2 .logo2:hover .logo2-img{transform:translateY(-1px);
   filter:drop-shadow(0 4px 12px rgba(14,140,130,.28))}
@@ -3097,19 +3023,59 @@ body.shell2 .drawer-cta{display:block;text-align:center;margin-top:var(--sp-5);
   padding:.85rem 1.2rem!important;font-weight:800}
 body.shell2 .drawer-cta:hover{background:var(--sh-teal-deep)}
 
-/* ── OVERFLOW SAFETY: shell containers never cause horizontal scroll ──── */
-body.shell2{overflow-x:hidden}
+/* ── OVERFLOW SAFETY: shell containers never cause horizontal scroll ────
+   `clip` (not `hidden`) is required here: `overflow-x:hidden` still leaves
+   body as a programmatically-scrollable container, so opening the mobile
+   `.nav-drawer` (or any focus change near the `.hamburger`) can trigger the
+   browser's default scroll-into-view and shove body.scrollLeft to its max —
+   which, since there is no visible scrollbar to undo it, leaves the ENTIRE
+   page (.ubar/.hdr2/.mstrip/everything) permanently shifted left until the
+   page is reloaded. `clip` disallows scrolling on this axis entirely. */
+body.shell2{overflow-x:clip}
 body.shell2 .ubar,body.shell2 .hdr2,body.shell2 .mstrip{max-width:100%}
 body.shell2 .ubar-in{flex-wrap:wrap;row-gap:var(--sp-2)}
 body.shell2 .ubar-left{flex-wrap:wrap;row-gap:var(--sp-2)}
 body.shell2 .ubar-right{flex-wrap:wrap;justify-content:flex-end;row-gap:var(--sp-2);min-width:0}
+
+/* ── SQUEEZE ZONE: 7 top-level nav items (added Haircuts alongside the
+   existing Home/Programs/Why ABI/Guides/Tuition & Funding/Contact) no longer
+   fit on one line at the default padding/font-size right above the mobile
+   breakpoint (1024px) — "Why ABI" and "Tuition & Funding" were wrapping to
+   two lines. Originally capped at max-width:1400px, but `.hdr2-in` itself is
+   permanently capped at width:min(1240px,94%) (see HEADER block above) — so
+   at any viewport past ~1319px the header row NEVER gets wider than 1240px
+   either way. Confirmed via live measurement that reverting to full/wide nav
+   sizing above 1400px made the longer Spanish labels ("Por Qué ABI", "Cortes
+   de Cabello", "Costo y Financiamiento") wrap to a 2nd line at 1440px AND
+   1920px even though English fit fine — so this tightened sizing must apply
+   at EVERY desktop width from 1025px up, with no upper bound. The mobile
+   drawer (<=1024px) is unaffected. ── */
+@media (min-width:1025px){
+  body.shell2 .nav2{gap:.15rem}
+  body.shell2 .nav2-top{font-size:.85rem;padding:.55rem .5rem;gap:.22rem;white-space:nowrap}
+}
+
+/* ── SQUEEZE ZONE, NARROW TIER: the rule above still isn't tight enough
+   right after the 1024px mobile breakpoint — confirmed via measurement that
+   "Contacto"/"Contact" overlapped the "Book a Tour" CTA button by up to 249px
+   at 1025px on the Spanish nav ("Colegiatura y Financiamiento" is much longer
+   than "Tuition & Funding"), and by a smaller-but-real margin in English too.
+   Add a second, more aggressive tightening for the worst part of the range;
+   by ~1260px the rule above already has enough room on its own. ── */
+@media (min-width:1025px) and (max-width:1300px){
+  body.shell2 .hdr2-in{gap:10px}
+  body.shell2 .nav2{gap:0}
+  body.shell2 .nav2-top{font-size:.66rem;padding:.42rem .26rem}
+  body.shell2 .nav2-caret{width:9px;height:9px}
+  body.shell2 .hdr2-cta{font-size:.74rem;padding:.46rem .7rem}
+}
 
 /* ── RESPONSIVE: swap desktop nav ⇄ mobile drawer/strip ──────────────── */
 @media (max-width:1024px){
   body.shell2 .nav2,body.shell2 .hdr2-cta{display:none}
   body.shell2 .hamburger{display:flex}
   body.shell2 .hdr2-in{min-height:62px;gap:var(--sp-3)}
-  body.shell2 .logo2-img{height:44px}
+  body.shell2 .logo2-img{height:52px}
 }
 /* ≤900px: utility bar = SWITCHERS ONLY (no phone pills → no overflow, no dup);
    the prominent .mstrip tiles below the header become the phone presentation. */
@@ -3120,18 +3086,21 @@ body.shell2 .ubar-right{flex-wrap:wrap;justify-content:flex-end;row-gap:var(--sp
   body.shell2 .mstrip{display:block}
 }
 @media (max-width:768px){
-  body.shell2 .logo2-img{height:40px}
+  body.shell2 .logo2-img{height:48px}
 }
 /* Compact-but-legible mobile phone strip (phones are the #1 priority) */
 body.shell2 .mstrip{background:var(--paper-2,#F2F7F8);border-bottom:1px solid var(--sh-line)}
+/* auto-flow (not a fixed 2-col grid) so this adapts to however many phone
+   pills campus.js renders — 2 on Bronx pages, 3 on Manhattan pages (EN/Haircut/ES) —
+   instead of always splitting into exactly 2 columns and wrapping a 3rd item alone. */
 body.shell2 .mstrip-phones{width:min(560px,94%);margin-inline:auto;display:grid;
-  grid-template-columns:1fr 1fr;gap:var(--sp-2);padding:var(--sp-3) 0}
+  grid-auto-flow:column;grid-auto-columns:1fr;gap:var(--sp-2);padding:var(--sp-3) 0}
 body.shell2 .mstrip-phone{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
   padding:.62rem .5rem;border-radius:12px;background:#fff;border:1px solid var(--sh-line);
   color:var(--sh-ink);text-decoration:none;box-shadow:var(--shadow-sm,0 2px 8px rgba(14,77,92,.08));min-width:0}
 body.shell2 .mstrip-phone svg{color:var(--sh-teal-deep);flex-shrink:0}
 body.shell2 .mstrip-t{display:flex;flex-direction:column;line-height:1.18;min-width:0}
-body.shell2 .mstrip-t b{font-size:.92rem;font-variant-numeric:tabular-nums}
+body.shell2 .mstrip-t b{font-size:.92rem;font-variant-numeric:tabular-nums;white-space:nowrap}
 body.shell2 .mstrip-t i{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.05em;
   text-transform:uppercase;color:var(--sh-teal-deep)}
 /* Both switchers ALWAYS visible; shrink to fit on small screens (never clip) */
@@ -3147,7 +3116,7 @@ body.shell2 .mstrip-t i{font-style:normal;font-size:.62rem;font-weight:700;lette
   body.shell2 .seg-opt{padding:.34rem .5rem;gap:.26rem}
   /* Phone chips stay side-by-side even on the smallest phones (previously
      collapsed to a single column here, stacking them one-after-another). */
-  body.shell2 .mstrip-phones{grid-template-columns:1fr 1fr;gap:var(--sp-1,.4rem)}
+  body.shell2 .mstrip-phones{grid-auto-flow:column;grid-auto-columns:1fr;gap:var(--sp-1,.4rem)}
   body.shell2 .mstrip-phone{justify-content:center;padding:.55rem .3rem;gap:.4rem}
   body.shell2 .mstrip-t b{font-size:.78rem}
   body.shell2 .mstrip-t i{font-size:.56rem}
@@ -3161,7 +3130,7 @@ body.shell2 .hdr2, body.shell2 .hdr2-in { overflow: visible !important; }
 
 /* Ultra-narrow: ≤320px (Galaxy Fold, very small Android) */
 @media (max-width:320px){
-  body.shell2 .logo2-img { height: 32px; }
+  body.shell2 .logo2-img { height: 38px; }
   body.shell2 .hamburger { width: 38px; }
   body.shell2 .hdr2-in { gap: var(--sp-2); min-height: 54px; }
   body.shell2 .seg-campus { min-width: 152px; }
@@ -3170,7 +3139,7 @@ body.shell2 .hdr2, body.shell2 .hdr2-in { overflow: visible !important; }
 }
 /* Extreme: ≤280px (Galaxy Fold folded) */
 @media (max-width:280px){
-  body.shell2 .logo2-img { height: 28px; }
+  body.shell2 .logo2-img { height: 34px; }
   body.shell2 .hdr2-in { gap: var(--sp-1); padding: .4rem .3rem; }
   body.shell2 .seg-campus { min-width: 130px; }
   body.shell2 .seg-lang { min-width: 80px; }
@@ -3216,6 +3185,15 @@ body.shell2 .socials a:hover{transform:translateY(-3px) scale(1.1);background:va
 body.shell2 .foot-legal{border-top:1px solid var(--foot-border,#145063);padding:var(--sp-5) 0;font-size:.78rem}
 body.shell2 .foot-legal .wrap{display:flex;justify-content:space-between;align-items:center;
   gap:var(--sp-4);flex-wrap:wrap;color:var(--text-on-dark-mute,#9FC0BF)}
+/* Reserve room below the last footer line so the fixed sticky mobile CTA bar
+   (.mbar) and the .to-top button never sit on top of it (audit 2026-07-16).
+   Matches the same-specificity `body.shell2 .foot-legal` selector above, which
+   was silently winning over a plain `.foot-legal` override placed in
+   style.css — the main site's <body> carries class="shell2" too, not just
+   landing-funnels pages. */
+@media (max-width:768px){
+  body.shell2 .foot-legal{padding-bottom:calc(80px + env(safe-area-inset-bottom,0))}
+}
 @media (max-width:940px){body.shell2 .ftr-grid{grid-template-columns:1fr 1fr;gap:var(--sp-6)}
   body.shell2 .foot2-brand{grid-column:1 / -1;max-width:52ch}}
 @media (max-width:560px){body.shell2 .ftr-grid{grid-template-columns:1fr;gap:var(--sp-6)}}
@@ -3279,10 +3257,14 @@ body.shell2 .ubar-tag{
   padding-top:1px;
 }
 
-/* Mobile phone strip — hide icon on tightest screens, number bold on top, label small below */
+/* Mobile phone strip — hide icon on tightest screens, number bold on top, label small below.
+   `.mstrip-t b` (the number) needs white-space:nowrap: with 3 equal grid columns (English/
+   Haircut/Spanish on Manhattan pages) there isn't always room for the full number, and
+   without nowrap it wraps mid-digit — "(212) 290-2289" rendering as "(212) 290-" / "2289" —
+   at 480/390/320px. Bronx's 2-chip layout has more room per chip and never showed this. */
 body.shell2 .mstrip-phone{gap:.35rem;padding:.55rem .5rem}
 body.shell2 .mstrip-t{align-items:center;text-align:center;line-height:1.15}
-body.shell2 .mstrip-t b{font-size:.9rem;font-weight:800}
+body.shell2 .mstrip-t b{font-size:.9rem;font-weight:800;white-space:nowrap}
 body.shell2 .mstrip-t i{
   font-size:.6rem;
   letter-spacing:.06em;
@@ -3296,6 +3278,20 @@ body.shell2 .mstrip-t i{
   body.shell2 .mstrip-phone svg{width:11px;height:11px}
   body.shell2 .mstrip-t b{font-size:.82rem}
   body.shell2 .mstrip-t i{font-size:.55rem}
+}
+/* At 390px the number still overflows its own pill by ~2px, and at 320px
+   (Manhattan's 3-equal-column layout, the tightest real case) by ~13px —
+   confirmed by measuring the number's rendered right edge against its pill's
+   right edge, not just whether it wraps. Reclaim the room the icon was
+   taking (this is the "hide icon on tightest screens" already promised by
+   the comment above, which was never actually wired up) and trim the number
+   down slightly further; Bronx's 2-chip pages have room to spare either way. */
+@media (max-width:400px){
+  body.shell2 .mstrip-phone svg{display:none}
+  body.shell2 .mstrip-phones{gap:3px}
+  body.shell2 .mstrip-phone{padding:.5rem .25rem;gap:0}
+  body.shell2 .mstrip-t b{font-size:.7rem}
+  body.shell2 .mstrip-t i{font-size:.52rem}
 }
 
 

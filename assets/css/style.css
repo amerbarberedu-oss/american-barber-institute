@@ -563,6 +563,12 @@ footer.site a { color: var(--text-on-dark-mute); text-decoration: none; }
 footer.site a:hover { color: var(--gold-bright); }
 .foot-legal { border-top: 1px solid var(--foot-border); padding: 22px 0; font-size: .78rem; }
 .foot-legal .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+/* Reserve room below the last footer line so the fixed sticky mobile CTA bar
+   (.mbar, active at this same breakpoint) and the .to-top button never sit on
+   top of it (audit 2026-07-16: footer text was permanently covered on mobile). */
+@media (max-width: 768px) {
+  .foot-legal { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0)); }
+}
 .socials { display: flex; gap: 12px; margin-top: 18px; }
 .socials a {
   width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--foot-border);
