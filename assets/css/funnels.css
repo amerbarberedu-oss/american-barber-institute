@@ -1832,14 +1832,7 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 .lfx-phone:hover .lfx-phone__flag{border-color:var(--lf-on-accent);color:var(--lf-on-accent)}
 .lfx-phone__num{font-variant-numeric:tabular-nums}
 .lfx-lang{flex-shrink:0;margin-left:auto}
-.lfx-promo{background:var(--lf-accent);color:var(--lf-on-accent);text-align:center;font-weight:800;font-size:clamp(.92rem,1.6vw,1.25rem);letter-spacing:.1em;text-transform:uppercase;line-height:1.45;padding:.85rem 1rem}
-.lfx-promo b{font-weight:900;color:var(--lf-accent-soft)}
 .lfx-phonerow{display:none}
-.lfx-seats{display:flex;align-items:center;justify-content:center;gap:.75rem;background:var(--lf-accent-soft);padding:.8rem 1rem}
-.lfx-star{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#10131a;color:var(--lf-accent);border:2px solid var(--lf-accent-dark);flex-shrink:0}
-.lfx-seats-t{display:flex;flex-direction:column;line-height:1.3;text-align:left}
-.lfx-seats-t b{font-weight:900;letter-spacing:.05em;color:#10131a;text-transform:uppercase;font-size:1.05rem}
-.lfx-seats-t i{font-style:normal;font-weight:800;letter-spacing:.04em;color:var(--lf-accent-dark);text-transform:uppercase;font-size:.85rem}
 /* narrow desktop: keep row 1 comfortable */
 @media (min-width:769px) and (max-width:1080px){
   .lfx-logo img{height:46px}
@@ -1851,17 +1844,12 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
   .lfx-phones--bar{display:none}
   .lfx-bar__in{padding:.55rem .7rem;gap:.6rem}
   .lfx-logo img{height:46px}
-  .lfx-promo{font-size:.88rem;letter-spacing:.07em;padding:.75rem .8rem .55rem}
   .lfx-phonerow{display:flex;justify-content:center;align-items:stretch;gap:.4rem;background:var(--lf-accent);padding:.2rem .5rem .9rem;flex-wrap:nowrap;max-width:100%}
   /* each phone stretches to an equal share so 2 or 3 numbers fill the row evenly (no empty "third slot") */
   .lfx-phonerow .lfx-phone{flex:1 1 0;justify-content:center;border:2px solid color-mix(in srgb,var(--lf-on-accent) 72%,transparent);color:var(--lf-on-accent);background:rgba(0,0,0,.16);font-size:clamp(.62rem,2.9vw,.85rem);padding:.45rem .55rem;gap:.3rem;min-width:0}
   .lfx-phonerow .lfx-phone svg{color:var(--lf-on-accent);width:13px;height:13px}
   /* mobile: drop the EN/ES/Haircut/Bronx labels so the numbers fit the row */
   .lfx-phonerow .lfx-phone__flag{display:none}
-  .lfx-seats{padding:.7rem .8rem}
-  .lfx-star{width:34px;height:34px}
-  .lfx-seats-t b{font-size:.95rem}
-  .lfx-seats-t i{font-size:.78rem}
 }
 @media (max-width:400px){
   .lfx-logo img{height:40px}
@@ -1959,20 +1947,6 @@ chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;
   color: #fff;
 }
 
-/* Promo strip — the sticky teal-gradient band directly below the header,
-   mirrors the website's `.ubar` gradient. Bronx pages get the gold gradient. */
-.lf-page .lfx-promo{
-  background: linear-gradient(90deg, var(--site-teal-deep) 0%, var(--site-teal) 100%);
-  color: #fff;
-  font-family: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: .08em;
-}
-.lf-page .lfx-promo b{
-  color: var(--site-teal-soft);
-  font-weight: 800;
-}
-
 /* Mobile phone row (the second row of chips on <=768px) — subtle porcelain
    base with the teal border on each chip instead of a fully-colored strip */
 @media (max-width: 768px){
@@ -1986,34 +1960,6 @@ chat-widget{position:fixed!important;bottom:20px!important;right:20px!important;
     background: rgba(255,255,255,.65);
   }
   .lf-page .lfx-phonerow .lfx-phone svg{ color: var(--site-teal-deep); }
-}
-
-/* Seats banner — porcelain background + Fraunces display headline for the
-   "LIMITED SEATS AVAILABLE" line so it reads editorial like the main site */
-.lf-page .lfx-seats{
-  background: var(--site-paper-2);
-  border-bottom: 1px solid var(--site-line);
-}
-.lf-page .lfx-star{
-  background: var(--site-ink);
-  color: var(--site-teal-bright);
-  border: 2px solid var(--site-teal-deep);
-}
-.lf-page .lfx-seats-t b{
-  font-family: "Fraunces", "Georgia", "Times New Roman", serif;
-  font-weight: 700;
-  letter-spacing: .015em;
-  color: var(--site-ink);
-  text-transform: none;
-  font-size: 1.1rem;
-}
-.lf-page .lfx-seats-t i{
-  font-family: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: .06em;
-  color: var(--site-teal-deep);
-  text-transform: uppercase;
-  font-size: .8rem;
 }
 
 /* ═══════════════════════════════════════════════════════════════════

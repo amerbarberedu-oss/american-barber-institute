@@ -26,7 +26,7 @@ sys.path.insert(0, HERE)
 import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
-CSS_V = "71"
+CSS_V = "72"
 JS_V  = "16"
 
 # ── inline SVG icon library ─────────────────────────────────────────
@@ -95,10 +95,13 @@ LOGO_ALT = ("American Barber Institute — "
 # Each campus logo already contains the street address baked into the
 # artwork, so we don't render a duplicate text address line in the header.
 def header(p):
-    """v47 (2026-07-14, client): no navbar, no campus switcher on landing
-    pages — just two rows: a language row (full English/Español, all
-    viewports) and a logo+phone row. Phones are campus-only (no Haircut).
-    Requires body.shell2 lf-page classes + site-header.css."""
+    """v49 (2026-07-16, client): single unified header, no separate colored
+    utility bar, no promo strip, no seats banner. Desktop: one row — logo,
+    phones, language toggle (left to right). Mobile: two rows — logo +
+    language toggle on line 1, phones on line 2 (same markup both
+    breakpoints, CSS `order` + wrap does the rearranging). Phones are
+    campus-only (no Haircut). Requires body.shell2 lf-page classes +
+    site-header.css."""
     es = p["lang"] == "es"
     campus_slug = p["campus"]["slug"]
     is_manhattan = campus_slug == "manhattan"
@@ -150,31 +153,19 @@ def header(p):
             '<span class="hdr2-phone-tag">Bronx</span></a>'
         ) % (phone_svg,)
 
-    # Promo strip + Limited Seats banner sit BELOW the header — landings still need urgency.
-    promo = h(p["promo_strip"])
-    for price in ("$150 per week*", "$150 por semana*"):
-        promo = promo.replace(price, "<b>%s</b>" % price)
-    seats_kicker, seats_lead = D.SEATS_BANNER[p["lang"]]
-    star_svg = ('<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
-                '<path d="M12 2l2.9 6.26L21.8 9.3l-5 4.72 1.24 6.8L12 17.5l-6.04 3.32L7.2 14 2.2 9.3l6.9-1.04z"/></svg>')
-
     # Landing pages are standalone — logo is NOT a link (must never navigate to
     # the main site home). Rendered as a plain span (client 2026-07-14).
     return (
-        '<div class="ubar"><div class="ubar-in">%s</div></div>\n'
         '<header class="hdr2"><div class="hdr2-in">'
         '<span class="logo2" aria-label="American Barber Institute">'
         '<img class="logo2-img" src="/assets/img/logo-final.gif" alt="American Barber Institute" width="385" height="99" fetchpriority="high">'
         '</span>'
         '<div class="hdr2-phones">%s</div>'
+        '<div class="hdr2-lang">%s</div>'
         '</div></header>\n'
-        '<div class="lfx-promo">%s</div>\n'
-        '<div class="lfx-seats" role="status"><span class="lfx-star" aria-hidden="true">%s</span>'
-        '<span class="lfx-seats-t"><b>%s</b><i>%s</i></span></div>\n'
     ) % (
-        lang_toggle,
         phones,
-        promo, star_svg, h(seats_kicker), h(seats_lead),
+        lang_toggle,
     )
 
 
