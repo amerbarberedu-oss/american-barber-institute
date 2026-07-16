@@ -185,7 +185,7 @@ body,.hdr,.btn-gold,.btn-blue,.trust-strip,.cta-band,.foot-cta,.topbar{transitio
 /* ── Generic sections ────────────────────── */
 .sec{padding:3.6rem 0}
 .sec-alt{background:#f7f8fc}
-.eyebrow{color:var(--blue);font-weight:700;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow{color:#0B6F67;font-weight:700;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase}
 .sec h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.01em;margin:.4rem 0 1rem}
 .sec .lead{color:var(--ink-soft);max-width:46rem}
 .prose p{margin-bottom:1rem;color:var(--ink-soft);max-width:50rem}
@@ -1418,7 +1418,7 @@ body::before{content:none !important;}          /* remove fixed page-wide photo 
 .sec p,.prose p,.prose li,.feature p,.card p,.lead,.abi-lead,.acc-body li,.res-list li,.inst-card p{
   color:#34383f!important}
 .lead,.abi-lead{color:#2a2e36!important}
-.eyebrow,.kicker,.abi-eyebrow{color:var(--blue)!important;font-weight:700;letter-spacing:.14em}
+.eyebrow,.kicker,.abi-eyebrow{color:#0B6F67!important;font-weight:700;letter-spacing:.14em}
 /* keep text WHITE on dark surfaces */
 .hero-h1,.hero-sub,.hero .feature,.hero .feature span,
 section.dark h2,section.dark h3,section.dark p,section.dark li,
