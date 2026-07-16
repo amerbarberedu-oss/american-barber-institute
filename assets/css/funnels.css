@@ -1513,87 +1513,89 @@ body.lf-page--brnx-es {
   #content .formcard-sub{font-size:.78rem}
 }
 
-#content .hx{padding-block:clamp(1.4rem,3.5vw,2.2rem);background:#fff!important}
-#content .hx .hx-in{width:min(1400px,94%);margin-inline:auto;padding:0!important;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(680px,702px);gap:clamp(1.2rem,2.4vw,2rem);
-  align-items:start}
-#content .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-lg,14px);
-  min-height:clamp(640px,68vw,820px);display:flex;align-items:flex-start;background:#0a1416}
+/* HOME HERO v5 — aligned to the Manhattan homepage's v5 hero (index.html #main .hx, 2026-07-15
+   handoff): text+countdown anchored BOTTOM-LEFT of the photo, no dark gradient, features band
+   moved out of the photo overlay into its own section below. Desktop features grid stays at 5
+   columns (these landing pages have 5 feature items, not the homepage's 6) — everything else now
+   matches the homepage structurally. */
+#content .hx{padding-block:0;background:#0b0d0f!important}
+#content .hx .hx-in{width:min(1500px,96%);margin-inline:auto;padding:0!important;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(680px,702px);gap:0;
+  align-items:stretch}
+#content .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;
+  min-height:clamp(460px,36vw,520px);display:flex;align-items:flex-end;background:#0a1416}
 #content .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
-  background:url('/assets/img/hero-training-floor-v2.jpg') 50% 32%/cover no-repeat;
+  background:url('/assets/img/hero-training-floor-v2.jpg') 76% 32%/cover no-repeat;
   filter:brightness(1.12)}
-/* soft fade only at the right edge (where the photo meets the white form panel), matching the
-   approved homepage v5 treatment — no darkening across the photo itself. */
+/* soft fade only at the right edge (where the photo meets the white form panel) so the two
+   panels read as one blended composition instead of a hard-edged photo pasted next to a card --
+   no darkening across the photo itself, just a short transition right at the seam. */
 #content .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
   background:linear-gradient(90deg,transparent 90%,rgba(255,255,255,.35) 100%)}
-#content .hx .hx-copy{position:relative;z-index:2;max-width:63%;
-  padding:clamp(1.3rem,2.8vw,2.2rem);color:#fff}
-#content .hx .hx-h1{margin:0 0 .35rem;text-transform:none;font-family:var(--font-display);
-  font-weight:600;line-height:1.02;letter-spacing:-.02em}
+#content .hx .hx-copy{position:relative;z-index:2;max-width:400px;box-sizing:border-box;
+  padding:clamp(1.6rem,3vw,2.75rem) clamp(1.4rem,2.6vw,2.5rem) clamp(1.2rem,2vw,1.75rem);color:#fff}
+#content .hx .hx-h1{margin:0;text-transform:none;font-family:var(--font-display);
+  font-weight:600;line-height:1.06;letter-spacing:-.02em}
 #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
-  text-transform:none;font-weight:600;letter-spacing:-.02em;
-  font-size:clamp(1.85rem,3.7vw,2.95rem);text-shadow:0 2px 20px rgba(0,0,0,.55)}
-#content .hx .hx-h1 .hx-l1{color:#fff}
-#content .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
+  text-transform:none;font-weight:700;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.55)}
+#content .hx .hx-h1 .hx-l1{color:#fff;font-size:clamp(1.65rem,2.4vw,2.05rem)}
+#content .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important;font-size:clamp(2rem,3.2vw,2.65rem)}
 #content .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
-  text-transform:none;font-weight:500;color:#fff;
-  font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.1;margin:.1rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
-#content .hx .hx-h1 .hx-script::after{content:"";display:block;width:min(220px,50%);height:4px;
-  margin-top:.4rem;border-radius:99px;background:var(--teal)!important}
-#content .hx .hx-sub{margin:.5rem 0 .8rem;max-width:none;font-size:clamp(1rem,1.5vw,1.15rem);
-  line-height:1.5;color:#eef4f3;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.5)}
-#content .hx .hx-sub b{color:var(--teal-bright)!important}
-#content .hx .hx-cta-row{display:flex}
-#content .hx .btn-tour{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;
-  font-size:.86rem;letter-spacing:.03em}
+  text-transform:none;font-weight:600;color:#fff;
+  font-size:clamp(1.2rem,1.76vw,1.55rem);line-height:1.15;margin:.4rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+#content .hx .hx-h1 .hx-script::after{content:"";display:block;width:78px;height:3px;
+  margin-top:.9rem;border-radius:99px;background:var(--teal)!important}
+#content .hx .hx-sub{margin:0;max-width:none;font-size:.97rem;
+  line-height:1.55;color:#e8ecee;font-weight:400;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+#content .hx .hx-sub b{color:#2cc5b8!important;font-weight:600}
+#content .hx .hx-cta-row{display:flex;margin-top:1.25rem}
+#content .hx .btn-tour{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;
+  font-size:.8rem;letter-spacing:.05em;font-weight:700;padding:.85rem 1.4rem}
 #content .hx .btn-tour svg{flex-shrink:0}
-/* form card — flattened to match the approved homepage v5 panel (no shadow, square corners) */
-#content .hx .formcard{align-self:start;box-shadow:none;border-radius:0;padding:1.5rem 1.3rem}
+#content .hx .formcard{align-self:center;box-shadow:none;border-radius:0;padding:1.5rem 1.3rem}
 
-#content .hx-next{background:rgba(6,14,16,.68)!important;border:1px solid rgba(255,255,255,.18)!important;
-  border-radius:var(--radius,8px)!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.4rem;
-  padding:1rem 1.2rem;max-width:none!important;margin:1rem 0 0!important}
-#content .hx-next-label{color:#c7d3d1!important;font-size:.82rem;font-weight:600;margin-right:.4rem;display:inline!important}
-#content .hx-next-date{color:var(--teal-bright)!important;font-weight:700;display:inline!important;margin-top:0!important;font-size:1rem!important}
-#content .hx-next-sub{display:block;color:#9fb0ae!important;font-size:.78rem;margin-top:.15rem}
-#content .hx-cells{display:flex!important;gap:0;column-gap:0!important}
-#content .hx-cell{display:flex;flex-direction:column;align-items:center;min-width:2.8rem;
-  background:none!important;border:0!important;border-radius:0!important;padding:0 .75rem!important;
-  border-left:1px solid rgba(255,255,255,.14)!important}
-#content .hx-cell:first-child{border-left:0!important}
-#content .hx-cell b{font-size:1.4rem;font-weight:800;color:#fff;line-height:1}
-#content .hx-cell span{font-size:.68rem;color:#9fb0ae!important;text-transform:uppercase;letter-spacing:.04em;margin-top:.15rem;font-weight:600!important;letter-spacing:.04em!important}
+#content .hx-next{background:rgba(8,10,11,.66)!important;border:1px solid rgba(255,255,255,.28)!important;
+  border-radius:12px!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.1rem;
+  padding:.9rem 1.15rem;max-width:none!important;margin:1.5rem 0 0!important}
+#content .hx-next-label{color:#fff!important;font-size:.875rem;font-weight:700;margin-right:.4rem;display:block!important}
+#content .hx-next-date{color:var(--teal-bright)!important;font-weight:800;display:block!important;margin-top:.2rem!important;font-size:1.06rem!important}
+#content .hx-next-sub{display:block;color:#c8cfd3!important;font-size:.72rem;margin-top:.2rem;max-width:220px}
+#content .hx-cells{display:flex!important;gap:.6rem;column-gap:.6rem!important}
+#content .hx-cell{display:flex;flex-direction:column;align-items:center;
+  background:none!important;border:0!important;border-radius:0!important;padding:0!important}
+#content .hx-cell b{border:1px solid rgba(255,255,255,.35);border-radius:8px;width:3.375rem;
+  padding:.56rem 0;font-size:1.5rem;font-weight:800;color:#fff;line-height:1;box-sizing:border-box}
+#content .hx-cell span{font-size:.625rem;color:#fff!important;text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem;font-weight:700!important}
 
-/* features band — separate full-width section below the hero (replaces the old in-copy
-   .hx-featbox vertical list), matching the approved homepage v5 pattern. */
-section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0!important;border-top:1px solid #eee!important}
-.hx-features-in{width:min(1400px,94%);margin-inline:auto;display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));gap:1.2rem}
-.hx-feature{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;
-  padding-inline:.5rem;border-left:1px solid #e6e6e6}
+/* features band — separate full-width section below the hero, not overlaid on the photo */
+section.hx-features{background:#fff!important;padding:1.375rem 0!important;border-top:0!important}
+.hx-features-in{width:min(1500px,96%);margin-inline:auto;display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+.hx-feature{display:flex;align-items:flex-start;text-align:left;gap:.75rem;
+  padding:.25rem 1rem;border-left:1px solid #e8ecef}
 .hx-feature:first-child{border-left:0}
-.hx-feature svg{color:var(--teal)!important;flex-shrink:0}
-.hx-feature span{font-size:.82rem;line-height:1.35;color:var(--ink-2)!important}
+.hx-feature svg{color:var(--teal)!important;flex-shrink:0;margin-top:.1rem}
+.hx-feature span{font-size:.78rem;line-height:1.5;color:var(--ink-2)!important}
 .hx-feature b{display:block;font-weight:700}
-.hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.74rem;margin-top:.3rem;font-weight:600}
+.hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
-@media(max-width:900px){
+@media(max-width:1000px){
   #content .hx .hx-in{grid-template-columns:1fr}
   #content .hx .hx-photo{min-height:0;aspect-ratio:872/1804;align-items:flex-end}
-  #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center 18%/cover no-repeat}
+  #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center top/cover no-repeat}
   #content .hx .hx-photo .hx-grad{background:none}
-  #content .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
-  #content .hx .hx-h1{margin:0 0 .25rem}
-  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.65rem,6.4vw,1.85rem)}
-  #content .hx .hx-h1 .hx-script{font-size:clamp(1rem,3.7vw,1.15rem);margin-top:.05rem}
-  #content .hx .hx-h1 .hx-script::after{margin-top:.3rem}
-  #content .hx .hx-sub{font-size:clamp(.9rem,3.6vw,1rem);max-width:none;margin:.4rem 0 .6rem;line-height:1.4}
-  #content .hx .btn-tour{white-space:nowrap}
-  section.hx-features{background:var(--ink,#0b0d0f)!important}
-  .hx-features-in{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0!important}
-  .hx-feature{flex-direction:row!important;text-align:left!important;align-items:flex-start!important;border-left:0!important;gap:.7rem!important;
-    padding:1rem .5rem!important;border-bottom:1px solid rgba(255,255,255,.12)!important}
+  #content .hx .hx-copy{max-width:100%;width:100%}
+  #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem)}
+  #content .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem)}
+  #content .hx .hx-sub{font-size:1.03rem;max-width:330px}
+  #content .hx .formcard{padding:1.625rem 1.25rem 2.125rem}
+  section.hx-features{background:#0b0d0f!important}
+  .hx-features-in{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0}
+  .hx-feature{flex-direction:row!important;align-items:flex-start!important;border-left:0!important;
+    padding:1.1rem .75rem!important;border-top:1px solid rgba(255,255,255,.14)!important}
+  .hx-feature:nth-child(1),.hx-feature:nth-child(2),.hx-feature:nth-child(3){border-top:0!important}
+  .hx-feature:nth-child(2),.hx-feature:nth-child(3),.hx-feature:nth-child(5),.hx-feature:nth-child(6){border-left:1px solid rgba(255,255,255,.14)!important}
   .hx-feature svg{color:var(--teal-bright)!important}
   .hx-feature span{color:#fff!important}
   .hx-feature i{color:var(--teal-bright)!important}
