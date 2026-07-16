@@ -102,7 +102,7 @@ function pageCampus(){
   return d[c]?c:"manhattan";
 }
 function isFixedPage(){
-  return true;
+  return document.body.getAttribute("data-campus-locked")==="true";
 }
 function getCampus(){
   if(isFixedPage()) return pageCampus();
