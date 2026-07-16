@@ -180,6 +180,18 @@ function initDropdowns(){
     btn.addEventListener("keydown",function(e){
       if(e.key==="Escape"){menu.classList.remove("open");btn.setAttribute("aria-expanded","false");}
     });
+    /* CSS opens the menu on :focus-within for keyboard users, but aria-expanded
+       was only ever toggled by the click handler above -- screen readers were
+       told the menu was collapsed while it was actually open and navigable. */
+    item.addEventListener("focusin",function(){
+      btn.setAttribute("aria-expanded","true");
+    });
+    item.addEventListener("focusout",function(e){
+      if(!item.contains(e.relatedTarget)){
+        btn.setAttribute("aria-expanded","false");
+        menu.classList.remove("open");
+      }
+    });
   });
   document.addEventListener("click",function(e){
     if(e.target.closest(".nav2-has")) return;

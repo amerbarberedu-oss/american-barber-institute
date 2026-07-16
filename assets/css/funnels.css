@@ -477,7 +477,7 @@ body.lf-page--brnx-es {
   background: #fff; border: 1px solid var(--lf-line); border-radius: var(--lf-r-md);
   padding: 1.3rem; box-shadow: var(--lf-shadow-sm);
 }
-.lf-review__stars { color: #f5a623; letter-spacing: 2px; font-size: .95rem; }
+.lf-review__stars { color: #976107; letter-spacing: 2px; font-size: .95rem; }
 .lf-review__q {
   margin: .7rem 0 1rem; color: var(--lf-ink); font-size: .98rem; line-height: 1.55;
 }

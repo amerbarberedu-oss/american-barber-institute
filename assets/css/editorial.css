@@ -80,7 +80,7 @@
 /* ---------- STAT RAIL ---------- */
 .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(1rem,3vw,2.2rem);}
 .stat__num{font-family:var(--font-mono);font-weight:600;font-variant-numeric:tabular-nums;
-  font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;color:var(--teal);letter-spacing:-.02em;}
+  font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;color:#0B6F67;letter-spacing:-.02em;}
 .band--petrol .stat__num,.band--dark .stat__num{color:var(--teal-bright);}
 .stat__label{margin-top:.5rem;font-size:.92rem;line-height:1.4;color:var(--text-mute);}
 .band--petrol .stat__label,.band--dark .stat__label{color:var(--on-dark-muted);}
