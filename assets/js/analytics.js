@@ -1,11 +1,27 @@
 /* ============================================================
-   ABI — Analytics loader   (v6)
+   ABI — Analytics loader   (v8)
    ------------------------------------------------------------
-   ONE dependency: Google Tag Manager container GTM-NKLLGPC.
-   GA4 (G-J6BNX36TS3), Meta Pixel (580471737041846), Microsoft
-   Clarity (k5fxn2irko), CallRail (169987046), ClickCease, and
-   Google Ads (AW-949292069) are all configured INSIDE the GTM
-   web UI — never add/remove those tags here.
+   ONE dependency: Google Tag Manager container GTM-N9GTRLN.
+
+   >> CONTAINER SWAP 2026-07-17 (client instruction) <<
+   Was GTM-NKLLGPC. That container held the GA4 (G-J6BNX36TS3),
+   Meta Pixel (580471737041846), Microsoft Clarity (k5fxn2irko),
+   CallRail (169987046), ClickCease and Google Ads (AW-949292069)
+   tags. Those tags live in the GTM web UI, NOT in this file, so
+   they did NOT come across with the swap — anything not present
+   in N9GTRLN is no longer firing. Re-create whatever is still
+   wanted inside the N9GTRLN container.
+
+   N9GTRLN's tags as of the swap (all ~4 yrs old):
+     - Google Analytics GA4 Configuration  (All Pages)
+     - Google Analytics: Universal Analytics (All Pages)  ← DEAD
+     - Google Analytics: Universal Analytics (form)       ← DEAD
+   Universal Analytics stopped processing data in Jul 2023; those
+   two tags fire and do nothing. Pause/delete them in the GTM UI.
+
+   Google Ads conversion tracking is the one to watch: if the Ads
+   conversion tags are not rebuilt in N9GTRLN, "generate_lead" no
+   longer reaches Ads and smart bidding degrades silently.
 
    What this file does:
      1. Sets Google Consent Mode v2 to GRANTED by default (all
@@ -27,10 +43,13 @@
 (function () {
   "use strict";
 
-  var GTM_ID = "GTM-NKLLGPC";
+  var GTM_ID = "GTM-N9GTRLN";
   // Direct GA4 config for this domain's OWN stream (americanbarberinstitute.com).
-  // The GTM container's GA4 tag is hardcoded to abi.edu's stream (G-J6BNX36TS3);
-  // this line ensures .com traffic also lands in the .com property.
+  // Independent of GTM — this line is what guarantees .com traffic lands in the
+  // .com property regardless of which container is installed above.
+  // NOTE: N9GTRLN also has its own "GA4 Configuration — All Pages" tag. If that
+  // tag's Measurement ID is G-B4TC0VGH2S, every pageview is counted TWICE.
+  // Confirm the ID in the GTM UI; if it collides, pause one of the two.
   var GA4_MEASUREMENT_ID = "G-B4TC0VGH2S";
 
   var w = window,
@@ -51,8 +70,7 @@
 
   // ---- 2. Google tag (gtag.js) — fresh install of GA4 stream ----
   // Reinstalled per Google's official gtag.js snippet (Jul 2026).
-  // This is the ONLY source for G-B4TC0VGH2S (the .com stream);
-  // GTM's own GA4 tag sends to abi.edu's stream (G-J6BNX36TS3), not here.
+  // Direct source for G-B4TC0VGH2S (the .com stream), independent of GTM.
   var gtagScript = d.createElement("script");
   gtagScript.async = true;
   gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_MEASUREMENT_ID;
@@ -62,8 +80,7 @@
   gtag("config", GA4_MEASUREMENT_ID);
 
   // ---- 3. GTM install (Google's official snippet, inlined) ----
-  // GTM's GA4 tag fires G-J6BNX36TS3 (abi.edu). Combined with the
-  // direct G-B4TC0VGH2S above, .com traffic reaches BOTH streams.
+  // Container GTM-N9GTRLN. Whatever fires here is defined in the GTM web UI.
   (function (w, d, s, l, i) {
     w[l] = w[l] || [];
     w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -76,7 +93,7 @@
   })(window, document, "script", "dataLayer", GTM_ID);
 
   // ---- semantic events ----
-  // push():  feeds the GTM dataLayer  (→ abi.edu stream + any GTM tags).
+  // push():  feeds the GTM dataLayer  (→ whatever tags N9GTRLN defines).
   function push(event, extra) {
     w.dataLayer.push(assign({ event: event }, extra || {}));
   }
@@ -88,8 +105,17 @@
   }
   // lead(): a single form-submit → fire "generate_lead" to BOTH destinations.
   function lead(params) {
-    push("generate_lead", params);      // → GTM / abi.edu stream
+    push("generate_lead", params);      // → GTM dataLayer (N9GTRLN tags)
     ga4Event("generate_lead", params);  // → .com GA4 stream (G-B4TC0VGH2S)
+  }
+  // both(): same dual-send for any event. phone_click previously went to the
+  // dataLayer ONLY, so it landed in whatever GA4 stream the GTM container's
+  // tag pointed at (abi.edu's) and never reached this domain's own property.
+  // With an empty container it would reach nothing at all — so send it direct
+  // as well. GTM-independent: works no matter which container is installed.
+  function both(event, params) {
+    push(event, params);
+    ga4Event(event, params);
   }
 
   d.addEventListener(
@@ -98,8 +124,8 @@
       var a = e.target.closest && e.target.closest("a");
       if (!a) return;
       var href = a.getAttribute("href") || "";
-      if (href.indexOf("tel:") === 0) push("phone_click", { phone_number: href.slice(4) });
-      else if (href.indexOf("mailto:") === 0) push("email_click", { email: href.slice(7) });
+      if (href.indexOf("tel:") === 0) both("phone_click", { phone_number: href.slice(4) });
+      else if (href.indexOf("mailto:") === 0) both("email_click", { email: href.slice(7) });
     },
     true
   );
