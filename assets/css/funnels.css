@@ -1527,11 +1527,16 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 
 
 
-/* ── GHL form wrapper sizes (2026-07-14): iframes now use style="height:100%"
-      per client's exact embed code, so the wrapper needs an explicit height
-      to give them something to fill. Heights match each form's data-height. ── */
+/* ── GHL form wrapper sizes (2026-07-16): iframes use style="height:100%" per
+      client's exact embed code, and form_embed.js overrides that with a real
+      pixel height once it measures the actual GHL-hosted content (varies by
+      locale -- Spanish legal text is longer -- and can change over time on
+      GHL's side). A fixed `height` here fought that: too-tall real content
+      overflowed past the box and visually overlapped section below; too-short
+      real content left dead white space inside the box. `min-height` gives
+      the iframe a sane floor before JS resizes it, without capping growth. ── */
 .ghl-form-wrap{width:100%}
-.ghl-form-wrap:has(iframe[src*="3ghObGjHiLN3LgKBfKGG"]){height:880px}
-.ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){height:920px}
-.ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){height:870px}
-.ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){height:920px}
+.ghl-form-wrap:has(iframe[src*="3ghObGjHiLN3LgKBfKGG"]){min-height:880px}
+.ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){min-height:920px}
+.ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){min-height:870px}
+.ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){min-height:920px}
