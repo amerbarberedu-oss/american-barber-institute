@@ -108,6 +108,15 @@
     push("generate_lead", params);      // → GTM dataLayer (N9GTRLN tags)
     ga4Event("generate_lead", params);  // → .com GA4 stream (G-B4TC0VGH2S)
   }
+  // both(): same dual-send for any event. phone_click previously went to the
+  // dataLayer ONLY, so it landed in whatever GA4 stream the GTM container's
+  // tag pointed at (abi.edu's) and never reached this domain's own property.
+  // With an empty container it would reach nothing at all — so send it direct
+  // as well. GTM-independent: works no matter which container is installed.
+  function both(event, params) {
+    push(event, params);
+    ga4Event(event, params);
+  }
 
   d.addEventListener(
     "click",
@@ -115,8 +124,8 @@
       var a = e.target.closest && e.target.closest("a");
       if (!a) return;
       var href = a.getAttribute("href") || "";
-      if (href.indexOf("tel:") === 0) push("phone_click", { phone_number: href.slice(4) });
-      else if (href.indexOf("mailto:") === 0) push("email_click", { email: href.slice(7) });
+      if (href.indexOf("tel:") === 0) both("phone_click", { phone_number: href.slice(4) });
+      else if (href.indexOf("mailto:") === 0) both("email_click", { email: href.slice(7) });
     },
     true
   );
