@@ -1580,7 +1580,7 @@ section.hx-features{background:#fff!important;padding:clamp(1.5rem,3vw,2.1rem) 0
 
 @media(max-width:900px){
   #content .hx .hx-in{grid-template-columns:1fr}
-  #content .hx .hx-photo{min-height:1220px;align-items:flex-end}
+  #content .hx .hx-photo{min-height:0;aspect-ratio:872/1804;align-items:flex-end}
   #content .hx .hx-photo .hx-bg{background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center 18%/cover no-repeat}
   #content .hx .hx-photo .hx-grad{background:none}
   #content .hx .hx-copy{max-width:100%;width:100%;box-sizing:border-box;padding:clamp(1rem,2.2vw,1.4rem)}
