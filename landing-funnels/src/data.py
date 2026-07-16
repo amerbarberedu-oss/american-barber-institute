@@ -148,12 +148,16 @@ COUNTDOWN = {
            "cells": ("DÍAS", "HRS", "MIN", "SEG")},
 }
 
-# ─── stat row (verbatim from the original) ───────────────────────────
+# ─── stat row (verbatim from the original). The Google-rating stat is
+# inserted at render time from each campus's google_rating/review_count
+# (see section_stats in build.py) so it's never out of sync with the
+# real, per-campus number — it used to be a flat generic "100+" here
+# that undersold both campuses' actual review counts (427 / 253).
 STATS = {
     "en": [("30+", "Years in business"), ("10,000+", "Graduates"),
-           ("100+", "Google reviews"), ("4 mo", "To get licensed")],
+           ("4 mo", "To get licensed")],
     "es": [("30+", "Años en el negocio"), ("10,000+", "Graduados"),
-           ("100+", "Reseñas de Google"), ("4 m", "Para licenciarte")],
+           ("4 m", "Para licenciarte")],
 }
 
 # ─── "About the Program" (verbatim, campus-specific) ─────────────────

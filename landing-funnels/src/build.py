@@ -305,10 +305,15 @@ def lead_form(p):
 
 # ── STATS ────────────────────────────────────────────────────────────
 def section_stats(p):
+    campus = p["campus"]
+    rating, count = campus["google_rating"], campus["google_review_count"]
+    rating_label = "%s Google Reviews" % count if p["lang"] == "en" else "%s Reseñas de Google" % count
+    stats = list(D.STATS[p["lang"]])
+    stats.insert(2, ("%s★" % rating, rating_label))
     items = "".join(
         '<div class="lf-stat lf-rv"><div class="lf-stat__n">%s</div>'
         '<span class="lf-stat__label">%s</span></div>' % (h(n), h(l))
-        for n, l in D.STATS[p["lang"]]
+        for n, l in stats
     )
     return ('<section class="lf-section lf-section--tight"><div class="lf-wrap">'
             '<div class="lf-stats">%s</div></div></section>\n' % items)
@@ -325,7 +330,9 @@ def section_about(p):
     map_q = quote("American Barber Institute, " + p["campus"]["addr_full_en"])
     map_src = "https://www.google.com/maps?q=%s&amp;z=16&amp;output=embed" % map_q
     reviews_href = p["campus"]["google_listing_url"]
-    reviews_label = "Ver nuestras reseñas de Google →" if p["lang"] == "es" else "Read our Google reviews →"
+    rating, count = p["campus"]["google_rating"], p["campus"]["google_review_count"]
+    reviews_label = ("%s en Google (%s reseñas) →" % (rating, count) if p["lang"] == "es"
+                      else "%s on Google (%s reviews) →" % (rating, count))
     return (
         '<section class="lf-section lf-section--alt"><div class="lf-wrap">%s\n'
         '  <div class="lf-about">\n'
