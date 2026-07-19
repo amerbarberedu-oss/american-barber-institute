@@ -2909,8 +2909,11 @@ body.shell2 .ubar-num{font-variant-numeric:tabular-nums;letter-spacing:.01em}
 body.shell2 .hdr2{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);
   backdrop-filter:blur(14px) saturate(1.25);-webkit-backdrop-filter:blur(14px) saturate(1.25);
   border-bottom:1px solid var(--sh-line);box-shadow:0 1px 0 rgba(14,77,92,.04)}
-body.shell2 .hdr2-in{width:min(var(--shell-max,1240px),94%);margin-inline:auto;
-  display:flex;align-items:center;gap:var(--sp-5);min-height:74px;padding:var(--sp-3) 0}
+/* Full-width header so the logo sits at the far top-left corner and the Book a Tour CTA at the
+   far top-right corner (client request 2026-07-19); the nav keeps its margin-inline:auto centering.
+   Small side padding so they're at the corners without being glued to the viewport edge. */
+body.shell2 .hdr2-in{width:100%;margin-inline:0;
+  display:flex;align-items:center;gap:var(--sp-5);min-height:74px;padding:var(--sp-3) clamp(1rem,3vw,2.5rem)}
 
 /* Logo — vertically centered, fixed height, no layout shift, no spin */
 body.shell2 .logo2{display:inline-flex;align-items:center;flex-shrink:0;line-height:0}
