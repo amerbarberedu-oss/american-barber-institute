@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="assets/css/landing.min.css?v=177">
+<link rel="stylesheet" href="assets/css/landing.min.css?v=180">
 <link rel="stylesheet" href="assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -171,6 +171,18 @@
 #main .hx .hx-in{width:min(1500px,96%);margin-inline:auto;padding:0!important;
   display:grid;grid-template-columns:minmax(0,1fr) minmax(680px,702px);gap:0;
   align-items:stretch}
+/* Desktop hero (client request 2026-07-19): the GHL form is a fixed external widget with ~8
+   fields, so a single narrow column makes it tall enough to need an internal scrollbar. Kept at
+   the 2-column width instead - every field shows with NO internal scroll, and the photo column
+   stretches to match. White section bg here so wide screens show no black side gutters. */
+@media(min-width:1001px){
+  #main .hx{background:#fff!important}
+  /* Shadowbox behind the hero wording (Gary's request 2026-07-19): a soft translucent panel so
+     the copy reads cleanly over the photo, instead of relying on text-shadow alone. */
+  #main .hx .hx-copy{margin:clamp(1rem,2vw,1.75rem);
+    background:rgba(11,13,15,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+    border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.45)}
+}
 #main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;
   min-height:clamp(460px,36vw,520px);display:flex;align-items:flex-end;background:#0a1416}
 #main .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;

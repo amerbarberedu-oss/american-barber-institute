@@ -3054,7 +3054,7 @@ body.shell2 .ubar-right{flex-wrap:wrap;justify-content:flex-end;row-gap:var(--sp
    drawer (<=1024px) is unaffected. ── */
 @media (min-width:1025px){
   body.shell2 .nav2{gap:.15rem}
-  body.shell2 .nav2-top{font-size:.85rem;padding:.55rem .5rem;gap:.22rem;white-space:nowrap}
+  body.shell2 .nav2-top{font-size:1.4rem;padding:.72rem .82rem;gap:.3rem;white-space:nowrap}
 }
 
 /* ── SQUEEZE ZONE, NARROW TIER: the rule above still isn't tight enough
