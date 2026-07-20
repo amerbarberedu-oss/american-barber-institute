@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="assets/css/landing.min.css?v=180">
+<link rel="stylesheet" href="assets/css/landing.min.css?v=181">
 <link rel="stylesheet" href="assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -250,7 +250,10 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   #main .hx .hx-photo{display:contents}
   #main .hx .hx-photo .hx-bg{position:relative!important;order:1;width:100%;height:auto!important;aspect-ratio:872/1804;background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center top/cover no-repeat}
   #main .hx .hx-photo .hx-grad{display:none}
-  #main .hx .hx-copy{order:2;position:relative;z-index:2;max-width:100%;width:100%;
+  /* countdown moved after the form on mobile (client request 2026-07-20): flatten .hx-copy so its
+     text wrapper and the countdown become direct flex items, then order copy(2)/form(3)/counter(4). */
+  #main .hx .hx-copy{display:contents}
+  #main .hx .hx-copy-inner{order:2;position:relative;z-index:2;max-width:100%;width:100%;
     margin-top:-40vw;background:linear-gradient(180deg,transparent 0,transparent 16vw,#fff 34vw,#fff 100%);
     padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
   #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:0 2px 16px rgba(0,0,0,.65)}
@@ -259,6 +262,7 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:0 2px 14px rgba(0,0,0,.65);color:#fff}
   #main .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none;color:var(--ink-soft)}
   #main .hx .hx-sub b{color:var(--teal-deep)!important}
+  #main .hx .hx-next{order:4;margin:1.25rem clamp(1.4rem,5vw,2rem) 2.25rem!important}
   #main .hx-next{background:var(--teal-tint)!important;border:1px solid var(--teal-soft)!important;color:var(--ink)}
   #main .hx-next-label{color:var(--ink)!important}
   #main .hx-next-date{color:var(--teal-deep)!important}
@@ -292,6 +296,7 @@ body.bx-gold #main .hx-next-date{color:#e3b34e!important}
       <div class="hx-bg" aria-hidden="true"></div>
       <div class="hx-grad" aria-hidden="true"></div>
       <div class="hx-copy">
+        <div class="hx-copy-inner">
         <h1 class="hx-h1"><span class="hx-l1">Build a Career</span><span class="hx-l2">You Own</span><span class="hx-script">Become a Barber.</span></h1>
         <p class="hx-sub">Change careers and become a <b>licensed barber in New York</b> in as little as <b>4 months</b> — hands-on, at our <b>Bronx campus</b> at 121 Westchester Square.</p>
         <div class="hx-cta-row">
@@ -299,6 +304,7 @@ body.bx-gold #main .hx-next-date{color:#e3b34e!important}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             Book a Bronx Campus Tour
           </a>
+        </div>
         </div>
         <div class="hx-next" data-countdown>
           <div class="hx-next-l">

@@ -3269,7 +3269,7 @@ body.shell2 .ubar-tag{
    at 480/390/320px. Bronx's 2-chip layout has more room per chip and never showed this. */
 body.shell2 .mstrip-phone{gap:.35rem;padding:.55rem .5rem}
 body.shell2 .mstrip-t{align-items:center;text-align:center;line-height:1.15}
-body.shell2 .mstrip-t b{font-size:.9rem;font-weight:800;white-space:nowrap}
+body.shell2 .mstrip-t b{font-size:1.02rem;font-weight:800;white-space:nowrap}
 body.shell2 .mstrip-t i{
   font-size:.6rem;
   letter-spacing:.06em;
@@ -3281,7 +3281,7 @@ body.shell2 .mstrip-t i{
 @media (max-width:480px){
   body.shell2 .mstrip-phone{padding:.5rem .35rem;gap:.3rem}
   body.shell2 .mstrip-phone svg{width:11px;height:11px}
-  body.shell2 .mstrip-t b{font-size:.82rem}
+  body.shell2 .mstrip-t b{font-size:.86rem}
   body.shell2 .mstrip-t i{font-size:.55rem}
 }
 /* At 390px the number still overflows its own pill by ~2px, and at 320px
