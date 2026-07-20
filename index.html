@@ -59,6 +59,8 @@
 <div class="abi-deco" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- Promo banner (brand-colored) -->
+<a class="promo-bar" href="contact.html#request-a-call">Start Your Barber Journey Today for Only <b>$150 Per Week*</b></a>
 <!-- ── UTILITY BAR: campus switcher · language · live campus phones ── -->
 <div class="ubar">
   <div class="ubar-in">
@@ -176,7 +178,7 @@
    2-column width; the desktop rules below only whiten the section bg to remove side gutters. */
 #main .hx{padding-block:0;background:#0b0d0f!important}
 #main .hx .hx-in{width:min(1500px,96%);margin-inline:auto;padding:0!important;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(680px,702px);gap:0;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(470px,500px);gap:0;
   align-items:stretch}
 /* Desktop hero (client request 2026-07-19): the GHL form is a fixed external widget with ~8
    fields, so a single narrow column makes it tall enough to need an internal scrollbar. Kept at
@@ -184,38 +186,39 @@
    stretches to match. White section bg here so wide screens show no black side gutters. */
 @media(min-width:1001px){
   #main .hx{background:#fff!important}
-  /* Shadowbox behind the hero wording (Gary's request 2026-07-19): a soft translucent panel so
-     the copy reads cleanly over the photo, instead of relying on text-shadow alone. */
-  #main .hx .hx-copy{margin:clamp(1rem,2vw,1.75rem);
-    background:rgba(11,13,15,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-    border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.45)}
+  /* Client mockup 2026-07-20: copy reads on a soft WHITE fade over the left of the photo
+     (teal headline + dark body), replacing the old dark shadowbox. The white fade is painted by
+     .hx-grad below; here we just give the copy breathing room and center it on the tall photo. */
+  #main .hx .hx-copy{margin:clamp(1rem,2vw,1.75rem)}
 }
 #main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;
-  min-height:clamp(460px,36vw,520px);display:flex;align-items:flex-end;background:#0a1416}
+  min-height:clamp(460px,36vw,520px);display:flex;align-items:flex-start;background:#0a1416}
 #main .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
   background:url('/assets/img/hero-training-floor-v4.jpg') 50% 32%/cover no-repeat;
   filter:brightness(1.12)}
 /* soft fade only at the right edge (where the photo meets the white form panel) so the two
    panels read as one blended composition instead of a hard-edged photo pasted next to a card --
    no darkening across the photo itself, just a short transition right at the seam. */
+/* white fade painted across the photo: strong on the left (behind the copy), clear through the
+   middle (photo shows), and a soft seam at the right edge where the photo meets the form. */
 #main .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,transparent 90%,rgba(255,255,255,.35) 100%)}
-#main .hx .hx-copy{position:relative;z-index:2;max-width:400px;width:100%;box-sizing:border-box;
-  padding:clamp(1.6rem,3vw,2.75rem) clamp(1.4rem,2.6vw,2.5rem) clamp(1.2rem,2vw,1.75rem);color:#fff}
+  background:linear-gradient(90deg,rgba(255,255,255,1) 0,rgba(255,255,255,1) 320px,rgba(255,255,255,.66) 500px,rgba(255,255,255,0) 690px,rgba(255,255,255,0) 88%,rgba(255,255,255,.35) 100%)}
+#main .hx .hx-copy{position:relative;z-index:2;max-width:430px;width:100%;box-sizing:border-box;
+  padding:clamp(1.6rem,3vw,2.75rem) clamp(1.4rem,2.6vw,2.5rem) clamp(1.2rem,2vw,1.75rem);color:var(--ink)}
 #main .hx .hx-h1{margin:0;text-transform:none;font-family:var(--font-display);
   font-weight:600;line-height:1.06;letter-spacing:-.02em}
 #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
-  text-transform:none;font-weight:700;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.55)}
-#main .hx .hx-h1 .hx-l1{color:#fff;font-size:clamp(1.65rem,2.4vw,2.05rem)}
-#main .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important;font-size:clamp(2rem,3.2vw,2.65rem)}
+  text-transform:none;font-weight:800;letter-spacing:-.02em;text-shadow:none}
+#main .hx .hx-h1 .hx-l1{color:var(--teal-deep)!important;font-size:clamp(1.75rem,2.6vw,2.2rem)}
+#main .hx .hx-h1 .hx-l2{color:var(--teal-deep)!important;font-size:clamp(2.1rem,3.4vw,2.8rem)}
 #main .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
-  text-transform:none;font-weight:600;color:#fff;
-  font-size:clamp(1.2rem,1.76vw,1.55rem);line-height:1.15;margin:.4rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+  text-transform:none;font-weight:700;color:var(--ink);text-shadow:none;
+  font-size:clamp(1.2rem,1.76vw,1.55rem);line-height:1.15;margin:.4rem 0 0}
 #main .hx .hx-h1 .hx-script::after{content:"";display:block;width:78px;height:3px;
-  margin-top:.9rem;border-radius:99px;background:var(--teal)!important}
-#main .hx .hx-sub{margin:0;max-width:none;font-size:.97rem;
-  line-height:1.55;color:#e8ecee;font-weight:400;text-shadow:0 1px 10px rgba(0,0,0,.5)}
-#main .hx .hx-sub b{color:#2cc5b8!important;font-weight:600}
+  margin-top:.9rem;border-radius:99px;background:var(--teal-deep)!important}
+#main .hx .hx-sub{margin:0;max-width:none;font-size:1rem;
+  line-height:1.55;color:var(--ink);font-weight:500;text-shadow:none}
+#main .hx .hx-sub b{color:var(--teal-deep)!important;font-weight:700}
 #main .hx .hx-cta-row{display:flex;margin-top:1.25rem}
 #main .hx .btn-tour{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;
   font-size:.8rem;letter-spacing:.05em;font-weight:700;padding:.85rem 1.4rem}
@@ -249,25 +252,28 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 .hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
 @media(max-width:1000px){
-  /* MOBILE HERO STACK (<=1000px): strict vertical order — full photo first, marketing copy as
-     its OWN block below the photo, then the contact form. .hx-photo is unwrapped via
-     display:contents so its children (.hx-bg/.hx-grad/.hx-copy) promote to direct flex items of
-     .hx-in alongside .formcard, then ordered 1/2/3. Desktop (>1000px) overlay is NOT touched. */
-  #main .hx .hx-in{display:flex;flex-direction:column;grid-template-columns:none}
+  /* MOBILE HERO (<=1000px), client mockup 2026-07-20: copy OVERLAID on the top-left of the photo
+     over a white left-fade (teal headline + dark body), then the form, then the countdown. The
+     copy wrapper is absolutely positioned over the photo (out of flow) so .formcard/.hx-next flow
+     directly under the photo. .hx-photo/.hx-copy stay display:contents so .hx-copy-inner/.hx-next
+     promote to flex items of .hx-in for the form(3)/counter(4) order. Desktop (>1000px) untouched. */
+  #main .hx .hx-in{display:flex;flex-direction:column;grid-template-columns:none;position:relative}
   #main .hx .hx-photo{display:contents}
   #main .hx .hx-photo .hx-bg{position:relative!important;order:1;width:100%;height:auto!important;aspect-ratio:850/1329;background:url('/assets/img/hero-training-floor-v4-mobile.jpg') center top/cover no-repeat}
   #main .hx .hx-photo .hx-grad{display:none}
-  /* countdown moved after the form on mobile (client request 2026-07-20): flatten .hx-copy so its
-     text wrapper and the countdown become direct flex items, then order copy(2)/form(3)/counter(4). */
+  /* countdown stays after the form on mobile (client request 2026-07-20). .hx-copy stays flattened
+     so its text wrapper and the countdown become flex items; copy-inner is then absolutely placed
+     over the photo (out of flow), form(3)/counter(4) flow beneath it. */
   #main .hx .hx-copy{display:contents}
-  #main .hx .hx-copy-inner{order:2;position:relative;z-index:2;max-width:100%;width:100%;
-    margin-top:-40vw;background:linear-gradient(180deg,transparent 0,transparent 16vw,#fff 34vw,#fff 100%);
-    padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
-  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:0 2px 16px rgba(0,0,0,.65)}
-  #main .hx .hx-h1 .hx-l1{color:#fff}
-  #main .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
-  #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:0 2px 14px rgba(0,0,0,.65);color:#fff}
-  #main .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none;color:var(--ink-soft)}
+  #main .hx .hx-copy-inner{order:2;position:absolute;top:0;left:0;right:0;z-index:2;
+    background:linear-gradient(90deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.98) 52%,rgba(255,255,255,.66) 80%,rgba(255,255,255,0) 100%);
+    padding:1.4rem clamp(1.3rem,5vw,1.9rem) 2.4rem}
+  #main .hx .hx-h1,#main .hx .hx-sub{max-width:74%}
+  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.9rem,7.2vw,2.35rem)}
+  #main .hx .hx-h1 .hx-l1{color:var(--teal-deep)!important}
+  #main .hx .hx-h1 .hx-l2{color:var(--teal-deep)!important}
+  #main .hx .hx-h1 .hx-script{font-size:clamp(1.15rem,4.6vw,1.4rem);color:var(--ink)}
+  #main .hx .hx-sub{font-size:1rem;color:var(--ink)}
   #main .hx .hx-sub b{color:var(--teal-deep)!important}
   #main .hx .hx-next{order:4;margin:1.25rem clamp(1.4rem,5vw,2rem) 2.25rem!important}
   #main .hx-next{background:var(--teal-tint)!important;border:1px solid var(--teal-soft)!important;color:var(--ink)}
