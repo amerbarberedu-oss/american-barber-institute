@@ -43,7 +43,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="assets/css/landing.min.css?v=186">
+<link rel="stylesheet" href="assets/css/landing.min.css?v=187">
 <link rel="stylesheet" href="assets/css/upgrade.min.css?v=3">
 <script src="assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -223,6 +223,14 @@ section.reserve-band{background:var(--teal-tint,#eef9f8);padding:clamp(2rem,4.5v
 .reserve-band .hx-cell span{font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;
   margin-top:.3rem;font-weight:700;color:var(--ink-soft)}
 .reserve-band .formcard{align-self:start;background:#fff;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.12);padding:1.3rem 1.3rem}
+/* countdown restyle to match client mockup: big dark date, white bordered number-boxes */
+#main .reserve-band .hx-next{background:#fff;border:1px solid #e6ebee;border-radius:16px;box-shadow:0 12px 34px rgba(14,77,92,.08);padding:1.35rem 1.6rem;gap:1.1rem 1.6rem}
+#main .reserve-band .hx-next-label{color:var(--ink);font-size:.92rem;font-weight:700}
+#main .reserve-band .hx-next-date{color:var(--ink)!important;font-family:var(--font-display);font-size:clamp(1.5rem,3.2vw,2.05rem);font-weight:800;line-height:1.12;margin-top:.15rem}
+#main .reserve-band .hx-next-sub{color:var(--teal-deep)!important;font-size:.8rem;margin-top:.4rem;opacity:.9}
+#main .reserve-band .hx-cell{background:#fff!important;border:1px solid #e2e7ea!important;border-radius:12px;padding:.6rem .55rem .5rem;min-width:4rem;box-shadow:0 2px 8px rgba(14,77,92,.06)}
+#main .reserve-band .hx-cell b{border:0!important;background:none!important;color:var(--ink)!important;width:auto;padding:0;font-size:1.55rem}
+#main .reserve-band .hx-cell span{color:var(--ink-soft)!important;font-size:.58rem;letter-spacing:.08em;margin-top:.3rem}
 
 /* features band — separate full-width section below (unchanged) */
 section.hx-features{background:#fff!important;padding:1.375rem 0!important;border-top:0!important}
@@ -238,9 +246,9 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 
 @media(max-width:1000px){
   /* MOBILE: portrait photo, copy overlaid at the BOTTOM center (client mockup) */
-  #main .hx .hx-photo{min-height:0;height:auto;aspect-ratio:941/1672}
-  #main .hx .hx-bg{background-image:url('/assets/img/hero-training-floor-v6-mobile.jpg');background-position:center top}
-  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.86) 0,rgba(0,0,0,.6) 22%,rgba(0,0,0,.2) 44%,rgba(0,0,0,0) 62%)}
+  #main .hx .hx-photo{min-height:560px;height:78vh;max-height:760px;aspect-ratio:auto}
+  #main .hx .hx-bg{background-image:url('/assets/img/hero-training-floor-v6-mobile.jpg');background-position:center 58%;background-size:cover}
+  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.36) 30%,rgba(0,0,0,0) 56%)}
   #main .hx .hx-copy{justify-content:center}
   #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:clamp(1.5rem,6vw,2.4rem)}
   #main .hx .hx-hours{justify-content:center}
@@ -266,7 +274,7 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 <!-- Promo pill (client mockup) — sits directly above the hero photo -->
 <a class="promo-bar" href="contact.html#request-a-call">
   <span class="promo-star" aria-hidden="true">★</span>
-  <span class="promo-txt"><span class="promo-lead">Start Your Barber Journey Today </span>For Only <b>$150 Per Week</b></span>
+  <span class="promo-txt"><span class="promo-lead">Start Your Barber Journey Today </span>For Only <b>$150 Per Week</b><sup class="promo-ast">*</sup></span>
   <span class="promo-star" aria-hidden="true">★</span>
 </a>
 <section class="hx reveal">

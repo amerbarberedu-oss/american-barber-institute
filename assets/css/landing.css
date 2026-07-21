@@ -3323,7 +3323,7 @@ body.shell2 .promo-txt{flex:1 1 auto;text-align:center}
 body.shell2 .promo-bar b{color:var(--teal-deep,#0E8C82);font-weight:800;white-space:nowrap}
 body.shell2 .promo-star{color:var(--teal,#12B3A6);font-size:1.5em;line-height:1;flex-shrink:0}
 body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#0E8C82);box-shadow:0 12px 30px rgba(0,0,0,.16)}
-@media(min-width:1001px){body.shell2 .promo-lead{display:none}}
+/* promo-lead now shown at all widths (client wants the full banner text everywhere) */
 @media(max-width:600px){body.shell2 .promo-bar{width:92%;font-size:.82rem;letter-spacing:.02em;padding:.6rem 1.1rem;gap:.7rem;margin-bottom:-1.1rem;border-width:2px}body.shell2 .promo-star{font-size:1.2em}}
 
 /* ═══ HEADER — mockup touches (2026-07-21): teal utility bar = switchers only, live phone chips
@@ -3357,3 +3357,4 @@ body.shell2 .logo2-img{height:66px!important;width:auto}
   body.shell2 .ubar-in{justify-content:flex-start;padding-left:clamp(1rem,4vw,3rem)}
   body.shell2 .ubar-left{gap:clamp(1.5rem,5vw,3.25rem)}
 }
+body.shell2 .promo-ast{font-size:.62em;font-weight:800;color:var(--teal-deep,#0E8C82);vertical-align:super;line-height:0;margin-left:1px}
