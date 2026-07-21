@@ -3367,3 +3367,8 @@ body.shell2 .reserve-perks{list-style:none;margin:1.5rem 0 0;padding:0;display:g
 body.shell2 .reserve-perks li{position:relative;padding-left:1.9rem;font-size:.98rem;font-weight:600;color:var(--ink,#12333b);line-height:1.4}
 body.shell2 .reserve-perks li::before{content:"\2713";position:absolute;left:0;top:.05rem;width:1.3rem;height:1.3rem;border-radius:50%;background:var(--teal,#12B3A6);color:#fff;display:grid;place-items:center;font-size:.78rem;font-weight:900}
 @media(max-width:1000px){body.shell2 .reserve-perks{max-width:24rem;margin-inline:auto;text-align:left}}
+/* Bigger social icons on desktop/PC (client request) */
+@media(min-width:1001px){
+  .socials a{width:58px;height:58px}
+  .socials a svg{width:30px;height:30px}
+}
