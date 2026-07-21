@@ -3326,15 +3326,13 @@ body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#0E8C82);box-shadow:0 
 @media(min-width:1001px){body.shell2 .promo-lead{display:none}}
 @media(max-width:600px){body.shell2 .promo-bar{width:92%;font-size:.82rem;letter-spacing:.02em;padding:.6rem 1.1rem;gap:.7rem;margin-bottom:-1.1rem;border-width:2px}body.shell2 .promo-star{font-size:1.2em}}
 
-/* ═══ HEADER — mockup layout at ALL widths (2026-07-21): hamburger only (no desktop nav or
-   Book-a-Tour button), teal utility bar = switchers only, live phone chips as cards below the
-   header, per-campus street address under the logo (wrapped + injected by campus.js). ═══ */
-body.shell2 .nav2,body.shell2 .hdr2-cta{display:none!important}
-body.shell2 .hamburger{display:flex!important}
+/* ═══ HEADER — mockup touches (2026-07-21): teal utility bar = switchers only, live phone chips
+   as cards below the header, per-campus street address under the logo (wrapped + injected by
+   campus.js). The desktop nav MENU is kept as before (client preference) — hamburger stays a
+   mobile-only element via the original ≤1024px media query. ═══ */
 body.shell2 .ubar-right{display:none!important}
 body.shell2 .ubar-in{justify-content:center}
 body.shell2 .mstrip{display:block!important}
-body.shell2 .hdr2-in{justify-content:space-between}
 body.shell2 .logo2-col{display:flex;flex-direction:column;gap:.28rem;align-items:flex-start;min-width:0}
 body.shell2 .hdr2-addr{display:flex;align-items:center;gap:.38rem;font-size:clamp(.82rem,1.5vw,1.05rem);font-weight:700;color:var(--sh-ink,#12333b);white-space:nowrap;line-height:1.1}
 body.shell2 .hdr2-addr svg{color:var(--sh-teal-deep,#0E8C82);flex-shrink:0}
@@ -3353,3 +3351,9 @@ body.shell2 .logo2{display:block;overflow:hidden;line-height:0;height:45px}
 body.shell2 .logo2-img{height:66px!important;width:auto}
 @media(max-width:1024px){body.shell2 .logo2{height:40px}body.shell2 .logo2-img{height:59px!important}}
 @media(max-width:768px){body.shell2 .logo2{height:36px}body.shell2 .logo2-img{height:53px!important}}
+/* Utility bar: give the campus switcher room from the language switcher and nudge the
+   whole switcher group left of dead-center (client: "very close to English, move it left"). */
+@media(min-width:901px){
+  body.shell2 .ubar-in{justify-content:flex-start;padding-left:clamp(1rem,4vw,3rem)}
+  body.shell2 .ubar-left{gap:clamp(1.5rem,5vw,3.25rem)}
+}
