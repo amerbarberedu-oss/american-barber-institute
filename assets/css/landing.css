@@ -3323,7 +3323,9 @@ body.shell2 .promo-txt{flex:1 1 auto;text-align:center}
 body.shell2 .promo-bar b{color:var(--teal-deep,#0E8C82);font-weight:800;white-space:nowrap}
 body.shell2 .promo-star{color:var(--teal,#12B3A6);font-size:1.5em;line-height:1;flex-shrink:0}
 body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#0E8C82);box-shadow:0 12px 30px rgba(0,0,0,.16)}
-/* promo-lead now shown at all widths (client wants the full banner text everywhere) */
+/* Desktop shows the short one-line banner ("For Only $150 Per Week*"); mobile shows the full
+   "Start Your Barber Journey Today ..." (client preference — the previous responsive behavior). */
+@media(min-width:1001px){body.shell2 .promo-lead{display:none}}
 @media(max-width:600px){body.shell2 .promo-bar{width:92%;font-size:.82rem;letter-spacing:.02em;padding:.6rem 1.1rem;gap:.7rem;margin-bottom:-1.1rem;border-width:2px}body.shell2 .promo-star{font-size:1.2em}}
 
 /* ═══ HEADER — mockup touches (2026-07-21): teal utility bar = switchers only, live phone chips
