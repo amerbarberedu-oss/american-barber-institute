@@ -3318,9 +3318,10 @@ body.shell2 .mstrip-t i{
 /* Promo banner — full-width strip at very top of every page. Uses the site palette
    (brand teal bg, white uppercase copy, gold price highlight) instead of the source
    mock's blue/yellow. Added 2026-07-20. */
-body.shell2 .promo-bar{display:flex;align-items:center;justify-content:center;gap:clamp(.6rem,2vw,1.1rem);width:max-content;max-width:94%;margin:.9rem auto -1.15rem;position:relative;z-index:5;background:#fff;border:2px solid var(--teal,#12B3A6);border-radius:999px;padding:.6rem clamp(1.1rem,3vw,1.9rem);box-shadow:0 8px 24px rgba(0,0,0,.10);color:#111;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(.82rem,1.5vw,1.05rem);line-height:1.25;text-decoration:none;text-align:center;white-space:normal}
+body.shell2 .promo-bar{display:flex;align-items:center;justify-content:space-between;gap:clamp(.8rem,2.5vw,2rem);width:min(1040px,86%);margin:1rem auto -1.6rem;position:relative;z-index:5;background:#fff;border:2.5px solid var(--teal,#12B3A6);border-radius:60px;padding:.7rem clamp(1.4rem,3.5vw,2.6rem);box-shadow:0 10px 26px rgba(0,0,0,.12);color:#111;font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1rem,2vw,1.65rem);line-height:1.2;text-decoration:none;white-space:normal}
+body.shell2 .promo-txt{flex:1 1 auto;text-align:center}
 body.shell2 .promo-bar b{color:var(--teal-deep,#0E8C82);font-weight:800;white-space:nowrap}
-body.shell2 .promo-star{color:var(--teal,#12B3A6);font-size:1.1em;line-height:1;flex-shrink:0}
-body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#0E8C82);box-shadow:0 10px 28px rgba(0,0,0,.14)}
+body.shell2 .promo-star{color:var(--teal,#12B3A6);font-size:1.5em;line-height:1;flex-shrink:0}
+body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#0E8C82);box-shadow:0 12px 30px rgba(0,0,0,.16)}
 @media(min-width:1001px){body.shell2 .promo-lead{display:none}}
-@media(max-width:600px){body.shell2 .promo-bar{font-size:.74rem;letter-spacing:.03em;padding:.55rem 1rem;gap:.55rem;margin-bottom:-.9rem}}
+@media(max-width:600px){body.shell2 .promo-bar{width:92%;font-size:.82rem;letter-spacing:.02em;padding:.6rem 1.1rem;gap:.7rem;margin-bottom:-1.1rem;border-width:2px}body.shell2 .promo-star{font-size:1.2em}}
