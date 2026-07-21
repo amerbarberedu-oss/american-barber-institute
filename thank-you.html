@@ -18,44 +18,83 @@
 <script src="/assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>
-  :root{--abi-blue:#12B3A6;--abi-ink:#0d1117;--abi-paper:#f7f8fb}
+  :root{--teal:#12B3A6;--teal-deep:#0E8C82;--teal-bright:#2FD3C4;--petrol:#0E4D5C;--ink:#0f1b1e;--gold:#C9971F}
   *{box-sizing:border-box}
-  body{margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    background:radial-gradient(1200px 600px at 50% -10%,#16204a 0%,var(--abi-ink) 60%);
-    color:#eef1f8;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:32px 20px}
-  .ty-card{max-width:560px;width:100%}
-  .ty-logo{height:52px;width:auto;margin:0 auto 28px;display:block}
-  .ty-check{width:76px;height:76px;margin:0 auto 22px;border-radius:50%;
-    background:var(--abi-blue);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 10px 30px rgba(27,47,217,.45)}
-  .ty-check svg{width:38px;height:38px;stroke:#fff;stroke-width:3;fill:none}
-  h1{font-size:clamp(26px,5vw,36px);font-weight:800;margin:0 0 12px;letter-spacing:-.02em}
-  p{font-size:16px;line-height:1.6;color:#c9d2e6;margin:0 auto 10px;max-width:44ch}
-  .ty-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  .ty-btn{font-weight:600;font-size:15px;padding:13px 24px;border-radius:10px;text-decoration:none;
-    display:inline-block}
-  .ty-btn--primary{background:var(--abi-blue);color:#fff}
-  .ty-btn--primary:hover{background:#1626b0}
-  .ty-btn--ghost{background:transparent;color:#eef1f8;border:1px solid #3a4152}
-  .ty-btn--ghost:hover{border-color:#8ea2ff}
-  .ty-note{margin-top:26px;font-size:13.5px;color:#93a0bd}
-  .ty-note a{color:#8ea2ff}
+  body{margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);
+    background:linear-gradient(155deg,#0b3742 0%,#0E4D5C 32%,#0E8C82 78%,#12B3A6 100%);
+    min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:28px 18px}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(60vw 42vw at 12% 8%,rgba(47,211,196,.28),transparent 60%),
+               radial-gradient(52vw 42vw at 92% 96%,rgba(11,55,66,.55),transparent 62%)}
+  .ty-card{position:relative;z-index:1;width:100%;max-width:600px;background:#fff;border-radius:26px;
+    padding:clamp(30px,5vw,50px) clamp(22px,5vw,46px);text-align:center;
+    box-shadow:0 44px 100px rgba(0,0,0,.38),0 10px 24px rgba(0,0,0,.14);
+    animation:ty-in .6s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes ty-in{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.ty-card{animation:none}}
+  .ty-logo{display:block;height:34px;overflow:hidden;line-height:0;margin:0 auto 24px}
+  .ty-logo img{height:50px;width:auto}
+  .ty-badge{width:90px;height:90px;margin:0 auto 20px;border-radius:50%;position:relative;
+    background:linear-gradient(145deg,var(--teal-bright),var(--teal-deep));display:grid;place-items:center;
+    box-shadow:0 16px 34px rgba(18,179,166,.42)}
+  .ty-badge::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid rgba(18,179,166,.22)}
+  .ty-badge svg{width:46px;height:46px;stroke:#fff;stroke-width:3.2;fill:none;
+    stroke-dasharray:30;stroke-dashoffset:30;animation:ty-check .5s .35s ease forwards}
+  @keyframes ty-check{to{stroke-dashoffset:0}}
+  @media (prefers-reduced-motion:reduce){.ty-badge svg{animation:none;stroke-dashoffset:0}}
+  .ty-eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--teal-deep);margin-bottom:.5rem}
+  h1{font-size:clamp(30px,6vw,44px);font-weight:800;margin:0 0 12px;letter-spacing:-.02em;color:var(--ink)}
+  .ty-lead{font-size:clamp(15px,2.4vw,17px);line-height:1.6;color:#4a5a63;margin:0 auto 28px;max-width:46ch}
+  .ty-lead b{color:var(--teal-deep);font-weight:700}
+  .ty-steps{display:grid;gap:12px;text-align:left;margin:0 auto 30px;max-width:430px}
+  .ty-step{display:flex;gap:14px;align-items:flex-start;background:#f3fbfa;border:1px solid #d9efeb;
+    border-radius:15px;padding:14px 16px}
+  .ty-step-n{flex-shrink:0;width:30px;height:30px;border-radius:50%;
+    background:linear-gradient(145deg,var(--teal),var(--teal-deep));color:#fff;font-weight:800;
+    display:grid;place-items:center;font-size:.92rem}
+  .ty-step b{display:block;font-weight:700;font-size:.98rem;color:var(--ink)}
+  .ty-step i{display:block;font-style:normal;font-size:.85rem;color:#5a6875;margin-top:2px;line-height:1.45}
+  .ty-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .ty-btn{font-weight:700;font-size:15px;padding:15px 26px;border-radius:13px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:.55rem;transition:transform .15s,box-shadow .15s,border-color .15s,background .15s}
+  .ty-btn svg{width:18px;height:18px;flex-shrink:0}
+  .ty-btn--primary{background:linear-gradient(180deg,var(--teal),var(--teal-deep));color:#fff;
+    box-shadow:0 12px 26px rgba(18,179,166,.38)}
+  .ty-btn--primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(18,179,166,.48)}
+  .ty-btn--ghost{background:#fff;color:var(--teal-deep);border:2px solid #cfeeea}
+  .ty-btn--ghost:hover{border-color:var(--teal);background:#f3fbfa}
+  .ty-note{margin-top:24px;font-size:13.5px;color:#7a8794}
+  .ty-note a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+  .ty-note a:hover{text-decoration:underline}
+  @media(max-width:480px){.ty-actions .ty-btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body data-abi-thankyou>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9GTRLN" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
   <main class="ty-card">
-    <img class="ty-logo" src="/assets/img/logo-final.gif" alt="American Barber Institute">
-    <div class="ty-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    <h1>Thank you — we got your request</h1>
-    <p>An ABI Admissions Advisor will reach out shortly to answer your questions and help you reserve your seat. New classes start the first Monday of every month at our Manhattan and Bronx campuses.</p>
+    <span class="ty-logo"><img src="/assets/img/logo-final.gif" alt="American Barber Institute"></span>
+    <div class="ty-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="ty-eyebrow">Request received</span>
+    <h1>Thank you!</h1>
+    <p class="ty-lead">We've got your details. An <b>ABI Admissions Advisor</b> will reach out shortly to answer your questions and help you reserve your seat.</p>
+
+    <div class="ty-steps">
+      <div class="ty-step"><span class="ty-step-n">1</span><div><b>We'll call you</b><i>An advisor reaches out within one business day.</i></div></div>
+      <div class="ty-step"><span class="ty-step-n">2</span><div><b>Pick your track</b><i>Day, evening or weekend — Manhattan or the Bronx.</i></div></div>
+      <div class="ty-step"><span class="ty-step-n">3</span><div><b>Reserve your seat</b><i>New classes start the first Monday of every month.</i></div></div>
+    </div>
+
     <div class="ty-actions">
-      <a class="ty-btn ty-btn--primary" href="tel:+12122902289">Call Admissions: (212) 290-2289</a>
+      <a class="ty-btn ty-btn--primary" href="tel:+12122902289">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Admissions · (212) 290-2289
+      </a>
       <a class="ty-btn ty-btn--ghost" href="/">Back to Home</a>
     </div>
-    <p class="ty-note">Prefer Spanish? Llámanos al <a href="tel:+12122900278">(212) 290-0278</a>.</p>
+    <p class="ty-note">¿Prefieres español? Ll&aacute;manos al <a href="tel:+12122900278">(212) 290-0278</a>.</p>
   </main>
-<script src="/assets/js/chat.js?v=1" defer></script>
 </body>
 </html>

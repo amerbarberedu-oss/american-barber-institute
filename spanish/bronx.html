@@ -171,6 +171,7 @@
   min-height:clamp(520px,52vw,660px);display:block}
 #main .hx .hx-bg{position:absolute;inset:0;z-index:0;
   background:url('/assets/img/hero-training-floor-v5.jpg') 50% 42%/cover no-repeat}
+#main .hx .hx-mimg{display:none}
 #main .hx .hx-grad{position:absolute;inset:0;z-index:1;
   background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.58) 20%,rgba(0,0,0,.18) 45%,rgba(0,0,0,0) 66%)}
 #main .hx .hx-copy{position:absolute;inset:0;z-index:2;display:flex;
@@ -247,9 +248,10 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 .hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
 @media(max-width:1000px){
-  #main .hx .hx-photo{min-height:480px;height:66vh;max-height:640px;aspect-ratio:auto}
-  #main .hx .hx-bg{background-image:url('/assets/img/hero-training-floor-v6-mobile.jpg');background-position:center 46%;background-size:cover}
-  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.66) 0,rgba(0,0,0,.24) 40%,rgba(0,0,0,0) 66%)}
+  #main .hx .hx-photo{height:auto;min-height:0;max-height:none;aspect-ratio:auto;display:block}
+  #main .hx .hx-bg{display:none}
+  #main .hx .hx-mimg{display:block;width:100%;height:auto;position:relative;z-index:0;vertical-align:top}
+  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.72) 0,rgba(0,0,0,.28) 26%,rgba(0,0,0,0) 48%)}
   #main .hx .hx-copy{justify-content:center}
   #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:clamp(1.5rem,6vw,2.4rem)}
   #main .hx .hx-hours{justify-content:center}
@@ -281,6 +283,7 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 <section class="hx reveal">
   <div class="hx-photo">
     <div class="hx-bg" aria-hidden="true"></div>
+      <img class="hx-mimg" src="/assets/img/hero-training-floor-v6-mobile.jpg" alt="" aria-hidden="true">
     <div class="hx-grad" aria-hidden="true"></div>
     <div class="hx-copy">
       <div class="hx-copy-inner">
