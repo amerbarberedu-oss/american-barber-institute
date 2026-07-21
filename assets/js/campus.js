@@ -12,6 +12,7 @@
 
 var PHONE_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.22a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 var SCISSORS_SVG='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg>';
+var PIN_SVG='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
 /* Detect if current page is Spanish */
 function isSpanish(){
@@ -23,6 +24,7 @@ function isSpanish(){
 function L(en,es){ return isSpanish()?es:en; }
 
 function buildMN(){return{
+  addr:"48 W. 39th St., New York, NY 10018",
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:L("English","Inglés"),num:"(212) 290-2289",tel:"+12122902289"},
     {ico:SCISSORS_SVG,cls:"ubar-call ubar-call--cut",tag:L("Haircut","Corte"),num:"(856) 316-1551",tel:"+18563161551"},
@@ -42,6 +44,7 @@ function buildMN(){return{
 };}
 
 function buildBX(){return{
+  addr:"121 Westchester Square, Bronx, NY 10461",
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:L("English","Inglés"),num:"(718) 676-0640",tel:"+17186760640"},
     {ico:SCISSORS_SVG,cls:"ubar-call ubar-call--cut",tag:L("Haircut","Corte"),num:"(856) 316-1551",tel:"+18563161551"}
@@ -58,6 +61,7 @@ function buildBX(){return{
 };}
 
 function buildBOTH(){return{
+  addr:"48 W. 39th St., New York, NY 10018",
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:"Manhattan",num:"(212) 290-2289",tel:"+12122902289"},
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:"Bronx",num:"(718) 676-0640",tel:"+17186760640"},
@@ -80,6 +84,7 @@ function isLandingPage(){return document.body.classList.contains("lf-page");}
 function stripHaircut(d){
   var isCut=function(p){return p.tel==="+18563161551";};
   return{
+    addr:d.addr,
     ubar:d.ubar.filter(function(p){return !isCut(p);}),
     mstrip:d.mstrip.filter(function(p){return !isCut(p);}),
     footer:d.footer.filter(function(p){return !isCut(p);}),
@@ -157,10 +162,35 @@ function setCampusActive(campus){
   syncSeg(seg);
 }
 
+/* ── Address under the header logo (client mockup): wrap the logo in a column and
+   inject the per-campus street address beneath it. Runs once, then just updates text. ── */
+function applyAddr(data){
+  var inRow=document.querySelector(".hdr2 .hdr2-in");
+  if(!inRow) return;
+  var logo=inRow.querySelector(".logo2");
+  if(!logo) return;
+  var col=inRow.querySelector(".logo2-col");
+  if(!col){
+    col=document.createElement("div");
+    col.className="logo2-col";
+    inRow.insertBefore(col,logo);
+    col.appendChild(logo);
+    var a=document.createElement("div");
+    a.className="hdr2-addr";
+    col.appendChild(a);
+  }
+  var addrEl=col.querySelector(".hdr2-addr");
+  if(addrEl&&data&&data.addr){
+    addrEl.innerHTML=PIN_SVG+'<span>'+data.addr+'</span>';
+  }
+}
+
 function applyCampus(campus){
   var d=getData();
-  swapPhones(d[campus]||d.manhattan);
+  var data=d[campus]||d.manhattan;
+  swapPhones(data);
   setCampusActive(campus);
+  applyAddr(data);
 }
 
 /* ── Nav dropdown: click/keyboard support (hover works via CSS) ── */
