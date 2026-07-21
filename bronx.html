@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="assets/css/landing.min.css?v=182">
+<link rel="stylesheet" href="assets/css/landing.min.css?v=183">
 <link rel="stylesheet" href="assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -162,74 +162,70 @@
 
 <main id="main">
 <style>
-/* ══════════ HOME HERO v5 — aligned to the Manhattan homepage's v5 hero (index.html #main .hx,
-   2026-07-15 handoff): text+countdown anchored BOTTOM-LEFT of the photo, no dark gradient (text
-   relies on its own text-shadow), features band moved out of the photo overlay into its own
-   section below. Bronx keeps its own copy, hero photo crop and the bx-gold accent override at
-   the bottom of this block — everything else now matches the homepage structurally. ══════════ */
-#main .hx{padding-block:0;background:#0b0d0f!important}
-#main .hx .hx-in{width:min(1500px,96%);margin-inline:auto;padding:0!important;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(680px,702px);gap:0;
-  align-items:stretch}
-/* Desktop hero (client request 2026-07-19): the GHL form is a fixed external widget with ~8
-   fields, so a single narrow column makes it tall enough to need an internal scrollbar. Kept at
-   the 2-column width instead - every field shows with NO internal scroll, and the photo column
-   stretches to match. White section bg here so wide screens show no black side gutters. */
-@media(min-width:1001px){
-  #main .hx{background:#fff!important}
-  /* Shadowbox behind the hero wording (Gary's request 2026-07-19): a soft translucent panel so
-     the copy reads cleanly over the photo, instead of relying on text-shadow alone. */
-  #main .hx .hx-copy{margin:clamp(1rem,2vw,1.75rem);
-    background:rgba(11,13,15,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-    border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.45)}
-}
-#main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;
-  min-height:clamp(460px,36vw,520px);display:flex;align-items:flex-end;background:#0a1416}
-#main .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
-  background:url('/assets/img/hero-training-floor-v2.jpg') 76% 32%/cover no-repeat;
-  filter:brightness(1.12)}
-/* soft fade only at the right edge (where the photo meets the white form panel) so the two
-   panels read as one blended composition instead of a hard-edged photo pasted next to a card --
-   no darkening across the photo itself, just a short transition right at the seam. */
-#main .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,transparent 90%,rgba(255,255,255,.35) 100%)}
-#main .hx .hx-copy{position:relative;z-index:2;max-width:400px;width:100%;box-sizing:border-box;
-  padding:clamp(1.6rem,3vw,2.75rem) clamp(1.4rem,2.6vw,2.5rem) clamp(1.2rem,2vw,1.75rem);color:#fff}
-#main .hx .hx-h1{margin:0;text-transform:none;font-family:var(--font-display);
-  font-weight:600;line-height:1.06;letter-spacing:-.02em}
-#main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
-  text-transform:none;font-weight:700;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.55)}
-#main .hx .hx-h1 .hx-l1{color:#fff;font-size:clamp(1.65rem,2.4vw,2.05rem)}
-#main .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important;font-size:clamp(2rem,3.2vw,2.65rem)}
-#main .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
-  text-transform:none;font-weight:600;color:#fff;
-  font-size:clamp(1.2rem,1.76vw,1.55rem);line-height:1.15;margin:.4rem 0 0;text-shadow:0 2px 18px rgba(0,0,0,.55)}
-#main .hx .hx-h1 .hx-script::after{content:"";display:block;width:78px;height:3px;
-  margin-top:.9rem;border-radius:99px;background:var(--teal)!important}
-#main .hx .hx-sub{margin:0;max-width:none;font-size:.97rem;
-  line-height:1.55;color:#e8ecee;font-weight:400;text-shadow:0 1px 10px rgba(0,0,0,.5)}
-#main .hx .hx-sub b{color:#2cc5b8!important;font-weight:600}
-#main .hx .hx-cta-row{display:flex;margin-top:1.25rem}
-#main .hx .btn-tour{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;
-  font-size:.8rem;letter-spacing:.05em;font-weight:700;padding:.85rem 1.4rem}
-#main .hx .btn-tour svg{flex-shrink:0}
-#main .hx .formcard{align-self:center;box-shadow:none;border-radius:0;padding:1.5rem 1.3rem;background:#fff}
+/* ══════════ HOME HERO 2026-07-21 — Bronx twin of index.html. Full-bleed v2 photo with copy
+   overlaid at the BOTTOM (client mockup). GHL form + countdown moved into the .reserve-band below.
+   Teal accents on this page's hero too (mockup), overriding the bx-gold theme within the hero. */
+#main .hx{padding:0!important;background:#0a1416!important}
+#main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;width:100%;
+  min-height:clamp(520px,52vw,660px);display:block}
+#main .hx .hx-bg{position:absolute;inset:0;z-index:0;
+  background:url('/assets/img/hero-training-floor-v2.jpg') 76% 32%/cover no-repeat}
+#main .hx .hx-grad{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.58) 20%,rgba(0,0,0,.18) 45%,rgba(0,0,0,0) 66%)}
+#main .hx .hx-copy{position:absolute;inset:0;z-index:2;display:flex;
+  align-items:flex-end;justify-content:flex-end;pointer-events:none}
+#main .hx .hx-copy-inner{pointer-events:auto;width:min(640px,94%);
+  padding:0 clamp(1.5rem,4vw,3.5rem) clamp(1.6rem,4vw,3rem);
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+#main .hx .hx-become{font-family:var(--font-display);font-weight:800;color:#fff;line-height:1;
+  text-transform:uppercase;letter-spacing:.005em;font-size:clamp(1.6rem,3.4vw,2.7rem);
+  text-shadow:0 2px 16px rgba(0,0,0,.6)}
+#main .hx .hx-title{font-family:var(--font-display);font-weight:800;color:var(--teal-bright)!important;
+  line-height:.94;text-transform:uppercase;letter-spacing:-.012em;margin:.04em 0 .06em;
+  font-size:clamp(2.6rem,6.6vw,5.2rem);text-shadow:0 3px 20px rgba(0,0,0,.6)}
+#main .hx .hx-months{font-family:var(--font-display);font-weight:700;color:#fff;line-height:1;
+  text-transform:uppercase;letter-spacing:.005em;font-size:clamp(1.15rem,2.8vw,2.05rem);
+  text-shadow:0 2px 16px rgba(0,0,0,.6)}
+#main .hx .hx-hours{display:flex;align-items:center;gap:.75rem;margin:.9rem 0 .6rem}
+#main .hx .hx-hours::before,#main .hx .hx-hours::after{content:"";height:2px;
+  flex:0 0 clamp(1.2rem,3vw,2.6rem);background:var(--teal-bright);border-radius:2px}
+#main .hx .hx-hours span{background:var(--teal);color:#fff;font-weight:800;text-transform:uppercase;
+  letter-spacing:.04em;font-size:clamp(1.05rem,2.1vw,1.45rem);padding:.32rem 1.05rem;border-radius:9px;
+  box-shadow:0 3px 12px rgba(0,0,0,.4);white-space:nowrap}
+#main .hx .hx-desc{color:#fff;font-weight:600;line-height:1.36;margin:0;text-transform:uppercase;
+  letter-spacing:.02em;font-size:clamp(.78rem,1.4vw,1.02rem);text-shadow:0 2px 14px rgba(0,0,0,.7);max-width:36ch}
+#main .hx .hx-loc{display:inline-flex;align-items:center;gap:.42rem;margin:.75rem 0 0;color:var(--teal-bright);
+  font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(.82rem,1.5vw,1.05rem);
+  text-shadow:0 2px 12px rgba(0,0,0,.6)}
+#main .hx .hx-loc svg{flex-shrink:0}
 
-#main .hx-next{background:rgba(8,10,11,.66)!important;border:1px solid rgba(255,255,255,.28)!important;
-  border-radius:12px!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.1rem;
-  padding:.9rem 1.15rem;max-width:none!important;margin:1.5rem 0 0!important}
-#main .hx-next-label{color:#fff!important;font-size:.875rem;font-weight:700;margin-right:.4rem;display:block!important}
-#main .hx-next-date{color:var(--teal-bright)!important;font-weight:800;display:block!important;margin-top:.2rem!important;font-size:1.06rem!important}
-#main .hx-next-sub{display:block;color:#c8cfd3!important;font-size:.72rem;margin-top:.2rem;max-width:220px}
-#main .hx-cells{display:flex!important;gap:.6rem;column-gap:.6rem!important}
-#main .hx-cell{display:flex;flex-direction:column;align-items:center;
-  background:none!important;border:0!important;border-radius:0!important;padding:0!important}
-#main .hx-cell b{border:1px solid rgba(255,255,255,.35);border-radius:8px;width:3.375rem;
-  padding:.56rem 0;font-size:1.5rem;font-weight:800;color:#fff;line-height:1;box-sizing:border-box}
-#main .hx-cell span{font-size:.625rem;color:#fff!important;text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem;font-weight:700!important}
+/* ── Reserve band: GHL form + countdown, moved directly below the hero ── */
+section.reserve-band{background:var(--teal-tint,#eef9f8);padding:clamp(2rem,4.5vw,3.5rem) 0}
+.reserve-in{width:min(1200px,94%);margin-inline:auto;display:grid;
+  grid-template-columns:1fr minmax(0,500px);gap:clamp(1.5rem,3.5vw,3rem);align-items:start}
+.reserve-intro{padding-top:.4rem}
+.reserve-eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal-deep);margin-bottom:.6rem}
+.reserve-h2{font-family:var(--font-display);font-weight:800;color:var(--ink);line-height:1.08;
+  margin:0 0 .6rem;font-size:clamp(1.7rem,3.2vw,2.5rem)}
+.reserve-p{color:var(--ink-soft);font-size:1rem;line-height:1.55;margin:0 0 1.4rem;max-width:46ch}
+.reserve-p b{color:var(--teal-deep);font-weight:700}
+#main .reserve-band .hx-next{background:#fff;border:1px solid var(--teal-soft,#cdece9);border-radius:14px;
+  color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1rem 1.1rem;padding:1.15rem 1.3rem;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+#main .reserve-band .hx-next-label{color:var(--ink);font-size:.9rem;font-weight:700;display:block}
+#main .reserve-band .hx-next-date{color:var(--teal-deep)!important;font-weight:800;display:block;margin-top:.2rem;font-size:1.12rem}
+#main .reserve-band .hx-next-sub{color:var(--ink-soft);font-size:.74rem;display:block;margin-top:.25rem;max-width:240px}
+#main .reserve-band .hx-cells{display:flex;gap:.6rem}
+#main .reserve-band .hx-cell{display:flex;flex-direction:column;align-items:center;background:none!important}
+#main .reserve-band .hx-cell b{border:1px solid var(--teal-soft,#cdece9);background:var(--teal-tint,#eef9f8);
+  border-radius:9px;width:3.4rem;padding:.52rem 0;font-size:1.42rem;font-weight:800;color:var(--teal-deep);
+  line-height:1;text-align:center;box-sizing:border-box}
+#main .reserve-band .hx-cell span{font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;
+  margin-top:.3rem;font-weight:700;color:var(--ink-soft)}
+.reserve-band .formcard{align-self:start;background:#fff;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.12);padding:1.3rem 1.3rem}
 
-/* features band — separate full-width section below the hero, not overlaid on the photo */
+/* features band — separate full-width section below (unchanged) */
 section.hx-features{background:#fff!important;padding:1.375rem 0!important;border-top:0!important}
 .hx-features-in{width:min(1500px,96%);margin-inline:auto;display:grid;
   grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
@@ -242,34 +238,17 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 .hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
 @media(max-width:1000px){
-  /* MOBILE HERO STACK (<=1000px): strict vertical order — full photo first, marketing copy as
-     its OWN block below the photo, then the contact form. .hx-photo is unwrapped via
-     display:contents so its children (.hx-bg/.hx-grad/.hx-copy) promote to direct flex items of
-     .hx-in alongside .formcard, then ordered 1/2/3. Desktop (>1000px) overlay is NOT touched. */
-  #main .hx .hx-in{display:flex;flex-direction:column;grid-template-columns:none}
-  #main .hx .hx-photo{display:contents}
-  #main .hx .hx-photo .hx-bg{position:relative!important;order:1;width:100%;height:auto!important;aspect-ratio:872/1804;background:url('/assets/img/hero-training-floor-v2-mobile.jpg') center top/cover no-repeat}
-  #main .hx .hx-photo .hx-grad{display:none}
-  /* countdown moved after the form on mobile (client request 2026-07-20): flatten .hx-copy so its
-     text wrapper and the countdown become direct flex items, then order copy(2)/form(3)/counter(4). */
-  #main .hx .hx-copy{display:contents}
-  #main .hx .hx-copy-inner{order:2;position:relative;z-index:2;max-width:100%;width:100%;
-    margin-top:-40vw;background:linear-gradient(180deg,transparent 0,transparent 16vw,#fff 34vw,#fff 100%);
-    padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
-  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:0 2px 16px rgba(0,0,0,.65)}
-  #main .hx .hx-h1 .hx-l1{color:#fff}
-  #main .hx .hx-h1 .hx-l2{color:var(--teal-bright)!important}
-  #main .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:0 2px 14px rgba(0,0,0,.65);color:#fff}
-  #main .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none;color:var(--ink-soft)}
-  #main .hx .hx-sub b{color:var(--teal-deep)!important}
-  #main .hx .hx-next{order:4;margin:1.25rem clamp(1.4rem,5vw,2rem) 2.25rem!important}
-  #main .hx-next{background:var(--teal-tint)!important;border:1px solid var(--teal-soft)!important;color:var(--ink)}
-  #main .hx-next-label{color:var(--ink)!important}
-  #main .hx-next-date{color:var(--teal-deep)!important}
-  #main .hx-next-sub{color:var(--ink-soft)!important}
-  #main .hx-cell b{border-color:var(--teal-soft);background:#fff;color:var(--ink)}
-  #main .hx-cell span{color:var(--ink-soft)!important}
-  #main .hx .formcard{order:3;padding:1.625rem 1.25rem 2.125rem}
+  #main .hx .hx-photo{min-height:0;height:auto;aspect-ratio:872/1804}
+  #main .hx .hx-bg{background-image:url('/assets/img/hero-training-floor-v2-mobile.jpg');background-position:center top}
+  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.86) 0,rgba(0,0,0,.6) 22%,rgba(0,0,0,.2) 44%,rgba(0,0,0,0) 62%)}
+  #main .hx .hx-copy{justify-content:center}
+  #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:clamp(1.5rem,6vw,2.4rem)}
+  #main .hx .hx-hours{justify-content:center}
+  #main .hx .hx-desc{max-width:34ch;margin-inline:auto}
+  .reserve-in{grid-template-columns:1fr;gap:1.5rem}
+  .reserve-intro{text-align:center}
+  .reserve-p{margin-inline:auto}
+  #main .reserve-band .hx-next{justify-content:center}
   section.hx-features{background:var(--teal-deep)!important}
   .hx-features-in{grid-template-columns:1fr!important;gap:0}
   .hx-feature{flex-direction:row!important;align-items:flex-start!important;border-left:0!important;
@@ -280,55 +259,54 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   .hx-feature i{color:var(--teal-bright)!important}
 }
 @media(max-width:560px){
-  #main .hx .hx-in{width:92%}
-  #main .hx .hx-cta-row .btn-lg{flex:1 1 100%;justify-content:center}
+  #main .hx .hx-copy-inner{padding-left:clamp(1rem,5vw,1.4rem);padding-right:clamp(1rem,5vw,1.4rem)}
+  .reserve-in{width:92%}
 }
-/* bx-gold theme: the rules above use #main .hx ... selectors specific enough that landing.css's
-   body.bx-gold .hx-l2/.hx-next-date overrides (lower specificity) never win — restated here at
-   matching specificity so the Bronx page's two teal accents (headline + countdown date) pick up
-   the same gold used everywhere else on this page instead of standing out as an inconsistency. */
-body.bx-gold #main .hx .hx-h1 .hx-l2{color:#e3b34e!important}
-body.bx-gold #main .hx-next-date{color:#e3b34e!important}
 </style>
+<!-- Promo pill (client mockup) — sits directly above the hero photo -->
+<a class="promo-bar" href="contact.html#request-a-call">
+  <span class="promo-star" aria-hidden="true">★</span>
+  <span class="promo-txt"><span class="promo-lead">Start Your Barber Journey Today </span>For Only <b>$150 Per Week</b></span>
+  <span class="promo-star" aria-hidden="true">★</span>
+</a>
 <section class="hx reveal">
-  <div class="hx-in">
-    <div class="hx-photo">
-      <div class="hx-bg" aria-hidden="true"></div>
-      <div class="hx-grad" aria-hidden="true"></div>
-      <div class="hx-copy">
-        <div class="hx-copy-inner">
-        <h1 class="hx-h1"><span class="hx-l1">Build a Career</span><span class="hx-l2">You Own</span><span class="hx-script">Become a Barber.</span></h1>
-        <p class="hx-sub">Change careers and become a <b>licensed barber in New York</b> in as little as <b>4 months</b> — hands-on, at our <b>Bronx campus</b> at 121 Westchester Square.</p>
-        <div class="hx-cta-row">
-          <a class="btn btn-gold btn-lg btn-tour" href="/contact">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Book a Bronx Campus Tour
-          </a>
+  <div class="hx-photo">
+    <div class="hx-bg" aria-hidden="true"></div>
+    <div class="hx-grad" aria-hidden="true"></div>
+    <div class="hx-copy">
+      <div class="hx-copy-inner">
+        <span class="hx-become">Become a</span>
+        <span class="hx-title">Licensed Barber</span>
+        <span class="hx-months">In As Little As 4 Months</span>
+        <div class="hx-hours"><span>500 Hours</span></div>
+        <p class="hx-desc">Comprehensive hands-on training and full New York State Board exam prep</p>
+        <p class="hx-loc"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> At Our Bronx Location</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reserve-band">
+  <div class="reserve-in">
+    <div class="reserve-intro">
+      <span class="reserve-eyebrow">Enrollment Open</span>
+      <h2 class="reserve-h2">Reserve Your Spot Today</h2>
+      <p class="reserve-p">New classes begin the <b>first Monday of every month</b> at our Bronx campus at 121 Westchester Square. Fill out the form and an Admissions Advisor will reach out to you.</p>
+      <div class="hx-next" data-countdown>
+        <div class="hx-next-l">
+          <span class="hx-next-label">Next Starting Date:</span>
+          <span class="hx-next-date" data-next-start>Monday, August 3, 2026</span>
+          <span class="hx-next-sub">New classes begin the first Monday of each month.</span>
         </div>
-        </div>
-        <div class="hx-next" data-countdown>
-          <div class="hx-next-l">
-            <span class="hx-next-label">Next Starting Date:</span>
-            <span class="hx-next-date" data-next-start>Monday, August 3, 2026</span>
-            <span class="hx-next-sub">New classes begin the first Monday of each month.</span>
-          </div>
-          <div class="hx-cells">
-            <div class="hx-cell"><b data-cd-d>19</b><span>Days</span></div>
-            <div class="hx-cell"><b data-cd-h>6</b><span>Hours</span></div>
-            <div class="hx-cell"><b data-cd-m>42</b><span>Min</span></div>
-            <div class="hx-cell"><b data-cd-s>18</b><span>Sec</span></div>
-          </div>
+        <div class="hx-cells">
+          <div class="hx-cell"><b data-cd-d>19</b><span>Days</span></div>
+          <div class="hx-cell"><b data-cd-h>6</b><span>Hours</span></div>
+          <div class="hx-cell"><b data-cd-m>42</b><span>Min</span></div>
+          <div class="hx-cell"><b data-cd-s>18</b><span>Sec</span></div>
         </div>
       </div>
     </div>
     <div class="formcard" id="reserve">
-  <div class="formcard-head">
-    <div class="formcard-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
-    <div>
-      <div class="formcard-title">Reserve Your Spot Today</div>
-      <div class="formcard-sub">Fill out the form and an Admissions Advisor will contact you.<br><i>Kindly fill out the form to receive a call from one of our Agents</i></div>
-    </div>
-  </div>
   <div class="ghl-form-wrap">
   <iframe
     src="https://api.leadconnectorhq.com/widget/form/3ghObGjHiLN3LgKBfKGG"

@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="/assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="/assets/css/landing.min.css?v=182">
+<link rel="stylesheet" href="/assets/css/landing.min.css?v=183">
 <link rel="stylesheet" href="/assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -62,8 +62,6 @@
 <div class="abi-deco" aria-hidden="true"></div>
 <a class="skip" href="#main">Saltar al contenido</a>
 
-<!-- Promo banner (brand-colored) -->
-<a class="promo-bar" href="/spanish/contact#request-a-call">Comienza Tu Carrera de Barbero Hoy por Solo <b>$150 Por Semana*</b></a>
 <!-- ── UTILITY BAR: campus switcher · language · live campus phones ── -->
 <div class="ubar">
   <div class="ubar-in">
@@ -164,165 +162,131 @@
 
 <main id="main">
 <style>
-/* ══════════ HOME HERO v5 — Spanish twin of the approved English homepage (index.html, 2026-07-15):
-   identical layout/CSS, only the HTML copy below differs. Keep this block byte-for-byte in sync
-   with index.html's hero style block whenever one changes. ══════════ */
-#main .hx{padding-block:0;background:#0b0d0f!important}
-#main .hx .hx-in{width:min(1500px,96%);margin-inline:auto;padding:0!important;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(470px,500px);gap:0;
-  align-items:stretch}
-/* Desktop hero (client request 2026-07-19): the GHL form is a fixed external widget with ~8
-   fields, so a single narrow column makes it tall enough to need an internal scrollbar. Kept at
-   the 2-column width instead - every field shows with NO internal scroll, and the photo column
-   stretches to match. White section bg here so wide screens show no black side gutters. */
-@media(min-width:1001px){
-  #main .hx{background:#fff!important}
-  /* Client mockup 2026-07-20: copy reads on a soft WHITE fade over the left of the photo
-     (teal headline + dark body), replacing the old dark shadowbox. The white fade is painted by
-     .hx-grad below; here we just give the copy breathing room and center it on the tall photo. */
-  #main .hx .hx-copy{margin:clamp(1rem,2vw,1.75rem)}
-}
-#main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;
-  min-height:clamp(460px,36vw,520px);display:flex;align-items:flex-start;background:#0a1416}
-#main .hx .hx-photo .hx-bg{position:absolute;inset:0;height:100%!important;z-index:0;
-  background:url('/assets/img/hero-training-floor-v5.jpg') 50% 42%/cover no-repeat;
-  filter:brightness(1.12)}
-/* white fade painted across the photo: strong on the left (behind the copy), clear through the
-   middle (photo shows), and a soft seam at the right edge where the photo meets the form. */
-#main .hx .hx-photo .hx-grad{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,rgba(255,255,255,1) 0,rgba(255,255,255,1) 320px,rgba(255,255,255,.66) 500px,rgba(255,255,255,0) 690px,rgba(255,255,255,0) 88%,rgba(255,255,255,.35) 100%)}
-#main .hx .hx-copy{position:relative;z-index:2;max-width:430px;width:100%;box-sizing:border-box;
-  padding:clamp(1.6rem,3vw,2.75rem) clamp(1.4rem,2.6vw,2.5rem) clamp(1.2rem,2vw,1.75rem);color:var(--ink)}
-#main .hx .hx-h1{margin:0;text-transform:none;font-family:var(--font-display);
-  font-weight:600;line-height:1.06;letter-spacing:-.02em}
-#main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{display:block;font-family:var(--font-display);
-  text-transform:none;font-weight:800;letter-spacing:-.02em;text-shadow:none}
-#main .hx .hx-h1 .hx-l1{color:var(--teal-deep)!important;font-size:clamp(1.75rem,2.6vw,2.2rem)}
-#main .hx .hx-h1 .hx-l2{color:var(--teal-deep)!important;font-size:clamp(2.1rem,3.4vw,2.8rem)}
-#main .hx .hx-h1 .hx-script{display:block;font-family:var(--font-display)!important;font-style:italic;
-  text-transform:none;font-weight:700;color:var(--ink);text-shadow:none;
-  font-size:clamp(1.2rem,1.76vw,1.55rem);line-height:1.15;margin:.4rem 0 0}
-#main .hx .hx-h1 .hx-script::after{content:"";display:block;width:78px;height:3px;
-  margin-top:.9rem;border-radius:99px;background:var(--teal-deep)!important}
-#main .hx .hx-sub{margin:0;max-width:none;font-size:1rem;
-  line-height:1.55;color:var(--ink);font-weight:500;text-shadow:none}
-#main .hx .hx-sub b{color:var(--teal-deep)!important;font-weight:700}
-#main .hx .hx-cta-row{display:flex;margin-top:1.25rem}
-#main .hx .btn-tour{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;
-  font-size:.8rem;letter-spacing:.05em;font-weight:700;padding:.85rem 1.4rem}
-#main .hx .btn-tour svg{flex-shrink:0}
-#main .hx .formcard{align-self:center;box-shadow:none;border-radius:0;padding:1.5rem 1.3rem;background:#fff}
+/* ══════════ HOME HERO 2026-07-21 — Spanish twin of index.html. Full-bleed photo with copy
+   overlaid at the BOTTOM (client mockup). GHL form + countdown moved into the .reserve-band below.
+   Keep in sync with index.html's hero style block. ══════════ */
+#main .hx{padding:0!important;background:#0a1416!important}
+#main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;width:100%;
+  min-height:clamp(520px,52vw,660px);display:block}
+#main .hx .hx-bg{position:absolute;inset:0;z-index:0;
+  background:url('/assets/img/hero-training-floor-v5.jpg') 50% 42%/cover no-repeat}
+#main .hx .hx-grad{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.58) 20%,rgba(0,0,0,.18) 45%,rgba(0,0,0,0) 66%)}
+#main .hx .hx-copy{position:absolute;inset:0;z-index:2;display:flex;
+  align-items:flex-end;justify-content:flex-end;pointer-events:none}
+#main .hx .hx-copy-inner{pointer-events:auto;width:min(640px,94%);
+  padding:0 clamp(1.5rem,4vw,3.5rem) clamp(1.6rem,4vw,3rem);
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+#main .hx .hx-become{font-family:var(--font-display);font-weight:800;color:#fff;line-height:1;
+  text-transform:uppercase;letter-spacing:.005em;font-size:clamp(1.6rem,3.4vw,2.7rem);
+  text-shadow:0 2px 16px rgba(0,0,0,.6)}
+#main .hx .hx-title{font-family:var(--font-display);font-weight:800;color:var(--teal-bright)!important;
+  line-height:.94;text-transform:uppercase;letter-spacing:-.012em;margin:.04em 0 .06em;
+  font-size:clamp(2.6rem,6.6vw,5.2rem);text-shadow:0 3px 20px rgba(0,0,0,.6)}
+#main .hx .hx-months{font-family:var(--font-display);font-weight:700;color:#fff;line-height:1;
+  text-transform:uppercase;letter-spacing:.005em;font-size:clamp(1.15rem,2.8vw,2.05rem);
+  text-shadow:0 2px 16px rgba(0,0,0,.6)}
+#main .hx .hx-hours{display:flex;align-items:center;gap:.75rem;margin:.9rem 0 .6rem}
+#main .hx .hx-hours::before,#main .hx .hx-hours::after{content:"";height:2px;
+  flex:0 0 clamp(1.2rem,3vw,2.6rem);background:var(--teal-bright);border-radius:2px}
+#main .hx .hx-hours span{background:var(--teal);color:#fff;font-weight:800;text-transform:uppercase;
+  letter-spacing:.04em;font-size:clamp(1.05rem,2.1vw,1.45rem);padding:.32rem 1.05rem;border-radius:9px;
+  box-shadow:0 3px 12px rgba(0,0,0,.4);white-space:nowrap}
+#main .hx .hx-desc{color:#fff;font-weight:600;line-height:1.36;margin:0;text-transform:uppercase;
+  letter-spacing:.02em;font-size:clamp(.78rem,1.4vw,1.02rem);text-shadow:0 2px 14px rgba(0,0,0,.7);max-width:36ch}
+#main .hx .hx-loc{display:inline-flex;align-items:center;gap:.42rem;margin:.75rem 0 0;color:var(--teal-bright);
+  font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(.82rem,1.5vw,1.05rem);
+  text-shadow:0 2px 12px rgba(0,0,0,.6)}
+#main .hx .hx-loc svg{flex-shrink:0}
 
-#main .hx-next{background:rgba(8,10,11,.66)!important;border:1px solid rgba(255,255,255,.28)!important;
-  border-radius:12px!important;color:#fff;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.1rem;
-  padding:.9rem 1.15rem;max-width:none!important;margin:1.5rem 0 0!important}
-#main .hx-next-label{color:#fff!important;font-size:.875rem;font-weight:700;margin-right:.4rem;display:block!important}
-#main .hx-next-date{color:var(--teal-bright)!important;font-weight:800;display:block!important;margin-top:.2rem!important;font-size:1.06rem!important}
-#main .hx-next-sub{display:block;color:#c8cfd3!important;font-size:.72rem;margin-top:.2rem;max-width:220px}
-#main .hx-cells{display:flex!important;gap:.6rem;column-gap:.6rem!important}
-#main .hx-cell{display:flex;flex-direction:column;align-items:center;
-  background:none!important;border:0!important;border-radius:0!important;padding:0!important}
-#main .hx-cell b{border:1px solid rgba(255,255,255,.35);border-radius:8px;width:3.375rem;
-  padding:.56rem 0;font-size:1.5rem;font-weight:800;color:#fff;line-height:1;box-sizing:border-box}
-#main .hx-cell span{font-size:.625rem;color:#fff!important;text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem;font-weight:700!important}
-
-section.hx-features{background:#fff!important;padding:1.375rem 0!important;border-top:0!important}
-.hx-features-in{width:min(1500px,96%);margin-inline:auto;display:grid;
-  grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
-.hx-feature{display:flex;align-items:flex-start;text-align:left;gap:.75rem;
-  padding:.25rem 1rem;border-left:1px solid #e8ecef;min-width:0}
-.hx-feature:first-child{border-left:0}
-.hx-feature svg{color:var(--teal)!important;flex-shrink:0;margin-top:.1rem}
-.hx-feature span{font-size:.78rem;line-height:1.5;color:var(--ink-2)!important;min-width:0}
-.hx-feature b{display:block;font-weight:700}
-.hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
+/* ── Reserve band: GHL form + countdown, moved directly below the hero ── */
+section.reserve-band{background:var(--teal-tint,#eef9f8);padding:clamp(2rem,4.5vw,3.5rem) 0}
+.reserve-in{width:min(1200px,94%);margin-inline:auto;display:grid;
+  grid-template-columns:1fr minmax(0,500px);gap:clamp(1.5rem,3.5vw,3rem);align-items:start}
+.reserve-intro{padding-top:.4rem}
+.reserve-eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal-deep);margin-bottom:.6rem}
+.reserve-h2{font-family:var(--font-display);font-weight:800;color:var(--ink);line-height:1.08;
+  margin:0 0 .6rem;font-size:clamp(1.7rem,3.2vw,2.5rem)}
+.reserve-p{color:var(--ink-soft);font-size:1rem;line-height:1.55;margin:0 0 1.4rem;max-width:46ch}
+.reserve-p b{color:var(--teal-deep);font-weight:700}
+.reserve-band .hx-next{background:#fff;border:1px solid var(--teal-soft,#cdece9);border-radius:14px;
+  color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1rem 1.1rem;padding:1.15rem 1.3rem;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.reserve-band .hx-next-label{color:var(--ink);font-size:.9rem;font-weight:700;display:block}
+.reserve-band .hx-next-date{color:var(--teal-deep);font-weight:800;display:block;margin-top:.2rem;font-size:1.12rem}
+.reserve-band .hx-next-sub{color:var(--ink-soft);font-size:.74rem;display:block;margin-top:.25rem;max-width:240px}
+.reserve-band .hx-cells{display:flex;gap:.6rem}
+.reserve-band .hx-cell{display:flex;flex-direction:column;align-items:center}
+.reserve-band .hx-cell b{border:1px solid var(--teal-soft,#cdece9);background:var(--teal-tint,#eef9f8);
+  border-radius:9px;width:3.4rem;padding:.52rem 0;font-size:1.42rem;font-weight:800;color:var(--teal-deep);
+  line-height:1;text-align:center;box-sizing:border-box}
+.reserve-band .hx-cell span{font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;
+  margin-top:.3rem;font-weight:700;color:var(--ink-soft)}
+.reserve-band .formcard{align-self:start;background:#fff;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.12);padding:1.3rem 1.3rem}
 
 @media(max-width:1000px){
-  /* MOBILE HERO (<=1000px), client mockup 2026-07-20: copy OVERLAID on the top-left of the photo
-     over a white left-fade (teal headline + dark body), then the form, then the countdown. The
-     copy wrapper is absolutely positioned over the photo (out of flow) so .formcard/.hx-next flow
-     directly under the photo. .hx-photo/.hx-copy stay display:contents so .hx-copy-inner/.hx-next
-     promote to flex items of .hx-in for the form(3)/counter(4) order. Desktop (>1000px) untouched. */
-  #main .hx .hx-in{display:flex;flex-direction:column;grid-template-columns:none;position:relative}
-  #main .hx .hx-photo{display:contents}
-  #main .hx .hx-photo .hx-bg{position:relative!important;order:1;width:100%;height:auto!important;aspect-ratio:1025/1535;background:url('/assets/img/hero-training-floor-v5-mobile.jpg') center top/cover no-repeat}
-  #main .hx .hx-photo .hx-grad{display:none}
-  /* countdown stays after the form on mobile (client request 2026-07-20). .hx-copy stays flattened
-     so its text wrapper and the countdown become flex items; copy-inner is then absolutely placed
-     over the photo (out of flow), form(3)/counter(4) flow beneath it. */
-  #main .hx .hx-copy{display:contents}
-  #main .hx .hx-copy-inner{order:2;position:absolute;top:0;left:0;right:0;z-index:2;
-    background:linear-gradient(90deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.98) 52%,rgba(255,255,255,.66) 80%,rgba(255,255,255,0) 100%);
-    padding:1.4rem clamp(1.3rem,5vw,1.9rem) 2.4rem}
-  #main .hx .hx-h1,#main .hx .hx-sub{max-width:74%}
-  #main .hx .hx-h1 .hx-l1,#main .hx .hx-h1 .hx-l2{font-size:clamp(1.9rem,7.2vw,2.35rem)}
-  #main .hx .hx-h1 .hx-l1{color:var(--teal-deep)!important}
-  #main .hx .hx-h1 .hx-l2{color:var(--teal-deep)!important}
-  #main .hx .hx-h1 .hx-script{font-size:clamp(1.15rem,4.6vw,1.4rem);color:var(--ink)}
-  #main .hx .hx-sub{font-size:1rem;color:var(--ink)}
-  #main .hx .hx-sub b{color:var(--teal-deep)!important}
-  #main .hx .hx-next{order:4;margin:1.25rem clamp(1.4rem,5vw,2rem) 2.25rem!important}
-  #main .hx-next{background:var(--teal-tint)!important;border:1px solid var(--teal-soft)!important;color:var(--ink)}
-  #main .hx-next-label{color:var(--ink)!important}
-  #main .hx-next-date{color:var(--teal-deep)!important}
-  #main .hx-next-sub{color:var(--ink-soft)!important}
-  #main .hx-cell b{border-color:var(--teal-soft);background:#fff;color:var(--ink)}
-  #main .hx-cell span{color:var(--ink-soft)!important}
-  #main .hx .formcard{order:3;padding:1.625rem 1.25rem 2.125rem}
-  section.hx-features{background:var(--teal-deep)!important}
-  .hx-features-in{grid-template-columns:1fr!important;gap:0}
-  .hx-feature{flex-direction:row!important;align-items:flex-start!important;border-left:0!important;
-    padding:1.1rem .75rem!important;border-top:1px solid rgba(255,255,255,.22)!important}
-  .hx-feature:first-child{border-top:0!important}
-  .hx-feature svg{color:#fff!important}
-  .hx-feature span{color:#fff!important}
-  .hx-feature i{color:var(--teal-bright)!important}
+  #main .hx .hx-photo{min-height:0;height:auto;aspect-ratio:1025/1535}
+  #main .hx .hx-bg{background-image:url('/assets/img/hero-training-floor-v5-mobile.jpg');background-position:center top}
+  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.86) 0,rgba(0,0,0,.6) 22%,rgba(0,0,0,.2) 44%,rgba(0,0,0,0) 62%)}
+  #main .hx .hx-copy{justify-content:center}
+  #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:clamp(1.5rem,6vw,2.4rem)}
+  #main .hx .hx-hours{justify-content:center}
+  #main .hx .hx-desc{max-width:34ch;margin-inline:auto}
+  .reserve-in{grid-template-columns:1fr;gap:1.5rem}
+  .reserve-intro{text-align:center}
+  .reserve-p{margin-inline:auto}
+  .reserve-band .hx-next{justify-content:center}
 }
 @media(max-width:560px){
-  #main .hx .hx-in{width:92%}
-  #main .hx .hx-cta-row .btn-lg{flex:1 1 100%;justify-content:center}
+  #main .hx .hx-copy-inner{padding-left:clamp(1rem,5vw,1.4rem);padding-right:clamp(1rem,5vw,1.4rem)}
+  .reserve-in{width:92%}
 }
 </style>
+<!-- Promo pill (mockup del cliente) — encima de la foto del hero -->
+<a class="promo-bar" href="/spanish/contact#request-a-call">
+  <span class="promo-star" aria-hidden="true">★</span>
+  <span class="promo-txt"><span class="promo-lead">Comienza Tu Carrera de Barbero Hoy </span>Por Solo <b>$150 Por Semana</b></span>
+  <span class="promo-star" aria-hidden="true">★</span>
+</a>
 <section class="hx reveal">
-  <div class="hx-in">
-    <div class="hx-photo">
-      <div class="hx-bg" aria-hidden="true"></div>
-      <div class="hx-grad" aria-hidden="true"></div>
-      <div class="hx-copy">
-        <div class="hx-copy-inner">
-        <h1 class="hx-h1"><span class="hx-l1">Construye una Carrera</span><span class="hx-l2">Que Es Tuya</span><span class="hx-script">Conviértete en Barbero.</span></h1>
-        <p class="hx-sub">Cambia de carrera y conviértete en <b>barbero licenciado en Nueva York</b> en tan solo <b>4 meses</b> — capacitación práctica, en nuestros campus de Manhattan y el Bronx.</p>
-        <div class="hx-cta-row">
-          <a class="btn btn-gold btn-lg btn-tour" href="/spanish/contact">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Reserva una Visita al Campus
-          </a>
+  <div class="hx-photo">
+    <div class="hx-bg" aria-hidden="true"></div>
+    <div class="hx-grad" aria-hidden="true"></div>
+    <div class="hx-copy">
+      <div class="hx-copy-inner">
+        <span class="hx-become">Conviértete en</span>
+        <span class="hx-title">Barbero Licenciado</span>
+        <span class="hx-months">En Tan Solo 4 Meses</span>
+        <div class="hx-hours"><span>500 Horas</span></div>
+        <p class="hx-desc">Capacitación práctica completa y preparación total para el examen de la Junta Estatal de Nueva York</p>
+        <p class="hx-loc"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> En Nuestra Sede de Manhattan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reserve-band">
+  <div class="reserve-in">
+    <div class="reserve-intro">
+      <span class="reserve-eyebrow">Inscripciones Abiertas</span>
+      <h2 class="reserve-h2">Reserva Tu Lugar Hoy</h2>
+      <p class="reserve-p">Las nuevas clases comienzan el <b>primer lunes de cada mes</b> en nuestras sedes de Manhattan y el Bronx. Completa el formulario y un Asesor de Admisiones se comunicará contigo.</p>
+      <div class="hx-next" data-countdown>
+        <div class="hx-next-l">
+          <span class="hx-next-label">Próxima Fecha de Inicio:</span>
+          <span class="hx-next-date" data-next-start>Lunes, 3 de agosto de 2026</span>
+          <span class="hx-next-sub">Las nuevas clases comienzan el primer lunes de cada mes.</span>
         </div>
-        </div>
-        <div class="hx-next" data-countdown>
-          <div class="hx-next-l">
-            <span class="hx-next-label">Próxima Fecha de Inicio:</span>
-            <span class="hx-next-date" data-next-start>Lunes, 3 de agosto de 2026</span>
-            <span class="hx-next-sub">Las nuevas clases comienzan el primer lunes de cada mes.</span>
-          </div>
-          <div class="hx-cells">
-            <div class="hx-cell"><b data-cd-d>19</b><span>Días</span></div>
-            <div class="hx-cell"><b data-cd-h>6</b><span>Horas</span></div>
-            <div class="hx-cell"><b data-cd-m>42</b><span>Min</span></div>
-            <div class="hx-cell"><b data-cd-s>18</b><span>Seg</span></div>
-          </div>
+        <div class="hx-cells">
+          <div class="hx-cell"><b data-cd-d>19</b><span>Días</span></div>
+          <div class="hx-cell"><b data-cd-h>6</b><span>Horas</span></div>
+          <div class="hx-cell"><b data-cd-m>42</b><span>Min</span></div>
+          <div class="hx-cell"><b data-cd-s>18</b><span>Seg</span></div>
         </div>
       </div>
     </div>
     <div class="formcard" id="reserve">
-  <div class="formcard-head">
-    <div class="formcard-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
-    <div>
-      <div class="formcard-title">Reserva Tu Lugar Hoy</div>
-      <div class="formcard-sub">Completa el formulario y un asesor de admisiones te contactará.<br><i>Por favor completa el formulario para recibir una llamada de uno de nuestros Agentes</i></div>
-    </div>
-  </div>
   <div class="ghl-form-wrap">
   <iframe
     src="https://api.leadconnectorhq.com/widget/form/H4C1nJmpLO3cNx4OrlK2"
