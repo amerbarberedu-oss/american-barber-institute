@@ -3358,3 +3358,10 @@ body.shell2 .logo2-img{height:66px!important;width:auto}
   body.shell2 .ubar-left{gap:clamp(1.5rem,5vw,3.25rem)}
 }
 body.shell2 .promo-ast{font-size:.62em;font-weight:800;color:var(--teal-deep,#0E8C82);vertical-align:super;line-height:0;margin-left:1px}
+/* Feature-strip items: bold + slightly larger (client request) */
+body.shell2 .hx-feature span{font-weight:700;font-size:.88rem}
+/* Reserve-band perks list — fills the space under the countdown beside the form on desktop */
+body.shell2 .reserve-perks{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:.7rem}
+body.shell2 .reserve-perks li{position:relative;padding-left:1.9rem;font-size:.98rem;font-weight:600;color:var(--ink,#12333b);line-height:1.4}
+body.shell2 .reserve-perks li::before{content:"\2713";position:absolute;left:0;top:.05rem;width:1.3rem;height:1.3rem;border-radius:50%;background:var(--teal,#12B3A6);color:#fff;display:grid;place-items:center;font-size:.78rem;font-weight:900}
+@media(max-width:1000px){body.shell2 .reserve-perks{max-width:24rem;margin-inline:auto;text-align:left}}
