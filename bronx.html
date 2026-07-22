@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.min.css?v=37">
 <link rel="stylesheet" href="assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="assets/css/landing.min.css?v=191">
+<link rel="stylesheet" href="assets/css/landing.min.css?v=192">
 <link rel="stylesheet" href="assets/css/upgrade.min.css?v=3">
 <script src="/assets/js/analytics.js?v=8" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -250,7 +250,10 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   #main .hx .hx-photo{height:auto;min-height:0;max-height:none;aspect-ratio:auto;display:block}
   #main .hx .hx-bg{display:none}
   #main .hx .hx-mimg{display:block;width:100%;height:auto;position:relative;z-index:0;vertical-align:top}
-  #main .hx .hx-grad{background:linear-gradient(0deg,rgba(0,0,0,.72) 0,rgba(0,0,0,.28) 26%,rgba(0,0,0,0) 48%)}
+  #main .hx .hx-grad{background:none}
+  #main .hx .hx-become,#main .hx .hx-months{text-shadow:0 2px 9px rgba(0,0,0,.92),0 1px 3px rgba(0,0,0,.95)}
+  #main .hx .hx-title{text-shadow:0 3px 12px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.95)}
+  #main .hx .hx-desc,#main .hx .hx-loc{text-shadow:0 1px 6px rgba(0,0,0,.98),0 1px 2px rgba(0,0,0,1)}
   #main .hx .hx-copy{justify-content:center}
   #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:clamp(1.5rem,6vw,2.4rem)}
   #main .hx .hx-hours{justify-content:center}
@@ -303,6 +306,19 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
       <span class="reserve-eyebrow">Enrollment Open</span>
       <h2 class="reserve-h2">Reserve Your Spot Today</h2>
       <p class="reserve-p">New classes begin the <b>first Monday of every month</b> at our Bronx campus at 121 Westchester Square. Fill out the form and an Admissions Advisor will reach out to you.</p>
+      <div class="reserve-feats">
+        <div class="rfeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7.5 22l4.5-2.5L16.5 22 15 14.5"/></svg><span>Licensed by NYSED (BPSS)</span></div>
+        <div class="rfeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Day, evening &amp; weekend schedules</span></div>
+        <div class="rfeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg><span>Hands-on training in our professional barber clinic</span></div>
+        <div class="rfeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span><b>Financial assistance &mdash; ACCES-VR, VA</b><i>Flexible payment plan options</i></span></div>
+        <div class="rfeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Career support &amp; job-placement assistance</span></div>
+        <div class="rfeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1.5"/><path d="M9 22v-4h6v4M9 6h.01M15 6h.01M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg><span>Modern campuses in Manhattan &amp; the Bronx</span></div>
+      </div>
+      <div class="reserve-stats">
+        <div class="rstat"><b>30+</b><i>Years</i></div>
+        <div class="rstat"><b>10,000+</b><i>Graduates</i></div>
+        <div class="rstat"><b class="rstat-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b><i>100+ Google Reviews</i></div>
+      </div>
       <div class="hx-next" data-countdown>
         <div class="hx-next-l">
           <span class="hx-next-label">Next Starting Date:</span>
@@ -316,12 +332,6 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
           <div class="hx-cell"><b data-cd-s>18</b><span>Sec</span></div>
         </div>
       </div>
-      <ul class="reserve-perks">
-        <li>500-Hour Master Barber license program</li>
-        <li>Day, evening &amp; weekend schedules</li>
-        <li>Hands-on with real clients from week one</li>
-        <li>Funding that fits: ACCES-VR, GI Bill&reg; &amp; weekly plans</li>
-      </ul>
     </div>
     <div class="formcard" id="reserve">
   <div class="ghl-form-wrap">
