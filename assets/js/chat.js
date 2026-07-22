@@ -99,6 +99,7 @@
     '.abichat-rail a:hover{transform:translateX(3px)}' +
     '.abichat-rail-ic{width:34px;height:34px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}' +
     '.abichat-rail-ic svg{width:22px;height:22px;display:block}' +
+    '@media(min-width:1340px){.abichat-rail-ic{width:50px;height:50px}.abichat-rail-ic svg{width:28px;height:28px}}' +
     '.abichat-rail-lb{max-width:0;white-space:nowrap;overflow:hidden;font-size:13px;font-weight:700;transition:max-width .22s ease,padding .22s ease}' +
     '.abichat-rail a:hover .abichat-rail-lb,.abichat-rail a:focus .abichat-rail-lb{max-width:170px;padding-right:16px;padding-left:2px}' +
     '.abichat-rail--sms{background:#25d366}' +
