@@ -3367,6 +3367,10 @@ body.shell2 .rstat-stars{color:var(--gold,#C9971F)!important;font-size:1.05rem!i
 .reserve-band .reserve-intro .hx-next{margin-top:auto;padding-top:0}
 @media(max-width:1000px){
   .reserve-band .reserve-in{align-items:start}
+  /* Mobile: lift the lead form up so it sits right after the hero, with the
+     "why ABI" cards / stats / countdown following it (the GHL form carries its
+     own heading, so the marketing intro reads fine below it). */
+  .reserve-band .formcard{order:-1}
   body.shell2 .reserve-feats{grid-template-columns:1fr 1fr;max-width:27rem;margin-inline:auto}
   body.shell2 .reserve-stats{max-width:27rem;margin-inline:auto}
   .reserve-band .reserve-intro .hx-next{margin-top:1.2rem}
