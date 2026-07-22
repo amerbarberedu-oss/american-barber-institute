@@ -3356,7 +3356,7 @@ body.shell2 .logo2-img{height:66px!important;width:auto}
 /* Utility bar: give the campus switcher room from the language switcher and nudge the
    whole switcher group left of dead-center (client: "very close to English, move it left"). */
 @media(min-width:901px){
-  body.shell2 .ubar-in{justify-content:flex-start;padding-left:clamp(1rem,4vw,3rem)}
+  body.shell2 .ubar-in{justify-content:center}
   body.shell2 .ubar-left{gap:clamp(1.5rem,5vw,3.25rem)}
 }
 body.shell2 .promo-ast{font-size:.62em;font-weight:800;color:var(--teal-deep,#0E8C82);vertical-align:super;line-height:0;margin-left:1px}
