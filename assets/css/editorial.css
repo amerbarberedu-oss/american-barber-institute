@@ -199,3 +199,13 @@ section.band.band--dark  { background:var(--band-dark)   !important; }
   .band{padding-block:clamp(2.6rem,10vw,3.6rem);}
   .pullquote{font-size:1.35rem;}
 }
+
+/* ---------- HERO LEAD-FORM SPLIT (content pages) ---------- */
+/* Promotes the first paper hero into 2 cols: copy left, thin GHL form right.
+   Layers on .ed-split (inherits grid/gap + mobile stacking). Form height is
+   already handled globally by .ghl-form-wrap:has(iframe[src*=...]) in landing.css. */
+.hero-split{align-items:start;}
+@media(min-width:900px){
+  .hero-split{grid-template-columns:1.15fr minmax(0,430px);}
+}
+.hero-split .hero-form-card{padding:clamp(.85rem,1.7vw,1.25rem);}
