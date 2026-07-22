@@ -115,7 +115,9 @@
      width — the default .85fr split column falls well short of that. Widen just the two
      pages whose .ed-split holds a GHL embed (contact's #request-a-call, the licensing
      checklist's #checklist-form) without touching every other .ed-split on the site. */
-  #request-a-call .ed-split,#checklist-form .ed-split{grid-template-columns:1fr minmax(700px,760px)}
+  /* contact "Book a Tour" form: thinner single-column (client request) */
+  #request-a-call .ed-split{grid-template-columns:1fr minmax(0,500px)}
+  #checklist-form .ed-split{grid-template-columns:1fr minmax(700px,760px)}
 }
 .ed-media{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);}
 .ed-media img,.ed-media video{display:block;width:100%;height:100%;object-fit:cover;}
