@@ -162,35 +162,11 @@ function setCampusActive(campus){
   syncSeg(seg);
 }
 
-/* ── Address under the header logo (client mockup): wrap the logo in a column and
-   inject the per-campus street address beneath it. Runs once, then just updates text. ── */
-function applyAddr(data){
-  var inRow=document.querySelector(".hdr2 .hdr2-in");
-  if(!inRow) return;
-  var logo=inRow.querySelector(".logo2");
-  if(!logo) return;
-  var col=inRow.querySelector(".logo2-col");
-  if(!col){
-    col=document.createElement("div");
-    col.className="logo2-col";
-    inRow.insertBefore(col,logo);
-    col.appendChild(logo);
-    var a=document.createElement("div");
-    a.className="hdr2-addr";
-    col.appendChild(a);
-  }
-  var addrEl=col.querySelector(".hdr2-addr");
-  if(addrEl&&data&&data.addr){
-    addrEl.innerHTML=PIN_SVG+'<span>'+data.addr+'</span>';
-  }
-}
-
 function applyCampus(campus){
   var d=getData();
   var data=d[campus]||d.manhattan;
   swapPhones(data);
   setCampusActive(campus);
-  applyAddr(data);
 }
 
 /* ── Nav dropdown: click/keyboard support (hover works via CSS) ── */

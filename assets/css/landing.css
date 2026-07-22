@@ -3042,37 +3042,26 @@ body.shell2 .ubar-in{flex-wrap:wrap;row-gap:var(--sp-2)}
 body.shell2 .ubar-left{flex-wrap:wrap;row-gap:var(--sp-2)}
 body.shell2 .ubar-right{flex-wrap:wrap;justify-content:flex-end;row-gap:var(--sp-2);min-width:0}
 
-/* ── SQUEEZE ZONE: 7 top-level nav items (added Haircuts alongside the
-   existing Home/Programs/Why ABI/Guides/Tuition & Funding/Contact) no longer
-   fit on one line at the default padding/font-size right above the mobile
-   breakpoint (1024px) — "Why ABI" and "Tuition & Funding" were wrapping to
-   two lines. Originally capped at max-width:1400px, but `.hdr2-in` itself is
-   permanently capped at width:min(1240px,94%) (see HEADER block above) — so
-   at any viewport past ~1319px the header row NEVER gets wider than 1240px
-   either way. Confirmed via live measurement that reverting to full/wide nav
-   sizing above 1400px made the longer Spanish labels ("Por Qué ABI", "Cortes
-   de Cabello", "Costo y Financiamiento") wrap to a 2nd line at 1440px AND
-   1920px even though English fit fine — so this tightened sizing must apply
-   at EVERY desktop width from 1025px up, with no upper bound. The mobile
-   drawer (<=1024px) is unaffected. ── */
+/* ── DESKTOP NAV SIZE: 7 top-level nav items (Home/Programs/Why ABI/Guides/
+   Haircuts/Tuition & Funding/Contact) must fit on one line above the mobile
+   breakpoint (1024px). `.hdr2-in` is capped at width:min(1240px,94%), and the
+   longer Spanish labels ("Por Qué ABI", "Costo y Financiamiento") are the
+   tightest case. This ONE rule sizes the nav with clamp() so it scales gently
+   from the narrow desktop end (~1025px) to wide (>=1300px), staying in a
+   normal ~13-15px range at every width — no hard jump between tiers (an older
+   split at 1300px made the nav snap between huge 1.4rem and tiny .66rem, very
+   visible when changing browser zoom). Mobile drawer (<=1024px) is unaffected. */
 @media (min-width:1025px){
-  body.shell2 .nav2{gap:.15rem}
-  body.shell2 .nav2-top{font-size:1.4rem;padding:.72rem .82rem;gap:.3rem;white-space:nowrap}
-}
-
-/* ── SQUEEZE ZONE, NARROW TIER: the rule above still isn't tight enough
-   right after the 1024px mobile breakpoint — confirmed via measurement that
-   "Contacto"/"Contact" overlapped the "Book a Tour" CTA button by up to 249px
-   at 1025px on the Spanish nav ("Colegiatura y Financiamiento" is much longer
-   than "Tuition & Funding"), and by a smaller-but-real margin in English too.
-   Add a second, more aggressive tightening for the worst part of the range;
-   by ~1260px the rule above already has enough room on its own. ── */
-@media (min-width:1025px) and (max-width:1300px){
-  body.shell2 .hdr2-in{gap:10px}
-  body.shell2 .nav2{gap:0}
-  body.shell2 .nav2-top{font-size:.66rem;padding:.42rem .26rem}
-  body.shell2 .nav2-caret{width:9px;height:9px}
-  body.shell2 .hdr2-cta{font-size:.74rem;padding:.46rem .7rem}
+  body.shell2 .hdr2-in{gap:clamp(10px,1vw,16px)}
+  body.shell2 .nav2{gap:clamp(0px,.25vw,4px)}
+  body.shell2 .nav2-top{
+    font-size:clamp(.8rem,calc(.34rem + .62vw),.94rem);
+    padding:.5rem clamp(.34rem,.6vw,.72rem);
+    gap:.28rem;white-space:nowrap;
+  }
+  body.shell2 .nav2-caret{width:11px;height:11px}
+  body.shell2 .hdr2-cta{font-size:clamp(.76rem,calc(.4rem + .48vw),.9rem);
+    padding:.5rem clamp(.55rem,.8vw,1rem)}
 }
 
 /* ── RESPONSIVE: swap desktop nav ⇄ mobile drawer/strip ──────────────── */
@@ -3329,30 +3318,18 @@ body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#0E8C82);box-shadow:0 
 @media(max-width:600px){body.shell2 .promo-bar{width:92%;font-size:.82rem;letter-spacing:.02em;padding:.6rem 1.1rem;gap:.7rem;margin-bottom:-1.1rem;border-width:2px}body.shell2 .promo-star{font-size:1.2em}}
 
 /* ═══ HEADER — mockup touches (2026-07-21): teal utility bar = switchers only, live phone chips
-   as cards below the header, per-campus street address under the logo (wrapped + injected by
-   campus.js). The desktop nav MENU is kept as before (client preference) — hamburger stays a
-   mobile-only element via the original ≤1024px media query. ═══ */
+   as cards below the header. The desktop nav MENU is kept as before (client preference) —
+   hamburger stays a mobile-only element via the original ≤1024px media query. The logo keeps
+   its own built-in address (no separate address element). ═══ */
 body.shell2 .ubar-right{display:none!important}
 body.shell2 .ubar-in{justify-content:center}
 body.shell2 .mstrip{display:block!important}
-body.shell2 .logo2-col{display:flex;flex-direction:column;gap:.28rem;align-items:flex-start;min-width:0}
-body.shell2 .hdr2-addr{display:flex;align-items:center;gap:.38rem;font-size:clamp(.82rem,1.5vw,1.05rem);font-weight:700;color:var(--sh-ink,#12333b);white-space:nowrap;line-height:1.1}
-body.shell2 .hdr2-addr svg{color:var(--sh-teal-deep,#0E8C82);flex-shrink:0}
 @media(min-width:901px){
   body.shell2 .mstrip-phones{width:min(1120px,94%);gap:var(--sp-3,1rem)}
   body.shell2 .mstrip-phone{padding:.85rem 1rem;gap:.75rem}
   body.shell2 .mstrip-t b{font-size:1.3rem}
   body.shell2 .mstrip-t i{font-size:.72rem}
 }
-@media(max-width:600px){
-  body.shell2 .hdr2-addr{white-space:normal;font-size:.78rem}
-}
-/* Clip the baked-in address lines off the animated logo GIF (keep pole + ABI wordmark),
-   since the per-campus address is now shown separately under the logo. ~top 68% kept. */
-body.shell2 .logo2{display:block;overflow:hidden;line-height:0;height:45px}
-body.shell2 .logo2-img{height:66px!important;width:auto}
-@media(max-width:1024px){body.shell2 .logo2{height:40px}body.shell2 .logo2-img{height:59px!important}}
-@media(max-width:768px){body.shell2 .logo2{height:36px}body.shell2 .logo2-img{height:53px!important}}
 /* Utility bar: give the campus switcher room from the language switcher and nudge the
    whole switcher group left of dead-center (client: "very close to English, move it left"). */
 @media(min-width:901px){
