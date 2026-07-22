@@ -3053,15 +3053,15 @@ body.shell2 .ubar-right{flex-wrap:wrap;justify-content:flex-end;row-gap:var(--sp
    visible when changing browser zoom). Mobile drawer (<=1024px) is unaffected. */
 @media (min-width:1025px){
   body.shell2 .hdr2-in{gap:clamp(10px,1vw,16px)}
-  body.shell2 .nav2{gap:clamp(0px,.25vw,4px)}
+  body.shell2 .nav2{gap:clamp(0px,.2vw,4px)}
   body.shell2 .nav2-top{
-    font-size:clamp(.8rem,calc(.34rem + .62vw),.94rem);
-    padding:.5rem clamp(.34rem,.6vw,.72rem);
+    font-size:clamp(.66rem,calc(1.33vw - .19rem),1rem);
+    padding:.5rem clamp(.24rem,.34vw,.6rem);
     gap:.28rem;white-space:nowrap;
   }
   body.shell2 .nav2-caret{width:11px;height:11px}
-  body.shell2 .hdr2-cta{font-size:clamp(.76rem,calc(.4rem + .48vw),.9rem);
-    padding:.5rem clamp(.55rem,.8vw,1rem)}
+  body.shell2 .hdr2-cta{font-size:clamp(.66rem,.98vw,.95rem);
+    padding:.5rem clamp(.5rem,.7vw,1rem)}
 }
 
 /* ── RESPONSIVE: swap desktop nav ⇄ mobile drawer/strip ──────────────── */

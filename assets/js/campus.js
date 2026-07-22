@@ -25,6 +25,7 @@ function L(en,es){ return isSpanish()?es:en; }
 
 function buildMN(){return{
   addr:"48 W. 39th St., New York, NY 10018",
+  logo:"/assets/img/logo-manhattan.gif",
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:L("English","Inglés"),num:"(212) 290-2289",tel:"+12122902289"},
     {ico:SCISSORS_SVG,cls:"ubar-call ubar-call--cut",tag:L("Haircut","Corte"),num:"(856) 316-1551",tel:"+18563161551"},
@@ -45,6 +46,7 @@ function buildMN(){return{
 
 function buildBX(){return{
   addr:"121 Westchester Square, Bronx, NY 10461",
+  logo:"/assets/img/logo-bronx.gif",
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:L("English","Inglés"),num:"(718) 676-0640",tel:"+17186760640"},
     {ico:SCISSORS_SVG,cls:"ubar-call ubar-call--cut",tag:L("Haircut","Corte"),num:"(856) 316-1551",tel:"+18563161551"}
@@ -62,6 +64,7 @@ function buildBX(){return{
 
 function buildBOTH(){return{
   addr:"48 W. 39th St., New York, NY 10018",
+  logo:"/assets/img/logo-final.gif",
   ubar:[
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:"Manhattan",num:"(212) 290-2289",tel:"+12122902289"},
     {ico:PHONE_SVG,cls:"ubar-call ubar-call--admis",tag:"Bronx",num:"(718) 676-0640",tel:"+17186760640"},
@@ -85,6 +88,7 @@ function stripHaircut(d){
   var isCut=function(p){return p.tel==="+18563161551";};
   return{
     addr:d.addr,
+    logo:d.logo,
     ubar:d.ubar.filter(function(p){return !isCut(p);}),
     mstrip:d.mstrip.filter(function(p){return !isCut(p);}),
     footer:d.footer.filter(function(p){return !isCut(p);}),
@@ -162,11 +166,19 @@ function setCampusActive(campus){
   syncSeg(seg);
 }
 
+/* Swap the header logo GIF to the campus-specific one (each carries its own address) */
+function applyLogo(data){
+  if(!data||!data.logo) return;
+  var lg=document.querySelector(".hdr2 .logo2-img");
+  if(lg) lg.setAttribute("src",data.logo);
+}
+
 function applyCampus(campus){
   var d=getData();
   var data=d[campus]||d.manhattan;
   swapPhones(data);
   setCampusActive(campus);
+  applyLogo(data);
 }
 
 /* ── Nav dropdown: click/keyboard support (hover works via CSS) ── */
