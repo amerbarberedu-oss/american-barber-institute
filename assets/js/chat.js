@@ -97,8 +97,8 @@
     '@media (min-width:1081px){.abichat-rail{display:flex}}' +
     '.abichat-rail a{display:flex;align-items:center;text-decoration:none;color:#fff;border-radius:0 10px 10px 0;overflow:hidden;box-shadow:2px 3px 12px rgba(0,0,0,.28);transition:transform .16s ease;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}' +
     '.abichat-rail a:hover{transform:translateX(3px)}' +
-    '.abichat-rail-ic{width:48px;height:48px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}' +
-    '.abichat-rail-ic svg{width:26px;height:26px;display:block}' +
+    '.abichat-rail-ic{width:34px;height:34px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}' +
+    '.abichat-rail-ic svg{width:22px;height:22px;display:block}' +
     '.abichat-rail-lb{max-width:0;white-space:nowrap;overflow:hidden;font-size:13px;font-weight:700;transition:max-width .22s ease,padding .22s ease}' +
     '.abichat-rail a:hover .abichat-rail-lb,.abichat-rail a:focus .abichat-rail-lb{max-width:170px;padding-right:16px;padding-left:2px}' +
     '.abichat-rail--sms{background:#25d366}' +

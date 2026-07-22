@@ -3053,14 +3053,14 @@ body.shell2 .ubar-right{flex-wrap:wrap;justify-content:flex-end;row-gap:var(--sp
    visible when changing browser zoom). Mobile drawer (<=1024px) is unaffected. */
 @media (min-width:1025px){
   body.shell2 .hdr2-in{gap:clamp(10px,1vw,16px)}
-  body.shell2 .nav2{gap:clamp(0px,.2vw,4px)}
+  body.shell2 .nav2{gap:clamp(0px,.2vw,5px)}
   body.shell2 .nav2-top{
-    font-size:clamp(.66rem,calc(1.33vw - .19rem),1rem);
-    padding:.5rem clamp(.24rem,.34vw,.6rem);
+    font-size:clamp(.66rem,calc(1.92vw - .57rem),1.03rem);
+    padding:.5rem clamp(.24rem,.34vw,.7rem);
     gap:.28rem;white-space:nowrap;
   }
-  body.shell2 .nav2-caret{width:11px;height:11px}
-  body.shell2 .hdr2-cta{font-size:clamp(.66rem,.98vw,.95rem);
+  body.shell2 .nav2-caret{width:12px;height:12px}
+  body.shell2 .hdr2-cta{font-size:clamp(.66rem,calc(1.8vw - .58rem),1rem);
     padding:.5rem clamp(.5rem,.7vw,1rem)}
 }
 
