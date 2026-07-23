@@ -10,7 +10,7 @@
      so the default-safe state is static / no animation.
    • Video markup is added elsewhere — these classes only style the containers
      so they look great with object-fit:cover <video> elements pulled from the
-     CDN (https://assets-lilac-five.vercel.app/).
+     CDN (https://vutumew2863lb0bx.public.blob.vercel-storage.com/).
    ----------------------------------------------------------------------------
    PALETTE (mirrors landing.css :root — kept local so this file is portable):
      --blue #1b2fd9  --blue-dark #1322a8  --blue-light #eef1ff
@@ -144,7 +144,7 @@
        <div class="abi-brandband__frame">
          <video class="abi-brandband__video" autoplay muted loop playsinline
                 poster="…">
-           <source src="https://assets-lilac-five.vercel.app/videos/<name>.mp4"
+           <source src="https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/<name>.mp4"
                    type="video/mp4">
          </video>
          <div class="abi-brandband__copy">
@@ -221,7 +221,7 @@
      <section class="abi-showcase">
        <article class="abi-clip abi-tilt">           (abi-tilt optional)
          <video class="abi-clip__video" autoplay muted loop playsinline poster="…">
-           <source src="https://assets-lilac-five.vercel.app/showcase/vid/<name>.mp4"
+           <source src="https://vutumew2863lb0bx.public.blob.vercel-storage.com/showcase/vid/<name>.mp4"
                    type="video/mp4">
          </video>
          <div class="abi-clip__cap">Caption text</div>

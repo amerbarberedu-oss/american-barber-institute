@@ -1297,16 +1297,16 @@ def sec_includes(p, s):
     return '<section class="home-banner home-banner--alt" style="background:linear-gradient(135deg,#eaf2ff 0%%,#dfeaff 55%%,#ffffff 100%%);color:#0a1020"><div class="container home-banner__in"><span class="eyebrow">%s</span><h2>%s</h2><div class="prose"><ul>%s</ul></div></div></section>' % (eb, h2, lis)
 
 # ── ported from the 10-site DNA: AI-logo brand video + showcase B-roll (live CDN pull) ──
-CDN = "https://assets-lilac-five.vercel.app/"
+CDN = "https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/"
 
-# real barbershop B-roll clips (served from the live CDN) with bilingual captions
+# real barbershop B-roll clips (served from the live Vercel Blob storage) with bilingual captions
 SHOWCASE_CLIPS = [
-    ("barbershop-interior-busy-atmosphere", "Inside our NYC clinic floor", "Dentro de nuestra clínica en NYC"),
-    ("barber-cutting-hair-clippers",        "Clipper work, up close",       "Trabajo de máquina, de cerca"),
-    ("group-in-blue-smocks-instructor",     "Learning with our instructors","Aprendiendo con instructores"),
-    ("barber-grooms-beard-straight-razor",  "Straight-razor technique",     "Técnica de navaja"),
-    ("five-men-in-barbershop",              "The ABI community",            "La comunidad ABI"),
-    ("students-interacting-in-workshop",    "Hands-on from day one",        "Práctica desde el primer día"),
+    ("floor/floor-01", "Inside our NYC clinic floor", "Dentro de nuestra clínica en NYC"),
+    ("floor/floor-02", "Clipper work, up close",       "Trabajo de máquina, de cerca"),
+    ("floor/floor-03", "Learning with our instructors", "Aprendiendo con instructores"),
+    ("floor/floor-04", "Straight-razor technique",     "Técnica de navaja"),
+    ("floor/floor-05", "The ABI community",            "La comunidad ABI"),
+    ("floor/floor-06", "Hands-on from day one",        "Práctica desde el primer día"),
 ]
 
 def sec_brandband(p, s, pre):
@@ -1387,7 +1387,7 @@ def sec_showcase(p, s, pre):
         cards += ('<article class="abi-clip abi-tilt" data-reveal data-reveal-d="%d">'
                   '<video class="abi-clip__video" muted playsinline loop preload="none" '
                   'poster="/assets/img/posters/showcase-%d.jpg" '
-                  'data-src="%sshowcase/vid/%s.mp4"></video>'
+                  'data-src="%s%s.mp4"></video>'
                   '<div class="abi-clip__cap">%s</div>'
                   '<span class="abi-tilt__glare" aria-hidden="true"></span>'
                   '</article>') % ((i % 3) + 1, i + 1, CDN, name, (cap_es if es else cap_en))
