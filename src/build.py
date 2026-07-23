@@ -1244,6 +1244,7 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         "student_stories": "Historias de Estudiantes" if es else "Student Stories",
         "guides": "Guías" if es else "Guides",
         "haircuts": "Cortes de Cabello" if es else "Haircuts",
+        "gallery": "Galería" if es else "Gallery",
         "tuition": "Costo y Financiamiento" if es else "Tuition &amp; Funding",
         "veterans": "Veteranos y GI Bill®" if es else "Veterans &amp; GI Bill®",
         "accesvr": "ACCES-VR" if es else "ACCES-VR",
@@ -1280,9 +1281,11 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         f'          <a href="{root}training-experience.html" role="menuitem">{L["training_exp"]}</a>\n'
         f'          <a href="{root}career-paths.html" role="menuitem">{L["career_paths"]}</a>\n'
         f'          <a href="{root}student-stories.html" role="menuitem">{L["student_stories"]}</a>\n'
+        f'          <a href="{root}gallery.html" role="menuitem">{L["gallery"]}</a>\n'
         '        </div>\n'
         '      </div>\n'
         f'      <div class="nav2-item"><a class="nav2-top" href="{root}guides/index.html">{L["guides"]}</a></div>\n'
+        f'      <div class="nav2-item"><a class="nav2-top" href="{root}gallery.html">{L["gallery"]}</a></div>\n'
         f'      <div class="nav2-item"><a class="nav2-top" href="{root}haircuts.html">{L["haircuts"]}</a></div>\n'
         '      <div class="nav2-item nav2-has">\n'
         f'        <button class="nav2-top" type="button" aria-expanded="false" aria-haspopup="true">{L["tuition"]}<svg class="nav2-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>\n'
@@ -1315,6 +1318,7 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         f'      <a href="{root}training-experience.html">{L["training_exp"]}</a>\n'
         f'      <a href="{root}career-paths.html">{L["career_paths"]}</a>\n'
         f'      <a href="{root}student-stories.html">{L["student_stories"]}</a>\n'
+        f'      <a href="{root}gallery.html">{L["gallery"]}</a>\n'
         '    </div>\n'
         '    <div class="drawer-group">\n'
         f'      <p class="drawer-h">{L["tuition"]}</p>\n'
@@ -1324,6 +1328,7 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         '    </div>\n'
         '    <div class="drawer-group">\n'
         f'      <a class="drawer-solo" href="{root}guides/index.html">{L["guides"]}</a>\n'
+        f'      <a class="drawer-solo" href="{root}gallery.html">{L["gallery"]}</a>\n'
         f'      <a class="drawer-solo" href="{root}haircuts.html">{L["haircuts"]}</a>\n'
         f'      <a class="drawer-solo" href="{root}contact.html">{L["contact"]}</a>\n'
         '    </div>\n'
