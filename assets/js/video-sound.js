@@ -104,7 +104,15 @@
         }, { threshold: 0 }).observe(host);
       }
     } else {
-      /* All other site videos keep the original hover-autoplay UX. */
+      /* All other site videos keep the original hover-autoplay UX.
+       * v17 fix: ambient clips are ALSO autoplayed muted by an
+       * IntersectionObserver (effects.js/upgrade.js). That observer only
+       * fires on intersection CHANGES, so if mouseleave paused a clip that
+       * was still in view, nothing ever restarted it — one cursor sweep
+       * froze every ambient video until the user scrolled it out of view
+       * and back. On leave, re-mute and keep a still-visible clip playing;
+       * only pause when it has actually left the viewport (matching what
+       * the observers would do anyway). */
       function onEnter() {
         if (window.__abiUserInteracted) { v.muted = false; v.volume = 1; }
         v.play().then(syncBtn).catch(function () {
@@ -112,7 +120,18 @@
           v.play().then(syncBtn).catch(function () {});
         });
       }
-      function onLeave() { v.pause(); v.muted = true; syncBtn(); }
+      function onLeave() {
+        v.muted = true;
+        var r = v.getBoundingClientRect();
+        var visible = r.top < window.innerHeight && r.bottom > 0 &&
+                      r.left < window.innerWidth && r.right > 0;
+        if (visible) {
+          v.play().catch(function () {});
+        } else {
+          v.pause();
+        }
+        syncBtn();
+      }
       host.addEventListener("mouseenter", onEnter);
       host.addEventListener("mouseleave", onLeave);
       v.addEventListener("click", function (e) {

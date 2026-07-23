@@ -216,9 +216,16 @@
         if (pb && (e.target === pb || pb.contains(e.target))) return;
         toggle();
       });
-      /* desktop hover-preview */
+      /* desktop hover-preview. On leave, resume muted playback rather than
+       * pausing: the in-view IntersectionObserver below only fires on
+       * intersection CHANGES, so a pause here used to freeze the clip
+       * permanently until it was scrolled out of view and back. */
       on(host, 'mouseenter', function () { if (window.matchMedia('(hover:hover)').matches) v.play().catch(function () {}); });
-      on(host, 'mouseleave', function () { if (window.matchMedia('(hover:hover)').matches) v.pause(); });
+      on(host, 'mouseleave', function () {
+        if (!window.matchMedia('(hover:hover)').matches) return;
+        v.muted = true;
+        v.play().catch(function () {});
+      });
       on(v, 'play',  syncPlaying);
       on(v, 'pause', syncPlaying);
       /* autoplay muted when in view, pause when off-screen (so clips visibly play) */
@@ -231,6 +238,25 @@
         }, { threshold: 0.35 }).observe(host);
       } else {
         v.muted = true; v.play().catch(function () {});
+      }
+    });
+
+    /* ambient floor-strip clip — muted/looping with preload="none" and no
+     * play button of its own, so autoplay it while in view (the old inline
+     * hover handlers never fired on touch devices, leaving a frozen poster) */
+    qsa('.lf-floor__card--video video').forEach(function (v) {
+      v.muted = true; v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      if (!v.hasAttribute('loop')) v.setAttribute('loop', '');
+      if (typeof IntersectionObserver !== 'undefined') {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { v.muted = true; v.play().catch(function () {}); }
+            else if (!v.paused) { v.pause(); }
+          });
+        }, { threshold: 0.25 }).observe(v);
+      } else {
+        v.play().catch(function () {});
       }
     });
 

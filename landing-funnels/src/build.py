@@ -27,7 +27,7 @@ import data as D
 
 SITE = "https://www.americanbarberinstitute.com"
 CSS_V = "83"
-JS_V  = "16"
+JS_V  = "17"
 
 # ── inline SVG icon library ─────────────────────────────────────────
 ICONS = {
@@ -559,9 +559,12 @@ def section_gallery(p):
         '<a class="lf-floor__card" href="%s"><img loading="lazy" decoding="async" src="/assets/img/%s" alt="%s"></a>'
         % (h(gallery_href), h(g), h(a)) for g, a in zip(D.GALLERY, alts)
     )
+    # Playback is owned by funnels.js's ambient IntersectionObserver (plays
+    # muted in view, pauses off-screen) — the old inline onmouseenter/onmouseleave
+    # handlers left the clip permanently frozen after one cursor sweep on desktop
+    # and never played it at all on touch devices (no hover event ever fires).
     video_card = (
-        '<div class="lf-floor__card lf-floor__card--video" '
-        'onmouseenter="this.querySelector(\'video\').play()" onmouseleave="this.querySelector(\'video\').pause()">'
+        '<div class="lf-floor__card lf-floor__card--video">'
         '<video muted loop playsinline preload="none" poster="/assets/img/gallery/posters/floor-03.jpg" src="%s"></video>'
         '<span class="lf-floor__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>'
         % h(_FLOOR_VIDEO)

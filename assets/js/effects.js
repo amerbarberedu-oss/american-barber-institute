@@ -51,6 +51,37 @@
     document.querySelectorAll('.section-head, .split > div').forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Ambient floor reels: autoplay muted while in view ----------
+   * Ported from abi.edu (effects.js v2026-07-24). The floor-strip and
+   * gallery reel clips are muted/looping ambient loops with preload="none"
+   * and a direct src, so nothing starts them on its own — they'd sit as
+   * static posters (and never move at all on touch devices, which have no
+   * hover). Play them muted when scrolled into view, pause off-screen.
+   * video-sound.js still layers on the hover-to-unmute behaviour.
+   * Reduced-motion users skip this (early return above) and can tap to play. */
+  (function () {
+    var reels = [].slice.call(document.querySelectorAll(
+      '.gal-reel video, .floor-strip__card--video video'
+    ));
+    if (!reels.length) return;
+    if ('IntersectionObserver' in window) {
+      var rio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            v.muted = true; // ambient default; hover unmutes via video-sound.js
+            v.play().catch(function () {});
+          } else if (!v.paused) {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      reels.forEach(function (v) { rio.observe(v); });
+    } else {
+      reels.forEach(function (v) { v.muted = true; v.play().catch(function () {}); });
+    }
+  })();
+
   /* ---------- Stagger reveals: per-sibling delay ---------- */
   document.querySelectorAll('.cards, .quotes, .steps, .gallery-grid, .videos, .tuition-grid').forEach(function (group) {
     var idx = 0;
