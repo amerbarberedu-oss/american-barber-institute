@@ -204,7 +204,7 @@ GoHighLevel forms are cross-origin iframes, so leads are also captured via the
 ## Chatbot & forms
 
 GoHighLevel chat widget (`widgets.leadconnectorhq.com/loader.js`, widget id
-`689f4917512e48b4268bf335`) on every page — **no `defer` attribute**, that
+`6a627d266f3b01a586d50e87`) on every page — **no `defer` attribute**, that
 breaks the live-connect behavior. Contact forms are GHL iframes, routed per
 audience: a main "edu" form, a Manhattan landing form, and a Bronx landing form.
 
