@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=37">
-<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=33">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=177">
-<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=3">
-<script src="{root}assets/js/analytics.js?v=8" defer></script>
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=200">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=200">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=200">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=200">
+<script src="{root}assets/js/analytics.js?v=200" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=32">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=9">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=200">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=200">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -120,16 +120,16 @@ TEMPLATE = """<!DOCTYPE html>
 {mbar}
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<script src="{root}assets/js/main.js?v=34" defer></script>
-<script src="{root}assets/js/effects.js?v=33" defer></script>
-<script src="{root}assets/js/landing.js?v=33" defer></script>
-<script src="{root}assets/js/upgrade.js?v=2" defer></script>
-<script src="{root}assets/js/campus.js?v=6" defer></script>
+<script src="{root}assets/js/main.js?v=200" defer></script>
+<script src="{root}assets/js/effects.js?v=200" defer></script>
+<script src="{root}assets/js/landing.js?v=200" defer></script>
+<script src="{root}assets/js/upgrade.js?v=200" defer></script>
+<script src="{root}assets/js/campus.js?v=200" defer></script>
 <!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js — to restore Alex: delete this block and re-add the chatbot.js script tag. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a627d266f3b01a586d50e87"></script>
 <script>(function(){{var t=setInterval(function(){{var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){{clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget--prompt{{display:none!important}}@media(max-width:768px){{.lc_text-widget,.lc_text-widget--bubble{{bottom:140px!important;right:12px!important}}}}";w.shadowRoot.appendChild(s);}}}},400);setTimeout(function(){{clearInterval(t)}},15000);}})();</script>
-<script src="{root}assets/js/video-sound.js?v=3" defer></script>
-<script src="{root}assets/js/chat.js?v=3" defer></script>
+<script src="{root}assets/js/video-sound.js?v=200" defer></script>
+<script src="{root}assets/js/chat.js?v=200" defer></script>
 </body>
 </html>
 """

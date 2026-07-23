@@ -574,9 +574,9 @@ def head(p, s, pre):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="%sassets/css/landing.css?v=123">
-<link rel="stylesheet" href="%sassets/css/upgrade.css?v=2">
-<script src="/assets/js/analytics.js?v=3" defer></script>
+<link rel="stylesheet" href="%sassets/css/landing.css?v=200">
+<link rel="stylesheet" href="%sassets/css/upgrade.css?v=200">
+<script src="/assets/js/analytics.js?v=200" defer></script>
 <script>try{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}catch(e){}</script>
 %s
 </head>
@@ -1174,11 +1174,11 @@ def footer(p, s, pre):
     <button class="btn btn-blue" data-exit-cta style="padding:.85rem 2rem">%s</button>
   </div>
 </div>
-<script src="/assets/js/effects.js?v=32" defer></script>
-<script src="%sassets/js/landing.js?v=33" defer></script>
-<script src="/assets/js/upgrade.js?v=2" defer></script>
-<script src="/assets/js/chatbot.js?v=3" defer></script>
-<script src="/assets/js/video-sound.js?v=3" defer></script>
+<script src="/assets/js/effects.js?v=200" defer></script>
+<script src="%sassets/js/landing.js?v=200" defer></script>
+<script src="/assets/js/upgrade.js?v=200" defer></script>
+<script src="/assets/js/chatbot.js?v=200" defer></script>
+<script src="/assets/js/video-sound.js?v=200" defer></script>
 </body>
 </html>""" % (s["f_about"], s["f_links"], links, s["f_visit"], s["gibill"],
               p["campus"]["tel"], s["mbar_call"], s["mbar_text"], s["mbar_cta"],
