@@ -285,14 +285,17 @@ REQ_HEAD = {
 }
 
 # ─── Inside ABI clips (verbatim captions; CDN B-roll) ────────────────
-SHOWCASE_CDN_BASE = "https://assets-lilac-five.vercel.app/showcase/vid/"
+# Repointed off the old showcase host (deleted Vercel deploy, now 404) to the
+# working Vercel Blob "floor" clips — same set used by the main-site gallery.
+# Posters are indexed (lf-showcase-N.jpg) so the slugs only build the video URL.
+SHOWCASE_CDN_BASE = "https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/floor/"
 SHOWCASE_CLIPS = [
-    ("barbershop-interior-busy-atmosphere", "Inside our NYC clinic floor",  "Dentro de nuestra clínica en NYC"),
-    ("barber-cutting-hair-clippers",        "Clipper work, up close",       "Trabajo de máquina, de cerca"),
-    ("group-in-blue-smocks-instructor",     "Learning with our instructors", "Aprendiendo con instructores"),
-    ("barber-grooms-beard-straight-razor",  "Straight-razor technique",      "Técnica de navaja"),
-    ("five-men-in-barbershop",              "The ABI community",             "La comunidad ABI"),
-    ("students-interacting-in-workshop",    "Hands-on from day one",         "Práctica desde el primer día"),
+    ("floor-15", "Inside our NYC clinic floor",  "Dentro de nuestra clínica en NYC"),
+    ("floor-01", "Clipper work, up close",       "Trabajo de máquina, de cerca"),
+    ("floor-05", "Learning with our instructors", "Aprendiendo con instructores"),
+    ("floor-06", "Straight-razor technique",      "Técnica de navaja"),
+    ("floor-12", "The ABI community",             "La comunidad ABI"),
+    ("floor-11", "Hands-on from day one",         "Práctica desde el primer día"),
 ]
 SHOWCASE_HEAD = {
     "en": ("Inside ABI", "See real life at ABI"),
