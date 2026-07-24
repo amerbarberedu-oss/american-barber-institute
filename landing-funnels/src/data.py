@@ -284,18 +284,19 @@ REQ_HEAD = {
     "es": ("Admisiones", "Requisitos de Ingreso"),
 }
 
-# ─── Inside ABI clips (verbatim captions; CDN B-roll) ────────────────
-# Repointed off the old showcase host (deleted Vercel deploy, now 404) to the
-# working Vercel Blob "floor" clips — same set used by the main-site gallery.
+# ─── Inside ABI clips (verbatim captions; original AI B-roll) ────────
+# 2026-07-24: original AI showcase clips restored from the recovered
+# kazi-reprime/ABI-10-Websites repo and committed into this repo under
+# /assets/videos/ai/ (same-origin, survives any external host dying).
 # Posters are indexed (lf-showcase-N.jpg) so the slugs only build the video URL.
-SHOWCASE_CDN_BASE = "https://vutumew2863lb0bx.public.blob.vercel-storage.com/videos/floor/"
+SHOWCASE_CDN_BASE = "/assets/videos/ai/"
 SHOWCASE_CLIPS = [
-    ("floor-15", "Inside our NYC clinic floor",  "Dentro de nuestra clínica en NYC"),
-    ("floor-01", "Clipper work, up close",       "Trabajo de máquina, de cerca"),
-    ("floor-05", "Learning with our instructors", "Aprendiendo con instructores"),
-    ("floor-06", "Straight-razor technique",      "Técnica de navaja"),
-    ("floor-12", "The ABI community",             "La comunidad ABI"),
-    ("floor-11", "Hands-on from day one",         "Práctica desde el primer día"),
+    ("barbershop-interior-busy-atmosphere", "Inside our NYC clinic floor",  "Dentro de nuestra clínica en NYC"),
+    ("barber-cutting-hair-clippers", "Clipper work, up close",       "Trabajo de máquina, de cerca"),
+    ("group-in-blue-smocks-instructor", "Learning with our instructors", "Aprendiendo con instructores"),
+    ("barber-grooms-beard-straight-razor", "Straight-razor technique",      "Técnica de navaja"),
+    ("five-men-in-barbershop", "The ABI community",             "La comunidad ABI"),
+    ("students-interacting-in-workshop", "Hands-on from day one",         "Práctica desde el primer día"),
 ]
 SHOWCASE_HEAD = {
     "en": ("Inside ABI", "See real life at ABI"),
