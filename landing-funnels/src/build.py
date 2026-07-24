@@ -882,8 +882,8 @@ def page_head(p):
 '%(ld_scripts)s'
 '<script src="/assets/js/analytics.js?v=200" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
-'<script src="/assets/js/campus.js?v=200" defer></script>\n'
-'<script src="/assets/js/landing.js?v=200" defer></script>\n'
+'<script src="/assets/js/campus.js?v=300" defer></script>\n'
+'<script src="/assets/js/landing.js?v=300" defer></script>\n'
 '</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s" data-campus-locked="true">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9GTRLN" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
     ) % {
@@ -946,7 +946,7 @@ def page_tail():
         'data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" '
         'data-widget-id="6a627d266f3b01a586d50e87"></script>\n'
         '<script>(function(){var t=setInterval(function(){var w=document.querySelector("chat-widget");if(w&&w.shadowRoot){clearInterval(t);var s=document.createElement("style");s.textContent=".lc_text-widget--prompt{display:none!important}@media(max-width:768px){.lc_text-widget,.lc_text-widget--bubble{bottom:140px!important;right:12px!important}}";w.shadowRoot.appendChild(s);}},400);setTimeout(function(){clearInterval(t)},15000);})();</script>\n'
-        '<script src="/assets/js/chat.js?v=200" defer></script>\n'
+        '<script src="/assets/js/chat.js?v=300" defer></script>\n'
         '</body>\n</html>\n'
     ) % (JS_V,)
 

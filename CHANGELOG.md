@@ -5,6 +5,53 @@ Format follows [Keep a Changelog](https://keepachangelog.com/). Versions stay in
 the **0.x** range throughout the upgrade cycle; the move to **1.0.0** happens only
 when the client approves the official production release.
 
+## [0.5.0] — 2026-07-24
+
+Everything shipped since 0.4.0 (2026-07-16), consolidating three parallel
+workstreams: Kazi (media recovery, ratings, QA), Arhum Abdullah (hero/header
+redesign, analytics, chat), and joint production fixes.
+
+### Added
+- **Original AI Brand Film + "Inside ABI" clips restored** (2026-07-24) —
+  the AI logo animation and 6 AI showcase clips lost with their deleted
+  external host are back, committed same-origin at `assets/videos/ai/`.
+  Gallery (EN + ES) and all 4 landing-funnel pages.
+- **Google-reviews badge sitewide** (2026-07-17) — abi.edu's visual rating
+  widget on home/Bronx (+ES) and landing funnels; landing-funnel stats row
+  now shows the real per-campus rating instead of a generic "100+".
+- **Gallery in the navigation** (2026-07-24) — dropdown, main navbar and
+  mobile drawer across all pages.
+- **Mobile hero rework** (2026-07-17→23) — full photo first, headline
+  overlaid with fade, then form; teal features band; multiple hero photo
+  iterations (v4→v6) and header redesigns (Arhum + Kazi).
+
+### Fixed
+- **Ambient/floor-strip videos never played on touch and froze on desktop
+  after one cursor pass** (2026-07-24) — no IntersectionObserver autoplay
+  existed on this site at all (only inline hover handlers); ported the
+  observer into `effects.js`/`funnels.js`, removed inline handlers at
+  generator source, fixed the `video-sound.js` hover-leave pause.
+- **Google rating truth-sync** (2026-07-24) — Manhattan moved on Google to
+  **4.2 (433 reviews)**; all badges, stats rows and JSON-LD aggregateRating
+  updated (Bronx 4.9/253). Landing-funnel data now drives every instance
+  from one place (`landing-funnels/src/data.py`).
+- **UTF-8 mojibake sitewide** (Arhum, 2026-07-19), dead video-host repoints
+  (2026-07-23→24), ESP GHL form restored on Spanish pages (2026-07-17),
+  reCAPTCHA Enterprise CSP allowances (2026-07-24).
+- **Asset version alignment** (2026-07-24) — hand-crafted pages still
+  referenced `?v=200` for files template pages loaded at `?v=300/301`;
+  all references aligned to each file's highest version.
+
+### Changed
+- GTM container swapped NKLLGPC → N9GTRLN with `phone_click`/`email_click`
+  events to the .com GA4 stream (2026-07-17); GHL chat widget swapped to the
+  new VIBE AI id (Arhum, 2026-07-24); campus-specific header logos.
+
+### Infrastructure
+- **`abi-master-archive` Blob store** (2026-07-24) — cross-site
+  disaster-recovery archive (1,002 files / 756 MB, `manifest.json` at
+  root) holding every ABI asset from all known sources.
+
 ## [0.4.0] — 2026-07-16
 Nav/hero/header redesign parity across the whole site, a critical contrast bug
 fix, and a full-site audit (cleanup, SEO/AEO, performance, responsive QA).
