@@ -942,6 +942,7 @@ def page_tail():
         '<!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js '
         '— to restore Alex: delete this block and re-add the chatbot.js script tag. -->\n'
         ''
+<div data-chat-widget data-widget-id="6a6359f1b92307bb1e2abd87" data-location-id="wfpdq6XX5uIZUiLrqCSo"></div>
         '<script src="https://widgets.leadconnectorhq.com/loader.js" '
         'data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" '
         'data-widget-id="6a6359f1b92307bb1e2abd87"></script>\n'
