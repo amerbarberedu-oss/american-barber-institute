@@ -171,7 +171,7 @@
 #main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;width:100%;
   min-height:clamp(520px,52vw,660px);display:block}
 #main .hx .hx-bg{position:absolute;inset:0;z-index:0;
-  background:url('/assets/img/hero-home-promo-v7.jpg') 50% 50%/cover no-repeat}
+  background:url('/assets/img/hero-home-promo-v7.jpg') 50% 0%/cover no-repeat}
 #main .hx .hx-mimg{display:none}
 #main .hx .hx-grad{position:absolute;inset:0;z-index:1;
   background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.58) 20%,rgba(0,0,0,.18) 45%,rgba(0,0,0,0) 66%)}
@@ -253,8 +253,8 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 @media(min-width:1001px){
   #main .hx .hx-copy{display:none}
   #main .hx .hx-grad{display:none}
-  /* extend the hero photo ~10px upward on PC */
-  #main .hx .hx-photo{margin-top:-10px}
+  /* taller hero on PC so the full promo image (heads at top -> floor) shows with less crop */
+  #main .hx .hx-photo{min-height:clamp(560px,56vw,860px)}
   /* promo pill "For Only $150 Per Week": a little smaller + raised up on PC */
   #main .promo-bar{font-size:clamp(.95rem,1.5vw,1.35rem);padding:.55rem clamp(1.2rem,3vw,2.2rem);margin-top:-.4rem}
 }
