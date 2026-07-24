@@ -257,10 +257,13 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
   #main .hx .hx-become,#main .hx .hx-months{text-shadow:0 2px 9px rgba(0,0,0,.92),0 1px 3px rgba(0,0,0,.95)}
   #main .hx .hx-title{text-shadow:0 3px 12px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.95)}
   #main .hx .hx-desc,#main .hx .hx-loc{text-shadow:0 1px 6px rgba(0,0,0,.98),0 1px 2px rgba(0,0,0,1)}
-  #main .hx .hx-copy{justify-content:center}
-  #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:clamp(1.5rem,6vw,2.4rem)}
+  #main .hx .hx-copy{justify-content:center;align-items:center}
+  #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:0;transform:translateY(7vw)}
   #main .hx .hx-hours{justify-content:center}
   #main .hx .hx-desc{max-width:34ch;margin-inline:auto}
+  /* PHONE: drop the two bottom lines, shrink the title, and lift the copy to the barbers' arms */
+  #main .hx .hx-desc,#main .hx .hx-loc{display:none}
+  #main .hx .hx-title{font-size:clamp(1.7rem,8vw,2.4rem)}
   .reserve-in{grid-template-columns:1fr;gap:1.5rem}
   .reserve-intro{text-align:center}
   .reserve-p{margin-inline:auto}
