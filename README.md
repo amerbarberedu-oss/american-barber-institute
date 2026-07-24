@@ -6,8 +6,9 @@ licensing requirements, career guides — that funnels readers toward enrolling 
 abi.edu, deliberately targeting different search intent from abi.edu so the two
 sites don't compete with each other in search.
 
-- **Canonical domain:** https://www.americanbarberinstitute.com (DNS cutover
-  pending — see "Deploying" below; the real, current site is reachable right
+- **Current version:** 0.5.0 (2026-07-24) — see [CHANGELOG.md](CHANGELOG.md)
+- **Canonical domain:** https://www.americanbarberinstitute.com (LIVE since
+  2026-07-08 — the "DNS cutover pending" note below this line predates launch; the real, current site is reachable right
   now at the Vercel alias below)
 - **Vercel alias:** https://american-barber-institute.vercel.app
 - **Vercel project:** `american-barber-institute` on team `amerbarberedu-oss-projects`

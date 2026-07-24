@@ -1174,11 +1174,11 @@ def footer(p, s, pre):
     <button class="btn btn-blue" data-exit-cta style="padding:.85rem 2rem">%s</button>
   </div>
 </div>
-<script src="/assets/js/effects.js?v=200" defer></script>
-<script src="%sassets/js/landing.js?v=200" defer></script>
-<script src="/assets/js/upgrade.js?v=200" defer></script>
+<script src="/assets/js/effects.js?v=301" defer></script>
+<script src="%sassets/js/landing.js?v=300" defer></script>
+<script src="/assets/js/upgrade.js?v=300" defer></script>
 <script src="/assets/js/chatbot.js?v=200" defer></script>
-<script src="/assets/js/video-sound.js?v=200" defer></script>
+<script src="/assets/js/video-sound.js?v=301" defer></script>
 </body>
 </html>""" % (s["f_about"], s["f_links"], links, s["f_visit"], s["gibill"],
               p["campus"]["tel"], s["mbar_call"], s["mbar_text"], s["mbar_cta"],

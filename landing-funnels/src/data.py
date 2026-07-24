@@ -23,9 +23,9 @@ MANHATTAN = {
     "latlng": (40.7522, -73.9849),
     # Client-provided short URL for Manhattan Google Business Profile
     "google_listing_url": "https://maps.app.goo.gl/42UjD6bFQ65NEt1E7",
-    # Live rating/count, verified 2026-07-16 against the listing above
-    "google_rating": "4.1",
-    "google_review_count": 427,
+    # Live rating/count, verified 2026-07-24 against the listing above
+    "google_rating": "4.2",
+    "google_review_count": 433,
 }
 BRONX = {
     "slug": "bronx",
@@ -38,7 +38,7 @@ BRONX = {
     "latlng": (40.8401, -73.8421),
     # Client-provided short URL for Bronx Google Business Profile
     "google_listing_url": "https://maps.app.goo.gl/9TJJh8ehUjSZ8kcaA",
-    # Live rating/count, verified 2026-07-16 against the listing above
+    # Live rating/count, verified 2026-07-24 against the listing above
     "google_rating": "4.9",
     "google_review_count": 253,
 }
