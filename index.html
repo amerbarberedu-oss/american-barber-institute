@@ -171,7 +171,7 @@
 #main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;width:100%;
   min-height:clamp(520px,52vw,660px);display:block}
 #main .hx .hx-bg{position:absolute;inset:0;z-index:0;
-  background:url('/assets/img/hero-training-floor-v5.jpg') 50% 42%/cover no-repeat}
+  background:url('/assets/img/hero-home-promo-v7.jpg') 50% 50%/cover no-repeat}
 #main .hx .hx-mimg{display:none}
 #main .hx .hx-grad{position:absolute;inset:0;z-index:1;
   background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.58) 20%,rgba(0,0,0,.18) 45%,rgba(0,0,0,0) 66%)}
@@ -248,6 +248,12 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
 .hx-feature b{display:block;font-weight:700}
 .hx-feature i{display:block;font-style:normal;color:var(--teal-deep)!important;font-size:.66rem;margin-top:.4rem;font-weight:700;letter-spacing:.02em}
 
+/* DESKTOP-ONLY: the promo hero image (hero-home-promo-v7.jpg) has the headline baked in,
+   so hide the overlaid HTML copy + the dark legibility fade on desktop. Mobile is untouched. */
+@media(min-width:1001px){
+  #main .hx .hx-copy{display:none}
+  #main .hx .hx-grad{display:none}
+}
 @media(max-width:1000px){
   /* MOBILE: portrait photo, copy overlaid at the BOTTOM center (client mockup) */
   #main .hx .hx-photo{height:auto;min-height:0;max-height:none;aspect-ratio:auto;display:block}
