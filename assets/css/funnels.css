@@ -148,7 +148,7 @@ body.lf-page {
 
   /* secondary "cool" accent used on dark bands / feature icons / stats block.
      Overridden per theme so every dark surface picks up its own palette. */
-  --lf-sky:        #5fb8ff;
+  --lf-sky:        #7f9dff;
   --lf-sky-soft:   #eaf4ff;
   --lf-sky-deep:   #1b3bd9;
 
@@ -192,24 +192,24 @@ body.lf-page {
 /* ── 1 · Manhattan EN — TEAL / PETROL ───────────────────────────────── */
 body.lf-page--mhtn-en {
   --lf-accent:      #14205e;   /* deep petrol-teal primary */
-  --lf-accent-dark: #093843;   /* darker for gradients / hover */
-  --lf-accent-soft: #DCF1EF;   /* soft teal wash */
+  --lf-accent-dark: #0d1c52;   /* darker for gradients / hover */
+  --lf-accent-soft: #e9edff;   /* soft teal wash */
   --lf-on-accent:   #ffffff;
 
-  --lf-ink:         #08262C;   /* petrol-black ink */
-  --lf-muted:       #33565E;
-  --lf-soft-ink:    #5E7C82;
-  --lf-line:        #CFE6E4;
-  --lf-bg:          #F2FAF8;   /* warm-teal porcelain */
+  --lf-ink:         #0a1533;   /* petrol-black ink */
+  --lf-muted:       #3d4966;
+  --lf-soft-ink:    #6a7296;
+  --lf-line:        #dae0f7;
+  --lf-bg:          #f4f6ff;   /* warm-teal porcelain */
   --lf-bg-alt:      #eaedff;   /* teal wash alt band */
 
   --lf-sky:         #1b2fd9;   /* bright teal accent */
-  --lf-sky-soft:    #DAF4F0;
+  --lf-sky-soft:    #e2e7ff;
   --lf-sky-deep:    #14205e;
 
-  --lf-ink-deep:    #062A33;   /* deep petrol hero surface */
-  --lf-ink-deep-2:  #0C3B45;
-  --lf-hi:          #5FE9DC;   /* bright mint highlight */
+  --lf-ink-deep:    #081238;   /* deep petrol hero surface */
+  --lf-ink-deep-2:  #0e1c50;
+  --lf-hi:          #9db0ff;   /* bright mint highlight */
 }
 /* ── 2 · Manhattan ES — AMBER / TERRACOTTA ──────────────────────────── */
 body.lf-page--mhtn-es {
@@ -1241,7 +1241,7 @@ body.lf-page--brnx-es {
   margin-top:.9rem;border-radius:99px;background:var(--teal)!important}
 #content .hx .hx-sub{margin:0;max-width:none;font-size:.97rem;
   line-height:1.55;color:#e8ecee;font-weight:400;text-shadow:0 1px 10px rgba(0,0,0,.5)}
-#content .hx .hx-sub b{color:#2cc5b8!important;font-weight:600}
+#content .hx .hx-sub b{color:#1b2fd9!important;font-weight:600}
 #content .hx .hx-cta-row{display:flex;margin-top:1.25rem}
 #content .hx .btn-tour{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;
   font-size:.8rem;letter-spacing:.05em;font-weight:700;padding:.85rem 1.4rem}

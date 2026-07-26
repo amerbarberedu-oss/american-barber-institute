@@ -345,7 +345,7 @@
 .abi-gradtext{
   color:var(--blue, #1b2fd9);                 /* fallback */
   background:linear-gradient(95deg,
-    #1b2fd9, #2742ff, #3ad0ff, #1b2fd9);
+    #1b2fd9, #2742ff, #5b83ff, #1b2fd9);
   background-size:300% 100%;
   -webkit-background-clip:text;
   background-clip:text;

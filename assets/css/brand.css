@@ -61,7 +61,7 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   --band-petrol: #101a52;   /* deep petrol — dark band */
   --band-dark:   #12181A;   /* near-black — stats / proof band */
   --on-dark:        #F4F1EA;   /* body/headings on dark bands (warm off-white) */
-  --on-dark-muted:  #B9C7C7;   /* secondary text on dark ~5:1 */
+  --on-dark-muted:  #bcc2d6;   /* secondary text on dark ~5:1 */
 
   /* card surfaces sit ABOVE bands (lifted, warm, never stark white) */
   --paper:   #FCFBF8;

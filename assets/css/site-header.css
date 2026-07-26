@@ -58,7 +58,7 @@ body.shell2 .logo2{display:inline-flex;align-items:center;flex-shrink:0;line-hei
 body.shell2 .logo2-img{height:48px;width:auto;display:block;
   transition:transform .25s ease,filter .25s ease}
 body.shell2 .logo2:hover .logo2-img{transform:translateY(-1px);
-  filter:drop-shadow(0 4px 12px rgba(14,140,130,.28))}
+  filter:drop-shadow(0 4px 12px rgba(27,47,217,.28))}
 
 /* Phones — sit between the logo and the language toggle on desktop; drop
    to their own line on mobile (see @media (max-width:900px) below).
