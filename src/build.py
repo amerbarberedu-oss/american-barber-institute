@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=311">
-<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=311">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=311">
-<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=311">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=312">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=312">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=312">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=312">
 <script src="{root}assets/js/analytics.js?v=200" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=311">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=311">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=312">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=312">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">

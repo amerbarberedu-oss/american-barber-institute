@@ -2676,7 +2676,7 @@ video{background-color:#1a1f2e}
   max-width: 46rem;
 }
 body.bx-gold .hx-featbox {
-  border-color: rgba(201, 151, 31, 0.3);
+  border-color: rgba(130,150,255, 0.3);
 }
 .hx-featbox-grid {
   display: grid;
@@ -2696,7 +2696,7 @@ body.bx-gold .hx-featbox {
   margin-top: 0.15rem;
 }
 body.bx-gold .hx-featbox-item svg {
-  color: #dcb34c;
+  color: #9db4ff;
 }
 .hx-featbox-item span {
   font-size: 0.9rem;
@@ -2719,7 +2719,7 @@ body.bx-gold .hx-featbox-item svg {
   font-weight: 500;
 }
 body.bx-gold .hx-featbox-item span i {
-  color: #e5cf97;
+  color: #c3cdf0;
 }
 
 @media (max-width: 768px) {
@@ -2823,21 +2823,21 @@ body.mhx-on .stats{padding-block:1.4rem!important}
 }
 
 /* ═══════════ v145 — /bronx GOLDEN THEME (body.bx-gold) — blue → gold everywhere ═══════════ */
-body.bx-gold{--blue:#c9971f;--blue-dark:#9c7414;--blue-light:#fbf3dd}
-body.bx-gold .hx{background:#0e0b05!important}
-body.bx-gold .hx-grad{background:radial-gradient(115% 95% at 6% 100%,rgba(14,11,4,.96) 0%,rgba(14,11,4,.68) 40%,rgba(14,11,4,0) 70%),linear-gradient(180deg,rgba(14,11,4,.12) 0%,rgba(14,11,4,.06) 40%,rgba(14,11,4,.5) 66%,rgba(14,11,4,.94) 88%,#0e0b05 100%)}
-body.bx-gold .hx-l2,body.bx-gold .hx-next-date{color:#e3b34e}
-body.bx-gold .hx-script::after{background:#e3b34e}
-body.bx-gold .hx-sub b{color:#ecc25f}
-body.bx-gold .hx-chip,body.bx-gold .hx-next{background:rgba(22,17,6,.78);border-color:rgba(224,187,98,.38)}
-body.bx-gold .hx-chip svg{color:#e0bb62}
-body.bx-gold .hx-chip--fin i{color:#d9c9a1}
-body.bx-gold .hx-cell{background:rgba(14,11,4,.55)}
-body.bx-gold .mhx-promo b{color:#241a04}
-body.bx-gold .cta-band{background:linear-gradient(120deg,#161003 0%,#40300b 100%)!important}
+body.bx-gold{--blue:#1b2fd9;--blue-dark:#1322a8;--blue-light:#eef1ff}
+body.bx-gold .hx{background:#0a1020!important}
+body.bx-gold .hx-grad{background:radial-gradient(115% 95% at 6% 100%,rgba(5,8,17,.96) 0%,rgba(5,8,17,.68) 40%,rgba(5,8,17,0) 70%),linear-gradient(180deg,rgba(5,8,17,.12) 0%,rgba(5,8,17,.06) 40%,rgba(5,8,17,.5) 66%,rgba(5,8,17,.94) 88%,#0a1020 100%)}
+body.bx-gold .hx-l2,body.bx-gold .hx-next-date{color:#9db4ff}
+body.bx-gold .hx-script::after{background:#9db4ff}
+body.bx-gold .hx-sub b{color:#b7c9ff}
+body.bx-gold .hx-chip,body.bx-gold .hx-next{background:rgba(10,16,32,.78);border-color:rgba(130,150,255,.38)}
+body.bx-gold .hx-chip svg{color:#9db4ff}
+body.bx-gold .hx-chip--fin i{color:#c3cdf0}
+body.bx-gold .hx-cell{background:rgba(5,8,17,.55)}
+body.bx-gold .mhx-promo b{color:#0a1024}
+body.bx-gold .cta-band{background:linear-gradient(120deg,#0a1020 0%,#14205e 100%)!important}
 @media (max-width:768px){
-  body.bx-gold .hx-bg{background-color:#0e0b05}
-  body.bx-gold .hx-grad{background:radial-gradient(130% 90% at 15% 100%,rgba(14,11,4,.94) 0%,rgba(14,11,4,.6) 45%,rgba(14,11,4,0) 75%),linear-gradient(180deg,rgba(16,12,4,.05) 0%,rgba(16,12,4,.02) 34%,rgba(16,12,4,.55) 62%,rgba(16,12,4,.94) 86%,#0e0b05 100%)}
+  body.bx-gold .hx-bg{background-color:#0a1020}
+  body.bx-gold .hx-grad{background:radial-gradient(130% 90% at 15% 100%,rgba(5,8,17,.94) 0%,rgba(5,8,17,.6) 45%,rgba(5,8,17,0) 75%),linear-gradient(180deg,rgba(6,9,18,.05) 0%,rgba(6,9,18,.02) 34%,rgba(6,9,18,.55) 62%,rgba(6,9,18,.94) 86%,#0a1020 100%)}
 }
 body.bx-gold .lang-toggle a.is-active,body.bx-gold .lang-toggle a:hover{background:var(--blue)!important;color:#fff}
 body.bx-gold .lang-toggle{border-color:var(--blue)!important}
@@ -2848,15 +2848,15 @@ body.bx-gold .hdr-in > .lang-toggle a{color:var(--blue)!important}
 body.bx-gold .hdr-in > .lang-toggle a.is-active{background:var(--blue)!important;color:#fff!important}
 
 /* ═══════════ v148 — bx-gold: theme Zero-to-Pro section + hardcoded hover shadows ═══════════ */
-body.bx-gold .zero-sec{background:linear-gradient(180deg,#fdf8ed 0%,#f5ecd5 100%)}
-body.bx-gold .zero-sec .eyebrow{color:#b8860b}
-body.bx-gold .zero-title,body.bx-gold .zero-h{color:#5c4a1e}
-body.bx-gold .zero-step{background:linear-gradient(160deg,#fff 0%,#fdf5e1 100%);border-color:#e8d5a0}
-body.bx-gold .zero-step:hover{box-shadow:0 24px 50px rgba(180,140,30,.22);border-color:#c9971f}
-body.bx-gold .zero-num{background:linear-gradient(150deg,#e8c84a,#c9971f);box-shadow:0 10px 22px rgba(156,116,20,.34)}
-body.bx-gold .zero-step p{color:#5c4a1e}
-body.bx-gold .btn:hover{box-shadow:0 12px 28px rgba(180,140,30,.35)}
-body.bx-gold .phone-pill:hover{box-shadow:0 6px 18px rgba(180,140,30,.3)}
+body.bx-gold .zero-sec{background:linear-gradient(180deg,#f4f6ff 0%,#e6eaff 100%)}
+body.bx-gold .zero-sec .eyebrow{color:#1b2fd9}
+body.bx-gold .zero-title,body.bx-gold .zero-h{color:#1e2a52}
+body.bx-gold .zero-step{background:linear-gradient(160deg,#fff 0%,#eef1ff 100%);border-color:#cdd3fb}
+body.bx-gold .zero-step:hover{box-shadow:0 24px 50px rgba(27,47,217,.22);border-color:#1b2fd9}
+body.bx-gold .zero-num{background:linear-gradient(150deg,#5b6eff,#1b2fd9);box-shadow:0 10px 22px rgba(19,34,168,.34)}
+body.bx-gold .zero-step p{color:#1e2a52}
+body.bx-gold .btn:hover{box-shadow:0 12px 28px rgba(27,47,217,.35)}
+body.bx-gold .phone-pill:hover{box-shadow:0 6px 18px rgba(27,47,217,.3)}
 
 /* ═══════════ v147 — GHL form: force visible (don't depend on iframe-resizer handshake).
    form_embed.js parks the iframe at -9999px until a postMessage handshake; when that
@@ -3193,18 +3193,18 @@ body.shell2 .foot-legal .wrap{display:flex;justify-content:space-between;align-i
 @media (max-width:560px){body.shell2 .ftr-grid{grid-template-columns:1fr;gap:var(--sp-6)}}
 
 /* ── BRONX (bx-gold) theming for the shell — deep petrol → warm gold accent ── */
-body.shell2.bx-gold{--sh-teal:#C9971F;--sh-teal-deep:#9C7414}
-body.shell2.bx-gold .ubar{background:linear-gradient(90deg,#9C7414 0%,#C9971F 100%)}
-body.shell2.bx-gold .hdr2-cta{background:#C9971F;box-shadow:0 8px 20px -8px rgba(156,116,20,.6)}
-body.shell2.bx-gold .hdr2-cta:hover{background:#9C7414}
+body.shell2.bx-gold{--sh-teal:#1b2fd9;--sh-teal-deep:#1322a8}
+body.shell2.bx-gold .ubar{background:linear-gradient(90deg,#1322a8 0%,#1b2fd9 100%)}
+body.shell2.bx-gold .hdr2-cta{background:#1b2fd9;box-shadow:0 8px 20px -8px rgba(19,34,168,.6)}
+body.shell2.bx-gold .hdr2-cta:hover{background:#1322a8}
 body.shell2.bx-gold .nav2-top:hover,body.shell2.bx-gold .nav2-has:hover .nav2-top,
-body.shell2.bx-gold .nav2-top[aria-expanded="true"]{background:#FBF3DD;color:#9C7414}
-body.shell2.bx-gold .nav2-menu a:hover{background:#FBF3DD;color:#9C7414}
-body.shell2.bx-gold .seg-opt.is-active{color:#9C7414}
-body.shell2.bx-gold .foot2-cta{background:linear-gradient(115deg,#9C7414 0%,#C9971F 100%)}
-body.shell2.bx-gold .socials a:hover{background:#C9971F}
+body.shell2.bx-gold .nav2-top[aria-expanded="true"]{background:#eef1ff;color:#1322a8}
+body.shell2.bx-gold .nav2-menu a:hover{background:#eef1ff;color:#1322a8}
+body.shell2.bx-gold .seg-opt.is-active{color:#1322a8}
+body.shell2.bx-gold .foot2-cta{background:linear-gradient(115deg,#1322a8 0%,#1b2fd9 100%)}
+body.shell2.bx-gold .socials a:hover{background:#1b2fd9}
 body.shell2.bx-gold .mstrip-phone svg,
-body.shell2.bx-gold .drawer-h,body.shell2.bx-gold .mstrip-t i{color:#9C7414}
+body.shell2.bx-gold .drawer-h,body.shell2.bx-gold .mstrip-t i{color:#1322a8}
 
 /* Shared section rhythm for interior content on shell2 pages */
 body.shell2 .sec{padding-block:var(--section-pad)}
@@ -3363,7 +3363,7 @@ body.shell2 .reserve-stats{display:flex;gap:.8rem;margin-top:1rem;background:#ff
 body.shell2 .rstat{flex:1;text-align:center}
 body.shell2 .rstat b{display:block;font-family:var(--font-display);font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;color:var(--ink,#101a2e);line-height:1}
 body.shell2 .rstat i{display:block;font-style:normal;font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft,#5a6875);margin-top:.35rem;font-weight:700}
-body.shell2 .rstat-stars{color:var(--gold,#C9971F)!important;font-size:1.05rem!important;letter-spacing:.06em}
+body.shell2 .rstat-stars{color:var(--gold,#1b2fd9)!important;font-size:1.05rem!important;letter-spacing:.06em}
 .reserve-band .reserve-intro .hx-next{margin-top:auto;padding-top:0}
 @media(max-width:1000px){
   .reserve-band .reserve-in{align-items:start}

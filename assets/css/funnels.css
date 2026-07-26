@@ -213,69 +213,69 @@ body.lf-page--mhtn-en {
 }
 /* ── 2 · Manhattan ES — AMBER / TERRACOTTA ──────────────────────────── */
 body.lf-page--mhtn-es {
-  --lf-accent:      #B45309;   /* burnt amber primary */
-  --lf-accent-dark: #8A3D05;
-  --lf-accent-soft: #FBEAD5;   /* soft cream-amber wash */
+  --lf-accent:      #14205e;   /* deep navy primary (brand blue) */
+  --lf-accent-dark: #0d1c52;
+  --lf-accent-soft: #e9edff;   /* soft blue wash */
   --lf-on-accent:   #ffffff;
 
-  --lf-ink:         #3A1D06;   /* espresso-brown ink */
-  --lf-muted:       #6B4A2E;
-  --lf-soft-ink:    #94745A;
-  --lf-line:        #EAD9C2;
-  --lf-bg:          #FBF3E9;   /* cream base */
-  --lf-bg-alt:      #F5E7D4;   /* deeper cream alt band */
+  --lf-ink:         #0a1533;   /* navy-black ink */
+  --lf-muted:       #3d4966;
+  --lf-soft-ink:    #6a7296;
+  --lf-line:        #dae0f7;
+  --lf-bg:          #f4f6ff;   /* cool blue porcelain */
+  --lf-bg-alt:      #eaedff;   /* blue wash alt band */
 
-  --lf-sky:         #DC2626;   /* terracotta-red accent */
-  --lf-sky-soft:    #FBE3DC;
-  --lf-sky-deep:    #B45309;
+  --lf-sky:         #1b2fd9;   /* brand blue accent */
+  --lf-sky-soft:    #e2e7ff;
+  --lf-sky-deep:    #14205e;
 
-  --lf-ink-deep:    #3A1D06;   /* espresso hero surface */
-  --lf-ink-deep-2:  #55300F;
-  --lf-hi:          #FBBF24;   /* warm gold highlight */
+  --lf-ink-deep:    #081238;   /* deep navy hero surface */
+  --lf-ink-deep-2:  #0e1c50;
+  --lf-hi:          #9db0ff;   /* light blue highlight */
 }
 /* ── 3 · Bronx EN — INDIGO / VIOLET ─────────────────────────────────── */
 body.lf-page--brnx-en {
-  --lf-accent:      #3730A3;   /* deep indigo primary */
-  --lf-accent-dark: #26216F;
-  --lf-accent-soft: #E6E4F7;   /* soft indigo wash */
+  --lf-accent:      #14205e;   /* deep navy primary (brand blue) */
+  --lf-accent-dark: #0d1c52;
+  --lf-accent-soft: #e9edff;   /* soft blue wash */
   --lf-on-accent:   #ffffff;
 
-  --lf-ink:         #1B1745;   /* indigo-black ink */
-  --lf-muted:       #494370;
-  --lf-soft-ink:    #6F6A93;
-  --lf-line:        #DEDCF0;
-  --lf-bg:          #F6F5FC;   /* cool porcelain */
-  --lf-bg-alt:      #F1F0FB;   /* cool violet-tinted alt band */
+  --lf-ink:         #0a1533;   /* navy-black ink */
+  --lf-muted:       #3d4966;
+  --lf-soft-ink:    #6a7296;
+  --lf-line:        #dae0f7;
+  --lf-bg:          #f4f6ff;   /* cool blue porcelain */
+  --lf-bg-alt:      #eaedff;   /* blue wash alt band */
 
-  --lf-sky:         #7C3AED;   /* vivid violet accent */
-  --lf-sky-soft:    #EEE6FB;
-  --lf-sky-deep:    #3730A3;
+  --lf-sky:         #1b2fd9;   /* brand blue accent */
+  --lf-sky-soft:    #e2e7ff;
+  --lf-sky-deep:    #14205e;
 
-  --lf-ink-deep:    #1E1A52;   /* deep indigo hero surface */
-  --lf-ink-deep-2:  #2A2568;
-  --lf-hi:          #C4B5FD;   /* light lavender highlight */
+  --lf-ink-deep:    #081238;   /* deep navy hero surface */
+  --lf-ink-deep-2:  #0e1c50;
+  --lf-hi:          #9db0ff;   /* light blue highlight */
 }
 /* ── 4 · Bronx ES — CRIMSON / GOLD ──────────────────────────────────── */
 body.lf-page--brnx-es {
-  --lf-accent:      #9F1239;   /* crimson primary */
-  --lf-accent-dark: #760C2A;
-  --lf-accent-soft: #F8DCE3;   /* soft blush wash */
+  --lf-accent:      #14205e;   /* deep navy primary (brand blue) */
+  --lf-accent-dark: #0d1c52;
+  --lf-accent-soft: #e9edff;   /* soft blue wash */
   --lf-on-accent:   #ffffff;
 
-  --lf-ink:         #3D0A1A;   /* deep wine ink */
-  --lf-muted:       #6E374A;
-  --lf-soft-ink:    #96667A;
-  --lf-line:        #F0D3DA;
-  --lf-bg:          #FDF5F6;   /* blush porcelain */
-  --lf-bg-alt:      #FCF0F2;   /* blush alt band */
+  --lf-ink:         #0a1533;   /* navy-black ink */
+  --lf-muted:       #3d4966;
+  --lf-soft-ink:    #6a7296;
+  --lf-line:        #dae0f7;
+  --lf-bg:          #f4f6ff;   /* cool blue porcelain */
+  --lf-bg-alt:      #eaedff;   /* blue wash alt band */
 
-  --lf-sky:         #B45309;   /* gold / amber accent */
-  --lf-sky-soft:    #F7E7D2;
-  --lf-sky-deep:    #9F1239;
+  --lf-sky:         #1b2fd9;   /* brand blue accent */
+  --lf-sky-soft:    #e2e7ff;
+  --lf-sky-deep:    #14205e;
 
-  --lf-ink-deep:    #3A0C1D;   /* deep wine hero surface */
-  --lf-ink-deep-2:  #55142B;
-  --lf-hi:          #FCD34D;   /* soft gold highlight */
+  --lf-ink-deep:    #081238;   /* deep navy hero surface */
+  --lf-ink-deep-2:  #0e1c50;
+  --lf-hi:          #9db0ff;   /* light blue highlight */
 }
 
 /* ───── layout primitives ───── */
