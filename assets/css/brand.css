@@ -12,13 +12,13 @@
    fully overridden here.
 
    Palette (name -> hex):
-     teal          #12B3A6   primary (barbicide-teal)
-     teal-deep     #0E8C82   pressed / gradient anchor
-     teal-bright   #2FD3C4   accent on dark surfaces / large text on dark
-     teal-soft     #B8ECE7   soft fills, faint borders
-     teal-tint     #E7F7F5   lightest wash (hover rows, chips)
-     petrol        #0E4D5C   deep accent (headings option, deep bg)
-     petrol-deep   #0A3A45   deepest petrol (footer)
+     teal          #1b2fd9   primary (barbicide-teal)
+     teal-deep     #1322a8   pressed / gradient anchor
+     teal-bright   #5b6eff   accent on dark surfaces / large text on dark
+     teal-soft     #cdd3fb   soft fills, faint borders
+     teal-tint     #eef1ff   lightest wash (hover rows, chips)
+     petrol        #14205e   deep accent (headings option, deep bg)
+     petrol-deep   #0b1444   deepest petrol (footer)
      ink           #0E1A1C   near-black editorial ink
      ink-2         #14262A   raised dark surface
      ink-3         #1E353B   borders on dark
@@ -37,13 +37,13 @@ html[data-theme="teal"],
 html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to teal */
 
   /* ---- raw palette ---- */
-  --teal:        #12B3A6;
-  --teal-deep:   #0E8C82;
-  --teal-bright: #2FD3C4;
-  --teal-soft:   #B8ECE7;
-  --teal-tint:   #E7F7F5;
-  --petrol:      #0E4D5C;
-  --petrol-deep: #0A3A45;
+  --teal:        #1b2fd9;
+  --teal-deep:   #1322a8;
+  --teal-bright: #5b6eff;
+  --teal-soft:   #cdd3fb;
+  --teal-tint:   #eef1ff;
+  --petrol:      #14205e;
+  --petrol-deep: #0b1444;
   --coral:       #E4572E;
 
   /* ---- ink / dark surfaces (petrol-tinted, not neutral black) ---- */
@@ -57,8 +57,8 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
      across a 5-tone BAND SYSTEM (see editorial.css .band--*). */
   --band-paper:  #F6F4EF;   /* warm porcelain — DEFAULT page + light bands */
   --band-sand:   #EFE8DA;   /* warm sand — alternate light band */
-  --band-tint:   #E3F3F0;   /* teal wash — brand-tinted band */
-  --band-petrol: #0E3A42;   /* deep petrol — dark band */
+  --band-tint:   #eaedff;   /* teal wash — brand-tinted band */
+  --band-petrol: #101a52;   /* deep petrol — dark band */
   --band-dark:   #12181A;   /* near-black — stats / proof band */
   --on-dark:        #F4F1EA;   /* body/headings on dark bands (warm off-white) */
   --on-dark-muted:  #B9C7C7;   /* secondary text on dark ~5:1 */
@@ -82,23 +82,23 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   /* ---- text roles (AA-checked on their intended surfaces) ---- */
   --text-dark:         #0E1A1C;   /* body ink on light */
   --text-mute:         #47585E;   /* secondary on light ~7:1 */
-  --text-on-dark:      #EAF4F3;   /* body on ink/petrol */
-  --text-on-dark-mute: #9FC0BF;   /* secondary on dark ~4.7:1 */
+  --text-on-dark:      #eef1fb;   /* body on ink/petrol */
+  --text-on-dark-mute: #aab2d6;   /* secondary on dark ~4.7:1 */
   --line: #DCE5E8;                /* hairline dividers on light */
 
   /* ---- ACCENT MAPPING ----
      abi.edu keyed everything off --gold / --blue. We remap BOTH to
      barbicide-teal so no downstream rule keeps the gold/royal-blue. */
-  --gold:        #12B3A6;   /* primary accent -> teal */
-  --gold-bright: #2FD3C4;   /* accent on dark / large text on dark */
-  --gold-soft:   #B8ECE7;
+  --gold:        #1b2fd9;   /* primary accent -> teal */
+  --gold-bright: #5b6eff;   /* accent on dark / large text on dark */
+  --gold-soft:   #cdd3fb;
 
-  --blue:        #12B3A6;   /* landing.css primary -> teal */
-  --blue-dark:   #0E8C82;
-  --blue-deep:   #0A3A45;
-  --blue-light:  #E7F7F5;
-  --blue-bright: #2FD3C4;   /* accent on dark */
-  --blue-on-dark:#5FE0D3;   /* teal accent text on dark ~6:1 */
+  --blue:        #1b2fd9;   /* landing.css primary -> teal */
+  --blue-dark:   #1322a8;
+  --blue-deep:   #0b1444;
+  --blue-light:  #eef1ff;
+  --blue-bright: #5b6eff;   /* accent on dark */
+  --blue-on-dark:#9db0ff;   /* teal accent text on dark ~6:1 */
 
   --red: #E4572E;           /* secondary/warm accent -> coral (used sparingly) */
 
@@ -112,8 +112,8 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   --input-border: #CBD8DC;
 
   /* ---- footer (deep petrol, family resemblance to .edu's dark foot) ---- */
-  --foot-bg:     #0A3A45;
-  --foot-border: #145063;
+  --foot-bg:     #0b1444;
+  --foot-border: #1e2a70;
 
   /* ---- type (v3 EDITORIAL): Fraunces soft-serif for display headlines
      (warmth + authority), Inter for body/UI, JetBrains Mono for eyebrows,
@@ -128,7 +128,7 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   /* ---- geometry / depth (softer, editorial) ---- */
   --max-w: 1180px;
   --radius: 14px;
-  --shadow: 0 22px 60px -26px rgba(14, 77, 92, .42);
+  --shadow: 0 22px 60px -26px rgba(20,32,94, .42);
 
   /* ---- SPACING SCALE (8pt base, editorial rhythm) ----
      Consumed by the shell (header/footer) and section padding utilities. */
@@ -146,9 +146,9 @@ html[data-theme="blue"] {           /* alias: any legacy blue theme resolves to 
   --shell-max: 1240px;               /* shared content max-width for shell */
   --radius-lg: 20px;
   --radius-pill: 999px;
-  --shadow-sm: 0 2px 8px rgba(14, 77, 92, .08);
-  --shadow-md: 0 10px 30px -12px rgba(14, 77, 92, .22);
-  --shadow-lg: 0 24px 60px -22px rgba(14, 77, 92, .34);
+  --shadow-sm: 0 2px 8px rgba(20,32,94, .08);
+  --shadow-md: 0 10px 30px -12px rgba(20,32,94, .22);
+  --shadow-lg: 0 24px 60px -22px rgba(20,32,94, .34);
 }
 
 /* ============================================================

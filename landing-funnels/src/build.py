@@ -890,7 +890,7 @@ def page_head(p):
         "lang": p["lang"], "title": h(p["title"]), "desc": h(p["desc"]),
         "canonical": h(canonical), "en_url": h(en_url), "es_url": h(es_url),
         "site": SITE, "oglocale": "es_US" if es else "en_US", "cssv": CSS_V,
-        "theme_color": p.get("theme_color", "#0E4D5C"),
+        "theme_color": p.get("theme_color", "#14205e"),
         "ld_scripts": "".join(
             '<script type="application/ld+json">%s</script>\n' % json.dumps(b, ensure_ascii=False)
             for b in ld_blocks

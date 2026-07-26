@@ -51,7 +51,7 @@ PAGES = [
         "alt":  "500-hours-master-barber-program-landing-page/spanish",
         "phone": ("EN", "(212) 290-2289", "+12122902289"),
         "theme_class": "lf-page--mhtn-en",
-        "theme_color": "#0E4D5C",
+        "theme_color": "#14205e",
         "title": "500-Hour Master Barber Program — Manhattan | American Barber Institute",
         "desc":  "Become a licensed Barber in as little as 4 months at ABI's Manhattan campus (48 West 39th Street). Hands-on training, full NY State Board Exam prep, weekly payment plans and job placement.",
         "promo_strip": "Start your barber journey today for only $150 per week*",

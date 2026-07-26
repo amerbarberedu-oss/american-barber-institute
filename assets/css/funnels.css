@@ -191,7 +191,7 @@ body.lf-page {
 
 /* ── 1 · Manhattan EN — TEAL / PETROL ───────────────────────────────── */
 body.lf-page--mhtn-en {
-  --lf-accent:      #0E4D5C;   /* deep petrol-teal primary */
+  --lf-accent:      #14205e;   /* deep petrol-teal primary */
   --lf-accent-dark: #093843;   /* darker for gradients / hover */
   --lf-accent-soft: #DCF1EF;   /* soft teal wash */
   --lf-on-accent:   #ffffff;
@@ -201,11 +201,11 @@ body.lf-page--mhtn-en {
   --lf-soft-ink:    #5E7C82;
   --lf-line:        #CFE6E4;
   --lf-bg:          #F2FAF8;   /* warm-teal porcelain */
-  --lf-bg-alt:      #E3F3F0;   /* teal wash alt band */
+  --lf-bg-alt:      #eaedff;   /* teal wash alt band */
 
-  --lf-sky:         #12B3A6;   /* bright teal accent */
+  --lf-sky:         #1b2fd9;   /* bright teal accent */
   --lf-sky-soft:    #DAF4F0;
-  --lf-sky-deep:    #0E4D5C;
+  --lf-sky-deep:    #14205e;
 
   --lf-ink-deep:    #062A33;   /* deep petrol hero surface */
   --lf-ink-deep-2:  #0C3B45;
@@ -1288,7 +1288,7 @@ section.hx-features{background:#fff!important;padding:1.375rem 0!important;borde
     padding:1.75rem clamp(1.4rem,5vw,2rem) 2rem}
   #content .hx .hx-h1 .hx-l1,#content .hx .hx-h1 .hx-l2{font-size:clamp(1.75rem,6vw,1.95rem);text-shadow:0 2px 16px rgba(0,0,0,.65)}
   #content .hx .hx-h1 .hx-l1{color:#fff}
-  #content .hx .hx-h1 .hx-l2{color:#2FD3C4!important}
+  #content .hx .hx-h1 .hx-l2{color:#5b6eff!important}
   #content .hx .hx-h1 .hx-script{font-size:clamp(1.1rem,4vw,1.25rem);text-shadow:0 2px 14px rgba(0,0,0,.65);color:#fff}
   #content .hx .hx-sub{font-size:1.03rem;max-width:330px;text-shadow:none;color:var(--steel-600)}
   #content .hx .hx-sub b{color:var(--teal-deep)!important}
@@ -1532,7 +1532,7 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
    replaces the old static .lf-gallery grid (client 2026-07-08: creative,
    not a stock-photo grid) ── */
 .lf-floor__head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.lf-floor__see{white-space:nowrap;font-weight:700;color:var(--lf-accent-deep,#0E4D5C);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.lf-floor__see{white-space:nowrap;font-weight:700;color:var(--lf-accent-deep,#14205e);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
 .lf-floor__track{display:flex;gap:1rem;overflow-x:auto;padding:.5rem .25rem 1rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .lf-floor__track::-webkit-scrollbar{display:none}
 .lf-floor__card{flex:0 0 auto;width:200px;aspect-ratio:3/4;border-radius:14px;overflow:hidden;position:relative;scroll-snap-align:start;box-shadow:0 8px 24px rgba(15,20,32,.12);transition:transform .25s ease,box-shadow .25s ease;background:#111;display:block}
@@ -1541,10 +1541,10 @@ a.lf-contact__val:hover { color: var(--lf-accent-dark); }
 .lf-floor__card:nth-child(3n){transform:rotate(-1deg)}
 .lf-floor__card:hover{transform:rotate(0) translateY(-6px) scale(1.03);box-shadow:0 16px 36px rgba(15,20,32,.22);z-index:2}
 .lf-floor__card img,.lf-floor__card video{width:100%;height:100%;object-fit:cover;display:block}
-.lf-floor__card--video{border:2px solid var(--lf-accent-bright,#28C7B8)}
+.lf-floor__card--video{border:2px solid var(--lf-accent-bright,#5b6eff)}
 .lf-floor__play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,20,20,.18);pointer-events:none}
 .lf-floor__play svg{width:38px;height:38px;fill:#fff;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
-.lf-floor__card--end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(150deg,var(--lf-accent-deep,#0E4D5C),var(--lf-accent,#146B78));color:#fff;text-decoration:none;text-align:center;padding:1rem;font-weight:700}
+.lf-floor__card--end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(150deg,var(--lf-accent-deep,#14205e),var(--lf-accent,#1b2fd9));color:#fff;text-decoration:none;text-align:center;padding:1rem;font-weight:700}
 .lf-floor__card--end svg{width:26px;height:26px}
 @media (max-width:640px){.lf-floor__card{width:150px}}
 

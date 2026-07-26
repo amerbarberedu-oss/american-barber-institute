@@ -13,10 +13,10 @@
    Inline var fallbacks pulled from brand.css so this file is standalone.
    ═════════════════════════════════════════════════════════════════════════ */
 :root{
-  --teal:        #12B3A6;
-  --teal-deep:   #0E8C82;
-  --teal-tint:   #E7F7F5;
-  --teal-soft:   #B8ECE7;
+  --teal:        #1b2fd9;
+  --teal-deep:   #1322a8;
+  --teal-tint:   #eef1ff;
+  --teal-soft:   #cdd3fb;
   --ink:         #0E1A1C;
   --line:        #DCE5E8;
   --steel-600:   #47585E;
@@ -25,7 +25,7 @@
   --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
   --shell-max: 1240px;
   --radius-pill: 999px;
-  --shadow-lg: 0 24px 60px -22px rgba(14, 77, 92, .34);
+  --shadow-lg: 0 24px 60px -22px rgba(20,32,94, .34);
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 /* Ensure the shell always renders on top of any absolute landing content */
@@ -36,7 +36,7 @@ body.shell2 .mhx,
 body.shell2 .hdr{display:none!important}
 
 /* Kill the animated logo "spin"/wobble — hold a clean static frame, aligned. */
-body.shell2{--sh-teal:var(--teal,#12B3A6);--sh-teal-deep:var(--teal-deep,#0E8C82);
+body.shell2{--sh-teal:var(--teal,#1b2fd9);--sh-teal-deep:var(--teal-deep,#1322a8);
   --sh-ink:var(--ink,#0E1A1C);--sh-line:var(--line,#DCE5E8);--sh-mute:var(--steel-600,#47585E)}
 
 /* ── HEADER — one unified row: logo, phones, language toggle ───────────
@@ -45,7 +45,7 @@ body.shell2{--sh-teal:var(--teal,#12B3A6);--sh-teal-deep:var(--teal-deep,#0E8C82
    phones on line 2 — via `order` + a forced flex-basis:100% on phones. */
 body.shell2 .hdr2{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);
   backdrop-filter:blur(14px) saturate(1.25);-webkit-backdrop-filter:blur(14px) saturate(1.25);
-  border-bottom:1px solid var(--sh-line);box-shadow:0 1px 0 rgba(14,77,92,.04);
+  border-bottom:1px solid var(--sh-line);box-shadow:0 1px 0 rgba(20,32,94,.04);
   max-width:100%}
 body.shell2 .hdr2-in{width:min(var(--shell-max,1240px),94%);margin-inline:auto;
   display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);
@@ -88,7 +88,7 @@ body.shell2 .seg{position:relative;display:inline-flex;align-items:center;
    active segment, whatever the label lengths are. */
 body.shell2 .seg-glider{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);
   border-radius:var(--radius-pill,999px);background:#fff;
-  box-shadow:0 2px 8px rgba(14,77,92,.28);
+  box-shadow:0 2px 8px rgba(20,32,94,.28);
   transition:transform .28s cubic-bezier(.4,.9,.3,1);z-index:0}
 body.shell2 .seg[data-active="1"] .seg-glider{transform:translateX(calc(100% + 3px))}
 /* Equal-width options → the 50% glider lands precisely on each (no clipping). */
@@ -109,7 +109,7 @@ body.shell2 .seg-lang{min-width:0}
 body.shell2 .hdr2-lang .seg{background:var(--paper-2,#F2F7F8);
   border:1px solid var(--sh-line,#DCE5E8)}
 body.shell2 .hdr2-lang .seg-glider{background:var(--lf-accent,var(--sh-teal));
-  box-shadow:0 2px 8px rgba(14,77,92,.18)}
+  box-shadow:0 2px 8px rgba(20,32,94,.18)}
 body.shell2 .hdr2-lang .seg-opt{color:var(--sh-mute,#47585E)}
 body.shell2 .hdr2-lang .seg-opt.is-active{color:#fff}
 
@@ -161,7 +161,7 @@ body.shell2{overflow-x:clip}
 }
 
 /* ══════════ FOOTER 2.0 ══════════ */
-body.shell2 .site2{background:var(--foot-bg,#0A3A45);color:var(--text-on-dark,#EAF4F3)}
+body.shell2 .site2{background:var(--foot-bg,#0b1444);color:var(--text-on-dark,#eef1fb)}
 body.shell2 .foot2-cta{background:linear-gradient(115deg,var(--sh-teal-deep) 0%,var(--sh-teal) 100%);
   color:#fff;text-align:center;padding:var(--sp-8) var(--sp-4)}
 body.shell2 .foot2-kicker{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
@@ -178,12 +178,12 @@ body.shell2 .ftr-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;
 body.shell2 .foot2-brand{max-width:34ch}
 body.shell2 .foot-name{font-family:var(--font-display);font-weight:800;font-size:1.35rem;
   letter-spacing:-.01em;color:#fff;margin:0 0 var(--sp-3)}
-body.shell2 .foot2-blurb{color:var(--text-on-dark-mute,#9FC0BF);font-size:.92rem;line-height:1.6;margin:0}
+body.shell2 .foot2-blurb{color:var(--text-on-dark-mute,#aab2d6);font-size:.92rem;line-height:1.6;margin:0}
 body.shell2 .site2 h4{font-family:var(--font-display);color:#fff;text-transform:uppercase;
   letter-spacing:.12em;font-size:.8rem;font-weight:700;margin:0 0 var(--sp-4)}
 body.shell2 .site2 ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--sp-3)}
-body.shell2 .site2 a{color:var(--text-on-dark-mute,#9FC0BF);text-decoration:none;transition:color .16s ease}
-body.shell2 .site2 a:hover{color:var(--teal-bright,#2FD3C4)}
+body.shell2 .site2 a{color:var(--text-on-dark-mute,#aab2d6);text-decoration:none;transition:color .16s ease}
+body.shell2 .site2 a:hover{color:var(--teal-bright,#5b6eff)}
 body.shell2 .foot2-visit{gap:var(--sp-4)}
 body.shell2 .foot2-loc{display:flex;flex-direction:column;gap:2px}
 body.shell2 .foot2-loc b{color:#fff;font-size:.86rem;letter-spacing:.04em;text-transform:uppercase}
@@ -196,9 +196,9 @@ body.shell2 .socials a{display:inline-flex;align-items:center;justify-content:ce
   transition:transform .2s cubic-bezier(.2,.7,.2,1),background .2s ease}
 body.shell2 .socials a svg{width:19px;height:19px}
 body.shell2 .socials a:hover{transform:translateY(-3px) scale(1.1);background:var(--sh-teal)}
-body.shell2 .foot-legal{border-top:1px solid var(--foot-border,#145063);padding:var(--sp-5) 0;font-size:.78rem}
+body.shell2 .foot-legal{border-top:1px solid var(--foot-border,#1e2a70);padding:var(--sp-5) 0;font-size:.78rem}
 body.shell2 .foot-legal .wrap{display:flex;justify-content:space-between;align-items:center;
-  gap:var(--sp-4);flex-wrap:wrap;color:var(--text-on-dark-mute,#9FC0BF)}
+  gap:var(--sp-4);flex-wrap:wrap;color:var(--text-on-dark-mute,#aab2d6)}
 /* Reserve room below the last footer line for the fixed sticky mobile CTA
    bar (.lf-mcta, in funnels.css) so it never sits on top of it (audit
    2026-07-16 — same fix as the main site's landing.css). */

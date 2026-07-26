@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=300">
-<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=300">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=300">
-<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=300">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=310">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=310">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=310">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=310">
 <script src="{root}assets/js/analytics.js?v=200" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=300">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=300">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=310">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=310">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -1664,7 +1664,7 @@ ES_META.update({
                                                  "Cuánto ganan los barberos en Nueva York en 2026: una guía de ingresos por etapa de carrera, de recién graduado a dueño de barbería."),
 })
 # Blog posts get an auto-generated ES title/desc (translation deferred).
-ES_BANNER = ('<div style="background:linear-gradient(90deg,#0E8C82,#12B3A6);color:#fff;'
+ES_BANNER = ('<div style="background:linear-gradient(90deg,#1322a8,#1b2fd9);color:#fff;'
              'padding:.65rem 1rem;text-align:center;font-size:.92rem;font-weight:600;'
              'letter-spacing:.01em">Traducción completa en español próximamente — '
              'contenido en inglés a continuación. '

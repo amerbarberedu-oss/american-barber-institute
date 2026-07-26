@@ -12,22 +12,22 @@
   --ink-3: #1E353B;        /* borders on dark */
   --paper: #ffffff;        /* base white */
   --paper-2: #F2F7F8;      /* deeper cool wash */
-  --gold: #12B3A6;         /* brand accent -> barbicide-teal */
-  --gold-bright: #2FD3C4;  /* hover / large text on dark */
-  --gold-soft: #B8ECE7;
+  --gold: #1b2fd9;         /* brand accent -> barbicide-teal */
+  --gold-bright: #5b6eff;  /* hover / large text on dark */
+  --gold-soft: #cdd3fb;
   --red: #E4572E;          /* secondary/warm accent (coral), sparing */
-  --blue: #12B3A6;         /* -> teal (kept for legacy selectors) */
+  --blue: #1b2fd9;         /* -> teal (kept for legacy selectors) */
   --text-dark: #0E1A1C;
   --text-mute: #47585E;
-  --text-on-dark: #EAF4F3;
-  --text-on-dark-mute: #9FC0BF;
+  --text-on-dark: #eef1fb;
+  --text-on-dark-mute: #aab2d6;
   --on-accent: #ffffff;    /* text on accent-colored surfaces */
   --card-bg: #fff;
   --card-border: #DCE5E8;
   --tag-border: #DCE5E8;
   --input-border: #CBD8DC;
-  --foot-bg: #0A3A45;      /* deep petrol */
-  --foot-border: #145063;
+  --foot-bg: #0b1444;      /* deep petrol */
+  --foot-border: #1e2a70;
 
   /* Type — Inter body (family resemblance to .edu); grotesk display.
      No external fonts (CSP-blocked): system/Inter stack only. */
@@ -37,7 +37,7 @@
   /* Rhythm */
   --max-w: 1180px;
   --radius: 14px;
-  --shadow: 0 22px 60px -26px rgba(14, 77, 92, .42);
+  --shadow: 0 22px 60px -26px rgba(20,32,94, .42);
   --pad-section: clamp(64px, 9vw, 120px);
 }
 
