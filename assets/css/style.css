@@ -44,50 +44,8 @@
 /* ============================================================
    THEMES — switchable via data-theme on <html>
    1. midnight (default, above) — charcoal & gold
-   2. classic  — vintage Americana: navy, barber red & cream
-   3. emerald  — gentleman's lounge: deep green & brass
-   4. noir     — monochrome black & crimson
+   2. noir     — monochrome black & crimson
    ============================================================ */
-
-html[data-theme="classic"] {
-  --ink: #1a2433;
-  --ink-2: #223047;
-  --ink-3: #31415d;
-  --paper: #fbf7ee;
-  --paper-2: #f3ecdb;
-  --gold: #b3322e;
-  --gold-bright: #e2554c;
-  --gold-soft: #f3b9b3;
-  --red: #27548d;
-  --blue: #27548d;
-  --text-dark: #222a37;
-  --on-accent: #ffffff;
-  --card-border: #e9e0cd;
-  --tag-border: #e4dac4;
-  --input-border: #d6cdb8;
-  --foot-bg: #131b27;
-  --foot-border: #243248;
-}
-
-html[data-theme="emerald"] {
-  --ink: #0e1f19;
-  --ink-2: #162a21;
-  --ink-3: #25392e;
-  --paper: #f3f0e7;
-  --paper-2: #e9e3d1;
-  --gold: #ab883a;
-  --gold-bright: #cfa84f;
-  --gold-soft: #e8d49a;
-  --red: #8c5128;
-  --blue: #2a594d;
-  --text-dark: #1d2420;
-  --on-accent: #14110a;
-  --card-border: #e2dcc8;
-  --tag-border: #ddd6bf;
-  --input-border: #d2cab2;
-  --foot-bg: #0a1711;
-  --foot-border: #1d2f25;
-}
 
 html[data-theme="noir"] {
   --ink: #0b0b0c;

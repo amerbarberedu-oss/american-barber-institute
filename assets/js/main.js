@@ -5,7 +5,7 @@
   document.documentElement.classList.add('js');
 
   /* ---------- Theme init (clicks handled by landing.js .tdot) ---------- */
-  var THEMES = ['midnight', 'classic', 'emerald', 'noir'];
+  var THEMES = ['midnight', 'noir'];
   var saved = null;
   try { if (localStorage.getItem('abi-theme-user')) saved = localStorage.getItem('abi-theme'); } catch (e) {}
   if (saved && THEMES.indexOf(saved) > -1) document.documentElement.setAttribute('data-theme', saved);

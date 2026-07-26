@@ -413,8 +413,6 @@ html.js .rv.in{opacity:1;transform:none}
 
 /* ── Multiple themes (synced with interior pages via abi-theme) ── */
 html[data-theme="midnight"]{--blue:#c9a227;--blue-dark:#a98b1f;--blue-light:#faf3dd;--on-accent:#14110a}
-html[data-theme="classic"]{--blue:#b22234;--blue-dark:#8e1b2a;--blue-light:#fdeef0;--on-accent:#ffffff}
-html[data-theme="emerald"]{--blue:#0e8f62;--blue-dark:#0a6e4b;--blue-light:#eaedff;--on-accent:#ffffff}
 html[data-theme="noir"]{--blue:#c8102e;--blue-dark:#a00d25;--blue-light:#fdecef;--on-accent:#ffffff}
 :root{--on-accent:#ffffff}
 .btn-blue,.mbar .mbar-cta,.btn-submit,.formcard-ico{color:var(--on-accent)}
@@ -426,7 +424,7 @@ html[data-theme="noir"]{--blue:#c8102e;--blue-dark:#a00d25;--blue-light:#fdecef;
 .tdot{width:15px;height:15px;border-radius:50%;border:2px solid rgba(255,255,255,.75);cursor:pointer;padding:0;transition:transform .15s}
 .tdot:hover{transform:scale(1.25)}
 .tdot[aria-pressed="true"]{outline:2px solid #fff;outline-offset:1px}
-.tdot-blue{background:#1b2fd9}.tdot-midnight{background:#c9a227}.tdot-classic{background:#b22234}.tdot-emerald{background:#0e8f62}.tdot-noir{background:#c8102e}
+.tdot-blue{background:#1b2fd9}.tdot-midnight{background:#c9a227}.tdot-noir{background:#c8102e}
 @media (max-width:840px){.theme-dots{display:none}}
 
 /* ── Glassmorphism ───────────────────────── */
