@@ -860,6 +860,25 @@ body.lf-page--brnx-es {
 .lf-plan { position: relative; display: flex; flex-direction: column; }
 .lf-plan__cta { margin-top: auto; }
 
+/* Approved 2026-07-29 repricing: cards now carry a cost breakdown, an
+   inclusion badge (Plan A only) and a plain-language math line. Mirrors the
+   main site's .tp-* card in src/build.py; data lives in src/data.py TUITION. */
+.lf-plan__rows { display: grid; gap: .45rem; margin: .2rem 0 .9rem; }
+.lf-plan__row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: .9rem; }
+.lf-plan__row-label { color: var(--lf-muted); }
+.lf-plan__row-val { color: var(--lf-ink); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.lf-plan__row--total { padding-top: .5rem; border-top: 1px solid var(--lf-line, rgba(0,0,0,.12)); }
+.lf-plan__row--total .lf-plan__row-label { color: var(--lf-ink); font-weight: 700; }
+.lf-plan__row--total .lf-plan__row-val { font-weight: 800; }
+.lf-plan__incl {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: .4em;
+  font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+  padding: .35rem .75rem; border-radius: var(--lf-r-pill); margin: 0 0 .7rem;
+  background: color-mix(in srgb, var(--lf-accent) 12%, transparent);
+  color: var(--lf-accent-dark); border: 1px solid color-mix(in srgb, var(--lf-accent) 30%, transparent);
+}
+.lf-plan__math { color: var(--lf-muted); font-size: .78rem; line-height: 1.5; margin: 0 0 1rem; }
+
 /* Tuition card hover polish — ports editorial.css's .ed-card/.tilt pattern
    (lift + shadow-depth increase) onto the existing mousemove tilt above
    (TILT_TARGETS in funnels.js already sets --rx/--ry on .lf-plan), so a

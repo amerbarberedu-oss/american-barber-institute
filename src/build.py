@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=313">
-<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=313">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=313">
-<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=313">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=314">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=314">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=314">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=314">
 <script src="{root}assets/js/analytics.js?v=200" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=313">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=313">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=314">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=314">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -120,7 +120,7 @@ TEMPLATE = """<!DOCTYPE html>
 {mbar}
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<script src="{root}assets/js/main.js?v=313" defer></script>
+<script src="{root}assets/js/main.js?v=314" defer></script>
 <script src="{root}assets/js/effects.js?v=301" defer></script>
 <script src="{root}assets/js/landing.js?v=300" defer></script>
 <script src="{root}assets/js/upgrade.js?v=300" defer></script>
@@ -640,7 +640,11 @@ def course_schema(name, desc, hours, weeks, price, campus="manhattan"):
         "name": name,
         "description": desc,
         "provider": {"@type": "TradeSchool", "name": "American Barber Institute", "url": SITE_URL},
-        "offers": {"@type": "Offer", "price": str(price), "priceCurrency": "USD", "category": "Tuition"},
+        # `price` may be a single figure or a list of ready-made Offer dicts
+        # (see plan_offers() — the 500-hour course has three plan prices).
+        "offers": (price if isinstance(price, list)
+                   else {"@type": "Offer", "price": str(price),
+                         "priceCurrency": "USD", "category": "Tuition"}),
         "hasCourseInstance": {
             "@type": "CourseInstance",
             "courseMode": "onsite",
@@ -819,6 +823,188 @@ BLOG_AUTHORS = {
 FAQ_SCHEMA_PLACEHOLDER = "FAQ_SCHEMA"
 VIDEO_SCHEMA_PLACEHOLDER = "GALLERY_VIDEO_SCHEMA"
 
+# ─── TUITION PLANS — SINGLE SOURCE OF TRUTH (client-approved 2026-07-29) ───
+# Every plan card, the comparison table, the Course JSON-LD offers and the
+# derived range copy below all come from this list. Change a price HERE and
+# nowhere else, then rebuild. Partials opt in with PLAN_CARDS_TOKEN /
+# PLAN_TABLE_TOKEN; build() asserts that no token survives unreplaced and that
+# every EN partial carrying a token has a matching es- override.
+PLANS = [
+    {"id": "a", "eyebrow": "Plan A", "feature": False,
+     "name":  {"en": "Morning", "es": "Mañana"},
+     "sched": {"en": "Mon&ndash;Fri &middot; 8:00 AM &ndash; 2:00 PM",
+               "es": "Lun&ndash;Vie &middot; 8:00 AM &ndash; 2:00 PM"},
+     "weeks": {"en": "~17 weeks (~4 months)", "es": "~17 semanas (~4 meses)"},
+     "down": 500, "n": 17, "weekly": 300,
+     "tuition": 5250, "total": 5600,          # tuition set ⇒ extra breakdown row
+     "badge": {"en": "Professional tool kit included",
+               "es": "Kit de herramientas profesional incluido"},
+     "math":  {"en": "$500 + 17 &times; $300 = $5,600",
+               "es": "$500 + 17 &times; $300 = $5,600"},
+     "cta":   {"en": "Enroll in morning", "es": "Inscríbete en la mañana"}},
+
+    {"id": "b", "eyebrow": "Plan B", "feature": True,   # keeps "Most Popular"
+     "name":  {"en": "Afternoon", "es": "Tarde"},
+     "sched": {"en": "Mon&ndash;Fri &middot; 2:00 PM &ndash; 8:00 PM",
+               "es": "Lun&ndash;Vie &middot; 2:00 PM &ndash; 8:00 PM"},
+     "weeks": {"en": "~17 weeks (~4 months)", "es": "~17 semanas (~4 meses)"},
+     "down": 200, "n": 17, "weekly": 200,
+     "tuition": None, "total": 3600, "badge": None,
+     "math":  {"en": "$200 + 17 &times; $200 = $3,600",
+               "es": "$200 + 17 &times; $200 = $3,600"},
+     "cta":   {"en": "Enroll in afternoon", "es": "Inscríbete en la tarde"}},
+
+    {"id": "c", "eyebrow": "Plan C", "feature": False,
+     "name":  {"en": "Weekend", "es": "Fin de Semana"},
+     "sched": {"en": "Sat &amp; Sun &middot; Flexible hours",
+               "es": "Sáb y Dom &middot; Horario flexible"},
+     "weeks": {"en": "~27 weeks (~6&ndash;7 months)", "es": "~27 semanas (~6&ndash;7 meses)"},
+     "down": 200, "n": 27, "weekly": 160,
+     "tuition": None, "total": 4600, "badge": None,
+     "math":  {"en": "$200 + 27 &times; $160 = $4,520 + final payment of $80 = $4,600",
+               "es": "$200 + 27 &times; $160 = $4,520 + pago final de $80 = $4,600"},
+     "cta":   {"en": "Enroll in weekend", "es": "Inscríbete el fin de semana"}},
+]
+
+def _m(n):
+    """3600 -> '$3,600'."""
+    return "${:,}".format(n)
+
+PLAN_LOW    = min(p["total"]  for p in PLANS)   # 3600 — the "tuition from" figure
+PLAN_HIGH   = max(p["total"]  for p in PLANS)   # 5600
+DOWN_LOW    = min(p["down"]   for p in PLANS)   # 200
+DOWN_HIGH   = max(p["down"]   for p in PLANS)   # 500
+WEEKLY_LOW  = min(p["weekly"] for p in PLANS)   # 160
+WEEKLY_HIGH = max(p["weekly"] for p in PLANS)   # 300
+
+PLAN_CARDS_TOKEN = "<!--ABI_PLAN_CARDS-->"
+PLAN_TABLE_TOKEN = "<!--ABI_PLAN_TABLE-->"
+
+# Card / table micro-copy. Kept next to PLANS so a new row can never ship
+# English-only into the Spanish twin.
+_PL = {
+    "down_suffix": {"en": "down payment",    "es": "de pago inicial"},
+    "weekly_row":  {"en": "Weekly payments", "es": "Pagos semanales"},
+    "tuition_row": {"en": "Tuition",         "es": "Matrícula"},
+    "total_row":   {"en": "Total cost",      "es": "Costo total"},
+    "popular":     {"en": "Most Popular",    "es": "Más Popular"},
+    "col_plan":    {"en": "Plan",            "es": "Plan"},
+    "col_sched":   {"en": "Schedule",        "es": "Horario"},
+    "col_total":   {"en": "Total cost",      "es": "Costo total"},
+    "col_pay":     {"en": "How you pay",     "es": "Cómo pagas"},
+    "toolkit_note": {"en": "$5,250 tuition + $350 tool kit",
+                     "es": "$5,250 de matrícula + $350 de kit"},
+    "down_word":   {"en": "down payment",    "es": "de pago inicial"},
+    "weekly_of":   {"en": "%d weekly payments of %s",
+                    "es": "%d pagos semanales de %s"},
+    "final_of":    {"en": "final payment of %s",
+                    "es": "pago final de %s"},
+}
+
+
+def plan_cards_html(lang="en", enroll_href="/contact"):
+    """The approved 3-up tuition plan grid.
+
+    Emits the GRID ONLY — each partial keeps its own <section class="band …">
+    and .section-head, so per-page band theming (paper/sand/petrol) still
+    applies and the surrounding copy stays page-specific.
+    """
+    if lang == "es":
+        enroll_href = "/spanish" + enroll_href
+    cards = []
+    for p in PLANS:
+        rows = [(_PL["weekly_row"][lang], "%d &times; %s" % (p["n"], _m(p["weekly"])))]
+        if p["tuition"]:
+            rows.append((_PL["tuition_row"][lang], _m(p["tuition"])))
+        body = "".join(
+            '<div class="tp-row"><span class="tp-row__label">%s</span>'
+            '<span class="tp-row__val">%s</span></div>' % (label, val)
+            for label, val in rows)
+        body += ('<div class="tp-row tp-row--total">'
+                 '<span class="tp-row__label">%s</span>'
+                 '<span class="tp-row__val">%s</span></div>'
+                 % (_PL["total_row"][lang], _m(p["total"])))
+        cards.append(
+            '<article class="tp-card tilt%s">' % (" tp-card--feature" if p["feature"] else "")
+            + ('<span class="tp-flag">%s</span>' % _PL["popular"][lang] if p["feature"] else "")
+            + '<p class="tp-eyebrow">%s</p>' % p["eyebrow"]
+            + '<h3 class="tp-name">%s</h3>' % p["name"][lang]
+            + '<p class="tp-sched">%s<br>%s</p>' % (p["sched"][lang], p["weeks"][lang])
+            + '<p class="tp-figure"><span class="tp-figure__amt">%s</span>'
+              '<span class="tp-figure__suffix">%s</span></p>'
+              % (_m(p["down"]), _PL["down_suffix"][lang])
+            + '<hr class="tp-rule">'
+            + '<div class="tp-rows">%s</div>' % body
+            + ('<p class="tp-badge">%s</p>' % p["badge"][lang] if p["badge"] else "")
+            + '<p class="tp-math">%s</p>' % p["math"][lang]
+            + '<a class="btn btn-gold tp-cta" href="%s">%s <span aria-hidden="true">&nearr;</span></a>'
+              % (enroll_href, p["cta"][lang])
+            + '</article>')
+    return '<div class="tp-grid reveal-stagger">%s</div>' % "".join(cards)
+
+
+def plan_terms_text(p, lang="en"):
+    """'$200 down payment + 17 weekly payments of $200' — used by the table
+    and available for prose. Adds the closing payment when the weekly
+    instalments don't land exactly on the total."""
+    parts = ["%s %s" % (_m(p["down"]), _PL["down_word"][lang]),
+             _PL["weekly_of"][lang] % (p["n"], _m(p["weekly"]))]
+    remainder = p["total"] - p["down"] - p["n"] * p["weekly"]
+    if remainder:
+        parts.append(_PL["final_of"][lang] % _m(remainder))
+    return " +<br>".join(parts)
+
+
+def plan_table_html(lang="en"):
+    """The 4-column plan comparison table on /tuition-and-funding.
+
+    Same PLANS source as the cards, so the two can never drift apart. Inline
+    styles are carried over verbatim from the hand-written table this replaces.
+    """
+    th = ("background:var(--teal-deep);color:#fff;text-align:left;padding:15px 18px;"
+          "font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase")
+    td = ("padding:15px 18px;border-top:1px solid var(--card-border);"
+          "vertical-align:top;line-height:1.5")
+    caption = {"en": "ABI tuition plans &mdash; 500-hour Master Barber program",
+               "es": "Planes de matrícula de ABI &mdash; programa de Barbero Maestro de 500 horas"}[lang]
+    rows = ""
+    for i, p in enumerate(PLANS):
+        total_cell = "<b>%s</b>" % _m(p["total"])
+        if p["tuition"]:
+            total_cell += ('<br><span style="font-size:.85rem;color:var(--text-mute)">%s</span>'
+                           % _PL["toolkit_note"][lang])
+        rows += ('<tr%s>'
+                 '<td style="%s"><b style="color:var(--teal-deep)">%s</b><br>%s</td>'
+                 '<td style="%s">%s<br>%s</td>'
+                 '<td style="%s">%s</td>'
+                 '<td style="%s">%s</td>'
+                 '</tr>'
+                 % (' style="background:var(--band-tint)"' if i % 2 else '',
+                    td, p["eyebrow"], p["name"][lang],
+                    td, p["sched"][lang], p["weeks"][lang],
+                    td, total_cell,
+                    td, plan_terms_text(p, lang)))
+    return ('<div class="reveal" style="overflow-x:auto">'
+            '<table style="width:100%%;border-collapse:separate;border-spacing:0;'
+            'background:var(--surface);border:1px solid var(--card-border);'
+            'border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);min-width:640px">'
+            '<caption style="caption-side:top;text-align:left;font-family:var(--font-mono);'
+            'font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);'
+            'padding:0 0 12px">%s</caption>'
+            '<thead><tr><th style="%s">%s</th><th style="%s">%s</th>'
+            '<th style="%s">%s</th><th style="%s">%s</th></tr></thead>'
+            '<tbody>%s</tbody></table></div>'
+            % (caption, th, _PL["col_plan"][lang], th, _PL["col_sched"][lang],
+               th, _PL["col_total"][lang], th, _PL["col_pay"][lang], rows))
+
+
+def plan_offers():
+    """Course JSON-LD offers — one Offer per plan, so search engines see the
+    real $3,600 floor instead of a single hardcoded figure."""
+    return [{"@type": "Offer", "price": str(p["total"]), "priceCurrency": "USD",
+             "category": "Tuition", "name": "%s — %s" % (p["eyebrow"], p["name"]["en"])}
+            for p in PLANS]
+
 PAGES = [
     # (output, partial, title, description, lang, extra_schema)
     ("about.html", "about.html",
@@ -879,15 +1065,15 @@ PAGES = [
      "en", []),
     ("programs/500-hour-master-barber.html", "program-500.html",
      "500-Hour Master Barber — Beginner to Licensed",
-     "First fade to licensed Master Barber in Manhattan: 500 hours of hands-on training in ~4 months, flexible schedules, from $4,600.",
+     "First fade to licensed Master Barber in Manhattan: 500 hours of hands-on training in ~4 months, flexible schedules, from $3,600.",
      "en", [course_schema("500 Hour Master Barber Program",
-        "500-hour NYS-licensed master barber training completed in about 4 months full-time: theory, practical work on real clients, State Board exam prep and job placement.", 500, 17, 5600),
+        "500-hour NYS-licensed master barber training completed in about 4 months full-time: theory, practical work on real clients, State Board exam prep and job placement.", 500, 17, plan_offers()),
         FAQ_SCHEMA_PLACEHOLDER]),
     ("programs/500-hour-master-barber-bronx.html", "program-500-bronx.html",
      "Become a Licensed Barber in the Bronx — The 500-Hour Path",
      "Your transformation at ABI's Bronx campus: 500 hours of hands-on, bilingual training in about 4 months, flexible schedules, payment plans and job-placement support.",
      "en", [course_schema("500 Hour Master Barber Program — Bronx",
-        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, 5600, campus="bronx"),
+        "500-hour NYS-licensed master barber training at the Bronx campus, completed in about 4 months full-time, with bilingual instruction, State Board exam prep and job placement.", 500, 17, plan_offers(), campus="bronx"),
         FAQ_SCHEMA_PLACEHOLDER]),
     ("programs/50-hour-barber-refresher.html", "program-50.html",
      "50-Hour Barber Refresher — Get Board-Ready Fast",
@@ -910,7 +1096,7 @@ PAGES = [
     # sitemap.xml, and interlinked among themselves only.
     ("financial-aid.html", "page-financial-aid.html",
      "How Do People Pay for Barber School? Funding Options",
-     "How students fund barber training: ACCES-VR, GI Bill for veterans, and $150/week payment plans. Find the option that fits.",
+     "How students fund barber training: ACCES-VR, GI Bill for veterans, and $160/week payment plans. Find the option that fits.",
      "en", ["FAQ_SCHEMA"]),
     ("how-to-get-started.html", "page-how-to-get-started.html",
      "How to Start a Barber Career — Your First Steps",
@@ -982,43 +1168,43 @@ PAGES = [
     # enrollment-focused pages (these are informational / career-hub voice).
     ("barber-school-queens-ny.html", "location-queens.html",
      "Barber School Near Queens, NY — Your Career Starts Here",
-     "ABI is 30 min from Queens. NYS-licensed since 1996. 500-hour Master Barber training with $150/week plans. Tour the Manhattan campus today.",
+     "ABI is 30 min from Queens. NYS-licensed since 1996. 500-hour Master Barber training with $160/week plans. Tour the Manhattan campus today.",
      "en", []),
     ("barber-school-brooklyn-new-york.html", "location-brooklyn.html",
      "Barber School Near Brooklyn, NY — Start a Career",
-     "Minutes from Brooklyn by subway. ABI's NYS-licensed barber school has trained pros since 1996. 500-hour program, $150/week.",
+     "Minutes from Brooklyn by subway. ABI's NYS-licensed barber school has trained pros since 1996. 500-hour program, $160/week.",
      "en", []),
     ("barber-school-yonkers-new-york.html", "location-yonkers.html",
      "Barber School Near Yonkers, New York — Build a Real Career",
-     "ABI is one of the most highly regarded barber schools near Yonkers. Train at our Bronx campus at 121 Westchester Square — 500 hours, $150/week payment plans.",
+     "ABI is one of the most highly regarded barber schools near Yonkers. Train at our Bronx campus at 121 Westchester Square — 500 hours, $160/week payment plans.",
      "en", []),
     ("barber-school-westchester-ny.html", "location-westchester.html",
      "Barber School Near Westchester, NY — 4-Month Program",
-     "Westchester students train at ABI's Bronx campus. Licensed Master Barber in ~4 months, 500-hour NYS-approved program from $150/week.",
+     "Westchester students train at ABI's Bronx campus. Licensed Master Barber in ~4 months, 500-hour NYS-approved program from $160/week.",
      "en", []),
     ("barber-school-long-island-ny.html", "location-long-island.html",
      "Barber School Near Long Island, NY — Train in Manhattan",
-     "Take the LIRR to ABI's Manhattan campus and walk to class. 500-hour Master Barber program, $150/week payment plans, job placement — training barbers since 1996.",
+     "Take the LIRR to ABI's Manhattan campus and walk to class. 500-hour Master Barber program, $160/week payment plans, job placement — training barbers since 1996.",
      "en", []),
     ("barber-school-staten-island-ny.html", "location-staten-island.html",
      "Barber School Near Staten Island, NY — Own Your Future",
-     "Staten Island students: ABI's Manhattan campus is a straight ferry + walk commute. 500-hour Master Barber program in about 4 months, $150/week payment plans.",
+     "Staten Island students: ABI's Manhattan campus is a straight ferry + walk commute. 500-hour Master Barber program in about 4 months, $160/week payment plans.",
      "en", []),
     ("barber-school-mount-vernon-ny.html", "location-mount-vernon.html",
      "Barber School Near Mount Vernon, NY — Your Path to a License",
-     "Mount Vernon students: ABI's Bronx campus at Westchester Square is just over the county line. 500-hour Master Barber program, $150/week plans, job placement.",
+     "Mount Vernon students: ABI's Bronx campus at Westchester Square is just over the county line. 500-hour Master Barber program, $160/week plans, job placement.",
      "en", []),
     ("barber-school-port-chester-ny.html", "location-port-chester.html",
      "Barber School Near Port Chester, NY — Become a Master Barber",
-     "Port Chester students train at ABI's nearby Bronx campus. Fades, shaving, the Master Barber license — all in about 4 months with $150/week payment plans.",
+     "Port Chester students train at ABI's nearby Bronx campus. Fades, shaving, the Master Barber license — all in about 4 months with $160/week payment plans.",
      "en", []),
     ("barber-school-connecticut.html", "location-connecticut.html",
      "Barber School for Connecticut — Train in NY, Transfer",
-     "CT residents: earn a NY barber license in half the time and cost, then transfer via reciprocity. 500-hour program from $150/week.",
+     "CT residents: earn a NY barber license in half the time and cost, then transfer via reciprocity. 500-hour program from $160/week.",
      "en", []),
     ("barber-school-pennsylvania.html", "location-pennsylvania.html",
      "Barber School for Pennsylvania — License Transfer",
-     "Transfer your NY barber license to PA via reciprocity. Save ~$10,400 and 700 hours vs a full PA program. ABI guides the process.",
+     "Transfer your NY barber license to PA via reciprocity. Save ~$11,400 and 700 hours vs a full PA program. ABI guides the process.",
      "en", []),
 
     # Guides hub index + guide cluster (guides/<slug>.html).
@@ -1573,7 +1759,7 @@ ES_META = {
     'programs/bronx.html': ("Programas del campus del Bronx | American Barber Institute",
                             "Cada programa en nuestro campus del Bronx (121 Westchester Square, junto al tren 6): 500 horas de Barbero Maestro y 3 horas de Enfermedades Contagiosas. Aprobado por NYSED con planes de pago semanales e instrucción bilingüe."),
     'programs/500-hour-master-barber.html': ("El viaje de 500 horas — de principiante a licenciado",
-                                             "Lo que se necesita para pasar del primer fade a barbero maestro licenciado en nuestro campus de Manhattan: 500 horas prácticas en unos 4 meses, mañana, tarde o fin de semana, desde $4,600."),
+                                             "Lo que se necesita para pasar del primer fade a barbero maestro licenciado en nuestro campus de Manhattan: 500 horas prácticas en unos 4 meses, mañana, tarde o fin de semana, desde $3,600."),
     'programs/500-hour-master-barber-bronx.html': ("Conviértete en barbero licenciado en el Bronx — la ruta de 500 horas",
                                                    "Tu transformación en el campus del Bronx de ABI: 500 horas de entrenamiento bilingüe y práctico en unos 4 meses, horarios flexibles, planes de pago y apoyo de colocación laboral."),
     'programs/50-hour-barber-refresher.html': ("¿Ya licenciado? Cómo el Repaso de 50 horas te prepara para el examen",
@@ -1620,25 +1806,25 @@ ES_META = {
 ES_META.update({
     # ── Location pages (fixes duplicate-EN-title bug on /spanish/ twins) ──
     'barber-school-queens-ny.html': ("Escuela de Barbería cerca de Queens, NY | Tu Carrera",
-                                      "ABI está a 30 min de Queens. Con licencia de NY desde 1996. Maestro Barbero de 500 horas con planes de $150/semana. Visita el campus de Manhattan hoy."),
+                                      "ABI está a 30 min de Queens. Con licencia de NY desde 1996. Maestro Barbero de 500 horas con planes de $160/semana. Visita el campus de Manhattan hoy."),
     'barber-school-brooklyn-new-york.html': ("Escuela de Barbería cerca de Brooklyn, NY — Inicia tu Carrera",
-                                             "A minutos de Brooklyn en metro. La escuela de barbería de ABI, con licencia de NY, forma profesionales desde 1996. Programa de 500 horas, $150/semana."),
+                                             "A minutos de Brooklyn en metro. La escuela de barbería de ABI, con licencia de NY, forma profesionales desde 1996. Programa de 500 horas, $160/semana."),
     'barber-school-yonkers-new-york.html': ("Escuela de Barbería cerca de Yonkers, NY — Carrera Real",
-                                            "ABI es una de las escuelas de barbería más reconocidas cerca de Yonkers. Fórmate en el campus del Bronx: 500 horas y planes de pago desde $150/semana."),
+                                            "ABI es una de las escuelas de barbería más reconocidas cerca de Yonkers. Fórmate en el campus del Bronx: 500 horas y planes de pago desde $160/semana."),
     'barber-school-westchester-ny.html': ("Escuela de Barbería cerca de Westchester, NY — 4 Meses",
-                                          "Estudiantes de Westchester se forman en el campus del Bronx de ABI. Barbero Maestro con licencia en ~4 meses, programa de 500 horas desde $150/semana."),
+                                          "Estudiantes de Westchester se forman en el campus del Bronx de ABI. Barbero Maestro con licencia en ~4 meses, programa de 500 horas desde $160/semana."),
     'barber-school-long-island-ny.html': ("Escuela de Barbería en Manhattan cerca de Long Island, NY",
-                                          "Toma el LIRR al campus de ABI en Manhattan. Programa Master Barber de 500 horas, planes de pago de $150/semana y colocación laboral. Desde 1996."),
+                                          "Toma el LIRR al campus de ABI en Manhattan. Programa Master Barber de 500 horas, planes de pago de $160/semana y colocación laboral. Desde 1996."),
     'barber-school-staten-island-ny.html': ("Escuela de Barbería cerca de Staten Island, NY",
-                                            "Estudiantes de Staten Island: el campus de ABI en Manhattan queda a un ferry. Barbero Maestro de 500 horas en ~4 meses, planes de $150/semana."),
+                                            "Estudiantes de Staten Island: el campus de ABI en Manhattan queda a un ferry. Barbero Maestro de 500 horas en ~4 meses, planes de $160/semana."),
     'barber-school-mount-vernon-ny.html': ("Escuela de Barbería cerca de Mount Vernon, NY",
-                                           "Estudiantes de Mount Vernon: el campus del Bronx de ABI en Westchester Square está a minutos. Master Barber de 500 h, planes de $150/semana y colocación."),
+                                           "Estudiantes de Mount Vernon: el campus del Bronx de ABI en Westchester Square está a minutos. Master Barber de 500 h, planes de $160/semana y colocación."),
     'barber-school-port-chester-ny.html': ("Escuela de Barbería cerca de Port Chester, NY — Barbero Maestro",
-                                           "Estudiantes de Port Chester se forman en el campus del Bronx de ABI. Fades, afeitado y licencia de Barbero Maestro en ~4 meses; planes de $150/semana."),
+                                           "Estudiantes de Port Chester se forman en el campus del Bronx de ABI. Fades, afeitado y licencia de Barbero Maestro en ~4 meses; planes de $160/semana."),
     'barber-school-connecticut.html': ("Escuela de Barbería para Connecticut — Estudia en NY y Transfiere",
-                                       "Residentes de CT: obtén tu licencia de barbero de NY en mitad de tiempo y costo, luego transfiérela por reciprocidad. Programa de 500 horas desde $150/semana."),
+                                       "Residentes de CT: obtén tu licencia de barbero de NY en mitad de tiempo y costo, luego transfiérela por reciprocidad. Programa de 500 horas desde $160/semana."),
     'barber-school-pennsylvania.html': ("Escuela de Barbería para Pensilvania — Transferir Licencia",
-                                        "Transfiere tu licencia de barbero de NY a PA por reciprocidad. Ahorra ~$10,400 y 700 horas frente al programa completo de PA. ABI te guía en el proceso."),
+                                        "Transfiere tu licencia de barbero de NY a PA por reciprocidad. Ahorra ~$11,400 y 700 horas frente al programa completo de PA. ABI te guía en el proceso."),
     # ── Blog posts (upgrade from auto-generated to bespoke Spanish meta) ──
     'blog/why-should-i-go-to-barber-school.html': ("¿Vale la pena la escuela de barbería? | Blog ABI",
                                                    "¿Vale la pena la escuela de barbería? Consejos de carrera y perspectiva del sector desde una escuela de barbería de NYC enfocada en tu futuro laboral."),
@@ -1793,7 +1979,12 @@ def build():
                 .replace('<b data-d>0</b>', '<b data-d>%s</b>' % CD_D)
                 .replace('<b data-h>0</b>', '<b data-h>%s</b>' % CD_H)
                 .replace('<b data-m>0</b>', '<b data-m>%s</b>' % CD_M)
-                .replace('<b data-s>0</b>', '<b data-s>%s</b>' % CD_S))
+                .replace('<b data-s>0</b>', '<b data-s>%s</b>' % CD_S)
+                # Approved tuition plan cards / table — one source of truth in PLANS.
+                .replace(PLAN_CARDS_TOKEN, plan_cards_html('en'))
+                .replace(PLAN_TABLE_TOKEN, plan_table_html('en')))
+        assert PLAN_CARDS_TOKEN not in html and PLAN_TABLE_TOKEN not in html, \
+            'unreplaced plan token in %s' % out
         # 404 page must not be indexed by search engines.
         if out == '404.html':
             html = html.replace(
@@ -1942,7 +2133,12 @@ def build():
                     .replace('<b data-d>0</b>', '<b data-d>%s</b>' % CD_D)
                     .replace('<b data-h>0</b>', '<b data-h>%s</b>' % CD_H)
                     .replace('<b data-m>0</b>', '<b data-m>%s</b>' % CD_M)
-                    .replace('<b data-s>0</b>', '<b data-s>%s</b>' % CD_S))
+                    .replace('<b data-s>0</b>', '<b data-s>%s</b>' % CD_S)
+                    # Spanish plan cards / table — same PLANS, Spanish strings.
+                    .replace(PLAN_CARDS_TOKEN, plan_cards_html('es'))
+                    .replace(PLAN_TABLE_TOKEN, plan_table_html('es')))
+            assert PLAN_CARDS_TOKEN not in es_html and PLAN_TABLE_TOKEN not in es_html, \
+                'unreplaced plan token in spanish/%s' % out
             # ES 404 must also stay unindexed
             if out == '404.html':
                 es_html = es_html.replace(
@@ -1974,6 +2170,28 @@ def build():
             open(es_dest, 'w', encoding='utf-8').write(es_html)
             if out != '404.html':
                 written.append(es_out)
+
+    # ── GUARD: plan tokens must be present in matched EN/ES pairs ────────
+    # This repo's classic failure is an EN partial getting new prices while its
+    # es- override silently keeps the old ones. Every partial that opts into a
+    # plan token must have its twin opt in too, or the Spanish page keeps a
+    # stale hand-written price block. Fail the build rather than ship that.
+    def _tokened(prefix):
+        found = set()
+        for f in os.listdir(SRC):
+            if not f.endswith('.html') or not f.startswith(prefix):
+                continue
+            if prefix == '' and f.startswith('es-'):
+                continue
+            src_text = open(os.path.join(SRC, f), encoding='utf-8').read()
+            if PLAN_CARDS_TOKEN in src_text or PLAN_TABLE_TOKEN in src_text:
+                found.add(f[len(prefix):])
+        return found
+    _en_tok, _es_tok = _tokened(''), _tokened('es-')
+    if _en_tok != _es_tok:
+        raise SystemExit('  !! plan-token EN/ES mismatch — no twin for: %s'
+                         % sorted(_en_tok ^ _es_tok))
+
     # sitemap — adds priority/changefreq hints and xhtml:link hreflang annotations
     # so Google indexes the EN ↔ ES home variants as one logical URL.
     # Both hand-crafted ES twins (spanish/index.html, spanish/bronx.html) were

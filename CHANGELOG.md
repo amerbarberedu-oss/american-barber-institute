@@ -5,6 +5,48 @@ Format follows [Keep a Changelog](https://keepachangelog.com/). Versions stay in
 the **0.x** range throughout the upgrade cycle; the move to **1.0.0** happens only
 when the client approves the official production release.
 
+## [0.6.0] — 2026-07-29
+
+Client-approved repricing of the 500-hour Master Barber program, plus a redesign
+of every tuition plan card to match the approved mockup.
+
+### Changed
+- **New tuition, site-wide.** Plan B (afternoon) drops **$4,600 → $3,600**;
+  Plan C (weekend) stays $4,600 but moves to **$200 down + 27 × $160 + a final
+  $80** and to **flexible weekend hours** (was Sat–Sun 9 AM–7 PM); Plan A
+  (morning) stays $5,600, now shown as **$5,250 tuition + a $350 professional
+  tool kit**. Down payments are now **$200–$500** (was $500–$550) and the
+  lowest weekly payment is **$160** (was $150).
+- **Redesigned plan cards** (`.tp-*` in `assets/css/editorial.css`) — plan
+  eyebrow, schedule, a large down-payment figure, a labelled cost breakdown
+  (weekly / tuition / total), an inclusion badge on Plan A, a plain-language
+  math line and a per-plan **Enroll** CTA to `/contact`. Replaces four
+  incompatible hand-written card layouts with one component.
+- **The `$100 registration fee` is disclosed once**, under each plan grid,
+  instead of being repeated inline in 33 places.
+- Derived copy updated everywhere: "from $4,600" → "from $3,600",
+  "$4,600–$5,600" → "$3,600–$5,600", "$150/week" → "$160/week", and every
+  "Plans B & C" claim rewritten — B and C are no longer the same price.
+  `barber-school-pennsylvania` reciprocity arithmetic recomputed
+  ($3,600 / ~$7.20 per hour / $11,400 saved / 76% less).
+  `llms.txt` and the dormant Alex chatbot prompt repriced too.
+
+### Added
+- **One source of truth for tuition.** `PLANS` + `plan_cards_html()`,
+  `plan_table_html()` and `plan_offers()` in `src/build.py`; partials opt in
+  with `<!--ABI_PLAN_CARDS-->` / `<!--ABI_PLAN_TABLE-->`. The build now
+  hard-fails on an unreplaced token or on an EN partial whose `es-` override
+  is missing the same token. Course JSON-LD emits three `Offer` objects
+  (5600 / 3600 / 4600) instead of one hardcoded 5600.
+
+### Fixed
+- `landing-funnels/src/build.py` could not run at all — an unquoted `<div>`
+  line in `page_tail()` was a committed `SyntaxError`, and `strftime("%-d")`
+  is POSIX-only and raised on Windows. Both fixed; the funnel build works
+  again on any platform.
+- `src/build_landing_pages.py` (dormant, `LOCATIONS = []`) flagged in its
+  docstring as carrying stale pricing so it can't mislead later.
+
 ## [0.5.0] — 2026-07-24
 
 Everything shipped since 0.4.0 (2026-07-16), consolidating three parallel

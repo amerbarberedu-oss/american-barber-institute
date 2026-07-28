@@ -2,6 +2,12 @@
 # -*- coding: utf-8 -*-
 """ABI landing page generator — one template, 17 pages (EN/ES, multi-location).
 Run: python3 build.py   → writes pages next to this script.
+
+DORMANT — STALE PRICING. LOCATIONS is empty (see below), so this script emits
+zero pages and was deliberately skipped in the 2026-07-29 repricing. Every
+tuition figure below still shows the OLD prices ($4,600 Plan B, $550 down,
+$150/week). Before ever re-enabling this generator, reprice it against PLANS in
+src/build.py, which is the single source of truth for tuition.
 """
 import os, json, datetime, re
 

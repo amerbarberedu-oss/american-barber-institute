@@ -188,7 +188,10 @@ def hero(p):
     tour_label = "Book a Campus Tour" if not es else "Reserva un Tour del Campus"
     next_label = "Next Starting Date:" if not es else "Próxima Fecha de Inicio:"
     next_sub = "New classes begin the first Monday of each month." if not es else "Las nuevas clases comienzan el primer lunes de cada mes."
-    next_date = next_start().strftime("%A, %B %-d, %Y")
+    # %-d (no zero-pad) is a POSIX-only strftime extension and raises on
+    # Windows — build the day number separately so this runs on any platform.
+    _ns = next_start()
+    next_date = "%s %d, %d" % (_ns.strftime("%A, %B"), _ns.day, _ns.year)
     days_label = "Days" if not es else "Días"
     hours_label = "Hours" if not es else "Horas"
     min_label = "Min" if not es else "Min"
@@ -419,18 +422,32 @@ def section_tuition(p):
     note = D.TUITION_NOTE[p["lang"]]
     popular = "Más Popular" if p["lang"] == "es" else "Most Popular"
     cards = ""
+    # Row labels for the cost breakdown (2026-07-29 repricing — the card now
+    # shows down payment / weekly / tuition / total the way the main site's
+    # .tp-* card does, instead of one price plus a run-on terms line).
+    L = {"en": ("Weekly payments", "Tuition", "Total cost", "down payment"),
+         "es": ("Pagos semanales", "Matrícula", "Costo total", "de pago inicial")}[p["lang"]]
     for pl in D.TUITION[p["lang"]]:
         cls = "lf-plan lf-rv" + (" lf-plan--feature" if pl["feature"] else "")
         badge = ('<span class="lf-plan__badge">%s</span>' % popular) if pl["feature"] else ""
+        rows = '<div class="lf-plan__row"><span class="lf-plan__row-label">%s</span>' \
+               '<span class="lf-plan__row-val">%s</span></div>' % (L[0], h(pl["weekly"]))
+        if pl.get("tuition"):
+            rows += '<div class="lf-plan__row"><span class="lf-plan__row-label">%s</span>' \
+                    '<span class="lf-plan__row-val">%s</span></div>' % (L[1], h(pl["tuition"]))
+        rows += '<div class="lf-plan__row lf-plan__row--total"><span class="lf-plan__row-label">%s</span>' \
+                '<span class="lf-plan__row-val">%s</span></div>' % (L[2], h(pl["total"]))
+        incl = ('<span class="lf-plan__incl">%s</span>' % h(pl["badge"])) if pl.get("badge") else ""
         cards += (
             '<div class="%s">%s<div class="lf-plan__name">%s</div>'
             '<div class="lf-plan__sched">%s</div>'
             '<div class="lf-plan__hours">%s</div>'
-            '<div class="lf-plan__price">%s</div>'
-            '<div class="lf-plan__terms">%s</div>'
+            '<div class="lf-plan__price">%s <span class="lf-plan__per">%s</span></div>'
+            '<div class="lf-plan__rows">%s</div>'
+            '%s<p class="lf-plan__math">%s</p>'
             '<a class="lf-btn lf-btn--primary lf-plan__cta" href="#reserve">%s</a></div>'
             % (cls, badge, h(pl["name"]), h(pl["sched"]), h(pl["hours"]),
-               h(pl["price"]), h(pl["terms"]),
+               h(pl["down"]), h(L[3]), rows, incl, h(pl["math"]),
                "¡Hagámoslo!" if p["lang"] == "es" else "Let's Do It")
         )
     return ('<section class="lf-section lf-section--depth">'
@@ -746,7 +763,7 @@ def page_head(p):
         "logo": SITE + LOGO_SRC,
         "description": p["desc"],
         "foundingDate": "1996",
-        "priceRange": "$4,600–$5,600",
+        "priceRange": "$3,600–$5,600",
         "sameAs": SAME_AS,
         "address": {"@type": "PostalAddress",
                     "streetAddress": p["campus"]["addr_full_en"].split(",")[0].strip(),
@@ -801,7 +818,7 @@ def page_head(p):
         }],
         "offers": [
             {"@type": "Offer", "name": "Plan A — Morning",   "price": "5600", "priceCurrency": "USD", "category": "Tuition"},
-            {"@type": "Offer", "name": "Plan B — Afternoon", "price": "4600", "priceCurrency": "USD", "category": "Tuition"},
+            {"@type": "Offer", "name": "Plan B — Afternoon", "price": "3600", "priceCurrency": "USD", "category": "Tuition"},
             {"@type": "Offer", "name": "Plan C — Weekend",   "price": "4600", "priceCurrency": "USD", "category": "Tuition"},
         ]
     }
@@ -941,8 +958,8 @@ def page_tail():
         '<script src="/assets/js/funnels.js?v=%s" defer></script>\n'
         '<!-- GHL chat widget (VIBE AI). Alex chatbot preserved in /assets/js/chatbot.js '
         '— to restore Alex: delete this block and re-add the chatbot.js script tag. -->\n'
-        ''
-<div data-chat-widget data-widget-id="6a6359f1b92307bb1e2abd87" data-location-id="wfpdq6XX5uIZUiLrqCSo"></div>
+        '<div data-chat-widget data-widget-id="6a6359f1b92307bb1e2abd87" '
+        'data-location-id="wfpdq6XX5uIZUiLrqCSo"></div>\n'
         '<script src="https://widgets.leadconnectorhq.com/loader.js" '
         'data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" '
         'data-widget-id="6a6359f1b92307bb1e2abd87"></script>\n'

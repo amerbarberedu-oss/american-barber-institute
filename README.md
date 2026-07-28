@@ -144,6 +144,24 @@ The only files that are *never* touched by `build.py` are `index.html`,
 `bronx.html`, `spanish/index.html`, `spanish/bronx.html`, and everything under
 `landing-funnels/`.
 
+**Tuition prices live in exactly one place.** `PLANS` in `src/build.py` is the
+single source of truth for the 500-hour program: down payment, weekly amount,
+tuition, total, badge, math line and CTA, in both languages. Two generators read
+it — `plan_cards_html(lang)` and `plan_table_html(lang)` — and partials opt in by
+containing a token instead of hand-written markup:
+
+| Token | Renders |
+|---|---|
+| `<!--ABI_PLAN_CARDS-->` | the 3-up `.tp-*` plan card grid |
+| `<!--ABI_PLAN_TABLE-->` | the 4-column comparison table on `/tuition-and-funding` |
+
+`build()` hard-fails if a token survives unreplaced, or if an EN partial carries
+a token but its `es-` override does not (the classic way Spanish pages end up
+with stale prices). `plan_offers()` feeds the same figures into the Course
+JSON-LD. To change a price: edit `PLANS`, rebuild, and paste fresh
+`plan_cards_html('en'|'es')` output into the two hand-crafted homepages.
+The ad funnels mirror these figures in `landing-funnels/src/data.py` `TUITION`.
+
 ## Build
 
 ```bash

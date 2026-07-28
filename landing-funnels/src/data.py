@@ -54,7 +54,7 @@ PAGES = [
         "theme_color": "#14205e",
         "title": "500-Hour Master Barber Program — Manhattan | American Barber Institute",
         "desc":  "Become a licensed Barber in as little as 4 months at ABI's Manhattan campus (48 West 39th Street). Hands-on training, full NY State Board Exam prep, weekly payment plans and job placement.",
-        "promo_strip": "Start your barber journey today for only $150 per week*",
+        "promo_strip": "Start your barber journey today for only $160 per week*",
         "cta_primary": "Reserve Your Spot Today",
     },
     {
@@ -66,7 +66,7 @@ PAGES = [
         "theme_color": "#B45309",
         "title": "Programa Maestro Barbero de 500 Horas — Manhattan | American Barber Institute",
         "desc":  "Conviértete en Barbero licenciado en tan solo 4 meses en la sede de Manhattan de ABI (48 West 39th Street). Entrenamiento práctico, preparación completa para el examen del Estado de NY y planes de pago semanales.",
-        "promo_strip": "Comienza tu carrera de barbero hoy por solo $150 por semana*",
+        "promo_strip": "Comienza tu carrera de barbero hoy por solo $160 por semana*",
         "cta_primary": "Reserva Tu Lugar Hoy",
     },
     {
@@ -78,7 +78,7 @@ PAGES = [
         "theme_color": "#3730A3",
         "title": "500-Hour Master Barber Program — Bronx | American Barber Institute",
         "desc":  "Become a licensed Barber in as little as 4 months at ABI's Bronx campus (121 Westchester Square). Hands-on training, full NY State Board Exam prep, weekly payment plans and job placement.",
-        "promo_strip": "Start your barber journey today for only $150 per week*",
+        "promo_strip": "Start your barber journey today for only $160 per week*",
         "cta_primary": "Reserve Your Spot Today",
     },
     {
@@ -90,7 +90,7 @@ PAGES = [
         "theme_color": "#9F1239",
         "title": "Programa Maestro Barbero de 500 Horas — Bronx | American Barber Institute",
         "desc":  "Conviértete en Barbero licenciado en tan solo 4 meses en la sede del Bronx de ABI (121 Westchester Square). Entrenamiento práctico, preparación completa para el examen del Estado de NY y planes de pago semanales.",
-        "promo_strip": "Comienza tu carrera de barbero hoy por solo $150 por semana*",
+        "promo_strip": "Comienza tu carrera de barbero hoy por solo $160 por semana*",
         "cta_primary": "Reserva Tu Lugar Hoy",
     },
 ]
@@ -230,29 +230,44 @@ MODULES_HEAD = {
     "es": ("Plan de Estudios", "Módulos del Curso"),
 }
 
-# ─── Tuition plans (verbatim figures from the original) ──────────────
+# ─── Tuition plans (client-approved repricing, 2026-07-29) ───────────
+# Mirrors PLANS in ../../src/build.py — the main site and these funnels must
+# always quote the same figures. `tuition` is only set where it differs from
+# `total` (Plan A = $5,250 tuition + $350 professional tool kit).
 TUITION = {
     "en": [
         {"name": "Plan A — Morning", "sched": "Mon–Fri · 8:00 AM – 2:00 PM",
-         "hours": "30 hrs/week · 17 weeks (~4 months)", "price": "$5,600", "feature": False,
-         "terms": "$500 down (incl. $100 registration) + 17 weekly payments of $300"},
+         "hours": "30 hrs/week · 17 weeks (~4 months)", "feature": False,
+         "down": "$500", "weekly": "17 × $300", "tuition": "$5,250", "total": "$5,600",
+         "badge": "Professional tool kit included",
+         "math": "$500 + 17 × $300 = $5,600"},
         {"name": "Plan B — Afternoon", "sched": "Mon–Fri · 2:00 PM – 8:00 PM",
-         "hours": "30 hrs/week · 17 weeks (~4 months)", "price": "$4,600", "feature": True,
-         "terms": "$500 down (incl. $100 registration) + 16 weekly payments of $250 + final $100"},
-        {"name": "Plan C — Weekend", "sched": "Sat & Sun · 9:00 AM – 7:00 PM",
-         "hours": "18 hrs/week · 27 weeks (~6–7 months)", "price": "$4,600", "feature": False,
-         "terms": "$550 down (incl. $100 registration) + 27 weekly payments of $150"},
+         "hours": "30 hrs/week · 17 weeks (~4 months)", "feature": True,
+         "down": "$200", "weekly": "17 × $200", "tuition": None, "total": "$3,600",
+         "badge": None,
+         "math": "$200 + 17 × $200 = $3,600"},
+        {"name": "Plan C — Weekend", "sched": "Sat & Sun · Flexible hours",
+         "hours": "18 hrs/week · 27 weeks (~6–7 months)", "feature": False,
+         "down": "$200", "weekly": "27 × $160", "tuition": None, "total": "$4,600",
+         "badge": None,
+         "math": "$200 + 27 × $160 = $4,520 + final payment of $80 = $4,600"},
     ],
     "es": [
         {"name": "Plan A — Mañanas", "sched": "Lun–Vie · 8:00 AM – 2:00 PM",
-         "hours": "30 hrs/semana · 17 semanas (~4 meses)", "price": "$5,600", "feature": False,
-         "terms": "$500 de pago inicial (incluye $100 de inscripción) + 17 pagos semanales de $300"},
+         "hours": "30 hrs/semana · 17 semanas (~4 meses)", "feature": False,
+         "down": "$500", "weekly": "17 × $300", "tuition": "$5,250", "total": "$5,600",
+         "badge": "Kit de herramientas profesional incluido",
+         "math": "$500 + 17 × $300 = $5,600"},
         {"name": "Plan B — Tardes", "sched": "Lun–Vie · 2:00 PM – 8:00 PM",
-         "hours": "30 hrs/semana · 17 semanas (~4 meses)", "price": "$4,600", "feature": True,
-         "terms": "$500 de pago inicial (incluye $100 de inscripción) + 16 pagos semanales de $250 + pago final de $100"},
-        {"name": "Plan C — Fines de Semana", "sched": "Sáb y Dom · 9:00 AM – 7:00 PM",
-         "hours": "18 hrs/semana · 27 semanas (~6–7 meses)", "price": "$4,600", "feature": False,
-         "terms": "$550 de pago inicial (incluye $100 de inscripción) + 27 pagos semanales de $150"},
+         "hours": "30 hrs/semana · 17 semanas (~4 meses)", "feature": True,
+         "down": "$200", "weekly": "17 × $200", "tuition": None, "total": "$3,600",
+         "badge": None,
+         "math": "$200 + 17 × $200 = $3,600"},
+        {"name": "Plan C — Fines de Semana", "sched": "Sáb y Dom · Horario flexible",
+         "hours": "18 hrs/semana · 27 semanas (~6–7 meses)", "feature": False,
+         "down": "$200", "weekly": "27 × $160", "tuition": None, "total": "$4,600",
+         "badge": None,
+         "math": "$200 + 27 × $160 = $4,520 + pago final de $80 = $4,600"},
     ],
 }
 TUITION_HEAD = {
@@ -271,13 +286,13 @@ REQUIREMENTS = {
            "Must be at least 17 years of age",
            "Proof of residential address",
            "Valid photo ID or Driver's License",
-           "$500 down payment"],
+           "$200–$500 down payment (by plan)"],
     "es": ["Tarjeta de Seguro Social",
            "Diploma de Escuela Secundaria (HSD) o GED — o aprobar el examen de admisión ATB en ABI",
            "Tener al menos 17 años de edad",
            "Comprobante de domicilio",
            "Identificación con foto válida o Licencia de Conducir",
-           "$500 de pago inicial"],
+           "$200–$500 de pago inicial (según el plan)"],
 }
 REQ_HEAD = {
     "en": ("Admissions", "Entrance Requirements"),
@@ -407,7 +422,7 @@ def faq(lang, phone_disp, campus_name):
     if lang == "es":
         return [
             ("¿Cuánto cuesta la escuela de barbería en Nueva York?",
-             "En ABI, el programa de Barbero Maestro de 500 horas comienza en $4,600 (planes de tarde o fin de semana) o $5,600 (plan de mañana) — $500–$550 de pago inicial y pagos semanales de $150–$300 mientras estudias. Los libros y herramientas son aparte. Se aceptan fondos de ACCES-VR, el GI Bill® Post-9/11 y beneficios de la VA."),
+             "En ABI, el programa de Barbero Maestro de 500 horas comienza en $3,600 (plan de tarde), $4,600 (fin de semana) o $5,600 (mañana, con kit de herramientas profesional incluido) — $200–$500 de pago inicial y pagos semanales de $160–$300 mientras estudias. Los libros y herramientas son aparte. Se aceptan fondos de ACCES-VR, el GI Bill® Post-9/11 y beneficios de la VA."),
             ("¿Cuánto dura la escuela de barbería en Nueva York?",
              "El Estado de Nueva York requiere 500 horas de entrenamiento. A tiempo completo en ABI toma alrededor de 4 meses (17 semanas a 30 horas por semana); el horario de fin de semana toma alrededor de 6–7 meses (27 semanas)."),
             ("¿Cuántas horas por semana estaré en la escuela?",
@@ -425,7 +440,7 @@ def faq(lang, phone_disp, campus_name):
         ]
     return [
         ("How much does barber school cost in New York?",
-         "At ABI, the 500-hour Master Barber program starts at $4,600 (afternoon or weekend plans) or $5,600 (morning plan) — $500–$550 down and weekly payments of $150–$300 while you study. Books and tools are extra. ACCES-VR funding, Post-9/11 GI Bill® and VA benefits are accepted."),
+         "At ABI, the 500-hour Master Barber program starts at $3,600 (afternoon plan), $4,600 (weekend) or $5,600 (morning, professional tool kit included) — $200–$500 down and weekly payments of $160–$300 while you study. Books and tools are extra on Plans B and C. ACCES-VR funding, Post-9/11 GI Bill® and VA benefits are accepted."),
         ("How long is barber school in New York?",
          "New York State requires 500 hours of training. Full-time at ABI takes about 4 months (17 weeks at 30 hours per week); the weekend schedule takes about 6–7 months (27 weeks)."),
         ("How many hours per week will I be in school?",
@@ -491,12 +506,12 @@ FOOTER = {
     "en": {
         "h": "American Barber Institute",
         "sub": "New York's career-focused barber school — changing lives for over 30 years.",
-        "fine": "© American Barber Institute. Approved by NYSED · Licensed by BPSS · Since 1996. *$150/week refers to the Plan C weekly payment.",
+        "fine": "© American Barber Institute. Approved by NYSED · Licensed by BPSS · Since 1996. *$160/week refers to the Plan C weekly payment.",
     },
     "es": {
         "h": "American Barber Institute",
         "sub": "La única escuela de barbería dedicada de Nueva York — cambiando vidas por más de 30 años.",
-        "fine": "© American Barber Institute. Aprobada por NYSED · Licenciada por BPSS · Desde 1996. *$150/semana se refiere al pago semanal del Plan C.",
+        "fine": "© American Barber Institute. Aprobada por NYSED · Licenciada por BPSS · Desde 1996. *$160/semana se refiere al pago semanal del Plan C.",
     },
 }
 
