@@ -54,7 +54,7 @@ PAGES = [
         "theme_color": "#14205e",
         "title": "500-Hour Master Barber Program — Manhattan | American Barber Institute",
         "desc":  "Become a licensed Barber in as little as 4 months at ABI's Manhattan campus (48 West 39th Street). Hands-on training, full NY State Board Exam prep, weekly payment plans and job placement.",
-        "promo_strip": "Start your barber journey today for only $160 per week*",
+        "promo_strip": "Start your barber journey today for only $200 down payment & $160 weekly*",
         "cta_primary": "Reserve Your Spot Today",
     },
     {
@@ -66,7 +66,7 @@ PAGES = [
         "theme_color": "#B45309",
         "title": "Programa Maestro Barbero de 500 Horas — Manhattan | American Barber Institute",
         "desc":  "Conviértete en Barbero licenciado en tan solo 4 meses en la sede de Manhattan de ABI (48 West 39th Street). Entrenamiento práctico, preparación completa para el examen del Estado de NY y planes de pago semanales.",
-        "promo_strip": "Comienza tu carrera de barbero hoy por solo $160 por semana*",
+        "promo_strip": "Comienza tu carrera de barbero hoy por solo $200 de pago inicial y $160 semanales*",
         "cta_primary": "Reserva Tu Lugar Hoy",
     },
     {
@@ -78,7 +78,7 @@ PAGES = [
         "theme_color": "#3730A3",
         "title": "500-Hour Master Barber Program — Bronx | American Barber Institute",
         "desc":  "Become a licensed Barber in as little as 4 months at ABI's Bronx campus (121 Westchester Square). Hands-on training, full NY State Board Exam prep, weekly payment plans and job placement.",
-        "promo_strip": "Start your barber journey today for only $160 per week*",
+        "promo_strip": "Start your barber journey today for only $200 down payment & $160 weekly*",
         "cta_primary": "Reserve Your Spot Today",
     },
     {
@@ -90,7 +90,7 @@ PAGES = [
         "theme_color": "#9F1239",
         "title": "Programa Maestro Barbero de 500 Horas — Bronx | American Barber Institute",
         "desc":  "Conviértete en Barbero licenciado en tan solo 4 meses en la sede del Bronx de ABI (121 Westchester Square). Entrenamiento práctico, preparación completa para el examen del Estado de NY y planes de pago semanales.",
-        "promo_strip": "Comienza tu carrera de barbero hoy por solo $160 por semana*",
+        "promo_strip": "Comienza tu carrera de barbero hoy por solo $200 de pago inicial y $160 semanales*",
         "cta_primary": "Reserva Tu Lugar Hoy",
     },
 ]
@@ -506,12 +506,12 @@ FOOTER = {
     "en": {
         "h": "American Barber Institute",
         "sub": "New York's career-focused barber school — changing lives for over 30 years.",
-        "fine": "© American Barber Institute. Approved by NYSED · Licensed by BPSS · Since 1996. *$160/week refers to the Plan C weekly payment.",
+        "fine": "© American Barber Institute. Approved by NYSED · Licensed by BPSS · Since 1996. *$200 down payment and $160/week refer to the Plan C payment plan.",
     },
     "es": {
         "h": "American Barber Institute",
         "sub": "La única escuela de barbería dedicada de Nueva York — cambiando vidas por más de 30 años.",
-        "fine": "© American Barber Institute. Aprobada por NYSED · Licenciada por BPSS · Desde 1996. *$160/semana se refiere al pago semanal del Plan C.",
+        "fine": "© American Barber Institute. Aprobada por NYSED · Licenciada por BPSS · Desde 1996. *$200 de pago inicial y $160/semana corresponden al plan de pago del Plan C.",
     },
 }
 

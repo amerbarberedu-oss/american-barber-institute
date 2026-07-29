@@ -3302,18 +3302,34 @@ body.shell2 .mstrip-t i{
 .ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){height:920px}
 .ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){height:870px}
 .ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){height:920px}
-/* Promo banner — full-width strip at very top of every page. Uses the site palette
-   (brand teal bg, white uppercase copy, gold price highlight) instead of the source
-   mock's blue/yellow. Added 2026-07-20. */
-body.shell2 .promo-bar{display:flex;align-items:center;justify-content:space-between;gap:clamp(.8rem,2.5vw,2rem);width:min(1040px,86%);margin:1rem auto -1.6rem;position:relative;z-index:5;background:#fff;border:2.5px solid var(--teal,#1b2fd9);border-radius:60px;padding:.7rem clamp(1.4rem,3.5vw,2.6rem);box-shadow:0 10px 26px rgba(0,0,0,.12);color:#111;font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1rem,2vw,1.65rem);line-height:1.2;text-decoration:none;white-space:normal}
-body.shell2 .promo-txt{flex:1 1 auto;text-align:center}
-body.shell2 .promo-bar b{color:var(--teal-deep,#1322a8);font-weight:800;white-space:nowrap}
-body.shell2 .promo-star{color:var(--teal,#1b2fd9);font-size:1.5em;line-height:1;flex-shrink:0}
-body.shell2 .promo-bar:hover{border-color:var(--teal-deep,#1322a8);box-shadow:0 12px 30px rgba(0,0,0,.16)}
-/* Desktop shows the short one-line banner ("For Only $150 Per Week*"); mobile shows the full
-   "Start Your Barber Journey Today ..." (client preference — the previous responsive behavior). */
-@media(min-width:1001px){body.shell2 .promo-lead{display:none}}
-@media(max-width:600px){body.shell2 .promo-bar{width:92%;font-size:.82rem;letter-spacing:.02em;padding:.6rem 1.1rem;gap:.7rem;margin-bottom:-1.1rem;border-width:2px}body.shell2 .promo-star{font-size:1.2em}}
+/* Promo banner — full-bleed strip directly above the hero on the 4 hand-crafted
+   pages (index/bronx + ES twins). Client mockup 2026-07-29: solid brand-blue band,
+   white uppercase lead on line 1, yellow price on line 2, BOTH visible at every
+   width. This replaces the 2026-07-20 white-pill treatment; the earlier version
+   also hid the lead above 1000px, which the mockup does not.
+   --promo-accent is the mockup's yellow — note var(--gold) is NOT usable here,
+   the 2026-07 rebrand remapped it to blue. */
+body.shell2 .promo-bar{
+  --promo-accent:#ffd400;
+  display:flex;align-items:center;justify-content:center;gap:clamp(.6rem,2vw,1.4rem);
+  width:100%;margin:0 0 -1.6rem;position:relative;z-index:5;
+  background:var(--teal,#1b2fd9);border:0;border-radius:0;
+  padding:.8rem clamp(1rem,3vw,2.2rem);box-shadow:0 6px 18px rgba(0,0,0,.10);
+  color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(1rem,2vw,1.65rem);line-height:1.22;text-decoration:none;
+  text-align:center;white-space:normal;
+}
+body.shell2 .promo-txt{flex:0 1 auto;text-align:center}
+/* two stacked lines — lead in white, price in the mockup yellow */
+body.shell2 .promo-lead{display:block;color:#fff}
+body.shell2 .promo-bar b{display:block;margin-top:.12rem;color:var(--promo-accent);font-weight:800;white-space:normal}
+/* mockup has no flanking stars — markup kept so this is a one-line revert */
+body.shell2 .promo-star{display:none}
+body.shell2 .promo-bar:hover{background:var(--teal-deep,#1322a8);box-shadow:0 8px 22px rgba(0,0,0,.18)}
+/* Mobile: scale with the viewport rather than a fixed size, so the 40-char lead
+   ("START YOUR BARBER JOURNEY TODAY FOR ONLY") stays on ONE line down to ~360px
+   and the band keeps the mockup's two-line shape instead of wrapping to three. */
+@media(max-width:600px){body.shell2 .promo-bar{font-size:clamp(.6rem,3.05vw,.95rem);letter-spacing:.01em;padding:.6rem .8rem;margin-bottom:-1.1rem}}
 
 /* ═══ HEADER — mockup touches (2026-07-21): teal utility bar = switchers only, live phone chips
    as cards below the header. The desktop nav MENU is kept as before (client preference) —
@@ -3334,7 +3350,7 @@ body.shell2 .mstrip{display:block!important}
   body.shell2 .ubar-in{justify-content:center}
   body.shell2 .ubar-left{gap:clamp(1.5rem,5vw,3.25rem)}
 }
-body.shell2 .promo-ast{font-size:.62em;font-weight:800;color:var(--teal-deep,#1322a8);vertical-align:super;line-height:0;margin-left:1px}
+body.shell2 .promo-ast{font-size:.62em;font-weight:800;color:var(--promo-accent,#ffd400);vertical-align:super;line-height:0;margin-left:1px}
 /* Feature-strip items: bold + slightly larger (client request) */
 body.shell2 .hx-feature span{font-weight:700;font-size:.88rem}
 /* Reserve-band perks list — fills the space under the countdown beside the form on desktop */
