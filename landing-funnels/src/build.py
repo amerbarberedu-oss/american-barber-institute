@@ -422,21 +422,16 @@ def section_tuition(p):
     note = D.TUITION_NOTE[p["lang"]]
     popular = "Más Popular" if p["lang"] == "es" else "Most Popular"
     cards = ""
-    # Row labels for the cost breakdown (2026-07-29 repricing — the card now
-    # shows down payment / weekly / tuition / total the way the main site's
-    # .tp-* card does, instead of one price plus a run-on terms line).
-    L = {"en": ("Weekly payments", "Tuition", "Total cost", "down payment"),
-         "es": ("Pagos semanales", "Matrícula", "Costo total", "de pago inicial")}[p["lang"]]
+    # Client 2026-07-31: cards show the ENTRY cost only — down payment + weekly
+    # amount. The tuition row, total-cost row and math line were removed here and
+    # in the main site's plan_cards_html(); the two must stay in step.
+    L = {"en": ("Weekly payments", "down payment"),
+         "es": ("Pagos semanales", "de pago inicial")}[p["lang"]]
     for pl in D.TUITION[p["lang"]]:
         cls = "lf-plan lf-rv" + (" lf-plan--feature" if pl["feature"] else "")
         badge = ('<span class="lf-plan__badge">%s</span>' % popular) if pl["feature"] else ""
         rows = '<div class="lf-plan__row"><span class="lf-plan__row-label">%s</span>' \
                '<span class="lf-plan__row-val">%s</span></div>' % (L[0], h(pl["weekly"]))
-        if pl.get("tuition"):
-            rows += '<div class="lf-plan__row"><span class="lf-plan__row-label">%s</span>' \
-                    '<span class="lf-plan__row-val">%s</span></div>' % (L[1], h(pl["tuition"]))
-        rows += '<div class="lf-plan__row lf-plan__row--total"><span class="lf-plan__row-label">%s</span>' \
-                '<span class="lf-plan__row-val">%s</span></div>' % (L[2], h(pl["total"]))
         incl = ('<span class="lf-plan__incl">%s</span>' % h(pl["badge"])) if pl.get("badge") else ""
         cards += (
             '<div class="%s">%s<div class="lf-plan__name">%s</div>'
@@ -444,10 +439,10 @@ def section_tuition(p):
             '<div class="lf-plan__hours">%s</div>'
             '<div class="lf-plan__price">%s <span class="lf-plan__per">%s</span></div>'
             '<div class="lf-plan__rows">%s</div>'
-            '%s<p class="lf-plan__math">%s</p>'
+            '%s'
             '<a class="lf-btn lf-btn--primary lf-plan__cta" href="#reserve">%s</a></div>'
             % (cls, badge, h(pl["name"]), h(pl["sched"]), h(pl["hours"]),
-               h(pl["down"]), h(L[3]), rows, incl, h(pl["math"]),
+               h(pl["down"]), h(L[1]), rows, incl,
                "¡Hagámoslo!" if p["lang"] == "es" else "Let's Do It")
         )
     return ('<section class="lf-section lf-section--depth">'

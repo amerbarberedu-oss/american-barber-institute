@@ -867,9 +867,6 @@ body.lf-page--brnx-es {
 .lf-plan__row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: .9rem; }
 .lf-plan__row-label { color: var(--lf-muted); }
 .lf-plan__row-val { color: var(--lf-ink); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
-.lf-plan__row--total { padding-top: .5rem; border-top: 1px solid var(--lf-line, rgba(0,0,0,.12)); }
-.lf-plan__row--total .lf-plan__row-label { color: var(--lf-ink); font-weight: 700; }
-.lf-plan__row--total .lf-plan__row-val { font-weight: 800; }
 .lf-plan__incl {
   display: inline-flex; align-self: flex-start; align-items: center; gap: .4em;
   font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
@@ -877,7 +874,6 @@ body.lf-page--brnx-es {
   background: color-mix(in srgb, var(--lf-accent) 12%, transparent);
   color: var(--lf-accent-dark); border: 1px solid color-mix(in srgb, var(--lf-accent) 30%, transparent);
 }
-.lf-plan__math { color: var(--lf-muted); font-size: .78rem; line-height: 1.5; margin: 0 0 1rem; }
 
 /* Tuition card hover polish — ports editorial.css's .ed-card/.tilt pattern
    (lift + shadow-depth increase) onto the existing mousemove tilt above

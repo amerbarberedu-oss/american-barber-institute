@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=315">
-<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=315">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=315">
-<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=315">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=316">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=316">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=316">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=316">
 <script src="{root}assets/js/analytics.js?v=200" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=315">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=315">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=316">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=316">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -120,7 +120,7 @@ TEMPLATE = """<!DOCTYPE html>
 {mbar}
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<script src="{root}assets/js/main.js?v=315" defer></script>
+<script src="{root}assets/js/main.js?v=316" defer></script>
 <script src="{root}assets/js/effects.js?v=301" defer></script>
 <script src="{root}assets/js/landing.js?v=300" defer></script>
 <script src="{root}assets/js/upgrade.js?v=300" defer></script>
@@ -885,6 +885,9 @@ PLAN_TABLE_TOKEN = "<!--ABI_PLAN_TABLE-->"
 _PL = {
     "down_suffix": {"en": "down payment",    "es": "de pago inicial"},
     "weekly_row":  {"en": "Weekly payments", "es": "Pagos semanales"},
+    # tuition_row/total_row are NOT rendered on the cards since 2026-07-31 (the
+    # client asked for the total off the card). Kept because card display has
+    # been revised twice already; restoring the rows is a two-line change.
     "tuition_row": {"en": "Tuition",         "es": "Matrícula"},
     "total_row":   {"en": "Total cost",      "es": "Costo total"},
     "popular":     {"en": "Most Popular",    "es": "Más Popular"},
@@ -913,17 +916,16 @@ def plan_cards_html(lang="en", enroll_href="/contact"):
         enroll_href = "/spanish" + enroll_href
     cards = []
     for p in PLANS:
+        # Client 2026-07-31: the card shows the ENTRY cost only — down payment +
+        # weekly amount. The tuition row, the total-cost row and the math line
+        # were all removed. Full prices still appear on /tuition-and-funding
+        # (plan_table_html), in the FAQ prose and in the Course JSON-LD
+        # (plan_offers) — this was a cards-only change, so keep it that way.
         rows = [(_PL["weekly_row"][lang], "%d &times; %s" % (p["n"], _m(p["weekly"])))]
-        if p["tuition"]:
-            rows.append((_PL["tuition_row"][lang], _m(p["tuition"])))
         body = "".join(
             '<div class="tp-row"><span class="tp-row__label">%s</span>'
             '<span class="tp-row__val">%s</span></div>' % (label, val)
             for label, val in rows)
-        body += ('<div class="tp-row tp-row--total">'
-                 '<span class="tp-row__label">%s</span>'
-                 '<span class="tp-row__val">%s</span></div>'
-                 % (_PL["total_row"][lang], _m(p["total"])))
         cards.append(
             '<article class="tp-card tilt%s">' % (" tp-card--feature" if p["feature"] else "")
             + ('<span class="tp-flag">%s</span>' % _PL["popular"][lang] if p["feature"] else "")
@@ -936,7 +938,6 @@ def plan_cards_html(lang="en", enroll_href="/contact"):
             + '<hr class="tp-rule">'
             + '<div class="tp-rows">%s</div>' % body
             + ('<p class="tp-badge">%s</p>' % p["badge"][lang] if p["badge"] else "")
-            + '<p class="tp-math">%s</p>' % p["math"][lang]
             + '<a class="btn btn-gold tp-cta" href="%s">%s <span aria-hidden="true">&nearr;</span></a>'
               % (enroll_href, p["cta"][lang])
             + '</article>')

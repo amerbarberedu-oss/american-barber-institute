@@ -165,14 +165,10 @@
 .tp-row__label{color:var(--text-mute);}
 .tp-row__val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;
   color:var(--text-dark);text-align:right;}
-.tp-row--total{padding-top:.6rem;border-top:1px solid var(--card-border);}
-.tp-row--total :is(.tp-row__label,.tp-row__val){color:var(--text-dark);font-weight:700;}
 .tp-badge{display:inline-flex;align-items:center;gap:.4em;align-self:flex-start;
   font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
   padding:.42em .85em;border-radius:var(--radius-pill);margin:0 0 .8rem;
   background:var(--teal-tint);color:var(--teal-deep);border:1px solid var(--teal-soft);}
-.tp-math{font-family:var(--font-mono);font-size:.76rem;line-height:1.55;
-  color:var(--text-mute);margin:0 0 1.2rem;}
 .tp-cta{margin-top:auto;width:100%;font-size:.82rem;padding:13px 18px;letter-spacing:.08em;}
 .tp-note{font-size:.86rem;color:var(--text-mute);margin:1.4rem 0 0;text-align:center;}
 @media(max-width:400px){.tp-figure__amt{font-size:2.2rem;}}
@@ -233,17 +229,17 @@ section.band.band--dark  { background:var(--band-dark)   !important; }
   background:var(--ink-2) !important; border-color:var(--ink-3) !important;
 }
 .band--petrol .tp-card--feature,.band--dark .tp-card--feature{ border-color:var(--teal-bright) !important; }
-.band--petrol :is(.tp-name,.tp-row__val),.band--dark :is(.tp-name,.tp-row__val),
-.band--petrol .tp-row--total .tp-row__label,.band--dark .tp-row--total .tp-row__label{
+.band--petrol .tp-name,.band--dark .tp-name,
+.band--petrol .tp-row__val,.band--dark .tp-row__val{
   color:var(--on-dark) !important;
 }
 .band--petrol :is(.tp-eyebrow,.tp-figure__amt),
 .band--dark   :is(.tp-eyebrow,.tp-figure__amt){ color:var(--teal-bright) !important; }
-.band--petrol :is(.tp-sched,.tp-figure__suffix,.tp-row__label,.tp-math,.tp-note),
-.band--dark   :is(.tp-sched,.tp-figure__suffix,.tp-row__label,.tp-math,.tp-note){
+.band--petrol :is(.tp-sched,.tp-figure__suffix,.tp-row__label,.tp-note),
+.band--dark   :is(.tp-sched,.tp-figure__suffix,.tp-row__label,.tp-note){
   color:var(--on-dark-muted) !important;
 }
-.band--petrol :is(.tp-rule,.tp-row--total),.band--dark :is(.tp-rule,.tp-row--total){
+.band--petrol .tp-rule,.band--dark .tp-rule{
   border-color:rgba(255,255,255,.14) !important;
 }
 .band--petrol .tp-badge,.band--dark .tp-badge{
