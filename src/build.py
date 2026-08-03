@@ -836,7 +836,7 @@ PLANS = [
                "es": "Lun&ndash;Vie &middot; 8:00 AM &ndash; 2:00 PM"},
      "weeks": {"en": "~17 weeks (~4 months)", "es": "~17 semanas (~4 meses)"},
      "down": 500, "n": 17, "weekly": 300,
-     "tuition": 5250, "total": 5600,          # tuition set ⇒ extra breakdown row
+     "tuition": 5250, "total": 5600,          # tuition kept as data; not rendered (2026-08-03)
      "badge": {"en": "Professional tool kit included",
                "es": "Kit de herramientas profesional incluido"},
      "math":  {"en": "$500 + 17 &times; $300 = $5,600",
@@ -895,6 +895,8 @@ _PL = {
     "col_sched":   {"en": "Schedule",        "es": "Horario"},
     "col_total":   {"en": "Total cost",      "es": "Costo total"},
     "col_pay":     {"en": "How you pay",     "es": "Cómo pagas"},
+    # toolkit_note is no longer rendered (client 2026-08-03 — the comparison
+    # table shows the total alone). Kept so restoring it is a one-line change.
     "toolkit_note": {"en": "$5,250 tuition + $350 tool kit",
                      "es": "$5,250 de matrícula + $350 de kit"},
     "down_word":   {"en": "down payment",    "es": "de pago inicial"},
@@ -972,10 +974,10 @@ def plan_table_html(lang="en"):
                "es": "Planes de matrícula de ABI &mdash; programa de Barbero Maestro de 500 horas"}[lang]
     rows = ""
     for i, p in enumerate(PLANS):
+        # Client 2026-08-03: the total cell shows the total and nothing else.
+        # The "$5,250 tuition + $350 tool kit" breakdown under Plan A is gone;
+        # p["tuition"] / _PL["toolkit_note"] are kept as data, unrendered.
         total_cell = "<b>%s</b>" % _m(p["total"])
-        if p["tuition"]:
-            total_cell += ('<br><span style="font-size:.85rem;color:var(--text-mute)">%s</span>'
-                           % _PL["toolkit_note"][lang])
         rows += ('<tr%s>'
                  '<td style="%s"><b style="color:var(--teal-deep)">%s</b><br>%s</td>'
                  '<td style="%s">%s<br>%s</td>'
