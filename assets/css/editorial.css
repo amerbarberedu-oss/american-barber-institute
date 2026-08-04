@@ -280,3 +280,10 @@ section.band.band--dark  { background:var(--band-dark)   !important; }
   .hero-split{grid-template-columns:1.15fr minmax(0,430px);}
 }
 .hero-split .hero-form-card{padding:clamp(.85rem,1.7vw,1.25rem);}
+
+/* ---------- CAMPUS-FILTERED CONTENT (used by /instructors) ---------- */
+/* Sections tagged [data-campus-only] show only when body[data-campus] matches.
+   Both campuses stay in the HTML (one indexable URL, full instructor schema);
+   campus.js keeps body[data-campus] in sync with the switcher. */
+body[data-campus="manhattan"] [data-campus-only="bronx"],
+body[data-campus="bronx"] [data-campus-only="manhattan"]{display:none;}

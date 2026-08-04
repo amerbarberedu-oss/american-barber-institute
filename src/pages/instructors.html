@@ -1,10 +1,18 @@
 <!-- ============================================================
-     INSTRUCTORS — Who teaches you (rebuilt v3)
-     Band arc: paper(hero) → tint(4 questions) → paper(King David feature) →
-               sand(Manhattan team) → petrol(Bronx team) → sand(philosophy) →
+     INSTRUCTORS — Who teaches you (rebuilt v3, campus-filtered v4)
+     The featured instructor + team grid are tagged data-campus-only, so a
+     visitor only ever sees the faculty of the campus they're browsing.
+     Band arc (Manhattan): paper(hero) → tint(4 questions) → paper(King David) →
+               sand(Manhattan team) → paper(philosophy) →
                tint(in the classroom) → paper(reviews) → petrol(CTA)
+     Band arc (Bronx):     paper(hero) → tint(4 questions) → paper(Truth) →
+               petrol(Bronx team) → paper(philosophy) → …same tail…
      Instructor bios rebuilt as ed-grid tilt cards. Keeps data-yt video button.
      ============================================================ -->
+
+<!-- Resolve the campus before the sections below are parsed — campus.js is
+     deferred and would land after first paint, flashing the wrong team. -->
+<script>(function(){try{var b=document.body;if(b.getAttribute('data-campus-locked')!=='true'){var c=localStorage.getItem('abi-campus');if(c==='bronx'||c==='manhattan')b.setAttribute('data-campus',c);}}catch(e){}})();</script>
 
 <!-- ── HERO (paper) ── -->
 <section class="band band--paper">
@@ -38,8 +46,8 @@
   </div>
 </section>
 
-<!-- ── FEATURED: KING DAVID (paper, ed-split) ── -->
-<section class="band band--paper">
+<!-- ── FEATURED: KING DAVID — MANHATTAN (paper, ed-split) ── -->
+<section class="band band--paper" data-campus-only="manhattan">
   <div class="eb-wrap">
     <div class="section-head center">
       <p class="eyebrow">A Benchmark Team</p>
@@ -75,8 +83,41 @@
   </div>
 </section>
 
+<!-- ── FEATURED: TRUTH QUINONES — BRONX (paper, ed-split) ── -->
+<section class="band band--paper" data-campus-only="bronx">
+  <div class="eb-wrap">
+    <div class="section-head center">
+      <p class="eyebrow">A Benchmark Team</p>
+      <h2 class="display">What Master Instructors Look Like</h2>
+    </div>
+    <div class="ed-split reveal">
+      <figure class="ed-media">
+        <img style="object-position:50% 25%" src="/assets/img/instructors/truth-quinones.jpeg" alt="Truth Quinones, Founding Director of ABI Bronx" loading="lazy">
+      </figure>
+      <div>
+        <span class="chip">Founding Director, ABI Bronx</span>
+        <h3 class="display" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.6rem">Truth "The Barber Artist" Quinones</h3>
+        <div class="statgrid" style="grid-template-columns:1fr 1fr;max-width:360px;margin:1rem 0">
+          <div class="stat"><div class="stat__num" data-count="40">40</div><div class="stat__label">+ years behind the chair</div></div>
+          <!-- No data-count here: the counter formats with thousands separators ("1,985"). -->
+          <div class="stat"><div class="stat__num">1985</div><div class="stat__label">barbering since</div></div>
+        </div>
+        <span class="chip">Former NY State Board Examiner</span>
+        <p style="margin-top:1rem">Known across the industry as <em>Truth The Barber Artist</em>, Truth has spent over four decades behind the chair. Since beginning his career in 1985, he has earned a reputation for precision, innovation and elevating the profession wherever he goes.</p>
+        <p class="eyebrow" style="margin-top:1rem">What Makes Truth Different</p>
+        <ul>
+          <li>40+ years in barbering since 1985</li>
+          <li>Founding Director of ABI Bronx &mdash; with the school since its inception</li>
+          <li>Former New York State Board Examiner &mdash; insider knowledge of licensing &amp; compliance</li>
+          <li>Andis brand partner and national industry influencer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── MANHATTAN TEAM (sand, ed-grid) ── -->
-<section class="band band--sand">
+<section class="band band--sand" data-campus-only="manhattan">
   <div class="eb-wrap">
     <div class="section-head">
       <p class="eyebrow">48 West 39th Street &middot; New York, NY</p>
@@ -139,11 +180,12 @@
         </ul>
       </article>
     </div>
+    <p style="margin-top:1.6rem"><a class="btn btn-ghost" href="/instructors" data-campus-switch-to="bronx">Training at our Bronx campus? Meet the Bronx team &rarr;</a></p>
   </div>
 </section>
 
 <!-- ── BRONX TEAM (petrol, ed-grid) ── -->
-<section class="band band--petrol">
+<section class="band band--petrol" data-campus-only="bronx">
   <span class="band__blob"></span>
   <div class="eb-wrap">
     <div class="section-head">
@@ -151,18 +193,6 @@
       <h2 class="display">Our Bronx Team</h2>
     </div>
     <div class="ed-grid reveal-stagger">
-      <article class="ed-card tilt">
-        <figure class="ed-media" style="margin-bottom:1rem;aspect-ratio:3/4"><img style="object-position:50% 25%" src="/assets/img/instructors/truth-quinones.jpeg" alt="Truth Quinones" loading="lazy"></figure>
-        <span class="chip">Founding Director, ABI Bronx</span>
-        <h3 style="margin-top:.6rem">Truth "The Barber Artist" Quinones</h3>
-        <p>Known across the industry as Truth The Barber Artist, Truth has spent over four decades behind the chair. Since beginning his career in 1985, he has earned a reputation for precision, innovation and elevating the profession wherever he goes.</p>
-        <ul>
-          <li>40+ years in barbering since 1985</li>
-          <li>Founding Director of ABI Bronx &mdash; with the school since its inception</li>
-          <li>Former New York State Board Examiner &mdash; insider knowledge of licensing &amp; compliance</li>
-          <li>Andis brand partner and national industry influencer</li>
-        </ul>
-      </article>
       <article class="ed-card tilt">
         <figure class="ed-media" style="margin-bottom:1rem;aspect-ratio:3/4"><img style="object-position:50% 25%" src="/assets/img/instructors/osvaldy-mr-o-rodriguez.jpeg" alt="Osvaldy Mr. O Rodriguez" loading="lazy"></figure>
         <span class="chip">Instructor</span>
@@ -186,11 +216,12 @@
         </ul>
       </article>
     </div>
+    <p style="margin-top:1.6rem"><a class="btn btn-ghost2" href="/instructors" data-campus-switch-to="manhattan">Training at our Manhattan campus? Meet the Manhattan team &rarr;</a></p>
   </div>
 </section>
 
-<!-- ── TEACHING PHILOSOPHY (sand, ed-grid) ── -->
-<section class="band band--sand">
+<!-- ── TEACHING PHILOSOPHY (paper, ed-grid) ── -->
+<section class="band band--paper">
   <div class="eb-wrap">
     <div class="section-head center">
       <p class="eyebrow">What Good Teaching Looks Like</p>

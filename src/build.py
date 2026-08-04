@@ -72,15 +72,15 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/style.min.css?v=317">
-<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=317">
-<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=317">
-<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=317">
+<link rel="stylesheet" href="{root}assets/css/style.min.css?v=318">
+<link rel="stylesheet" href="{root}assets/css/brand.min.css?v=318">
+<link rel="stylesheet" href="{root}assets/css/landing.min.css?v=318">
+<link rel="stylesheet" href="{root}assets/css/upgrade.min.css?v=318">
 <script src="{root}assets/js/analytics.js?v=200" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>try{{localStorage.removeItem('abi-theme');localStorage.removeItem('abi-theme-user');}}catch(e){{}}</script>
-<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=317">
-<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=317">
+<link rel="stylesheet" href="{root}assets/css/effects.min.css?v=318">
+<link rel="stylesheet" href="{root}assets/css/editorial.min.css?v=318">
 {schema}
 </head>
 <body class="shell2{bodyclass}" data-campus="{datacampus}" data-campus-locked="{campuslocked}" style="--page-bg:url('/assets/img/{pagebg}')">
@@ -124,7 +124,7 @@ TEMPLATE = """<!DOCTYPE html>
 <script src="{root}assets/js/effects.js?v=301" defer></script>
 <script src="{root}assets/js/landing.js?v=300" defer></script>
 <script src="{root}assets/js/upgrade.js?v=300" defer></script>
-<script src="{root}assets/js/campus.js?v=300" defer></script>
+<script src="{root}assets/js/campus.js?v=301" defer></script>
 <!-- GHL chat widget (VIBE AI) -->
 <div data-chat-widget data-widget-id="6a6359f1b92307bb1e2abd87" data-location-id="wfpdq6XX5uIZUiLrqCSo"></div>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a6359f1b92307bb1e2abd87"></script>

@@ -173,12 +173,21 @@ function applyLogo(data){
   if(lg) lg.setAttribute("src",data.logo);
 }
 
+/* Pages can tag sections with data-campus-only="manhattan|bronx"; CSS in
+   editorial.css hides the ones that don't match body[data-campus]. */
+function hasCampusFilteredContent(){
+  return !!document.querySelector("[data-campus-only]");
+}
+
 function applyCampus(campus){
   var d=getData();
   var data=d[campus]||d.manhattan;
   swapPhones(data);
   setCampusActive(campus);
   applyLogo(data);
+  /* Keeps [data-campus-only] sections in sync. On locked pages this rewrites
+     the attribute with the value it already had. */
+  document.body.setAttribute("data-campus",campus);
 }
 
 /* ── Nav dropdown: click/keyboard support (hover works via CSS) ── */
@@ -238,6 +247,23 @@ function rewriteProgramsLinks(campus){
   });
 }
 
+/* In-page "see the other campus's team" links on filtered pages.
+   The href is a no-JS fallback; with JS we swap without a reload. */
+function initCampusSwitchLinks(){
+  document.addEventListener("click",function(e){
+    var el=e.target.closest("[data-campus-switch-to]");
+    if(!el) return;
+    var to=el.getAttribute("data-campus-switch-to");
+    if(to!=="bronx"&&to!=="manhattan") return;
+    if(isFixedPage()||!hasCampusFilteredContent()) return;
+    e.preventDefault();
+    setCampus(to);
+    applyCampus(to);
+    rewriteProgramsLinks(to);
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+}
+
 function init(){
   syncSeg(document.querySelector(".seg-lang"));
 
@@ -266,6 +292,14 @@ function init(){
             location.href=esPrefix+"/programs/bronx.html";
             return;
           }
+          /* Pages that carry per-campus sections swap in place instead of
+             following the anchor to the Bronx homepage. */
+          if(hasCampusFilteredContent()){
+            e.preventDefault();
+            applyCampus("bronx");
+            rewriteProgramsLinks("bronx");
+            return;
+          }
           return;
         }
         e.preventDefault();
@@ -281,6 +315,7 @@ function init(){
   }
 
   initDropdowns();
+  initCampusSwitchLinks();
 }
 
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
