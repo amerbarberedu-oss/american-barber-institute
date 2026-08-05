@@ -3302,6 +3302,13 @@ body.shell2 .mstrip-t i{
 .ghl-form-wrap:has(iframe[src*="WZjNHh9wcd1FTnlj0eCR"]){height:920px}
 .ghl-form-wrap:has(iframe[src*="2FvHzLvYji1iSmNmCP46"]){height:870px}
 .ghl-form-wrap:has(iframe[src*="v1SNzWsAZZVodCsnsDbe"]){height:920px}
+/* Campus-specific Bronx forms (data-height 794) — EN v1SN above, ESP z2ZX here.
+   /bronx and /spanish/bronx moved off the generic ABI.com forms 2026-08-06 so
+   Bronx enquiries are attributed to the campus. The ESP rule is ALSO inlined in
+   spanish/bronx.html: ?v=318 is baked into 146 pages, so a returning visitor
+   holding cached landing.min.css would otherwise get a collapsed wrapper. Drop
+   the inline copy at the next ?v bump. */
+.ghl-form-wrap:has(iframe[src*="z2ZXZPbcGx7u1XrAl6Zu"]){height:920px}
 /* Promo banner — full-bleed strip directly above the hero on the 4 hand-crafted
    pages (index/bronx + ES twins). Client mockup 2026-07-29: solid brand-blue band,
    white uppercase lead on line 1, yellow price on line 2, BOTH visible at every
