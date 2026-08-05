@@ -202,7 +202,9 @@ def hero(p):
     feats = [
         'Fits your life — day, evening & weekend tracks' if not es else 'Se adapta a tu vida — clases de día, tarde y fines de semana',
         'Hands-on training on real clients from your first weeks' if not es else 'Entrenamiento práctico con clientes reales desde las primeras semanas',
-        'Funding that fits — ACCES-VR, GI Bill®, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, GI Bill®, planes semanales|Descubre lo que funciona para tu presupuesto',
+        # Bronx isn't VA-approved — no GI Bill® in the Bronx funding chip.
+        ('Funding that fits — ACCES-VR, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, planes semanales|Descubre lo que funciona para tu presupuesto') if is_bx else
+        ('Funding that fits — ACCES-VR, GI Bill®, weekly plans|Figure out what works for your budget' if not es else 'Financiamiento a tu medida — ACCES-VR, GI Bill®, planes semanales|Descubre lo que funciona para tu presupuesto'),
         'Career support & job-placement help when you graduate' if not es else 'Apoyo profesional y ayuda para encontrar empleo al graduarte',
         campus_feat_en if not es else campus_feat_es,
     ]
@@ -419,7 +421,7 @@ def section_modules(p):
 # ── TUITION ──────────────────────────────────────────────────────────
 def section_tuition(p):
     eb, ti = D.TUITION_HEAD[p["lang"]]
-    note = D.TUITION_NOTE[p["lang"]]
+    note = D.TUITION_NOTE[(p["campus"]["slug"], p["lang"])]
     popular = "Más Popular" if p["lang"] == "es" else "Most Popular"
     cards = ""
     # Client 2026-07-31: cards show down payment, weekly amount and total. The
@@ -690,7 +692,8 @@ def section_faq(p):
     items = "".join(
         '<details class="lf-rv"><summary>%s</summary><div class="lf-faq__a">%s</div></details>'
         % (h(q), h(a)) for q, a in D.faq(p["lang"], p["phone"][1],
-                                          p["campus"]["name_es" if p["lang"] == "es" else "name_en"])
+                                          p["campus"]["name_es" if p["lang"] == "es" else "name_en"],
+                                          p["campus"]["slug"])
     )
     return ('<section class="lf-section lf-section--alt"><div class="lf-wrap">%s'
             '<div class="lf-faq">%s</div></div></section>\n'
@@ -789,7 +792,8 @@ def page_head(p):
              "reviewBody": r["q"]}
             for r in D.REVIEWS_BY_CAMPUS[campus_slug][p["lang"]]
         ],
-        "paymentAccepted": ["Cash", "Credit Card", "Financial Aid", "GI Bill", "ACCES-VR"],
+        "paymentAccepted": (["Cash", "Credit Card", "Financial Aid", "ACCES-VR"] if campus_slug == "bronx"
+                            else ["Cash", "Credit Card", "Financial Aid", "GI Bill", "ACCES-VR"]),
     }
 
     # 2) Course
@@ -826,7 +830,7 @@ def page_head(p):
         "mainEntity": [
             {"@type": "Question", "name": q,
              "acceptedAnswer": {"@type": "Answer", "text": a}}
-            for q, a in D.faq(p["lang"], p["phone"][1], campus_name)
+            for q, a in D.faq(p["lang"], p["phone"][1], campus_name, p["campus"]["slug"])
         ]
     }
 

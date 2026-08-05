@@ -274,9 +274,14 @@ TUITION_HEAD = {
     "en": ("Tuition", "Flexible Payment Plans"),
     "es": ("Matrícula", "Planes de Pago Flexibles"),
 }
+# Keyed (campus slug, lang) like ABOUT / LOC_OPTS_BY_CAMPUS: the Bronx campus is
+# not VA-approved, so only Manhattan may advertise GI Bill®/VA. ACCES-VR is
+# accepted at both.
 TUITION_NOTE = {
-    "en": "Every plan includes NY State Board Exam prep, hands-on training and job-placement support. Additional fees: books, tools and supplies can be purchased from ABI or other suppliers. ACCES-VR financial assistance available. Post-9/11 GI Bill® and VA benefits accepted.",
-    "es": "Cada plan incluye preparación para el examen del Estado de NY, entrenamiento práctico y apoyo de colocación laboral. Tarifas adicionales: libros, herramientas y suministros se pueden comprar en ABI u otros proveedores. Asistencia financiera ACCES-VR disponible. Se aceptan beneficios del GI Bill® Post-9/11 y de la VA.",
+    ("manhattan", "en"): "Every plan includes NY State Board Exam prep, hands-on training and job-placement support. Additional fees: books, tools and supplies can be purchased from ABI or other suppliers. ACCES-VR financial assistance available. Post-9/11 GI Bill® and VA benefits accepted.",
+    ("manhattan", "es"): "Cada plan incluye preparación para el examen del Estado de NY, entrenamiento práctico y apoyo de colocación laboral. Tarifas adicionales: libros, herramientas y suministros se pueden comprar en ABI u otros proveedores. Asistencia financiera ACCES-VR disponible. Se aceptan beneficios del GI Bill® Post-9/11 y de la VA.",
+    ("bronx", "en"): "Every plan includes NY State Board Exam prep, hands-on training and job-placement support. Additional fees: books, tools and supplies can be purchased from ABI or other suppliers. ACCES-VR financial assistance available. VA benefits and the Post-9/11 GI Bill® are not accepted at the Bronx campus — they are accepted at our Manhattan campus.",
+    ("bronx", "es"): "Cada plan incluye preparación para el examen del Estado de NY, entrenamiento práctico y apoyo de colocación laboral. Tarifas adicionales: libros, herramientas y suministros se pueden comprar en ABI u otros proveedores. Asistencia financiera ACCES-VR disponible. Los beneficios de la VA y el GI Bill® Post-9/11 no se aceptan en la sede del Bronx — se aceptan en nuestra sede de Manhattan.",
 }
 
 # ─── Entrance requirements (verbatim) ────────────────────────────────
@@ -418,10 +423,13 @@ LOC_OPTS_BY_CAMPUS = {
 
 
 # ─── FAQ (verbatim — all 8 Q&As, phone + campus swapped per page) ────
-def faq(lang, phone_disp, campus_name):
+def faq(lang, phone_disp, campus_name, campus_slug="manhattan"):
+    # The Bronx campus is not VA-approved — only the two funding answers differ.
+    is_bx = campus_slug == "bronx"
     if lang == "es":
         return [
             ("¿Cuánto cuesta la escuela de barbería en Nueva York?",
+             "En ABI, el programa de Barbero Maestro de 500 horas comienza en $3,600 (plan de tarde), $4,600 (fin de semana) o $5,600 (mañana, con kit de herramientas profesional incluido) — $200–$500 de pago inicial y pagos semanales de $160–$300 mientras estudias. Los libros y herramientas son aparte. Se aceptan fondos de ACCES-VR." if is_bx else
              "En ABI, el programa de Barbero Maestro de 500 horas comienza en $3,600 (plan de tarde), $4,600 (fin de semana) o $5,600 (mañana, con kit de herramientas profesional incluido) — $200–$500 de pago inicial y pagos semanales de $160–$300 mientras estudias. Los libros y herramientas son aparte. Se aceptan fondos de ACCES-VR, el GI Bill® Post-9/11 y beneficios de la VA."),
             ("¿Cuánto dura la escuela de barbería en Nueva York?",
              "El Estado de Nueva York requiere 500 horas de entrenamiento. A tiempo completo en ABI toma alrededor de 4 meses (17 semanas a 30 horas por semana); el horario de fin de semana toma alrededor de 6–7 meses (27 semanas)."),
@@ -434,12 +442,14 @@ def faq(lang, phone_disp, campus_name):
             ("¿Qué licencia obtendré después del programa?",
              "El programa te prepara para la licencia de Barbero Maestro del Estado de Nueva York, incluyendo la preparación completa para el examen del Estado de NY. Nuestra oficina de empleo te ayuda a encontrar trabajo después de aprobar."),
             ("¿Hay ayuda financiera disponible?",
+             "Sí — ACCES-VR puede cubrir matrícula, herramientas y libros para neoyorquinos calificados con discapacidades; pueden aplicar subvenciones del Departamento de Trabajo del Estado de NY; y cada plan incluye pagos semanales. Los beneficios de la VA y el GI Bill® Post-9/11 no se aceptan en la sede del Bronx — se aceptan en nuestra sede de Manhattan." if is_bx else
              "Sí — ACCES-VR puede cubrir matrícula, herramientas y libros para neoyorquinos calificados con discapacidades; se aceptan el GI Bill® Post-9/11 y beneficios de la VA; pueden aplicar subvenciones del Departamento de Trabajo del Estado de NY; y cada plan incluye pagos semanales."),
             ("¿Cuándo comienzan las clases?",
              "Las clases nuevas comienzan el primer lunes de cada mes en nuestra %s. Llama al %s para reservar tu lugar — las clases se llenan rápido." % (campus_name, phone_disp)),
         ]
     return [
         ("How much does barber school cost in New York?",
+         "At ABI, the 500-hour Master Barber program starts at $3,600 (afternoon plan), $4,600 (weekend) or $5,600 (morning, professional tool kit included) — $200–$500 down and weekly payments of $160–$300 while you study. Books and tools are extra on Plans B and C. ACCES-VR funding is accepted." if is_bx else
          "At ABI, the 500-hour Master Barber program starts at $3,600 (afternoon plan), $4,600 (weekend) or $5,600 (morning, professional tool kit included) — $200–$500 down and weekly payments of $160–$300 while you study. Books and tools are extra on Plans B and C. ACCES-VR funding, Post-9/11 GI Bill® and VA benefits are accepted."),
         ("How long is barber school in New York?",
          "New York State requires 500 hours of training. Full-time at ABI takes about 4 months (17 weeks at 30 hours per week); the weekend schedule takes about 6–7 months (27 weeks)."),
@@ -452,6 +462,7 @@ def faq(lang, phone_disp, campus_name):
         ("What license will I get after the program?",
          "The program prepares you for the New York State Master Barber license, including full NY State Board Exam preparation. Our job placement office helps you find work after you pass."),
         ("Is financial aid available?",
+         "Yes — ACCES-VR can cover tuition, tools and books for qualified New Yorkers with disabilities; NYS Department of Labor grants may apply; and every plan includes weekly payments. VA benefits and the Post-9/11 GI Bill® are not accepted at the Bronx campus — they are accepted at our Manhattan campus." if is_bx else
          "Yes — ACCES-VR can cover tuition, tools and books for qualified New Yorkers with disabilities; Post-9/11 GI Bill® and VA benefits are accepted; NYS Department of Labor grants may apply; and every plan includes weekly payments."),
         ("When do classes start?",
          "New classes begin the first Monday of every month at our %s. Call %s to reserve your seat — classes fill fast." % (campus_name, phone_disp)),

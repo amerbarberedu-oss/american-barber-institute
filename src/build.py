@@ -631,6 +631,20 @@ ORG_SCHEMA_ES = dict(ORG_SCHEMA,
                 "para veteranos, ACCES-VR y colocación laboral.",
     slogan="Conviértete en Barbero Licenciado en 4 Meses")
 
+# Bronx twins: the Bronx campus is not VA-approved, so its structured data must
+# not claim GI Bill® / VA benefits are accepted (ACCES-VR is, and stays). Used
+# only for the pages CAMPUS_BY_PAGE resolves to 'bronx'; every Manhattan page
+# keeps ORG_SCHEMA / ORG_SCHEMA_ES byte-for-byte.
+# Derived from the shared descriptions rather than re-typed, so later edits to
+# ORG_SCHEMA/ORG_SCHEMA_ES prose (e.g. the pending ACCESS-VR typo fix) carry over.
+_ORG_PAYMENT_NO_GIBILL = [p for p in ORG_SCHEMA["paymentAccepted"] if p != "GI Bill"]
+ORG_SCHEMA_BRONX = dict(ORG_SCHEMA,
+    description=ORG_SCHEMA["description"].replace("veterans GI Bill and ", ""),
+    paymentAccepted=_ORG_PAYMENT_NO_GIBILL)
+ORG_SCHEMA_BRONX_ES = dict(ORG_SCHEMA_ES,
+    description=ORG_SCHEMA_ES["description"].replace("GI Bill para veteranos, ", ""),
+    paymentAccepted=_ORG_PAYMENT_NO_GIBILL)
+
 def course_schema(name, desc, hours, weeks, price, campus="manhattan"):
     location_address = ("121 Westchester Square, Bronx, NY 10461" if campus == "bronx"
                          else "48 West 39th Street, New York, NY 10018")
@@ -1529,6 +1543,23 @@ def _header_nav(root, es, campusswitch, langtoggle, aroot=None):
         '</header>'
     )
 
+def _strip_bronx_links(html):
+    """Drop the Veterans/GI Bill® and 50-Hour Refresher anchors from built chrome.
+
+    The Bronx campus is not VA-approved and does not run the refresher, so those
+    two nav/drawer/footer entries are wrong on Bronx pages. _header_nav and
+    _footer_block take no page identity, so rather than thread `campus` through
+    both signatures and all four call sites we strip the anchors afterwards.
+
+    Matched on the href fragments (not the labels) so this survives EN/ES label
+    changes and any `root` depth. Deliberately does NOT touch access-vr-program
+    (ACCES-VR stays everywhere) or the benefits.va.gov/gibill trademark line."""
+    return ''.join(
+        line for line in html.splitlines(keepends=True)
+        if 'programs/50-hour-barber-refresher' not in line
+        and 'veterans.html' not in line
+    )
+
 def _footer_block(root, es):
     """CTA band + <footer> + floating desk-cta + to-top button.
     EN/ES-aware, same gap class as _header_nav: the shared footer showed
@@ -1914,9 +1945,12 @@ def build():
             crumb_items.append({"@type": "ListItem", "position": 2, "name": short, "item": canonical})
         resolved.append({"@context": "https://schema.org", "@type": "BreadcrumbList",
                          "itemListElement": crumb_items})
-        # LocalBusiness/TradeSchool on every page (local SEO + AI grounding)
-        if ORG_SCHEMA not in resolved:
-            resolved.append(ORG_SCHEMA)
+        # LocalBusiness/TradeSchool on every page (local SEO + AI grounding).
+        # Bronx pages get the no-GI-Bill twin — the campus isn't VA-approved.
+        _is_bronx = CAMPUS_BY_PAGE.get(out.replace('spanish/', '')) == 'bronx'
+        _org = ORG_SCHEMA_BRONX if _is_bronx else ORG_SCHEMA
+        if _org not in resolved:
+            resolved.append(_org)
         # VideoObject markup for pages that embed YouTube clips (rich results)
         for vs in VIDEO_SCHEMAS.get(out, []):
             resolved.append(vs)
@@ -1930,6 +1964,9 @@ def build():
         mbar = _mbar(root, False, root + 'contact.html#request-a-call')
         header_nav = _header_nav(root, False, campusswitch, langtoggle)
         footer_block = _footer_block(root, False)
+        if campus == 'bronx':
+            header_nav = _strip_bronx_links(header_nav)
+            footer_block = _strip_bronx_links(footer_block)
         # Body theme + data-campus so campus.js renders the right phones on load.
         # 'both' (Haircuts) stays neutral/manhattan-themed but flags data-campus=both.
         bodyclass = ' bx-gold' if campus == 'bronx' else ''
@@ -2040,6 +2077,9 @@ def build():
             es_campusswitch = _campus_switch(es_root, campus, es=True)
             es_header_nav = _header_nav(root, True, es_campusswitch, es_langtoggle, aroot=es_root)
             es_footer_block = _footer_block(root, True)
+            if campus == 'bronx':
+                es_header_nav = _strip_bronx_links(es_header_nav)
+                es_footer_block = _strip_bronx_links(es_footer_block)
             es_hreflang_block = (
                 f'<link rel="alternate" hreflang="en" href="{es_en_href}">\n'
                 f'<link rel="alternate" hreflang="en-US" href="{es_en_href}">\n'
@@ -2115,8 +2155,9 @@ def build():
                 es_crumb_items.append({"@type": "ListItem", "position": 2, "name": es_short, "item": es_canonical})
             es_resolved.append({"@context": "https://schema.org", "@type": "BreadcrumbList",
                                 "itemListElement": es_crumb_items})
-            if ORG_SCHEMA_ES not in es_resolved:
-                es_resolved.append(ORG_SCHEMA_ES)
+            _es_org = ORG_SCHEMA_BRONX_ES if campus == 'bronx' else ORG_SCHEMA_ES
+            if _es_org not in es_resolved:
+                es_resolved.append(_es_org)
             for vs in VIDEO_SCHEMAS.get(out, []):
                 es_resolved.append(vs)
             es_schema_tags = '\n'.join(
