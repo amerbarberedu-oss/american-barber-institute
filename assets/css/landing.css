@@ -1224,6 +1224,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .socials a.soc-x:hover,.socials a.soc-x:focus-visible{box-shadow:0 12px 26px -6px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.35) inset}
 .socials a.soc-yt{--soc:#FF0000}
 .socials a.soc-pin{--soc:#E60023}
+.socials a.soc-tt{--soc:#FE2C55}
 @media (prefers-reduced-motion:reduce){
   .socials a.soc,.socials a.soc svg,.socials a.soc::before{transition:none}
   .socials a.soc:hover{transform:none}

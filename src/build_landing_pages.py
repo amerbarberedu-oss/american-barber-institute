@@ -511,7 +511,7 @@ def head(p, s, pre):
             "https://www.instagram.com/americanbarberinstitute/",
             "https://twitter.com/amerbarberedu",
             "https://www.youtube.com/@americanbarberinstitute",
-            "https://www.tiktok.com/@americanbarberinstitute",
+            "https://www.tiktok.com/@americanbarberins",
             "https://www.linkedin.com/company/american-barber-institute",
             "https://www.yelp.com/biz/american-barber-institute-new-york",
             "https://www.google.com/maps/place/American+Barber+Institute/@40.7522,-73.9849,17z",

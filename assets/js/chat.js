@@ -16,6 +16,9 @@
     instagram: "https://ig.me/m/americanbarberinstitute",
     whatsapp: "https://wa.me/19295888448",
     messenger: "https://m.me/Abi.Education",
+    // TikTok has no public DM deep-link (no ig.me/m.me equivalent) — the profile
+    // is the closest we can get; the visitor taps "Message" once they land there.
+    tiktok: "https://www.tiktok.com/@americanbarberins",
     avatar: "/apple-touch-icon.png"
   };
 
@@ -33,7 +36,8 @@
     sms_t: "Envíanos un mensaje (SMS)", sms_s: "Texto a tu teléfono",
     ig_t: "Instagram", ig_s: "Escríbenos por Instagram",
     wa_t: "WhatsApp", wa_s: "Chatea con nosotros por WhatsApp",
-    fb_t: "Facebook Messenger", fb_s: "Escríbenos por Messenger"
+    fb_t: "Facebook Messenger", fb_s: "Escríbenos por Messenger",
+    tt_t: "TikTok", tt_s: "Escríbenos por TikTok"
   } : {
     chat: "Chat",
     heading: "How would you like to connect?",
@@ -45,7 +49,8 @@
     sms_t: "Text Us (SMS)", sms_s: "Text us on your phone",
     ig_t: "Instagram", ig_s: "Message us on Instagram",
     wa_t: "WhatsApp", wa_s: "Chat with us on WhatsApp",
-    fb_t: "Facebook Messenger", fb_s: "Message us on Messenger"
+    fb_t: "Facebook Messenger", fb_s: "Message us on Messenger",
+    tt_t: "TikTok", tt_s: "Message us on TikTok"
   };
 
   var smsHref = "sms:" + CFG.smsNumber + "?&body=" + encodeURIComponent(CFG.smsBody);
@@ -56,6 +61,7 @@
     ig: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg>',
     wa: '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M17.5 14.4c-.3-.15-1.73-.85-2-.95-.27-.1-.46-.15-.65.15-.19.28-.74.94-.9 1.13-.17.19-.33.21-.62.07-.29-.15-1.23-.46-2.35-1.45-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.08-.15-.65-1.56-.89-2.13-.23-.55-.47-.48-.65-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.03 2.76 1.17 2.95.14.19 2.01 3.08 4.88 4.32.68.29 1.21.47 1.63.6.68.22 1.31.19 1.8.11.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12.05 21.5a9.5 9.5 0 0 1-4.85-1.33l-.34-.2-3.6.94.96-3.51-.23-.36a9.44 9.44 0 0 1-1.45-5.03c0-5.23 4.26-9.48 9.5-9.48 2.54 0 4.92 1 6.71 2.79a9.4 9.4 0 0 1 2.78 6.7c0 5.22-4.26 9.48-9.5 9.48z"/></svg>',
     fb: '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 2C6.5 2 2 6.1 2 11.3c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.1-2.6-2.7-5 2.7 5.4-5.7L13.5 11l4.9-2.7-5.4 5.8z"/></svg>',
+    tt: '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.5.02c1.3-.02 2.6-.01 3.9-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97a10 10 0 0 1-1.62-.93c-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>',
     chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
     shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 9.5C8 19.3 5 15.4 5 11V6l7-3z"/></svg>'
@@ -86,6 +92,7 @@
     '.abichat-ic--ig{background:linear-gradient(45deg,#feda75,#fa7e1e 30%,#d62976 55%,#962fbf 80%,#4f5bd5)}' +
     '.abichat-ic--wa{background:#25d366}' +
     '.abichat-ic--fb{background:linear-gradient(45deg,#0a7cff,#0af 60%,#8ad4ff)}' +
+    '.abichat-ic--tt{background:#010101}' +
     '.abichat-ot{flex:1 1 auto;min-width:0}' +
     '.abichat-ot b{display:block;font-weight:700;font-size:15.5px;color:#14171a;line-height:1.25}' +
     '.abichat-ot span{display:block;font-size:13px;color:#68727d;margin-top:2px}' +
@@ -106,6 +113,7 @@
     '.abichat-rail--ig{background:linear-gradient(45deg,#feda75,#fa7e1e 30%,#d62976 55%,#962fbf 80%,#4f5bd5)}' +
     '.abichat-rail--wa{background:#25d366}' +
     '.abichat-rail--fb{background:linear-gradient(135deg,#0a7cff,#00b2ff)}' +
+    '.abichat-rail--tt{background:#010101}' +
     '@media (min-width:560px){.abichat{bottom:auto;top:50%;transform:translateY(-46%) scale(.98)}.abichat.is-open{transform:translateY(-50%)}}' +
     '@media (prefers-reduced-motion:reduce){.abichat,.abichat-bd{transition:none}}';
 
@@ -146,6 +154,7 @@
         opt("ig", IC.ig, T.ig_t, T.ig_s, CFG.instagram, true, "instagram") +
         opt("wa", IC.wa, T.wa_t, T.wa_s, CFG.whatsapp, true, "whatsapp") +
         opt("fb", IC.fb, T.fb_t, T.fb_s, CFG.messenger, true, "messenger") +
+        opt("tt", IC.tt, T.tt_t, T.tt_s, CFG.tiktok, true, "tiktok") +
       '</div>' +
       '<div class="abichat-ft">' + IC.shield + '<span>' + T.reply + '</span></div>';
 
@@ -166,7 +175,8 @@
       { cls: "sms", ic: IC.sms, href: smsHref,       ext: false, ch: "sms",       lb: (es ? "Texto" : "Text Us"), al: T.sms_t },
       { cls: "ig",  ic: IC.ig,  href: CFG.instagram, ext: true,  ch: "instagram", lb: "Instagram",                al: T.ig_t },
       { cls: "wa",  ic: IC.wa,  href: CFG.whatsapp,  ext: true,  ch: "whatsapp",  lb: "WhatsApp",                 al: T.wa_t },
-      { cls: "fb",  ic: IC.fb,  href: CFG.messenger, ext: true,  ch: "messenger", lb: "Messenger",                al: T.fb_t }
+      { cls: "fb",  ic: IC.fb,  href: CFG.messenger, ext: true,  ch: "messenger", lb: "Messenger",                al: T.fb_t },
+      { cls: "tt",  ic: IC.tt,  href: CFG.tiktok,    ext: true,  ch: "tiktok",    lb: "TikTok",                   al: T.tt_t }
     ];
     var rail = document.createElement("div");
     rail.className = "abichat-rail";
