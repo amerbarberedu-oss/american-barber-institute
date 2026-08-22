@@ -12,16 +12,26 @@
      success only on response.ok and an error message otherwise.      */
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/admissions@americanbarberinstitute.com';
 
-  /* ── Next start date: first Monday of next month ───────── */
-  function nextFirstMonday() {
-    var now = new Date();
-    var d = new Date(now.getFullYear(), now.getMonth(), 1);
-    // first Monday of current month
+  /* ── Next start date ──────────────────────
+     Cohorts open on the first Monday of the month, except when that Monday is
+     a federal holiday (school closed) -- then the Tuesday after. Only three
+     federal holidays can land on a first Monday: Labor Day (always September's
+     first Monday), New Year's Day when Jan 1 is a Monday, and the observed
+     Independence Day when July 4 is a Sunday (observed Mon, July 5). Matches
+     the published 2026-2027 calendar and keeps deriving correctly after it.
+     Mirrored in assets/js/main.js, src/build.py and
+     src/build_landing_pages.py -- change all four together. */
+  function classStart(year, month) {
+    var d = new Date(year, month, 1);
     while (d.getDay() !== 1) d.setDate(d.getDate() + 1);
-    if (d <= now) {
-      d = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-      while (d.getDay() !== 1) d.setDate(d.getDate() + 1);
-    }
+    var m = d.getMonth(), day = d.getDate();
+    if (m === 8 || (m === 0 && day === 1) || (m === 6 && day === 5)) d.setDate(day + 1);
+    return d;
+  }
+  function nextClassStart() {
+    var now = new Date();
+    var d = classStart(now.getFullYear(), now.getMonth());
+    if (d <= now) d = classStart(now.getFullYear(), now.getMonth() + 1);
     return d;
   }
   var fmt = new Intl.DateTimeFormat(LANG === 'es' ? 'es-US' : 'en-US', {
@@ -33,7 +43,7 @@
     if (LANG === 'es') dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
     nextStartEls.forEach(function (el) { el.textContent = dateStr; });
   }
-  var startDate = nextFirstMonday();
+  var startDate = nextClassStart();
   renderNextStart(startDate);
 
   /* ── Countdown (perpetual: rolls to the next month's cohort the instant
@@ -49,7 +59,7 @@
       var tick = function () {
         var diff = startDate.getTime() - Date.now();
         if (diff <= 0) {
-          startDate = nextFirstMonday();
+          startDate = nextClassStart();
           renderNextStart(startDate);
           diff = startDate.getTime() - Date.now();
         }
@@ -219,7 +229,7 @@ document.querySelectorAll('.yt').forEach(function (f) {
   }, { once: true });
 });
 
-/* ── Upcoming start dates (first Monday of each month) ── */
+/* ── Upcoming start dates (first Monday, or Tuesday after a holiday Monday) ── */
 (function () {
   var host = document.querySelector('[data-start-dates]');
   if (!host) return;
@@ -229,6 +239,9 @@ document.querySelectorAll('.yt').forEach(function (f) {
   while (out.length < 6) {
     var c = new Date(y, m, 1);
     while (c.getDay() !== 1) c.setDate(c.getDate() + 1);
+    // same holiday shift as classStart() above (Labor Day / Jan 1 / observed Jul 4)
+    var cm = c.getMonth(), cd = c.getDate();
+    if (cm === 8 || (cm === 0 && cd === 1) || (cm === 6 && cd === 5)) c.setDate(cd + 1);
     if (c > new Date()) out.push(c);
     m++; if (m > 11) { m = 0; y++; }
   }

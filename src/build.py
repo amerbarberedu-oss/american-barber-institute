@@ -9,24 +9,37 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'src', 'pages')
 SITE_URL = 'https://www.americanbarberinstitute.com'
 
-# ── Next class date (first Monday of upcoming month), computed at build time ──
-def _next_first_monday():
-    today = datetime.date.today()
-    d = datetime.date(today.year, today.month, 1)
+# ── Next class date, computed at build time ───────────────────────
+# Cohorts open on the first Monday of the month, except when that Monday is a
+# federal holiday and the school is closed -- then the Tuesday after. Only
+# three federal holidays can land on a month's first Monday: Labor Day (which
+# IS September's first Monday, so every September shifts), New Year's Day when
+# Jan 1 is a Monday, and the observed Independence Day when July 4 falls on a
+# Sunday (observed Mon, July 5). This reproduces the school's published
+# 2026-2027 start dates exactly and keeps deriving correctly after them.
+# Mirrored in src/build_landing_pages.py, assets/js/main.js and
+# assets/js/landing.js -- change all four together.
+def _class_start(year, month):
+    d = datetime.date(year, month, 1)
     while d.weekday() != 0:
         d += datetime.timedelta(days=1)
-    if d <= today:
-        y, m = (today.year, today.month + 1) if today.month < 12 else (today.year + 1, 1)
-        d = datetime.date(y, m, 1)
-        while d.weekday() != 0:
-            d += datetime.timedelta(days=1)
+    if month == 9 or (month == 1 and d.day == 1) or (month == 7 and d.day == 5):
+        d += datetime.timedelta(days=1)
     return d
 
-_NEXT_MON = _next_first_monday()
+def _next_class_start():
+    today = datetime.date.today()
+    d = _class_start(today.year, today.month)
+    if d <= today:
+        y, m = (today.year, today.month + 1) if today.month < 12 else (today.year + 1, 1)
+        d = _class_start(y, m)
+    return d
+
+_NEXT_MON = _next_class_start()
 _NEXT_DT = datetime.datetime.combine(_NEXT_MON, datetime.time(0, 0))
 _DELTA = _NEXT_DT - datetime.datetime.now()
 _REMAIN = max(int(_DELTA.total_seconds()), 0)
-NEXT_START_LONG = _NEXT_MON.strftime('%A, %B ') + str(_NEXT_MON.day)   # "Monday, July 6"
+NEXT_START_LONG = _NEXT_MON.strftime('%A, %B ') + str(_NEXT_MON.day)   # "Tuesday, September 8"
 CD_D, CD_H = str(_REMAIN // 86400), str((_REMAIN % 86400) // 3600)
 CD_M, CD_S = str((_REMAIN % 3600) // 60), str(_REMAIN % 60)
 
@@ -120,9 +133,9 @@ TEMPLATE = """<!DOCTYPE html>
 {mbar}
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
-<script src="{root}assets/js/main.js?v=317" defer></script>
+<script src="{root}assets/js/main.js?v=318" defer></script>
 <script src="{root}assets/js/effects.js?v=301" defer></script>
-<script src="{root}assets/js/landing.js?v=300" defer></script>
+<script src="{root}assets/js/landing.js?v=301" defer></script>
 <script src="{root}assets/js/upgrade.js?v=300" defer></script>
 <script src="{root}assets/js/campus.js?v=301" defer></script>
 <!-- GHL chat widget (VIBE AI) -->

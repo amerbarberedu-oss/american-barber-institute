@@ -32,23 +32,41 @@ def clean_links(html):
         return 'href="%s%s"' % (path, suffix)
     return re.sub(r'href="([^"]*)"', repl, html)
 
-# ── Next class date: first Monday of the upcoming month (computed at build) ──
-def _next_first_monday():
-    today = datetime.date.today()
-    d = datetime.date(today.year, today.month, 1)
+# ── Next class date (computed at build) ─────────────────────────
+# Cohorts open on the first Monday of the month, except when that Monday is a
+# federal holiday and the school is closed -- then the Tuesday after. Only
+# three federal holidays can land on a month's first Monday: Labor Day (which
+# IS September's first Monday, so every September shifts), New Year's Day when
+# Jan 1 is a Monday, and the observed Independence Day when July 4 falls on a
+# Sunday (observed Mon, July 5). This reproduces the school's published
+# 2026-2027 start dates exactly and keeps deriving correctly after them.
+# Mirrored in src/build.py, assets/js/main.js and assets/js/landing.js --
+# change all four together.
+def _class_start(year, month):
+    d = datetime.date(year, month, 1)
     while d.weekday() != 0:
         d += datetime.timedelta(days=1)
-    if d <= today:
-        y, m = (today.year, today.month + 1) if today.month < 12 else (today.year + 1, 1)
-        d = datetime.date(y, m, 1)
-        while d.weekday() != 0:
-            d += datetime.timedelta(days=1)
+    if month == 9 or (month == 1 and d.day == 1) or (month == 7 and d.day == 5):
+        d += datetime.timedelta(days=1)
     return d
 
-NEXT_MON = _next_first_monday()
-NEXT_START_EN = NEXT_MON.strftime("%a, %b ") + str(NEXT_MON.day)          # e.g. "Mon, Jul 6"
+def _next_class_start():
+    today = datetime.date.today()
+    d = _class_start(today.year, today.month)
+    if d <= today:
+        y, m = (today.year, today.month + 1) if today.month < 12 else (today.year + 1, 1)
+        d = _class_start(y, m)
+    return d
+
+NEXT_MON = _next_class_start()
+NEXT_START_EN = NEXT_MON.strftime("%a, %b ") + str(NEXT_MON.day)          # e.g. "Tue, Sep 8"
 _ES_MO = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
-NEXT_START_ES = "lun, %s %d" % (_ES_MO[NEXT_MON.month - 1], NEXT_MON.day)  # e.g. "lun, jul 6"
+_ES_WD_ABBR = ['lun', 'mar', 'mié', 'jue', 'vie', 'sáb', 'dom']
+_ES_WD_LONG = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+_ES_MO_LONG = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
+               'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+NEXT_START_ES = "%s, %s %d" % (_ES_WD_ABBR[NEXT_MON.weekday()],
+                               _ES_MO[NEXT_MON.month - 1], NEXT_MON.day)   # e.g. "mar, sep 8"
 
 # Countdown defaults baked at build time so the no-JS view shows real
 # numbers (not all-zeros). JS still enhances these into a live countdown.
@@ -744,10 +762,13 @@ def hero(p, s, pre):
                 if es else
                 "New classes begin the first Monday of each month.")
     # v16.0 — full weekday name + sentence-case sub line. Title + date render
-    # as a single line ("Next Starting Date: Monday, July 6, 2026") via flex.
-    _wk = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][NEXT_MON.weekday()]
-    _mo = NEXT_MON.strftime("%B")
-    cd_date = "%s, %s %d, %d" % (_wk, _mo, NEXT_MON.day, NEXT_MON.year)
+    # as a single line ("Next Starting Date: Tuesday, September 8, 2026") via flex.
+    if es:
+        cd_date = "%s, %d de %s de %d" % (_ES_WD_LONG[NEXT_MON.weekday()], NEXT_MON.day,
+                                          _ES_MO_LONG[NEXT_MON.month - 1], NEXT_MON.year)
+    else:
+        _wk = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][NEXT_MON.weekday()]
+        cd_date = "%s, %s %d, %d" % (_wk, NEXT_MON.strftime("%B"), NEXT_MON.day, NEXT_MON.year)
     cd_cells = "".join('<div class="hero-cd-cell"><b data-cd-%s>%s</b><span>%s</span></div>'
                        % (k, CD_VALS[k], lbl) for k, lbl in zip("dhms", s["count_lbl"]))
     hero_cd = ('<div class="hero-cd" data-countdown>'
@@ -1070,20 +1091,32 @@ def sec_gallery(p, s, pre):
             '<div class="gal">%s</div><p style="margin-top:1.4rem"><a class="greview" href="%sgallery.html">%s</a></p>'
             '</div></section>' % (eb, h, imgs, pre, more))
 
-START_DATES = [
-    ("2026", [("Aug","Monday, August 3"),("Sep","Monday, September 7"),("Oct","Monday, October 5"),
-              ("Nov","Monday, November 2"),("Dec","Monday, December 7")]),
-    ("2027", [("Jan","Monday, January 4"),("Feb","Monday, February 1"),("Mar","Monday, March 1"),
-              ("Apr","Monday, April 5"),("May","Monday, May 3"),("Jun","Monday, June 7"),
-              ("Jul","Monday, July 5"),("Aug","Monday, August 2"),("Sep","Monday, September 6"),
-              ("Oct","Monday, October 4"),("Nov","Monday, November 1"),("Dec","Monday, December 6")]),
-    ("2028", [("Jan","Monday, January 3"),("Feb","Monday, February 7"),("Mar","Monday, March 6"),
-              ("Apr","Monday, April 3"),("May","Monday, May 1"),("Jun","Monday, June 5"),
-              ("Jul","Monday, July 3"),("Aug","Monday, August 7"),("Sep","Monday, September 4"),
-              ("Oct","Monday, October 2"),("Nov","Monday, November 6"),("Dec","Monday, December 4")]),
-]
-# start dates that land on a federal holiday (the Labor-Day Mondays)
-HOLIDAY_START = {"Monday, September 7","Monday, September 6","Monday, September 4"}
+# Upcoming start dates, derived from _class_start() so the calendar can never
+# go stale: months that have already started drop off on the next build, and
+# the holiday shift (Labor Day / Jan 1 / observed Jul 4) is applied for us.
+def _start_dates_by_year(years=3):
+    today = datetime.date.today()
+    out = []
+    for y in range(today.year, today.year + years):
+        rows = [_class_start(y, m) for m in range(1, 13)]
+        rows = [d for d in rows if d > today]
+        if rows:
+            out.append((str(y), rows))
+    return out
+
+START_DATES = _start_dates_by_year()
+
+_EN_WD_LONG = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+def _fmt_start(d, es):
+    """(month label, full date label) for one start date."""
+    if es:
+        return (_ES_MO[d.month - 1].capitalize(),
+                "%s, %d de %s" % (_ES_WD_LONG[d.weekday()].lower(), d.day,
+                                  _ES_MO_LONG[d.month - 1]))
+    return (d.strftime("%b"),
+            "%s, %s %d" % (_EN_WD_LONG[d.weekday()], d.strftime("%B"), d.day))
+
 HOLIDAYS = [
     ("2026", [("Independence Day","Friday, July 3"),("Labor Day","Monday, September 7"),
               ("Columbus Day","Monday, October 12"),("Veterans Day","Wednesday, November 11"),
@@ -1106,13 +1139,15 @@ def sec_dates(p, s):
     es = p["lang"] == "es"
     eb = "Fechas de Inicio" if es else "Start Dates"
     h = "Próximas Fechas de Inicio de Clases" if es else "Upcoming Class Start Dates"
-    sub = ("Las clases nuevas comienzan el primer lunes de cada mes. Estas son todas las próximas fechas de inicio." if es
-           else "New classes begin the first Monday of every month. Here are all the upcoming start dates.")
+    sub = ("Las clases nuevas comienzan el primer lunes de cada mes — el martes cuando ese lunes es feriado federal. "
+           "Estas son todas las próximas fechas de inicio." if es
+           else "New classes begin the first Monday of every month — the Tuesday after when that Monday is a "
+                "federal holiday. Here are all the upcoming start dates.")
     # start dates
     ycards = ""
-    for i, (yr, months) in enumerate(START_DATES):
-        rows = "".join('<li class="scal-row"><span class="scal-mo">%s</span><span class="scal-day">%s</span></li>' % (mo, dt)
-                       for mo, dt in months)
+    for i, (yr, days) in enumerate(START_DATES):
+        rows = "".join('<li class="scal-row"><span class="scal-mo">%s</span><span class="scal-day">%s</span></li>' % _fmt_start(d, es)
+                       for d in days)
         ycards += ('<div class="scal-card" data-reveal data-reveal-d="%d"><h3 class="scal-yr">%s</h3>'
                    '<ul class="scal-list">%s</ul></div>' % ((i % 3) + 1, yr, rows))
     # federal holidays (closures)
@@ -1181,7 +1216,7 @@ def footer(p, s, pre):
   </div>
 </div>
 <script src="/assets/js/effects.js?v=301" defer></script>
-<script src="%sassets/js/landing.js?v=300" defer></script>
+<script src="%sassets/js/landing.js?v=301" defer></script>
 <script src="/assets/js/upgrade.js?v=300" defer></script>
 <script src="/assets/js/chatbot.js?v=200" defer></script>
 <script src="/assets/js/video-sound.js?v=301" defer></script>

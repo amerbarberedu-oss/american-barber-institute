@@ -52,24 +52,34 @@ def svg(name, size=22, stroke=True):
 
 
 # ── date helpers (countdown rolls forward indefinitely) ─────────────
-def first_monday_of_next_month(after=None):
-    after = after or datetime.date.today()
-    y, m = after.year, after.month + 1
-    if m > 12:
-        m, y = 1, y + 1
-    d = datetime.date(y, m, 1)
+# Cohorts open on the first Monday of the month, except when that Monday is a
+# federal holiday and the school is closed -- then the Tuesday after. Only
+# three federal holidays can land on a month's first Monday: Labor Day (which
+# IS September's first Monday, so every September shifts), New Year's Day when
+# Jan 1 is a Monday, and the observed Independence Day when July 4 falls on a
+# Sunday (observed Mon, July 5). This reproduces the school's published
+# 2026-2027 start dates exactly and keeps deriving correctly after them.
+# Mirrored in src/build.py, src/build_landing_pages.py, assets/js/main.js and
+# assets/js/landing.js -- change them together.
+def class_start(year, month):
+    d = datetime.date(year, month, 1)
     while d.weekday() != 0:
+        d += datetime.timedelta(days=1)
+    if month == 9 or (month == 1 and d.day == 1) or (month == 7 and d.day == 5):
         d += datetime.timedelta(days=1)
     return d
 
 def next_start():
     today = datetime.date.today()
-    d = datetime.date(today.year, today.month, 1)
-    while d.weekday() != 0:
-        d += datetime.timedelta(days=1)
+    d = class_start(today.year, today.month)
     if d <= today:
-        d = first_monday_of_next_month(today)
+        y, m = (today.year, today.month + 1) if today.month < 12 else (today.year + 1, 1)
+        d = class_start(y, m)
     return d
+
+_ES_WD_LONG = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+_ES_MO_LONG = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+               "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 NEXT_ISO = next_start().isoformat()
 
@@ -187,11 +197,17 @@ def hero(p):
 
     tour_label = "Book a Campus Tour" if not es else "Reserva un Tour del Campus"
     next_label = "Next Starting Date:" if not es else "Próxima Fecha de Inicio:"
-    next_sub = "New classes begin the first Monday of each month." if not es else "Las nuevas clases comienzan el primer lunes de cada mes."
+    next_sub = ("New classes begin the first Monday of each month — the Tuesday after when that Monday is a federal holiday."
+                if not es else
+                "Las nuevas clases comienzan el primer lunes de cada mes — el martes siguiente cuando ese lunes es feriado federal.")
     # %-d (no zero-pad) is a POSIX-only strftime extension and raises on
     # Windows — build the day number separately so this runs on any platform.
     _ns = next_start()
-    next_date = "%s %d, %d" % (_ns.strftime("%A, %B"), _ns.day, _ns.year)
+    if es:
+        next_date = "%s, %d de %s de %d" % (_ES_WD_LONG[_ns.weekday()], _ns.day,
+                                            _ES_MO_LONG[_ns.month - 1], _ns.year)
+    else:
+        next_date = "%s %d, %d" % (_ns.strftime("%A, %B"), _ns.day, _ns.year)
     days_label = "Days" if not es else "Días"
     hours_label = "Hours" if not es else "Horas"
     min_label = "Min" if not es else "Min"
@@ -903,7 +919,7 @@ def page_head(p):
 '<script src="/assets/js/analytics.js?v=200" defer></script>\n'
 '<script defer src="/_vercel/insights/script.js"></script>\n'
 '<script src="/assets/js/campus.js?v=300" defer></script>\n'
-'<script src="/assets/js/landing.js?v=300" defer></script>\n'
+'<script src="/assets/js/landing.js?v=301" defer></script>\n'
 '</head>\n<body class="shell2 lf-page %(theme)s" data-campus="%(campus_slug)s" data-campus-locked="true">\n'
 '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9GTRLN" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>\n'
     ) % {

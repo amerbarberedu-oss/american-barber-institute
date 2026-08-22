@@ -14,19 +14,30 @@
   /* Mobile nav is handled by landing.js (.hamburger/.nav-drawer); the old
      .menu-btn/.nav markup no longer exists, so no wiring is needed here. */
 
-  /* ---------- Next start date: first Monday of next month (always current) ---------- */
-  function firstMonday(year, month) {
+  /* ---------- Next start date (always current) ----------
+     Cohorts open on the first Monday of the month, EXCEPT when that Monday is
+     a federal holiday and the school is closed -- then the cohort opens the
+     Tuesday after. Only three federal holidays can ever land on a month's
+     first Monday: Labor Day (which IS the first Monday of September, so every
+     September shifts), New Year's Day when Jan 1 is a Monday, and the observed
+     Independence Day when July 4 falls on a Sunday (observed Mon, July 5).
+     This reproduces the school's published 2026-2027 calendar exactly, and
+     keeps deriving correct dates for every year after it.
+     Mirrored in assets/js/landing.js, src/build.py and
+     src/build_landing_pages.py -- change all four together. */
+  function classStart(year, month) {
     var d = new Date(year, month, 1);
-    var day = d.getDay();
-    var offset = (8 - day) % 7; // days until Monday
+    var offset = (8 - d.getDay()) % 7; // days until Monday
     d.setDate(1 + offset);
+    var m = d.getMonth(), day = d.getDate();
+    if (m === 8 || (m === 0 && day === 1) || (m === 6 && day === 5)) d.setDate(day + 1);
     return d;
   }
   function nextStartDate(now) {
-    // first Monday of current month if still ahead, else next month
-    var fm = firstMonday(now.getFullYear(), now.getMonth());
-    if (fm <= now) fm = firstMonday(now.getFullYear(), now.getMonth() + 1);
-    return fm;
+    // this month's start if it is still ahead, else next month's
+    var st = classStart(now.getFullYear(), now.getMonth());
+    if (st <= now) st = classStart(now.getFullYear(), now.getMonth() + 1);
+    return st;
   }
   var fmt = { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' };
   var startDateEls = document.querySelectorAll('[data-start-date]');
