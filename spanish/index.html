@@ -172,7 +172,7 @@
 #main .hx .hx-photo{position:relative;isolation:isolate;overflow:hidden;width:100%;
   min-height:clamp(520px,52vw,660px);display:block}
 #main .hx .hx-bg{position:absolute;inset:0;z-index:0;
-  background:url('/assets/img/hero-manhattan-desktop.jpg') 50% 50%/cover no-repeat}
+  background:url('/assets/img/hero-training-floor-v7.jpg') 50% 50%/cover no-repeat}
 #main .hx .hx-mimg{display:none}
 #main .hx .hx-grad{position:absolute;inset:0;z-index:1;
   background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.58) 20%,rgba(0,0,0,.18) 45%,rgba(0,0,0,0) 66%)}
@@ -237,18 +237,15 @@ section.reserve-band{background:var(--teal-tint,#eef1ff);padding:clamp(2rem,4.5v
 #main .reserve-band .hx-cell b{border:0!important;background:none!important;color:var(--ink)!important;width:auto;padding:0;font-size:1.55rem}
 #main .reserve-band .hx-cell span{color:var(--ink-soft)!important;font-size:.58rem;letter-spacing:.08em;margin-top:.3rem}
 
-/* DESKTOP-ONLY: the Manhattan hero image (hero-manhattan-desktop.jpg) has the headline +
-   campus address baked in, so hide the overlaid HTML copy + the dark legibility fade on
-   desktop. Mobile is untouched. */
+/* DESKTOP-ONLY: hero photo (hero-training-floor-v7.jpg, 2026-09-03 client swap). No text is
+   baked into the photo, so the overlaid HTML copy + the dark legibility fade both stay ON. */
 @media(min-width:1001px){
-  #main .hx .hx-copy{display:none}
-  #main .hx .hx-grad{display:none}
-  /* match the hero box to the image's 3:2 ratio so the WHOLE image shows on PC (no crop).
+  /* match the hero box to the photo's 16:9 ratio so the WHOLE image shows on PC (no crop).
      Background goes on the aspect-ratio box itself so it reliably fills it (an absolutely-
      positioned .hx-bg does not fill an aspect-ratio parent in Chrome, and editorial.css
      caps .hx-bg height with !important above 1100px). */
-  #main .hx .hx-photo{min-height:0;aspect-ratio:1536/1024;
-    background:url('/assets/img/hero-manhattan-desktop.jpg') 50% 50%/cover no-repeat}
+  #main .hx .hx-photo{min-height:0;aspect-ratio:1672/941;
+    background:url('/assets/img/hero-training-floor-v7.jpg') 50% 50%/cover no-repeat}
   #main .hx .hx-bg{display:none}
 }
 @media(max-width:1000px){
@@ -259,13 +256,13 @@ section.reserve-band{background:var(--teal-tint,#eef1ff);padding:clamp(2rem,4.5v
   #main .hx .hx-become,#main .hx .hx-months{text-shadow:0 2px 9px rgba(0,0,0,.92),0 1px 3px rgba(0,0,0,.95)}
   #main .hx .hx-title{text-shadow:0 3px 12px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.95)}
   #main .hx .hx-desc,#main .hx .hx-loc{text-shadow:0 1px 6px rgba(0,0,0,.98),0 1px 2px rgba(0,0,0,1)}
-  #main .hx .hx-copy{justify-content:center;align-items:center;display:none}
-  #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:0;transform:translateY(calc(18vw + 6px))}
+  #main .hx .hx-copy{justify-content:center;align-items:center}
+  #main .hx .hx-copy-inner{width:100%;align-items:center;text-align:center;padding-bottom:0;transform:translateY(calc(32vw + 6px))}
   #main .hx .hx-hours{justify-content:center}
   #main .hx .hx-desc{max-width:34ch;margin-inline:auto}
   /* PHONE: drop the two bottom lines, shrink the title, and lift the copy to the barbers' arms */
   #main .hx .hx-desc,#main .hx .hx-loc{display:none}
-  #main .hx .hx-title{font-size:clamp(1.4rem,2.9vw,2.3rem)}
+  #main .hx .hx-title{font-size:clamp(1.4rem,2.9vw,2.3rem);line-height:1.04;margin:.14em 0 .1em}
   .reserve-in{grid-template-columns:1fr;gap:1.5rem}
   .reserve-intro{text-align:center}
   .reserve-p{margin-inline:auto}
@@ -285,7 +282,7 @@ section.reserve-band{background:var(--teal-tint,#eef1ff);padding:clamp(2rem,4.5v
 <section class="hx reveal">
   <div class="hx-photo">
     <div class="hx-bg" aria-hidden="true"></div>
-      <img class="hx-mimg" src="/assets/img/hero-manhattan-mobile-v2.jpg" alt="" aria-hidden="true">
+      <img class="hx-mimg" src="/assets/img/hero-training-floor-v7-mobile.jpg" alt="" aria-hidden="true">
     <div class="hx-grad" aria-hidden="true"></div>
     <div class="hx-copy">
       <div class="hx-copy-inner">
