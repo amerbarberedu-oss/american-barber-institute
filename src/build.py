@@ -716,7 +716,7 @@ def article_schema(title, url, slug=None, body=None, date="2024-02-01"):
         "isPartOf": {"@type": "Blog", "name": "American Barber Institute Blog",
                      "url": SITE_URL + "/blog/"},
         "datePublished": date,
-        "dateModified": "2026-07-05",
+        "dateModified": max(date, "2026-07-05"),  # never earlier than datePublished
         "image": {"@type": "ImageObject", "url": SITE_URL + "/assets/img/og-cover.jpg",
                   "width": 1200, "height": 630},
         "author": {
@@ -750,6 +750,104 @@ def article_schema(title, url, slug=None, body=None, date="2024-02-01"):
         if wc:
             schema["wordCount"] = wc
     return schema
+
+# ─── Blog post dates ─────────────────────────────────────────────────────────
+# Posts listed in src/blog_manifest.json may carry an ISO "date"; everything
+# else keeps the original 2024-02-01 publish date. Filled in when the
+# manifest is loaded (below PAGES); read by the EN/ES bylines and the schema.
+BLOG_DEFAULT_DATE = "2024-02-01"
+BLOG_DATES = {}
+_MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"]
+_MONTHS_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+              "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+
+def _blog_date(slug):
+    return BLOG_DATES.get(slug, BLOG_DEFAULT_DATE)
+
+def _date_en(iso):
+    y, m, d = (int(x) for x in iso.split('-'))
+    return f"{_MONTHS_EN[m - 1]} {d}, {y}"
+
+def _date_es(iso):
+    y, m, d = (int(x) for x in iso.split('-'))
+    return f"{d} de {_MONTHS_ES[m - 1]} de {y}"
+
+# ─── "Summarize with AI" row ─────────────────────────────────────────────────
+# Same component as the hand-crafted homepages (index.html / spanish/index.html):
+# four pill links that open Claude / ChatGPT / Perplexity / Google AI Mode in a
+# new tab with a prefilled "summarize this page" prompt. Injected under the hero
+# of every blog post. The static hrefs carry the page's own URL; the inline
+# script re-points them at <link rel="canonical"> (CSP allows inline scripts).
+_AI_SUM_ICONS = {
+    "claude": "M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z",
+    "chatgpt": "M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z",
+    "perplexity": "M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z",
+    "google": "M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z",
+}
+_AI_SUM_BUTTONS = [
+    ("claude", "Claude", "https://claude.ai/new?q="),
+    ("chatgpt", "ChatGPT", "https://chatgpt.com/?q="),
+    ("perplexity", "Perplexity", "https://www.perplexity.ai/search?q="),
+    ("google", "Google AI Mode", "https://www.google.com/search?udm=50&q="),
+]
+_AI_SUM_PROMPT = {
+    False: ("Summarize this page from American Barber Institute, a New York State-licensed "
+            "barber school in Manhattan and the Bronx, NYC, and list its key points: {url}"),
+    True: ("Resume esta página de American Barber Institute, una escuela de barbería "
+           "licenciada por el Estado de Nueva York en Manhattan y el Bronx, NYC, y enumera "
+           "sus puntos clave. Responde en español: {url}"),
+}
+_AI_SUM_CSS = (
+    '<style>.ai-sum{background:#fff;padding:1.1rem 0;border-bottom:1px solid var(--line,#DCE5E8)}'
+    '.ai-sum-in{width:min(1200px,94%);margin-inline:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.65rem 1rem}'
+    '.ai-sum-label{font-weight:700;font-size:.95rem;color:var(--ink,#0E1A1C);white-space:nowrap}'
+    '.ai-sum-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem}'
+    '.ai-sum .ai-sum-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem 1.05rem;'
+    'background:#fff;border:1px solid #D5DADF;border-radius:999px;color:var(--ink,#0E1A1C);font-size:.92rem;'
+    'font-weight:600;line-height:1.2;text-decoration:none;white-space:nowrap;transition:border-color .2s,color .2s}'
+    '.ai-sum .ai-sum-btn svg{width:20px;height:20px;flex:0 0 20px}'
+    '.ai-sum .ai-sum-btn:hover,.ai-sum .ai-sum-btn:focus-visible{border-color:var(--teal,#1b2fd9);color:var(--teal,#1b2fd9)}'
+    '@media(max-width:560px){.ai-sum-in{width:92%}.ai-sum-btns{display:grid;grid-template-columns:1fr 1fr;width:100%}'
+    '.ai-sum .ai-sum-btn{min-width:0;padding:.55rem .6rem;font-size:.86rem;white-space:normal;text-align:center}}</style>\n'
+)
+_AI_SUM_SCRIPT = (
+    "<script>(function(){var c=document.querySelector('link[rel=\"canonical\"]');if(!c||!c.href)return;"
+    "document.querySelectorAll('.ai-sum[data-ai-prompt]').forEach(function(s){"
+    "var q=encodeURIComponent(s.getAttribute('data-ai-prompt').replace('{url}',c.href));"
+    "s.querySelectorAll('a[data-ai-base]').forEach(function(a){a.href=a.getAttribute('data-ai-base')+q;});});})();</script>\n"
+)
+
+def ai_sum_row(url, es=False):
+    """The 'Summarize with' AI row for a page whose canonical URL is `url`."""
+    from urllib.parse import quote
+    from html import escape
+    prompt = _AI_SUM_PROMPT[es]
+    q = quote(prompt.replace('{url}', url), safe='')
+    links = ''.join(
+        f'<a class="ai-sum-btn" href="{escape(base + q)}" data-ai-base="{escape(base)}" '
+        f'target="_blank" rel="noopener nofollow"><svg viewBox="0 0 24 24" width="20" height="20" '
+        f'fill="currentColor" aria-hidden="true"><path d="{_AI_SUM_ICONS[key]}"/></svg>'
+        f'<span>{label}</span></a>\n'
+        for key, label, base in _AI_SUM_BUTTONS)
+    label, aria = (("Resumir con", "Resumir esta página con IA") if es
+                   else ("Summarize with", "Summarize this page with AI"))
+    return (
+        '\n<!-- Summarize with AI: each pill opens the assistant in a new tab with a prefilled prompt -->\n'
+        + _AI_SUM_CSS
+        + f'<section class="ai-sum" aria-label="{aria}" data-ai-prompt="{escape(prompt)}">\n'
+        '  <div class="ai-sum-in">\n'
+        f'    <span class="ai-sum-label">{label}</span>\n'
+        '    <div class="ai-sum-btns">\n' + links + '    </div>\n  </div>\n</section>\n'
+        + _AI_SUM_SCRIPT)
+
+def insert_after_hero(body, html):
+    """Insert `html` right after the page's first </section> (the hero band)."""
+    i = body.find('</section>')
+    if i < 0:
+        return body
+    i += len('</section>')
+    return body[:i] + html + body[i:]
 
 # Rewrite internal links from foo.html → /foo (clean URLs match canonical + cleanUrls:true,
 # eliminating the 308 redirect hop search engines were following).
@@ -845,6 +943,17 @@ BLOG_AUTHORS = {
     "diverse-haircut-training-at-american-barber-inst": ("Truth \"The Barber Artist\" Quinones", "Founding Director, ABI Bronx"),
     "barber-school-instructors-in-nyc": ("David Ayeoribe", "Lead Senior Instructor & Director"),
     "exploring-the-benefits-of-enrolling-in-the-ameri": ("David Ayeoribe", "Lead Senior Instructor & Director"),
+    # 10 new posts (Nov 2026)
+    "trending-mens-haircuts-nyc-2026": ("Harold \"Barkim\" Brown", "Lead Instructor"),
+    "how-to-cut-a-skin-fade": ("Harold \"Barkim\" Brown", "Lead Instructor"),
+    "beard-trimming-and-shaping": ("Truth \"The Barber Artist\" Quinones", "Founding Director, ABI Bronx"),
+    "straight-razor-shave-basics": ("David Ayeoribe", "Lead Senior Instructor & Director"),
+    "barber-client-consultation": ("Harold \"Barkim\" Brown", "Lead Instructor"),
+    "how-to-cut-kids-hair": ("Truth \"The Barber Artist\" Quinones", "Founding Director, ABI Bronx"),
+    "booth-rent-vs-commission-new-york": ("David Ayeoribe", "Lead Senior Instructor & Director"),
+    "barber-ergonomics-health-behind-the-chair": ("David Ayeoribe", "Lead Senior Instructor & Director"),
+    "becoming-a-barber-after-30": ("David Ayeoribe", "Lead Senior Instructor & Director"),
+    "barber-school-while-working-full-time": ("Truth \"The Barber Artist\" Quinones", "Founding Director, ABI Bronx"),
 }
 
 FAQ_SCHEMA_PLACEHOLDER = "FAQ_SCHEMA"
@@ -1307,15 +1416,19 @@ PAGES = [
 # BlogPosting schema carries real E-E-A-T signals (Person author, wordCount).
 _blog_manifest = os.path.join(ROOT, 'src', 'blog_manifest.json')
 if os.path.exists(_blog_manifest):
-    for _p in json.load(open(_blog_manifest)):
+    for _p in json.load(open(_blog_manifest, encoding='utf-8')):
         _partial_path = os.path.join(SRC, _p['partial'])
         _body = open(_partial_path, encoding='utf-8').read() if os.path.exists(_partial_path) else None
+        if _p.get('date'):
+            BLOG_DATES[_p['slug']] = _p['date']
         PAGES.append((
             f"blog/{_p['slug']}.html", _p['partial'],
             f"{_p['title']} | ABI Blog",
+            _p.get('description') or
             f"{_p['title']} — career advice and industry insight from NYC's career-focused barber school.",
             "en", [article_schema(_p['title'], f"{SITE_URL}/blog/{_p['slug']}",
-                                  slug=_p['slug'], body=_body), FAQ_SCHEMA_PLACEHOLDER]))
+                                  slug=_p['slug'], body=_body, date=_blog_date(_p['slug'])),
+                   FAQ_SCHEMA_PLACEHOLDER]))
 
 def gallery_video_schemas(body, limit=15):
     """Build VideoObject entries for the self-hosted (Vercel Blob) 'floor-XX'
@@ -1898,6 +2011,27 @@ ES_META.update({
                                                "Escuela de barbería económica en NYC: formación de calidad con licencia de 500 horas y planes de pago semanales, sin arruinar tu presupuesto."),
     'blog/how-much-money-do-barbers-make.html': ("¿Cuánto ganan los barberos? Guía de ingresos | Blog ABI",
                                                  "Cuánto ganan los barberos en Nueva York en 2026: una guía de ingresos por etapa de carrera, de recién graduado a dueño de barbería."),
+    # ── New blog posts (Nov 2026) ──
+    'blog/trending-mens-haircuts-nyc-2026.html': ("Cortes de hombre en tendencia en NYC 2026 | Blog ABI",
+        "Tapers, burst fades, crops, twists, mullets y barbas: los cortes de hombre en tendencia en NYC para 2026 y las habilidades que necesitas para hacerlos bien."),
+    'blog/how-to-cut-a-skin-fade.html': ("Cómo hacer un skin fade paso a paso | Blog ABI",
+        "Aprende a hacer un skin fade paso a paso: línea guía, progresión de peines, difuminado de piel a sombra, errores comunes y cómo se practica en la escuela."),
+    'blog/beard-trimming-and-shaping.html': ("Recorte y perfilado de barba: guía | Blog ABI",
+        "Guía de recorte y perfilado de barba: consulta, forma según la cara, máquina sobre peine, líneas de mejilla y cuello, y por qué la barba atrae clientes fieles."),
+    'blog/straight-razor-shave-basics.html': ("Afeitado con navaja: seguridad y técnica | Blog ABI",
+        "Aprende lo básico del afeitado con navaja: preparación con toalla caliente, shavette o navaja recta, ángulo, dirección del pelo, pasadas, cuidados e higiene."),
+    'blog/barber-client-consultation.html': ("La consulta con el cliente en la barbería | Blog ABI",
+        "Qué preguntar, cómo leer el cabello, confirmar números del peine guía y agendar la próxima cita: la consulta que convierte primeras visitas en clientes fijos."),
+    'blog/how-to-cut-kids-hair.html': ("Cómo cortar el pelo a niños | Blog ABI",
+        "Cómo preparar la silla, hablar con los padres, cortar con seguridad cerca de las orejas y lograr que las familias vuelvan. Guía de cortes infantiles para barberos."),
+    'blog/booth-rent-vs-commission-new-york.html': ("Renta de silla vs. comisión en NY | Blog ABI",
+        "Comisión, renta de silla, pago por hora o barbería propia: cómo les pagan a los barberos en Nueva York, quién fija precios y qué cambia en los impuestos."),
+    'blog/barber-ergonomics-health-behind-the-chair.html': ("Ergonomía para barberos: espalda y muñecas | Blog ABI",
+        "Altura de la silla, postura, agarre de la máquina, zapatos y estiramientos: hábitos sencillos para cuidar tu espalda, muñecas y pies durante toda tu carrera."),
+    'blog/becoming-a-barber-after-30.html': ("Ser barbero después de los 30 | Blog ABI",
+        "¿Quieres ser barbero después de los 30? Cronograma de licencia en NY, horario de fin de semana, pagos semanales y cómo es el primer año con licencia."),
+    'blog/barber-school-while-working-full-time.html': ("Estudiar barbería y trabajar tiempo completo | Blog ABI",
+        "¿Trabajas tiempo completo? Elige horario de mañana, tarde o fin de semana, paga con cuotas semanales y prepárate para el examen estatal de barbería de NY."),
 })
 # Blog posts get an auto-generated ES title/desc (translation deferred).
 ES_BANNER = ('<div style="background:linear-gradient(90deg,#1322a8,#1b2fd9);color:#fff;'
@@ -1924,7 +2058,7 @@ def build():
                 'color:#5b6273;letter-spacing:.01em">'
                 f'By <a href="/instructors" rel="author" style="color:inherit;text-decoration:underline">'
                 f'<span itemprop="author">{_bname}</span></a> · {_brole} · '
-                '<time datetime="2024-02-01" itemprop="datePublished">February 1, 2024</time>'
+                f'<time datetime="{_blog_date(_slug)}" itemprop="datePublished">{_date_en(_blog_date(_slug))}</time>'
                 '</p>'
             )
             # Drop the byline right after the first </h1> if there is one,
@@ -1933,6 +2067,7 @@ def build():
                 body = body.replace('</h1>', '</h1>' + _byline, 1)
             else:
                 body = _byline + body
+            body = insert_after_hero(body, ai_sum_row(f"{SITE_URL}/blog/{_slug}"))
         depth = out.count('/')
         # 404.html is served by Vercel for any unknown URL — at any depth — so its
         # asset/nav references MUST be absolute (root = '/') not relative.
@@ -2134,13 +2269,15 @@ def build():
                     'color:#5b6273;letter-spacing:.01em">'
                     'Por <a href="/spanish/instructors" rel="author" style="color:inherit;text-decoration:underline">'
                     f'<span itemprop="author">{_es_bname}</span></a> · {_es_role_es} · '
-                    '<time datetime="2024-02-01" itemprop="datePublished">1 de febrero de 2024</time>'
+                    f'<time datetime="{_blog_date(_es_slug)}" itemprop="datePublished">{_date_es(_blog_date(_es_slug))}</time>'
                     '</p>'
                 )
                 if '</h1>' in _source_body:
                     _source_body = _source_body.replace('</h1>', '</h1>' + _es_byline, 1)
                 else:
                     _source_body = _es_byline + _source_body
+                _source_body = insert_after_hero(
+                    _source_body, ai_sum_row(f"{SITE_URL}/spanish/blog/{_es_slug}", es=True))
             _fixed_body = re.sub(
                 r'((?:src|href)=")((?:\.\./)*)(assets/)',
                 lambda m: m.group(1) + '../' + m.group(2) + m.group(3),
