@@ -1421,14 +1421,17 @@ if os.path.exists(_blog_manifest):
         _body = open(_partial_path, encoding='utf-8').read() if os.path.exists(_partial_path) else None
         if _p.get('date'):
             BLOG_DATES[_p['slug']] = _p['date']
+        _schema = article_schema(_p['title'], f"{SITE_URL}/blog/{_p['slug']}",
+                                 slug=_p['slug'], body=_body, date=_blog_date(_p['slug']))
+        if _p.get('keyword'):  # focus keyword leads the schema keywords
+            _schema["keywords"] = f"{_p['keyword']}, {_schema['keywords']}"
         PAGES.append((
             f"blog/{_p['slug']}.html", _p['partial'],
-            f"{_p['title']} | ABI Blog",
+            # optional "seo_title" is used verbatim (kept under 60 chars)
+            _p.get('seo_title') or f"{_p['title']} | ABI Blog",
             _p.get('description') or
             f"{_p['title']} — career advice and industry insight from NYC's career-focused barber school.",
-            "en", [article_schema(_p['title'], f"{SITE_URL}/blog/{_p['slug']}",
-                                  slug=_p['slug'], body=_body, date=_blog_date(_p['slug'])),
-                   FAQ_SCHEMA_PLACEHOLDER]))
+            "en", [_schema, FAQ_SCHEMA_PLACEHOLDER]))
 
 def gallery_video_schemas(body, limit=15):
     """Build VideoObject entries for the self-hosted (Vercel Blob) 'floor-XX'
@@ -2012,26 +2015,26 @@ ES_META.update({
     'blog/how-much-money-do-barbers-make.html': ("¿Cuánto ganan los barberos? Guía de ingresos | Blog ABI",
                                                  "Cuánto ganan los barberos en Nueva York en 2026: una guía de ingresos por etapa de carrera, de recién graduado a dueño de barbería."),
     # ── New blog posts (Nov 2026) ──
-    'blog/trending-mens-haircuts-nyc-2026.html': ("Cortes de hombre en tendencia en NYC 2026 | Blog ABI",
-        "Tapers, burst fades, crops, twists, mullets y barbas: los cortes de hombre en tendencia en NYC para 2026 y las habilidades que necesitas para hacerlos bien."),
-    'blog/how-to-cut-a-skin-fade.html': ("Cómo hacer un skin fade paso a paso | Blog ABI",
-        "Aprende a hacer un skin fade paso a paso: línea guía, progresión de peines, difuminado de piel a sombra, errores comunes y cómo se practica en la escuela."),
-    'blog/beard-trimming-and-shaping.html': ("Recorte y perfilado de barba: guía | Blog ABI",
-        "Guía de recorte y perfilado de barba: consulta, forma según la cara, máquina sobre peine, líneas de mejilla y cuello, y por qué la barba atrae clientes fieles."),
-    'blog/straight-razor-shave-basics.html': ("Afeitado con navaja: seguridad y técnica | Blog ABI",
-        "Aprende lo básico del afeitado con navaja: preparación con toalla caliente, shavette o navaja recta, ángulo, dirección del pelo, pasadas, cuidados e higiene."),
-    'blog/barber-client-consultation.html': ("La consulta con el cliente en la barbería | Blog ABI",
-        "Qué preguntar, cómo leer el cabello, confirmar números del peine guía y agendar la próxima cita: la consulta que convierte primeras visitas en clientes fijos."),
-    'blog/how-to-cut-kids-hair.html': ("Cómo cortar el pelo a niños | Blog ABI",
-        "Cómo preparar la silla, hablar con los padres, cortar con seguridad cerca de las orejas y lograr que las familias vuelvan. Guía de cortes infantiles para barberos."),
-    'blog/booth-rent-vs-commission-new-york.html': ("Renta de silla vs. comisión en NY | Blog ABI",
-        "Comisión, renta de silla, pago por hora o barbería propia: cómo les pagan a los barberos en Nueva York, quién fija precios y qué cambia en los impuestos."),
-    'blog/barber-ergonomics-health-behind-the-chair.html': ("Ergonomía para barberos: espalda y muñecas | Blog ABI",
-        "Altura de la silla, postura, agarre de la máquina, zapatos y estiramientos: hábitos sencillos para cuidar tu espalda, muñecas y pies durante toda tu carrera."),
-    'blog/becoming-a-barber-after-30.html': ("Ser barbero después de los 30 | Blog ABI",
-        "¿Quieres ser barbero después de los 30? Cronograma de licencia en NY, horario de fin de semana, pagos semanales y cómo es el primer año con licencia."),
-    'blog/barber-school-while-working-full-time.html': ("Estudiar barbería y trabajar tiempo completo | Blog ABI",
-        "¿Trabajas tiempo completo? Elige horario de mañana, tarde o fin de semana, paga con cuotas semanales y prepárate para el examen estatal de barbería de NY."),
+    'blog/trending-mens-haircuts-nyc-2026.html': ("Cortes de hombre en tendencia en NYC para 2026",
+        "Los cortes de hombre que piden los neoyorquinos en 2026, de tapers y burst fades a crops texturizados y twists, y las habilidades detrás de cada uno."),
+    'blog/how-to-cut-a-skin-fade.html': ("Cómo hacer un skin fade: guía paso a paso para barberos",
+        "Aprende a hacer un skin fade paso a paso: línea guía, peines, bajar a piel y difuminar, más los errores comunes y cómo lo dominan los estudiantes."),
+    'blog/beard-trimming-and-shaping.html': ("Cómo recortar y perfilar una barba como un barbero",
+        "Cómo recorta y perfila una barba un barbero: consulta, forma según la cara, máquina sobre peine y líneas limpias. Apréndelo en ABI, Nueva York."),
+    'blog/straight-razor-shave-basics.html': ("Afeitado con navaja: cómo afeitar con seguridad",
+        "Cómo hace un barbero un afeitado seguro con navaja: toalla caliente, tipos de navaja, ángulo, dirección del pelo e higiene. Apréndelo en ABI, NY."),
+    'blog/barber-client-consultation.html': ("¿Cómo hacer la consulta con el cliente en la barbería?",
+        "Haz las preguntas correctas, lee el cabello, confirma los números de peine guía y agenda la próxima cita. Así se ganan clientes fijos."),
+    'blog/how-to-cut-kids-hair.html': ("Cómo cortarle el pelo a un niño y mantenerlo tranquilo",
+        "Cómo cortarle el pelo a un niño: preparar la silla, hablar con los padres, orden del corte, seguridad en las orejas y estilos populares. Consejos de ABI."),
+    'blog/booth-rent-vs-commission-new-york.html': ("Renta de silla o comisión: ¿qué le conviene al barbero?",
+        "¿Renta de silla o comisión? Cómo funciona cada modelo de pago en Nueva York, cuándo conviene rentar, impuestos básicos y licencias."),
+    'blog/barber-ergonomics-health-behind-the-chair.html': ("Ergonomía para barberos: evita dolor de espalda y muñeca",
+        "Altura de la silla, postura, agarre, zapatos, tapetes y estiramientos entre clientes: hábitos prácticos para una carrera larga en la barbería."),
+    'blog/becoming-a-barber-after-30.html': ("Ser barbero después de los 30: ¿es tarde? Guía para NY",
+        "No es tarde. Cómo llegar a ser barbero con licencia en Nueva York después de los 30: pasos, horarios de 500 horas, matrícula y primer año."),
+    'blog/barber-school-while-working-full-time.html': ("Estudiar barbería mientras trabajas tiempo completo",
+        "Sí se puede. El programa de 500 horas de ABI tiene horario de mañana, tarde o fin de semana y pagos semanales para que conserves tu trabajo en NYC."),
 })
 # Blog posts get an auto-generated ES title/desc (translation deferred).
 ES_BANNER = ('<div style="background:linear-gradient(90deg,#1322a8,#1b2fd9);color:#fff;'
