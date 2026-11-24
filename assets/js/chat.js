@@ -33,6 +33,7 @@
     help: "¡Estamos aquí para ayudar!",
     close: "Cerrar",
     reply: "Normalmente respondemos en pocos minutos.",
+    now_t: "Chatea con nosotros ahora", now_s: "Escribe aquí y Admisiones te responde",
     sms_t: "Envíanos un mensaje (SMS)", sms_s: "Texto a tu teléfono",
     ig_t: "Instagram", ig_s: "Escríbenos por Instagram",
     wa_t: "WhatsApp", wa_s: "Chatea con nosotros por WhatsApp",
@@ -46,6 +47,7 @@
     help: "We’re here to help!",
     close: "Close",
     reply: "We typically reply within a few minutes.",
+    now_t: "Chat with us now", now_s: "Type here and Admissions answers",
     sms_t: "Text Us (SMS)", sms_s: "Text us on your phone",
     ig_t: "Instagram", ig_s: "Message us on Instagram",
     wa_t: "WhatsApp", wa_s: "Chat with us on WhatsApp",
@@ -62,6 +64,7 @@
     wa: '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M17.5 14.4c-.3-.15-1.73-.85-2-.95-.27-.1-.46-.15-.65.15-.19.28-.74.94-.9 1.13-.17.19-.33.21-.62.07-.29-.15-1.23-.46-2.35-1.45-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.08-.15-.65-1.56-.89-2.13-.23-.55-.47-.48-.65-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.03 2.76 1.17 2.95.14.19 2.01 3.08 4.88 4.32.68.29 1.21.47 1.63.6.68.22 1.31.19 1.8.11.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12.05 21.5a9.5 9.5 0 0 1-4.85-1.33l-.34-.2-3.6.94.96-3.51-.23-.36a9.44 9.44 0 0 1-1.45-5.03c0-5.23 4.26-9.48 9.5-9.48 2.54 0 4.92 1 6.71 2.79a9.4 9.4 0 0 1 2.78 6.7c0 5.22-4.26 9.48-9.5 9.48z"/></svg>',
     fb: '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 2C6.5 2 2 6.1 2 11.3c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.1-2.6-2.7-5 2.7 5.4-5.7L13.5 11l4.9-2.7-5.4 5.8z"/></svg>',
     tt: '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.5.02c1.3-.02 2.6-.01 3.9-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97a10 10 0 0 1-1.62-.93c-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>',
+    now: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>',
     chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
     shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 9.5C8 19.3 5 15.4 5 11V6l7-3z"/></svg>'
@@ -88,6 +91,7 @@
     '.abichat-opt:hover,.abichat-opt:focus{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.1);border-color:#d7dbdf;outline:none}' +
     '.abichat-ic{width:46px;height:46px;border-radius:12px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}' +
     '.abichat-ic svg{width:26px;height:26px;display:block}' +
+    '.abichat-ic--now{background:#13294b}' +
     '.abichat-ic--sms{background:#25d366}' +
     '.abichat-ic--ig{background:linear-gradient(45deg,#feda75,#fa7e1e 30%,#d62976 55%,#962fbf 80%,#4f5bd5)}' +
     '.abichat-ic--wa{background:#25d366}' +
@@ -109,6 +113,7 @@
     '@media(min-width:1340px){.abichat-rail-ic{width:50px;height:50px}.abichat-rail-ic svg{width:28px;height:28px}}' +
     '.abichat-rail-lb{max-width:0;white-space:nowrap;overflow:hidden;font-size:13px;font-weight:700;transition:max-width .22s ease,padding .22s ease}' +
     '.abichat-rail a:hover .abichat-rail-lb,.abichat-rail a:focus .abichat-rail-lb{max-width:170px;padding-right:16px;padding-left:2px}' +
+    '.abichat-rail--now{background:#13294b}' +
     '.abichat-rail--sms{background:#25d366}' +
     '.abichat-rail--ig{background:linear-gradient(45deg,#feda75,#fa7e1e 30%,#d62976 55%,#962fbf 80%,#4f5bd5)}' +
     '.abichat-rail--wa{background:#25d366}' +
@@ -150,6 +155,7 @@
       '<div class="abichat-bd-in">' +
         '<h2 class="abichat-h">' + T.heading + '</h2>' +
         '<p class="abichat-s">' + T.sub + '</p>' +
+        opt("now", IC.now, T.now_t, T.now_s, CFG.messenger, true, "website-chat") +
         opt("sms", IC.sms, T.sms_t, T.sms_s, smsHref, false, "sms") +
         opt("ig", IC.ig, T.ig_t, T.ig_s, CFG.instagram, true, "instagram") +
         opt("wa", IC.wa, T.wa_t, T.wa_s, CFG.whatsapp, true, "whatsapp") +
@@ -163,6 +169,34 @@
     return { bd: bd, p: p };
   }
 
+  // "Chat with us now" (CL-713): loads the ABI platform's own website chat once, with no bubble of its own, and opens it.
+  // If it cannot load, the visitor goes to Messenger instead, so nobody is stuck.
+  var WEBCHAT_SRC = "https://abi-platform.amerbarberedu.workers.dev/chat-widget.js", webChatLoading = false;
+  function webChatFallback() {
+    webChatLoading = false;
+    var w = window.open(CFG.messenger, "_blank");
+    if (w) { try { w.opener = null; } catch (e) {} } else { window.location.href = CFG.messenger; }
+  }
+  function openWebChat() {
+    var api = window.abiWebsiteChat;
+    if (api && typeof api.open === "function") { api.open(); return; }
+    if (webChatLoading) return;
+    webChatLoading = true;
+    var s = document.createElement("script"), done = false;
+    var timer = setTimeout(function () { if (!done) { done = true; webChatFallback(); } }, 12000);
+    s.setAttribute("data-launcher", "none");
+    s.async = true;
+    s.onload = function () {
+      if (done) return;
+      done = true; clearTimeout(timer); webChatLoading = false;
+      var a = window.abiWebsiteChat;
+      if (a && typeof a.open === "function") a.open(); else webChatFallback();
+    };
+    s.onerror = function () { if (done) return; done = true; clearTimeout(timer); webChatFallback(); };
+    s.src = WEBCHAT_SRC;
+    document.body.appendChild(s);
+  }
+
   function track(action, label) {
     try {
       (window.dataLayer = window.dataLayer || []).push({ event: "chat_widget", chat_action: action, chat_channel: label || "" });
@@ -172,6 +206,7 @@
 
   function buildRail() {
     var items = [
+      { cls: "now", ic: IC.now, href: CFG.messenger, ext: true,  ch: "website-chat", lb: "Chat", al: T.now_t },
       { cls: "sms", ic: IC.sms, href: smsHref,       ext: false, ch: "sms",       lb: (es ? "Texto" : "Text Us"), al: T.sms_t },
       { cls: "ig",  ic: IC.ig,  href: CFG.instagram, ext: true,  ch: "instagram", lb: "Instagram",                al: T.ig_t },
       { cls: "wa",  ic: IC.wa,  href: CFG.whatsapp,  ext: true,  ch: "whatsapp",  lb: "WhatsApp",                 al: T.wa_t },
@@ -191,6 +226,8 @@
     Array.prototype.forEach.call(rail.querySelectorAll("a"), function (a) {
       a.addEventListener("click", function () { track("channel", a.getAttribute("data-ch")); });
     });
+    var railNow = rail.querySelector('[data-ch="website-chat"]');
+    if (railNow) railNow.addEventListener("click", function (e) { e.preventDefault(); openWebChat(); });
   }
 
   function init() {
@@ -236,6 +273,8 @@
     Array.prototype.forEach.call(p.querySelectorAll(".abichat-opt"), function (a) {
       a.addEventListener("click", function () { track("channel", a.getAttribute("data-ch")); });
     });
+    var panelNow = p.querySelector('[data-ch="website-chat"]');
+    if (panelNow) panelNow.addEventListener("click", function (e) { e.preventDefault(); close(); openWebChat(); });
   }
 
   if (document.readyState === "loading") {
